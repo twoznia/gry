@@ -368,9 +368,11 @@
 
                     if (lives < 3 && score - lastHeartScore >= HEART_INTERVAL) {
                         const validLanes = [0,1,2,3].filter(l => Math.abs(l - playerLane) >= 2);
-                        const heartLane = validLanes[Math.floor(Math.random() * validLanes.length)];
-                        spawnHeart(heartLane);
-                        lastHeartScore = score;
+                        if (validLanes.length > 0) {
+                            const heartLane = validLanes[Math.floor(Math.random() * validLanes.length)];
+                            spawnHeart(heartLane);
+                            lastHeartScore = score;
+                        }
                     }
                 }
                 o.el.remove();
