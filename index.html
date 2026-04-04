@@ -162,7 +162,7 @@
             <div class="play-btn">Zagraj</div>
         </a>
 
-        <a href="./rybak/" class="game-card">
+        <a id="rybak-card" href="./rybak/" class="game-card">
             <span class="icon">🚣‍♂️</span>
             <h2>Rybak</h2>
             <p style="color: #94a3b8; font-size: 0.9rem;">Spokojny połów na pełnym jeziorze.</p>
@@ -183,18 +183,16 @@
             <div class="play-btn">Zagraj</div>
         </a>
 
-        <a href="./rybak-mobile/" class="game-card">
-            <span class="icon">📱🎣</span>
-            <h2>Rybak Mobile</h2>
-            <p style="color: #94a3b8; font-size: 0.9rem;">Połów na telefonie – pochylaj, dotykaj, łap ryby!</p>
-            <div class="play-btn">Zagraj</div>
-        </a>
-
     </main>
 
     <footer>
         Ostatnia aktualizacja: 2026 | @twoznia
     </footer>
+    <script>
+        if (window.matchMedia("(pointer: coarse)").matches) {
+            document.getElementById("rybak-card").href = "./rybak-mobile/";
+        }
+    </script>
 
 </body>
 </html>
