@@ -273,6 +273,19 @@
         if(e.key === 'ArrowRight') handleMove('P');
     });
 
+    let touchStartX = null;
+    screen.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    screen.addEventListener('touchend', (e) => {
+        if (touchStartX === null) return;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 20) {
+            handleMove(dx < 0 ? 'L' : 'P');
+        }
+        touchStartX = null;
+    }, { passive: true });
+
     function spawn(laneIdx) {
         const container = document.createElement('div');
         container.className = 'car-shape';
@@ -298,9 +311,12 @@
             else {
                 let phase = Math.floor(score / 12) % 3;
                 if (phase === 0) { spawn(patternStep % 4); patternStep++; }
-                else if (phase === 1) { 
-                    if (patternStep % 2 === 0) { spawn(0); spawn(3); }
-                    else { spawn(1); spawn(2); }
+                else if (phase === 1) {
+                    const p = patternStep % 4;
+                    if (p === 0) { spawn(0); spawn(3); }
+                    else if (p === 1) { spawn(1); spawn(2); }
+                    else if (p === 2) { spawn(0); spawn(1); }
+                    else { spawn(2); spawn(3); }
                     patternStep++;
                 } else {
                     let l1 = Math.floor(Math.random() * 4);
