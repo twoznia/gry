@@ -106,7 +106,6 @@
             color: #7c3aed;
             font-weight: bold;
             letter-spacing: 3px;
-            text-transform: uppercase;
             background: #f5f3ff;
             padding: 5px 18px;
             border-radius: 20px;
@@ -370,7 +369,8 @@ function shuffle(a) {
 function makePool(word) {
     const letters  = word.split('');
     const inWord   = new Set(letters);
-    const extras   = shuffle(EXTRA_POOL.filter(l => !inWord.has(l))).slice(0, 2);
+    const available = shuffle(EXTRA_POOL.filter(l => !inWord.has(l)));
+    const extras   = available.slice(0, Math.min(2, available.length));
     return shuffle([...letters, ...extras]).map((letter, id) => ({ id, letter, used: false }));
 }
 
@@ -499,8 +499,8 @@ function advanceWord() {
         const isLast = level >= LEVELS.length - 1;
         document.getElementById('ov-emoji').textContent = isLast ? '🏆' : '🌟';
         document.getElementById('ov-title').textContent = isLast ? 'Gratulacje!' : 'Poziom zaliczony!';
-        document.getElementById('ov-text').textContent  = isLast
-            ? 'Ukończyłeś wszystkie poziomy!\nJesteś mistrzem pisania! 🏅'
+        document.getElementById('ov-text').innerHTML  = isLast
+            ? 'Ukończyłeś wszystkie poziomy!<br>Jesteś mistrzem pisania! 🏅'
             : `Przechodzisz do poziomu ${level + 2} – słowa ${LEVELS[level + 1][0].word.length}-literowe!`;
         document.getElementById('ov-btn').textContent  = isLast ? '🔄 Zagraj ponownie' : 'Następny poziom →';
 
