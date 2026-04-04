@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasła – Pisanie 🖊️</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(160deg, #a855f7 0%, #6366f1 50%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 20px 16px 40px;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .level-section {
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+
+        .level-title {
+            font-size: 1rem;
+            font-weight: bold;
+            opacity: 0.85;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            padding-left: 4px;
+        }
+
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+        }
+
+        .word-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 16px;
+            padding: 14px 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .word-icon {
+            font-size: 2.4rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .word-text {
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+
+<h1>📋 Hasła</h1>
+
+<script>
+const LEVELS = [
+    { label: 'Poziom 1 – słowa 3-literowe', words: [
+        { word:'KOT',      emoji:'🐱' },
+        { word:'LEW',      emoji:'🦁' },
+        { word:'KOŃ',      emoji:'🐴' },
+        { word:'MIŚ',      emoji:'🐻' },
+        { word:'JEŻ',      emoji:'🦔' },
+        { word:'SER',      emoji:'🧀' },
+        { word:'BUS',      emoji:'🚌' },
+        { word:'DOM',      emoji:'🏠' },
+        { word:'LÓD',      emoji:'🧊' },
+        { word:'GRA',      emoji:'🎮' },
+        { word:'LIS',      emoji:'🦊' },
+        { word:'WĄŻ',      emoji:'🐍' },
+        { word:'GĘŚ',      emoji:'🪿' },
+        { word:'SOK',      emoji:'🧃' },
+        { word:'OKO',      emoji:'👁️'  },
+        { word:'NOS',      emoji:'👃' },
+        { word:'RAK',      emoji:'🦞' },
+        { word:'ŁOŚ',      emoji:'🦌' },
+        { word:'ŻUK',      emoji:'🐞' },
+        { word:'MOP',      emoji:'🧹' },
+    ]},
+    { label: 'Poziom 2 – słowa 4-literowe', words: [
+        { word:'RYBA',     emoji:'🐟' },
+        { word:'ŻABA',     emoji:'🐸' },
+        { word:'KURA',     emoji:'🐔' },
+        { word:'PIES',     emoji:'🐕' },
+        { word:'KOZA',     emoji:'🐐' },
+        { word:'OWCA',     emoji:'🐑' },
+        { word:'KRAB',     emoji:'🦀' },
+        { word:'MYSZ',     emoji:'🐭' },
+        { word:'TORT',     emoji:'🎂' },
+        { word:'LODY',     emoji:'🍦' },
+        { word:'ŁÓDŹ',     emoji:'⛵' },
+        { word:'WODA',     emoji:'💧' },
+        { word:'AUTO',     emoji:'🚗' },
+        { word:'FOKA',     emoji:'🦭' },
+        { word:'SŁOŃ',     emoji:'🐘' },
+        { word:'ZUPA',     emoji:'🍲' },
+        { word:'MAPA',     emoji:'🗺️'  },
+        { word:'LAMA',     emoji:'🦙' },
+        { word:'MOST',     emoji:'🌉' },
+        { word:'OKNO',     emoji:'🪟' },
+    ]},
+    { label: 'Poziom 3 – słowa 5-literowe', words: [
+        { word:'KOTEK',    emoji:'🐱' },
+        { word:'MAŁPA',    emoji:'🐒' },
+        { word:'ZEBRA',    emoji:'🦓' },
+        { word:'PANDA',    emoji:'🐼' },
+        { word:'LISEK',    emoji:'🦊' },
+        { word:'KROWA',    emoji:'🐄' },
+        { word:'KUCYK',    emoji:'🐴' },
+        { word:'PIŁKA',    emoji:'⚽' },
+        { word:'PIZZA',    emoji:'🍕' },
+        { word:'ZAMEK',    emoji:'🏰' },
+        { word:'ZAJĄC',    emoji:'🐰' },
+        { word:'ROWER',    emoji:'🚲' },
+        { word:'GRZYB',    emoji:'🍄' },
+        { word:'TRAWA',    emoji:'🌿' },
+        { word:'KWIAT',    emoji:'🌸' },
+        { word:'ANIOŁ',    emoji:'👼' },
+        { word:'KOGUT',    emoji:'🐓' },
+        { word:'KONIK',    emoji:'🐴' },
+        { word:'MISIO',    emoji:'🧸' },
+        { word:'ROBOT',    emoji:'🤖' },
+    ]},
+    { label: 'Poziom 4 – słowa 6-literowe', words: [
+        { word:'TYGRYS',   emoji:'🐯' },
+        { word:'ŻYRAFA',   emoji:'🦒' },
+        { word:'MRÓWKA',   emoji:'🐜' },
+        { word:'KRÓLIK',   emoji:'🐰' },
+        { word:'POCIĄG',   emoji:'🚂' },
+        { word:'SŁONIK',   emoji:'🐘' },
+        { word:'ŚWINKA',   emoji:'🐷' },
+        { word:'BAŁWAN',   emoji:'⛄' },
+        { word:'KANGUR',   emoji:'🦘' },
+        { word:'WRÓBEL',   emoji:'🐦' },
+        { word:'KACZKA',   emoji:'🦆' },
+        { word:'JABŁKO',   emoji:'🍎' },
+        { word:'STATEK',   emoji:'🚢' },
+        { word:'PAPUGA',   emoji:'🦜' },
+        { word:'CHOMIK',   emoji:'🐹' },
+        { word:'SYRENA',   emoji:'🧜' },
+        { word:'WIADRO',   emoji:'🪣' },
+        { word:'ŚLIMAK',   emoji:'🐌' },
+        { word:'NOŻYCE',   emoji:'✂️'  },
+        { word:'OŁÓWEK',   emoji:'✏️'  },
+    ]},
+    { label: 'Poziom 5 – słowa 7-literowe', words: [
+        { word:'PINGWIN',  emoji:'🐧' },
+        { word:'SŁONICA',  emoji:'🐘' },
+        { word:'PAPUŻKA',  emoji:'🦜' },
+        { word:'CHMURKA',  emoji:'☁️'  },
+        { word:'CIĄGNIK',  emoji:'🚜' },
+        { word:'GWIAZDA',  emoji:'⭐' },
+        { word:'KSIĘŻYC',  emoji:'🌙' },
+        { word:'RAKIETA',  emoji:'🚀' },
+        { word:'TRAMWAJ',  emoji:'🚋' },
+        { word:'RENIFER',  emoji:'🦌' },
+        { word:'SAMOLOT',  emoji:'✈️'  },
+        { word:'PARASOL',  emoji:'☂️'  },
+        { word:'TORNADO',  emoji:'🌪️'  },
+        { word:'TRÓJKĄT',  emoji:'📐' },
+        { word:'BATERIA',  emoji:'🔋' },
+        { word:'LODÓWKA',  emoji:'🧊' },
+        { word:'TULIPAN',  emoji:'🌷' },
+        { word:'LAMPION',  emoji:'🏮' },
+        { word:'HERBATA',  emoji:'☕' },
+        { word:'KOSMITA',  emoji:'👽' },
+    ]},
+    { label: 'Poziom 6 – słowa 8-literowe', words: [
+        { word:'KROKODYL', emoji:'🐊' },
+        { word:'DINOZAUR', emoji:'🦕' },
+        { word:'MOTOCYKL', emoji:'🏍️'  },
+        { word:'WIELBŁĄD', emoji:'🐪' },
+        { word:'LALECZKA', emoji:'🎎' },
+        { word:'KRÓLEWNA', emoji:'👸' },
+        { word:'PSZCZOŁA', emoji:'🐝' },
+        { word:'CUKIEREK', emoji:'🍬' },
+        { word:'BAŁWANEK', emoji:'⛄' },
+        { word:'RYCERZYK', emoji:'⚔️'  },
+        { word:'KAPELUSZ', emoji:'🎩' },
+        { word:'GWIAZDKA', emoji:'⭐' },
+        { word:'NARCIARZ', emoji:'⛷️'  },
+        { word:'KASZTANY', emoji:'🌰' },
+        { word:'PIEROŻEK', emoji:'🥟' },
+        { word:'MIKROFON', emoji:'🎤' },
+        { word:'KUCHENKA', emoji:'🍳' },
+        { word:'MUCHOMOR', emoji:'🍄' },
+        { word:'WIELORYB', emoji:'🐋' },
+        { word:'SZKIELET', emoji:'💀' },
+    ]},
+];
+
+const container = document.body;
+
+LEVELS.forEach(level => {
+    const section = document.createElement('div');
+    section.className = 'level-section';
+
+    const title = document.createElement('div');
+    title.className = 'level-title';
+    title.textContent = level.label;
+    section.appendChild(title);
+
+    const grid = document.createElement('div');
+    grid.className = 'words-grid';
+
+    level.words.forEach(({ word, emoji }) => {
+        const card = document.createElement('div');
+        card.className = 'word-card';
+        card.innerHTML = `<span class="word-icon">${emoji}</span><span class="word-text">${word}</span>`;
+        grid.appendChild(card);
+    });
+
+    section.appendChild(grid);
+    container.appendChild(section);
+});
+</script>
+
+</body>
+</html>

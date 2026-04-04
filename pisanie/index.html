@@ -30,10 +30,19 @@
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
-            margin-bottom: 12px;
             backdrop-filter: blur(4px);
             -webkit-tap-highlight-color: transparent;
         }
+
+        #words-link {
+            align-self: flex-start;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.75rem;
+            text-decoration: none;
+            margin-bottom: 12px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        #words-link:hover { color: white; }
 
         #progress {
             color: white;
@@ -302,6 +311,7 @@
 <body>
 
 <a href="../" id="back-btn">← Menu</a>
+<a href="hasla.html" id="words-link" target="_blank" rel="noopener">hasła</a>
 
 <div id="progress">
     <div id="level-label">Poziom 1 • słowa 3-literowe</div>
