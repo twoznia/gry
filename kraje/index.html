@@ -269,6 +269,15 @@
                 <option value="mapa">📍 Mapa</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="sel-questions">Liczba pytań</label>
+            <select id="sel-questions">
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+        </div>
     </div>
 
     <div class="error-msg" id="setup-error"></div>
@@ -279,15 +288,9 @@
 <section id="screen-game" class="screen">
     <div class="hud" style="width:100%;max-width:560px;">
         <span id="q-counter">Pytanie 1 / 5</span>
-        <span>Punkty: <span class="score-val" id="score-display">0</span> / 15</span>
+        <span>Punkty: <span class="score-val" id="score-display">0</span> / <span id="score-max">15</span></span>
     </div>
-    <div class="progress-bar" id="progress-bar" style="width:100%;max-width:560px;">
-        <div class="progress-dot current"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-    </div>
+    <div class="progress-bar" id="progress-bar" style="width:100%;max-width:560px;"></div>
 
     <div class="card pop" id="top-card">
         <div class="q-attr-label" id="top-attr-label">Flaga</div>
@@ -307,7 +310,7 @@
 <section id="screen-results" class="screen">
     <div class="game-title">🏆 Wyniki</div>
     <div class="result-score" id="result-score">0</div>
-    <div class="result-max">na 15 możliwych punktów</div>
+    <div class="result-max" id="result-max">na 15 możliwych punktów</div>
     <div class="result-comment" id="result-comment"></div>
     <div class="card result-list" id="result-list"></div>
     <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
@@ -340,8 +343,37 @@ const COUNTRIES = {
         { panstwo: "Szwajcaria",      stolica: "Berno",        flaga: "🇨🇭", ludnosc: "8,7 mln",    powierzchnia: "41,3 tys. km²"  },
         { panstwo: "Czechy",          stolica: "Praga",        flaga: "🇨🇿", ludnosc: "10,9 mln",   powierzchnia: "78,9 tys. km²"  },
         { panstwo: "Węgry",           stolica: "Budapeszt",    flaga: "🇭🇺", ludnosc: "9,7 mln",    powierzchnia: "93,0 tys. km²"  },
-        { panstwo: "Rumunia",         stolica: "Bukareszt",    flaga: "🇷🇴", ludnosc: "19,0 mln",   powierzchnia: "238,4 tys. km²" },
-        { panstwo: "Ukraina",         stolica: "Kijów",        flaga: "🇺🇦", ludnosc: "43,5 mln",   powierzchnia: "603,6 tys. km²" },
+        { panstwo: "Rumunia",              stolica: "Bukareszt",      flaga: "🇷🇴", ludnosc: "19,0 mln",    powierzchnia: "238,4 tys. km²"  },
+        { panstwo: "Ukraina",              stolica: "Kijów",          flaga: "🇺🇦", ludnosc: "43,5 mln",    powierzchnia: "603,6 tys. km²"  },
+        { panstwo: "Albania",              stolica: "Tirana",         flaga: "🇦🇱", ludnosc: "2,8 mln",     powierzchnia: "28,7 tys. km²"   },
+        { panstwo: "Andora",               stolica: "Andora la Vella",flaga: "🇦🇩", ludnosc: "0,08 mln",    powierzchnia: "0,47 tys. km²"   },
+        { panstwo: "Armenia",              stolica: "Erywań",         flaga: "🇦🇲", ludnosc: "2,97 mln",    powierzchnia: "29,7 tys. km²"   },
+        { panstwo: "Azerbejdżan",          stolica: "Baku",           flaga: "🇦🇿", ludnosc: "10,3 mln",    powierzchnia: "86,6 tys. km²"   },
+        { panstwo: "Białoruś",             stolica: "Mińsk",          flaga: "🇧🇾", ludnosc: "9,4 mln",     powierzchnia: "207,6 tys. km²"  },
+        { panstwo: "Bośnia i Hercegowina", stolica: "Sarajewo",       flaga: "🇧🇦", ludnosc: "3,3 mln",     powierzchnia: "51,2 tys. km²"   },
+        { panstwo: "Bułgaria",             stolica: "Sofia",          flaga: "🇧🇬", ludnosc: "6,5 mln",     powierzchnia: "110,9 tys. km²"  },
+        { panstwo: "Chorwacja",            stolica: "Zagrzeb",        flaga: "🇭🇷", ludnosc: "3,9 mln",     powierzchnia: "56,6 tys. km²"   },
+        { panstwo: "Cypr",                 stolica: "Nikozja",        flaga: "🇨🇾", ludnosc: "1,25 mln",    powierzchnia: "9,25 tys. km²"   },
+        { panstwo: "Czarnogóra",           stolica: "Podgorica",      flaga: "🇲🇪", ludnosc: "0,62 mln",    powierzchnia: "13,8 tys. km²"   },
+        { panstwo: "Estonia",              stolica: "Tallin",         flaga: "🇪🇪", ludnosc: "1,33 mln",    powierzchnia: "45,2 tys. km²"   },
+        { panstwo: "Gruzja",               stolica: "Tbilisi",        flaga: "🇬🇪", ludnosc: "3,7 mln",     powierzchnia: "69,7 tys. km²"   },
+        { panstwo: "Irlandia",             stolica: "Dublin",         flaga: "🇮🇪", ludnosc: "5,1 mln",     powierzchnia: "70,3 tys. km²"   },
+        { panstwo: "Islandia",             stolica: "Reykjavik",      flaga: "🇮🇸", ludnosc: "0,37 mln",    powierzchnia: "103,0 tys. km²"  },
+        { panstwo: "Kosowo",               stolica: "Prisztina",      flaga: "🇽🇰", ludnosc: "1,8 mln",     powierzchnia: "10,9 tys. km²"   },
+        { panstwo: "Liechtenstein",        stolica: "Vaduz",          flaga: "🇱🇮", ludnosc: "0,038 mln",   powierzchnia: "0,16 tys. km²"   },
+        { panstwo: "Litwa",                stolica: "Wilno",          flaga: "🇱🇹", ludnosc: "2,8 mln",     powierzchnia: "65,3 tys. km²"   },
+        { panstwo: "Luksemburg",           stolica: "Luksemburg",     flaga: "🇱🇺", ludnosc: "0,66 mln",    powierzchnia: "2,59 tys. km²"   },
+        { panstwo: "Łotwa",                stolica: "Ryga",           flaga: "🇱🇻", ludnosc: "1,84 mln",    powierzchnia: "64,6 tys. km²"   },
+        { panstwo: "Macedonia Północna",   stolica: "Skopje",         flaga: "🇲🇰", ludnosc: "2,1 mln",     powierzchnia: "25,7 tys. km²"   },
+        { panstwo: "Malta",                stolica: "Valletta",       flaga: "🇲🇹", ludnosc: "0,53 mln",    powierzchnia: "0,32 tys. km²"   },
+        { panstwo: "Mołdawia",             stolica: "Kiszyniów",      flaga: "🇲🇩", ludnosc: "2,6 mln",     powierzchnia: "33,8 tys. km²"   },
+        { panstwo: "Monako",               stolica: "Monako",         flaga: "🇲🇨", ludnosc: "0,036 mln",   powierzchnia: "0,002 tys. km²"  },
+        { panstwo: "Rosja",                stolica: "Moskwa",         flaga: "🇷🇺", ludnosc: "144,7 mln",   powierzchnia: "17 098 tys. km²" },
+        { panstwo: "San Marino",           stolica: "San Marino",     flaga: "🇸🇲", ludnosc: "0,034 mln",   powierzchnia: "0,061 tys. km²"  },
+        { panstwo: "Serbia",               stolica: "Belgrad",        flaga: "🇷🇸", ludnosc: "6,8 mln",     powierzchnia: "77,5 tys. km²"   },
+        { panstwo: "Słowacja",             stolica: "Bratysława",     flaga: "🇸🇰", ludnosc: "5,5 mln",     powierzchnia: "49,0 tys. km²"   },
+        { panstwo: "Słowenia",             stolica: "Lublana",        flaga: "🇸🇮", ludnosc: "2,1 mln",     powierzchnia: "20,3 tys. km²"   },
+        { panstwo: "Watykan",              stolica: "Watykan",        flaga: "🇻🇦", ludnosc: "0,0008 mln",  powierzchnia: "0,00044 tys. km²"},
     ],
     "Azja": [
         { panstwo: "Chiny",              stolica: "Pekin",        flaga: "🇨🇳", ludnosc: "1 409 mln",  powierzchnia: "9 597 tys. km²" },
@@ -359,6 +391,35 @@ const COUNTRIES = {
         { panstwo: "Bangladesz",         stolica: "Dhaka",        flaga: "🇧🇩", ludnosc: "166,3 mln",  powierzchnia: "147,6 tys. km²" },
         { panstwo: "Malezja",            stolica: "Kuala Lumpur", flaga: "🇲🇾", ludnosc: "32,8 mln",   powierzchnia: "329,8 tys. km²" },
         { panstwo: "Filipiny",           stolica: "Manila",       flaga: "🇵🇭", ludnosc: "115,6 mln",  powierzchnia: "300,0 tys. km²" },
+        { panstwo: "Afganistan",         stolica: "Kabul",        flaga: "🇦🇫", ludnosc: "40,1 mln",   powierzchnia: "652,9 tys. km²" },
+        { panstwo: "Bahrajn",            stolica: "Manama",       flaga: "🇧🇭", ludnosc: "1,5 mln",    powierzchnia: "0,77 tys. km²"  },
+        { panstwo: "Bhutan",             stolica: "Thimphu",      flaga: "🇧🇹", ludnosc: "0,78 mln",   powierzchnia: "38,4 tys. km²"  },
+        { panstwo: "Brunei",             stolica: "Bandar Seri Begawan", flaga: "🇧🇳", ludnosc: "0,44 mln", powierzchnia: "5,8 tys. km²" },
+        { panstwo: "Izrael",             stolica: "Jerozolima",   flaga: "🇮🇱", ludnosc: "9,2 mln",    powierzchnia: "20,8 tys. km²"  },
+        { panstwo: "Jemen",              stolica: "Sana",         flaga: "🇾🇪", ludnosc: "33,7 mln",   powierzchnia: "527,9 tys. km²" },
+        { panstwo: "Jordania",           stolica: "Amman",        flaga: "🇯🇴", ludnosc: "10,2 mln",   powierzchnia: "89,3 tys. km²"  },
+        { panstwo: "Kambodża",           stolica: "Phnom Penh",   flaga: "🇰🇭", ludnosc: "16,7 mln",   powierzchnia: "181,0 tys. km²" },
+        { panstwo: "Katar",              stolica: "Doha",         flaga: "🇶🇦", ludnosc: "2,7 mln",    powierzchnia: "11,6 tys. km²"  },
+        { panstwo: "Kazachstan",         stolica: "Astana",       flaga: "🇰🇿", ludnosc: "19,2 mln",   powierzchnia: "2 725 tys. km²" },
+        { panstwo: "Kirgistan",          stolica: "Biszkek",      flaga: "🇰🇬", ludnosc: "6,6 mln",    powierzchnia: "199,9 tys. km²" },
+        { panstwo: "Korea Północna",     stolica: "Pjongjang",    flaga: "🇰🇵", ludnosc: "25,9 mln",   powierzchnia: "120,5 tys. km²" },
+        { panstwo: "Kuwejt",             stolica: "Kuwejt",       flaga: "🇰🇼", ludnosc: "4,2 mln",    powierzchnia: "17,8 tys. km²"  },
+        { panstwo: "Laos",               stolica: "Wientian",     flaga: "🇱🇦", ludnosc: "7,4 mln",    powierzchnia: "236,8 tys. km²" },
+        { panstwo: "Liban",              stolica: "Bejrut",       flaga: "🇱🇧", ludnosc: "5,5 mln",    powierzchnia: "10,5 tys. km²"  },
+        { panstwo: "Malediwy",           stolica: "Malé",         flaga: "🇲🇻", ludnosc: "0,52 mln",   powierzchnia: "0,30 tys. km²"  },
+        { panstwo: "Mjanma",             stolica: "Naypyidaw",    flaga: "🇲🇲", ludnosc: "54,4 mln",   powierzchnia: "676,6 tys. km²" },
+        { panstwo: "Mongolia",           stolica: "Ułan Bator",   flaga: "🇲🇳", ludnosc: "3,4 mln",    powierzchnia: "1 564 tys. km²" },
+        { panstwo: "Nepal",              stolica: "Katmandu",     flaga: "🇳🇵", ludnosc: "29,7 mln",   powierzchnia: "147,2 tys. km²" },
+        { panstwo: "Oman",               stolica: "Maskat",       flaga: "🇴🇲", ludnosc: "4,5 mln",    powierzchnia: "309,5 tys. km²" },
+        { panstwo: "Palestyna",          stolica: "Ramallah",     flaga: "🇵🇸", ludnosc: "5,3 mln",    powierzchnia: "6,0 tys. km²"   },
+        { panstwo: "Singapur",           stolica: "Singapur",     flaga: "🇸🇬", ludnosc: "5,9 mln",    powierzchnia: "0,73 tys. km²"  },
+        { panstwo: "Sri Lanka",          stolica: "Sri Dżajawardenapura Kotte", flaga: "🇱🇰", ludnosc: "22,2 mln", powierzchnia: "65,6 tys. km²" },
+        { panstwo: "Syria",              stolica: "Damaszek",     flaga: "🇸🇾", ludnosc: "21,3 mln",   powierzchnia: "185,2 tys. km²" },
+        { panstwo: "Tadżykistan",        stolica: "Duszanbe",     flaga: "🇹🇯", ludnosc: "9,9 mln",    powierzchnia: "143,1 tys. km²" },
+        { panstwo: "Timor Wschodni",     stolica: "Dili",         flaga: "🇹🇱", ludnosc: "1,3 mln",    powierzchnia: "14,9 tys. km²"  },
+        { panstwo: "Turkmenistan",       stolica: "Aszchabad",    flaga: "🇹🇲", ludnosc: "6,1 mln",    powierzchnia: "488,1 tys. km²" },
+        { panstwo: "Uzbekistan",         stolica: "Taszkent",     flaga: "🇺🇿", ludnosc: "35,3 mln",   powierzchnia: "448,9 tys. km²" },
+        { panstwo: "Zjednoczone Emiraty Arabskie", stolica: "Abu Zabi", flaga: "🇦🇪", ludnosc: "9,3 mln", powierzchnia: "83,6 tys. km²" },
     ],
     "Ameryka Północna": [
         { panstwo: "Stany Zjednoczone", stolica: "Waszyngton",   flaga: "🇺🇸", ludnosc: "332,0 mln",  powierzchnia: "9 833 tys. km²" },
@@ -385,18 +446,59 @@ const COUNTRIES = {
         { panstwo: "Ekwador",    stolica: "Quito",        flaga: "🇪🇨", ludnosc: "18,0 mln",   powierzchnia: "283,6 tys. km²" },
     ],
     "Afryka": [
-        { panstwo: "Nigeria",    stolica: "Abuja",        flaga: "🇳🇬", ludnosc: "220,0 mln",  powierzchnia: "923,8 tys. km²" },
-        { panstwo: "Etiopia",    stolica: "Addis Abeba",  flaga: "🇪🇹", ludnosc: "125,0 mln",  powierzchnia: "1 104 tys. km²" },
-        { panstwo: "Egipt",      stolica: "Kair",         flaga: "🇪🇬", ludnosc: "104,3 mln",  powierzchnia: "1 002 tys. km²" },
-        { panstwo: "Kongo",      stolica: "Kinszasa",     flaga: "🇨🇩", ludnosc: "100,0 mln",  powierzchnia: "2 345 tys. km²" },
-        { panstwo: "Tanzania",   stolica: "Dodoma",       flaga: "🇹🇿", ludnosc: "63,3 mln",   powierzchnia: "945,1 tys. km²" },
-        { panstwo: "Kenia",      stolica: "Nairobi",      flaga: "🇰🇪", ludnosc: "54,0 mln",   powierzchnia: "580,4 tys. km²" },
-        { panstwo: "Algieria",   stolica: "Algier",       flaga: "🇩🇿", ludnosc: "45,6 mln",   powierzchnia: "2 382 tys. km²" },
-        { panstwo: "Maroko",     stolica: "Rabat",        flaga: "🇲🇦", ludnosc: "37,5 mln",   powierzchnia: "446,6 tys. km²" },
-        { panstwo: "Mozambik",   stolica: "Maputo",       flaga: "🇲🇿", ludnosc: "32,8 mln",   powierzchnia: "801,6 tys. km²" },
-        { panstwo: "Ghana",      stolica: "Akra",         flaga: "🇬🇭", ludnosc: "32,4 mln",   powierzchnia: "238,5 tys. km²" },
-        { panstwo: "RPA",        stolica: "Pretoria",     flaga: "🇿🇦", ludnosc: "60,0 mln",   powierzchnia: "1 221 tys. km²" },
-        { panstwo: "Sudan",      stolica: "Chartum",      flaga: "🇸🇩", ludnosc: "46,9 mln",   powierzchnia: "1 887 tys. km²" },
+        { panstwo: "Nigeria",                              stolica: "Abuja",          flaga: "🇳🇬", ludnosc: "220,0 mln",   powierzchnia: "923,8 tys. km²"  },
+        { panstwo: "Etiopia",                              stolica: "Addis Abeba",    flaga: "🇪🇹", ludnosc: "125,0 mln",   powierzchnia: "1 104 tys. km²"  },
+        { panstwo: "Egipt",                                stolica: "Kair",           flaga: "🇪🇬", ludnosc: "104,3 mln",   powierzchnia: "1 002 tys. km²"  },
+        { panstwo: "Kongo",                                stolica: "Kinszasa",       flaga: "🇨🇩", ludnosc: "100,0 mln",   powierzchnia: "2 345 tys. km²"  },
+        { panstwo: "Tanzania",                             stolica: "Dodoma",         flaga: "🇹🇿", ludnosc: "63,3 mln",    powierzchnia: "945,1 tys. km²"  },
+        { panstwo: "Kenia",                                stolica: "Nairobi",        flaga: "🇰🇪", ludnosc: "54,0 mln",    powierzchnia: "580,4 tys. km²"  },
+        { panstwo: "Algieria",                             stolica: "Algier",         flaga: "🇩🇿", ludnosc: "45,6 mln",    powierzchnia: "2 382 tys. km²"  },
+        { panstwo: "Maroko",                               stolica: "Rabat",          flaga: "🇲🇦", ludnosc: "37,5 mln",    powierzchnia: "446,6 tys. km²"  },
+        { panstwo: "Mozambik",                             stolica: "Maputo",         flaga: "🇲🇿", ludnosc: "32,8 mln",    powierzchnia: "801,6 tys. km²"  },
+        { panstwo: "Ghana",                                stolica: "Akra",           flaga: "🇬🇭", ludnosc: "32,4 mln",    powierzchnia: "238,5 tys. km²"  },
+        { panstwo: "RPA",                                  stolica: "Pretoria",       flaga: "🇿🇦", ludnosc: "60,0 mln",    powierzchnia: "1 221 tys. km²"  },
+        { panstwo: "Sudan",                                stolica: "Chartum",        flaga: "🇸🇩", ludnosc: "46,9 mln",    powierzchnia: "1 887 tys. km²"  },
+        { panstwo: "Angola",                               stolica: "Luanda",         flaga: "🇦🇴", ludnosc: "34,5 mln",    powierzchnia: "1 247 tys. km²"  },
+        { panstwo: "Benin",                                stolica: "Porto-Novo",     flaga: "🇧🇯", ludnosc: "13,0 mln",    powierzchnia: "112,6 tys. km²"  },
+        { panstwo: "Botswana",                             stolica: "Gaborone",       flaga: "🇧🇼", ludnosc: "2,6 mln",     powierzchnia: "581,7 tys. km²"  },
+        { panstwo: "Burkina Faso",                         stolica: "Wagadugu",       flaga: "🇧🇫", ludnosc: "22,1 mln",    powierzchnia: "274,2 tys. km²"  },
+        { panstwo: "Burundi",                              stolica: "Gitega",         flaga: "🇧🇮", ludnosc: "12,6 mln",    powierzchnia: "27,8 tys. km²"   },
+        { panstwo: "Cabo Verde",                           stolica: "Praia",          flaga: "🇨🇻", ludnosc: "0,55 mln",    powierzchnia: "4,0 tys. km²"    },
+        { panstwo: "Czad",                                 stolica: "Ndżamena",       flaga: "🇹🇩", ludnosc: "17,4 mln",    powierzchnia: "1 284 tys. km²"  },
+        { panstwo: "Dżibuti",                              stolica: "Dżibuti",        flaga: "🇩🇯", ludnosc: "1,0 mln",     powierzchnia: "23,2 tys. km²"   },
+        { panstwo: "Erytrea",                              stolica: "Asmara",         flaga: "🇪🇷", ludnosc: "3,5 mln",     powierzchnia: "117,6 tys. km²"  },
+        { panstwo: "Eswatini",                             stolica: "Mbabane",        flaga: "🇸🇿", ludnosc: "1,2 mln",     powierzchnia: "17,4 tys. km²"   },
+        { panstwo: "Gabon",                                stolica: "Libreville",     flaga: "🇬🇦", ludnosc: "2,3 mln",     powierzchnia: "267,7 tys. km²"  },
+        { panstwo: "Gambia",                               stolica: "Bandżul",        flaga: "🇬🇲", ludnosc: "2,5 mln",     powierzchnia: "11,3 tys. km²"   },
+        { panstwo: "Gwinea",                               stolica: "Konakry",        flaga: "🇬🇳", ludnosc: "13,5 mln",    powierzchnia: "245,9 tys. km²"  },
+        { panstwo: "Gwinea Bissau",                        stolica: "Bissau",         flaga: "🇬🇼", ludnosc: "2,1 mln",     powierzchnia: "36,1 tys. km²"   },
+        { panstwo: "Gwinea Równikowa",                     stolica: "Malabo",         flaga: "🇬🇶", ludnosc: "1,5 mln",     powierzchnia: "28,1 tys. km²"   },
+        { panstwo: "Kamerun",                              stolica: "Jaunde",         flaga: "🇨🇲", ludnosc: "27,2 mln",    powierzchnia: "475,4 tys. km²"  },
+        { panstwo: "Komory",                               stolica: "Moroni",         flaga: "🇰🇲", ludnosc: "0,82 mln",    powierzchnia: "1,9 tys. km²"    },
+        { panstwo: "Lesotho",                              stolica: "Maseru",         flaga: "🇱🇸", ludnosc: "2,2 mln",     powierzchnia: "30,4 tys. km²"   },
+        { panstwo: "Liberia",                              stolica: "Monrovia",       flaga: "🇱🇷", ludnosc: "5,3 mln",     powierzchnia: "111,4 tys. km²"  },
+        { panstwo: "Libia",                                stolica: "Trypolis",       flaga: "🇱🇾", ludnosc: "6,8 mln",     powierzchnia: "1 760 tys. km²"  },
+        { panstwo: "Madagaskar",                           stolica: "Antananarywa",   flaga: "🇲🇬", ludnosc: "27,7 mln",    powierzchnia: "587,0 tys. km²"  },
+        { panstwo: "Malawi",                               stolica: "Lilongwe",       flaga: "🇲🇼", ludnosc: "19,9 mln",    powierzchnia: "118,5 tys. km²"  },
+        { panstwo: "Mali",                                 stolica: "Bamako",         flaga: "🇲🇱", ludnosc: "22,4 mln",    powierzchnia: "1 241 tys. km²"  },
+        { panstwo: "Mauretania",                           stolica: "Nawakszut",      flaga: "🇲🇷", ludnosc: "4,5 mln",     powierzchnia: "1 031 tys. km²"  },
+        { panstwo: "Mauritius",                            stolica: "Port Louis",     flaga: "🇲🇺", ludnosc: "1,3 mln",     powierzchnia: "2,0 tys. km²"    },
+        { panstwo: "Namibia",                              stolica: "Windhoek",       flaga: "🇳🇦", ludnosc: "2,6 mln",     powierzchnia: "824,3 tys. km²"  },
+        { panstwo: "Niger",                                stolica: "Niamej",         flaga: "🇳🇪", ludnosc: "25,1 mln",    powierzchnia: "1 267 tys. km²"  },
+        { panstwo: "Republika Środkowoafrykańska",         stolica: "Bangi",          flaga: "🇨🇫", ludnosc: "5,3 mln",     powierzchnia: "623,0 tys. km²"  },
+        { panstwo: "Rwanda",                               stolica: "Kigali",         flaga: "🇷🇼", ludnosc: "13,8 mln",    powierzchnia: "26,3 tys. km²"   },
+        { panstwo: "Senegal",                              stolica: "Dakar",          flaga: "🇸🇳", ludnosc: "17,2 mln",    powierzchnia: "196,7 tys. km²"  },
+        { panstwo: "Seszele",                              stolica: "Wiktorja",       flaga: "🇸🇨", ludnosc: "0,098 mln",   powierzchnia: "0,46 tys. km²"   },
+        { panstwo: "Sierra Leone",                         stolica: "Freetown",       flaga: "🇸🇱", ludnosc: "8,2 mln",     powierzchnia: "71,7 tys. km²"   },
+        { panstwo: "Somalia",                              stolica: "Mogadiszu",      flaga: "🇸🇴", ludnosc: "17,1 mln",    powierzchnia: "637,7 tys. km²"  },
+        { panstwo: "Sudan Południowy",                     stolica: "Dżuba",          flaga: "🇸🇸", ludnosc: "11,4 mln",    powierzchnia: "619,7 tys. km²"  },
+        { panstwo: "Togo",                                 stolica: "Lomé",           flaga: "🇹🇬", ludnosc: "8,5 mln",     powierzchnia: "56,8 tys. km²"   },
+        { panstwo: "Tunezja",                              stolica: "Tunis",          flaga: "🇹🇳", ludnosc: "11,8 mln",    powierzchnia: "163,6 tys. km²"  },
+        { panstwo: "Uganda",                               stolica: "Kampala",        flaga: "🇺🇬", ludnosc: "47,1 mln",    powierzchnia: "241,6 tys. km²"  },
+        { panstwo: "Wybrzeże Kości Słoniowej",             stolica: "Jamusukro",      flaga: "🇨🇮", ludnosc: "27,5 mln",    powierzchnia: "322,5 tys. km²"  },
+        { panstwo: "Wyspy Świętego Tomasza i Książęca",    stolica: "São Tomé",       flaga: "🇸🇹", ludnosc: "0,22 mln",    powierzchnia: "0,96 tys. km²"   },
+        { panstwo: "Zambia",                               stolica: "Lusaka",         flaga: "🇿🇲", ludnosc: "19,5 mln",    powierzchnia: "752,6 tys. km²"  },
+        { panstwo: "Zimbabwe",                             stolica: "Harare",         flaga: "🇿🇼", ludnosc: "15,9 mln",    powierzchnia: "390,8 tys. km²"  },
     ],
     "Australia i Oceania": [
         { panstwo: "Australia",          stolica: "Canberra",     flaga: "🇦🇺", ludnosc: "26,5 mln",   powierzchnia: "7 692 tys. km²" },
@@ -421,6 +523,14 @@ const COUNTRY_CONTINENT = {
     "Finlandia": "Europa", "Portugalia": "Europa", "Grecja": "Europa",
     "Austria": "Europa", "Szwajcaria": "Europa", "Czechy": "Europa",
     "Węgry": "Europa", "Rumunia": "Europa", "Ukraina": "Europa",
+    "Albania": "Europa", "Andora": "Europa", "Armenia": "Europa", "Azerbejdżan": "Europa",
+    "Białoruś": "Europa", "Bośnia i Hercegowina": "Europa", "Bułgaria": "Europa",
+    "Chorwacja": "Europa", "Cypr": "Europa", "Czarnogóra": "Europa", "Estonia": "Europa",
+    "Gruzja": "Europa", "Irlandia": "Europa", "Islandia": "Europa", "Kosowo": "Europa",
+    "Liechtenstein": "Europa", "Litwa": "Europa", "Luksemburg": "Europa", "Łotwa": "Europa",
+    "Macedonia Północna": "Europa", "Malta": "Europa", "Mołdawia": "Europa", "Monako": "Europa",
+    "Rosja": "Europa", "San Marino": "Europa", "Serbia": "Europa", "Słowacja": "Europa",
+    "Słowenia": "Europa", "Watykan": "Europa",
     "Chiny": "Azja", "Indie": "Azja", "Japonia": "Azja", "Korea Południowa": "Azja",
     "Indonezja": "Azja", "Wietnam": "Azja", "Tajlandia": "Azja",
     "Arabia Saudyjska": "Azja", "Iran": "Azja", "Irak": "Azja", "Turcja": "Azja",
@@ -438,6 +548,26 @@ const COUNTRY_CONTINENT = {
     "Nigeria": "Afryka", "Etiopia": "Afryka", "Egipt": "Afryka", "Kongo": "Afryka",
     "Tanzania": "Afryka", "Kenia": "Afryka", "Algieria": "Afryka", "Maroko": "Afryka",
     "Mozambik": "Afryka", "Ghana": "Afryka", "RPA": "Afryka", "Sudan": "Afryka",
+    "Angola": "Afryka", "Benin": "Afryka", "Botswana": "Afryka", "Burkina Faso": "Afryka",
+    "Burundi": "Afryka", "Cabo Verde": "Afryka", "Czad": "Afryka", "Dżibuti": "Afryka",
+    "Erytrea": "Afryka", "Eswatini": "Afryka", "Gabon": "Afryka", "Gambia": "Afryka",
+    "Gwinea": "Afryka", "Gwinea Bissau": "Afryka", "Gwinea Równikowa": "Afryka",
+    "Kamerun": "Afryka", "Komory": "Afryka", "Lesotho": "Afryka", "Liberia": "Afryka",
+    "Libia": "Afryka", "Madagaskar": "Afryka", "Malawi": "Afryka", "Mali": "Afryka",
+    "Mauretania": "Afryka", "Mauritius": "Afryka", "Namibia": "Afryka", "Niger": "Afryka",
+    "Republika Środkowoafrykańska": "Afryka", "Rwanda": "Afryka", "Senegal": "Afryka",
+    "Seszele": "Afryka", "Sierra Leone": "Afryka", "Somalia": "Afryka",
+    "Sudan Południowy": "Afryka", "Togo": "Afryka", "Tunezja": "Afryka",
+    "Uganda": "Afryka", "Wybrzeże Kości Słoniowej": "Afryka",
+    "Wyspy Świętego Tomasza i Książęca": "Afryka", "Zambia": "Afryka", "Zimbabwe": "Afryka",
+    "Afganistan": "Azja", "Bahrajn": "Azja", "Bhutan": "Azja", "Brunei": "Azja",
+    "Izrael": "Azja", "Jemen": "Azja", "Jordania": "Azja", "Kambodża": "Azja",
+    "Katar": "Azja", "Kazachstan": "Azja", "Kirgistan": "Azja", "Korea Północna": "Azja",
+    "Kuwejt": "Azja", "Laos": "Azja", "Liban": "Azja", "Malediwy": "Azja",
+    "Mjanma": "Azja", "Mongolia": "Azja", "Nepal": "Azja", "Oman": "Azja",
+    "Palestyna": "Azja", "Singapur": "Azja", "Sri Lanka": "Azja", "Syria": "Azja",
+    "Tadżykistan": "Azja", "Timor Wschodni": "Azja", "Turkmenistan": "Azja",
+    "Uzbekistan": "Azja", "Zjednoczone Emiraty Arabskie": "Azja",
     "Australia": "Australia i Oceania", "Nowa Zelandia": "Australia i Oceania",
     "Papua Nowa Gwinea": "Australia i Oceania", "Fidżi": "Australia i Oceania",
     "Samoa": "Australia i Oceania", "Tonga": "Australia i Oceania",
@@ -453,6 +583,16 @@ const CENTROIDS_SVG = {
     "Portugalia": [75.1, 178.8], "Grecja": [192.6, 180.9], "Austria": [164.2, 138.0],
     "Szwajcaria": [139.0, 140.6], "Czechy": [167.8, 126.3], "Węgry": [183.5, 139.6],
     "Rumunia": [204.8, 146.2], "Ukraina": [230.9, 130.4],
+    "Albania": [193.0, 173.0], "Andora": [107.0, 155.0], "Armenia": [270.0, 160.0],
+    "Azerbejdżan": [278.0, 155.0], "Białoruś": [213.0, 108.0], "Bośnia i Hercegowina": [174.0, 157.0],
+    "Bułgaria": [205.0, 161.0], "Chorwacja": [170.0, 150.0], "Cypr": [235.0, 192.0],
+    "Czarnogóra": [182.0, 165.0], "Estonia": [214.0, 72.0], "Gruzja": [262.0, 153.0],
+    "Irlandia": [76.0, 100.0], "Islandia": [35.0, 38.0], "Kosowo": [194.0, 166.0],
+    "Liechtenstein": [148.0, 138.0], "Litwa": [206.0, 88.0], "Luksemburg": [131.0, 124.0],
+    "Łotwa": [210.0, 79.0], "Macedonia Północna": [198.0, 169.0], "Malta": [158.0, 195.0],
+    "Mołdawia": [218.0, 143.0], "Monako": [130.0, 153.0], "Rosja": [260.0, 90.0],
+    "San Marino": [161.0, 156.0], "Serbia": [188.0, 156.0], "Słowacja": [179.0, 128.0],
+    "Słowenia": [164.0, 145.0], "Watykan": [156.0, 163.0],
     "Chiny": [185.9, 103.4], "Indie": [130.3, 138.1], "Japonia": [261.6, 102.7],
     "Korea Południowa": [238.5, 102.1], "Indonezja": [216.6, 190.5],
     "Wietnam": [190.6, 147.2], "Tajlandia": [178.8, 148.8],
@@ -471,6 +611,32 @@ const CENTROIDS_SVG = {
     "Kongo": [171.2, 122.2], "Tanzania": [223.6, 128.8], "Kenia": [235.6, 111.4],
     "Algieria": [90.8, 35.2], "Maroko": [55.6, 24.9], "Mozambik": [226.0, 162.2],
     "Ghana": [80.0, 89.9], "RPA": [184.4, 190.2], "Sudan": [214.0, 68.9],
+    "Angola": [155.0, 150.0], "Benin": [108.0, 90.0], "Botswana": [185.0, 173.0],
+    "Burkina Faso": [93.0, 72.0], "Burundi": [210.0, 130.0], "Cabo Verde": [25.0, 72.0],
+    "Czad": [168.0, 55.0], "Dżibuti": [260.0, 80.0], "Erytrea": [248.0, 65.0],
+    "Eswatini": [215.0, 180.0], "Gabon": [143.0, 115.0], "Gambia": [47.0, 78.0],
+    "Gwinea": [62.0, 90.0], "Gwinea Bissau": [52.0, 83.0], "Gwinea Równikowa": [135.0, 110.0],
+    "Kamerun": [148.0, 92.0], "Komory": [240.0, 150.0], "Lesotho": [192.0, 185.0],
+    "Liberia": [65.0, 102.0], "Libia": [150.0, 32.0], "Madagaskar": [255.0, 160.0],
+    "Malawi": [215.0, 152.0], "Mali": [90.0, 55.0], "Mauretania": [65.0, 40.0],
+    "Mauritius": [280.0, 165.0], "Namibia": [157.0, 170.0], "Niger": [130.0, 55.0],
+    "Republika Środkowoafrykańska": [180.0, 95.0], "Rwanda": [205.0, 120.0],
+    "Senegal": [52.0, 73.0], "Seszele": [278.0, 110.0], "Sierra Leone": [60.0, 98.0],
+    "Somalia": [265.0, 100.0], "Sudan Południowy": [215.0, 88.0], "Togo": [100.0, 88.0],
+    "Tunezja": [140.0, 22.0], "Uganda": [217.0, 108.0],
+    "Wybrzeże Kości Słoniowej": [78.0, 98.0], "Wyspy Świętego Tomasza i Książęca": [128.0, 110.0],
+    "Zambia": [185.0, 155.0], "Zimbabwe": [195.0, 168.0],
+    "Afganistan": [95.0, 108.0], "Bahrajn": [57.0, 120.0], "Bhutan": [154.0, 126.0],
+    "Brunei": [215.0, 168.0], "Izrael": [30.0, 108.0], "Jemen": [60.0, 137.0],
+    "Jordania": [33.0, 113.0], "Kambodża": [190.0, 158.0], "Katar": [57.0, 123.0],
+    "Kazachstan": [110.0, 82.0], "Kirgistan": [117.0, 96.0], "Korea Północna": [234.0, 95.0],
+    "Kuwejt": [55.0, 114.0], "Laos": [185.0, 148.0], "Liban": [28.0, 106.0],
+    "Malediwy": [120.0, 165.0], "Mjanma": [167.0, 140.0], "Mongolia": [185.0, 86.0],
+    "Nepal": [142.0, 125.0], "Oman": [72.0, 132.0], "Palestyna": [29.0, 110.0],
+    "Singapur": [198.0, 177.0], "Sri Lanka": [130.0, 158.0], "Syria": [34.0, 103.0],
+    "Tadżykistan": [102.0, 101.0], "Timor Wschodni": [234.0, 185.0],
+    "Turkmenistan": [85.0, 99.0], "Uzbekistan": [97.0, 93.0],
+    "Zjednoczone Emiraty Arabskie": [68.0, 127.0],
     "Australia": [101.9, 145.8], "Nowa Zelandia": [243.9, 193.1],
     "Papua Nowa Gwinea": [138.7, 90.5], "Fidżi": [263.2, 123.7],
     "Samoa": [292.0, 112.3], "Tonga": [287.6, 131.9],
@@ -604,6 +770,7 @@ document.getElementById('btn-start').addEventListener('click', () => {
     const continent  = document.getElementById('sel-continent').value;
     const topAttr    = document.getElementById('sel-top').value;
     const bottomAttr = document.getElementById('sel-bottom').value;
+    const numQ       = parseInt(document.getElementById('sel-questions').value, 10);
     const errEl      = document.getElementById('setup-error');
 
     if (topAttr === bottomAttr) {
@@ -619,12 +786,13 @@ document.getElementById('btn-start').addEventListener('click', () => {
     }
 
     const shuffled = shuffle([...pool]);
-    const questions = shuffled.slice(0, 5);
+    const questions = shuffled.slice(0, Math.min(numQ, pool.length));
 
     state = {
         continent,
         topAttr,
         bottomAttr,
+        numQ: questions.length,
         questions,
         pool,
         currentQ: 0,
@@ -634,21 +802,32 @@ document.getElementById('btn-start').addEventListener('click', () => {
         results: [],        // { country, correct, pointsEarned }
     };
 
+    document.getElementById('score-max').textContent = state.numQ * 3;
+
     showScreen('game');
     renderQuestion();
 });
 
 // ─── Render Question ──────────────────────────────────────────────────────────
 function renderQuestion() {
-    const { currentQ, questions, topAttr, bottomAttr, pool, score } = state;
+    const { currentQ, questions, topAttr, bottomAttr, pool, score, numQ } = state;
     const country = questions[currentQ];
 
     // HUD
-    document.getElementById('q-counter').textContent = `Pytanie ${currentQ + 1} / 5`;
+    document.getElementById('q-counter').textContent = `Pytanie ${currentQ + 1} / ${numQ}`;
     document.getElementById('score-display').textContent = score;
 
     // Progress dots
-    const dots = document.querySelectorAll('#progress-bar .progress-dot');
+    const progressBar = document.getElementById('progress-bar');
+    if (progressBar.children.length !== numQ) {
+        progressBar.innerHTML = '';
+        for (let i = 0; i < numQ; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'progress-dot';
+            progressBar.appendChild(dot);
+        }
+    }
+    const dots = progressBar.querySelectorAll('.progress-dot');
     dots.forEach((d, i) => {
         d.classList.remove('done', 'current');
         if (i < currentQ)       d.classList.add('done');
@@ -705,7 +884,7 @@ function renderQuestion() {
     document.getElementById('feedback').className = 'feedback';
     const btnNext = document.getElementById('btn-next');
     btnNext.style.display = 'none';
-    btnNext.textContent = currentQ === 4 ? 'Zobacz Wyniki →' : 'Następne Pytanie →';
+    btnNext.textContent = currentQ === numQ - 1 ? 'Zobacz Wyniki →' : 'Następne Pytanie →';
 
     // Pop animation
     const topCard = document.getElementById('top-card');
@@ -777,7 +956,7 @@ function handleAnswer(chosen, correct) {
 // ─── Next Question ────────────────────────────────────────────────────────────
 document.getElementById('btn-next').addEventListener('click', () => {
     state.currentQ++;
-    if (state.currentQ >= 5) {
+    if (state.currentQ >= state.numQ) {
         showResults();
     } else {
         renderQuestion();
@@ -786,17 +965,19 @@ document.getElementById('btn-next').addEventListener('click', () => {
 
 // ─── Results ─────────────────────────────────────────────────────────────────
 function showResults() {
-    const { score, results, topAttr, bottomAttr } = state;
+    const { score, results, topAttr, bottomAttr, numQ } = state;
     showScreen('results');
 
     document.getElementById('result-score').textContent = score;
+    const maxPts = numQ * 3;
+    document.getElementById('result-max').textContent = `na ${maxPts} możliwych punktów`;
 
     let comment = '';
-    if (score >= 13)     comment = '🏆 Doskonale! Jesteś mistrzem geografii!';
-    else if (score >= 10) comment = '🌟 Świetnie! Znasz się na mapach!';
-    else if (score >= 7)  comment = '📚 Nieźle! Jest jeszcze pole do nauki.';
-    else if (score >= 4)  comment = '💪 Spróbuj jeszcze raz!';
-    else                   comment = '🌍 Warto więcej ćwiczyć!';
+    if (score >= maxPts * 0.87)      comment = '🏆 Doskonale! Jesteś mistrzem geografii!';
+    else if (score >= maxPts * 0.67) comment = '🌟 Świetnie! Znasz się na mapach!';
+    else if (score >= maxPts * 0.47) comment = '📚 Nieźle! Jest jeszcze pole do nauki.';
+    else if (score >= maxPts * 0.27) comment = '💪 Spróbuj jeszcze raz!';
+    else                              comment = '🌍 Warto więcej ćwiczyć!';
     document.getElementById('result-comment').textContent = comment;
 
     const list = document.getElementById('result-list');
