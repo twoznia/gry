@@ -240,10 +240,12 @@
     }
 
     // Nowa funkcja obsługi ruchu, która zapobiega podwójnemu wywołaniu
+    let lastSwipeTime = 0;
     function handleMove(dir) {
         if (!gameActive) return;
         if (dir === 'L' && playerLane > 0) playerLane--;
         if (dir === 'P' && playerLane < 3) playerLane++;
+        lastSwipeTime = Date.now();
         updatePlayerPos();
     }
 
@@ -257,16 +259,22 @@
     });
 
     let touchStartX = null;
+    let swipeFired = false;
     screen.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].clientX;
+        swipeFired = false;
     }, { passive: true });
-    screen.addEventListener('touchend', (e) => {
-        if (touchStartX === null) return;
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 20) {
+    screen.addEventListener('touchmove', (e) => {
+        if (touchStartX === null || swipeFired) return;
+        const dx = e.touches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 15) {
             handleMove(dx < 0 ? 'L' : 'P');
+            swipeFired = true;
         }
+    }, { passive: true });
+    screen.addEventListener('touchend', () => {
         touchStartX = null;
+        swipeFired = false;
     }, { passive: true });
 
     function spawn(laneIdx) {
@@ -318,7 +326,7 @@
             o.el.style.top = o.y + 'px';
 
             // Hitbox z zapasem
-            if(o.y > screenH - 92 && o.y < screenH - 48 && o.lane === playerLane) {
+            if(o.y > screenH - 92 && o.y < screenH - 48 && o.lane === playerLane && Date.now() - lastSwipeTime > 250) {
                 handleHit(o, i);
                 continue;
             }
