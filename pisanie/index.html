@@ -333,31 +333,73 @@ const LEVELS = [
         { word:'KOT',      emoji:'🐱', hint:'kot'      },
         { word:'LEW',      emoji:'🦁', hint:'lew'      },
         { word:'KOŃ',      emoji:'🐴', hint:'koń'      },
+        { word:'MIŚ',      emoji:'🐻', hint:'miś'      },
+        { word:'PES',      emoji:'🐕', hint:'pes'      },
+        { word:'SER',      emoji:'🧀', hint:'ser'      },
+        { word:'BUS',      emoji:'🚌', hint:'bus'      },
+        { word:'DOM',      emoji:'🏠', hint:'dom'      },
+        { word:'LÓD',      emoji:'🧊', hint:'lód'      },
+        { word:'GRA',      emoji:'🎮', hint:'gra'      },
     ],
     [ // 4 letters
         { word:'RYBA',     emoji:'🐟', hint:'ryba'     },
         { word:'ŻABA',     emoji:'🐸', hint:'żaba'     },
         { word:'KURA',     emoji:'🐔', hint:'kura'     },
+        { word:'PIES',     emoji:'🐕', hint:'pies'     },
+        { word:'KOZA',     emoji:'🐐', hint:'koza'     },
+        { word:'OWCA',     emoji:'🐑', hint:'owca'     },
+        { word:'KRAB',     emoji:'🦀', hint:'krab'     },
+        { word:'MYSZ',     emoji:'🐭', hint:'mysz'     },
+        { word:'TORT',     emoji:'🎂', hint:'tort'     },
+        { word:'LODY',     emoji:'🍦', hint:'lody'     },
     ],
     [ // 5 letters
         { word:'KOTEK',    emoji:'🐱', hint:'kotek'    },
         { word:'MAŁPA',    emoji:'🐒', hint:'małpa'    },
         { word:'ZEBRA',    emoji:'🦓', hint:'zebra'    },
+        { word:'PANDA',    emoji:'🐼', hint:'panda'    },
+        { word:'LISEK',    emoji:'🦊', hint:'lisek'    },
+        { word:'KROWA',    emoji:'🐄', hint:'krowa'    },
+        { word:'KUCYK',    emoji:'🐴', hint:'kucyk'    },
+        { word:'PIŁKA',    emoji:'⚽', hint:'piłka'    },
+        { word:'PIZZA',    emoji:'🍕', hint:'pizza'    },
+        { word:'ZAMEK',    emoji:'🏰', hint:'zamek'    },
     ],
     [ // 6 letters
         { word:'TYGRYS',   emoji:'🐯', hint:'tygrys'   },
         { word:'ŻYRAFA',   emoji:'🦒', hint:'żyrafa'   },
         { word:'MRÓWKA',   emoji:'🐜', hint:'mrówka'   },
+        { word:'KRÓLIK',   emoji:'🐰', hint:'królik'   },
+        { word:'POCIĄG',   emoji:'🚂', hint:'pociąg'   },
+        { word:'SŁONIK',   emoji:'🐘', hint:'słonik'   },
+        { word:'ŚWINKA',   emoji:'🐷', hint:'świnka'   },
+        { word:'BAŁWAN',   emoji:'⛄', hint:'bałwan'   },
+        { word:'KANGUR',   emoji:'🦘', hint:'kangur'   },
+        { word:'WRÓBEL',   emoji:'🐦', hint:'wróbel'   },
     ],
     [ // 7 letters
         { word:'PINGWIN',  emoji:'🐧', hint:'pingwin'  },
         { word:'SŁONICA',  emoji:'🐘', hint:'słonica'  },
         { word:'PAPUŻKA',  emoji:'🦜', hint:'papużka'  },
+        { word:'CHMURKA',  emoji:'☁️',  hint:'chmurka'  },
+        { word:'CIĄGNIK',  emoji:'🚜', hint:'ciągnik'  },
+        { word:'GWIAZDA',  emoji:'⭐', hint:'gwiazda'  },
+        { word:'KSIĘŻYC',  emoji:'🌙', hint:'księżyc'  },
+        { word:'RAKIETA',  emoji:'🚀', hint:'rakieta'  },
+        { word:'TRAMWAJ',  emoji:'🚋', hint:'tramwaj'  },
+        { word:'RENIFER',  emoji:'🦌', hint:'renifer'  },
     ],
     [ // 8 letters
         { word:'KROKODYL', emoji:'🐊', hint:'krokodyl' },
         { word:'DINOZAUR', emoji:'🦕', hint:'dinozaur' },
         { word:'MOTOCYKL', emoji:'🏍️',  hint:'motocykl' },
+        { word:'WIELBŁĄD', emoji:'🐪', hint:'wielbłąd' },
+        { word:'LALECZKA', emoji:'🪆', hint:'laleczka' },
+        { word:'KRÓLEWNA', emoji:'👸', hint:'królewna' },
+        { word:'PSZCZOŁA', emoji:'🐝', hint:'pszczoła' },
+        { word:'CUKIEREK', emoji:'🍬', hint:'cukierek' },
+        { word:'BAŁWANEK', emoji:'⛄', hint:'bałwanek' },
+        { word:'RYCERZYK', emoji:'⚔️',  hint:'rycerzyk' },
     ],
 ];
 
@@ -366,6 +408,7 @@ const CONFETTI   = ['🌟','⭐','✨','💫','🎊','🎉','🏅','🌈','🎈'
 
 /* ─────────────── State ─────────────── */
 let level = 0, wordIdx = 0;
+let currentLevelWords = [];  // 3 randomly selected words for current level
 let pool = [];          // [{id, letter, used}]
 let boxes = [];         // [{poolId, letter}] or null per slot
 let lockedBoxes = new Set();   // indices verified correct
@@ -379,6 +422,10 @@ function shuffle(a) {
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
+}
+
+function selectLevelWords(levelIdx) {
+    currentLevelWords = shuffle(LEVELS[levelIdx]).slice(0, 3);
 }
 
 function makePool(word) {
@@ -476,7 +523,7 @@ function removeBoxLetter(idx) {
 }
 
 function checkAnswer() {
-    const word = LEVELS[level][wordIdx].word;
+    const word = currentLevelWords[wordIdx].word;
     let allCorrect = true;
 
     boxes.forEach((box, i) => {
@@ -510,7 +557,7 @@ function checkAnswer() {
 /* ─────────────── Progress ─────────────── */
 function advanceWord() {
     wordIdx++;
-    if (wordIdx >= LEVELS[level].length) {
+    if (wordIdx >= currentLevelWords.length) {
         const isLast = level >= LEVELS.length - 1;
         document.getElementById('ov-emoji').textContent = isLast ? '🏆' : '🌟';
         document.getElementById('ov-title').textContent = isLast ? 'Gratulacje!' : 'Poziom zaliczony!';
@@ -530,12 +577,13 @@ function advanceLevel() {
     document.getElementById('overlay').classList.remove('show');
     level   = level >= LEVELS.length - 1 ? 0 : level + 1;
     wordIdx = 0;
+    selectLevelWords(level);
     loadWord();
 }
 
 /* ─────────────── Load word ─────────────── */
 function loadWord() {
-    const { word, emoji, hint } = LEVELS[level][wordIdx];
+    const { word, emoji, hint } = currentLevelWords[wordIdx];
 
     // Progress bar
     document.getElementById('level-label').textContent =
@@ -543,7 +591,7 @@ function loadWord() {
 
     const dotsEl = document.getElementById('level-dots');
     dotsEl.innerHTML = '';
-    LEVELS[level].forEach((_, i) => {
+    currentLevelWords.forEach((_, i) => {
         const d = document.createElement('div');
         d.className = 'dot' +
             (i < wordIdx ? ' done' : '') +
@@ -601,6 +649,7 @@ function spawnConfetti() {
 }
 
 /* ─────────────── Init ─────────────── */
+selectLevelWords(level);
 loadWord();
 </script>
 </body>
