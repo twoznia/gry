@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Matematyczne Jajka v5.1 - Limit Ruchów</title>
+    <style>
+        body { background: #f4f7f6; display: flex; flex-direction: column; align-items: center; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; overflow: hidden; touch-action: none; }
+        canvas { background: white; border: 5px solid #34495e; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); max-width: 100%; height: auto; cursor: crosshair; }
+        h1 { color: #2c3e50; margin: 10px 0; font-size: 1.8rem; }
+    </style>
+</head>
+<body>
+    <h1>Matematyczne Jajka v5.1</h1>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let punkty = 0, poprawne = 0, bledne = 0, ruchy = 20;
+        let koszykX = 400, jajkaY = -50, predkosc = 3;
+        let menuEtap = "wiek"; 
+        let wybranyWiek = 10, wybranyTryb = "losowo";
+        let zadanie = "", poprawnyWynik = 0, opcje = [];
+
+        const przyciskiWiek = [
+            { id: 6, txt: "Poziom: 6 lat", y: 180, color: "#2ecc71" },
+            { id: 10, txt: "Poziom: 10 lat", y: 250, color: "#3498db" },
+            { id: 14, txt: "Poziom: 14 lat", y: 320, color: "#f1c40f" },
+            { id: 99, txt: "Poziom: Dorosły", y: 390, color: "#e74c3c" }
+        ];
+        let przyciskiOperacja = [];
+
+        function r(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+        function generujZadanie() {
+            let tryb = wybranyTryb;
+            if (tryb === "losowo") {
+                let mozliwosci = ["dodawanie", "odejmowanie"];
+                if (wybranyWiek >= 10) mozliwosci.push("mnożenie", "dzielenie");
+                tryb = mozliwosci[Math.floor(Math.random() * mozliwosci.length)];
+            }
+            let a, b, wynik, symbol;
+            const w = wybranyWiek;
+
+            if (tryb === "dodawanie") {
+                symbol = "+";
+                if (w == 6) { a = r(1, 12); b = r(1, 20-a); }
+                else if (w == 10) { a = r(10, 70); b = r(10, 99-a); }
+                else if (w == 14) { a = r(50, 400); b = r(50, 500-a); }
+                else { a = r(100, 800); b = r(100, 1000-a); }
+                wynik = a + b;
+            } else if (tryb === "odejmowanie") {
+                symbol = "-";
+                if (w == 6) { a = r(10, 20); b = r(1, a-2); }
+                else if (w == 10) { a = r(30, 100); b = r(10, a-5); }
+                else if (w == 14) { a = r(100, 500); b = r(50, a-20); }
+                else { a = r(400, 1000); b = r(100, a-50); }
+                wynik = a - b;
+            } else if (tryb === "mnożenie") {
+                symbol = "*";
+                if (w == 10) { a = r(2, 10); b = r(2, 10); }
+                else if (w == 14) { a = r(5, 18); b = r(3, 15); }
+                else { a = r(10, 32); b = r(5, 28); }
+                wynik = a * b;
+            } else if (tryb === "dzielenie") {
+                symbol = ":";
+                if (w == 10) { wynik = r(2, 10); b = r(2, 10); }
+                else if (w == 14) { wynik = r(5, 15); b = r(3, 12); }
+                else { wynik = r(10, 35); b = r(5, 20); }
+                a = wynik * b;
+            }
+
+            zadanie = `${a} ${symbol} ${b} = ?`;
+            poprawnyWynik = wynik;
+            opcje = [wynik];
+            let off = (w == 6) ? 3 : (w == 10 ? 7 : 12);
+            while(opcje.length < 3) {
+                let f = wynik + (r(1, off*2) - off);
+                if (!opcje.includes(f) && f >= 0) opcje.push(f);
+            }
+            opcje.sort(() => Math.random() - 0.5);
+        }
+
+        canvas.addEventListener("mousedown", (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const mX = (e.clientX - rect.left) * (800 / rect.width);
+            const mY = (e.clientY - rect.top) * (600 / rect.height);
+
+            if (menuEtap === "wiek") {
+                przyciskiWiek.forEach(btn => {
+                    if (mX > 200 && mX < 600 && mY > btn.y && mY < btn.y + 50) {
+                        wybranyWiek = btn.id;
+                        ustawPrzyciskiOperacji();
+                        menuEtap = "operacja";
+                    }
+                });
+            } else if (menuEtap === "operacja") {
+                if (mX > 20 && mX < 140 && mY > 20 && mY < 60) menuEtap = "wiek";
+                przyciskiOperacja.forEach(btn => {
+                    if (mX > 250 && mX < 550 && mY > btn.y && mY < btn.y + 45) {
+                        wybranyTryb = btn.id;
+                        resetGry();
+                        menuEtap = "gra";
+                    }
+                });
+            } else if (menuEtap === "gra") {
+                if (mX > 660 && mX < 780 && mY > 20 && mY < 60) menuEtap = "wiek";
+            } else if (menuEtap === "koniec") {
+                menuEtap = "wiek";
+            }
+        });
+
+        function ustawPrzyciskiOperacji() {
+            let y = 180;
+            przyciskiOperacja = [{ id: "dodawanie", txt: "Dodawanie (+)", y: y }, { id: "odejmowanie", txt: "Odejmowanie (-)", y: y += 60 }];
+            if (wybranyWiek >= 10) {
+                przyciskiOperacja.push({ id: "mnożenie", txt: "Mnożenie (*)", y: y += 60 });
+                przyciskiOperacja.push({ id: "dzielenie", txt: "Dzielenie (:)", y: y += 60 });
+            }
+            przyciskiOperacja.push({ id: "losowo", txt: "Losowo", y: y += 60 });
+        }
+
+        function resetGry() { 
+            punkty = 0; poprawne = 0; bledne = 0; ruchy = 20; 
+            predkosc = 3; jajkaY = -50; generujZadanie(); 
+        }
+
+        canvas.addEventListener("mousemove", (e) => {
+            if (menuEtap !== "gra") return;
+            const rect = canvas.getBoundingClientRect();
+            koszykX = ((e.clientX || e.touches[0].clientX) - rect.left) * (800 / rect.width);
+        });
+
+        function update() {
+            if (menuEtap !== "gra") return;
+            jajkaY += predkosc;
+            if (jajkaY > 520 && jajkaY < 580) {
+                for (let i = 0; i < 3; i++) {
+                    if (Math.abs(koszykX - (i + 1) * 200) < 70) {
+                        if (opcje[i] === poprawnyWynik) { punkty++; poprawne++; predkosc += 0.15; }
+                        else { punkty--; bledne++; }
+                        ruchy--; // RUCH WYKONANY
+                        jajkaY = -50; generujZadanie(); break;
+                    }
+                }
+            }
+            if (jajkaY > 600) { bledne++; punkty--; ruchy--; jajkaY = -50; generujZadanie(); }
+            
+            // KONIEC PO 20 RUCHACH LUB WYNIKU
+            if (ruchy <= 0 || punkty >= 20 || punkty <= -5) menuEtap = "koniec";
+        }
+
+        function drawButton(txt, x, y, w, h, color, fontSize = 20) {
+            ctx.fillStyle = color; ctx.beginPath(); ctx.roundRect(x, y, w, h, 10); ctx.fill();
+            ctx.fillStyle = "white"; ctx.font = `bold ${fontSize}px Arial`;
+            ctx.fillText(txt, x + w/2 - ctx.measureText(txt).width/2, y + h/2 + 7);
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, 800, 600);
+            if (menuEtap === "wiek") {
+                ctx.fillStyle = "#2c3e50"; ctx.font = "bold 32px Arial"; ctx.fillText("Wybierz poziom wieku:", 230, 100);
+                przyciskiWiek.forEach(btn => drawButton(btn.txt, 200, btn.y, 400, 50, btn.color));
+            } else if (menuEtap === "operacja") {
+                drawButton("<- Powrót", 20, 20, 120, 40, "#7f8c8d", 18);
+                przyciskiOperacja.forEach(btn => drawButton(btn.txt, 250, btn.y, 300, 45, "#34495e"));
+            } else if (menuEtap === "gra") {
+                drawButton("Menu", 670, 20, 110, 40, "#e67e22", 18);
+                ctx.fillStyle = "#333"; ctx.font = "bold 55px Arial"; ctx.fillText(zadanie, 400 - ctx.measureText(zadanie).width/2, 120);
+                ctx.font = "bold 18px Arial"; ctx.fillStyle = "#2c3e50";
+                ctx.fillText(`Punkty: ${punkty} | Dobrze: ${poprawne} | Źle: ${bledne} | Pozostało: ${ruchy}`, 20, 40);
+                opcje.forEach((val, i) => {
+                    let x = (i + 1) * 200;
+                    ctx.fillStyle = "#3498db"; ctx.beginPath(); ctx.ellipse(x, jajkaY, 35, 45, 0, 0, Math.PI * 2); ctx.fill();
+                    ctx.fillStyle = "white"; ctx.font = "bold 28px Arial"; ctx.fillText(val, x - ctx.measureText(val).width/2, jajkaY + 10);
+                });
+                ctx.fillStyle = "#27ae60"; ctx.beginPath(); ctx.roundRect(koszykX - 70, 550, 140, 25, 10); ctx.fill();
+            } else if (menuEtap === "koniec") {
+                let msg = (ruchy <= 0) ? "SESJA ZAKOŃCZONA!" : (punkty >= 20 ? "ZWYCIĘSTWO!" : "KONIEC GRY");
+                ctx.fillStyle = (punkty > 0) ? "#27ae60" : "#c0392b"; ctx.font = "bold 60px Arial";
+                ctx.fillText(msg, 400 - ctx.measureText(msg).width/2, 200);
+                ctx.fillStyle = "#333"; ctx.font = "24px Arial";
+                ctx.fillText(`Twój wynik końcowy: ${punkty}`, 240, 280);
+                ctx.fillText(`Poprawne (+): ${poprawne}`, 240, 320);
+                ctx.fillText(`Błędne (-): ${bledne}`, 240, 360);
+                ctx.font = "bold 20px Arial"; ctx.fillText("Kliknij, aby wrócić do menu głównego", 220, 450);
+            }
+            requestAnimationFrame(draw);
+        }
+
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+                this.beginPath(); this.moveTo(x + r, y); this.arcTo(x + w, y, x + w, y + h, r);
+                this.arcTo(x + w, y + h, x, y + h, r); this.arcTo(x, y + h, x, y, r);
+                this.arcTo(x, y, x + w, y, r); this.closePath(); return this;
+            }
+        }
+        setInterval(update, 1000/60); draw();
+    </script>
+</body>
+</html>

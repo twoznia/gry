@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wędkarski Wyzwanie - Progresja +5</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #1a1a1a; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        canvas { background: linear-gradient(#87CEEB 40%, #1E90FF 40%, #000050 100%); border: 4px solid #fff; border-radius: 8px; cursor: crosshair; }
+        #ui { position: absolute; top: 20px; display: flex; justify-content: space-between; width: 760px; color: white; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px #000; pointer-events: none; z-index: 10; }
+        .screen { position: absolute; display: none; flex-direction: column; align-items: center; color: white; background: rgba(0,0,0,0.9); padding: 40px; border-radius: 20px; text-align: center; border: 2px solid #FFD700; z-index: 20; }
+        button { padding: 12px 24px; font-size: 20px; cursor: pointer; background: #FFD700; border: none; border-radius: 5px; margin-top: 20px; font-weight: bold; transition: 0.2s; }
+        button:hover { background: #fff; }
+        #warning-msg { position: absolute; top: 120px; color: #ff4444; font-size: 40px; font-weight: bold; text-shadow: 2px 2px 4px #000; display: none; pointer-events: none; z-index: 10; animation: blink 0.5s infinite; }
+        #level-msg { position: absolute; top: 50%; color: #FFD700; font-size: 60px; font-weight: bold; text-shadow: 3px 3px 6px #000; display: none; pointer-events: none; z-index: 15; transform: translateY(-50%); }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <div id="ui">
+        <div>Ryby: <span id="score">0</span> / <span id="target">10</span></div>
+        <div id="lvl-display" style="color: #FFD700;">Poziom: 1</div>
+        <div>Czas: <span id="timer">60</span>s</div>
+    </div>
+    
+    <div id="warning-msg">UCIEKAJ!!!</div>
+    <div id="level-msg">LEVEL UP!</div>
+
+    <div id="time-up" class="screen">
+        <h1>Koniec Połowu!</h1>
+        <p>Łącznie ryb: <span id="total-score-time">0</span></p>
+        <p>Osiągnięty Poziom: <span id="final-lvl-time">1</span></p>
+        <button onclick="location.reload()">Zagraj ponownie</button>
+    </div>
+
+    <div id="game-over" class="screen">
+        <h1 style="color: #ff4444;">TRAFIONY! 💩</h1>
+        <p>Łącznie ryb: <span id="total-score-bird">0</span></p>
+        <button onclick="location.reload()">Spróbuj ponownie</button>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+<script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const scoreElement = document.getElementById("score");
+    const targetElement = document.getElementById("target");
+    const timerElement = document.getElementById("timer");
+    const lvlDisplay = document.getElementById("lvl-display");
+    const warningMsg = document.getElementById("warning-msg");
+    const levelMsg = document.getElementById("level-msg");
+
+    canvas.width = 800; canvas.height = 600;
+
+    let totalScore = 0;   
+    let levelScore = 0;   
+    let level = 1;
+    let currentTarget = 10; 
+    let nextIncrement = 15; // Ile ryb będzie potrzebne na następny poziom po obecnym
+    let timeLeft = 60;
+    let gameActive = true;
+    let spawnTimer = 0;
+    let birdTimer = 300;
+    const waterLevel = canvas.height * 0.4;
+
+    const player = { x: 360, y: waterLevel - 20, width: 80, height: 25, speed: 8, hookX: 400, hookY: waterLevel, hookSpeed: 6 };
+    let fishes = [];
+    let bird = null;
+    let birdDropping = null;
+
+    const keys = {};
+    window.onkeydown = (e) => keys[e.code] = true;
+    window.onkeyup = (e) => keys[e.code] = false;
+
+    const timerInterval = setInterval(() => {
+        if (gameActive) {
+            timeLeft--;
+            timerElement.innerText = timeLeft;
+            if (timeLeft <= 0) endGame('time');
+        }
+    }, 1000);
+
+    function checkLevelUp() {
+        if (levelScore >= currentTarget) {
+            level++;
+            levelScore = 0; 
+            
+            // Nowa mechanika progresji: cel rośnie o 5 więcej niż poprzednio
+            currentTarget = nextIncrement;
+            nextIncrement += 5; // Każdy kolejny poziom będzie o 5 trudniejszy od poprzedniego (10, 15, 20, 25...)
+            
+            timeLeft += 15; // Większy bonus czasu za trudniejsze poziomy
+            scoreElement.innerText = levelScore;
+            targetElement.innerText = currentTarget;
+            lvlDisplay.innerText = "Poziom: " + level;
+            levelMsg.innerText = "POZIOM " + level + "!";
+            levelMsg.style.display = "block";
+            setTimeout(() => { levelMsg.style.display = "none"; }, 2000);
+        }
+    }
+
+    function spawnFish() {
+        if (!gameActive) return;
+        spawnTimer--;
+        if (spawnTimer <= 0) {
+            const d = Math.random() > 0.5 ? 1 : -1;
+            fishes.push({
+                x: d === 1 ? -60 : 860,
+                y: waterLevel + 60 + Math.random() * (canvas.height - waterLevel - 100),
+                speed: (1.5 + Math.random() * 2) * d,
+                color: `hsl(${Math.random() * 360}, 80%, 50%)`,
+                size: 18 + Math.random() * 10,
+                active: true
+            });
+            spawnTimer = 40 + Math.random() * 80;
+        }
+    }
+
+    function handleBird() {
+        if (!gameActive) return;
+        birdTimer--;
+        if (birdTimer <= 0 && !bird) {
+            const d = Math.random() > 0.5 ? 1 : -1;
+            bird = { x: d==1?-60:860, y: 30+Math.random()*40, speed: (4+Math.random()*2)*d, hasDropped: false, isAiming: false, aimCounter: 0 };
+        }
+        if (bird) {
+            bird.x += bird.speed;
+            if (!bird.hasDropped && !bird.isAiming && Math.abs(bird.x - (player.x + 40)) < 150) bird.isAiming = true;
+            if (bird.isAiming && !bird.hasDropped) {
+                bird.aimCounter++;
+                if (bird.aimCounter > 30) {
+                    birdDropping = { x: bird.x, y: bird.y + 10, speed: 6.5, size: 8 };
+                    bird.hasDropped = true;
+                    warningMsg.style.display = "block";
+                    setTimeout(() => warningMsg.style.display = "none", 1000);
+                }
+            }
+            if (bird.x < -150 || bird.x > 950) { bird = null; birdTimer = 200 + Math.random()*200; }
+        }
+        if (birdDropping) {
+            birdDropping.y += birdDropping.speed;
+            if (birdDropping.y > player.y && birdDropping.y < player.y + 25 && birdDropping.x > player.x && birdDropping.x < player.x + 80) endGame('bird');
+            if (birdDropping && birdDropping.y > waterLevel) { setTimeout(()=> birdDropping = null, 100); birdDropping.speed = 0; }
+        }
+    }
+
+    function endGame(reason) {
+        gameActive = false;
+        clearInterval(timerInterval);
+        if (reason === 'time') {
+            document.getElementById("time-up").style.display = "flex";
+            document.getElementById("total-score-time").innerText = totalScore;
+            document.getElementById("final-lvl-time").innerText = level;
+        } else {
+            document.getElementById("game-over").style.display = "flex";
+            document.getElementById("total-score-bird").innerText = totalScore;
+            warningMsg.style.display = "none";
+        }
+    }
+
+    function update() {
+        if (!gameActive) return;
+        if (keys["ArrowLeft"] && player.x > 0) player.x -= player.speed;
+        if (keys["ArrowRight"] && player.x < 720) player.x += player.speed;
+
+        if ((keys["ArrowDown"] || keys["Space"]) && player.hookY < canvas.height - 35) player.hookY += 6;
+        else if (player.hookY > waterLevel) player.hookY -= 6;
+
+        player.hookX += (player.x + 40 - player.hookX) * 0.15;
+
+        fishes.forEach((f, i) => {
+            f.x += f.speed;
+            if (f.active) {
+                let dx = player.hookX - f.x, dy = player.hookY - f.y;
+                if (Math.sqrt(dx*dx + dy*dy) < 25) {
+                    f.active = false; totalScore++; levelScore++;
+                    scoreElement.innerText = levelScore;
+                    checkLevelUp();
+                }
+            }
+            if (f.x < -150 || f.x > 950) fishes.splice(i, 1);
+        });
+        spawnFish(); handleBird();
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, 800, 600);
+        fishes.forEach(f => {
+            if (!f.active) return;
+            ctx.save(); ctx.translate(f.x, f.y);
+            const d = f.speed > 0 ? 1 : -1;
+            ctx.fillStyle = f.color;
+            ctx.beginPath(); ctx.moveTo(-f.size*d, 0); ctx.lineTo(-f.size*1.5*d, -f.size*0.5); ctx.lineTo(-f.size*1.5*d, f.size*0.5); ctx.fill();
+            ctx.beginPath(); ctx.ellipse(0, 0, f.size, f.size/2, 0, 0, 7); ctx.fill();
+            ctx.fillStyle = "white"; ctx.beginPath(); ctx.arc(f.size*0.5*d, -f.size*0.15, 4, 0, 7); ctx.fill();
+            ctx.fillStyle = "black"; ctx.beginPath(); ctx.arc(f.size*0.5*d + d, -f.size*0.15, 1.5, 0, 7); ctx.fill();
+            ctx.restore();
+        });
+        if (bird) {
+            ctx.fillStyle = (bird.isAiming && !bird.hasDropped && bird.aimCounter%10<5) ? "red" : "white";
+            const bd = bird.speed > 0 ? 1 : -1;
+            ctx.beginPath(); ctx.moveTo(bird.x, bird.y); ctx.lineTo(bird.x-15*bd, bird.y-10); ctx.lineTo(bird.x-25*bd, bird.y+5); ctx.lineTo(bird.x, bird.y+5); ctx.fill();
+            ctx.beginPath(); ctx.arc(bird.x+5*bd, bird.y, 5, 0, 7); ctx.fill();
+        }
+        if (birdDropping) { ctx.fillStyle = "#6D4C41"; ctx.beginPath(); ctx.arc(birdDropping.x, birdDropping.y, 8, 0, 7); ctx.fill(); }
+        ctx.strokeStyle = "rgba(255,255,255,0.8)"; ctx.beginPath(); ctx.moveTo(player.x+40, player.y+5); ctx.lineTo(player.hookX, player.hookY); ctx.stroke();
+        ctx.strokeStyle = "#ccc"; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(player.hookX, player.hookY, 7, 0.6, 2.8); ctx.stroke();
+        ctx.fillStyle = "#4E342E"; ctx.beginPath(); ctx.moveTo(player.x, player.y); ctx.lineTo(player.x+80, player.y); ctx.lineTo(player.x+68, player.y+22); ctx.lineTo(player.x+12, player.y+22); ctx.fill();
+        ctx.fillStyle = "#FFCCBC"; ctx.beginPath(); ctx.arc(player.x+40, player.y-15, 8, 0, 7); ctx.fill();
+        ctx.fillStyle = "yellow"; ctx.fillRect(player.x+32, player.y-23, 16, 4);
+    }
+
+    function gameLoop() { update(); draw(); requestAnimationFrame(gameLoop); }
+    gameLoop();
+</script>
+</body>
+</html>
