@@ -217,6 +217,12 @@
         @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 75%{transform:translateX(7px)} }
         .pop   { animation: pop   0.25s ease-out; }
         .shake { animation: shake 0.3s ease; }
+
+        /* Map attribute */
+        .q-value.map-mode { font-size: unset; padding: 0; }
+        .q-value.map-mode svg { border-radius: 8px; }
+        .answer-btn.map-btn { min-height: 100px; padding: 0.2rem; }
+        .answer-btn.map-btn svg { pointer-events: none; border-radius: 8px; }
     </style>
 </head>
 <body>
@@ -249,6 +255,7 @@
                 <option value="stolica">🏛️ Stolica</option>
                 <option value="ludnosc">👥 Ludność</option>
                 <option value="powierzchnia">📐 Powierzchnia</option>
+                <option value="mapa">📍 Mapa</option>
             </select>
         </div>
         <div class="form-group">
@@ -259,6 +266,7 @@
                 <option value="flaga">🏳️ Flaga</option>
                 <option value="ludnosc">👥 Ludność</option>
                 <option value="powierzchnia">📐 Powierzchnia</option>
+                <option value="mapa">📍 Mapa</option>
             </select>
         </div>
     </div>
@@ -402,6 +410,101 @@ const COUNTRIES = {
     ],
 };
 
+// Add virtual mapa field (same as panstwo – used as comparison key for map questions)
+Object.values(COUNTRIES).flat().forEach(c => { c.mapa = c.panstwo; });
+
+// ─── Map Data ─────────────────────────────────────────────────────────────────
+const COUNTRY_CONTINENT = {
+    "Polska": "Europa", "Niemcy": "Europa", "Francja": "Europa", "Włochy": "Europa",
+    "Hiszpania": "Europa", "Wielka Brytania": "Europa", "Holandia": "Europa",
+    "Belgia": "Europa", "Szwecja": "Europa", "Norwegia": "Europa", "Dania": "Europa",
+    "Finlandia": "Europa", "Portugalia": "Europa", "Grecja": "Europa",
+    "Austria": "Europa", "Szwajcaria": "Europa", "Czechy": "Europa",
+    "Węgry": "Europa", "Rumunia": "Europa", "Ukraina": "Europa",
+    "Chiny": "Azja", "Indie": "Azja", "Japonia": "Azja", "Korea Południowa": "Azja",
+    "Indonezja": "Azja", "Wietnam": "Azja", "Tajlandia": "Azja",
+    "Arabia Saudyjska": "Azja", "Iran": "Azja", "Irak": "Azja", "Turcja": "Azja",
+    "Pakistan": "Azja", "Bangladesz": "Azja", "Malezja": "Azja", "Filipiny": "Azja",
+    "Stany Zjednoczone": "Ameryka Północna", "Kanada": "Ameryka Północna",
+    "Meksyk": "Ameryka Północna", "Kuba": "Ameryka Północna",
+    "Gwatemala": "Ameryka Północna", "Honduras": "Ameryka Północna",
+    "Nikaragua": "Ameryka Północna", "Kostaryka": "Ameryka Północna",
+    "Panama": "Ameryka Północna", "Jamajka": "Ameryka Północna",
+    "Brazylia": "Ameryka Południowa", "Argentyna": "Ameryka Południowa",
+    "Kolumbia": "Ameryka Południowa", "Peru": "Ameryka Południowa",
+    "Wenezuela": "Ameryka Południowa", "Chile": "Ameryka Południowa",
+    "Boliwia": "Ameryka Południowa", "Paragwaj": "Ameryka Południowa",
+    "Urugwaj": "Ameryka Południowa", "Ekwador": "Ameryka Południowa",
+    "Nigeria": "Afryka", "Etiopia": "Afryka", "Egipt": "Afryka", "Kongo": "Afryka",
+    "Tanzania": "Afryka", "Kenia": "Afryka", "Algieria": "Afryka", "Maroko": "Afryka",
+    "Mozambik": "Afryka", "Ghana": "Afryka", "RPA": "Afryka", "Sudan": "Afryka",
+    "Australia": "Australia i Oceania", "Nowa Zelandia": "Australia i Oceania",
+    "Papua Nowa Gwinea": "Australia i Oceania", "Fidżi": "Australia i Oceania",
+    "Samoa": "Australia i Oceania", "Tonga": "Australia i Oceania",
+    "Vanuatu": "Australia i Oceania", "Wyspy Salomona": "Australia i Oceania",
+};
+
+// Pre-projected centroid coordinates [x, y] within each continent's 300×220 SVG viewport
+const CENTROIDS_SVG = {
+    "Polska": [183.1, 114.6], "Niemcy": [147.6, 119.2], "Francja": [115.3, 144.7],
+    "Włochy": [157.1, 162.0], "Hiszpania": [92.0, 173.8], "Wielka Brytania": [96.8, 104.9],
+    "Holandia": [127.5, 113.6], "Belgia": [124.4, 122.8], "Szwecja": [165.8, 64.1],
+    "Norwegia": [157.9, 48.8], "Dania": [146.1, 94.7], "Finlandia": [209.2, 48.8],
+    "Portugalia": [75.1, 178.8], "Grecja": [192.6, 180.9], "Austria": [164.2, 138.0],
+    "Szwajcaria": [139.0, 140.6], "Czechy": [167.8, 126.3], "Węgry": [183.5, 139.6],
+    "Rumunia": [204.8, 146.2], "Ukraina": [230.9, 130.4],
+    "Chiny": [185.9, 103.4], "Indie": [130.3, 138.1], "Japonia": [261.6, 102.7],
+    "Korea Południowa": [238.5, 102.1], "Indonezja": [216.6, 190.5],
+    "Wietnam": [190.6, 147.2], "Tajlandia": [178.8, 148.8],
+    "Arabia Saudyjska": [54.8, 129.9], "Iran": [73.9, 111.4], "Irak": [51.7, 109.5],
+    "Turcja": [33.5, 96.2], "Pakistan": [108.5, 115.9], "Bangladesz": [155.3, 131.1],
+    "Malezja": [204.4, 179.1], "Filipiny": [225.4, 155.6],
+    "Stany Zjednoczone": [176.6, 125.5], "Kanada": [184.4, 72.6],
+    "Meksyk": [166.9, 166.6], "Kuba": [218.7, 172.0], "Gwatemala": [195.3, 186.7],
+    "Honduras": [204.5, 188.2], "Nikaragua": [206.8, 194.2], "Kostaryka": [210.0, 202.4],
+    "Panama": [218.5, 205.8], "Jamajka": [224.9, 180.8],
+    "Brazylia": [175.1, 76.0], "Argentyna": [113.8, 144.0], "Kolumbia": [64.2, 36.0],
+    "Peru": [52.5, 73.7], "Wenezuela": [102.1, 24.7], "Chile": [72.0, 148.8],
+    "Boliwia": [112.7, 93.8], "Paragwaj": [145.0, 114.0], "Urugwaj": [159.5, 139.8],
+    "Ekwador": [34.7, 52.8],
+    "Nigeria": [118.8, 86.6], "Etiopia": [246.0, 86.6], "Egipt": [207.2, 38.5],
+    "Kongo": [171.2, 122.2], "Tanzania": [223.6, 128.8], "Kenia": [235.6, 111.4],
+    "Algieria": [90.8, 35.2], "Maroko": [55.6, 24.9], "Mozambik": [226.0, 162.2],
+    "Ghana": [80.0, 89.9], "RPA": [184.4, 190.2], "Sudan": [214.0, 68.9],
+    "Australia": [101.9, 145.8], "Nowa Zelandia": [243.9, 193.1],
+    "Papua Nowa Gwinea": [138.7, 90.5], "Fidżi": [263.2, 123.7],
+    "Samoa": [292.0, 112.3], "Tonga": [287.6, 131.9],
+    "Vanuatu": [222.5, 117.0], "Wyspy Salomona": [198.1, 100.1],
+};
+
+// Simplified continent outline SVG paths (300×220 viewport)
+const CONTINENT_PATHS = {
+    "Europa": "M161.8,18.2 L185.5,18.2 L217.1,13.1 L232.8,23.3 L224.9,43.7 L217.1,64.1 L213.1,79.4 L197.3,74.3 L193.4,89.6 L189.4,99.8 L165.8,104.9 L146.1,94.7 L146.1,99.8 L138.2,99.8 L126.3,110.0 L114.5,120.2 L106.6,125.3 L90.8,135.5 L71.1,155.9 L71.1,191.6 L86.9,196.7 L118.4,161.0 L146.1,155.9 L142.1,171.2 L169.7,186.5 L177.6,176.3 L161.8,155.9 L173.7,161.0 L185.5,171.2 L197.3,191.6 L213.1,186.5 L213.1,171.2 L224.9,155.9 L252.6,145.7 L264.4,140.6 L272.3,125.3 L252.6,99.8 L224.9,74.3 L209.2,59.0 L185.5,33.5 L161.8,18.2Z",
+    "Azja": "M21.3,89.6 L16.9,100.9 L34.6,100.9 L50.2,159.9 L65.7,150.8 L81.2,134.9 L87.9,130.4 L125.6,166.7 L132.2,171.2 L176.6,182.5 L187.7,180.3 L198.8,184.8 L221.0,202.9 L254.3,196.1 L267.6,191.6 L287.6,207.5 L289.8,184.8 L278.7,157.6 L265.4,105.5 L254.3,105.5 L243.2,116.8 L221.0,134.9 L194.4,144.0 L185.5,162.1 L176.6,178.0 L170.0,173.5 L158.9,134.9 L132.2,139.5 L114.5,132.7 L94.5,128.1 L83.4,132.7 L76.8,130.4 L54.6,130.4 L39.1,150.8 L50.2,162.1 L65.7,153.1 L43.5,94.1 L34.6,85.1 L25.8,80.5 L21.3,89.6Z",
+    "Ameryka Północna": "M17.2,41.6 L81.3,41.6 L127.1,46.7 L172.9,36.4 L218.7,41.6 L264.5,106.1 L282.8,106.1 L255.4,113.9 L241.6,116.5 L230.2,124.2 L218.7,144.9 L218.7,162.9 L198.1,173.3 L207.3,199.1 L223.3,204.3 L221.0,206.8 L211.8,201.7 L202.7,193.9 L195.8,186.2 L195.8,173.3 L184.4,178.4 L163.7,178.4 L150.0,168.1 L134.0,144.9 L127.1,134.5 L117.9,124.2 L117.9,101.0 L104.2,85.5 L69.8,72.6 L46.9,77.7 L21.7,67.4 L17.2,57.1 L17.2,41.6Z",
+    "Ameryka Południowa": "M41.4,10.8 L80.4,10.8 L136.1,25.0 L180.6,30.7 L275.3,61.8 L280.9,76.0 L258.6,98.7 L247.5,110.0 L236.3,115.7 L208.5,127.0 L191.8,132.7 L180.6,144.0 L158.4,155.3 L147.2,166.7 L124.9,178.0 L108.2,203.5 L91.5,206.3 L69.3,195.0 L47.0,189.3 L47.0,175.2 L69.3,166.7 L69.3,149.7 L80.4,138.3 L80.4,121.3 L91.5,110.0 L108.2,98.7 L91.5,81.7 L69.3,76.0 L47.0,64.7 L35.8,47.7 L35.8,42.0 L41.4,33.5 L41.4,10.8Z",
+    "Afryka": "M64.0,13.4 L132.0,10.7 L188.0,10.7 L228.0,10.7 L256.0,81.4 L288.0,81.4 L284.0,89.6 L260.0,105.9 L252.0,144.0 L228.0,165.8 L228.0,182.1 L220.0,193.0 L188.0,203.8 L156.0,206.6 L148.0,193.0 L132.0,165.8 L124.0,127.7 L120.0,100.5 L92.0,97.8 L84.0,97.8 L72.0,97.8 L64.0,95.0 L52.0,97.8 L44.0,89.6 L24.0,78.7 L16.0,70.6 L12.0,54.2 L32.0,35.2 L64.0,16.2 L64.0,13.4Z",
+    "Australia i Oceania": "M29.8,136.2 L44.4,130.4 L59.0,124.6 L88.1,107.1 L109.9,107.1 L117.2,115.8 L131.8,107.1 L142.7,115.8 L153.6,124.6 L168.2,142.1 L171.8,153.7 L168.2,165.4 L160.9,179.9 L153.6,182.9 L142.7,182.9 L131.8,182.9 L117.2,177.0 L95.4,165.4 L73.5,171.2 L59.0,171.2 L37.1,171.2 L29.8,159.5 L22.6,147.9 L22.6,136.2 L29.8,136.2Z",
+};
+
+// ─── Map SVG generator ────────────────────────────────────────────────────────
+function generateMapSVG(countryName, small = false) {
+    const continent = COUNTRY_CONTINENT[countryName];
+    if (!continent) return '?';
+    const [cx, cy] = CENTROIDS_SVG[countryName] || [150, 110];
+    const path = CONTINENT_PATHS[continent] || '';
+    const W = 300, H = 220;
+    const r = small ? 7 : 11;
+    const maxH = small ? '90px' : '160px';
+    return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:${maxH};display:block;margin:auto">
+        <rect width="${W}" height="${H}" fill="#0f172a" rx="6"/>
+        <path d="${path}" fill="#334155" stroke="#475569" stroke-width="${small ? 0.8 : 1.2}" stroke-linejoin="round"/>
+        <circle cx="${cx}" cy="${cy}" r="${r * 2.2}" fill="#38bdf8" opacity="0.18"/>
+        <circle cx="${cx}" cy="${cy}" r="${r}" fill="#38bdf8"/>
+        <circle cx="${cx}" cy="${cy}" r="${r * 0.38}" fill="white"/>
+    </svg>`;
+}
+
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 const ATTR_LABELS = {
     panstwo:      "🗺️ Państwo",
@@ -409,6 +512,7 @@ const ATTR_LABELS = {
     flaga:        "🏳️ Flaga",
     ludnosc:      "👥 Ludność",
     powierzchnia: "📐 Powierzchnia",
+    mapa:         "📍 Mapa",
 };
 
 const INSTRUCTIONS = {
@@ -416,22 +520,32 @@ const INSTRUCTIONS = {
     "flaga|stolica":      "Jaka jest stolica kraju z tą flagą?",
     "flaga|ludnosc":      "Jaka jest ludność kraju z tą flagą?",
     "flaga|powierzchnia": "Jaka jest powierzchnia kraju z tą flagą?",
+    "flaga|mapa":         "Wskaż na mapie kraj z tą flagą:",
     "panstwo|flaga":      "Wybierz flagę tego państwa:",
     "panstwo|stolica":    "Jaka jest stolica tego państwa?",
     "panstwo|ludnosc":    "Jaka jest ludność tego państwa?",
     "panstwo|powierzchnia":"Jaka jest powierzchnia tego państwa?",
+    "panstwo|mapa":       "Wskaż lokalizację tego państwa na mapie:",
     "stolica|flaga":      "Czyją flagę ma kraj z tą stolicą?",
     "stolica|panstwo":    "W którym państwie jest ta stolica?",
     "stolica|ludnosc":    "Jaka jest ludność kraju z tą stolicą?",
     "stolica|powierzchnia":"Jaka jest powierzchnia kraju z tą stolicą?",
+    "stolica|mapa":       "Wskaż na mapie kraj z tą stolicą:",
     "ludnosc|flaga":      "Czyja flaga? (kraj z tą liczbą ludności)",
     "ludnosc|panstwo":    "Które państwo ma tę liczbę ludności?",
     "ludnosc|stolica":    "Jaka jest stolica kraju z tą liczbą ludności?",
     "ludnosc|powierzchnia":"Jaka jest powierzchnia kraju z tą liczbą ludności?",
+    "ludnosc|mapa":       "Wskaż na mapie kraj z tą liczbą ludności:",
     "powierzchnia|flaga": "Czyja flaga? (kraj o tej powierzchni)",
     "powierzchnia|panstwo":"Które państwo ma tę powierzchnię?",
     "powierzchnia|stolica":"Jaka jest stolica kraju o tej powierzchni?",
     "powierzchnia|ludnosc":"Jaka jest ludność kraju o tej powierzchni?",
+    "powierzchnia|mapa":  "Wskaż na mapie kraj o tej powierzchni:",
+    "mapa|panstwo":       "Które państwo jest zaznaczone na mapie?",
+    "mapa|stolica":       "Jaka jest stolica państwa zaznaczonego na mapie?",
+    "mapa|flaga":         "Czyja flaga? (państwo zaznaczone na mapie)",
+    "mapa|ludnosc":       "Jaka jest ludność państwa zaznaczonego na mapie?",
+    "mapa|powierzchnia":  "Jaka jest powierzchnia państwa zaznaczonego na mapie?",
 };
 
 function shuffle(arr) {
@@ -547,11 +661,16 @@ function renderQuestion() {
     topLabel.textContent = ATTR_LABELS[topAttr];
 
     const val = country[topAttr];
-    topValue.textContent = val;
     topValue.className = 'q-value';
-    if (topAttr !== 'flaga') {
-        topValue.classList.add('text-mode');
-        if (val.length > 14) topValue.classList.add('small-text');
+    if (topAttr === 'mapa') {
+        topValue.innerHTML = generateMapSVG(val, false);
+        topValue.classList.add('map-mode');
+    } else {
+        topValue.textContent = val;
+        if (topAttr !== 'flaga') {
+            topValue.classList.add('text-mode');
+            if (val.length > 14) topValue.classList.add('small-text');
+        }
     }
 
     // Instruction
@@ -567,8 +686,13 @@ function renderQuestion() {
     grid.innerHTML = '';
     choices.forEach(choice => {
         const btn = document.createElement('button');
-        btn.className = 'answer-btn' + (bottomAttr === 'flaga' ? ' emoji' : '');
-        btn.textContent = choice;
+        if (bottomAttr === 'mapa') {
+            btn.className = 'answer-btn map-btn';
+            btn.innerHTML = generateMapSVG(choice, true);
+        } else {
+            btn.className = 'answer-btn' + (bottomAttr === 'flaga' ? ' emoji' : '');
+            btn.textContent = choice;
+        }
         btn.dataset.value = choice;
         btn.addEventListener('click', () => handleAnswer(choice, correctVal));
         grid.appendChild(btn);
