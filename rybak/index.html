@@ -80,16 +80,15 @@
     window.onkeyup = (e) => keys[e.code] = false;
 
     let mouseDown = false;
-    canvas.addEventListener("mousemove", (e) => {
+    window.addEventListener("mousemove", (e) => {
         if (!gameActive) return;
         const rect = canvas.getBoundingClientRect();
         const scaleX = canvas.width / rect.width;
         const mouseX = (e.clientX - rect.left) * scaleX;
         player.x = Math.max(0, Math.min(720, mouseX - 40));
     });
-    canvas.addEventListener("mousedown", (e) => { if (e.button === 0) mouseDown = true; });
-    canvas.addEventListener("mouseup", (e) => { if (e.button === 0) mouseDown = false; });
-    canvas.addEventListener("mouseleave", () => { mouseDown = false; });
+    window.addEventListener("mousedown", (e) => { if (e.button === 0) mouseDown = true; });
+    window.addEventListener("mouseup", (e) => { if (e.button === 0) mouseDown = false; });
 
     const timerInterval = setInterval(() => {
         if (gameActive) {
