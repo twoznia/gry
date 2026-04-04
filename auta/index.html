@@ -146,6 +146,18 @@
         .blink { animation: blink-animation 0.1s steps(2, start) infinite; }
         @keyframes blink-animation { to { visibility: hidden; } }
         .hit-style .car-body, .hit-style .wheel { background: var(--hit-color) !important; }
+
+        .heart-shape {
+            position: absolute;
+            width: 54px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: var(--segment-on);
+            line-height: 1;
+        }
     </style>
 </head>
 <body>
@@ -203,6 +215,8 @@
     let patternStep = 0;
     let framesOnSameLane = 0;
     let lastLane = 1;
+    let lastHeartScore = 0;
+    const HEART_INTERVAL = 15;
     
     const baseSpeed = 4.8; 
     const initialDifficultyOffset = 0;
@@ -287,6 +301,16 @@
         obstacles.push({ el: container, lane: laneIdx, y: -50 });
     }
 
+    function spawnHeart(laneIdx) {
+        const container = document.createElement('div');
+        container.className = 'heart-shape';
+        container.textContent = '♥';
+        container.style.top = '-50px';
+        container.style.left = lanes[laneIdx] + 'px';
+        screen.appendChild(container);
+        obstacles.push({ el: container, lane: laneIdx, y: -50, isHeart: true });
+    }
+
     function gameLoop() {
         if(!gameActive) return;
 
@@ -326,15 +350,31 @@
             o.el.style.top = o.y + 'px';
 
             // Hitbox z zapasem
-            if(o.y > screenH - 92 && o.y < screenH - 48 && o.lane === playerLane && Date.now() - lastSwipeTime > 250) {
-                handleHit(o, i);
-                continue;
+            if(o.y > screenH - 92 && o.y < screenH - 48 && o.lane === playerLane) {
+                if (o.isHeart) {
+                    handleHeartCollect(o, i);
+                    continue;
+                } else if (Date.now() - lastSwipeTime > 250) {
+                    handleHit(o, i);
+                    continue;
+                }
             }
 
             if(o.y > screenH) {
-                score++;
-                if(score % 10 === 0) currentSpeed += (baseSpeed * 0.04);
-                scoreEl.innerText = score.toString().padStart(4, '0');
+                if (!o.isHeart) {
+                    score++;
+                    if(score % 10 === 0) currentSpeed += (baseSpeed * 0.04);
+                    scoreEl.innerText = score.toString().padStart(4, '0');
+
+                    if (lives < 3 && score - lastHeartScore >= HEART_INTERVAL) {
+                        const validLanes = [0,1,2,3].filter(l => Math.abs(l - playerLane) >= 2);
+                        if (validLanes.length > 0) {
+                            const heartLane = validLanes[Math.floor(Math.random() * validLanes.length)];
+                            spawnHeart(heartLane);
+                            lastHeartScore = score;
+                        }
+                    }
+                }
                 o.el.remove();
                 obstacles.splice(i, 1);
             }
@@ -358,11 +398,20 @@
         }, 800);
     }
 
+    function handleHeartCollect(heart, index) {
+        heart.el.remove();
+        obstacles.splice(index, 1);
+        if (lives < 3) {
+            lives++;
+            livesEl.innerText = '♥♥♥'.substring(0, lives);
+        }
+    }
+
     function startGame() {
         calculateLanes();
-        document.querySelectorAll('.car-shape:not(#player)').forEach(o => o.remove());
+        document.querySelectorAll('.car-shape:not(#player), .heart-shape').forEach(o => o.remove());
         obstacles = [];
-        score = 0; lives = 3; patternStep = 0; framesOnSameLane = 0;
+        score = 0; lives = 3; patternStep = 0; framesOnSameLane = 0; lastHeartScore = 0;
         currentSpeed = baseSpeed + (4 * (baseSpeed * 0.05));
         playerLane = 1;
         gameActive = true;
