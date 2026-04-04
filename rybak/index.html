@@ -73,7 +73,10 @@
     let birdDropping = null;
 
     const keys = {};
-    window.onkeydown = (e) => keys[e.code] = true;
+    window.onkeydown = (e) => {
+        keys[e.code] = true;
+        if (!gameActive && ["Space", "Enter", "ArrowDown"].includes(e.code)) location.reload();
+    };
     window.onkeyup = (e) => keys[e.code] = false;
 
     const timerInterval = setInterval(() => {
