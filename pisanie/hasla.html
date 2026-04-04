@@ -39,7 +39,7 @@
 
         .words-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
             gap: 10px;
         }
 
@@ -59,12 +59,19 @@
             line-height: 1;
             flex-shrink: 0;
         }
+        .word-icon img {
+            width: 2.4rem;
+            height: 2.4rem;
+            object-fit: contain;
+            vertical-align: middle;
+        }
 
         .word-text {
             font-size: 1rem;
             font-weight: bold;
             letter-spacing: 1px;
-            word-break: break-all;
+            white-space: nowrap;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -87,7 +94,7 @@ const LEVELS = [
         { word:'GRA',      emoji:'🎮' },
         { word:'LIS',      emoji:'🦊' },
         { word:'WĄŻ',      emoji:'🐍' },
-        { word:'GĘŚ',      emoji:'🪿' },
+        { word:'GĘŚ',      emoji:'<img src="images/ges.svg" alt="gęś">' },
         { word:'SOK',      emoji:'🧃' },
         { word:'OKO',      emoji:'👁️'  },
         { word:'NOS',      emoji:'👃' },
@@ -110,13 +117,13 @@ const LEVELS = [
         { word:'ŁÓDŹ',     emoji:'⛵' },
         { word:'WODA',     emoji:'💧' },
         { word:'AUTO',     emoji:'🚗' },
-        { word:'FOKA',     emoji:'🦭' },
+        { word:'FOKA',     emoji:'<img src="images/foka.svg" alt="foka">' },
         { word:'SŁOŃ',     emoji:'🐘' },
         { word:'ZUPA',     emoji:'🍲' },
         { word:'MAPA',     emoji:'🗺️'  },
         { word:'LAMA',     emoji:'🦙' },
         { word:'MOST',     emoji:'🌉' },
-        { word:'OKNO',     emoji:'🪟' },
+        { word:'OKNO',     emoji:'<img src="images/okno.svg" alt="okno">' },
     ]},
     { label: 'Poziom 3 – słowa 5-literowe', words: [
         { word:'KOTEK',    emoji:'🐱' },
@@ -157,7 +164,7 @@ const LEVELS = [
         { word:'PAPUGA',   emoji:'🦜' },
         { word:'CHOMIK',   emoji:'🐹' },
         { word:'SYRENA',   emoji:'🧜' },
-        { word:'WIADRO',   emoji:'🪣' },
+        { word:'WIADRO',   emoji:'<img src="images/wiadro.svg" alt="wiadro">' },
         { word:'ŚLIMAK',   emoji:'🐌' },
         { word:'NOŻYCE',   emoji:'✂️'  },
         { word:'OŁÓWEK',   emoji:'✏️'  },
@@ -189,7 +196,7 @@ const LEVELS = [
         { word:'DINOZAUR', emoji:'🦕' },
         { word:'MOTOCYKL', emoji:'🏍️'  },
         { word:'WIELBŁĄD', emoji:'🐪' },
-        { word:'LALECZKA', emoji:'🎎' },
+        { word:'LALECZKI', emoji:'🎎' },
         { word:'KRÓLEWNA', emoji:'👸' },
         { word:'PSZCZOŁA', emoji:'🐝' },
         { word:'CUKIEREK', emoji:'🍬' },
@@ -201,7 +208,7 @@ const LEVELS = [
         { word:'KASZTANY', emoji:'🌰' },
         { word:'PIEROŻEK', emoji:'🥟' },
         { word:'MIKROFON', emoji:'🎤' },
-        { word:'KUCHENKA', emoji:'🍳' },
+        { word:'PATELNIA', emoji:'🍳' },
         { word:'MUCHOMOR', emoji:'🍄' },
         { word:'WIELORYB', emoji:'🐋' },
         { word:'SZKIELET', emoji:'💀' },

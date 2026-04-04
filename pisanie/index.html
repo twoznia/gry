@@ -93,6 +93,11 @@
             font-size: 6.5rem;
             line-height: 1;
         }
+        #emoji-area img {
+            width: 1em;
+            height: 1em;
+            object-fit: contain;
+        }
 
         @keyframes pop-in {
             0%   { transform: scale(0) rotate(-10deg); opacity: 0; }
@@ -352,7 +357,7 @@ const LEVELS = [
         { word:'GRA',      emoji:'🎮', hint:'gra'      },
         { word:'LIS',      emoji:'🦊', hint:'lis'      },
         { word:'WĄŻ',      emoji:'🐍', hint:'wąż'      },
-        { word:'GĘŚ',      emoji:'🪿', hint:'gęś'      },
+        { word:'GĘŚ',      emoji:'<img src="images/ges.svg" alt="gęś">', hint:'gęś'      },
         { word:'SOK',      emoji:'🧃', hint:'sok'      },
         { word:'OKO',      emoji:'👁️',  hint:'oko'      },
         { word:'NOS',      emoji:'👃', hint:'nos'      },
@@ -375,13 +380,13 @@ const LEVELS = [
         { word:'ŁÓDŹ',     emoji:'⛵', hint:'łódź'     },
         { word:'WODA',     emoji:'💧', hint:'woda'     },
         { word:'AUTO',     emoji:'🚗', hint:'auto'     },
-        { word:'FOKA',     emoji:'🦭', hint:'foka'     },
+        { word:'FOKA',     emoji:'<img src="images/foka.svg" alt="foka">', hint:'foka'     },
         { word:'SŁOŃ',     emoji:'🐘', hint:'słoń'     },
         { word:'ZUPA',     emoji:'🍲', hint:'zupa'     },
         { word:'MAPA',     emoji:'🗺️',  hint:'mapa'     },
         { word:'LAMA',     emoji:'🦙', hint:'lama'     },
         { word:'MOST',     emoji:'🌉', hint:'most'     },
-        { word:'OKNO',     emoji:'🪟', hint:'okno'     },
+        { word:'OKNO',     emoji:'<img src="images/okno.svg" alt="okno">', hint:'okno'     },
     ],
     [ // 5 letters
         { word:'KOTEK',    emoji:'🐱', hint:'kotek'    },
@@ -422,7 +427,7 @@ const LEVELS = [
         { word:'PAPUGA',   emoji:'🦜', hint:'papuga'   },
         { word:'CHOMIK',   emoji:'🐹', hint:'chomik'   },
         { word:'SYRENA',   emoji:'🧜', hint:'syrena'   },
-        { word:'WIADRO',   emoji:'🪣', hint:'wiadro'   },
+        { word:'WIADRO',   emoji:'<img src="images/wiadro.svg" alt="wiadro">', hint:'wiadro'   },
         { word:'ŚLIMAK',   emoji:'🐌', hint:'ślimak'   },
         { word:'NOŻYCE',   emoji:'✂️',  hint:'nożyce'   },
         { word:'OŁÓWEK',   emoji:'✏️',  hint:'ołówek'   },
@@ -454,7 +459,7 @@ const LEVELS = [
         { word:'DINOZAUR', emoji:'🦕', hint:'dinozaur' },
         { word:'MOTOCYKL', emoji:'🏍️',  hint:'motocykl' },
         { word:'WIELBŁĄD', emoji:'🐪', hint:'wielbłąd' },
-        { word:'LALECZKA', emoji:'🎎', hint:'laleczka' },
+        { word:'LALECZKI', emoji:'🎎', hint:'laleczki' },
         { word:'KRÓLEWNA', emoji:'👸', hint:'królewna' },
         { word:'PSZCZOŁA', emoji:'🐝', hint:'pszczoła' },
         { word:'CUKIEREK', emoji:'🍬', hint:'cukierek' },
@@ -466,7 +471,7 @@ const LEVELS = [
         { word:'KASZTANY', emoji:'🌰', hint:'kasztany' },
         { word:'PIEROŻEK', emoji:'🥟', hint:'pierożek' },
         { word:'MIKROFON', emoji:'🎤', hint:'mikrofon' },
-        { word:'KUCHENKA', emoji:'🍳', hint:'kuchenka' },
+        { word:'PATELNIA', emoji:'🍳', hint:'patelnia' },
         { word:'MUCHOMOR', emoji:'🍄', hint:'muchomor' },
         { word:'WIELORYB', emoji:'🐋', hint:'wieloryb' },
         { word:'SZKIELET', emoji:'💀', hint:'szkielet' },
@@ -672,7 +677,7 @@ function loadWord() {
     // Emoji
     const emojiEl = document.getElementById('emoji-area');
     emojiEl.className   = '';
-    emojiEl.textContent = emoji;
+    emojiEl.innerHTML = emoji;
     requestAnimationFrame(() => requestAnimationFrame(() => {
         emojiEl.classList.add('emoji-pop');
     }));
