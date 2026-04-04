@@ -728,7 +728,15 @@ function getPool(continent) {
     return [...COUNTRIES[continent]];
 }
 
+// Minimum pixel distance (in the 300×220 SVG viewport) between map dots
+// to ensure distractors are visually distinguishable from each other.
+const MAP_MIN_PIXEL_DISTANCE = 40;
+
 function getDistractors(correct, pool, attr, count = 3) {
+    // Map mode needs continent-based selection + spatial distance enforcement
+    if (attr === 'mapa') {
+        return getMapDistractors(correct, count);
+    }
     const correctVal = correct[attr];
     const candidates = pool.filter(c => c !== correct && c[attr] !== correctVal);
     shuffle(candidates);
@@ -746,6 +754,45 @@ function getDistractors(correct, pool, attr, count = 3) {
         if (result.length >= count) break;
         if (!result.includes(c[attr])) result.push(c[attr]);
     }
+    return result;
+}
+
+function getMapDistractors(correct, count = 3) {
+    const correctName = correct.panstwo;
+    const correctContinent = COUNTRY_CONTINENT[correctName];
+    const correctCoords = CENTROIDS_SVG[correctName];
+
+    // Use all countries from the same continent as candidate distractors
+    const continentPool = (COUNTRIES[correctContinent] || [])
+        .filter(c => c.panstwo !== correctName && CENTROIDS_SVG[c.panstwo]);
+    shuffle(continentPool);
+
+    const MIN_DIST = MAP_MIN_PIXEL_DISTANCE;
+    const chosenCoords = correctCoords ? [correctCoords] : [];
+    const result = [];
+
+    // First pass: enforce minimum distance from all already-chosen countries
+    for (const c of continentPool) {
+        if (result.length >= count) break;
+        const coords = CENTROIDS_SVG[c.panstwo];
+        const farEnough = chosenCoords.every(([cx, cy]) => {
+            const dx = coords[0] - cx, dy = coords[1] - cy;
+            return Math.sqrt(dx * dx + dy * dy) >= MIN_DIST;
+        });
+        if (farEnough) {
+            result.push(c.panstwo);
+            chosenCoords.push(coords);
+        }
+    }
+
+    // Fallback: fill remaining slots without distance constraint
+    for (const c of continentPool) {
+        if (result.length >= count) break;
+        if (!result.includes(c.panstwo)) {
+            result.push(c.panstwo);
+        }
+    }
+
     return result;
 }
 
@@ -841,7 +888,7 @@ function renderQuestion() {
     const val = country[topAttr];
     topValue.className = 'q-value';
     if (topAttr === 'mapa') {
-        topValue.innerHTML = generateMapSVG(val, false);
+        topValue.innerHTML = generateMapSVG(country.panstwo, false);
         topValue.classList.add('map-mode');
     } else {
         topValue.textContent = val;
@@ -856,7 +903,7 @@ function renderQuestion() {
     document.getElementById('q-instruction').textContent = INSTRUCTIONS[key] || 'Wybierz poprawną odpowiedź:';
 
     // Answers
-    const correctVal = country[bottomAttr];
+    const correctVal = bottomAttr === 'mapa' ? country.panstwo : country[bottomAttr];
     const distractors = getDistractors(country, pool, bottomAttr);
     const choices = shuffle([correctVal, ...distractors]);
 
@@ -985,7 +1032,7 @@ function showResults() {
         const item = document.createElement('div');
         item.className = 'result-item';
 
-        const topVal = r.country[topAttr];
+        const topVal = topAttr === 'mapa' ? r.country.panstwo : r.country[topAttr];
         const label = `${i + 1}. ${ATTR_LABELS[topAttr]}: ${topVal}`;
 
         item.innerHTML = `
