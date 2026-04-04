@@ -252,26 +252,38 @@
             ctx.fillText(txt, x + w/2 - ctx.measureText(txt).width/2, y + h/2 + fontSize*0.35);
         }
 
-        function drawEgg(x, y, val, highlight) {
+        const eggPalette = [
+            { light: "#ff7675", dark: "#c0392b" },
+            { light: "#55efc4", dark: "#00897b" },
+            { light: "#ffeaa7", dark: "#e17055" }
+        ];
+
+        function drawEgg(x, y, val, highlight, idx) {
+            const pal = eggPalette[idx % eggPalette.length];
             // shadow
             ctx.save();
             ctx.shadowColor = "rgba(0,0,0,0.5)";
-            ctx.shadowBlur = 18;
-            ctx.shadowOffsetY = 8;
-            const eg = ctx.createRadialGradient(x - 10, y - 15, 5, x, y, 48);
-            eg.addColorStop(0, highlight ? "#ffe066" : "#5dade2");
-            eg.addColorStop(1, highlight ? "#f39c12" : "#1a5276");
+            ctx.shadowBlur = 22;
+            ctx.shadowOffsetY = 10;
+            const eg = ctx.createRadialGradient(x - 14, y - 20, 6, x, y, 68);
+            eg.addColorStop(0, highlight ? "#ffe066" : pal.light);
+            eg.addColorStop(1, highlight ? "#f39c12" : pal.dark);
             ctx.fillStyle = eg;
-            ctx.beginPath(); ctx.ellipse(x, y, 38, 50, 0, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.ellipse(x, y, 60, 72, 0, 0, Math.PI * 2); ctx.fill();
             ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
             // shine
-            ctx.fillStyle = "rgba(255,255,255,0.35)";
-            ctx.beginPath(); ctx.ellipse(x - 10, y - 16, 12, 18, -0.5, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = "rgba(255,255,255,0.40)";
+            ctx.beginPath(); ctx.ellipse(x - 16, y - 22, 18, 26, -0.5, 0, Math.PI * 2); ctx.fill();
             ctx.restore();
-            ctx.fillStyle = "white";
-            ctx.font = `bold 26px 'Segoe UI', Arial`;
+            // number with outline for legibility
+            ctx.font = `bold 36px 'Segoe UI', Arial`;
             ctx.textAlign = "center";
-            ctx.fillText(val, x, y + 9);
+            ctx.strokeStyle = "rgba(0,0,0,0.7)";
+            ctx.lineWidth = 5;
+            ctx.lineJoin = "round";
+            ctx.strokeText(val, x, y + 13);
+            ctx.fillStyle = "white";
+            ctx.fillText(val, x, y + 13);
             ctx.textAlign = "left";
         }
 
@@ -369,7 +381,7 @@
                 ctx.fillText(zadanie, 400, 120);
                 ctx.textAlign = "left";
                 // eggs
-                opcje.forEach((val, i) => drawEgg((i+1)*200, jajkaY, val, false));
+                opcje.forEach((val, i) => drawEgg((i+1)*200, jajkaY, val, false, i));
                 drawBasket(koszykX);
                 drawGwiazdki();
             } else if (menuEtap === "koniec") {
