@@ -109,10 +109,12 @@
             nextIncrement += 5; // Każdy kolejny poziom będzie o 5 trudniejszy od poprzedniego (10, 15, 20, 25...)
             
             timeLeft += 15; // Większy bonus czasu za trudniejsze poziomy
+            timeLeft += 5; // Dodatkowe +5s za złapanie wszystkich ryb w poziomie
+            timerElement.innerText = timeLeft;
             scoreElement.innerText = levelScore;
             targetElement.innerText = currentTarget;
             lvlDisplay.innerText = "Poziom: " + level;
-            levelMsg.innerText = "POZIOM " + level + "!";
+            levelMsg.innerText = "POZIOM " + level + "! +5s";
             levelMsg.style.display = "block";
             setTimeout(() => { levelMsg.style.display = "none"; }, 2000);
         }
