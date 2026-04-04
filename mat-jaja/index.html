@@ -22,10 +22,17 @@
         let W, H;
 
         function resize() {
+            const oldW = W || window.innerWidth;
+            const oldH = H || window.innerHeight;
             W = canvas.width = window.innerWidth;
             H = canvas.height = window.innerHeight;
-            bgStars = Array.from({length:50}, () => ({x:Math.random()*W, y:Math.random()*H*0.9, r:Math.random()*2+0.5, a:Math.random()}));
+            if (!bgStars.length) {
+                bgStars = Array.from({length:50}, () => ({x:Math.random()*W, y:Math.random()*H*0.9, r:Math.random()*2+0.5, a:Math.random()}));
+            } else {
+                bgStars.forEach(s => { s.x = s.x * W/oldW; s.y = s.y * H/oldH; });
+            }
             chmury = [{x:W*0.1,y:H*0.1,r:0.3},{x:W*0.5,y:H*0.065,r:0.5},{x:W*0.8,y:H*0.13,r:0.4}];
+            koszykX = W/2;
         }
         window.addEventListener('resize', resize);
 
@@ -444,7 +451,6 @@
             }
         }
         resize();
-        koszykX = W/2;
         setInterval(update, 1000/60); draw();
     </script>
 </body>
