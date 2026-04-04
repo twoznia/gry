@@ -18,8 +18,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100dvh;
             height: 100vh;
+            height: 100dvh;
         }
         canvas {
             display: block;
@@ -367,7 +367,14 @@
         birdTimer--;
         if (birdTimer <= 0 && !bird) {
             const d = Math.random() > 0.5 ? 1 : -1;
-            bird = { x: d===1 ? -60 : canvas.width+60, y: 28+Math.random()*40, speed: (3.5+Math.random()*2)*d, hasDropped: false, isAiming: false, aimCounter: 0 };
+            bird = {
+                x: d===1 ? -60 : canvas.width+60,
+                y: 28 + Math.random() * 40,
+                speed: (3.5 + Math.random() * 2) * d,
+                hasDropped: false,
+                isAiming: false,
+                aimCounter: 0
+            };
         }
         if (bird) {
             bird.x += bird.speed;
@@ -389,9 +396,9 @@
                 birdDropping.x > player.x && birdDropping.x < player.x + 80) {
                 endGame("bird");
             }
-            if (birdDropping && birdDropping.y > waterLevel) {
-                setTimeout(() => birdDropping = null, 100);
+            if (birdDropping.y > waterLevel) {
                 birdDropping.speed = 0;
+                setTimeout(() => { birdDropping = null; }, 100);
             }
         }
     }
