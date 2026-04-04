@@ -728,7 +728,12 @@ function getPool(continent) {
     return [...COUNTRIES[continent]];
 }
 
+// Minimum pixel distance (in the 300×220 SVG viewport) between map dots
+// to ensure distractors are visually distinguishable from each other.
+const MAP_MIN_PIXEL_DISTANCE = 40;
+
 function getDistractors(correct, pool, attr, count = 3) {
+    // Map mode needs continent-based selection + spatial distance enforcement
     if (attr === 'mapa') {
         return getMapDistractors(correct, count);
     }
@@ -762,7 +767,7 @@ function getMapDistractors(correct, count = 3) {
         .filter(c => c.panstwo !== correctName && CENTROIDS_SVG[c.panstwo]);
     shuffle(continentPool);
 
-    const MIN_DIST = 40; // minimum pixel distance between dots in the 300×220 SVG viewport
+    const MIN_DIST = MAP_MIN_PIXEL_DISTANCE;
     const chosenCoords = correctCoords ? [correctCoords] : [];
     const result = [];
 
