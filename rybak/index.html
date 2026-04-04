@@ -79,6 +79,18 @@
     };
     window.onkeyup = (e) => keys[e.code] = false;
 
+    let mouseDown = false;
+    canvas.addEventListener("mousemove", (e) => {
+        if (!gameActive) return;
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const mouseX = (e.clientX - rect.left) * scaleX;
+        player.x = Math.max(0, Math.min(720, mouseX - 40));
+    });
+    canvas.addEventListener("mousedown", (e) => { if (e.button === 0) mouseDown = true; });
+    canvas.addEventListener("mouseup", (e) => { if (e.button === 0) mouseDown = false; });
+    canvas.addEventListener("mouseleave", () => { mouseDown = false; });
+
     const timerInterval = setInterval(() => {
         if (gameActive) {
             timeLeft--;
@@ -170,7 +182,7 @@
         if (keys["ArrowLeft"] && player.x > 0) player.x -= player.speed;
         if (keys["ArrowRight"] && player.x < 720) player.x += player.speed;
 
-        if ((keys["ArrowDown"] || keys["Space"]) && player.hookY < canvas.height - 35) player.hookY += 6;
+        if ((keys["ArrowDown"] || keys["Space"] || mouseDown) && player.hookY < canvas.height - 35) player.hookY += 6;
         else if (player.hookY > waterLevel) player.hookY -= 6;
 
         player.hookX += (player.x + 40 - player.hookX) * 0.15;
