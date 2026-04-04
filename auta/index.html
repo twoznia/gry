@@ -273,6 +273,19 @@
         if(e.key === 'ArrowRight') handleMove('P');
     });
 
+    let touchStartX = null;
+    screen.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    screen.addEventListener('touchend', (e) => {
+        if (touchStartX === null) return;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 20) {
+            handleMove(dx < 0 ? 'L' : 'P');
+        }
+        touchStartX = null;
+    }, { passive: true });
+
     function spawn(laneIdx) {
         const container = document.createElement('div');
         container.className = 'car-shape';
