@@ -8,31 +8,48 @@
         *, *::before, *::after { box-sizing: border-box; }
         html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #1a1a2e; touch-action: none; }
         body { display: flex; align-items: center; justify-content: center; }
-        canvas { display: block; width: 100vw; height: 100vh; cursor: crosshair; }
+        canvas { display: block; cursor: crosshair; }
     </style>
 </head>
 <body>
     <a href="../" style="position:fixed;top:10px;left:10px;z-index:100;background:rgba(0,0,0,0.55);color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(4px);">← Menu</a>
-    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <canvas id="gameCanvas"></canvas>
 
     <script>
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
 
+        let W, H;
+
+        function resize() {
+            const oldW = W || window.innerWidth;
+            const oldH = H || window.innerHeight;
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+            if (!bgStars.length) {
+                bgStars = Array.from({length:50}, () => ({x:Math.random()*W, y:Math.random()*H*0.9, r:Math.random()*2+0.5, a:Math.random()}));
+            } else {
+                bgStars.forEach(s => { s.x = s.x * W/oldW; s.y = s.y * H/oldH; });
+            }
+            chmury = [{x:W*0.1,y:H*0.1,r:0.3},{x:W*0.5,y:H*0.065,r:0.5},{x:W*0.8,y:H*0.13,r:0.4}];
+            koszykX = W/2;
+        }
+        window.addEventListener('resize', resize);
+
         let punkty = 0, poprawne = 0, bledne = 0, ruchy = 20;
-        let koszykX = 400, jajkaY = -50, predkosc = 3;
+        let koszykX = 0, jajkaY = -50, predkosc = 3;
         let menuEtap = "wiek";
         let wybranyWiek = 10, wybranyTryb = "losowo";
         let zadanie = "", poprawnyWynik = 0, opcje = [];
         let gwiazdki = [], lastFeedback = null, feedbackTimer = 0;
-        let chmury = [{x:100,y:60,r:0.3},{x:420,y:40,r:0.5},{x:650,y:80,r:0.4}];
-        let bgStars = Array.from({length:40}, () => ({x:Math.random()*800, y:Math.random()*600, r:Math.random()*2+0.5, a:Math.random()}));
+        let chmury = [];
+        let bgStars = [];
 
         const przyciskiWiek = [
-            { id: 6, txt: "Poziom: 6 lat", y: 190, color: "#27ae60", hov: "#2ecc71" },
-            { id: 10, txt: "Poziom: 10 lat", y: 268, color: "#2980b9", hov: "#3498db" },
-            { id: 14, txt: "Poziom: 14 lat", y: 346, color: "#d4ac0d", hov: "#f1c40f" },
-            { id: 99, txt: "Poziom: Dorosły", y: 424, color: "#c0392b", hov: "#e74c3c" }
+            { id: 6, txt: "Poziom: 6 lat", color: "#27ae60" },
+            { id: 10, txt: "Poziom: 10 lat", color: "#2980b9" },
+            { id: 14, txt: "Poziom: 14 lat", color: "#d4ac0d" },
+            { id: 99, txt: "Poziom: Dorosły", color: "#c0392b" }
         ];
         let przyciskiOperacja = [];
 
@@ -87,36 +104,42 @@
             opcje.sort(() => Math.random() - 0.5);
         }
 
+        function wiekBtnRect(i) {
+            return { x: W*0.15, y: H*0.33 + i * H*0.13, w: W*0.7, h: H*0.1 };
+        }
+        function opBtnRect(i) {
+            return { x: W*0.15, y: H*0.28 + i * H*0.11, w: W*0.7, h: H*0.085 };
+        }
+
         function getCoords(e) {
             const rect = canvas.getBoundingClientRect();
             const src = e.touches ? e.touches[0] : e;
-            return {
-                x: (src.clientX - rect.left) * (800 / rect.width),
-                y: (src.clientY - rect.top)  * (600 / rect.height)
-            };
+            return { x: src.clientX - rect.left, y: src.clientY - rect.top };
         }
 
         function handleDown(e) {
             const {x: mX, y: mY} = getCoords(e);
             if (menuEtap === "wiek") {
-                przyciskiWiek.forEach(btn => {
-                    if (mX > 200 && mX < 600 && mY > btn.y && mY < btn.y + 58) {
+                przyciskiWiek.forEach((btn, i) => {
+                    const r = wiekBtnRect(i);
+                    if (mX > r.x && mX < r.x+r.w && mY > r.y && mY < r.y+r.h) {
                         wybranyWiek = btn.id;
                         ustawPrzyciskiOperacji();
                         menuEtap = "operacja";
                     }
                 });
             } else if (menuEtap === "operacja") {
-                if (mX > 20 && mX < 140 && mY > 20 && mY < 60) menuEtap = "wiek";
-                przyciskiOperacja.forEach(btn => {
-                    if (mX > 230 && mX < 570 && mY > btn.y && mY < btn.y + 52) {
+                if (mX > 20 && mX < 160 && mY > 16 && mY < 58) menuEtap = "wiek";
+                przyciskiOperacja.forEach((btn, i) => {
+                    const r = opBtnRect(i);
+                    if (mX > r.x && mX < r.x+r.w && mY > r.y && mY < r.y+r.h) {
                         wybranyTryb = btn.id;
                         resetGry();
                         menuEtap = "gra";
                     }
                 });
             } else if (menuEtap === "gra") {
-                if (mX > 660 && mX < 790 && mY > 14 && mY < 58) menuEtap = "wiek";
+                if (mX > W-148 && mX < W-20 && mY > 14 && mY < 56) menuEtap = "wiek";
             } else if (menuEtap === "koniec") {
                 menuEtap = "wiek";
             }
@@ -134,21 +157,20 @@
         canvas.addEventListener("touchmove", handleMove, {passive: false});
 
         function ustawPrzyciskiOperacji() {
-            let y = 170;
             przyciskiOperacja = [
-                { id: "dodawanie",  txt: "Dodawanie (+)",  y: y },
-                { id: "odejmowanie", txt: "Odejmowanie (−)", y: y += 68 }
+                { id: "dodawanie",  txt: "Dodawanie (+)" },
+                { id: "odejmowanie", txt: "Odejmowanie (−)" }
             ];
             if (wybranyWiek >= 10) {
-                przyciskiOperacja.push({ id: "mnożenie",  txt: "Mnożenie (×)",  y: y += 68 });
-                przyciskiOperacja.push({ id: "dzielenie", txt: "Dzielenie (÷)", y: y += 68 });
+                przyciskiOperacja.push({ id: "mnożenie",  txt: "Mnożenie (×)" });
+                przyciskiOperacja.push({ id: "dzielenie", txt: "Dzielenie (÷)" });
             }
-            przyciskiOperacja.push({ id: "losowo", txt: "🎲 Losowo", y: y += 68 });
+            przyciskiOperacja.push({ id: "losowo", txt: "🎲 Losowo" });
         }
 
         function resetGry() {
             punkty = 0; poprawne = 0; bledne = 0; ruchy = 20;
-            predkosc = 3; jajkaY = -50; gwiazdki = []; generujZadanie();
+            predkosc = 3 * H/600; jajkaY = -50; koszykX = W/2; gwiazdki = []; generujZadanie();
         }
 
         function spawnGwiazdki(x, y, ok) {
@@ -174,13 +196,16 @@
             if (menuEtap !== "gra") return;
             jajkaY += predkosc;
             if (feedbackTimer > 0) feedbackTimer--;
-            if (jajkaY > 510 && jajkaY < 580) {
+            const catchTop = H * 0.85, catchBot = H * 0.967;
+            const eggXs = [W/4, W/2, 3*W/4];
+            const catchRange = W * 0.094;
+            if (jajkaY > catchTop && jajkaY < catchBot) {
                 for (let i = 0; i < 3; i++) {
-                    if (Math.abs(koszykX - (i + 1) * 200) < 75) {
+                    if (Math.abs(koszykX - eggXs[i]) < catchRange) {
                         const ok = opcje[i] === poprawnyWynik;
-                        if (ok) { punkty++; poprawne++; predkosc += 0.15; }
+                        if (ok) { punkty++; poprawne++; predkosc += 0.15 * H/600; }
                         else { punkty--; bledne++; }
-                        spawnGwiazdki((i+1)*200, 530, ok);
+                        spawnGwiazdki(eggXs[i], H * 0.883, ok);
                         lastFeedback = ok ? "✓" : "✗";
                         feedbackTimer = 45;
                         ruchy--;
@@ -188,7 +213,7 @@
                     }
                 }
             }
-            if (jajkaY > 600) {
+            if (jajkaY > H) {
                 bledne++; punkty--; ruchy--;
                 lastFeedback = "✗"; feedbackTimer = 45;
                 jajkaY = -50; generujZadanie();
@@ -199,7 +224,7 @@
 
         /* ---- drawing helpers ---- */
         function skyGradient() {
-            const g = ctx.createLinearGradient(0, 0, 0, 600);
+            const g = ctx.createLinearGradient(0, 0, 0, H);
             g.addColorStop(0, "#0d1b3e");
             g.addColorStop(1, "#1a4a6e");
             return g;
@@ -226,11 +251,12 @@
         }
 
         function drawGround() {
-            const g = ctx.createLinearGradient(0, 575, 0, 600);
+            const gy = H * 0.958;
+            const g = ctx.createLinearGradient(0, gy, 0, H);
             g.addColorStop(0, "#27ae60");
             g.addColorStop(1, "#1e8449");
             ctx.fillStyle = g;
-            ctx.fillRect(0, 575, 800, 25);
+            ctx.fillRect(0, gy, W, H - gy);
         }
 
         function drawButton(txt, x, y, w, h, color, fontSize = 21) {
@@ -260,47 +286,53 @@
 
         function drawEgg(x, y, val, highlight, idx) {
             const pal = eggPalette[idx % eggPalette.length];
-            // shadow
+            // shadow + body
             ctx.save();
             ctx.shadowColor = "rgba(0,0,0,0.5)";
             ctx.shadowBlur = 22;
             ctx.shadowOffsetY = 10;
-            const eg = ctx.createRadialGradient(x - 14, y - 20, 6, x, y, 68);
+            const eg = ctx.createRadialGradient(x - 14, y - 25, 6, x, y - 10, 68);
             eg.addColorStop(0, highlight ? "#ffe066" : pal.light);
+            eg.addColorStop(0.6, highlight ? "#f5b942" : pal.light);
             eg.addColorStop(1, highlight ? "#f39c12" : pal.dark);
             ctx.fillStyle = eg;
             ctx.beginPath(); ctx.ellipse(x, y, 60, 72, 0, 0, Math.PI * 2); ctx.fill();
             ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
-            // shine
+            // shine (upper-left only, does not cover number area)
             ctx.fillStyle = "rgba(255,255,255,0.40)";
-            ctx.beginPath(); ctx.ellipse(x - 16, y - 22, 18, 26, -0.5, 0, Math.PI * 2); ctx.fill();
+            ctx.beginPath(); ctx.ellipse(x - 16, y - 28, 18, 22, -0.5, 0, Math.PI * 2); ctx.fill();
             ctx.restore();
-            // number with outline for legibility
+            // white oval background behind number for clear readability
+            ctx.fillStyle = "rgba(255,255,255,0.5)";
+            ctx.beginPath(); ctx.ellipse(x, y + 14, 34, 26, 0, 0, Math.PI * 2); ctx.fill();
+            // number
             ctx.font = `bold 36px 'Segoe UI', Arial`;
             ctx.textAlign = "center";
-            ctx.strokeStyle = "rgba(0,0,0,0.7)";
-            ctx.lineWidth = 5;
+            ctx.strokeStyle = "rgba(0,0,0,0.3)";
+            ctx.lineWidth = 3;
             ctx.lineJoin = "round";
-            ctx.strokeText(val, x, y + 13);
-            ctx.fillStyle = "white";
-            ctx.fillText(val, x, y + 13);
+            ctx.strokeText(val, x, y + 23);
+            ctx.fillStyle = "#1a1a2e";
+            ctx.fillText(val, x, y + 23);
             ctx.textAlign = "left";
         }
 
         function drawBasket(bx) {
+            const by = H * 0.913;
+            const bh = H * 0.05;
+            const bw = W * 0.188;
             ctx.save();
             ctx.shadowColor = "rgba(0,0,0,0.4)";
             ctx.shadowBlur = 12;
             ctx.shadowOffsetY = 4;
-            const bg = ctx.createLinearGradient(bx-75, 548, bx+75, 548);
+            const bg = ctx.createLinearGradient(bx-bw/2, by, bx+bw/2, by);
             bg.addColorStop(0, "#6c3483");
             bg.addColorStop(0.5, "#9b59b6");
             bg.addColorStop(1, "#6c3483");
             ctx.fillStyle = bg;
-            ctx.beginPath(); ctx.roundRect(bx - 75, 548, 150, 30, [0, 0, 12, 12]); ctx.fill();
-            // rim
+            ctx.beginPath(); ctx.roundRect(bx - bw/2, by, bw, bh, [0, 0, 12, 12]); ctx.fill();
             ctx.strokeStyle = "#d7bde2"; ctx.lineWidth = 3;
-            ctx.beginPath(); ctx.moveTo(bx - 75, 552); ctx.lineTo(bx + 75, 552); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(bx - bw/2, by + 4); ctx.lineTo(bx + bw/2, by + 4); ctx.stroke();
             ctx.restore();
         }
 
@@ -317,71 +349,71 @@
         }
 
         function drawHUD() {
-            // bar background
             ctx.fillStyle = "rgba(0,0,0,0.4)";
-            ctx.beginPath(); ctx.roundRect(10, 10, 630, 42, 10); ctx.fill();
+            ctx.beginPath(); ctx.roundRect(10, 10, W*0.78, 42, 10); ctx.fill();
             ctx.fillStyle = "white";
             ctx.font = "bold 17px 'Segoe UI', Arial";
             ctx.fillText(`⭐ ${punkty}  ✅ ${poprawne}  ❌ ${bledne}  🎯 ${ruchy}`, 22, 37);
-            // feedback flash
             if (feedbackTimer > 0) {
                 ctx.save();
                 ctx.globalAlpha = feedbackTimer / 45;
                 ctx.font = `bold 72px Arial`;
                 ctx.fillStyle = lastFeedback === "✓" ? "#2ecc71" : "#e74c3c";
                 ctx.textAlign = "center";
-                ctx.fillText(lastFeedback, 400, 320);
+                ctx.fillText(lastFeedback, W/2, H/2);
                 ctx.textAlign = "left";
                 ctx.restore();
             }
         }
 
         function draw() {
-            // background
             ctx.fillStyle = skyGradient();
-            ctx.fillRect(0, 0, 800, 600);
+            ctx.fillRect(0, 0, W, H);
             drawBgStars();
 
             if (menuEtap === "wiek") {
-                chmury.forEach(c => { c.x = (c.x + 0.4) % 900; drawCloud(c.x, c.y * 3, c.r * 1.5 + 0.7); });
-                // panel
+                chmury.forEach(c => { c.x = (c.x + 0.4) % (W + 200); drawCloud(c.x, c.y * 2.5, c.r * 1.5 + 0.7); });
                 ctx.fillStyle = "rgba(255,255,255,0.07)";
-                ctx.beginPath(); ctx.roundRect(150, 130, 500, 370, 20); ctx.fill();
+                ctx.beginPath(); ctx.roundRect(W*0.05, H*0.1, W*0.9, H*0.8, 20); ctx.fill();
                 ctx.fillStyle = "white";
-                ctx.font = "bold 34px 'Segoe UI', Arial";
+                ctx.font = `bold ${Math.min(34, W*0.042)}px 'Segoe UI', Arial`;
                 ctx.textAlign = "center";
-                ctx.fillText("🥚 Matematyczne Jajka 🥚", 400, 175);
-                ctx.font = "22px 'Segoe UI', Arial";
+                ctx.fillText("🥚 Matematyczne Jajka 🥚", W/2, H*0.22);
+                ctx.font = `${Math.min(22, W*0.027)}px 'Segoe UI', Arial`;
                 ctx.fillStyle = "#aad4f5";
-                ctx.fillText("Wybierz poziom", 400, 210);
+                ctx.fillText("Wybierz poziom", W/2, H*0.3);
                 ctx.textAlign = "left";
-                przyciskiWiek.forEach(btn => drawButton(btn.txt, 200, btn.y, 400, 58, btn.color));
+                przyciskiWiek.forEach((btn, i) => {
+                    const r = wiekBtnRect(i);
+                    drawButton(btn.txt, r.x, r.y, r.w, r.h, btn.color, Math.min(21, W*0.026));
+                });
             } else if (menuEtap === "operacja") {
-                chmury.forEach(c => { c.x = (c.x + 0.4) % 900; drawCloud(c.x, c.y * 3, c.r * 1.5 + 0.7); });
+                chmury.forEach(c => { c.x = (c.x + 0.4) % (W + 200); drawCloud(c.x, c.y * 2.5, c.r * 1.5 + 0.7); });
                 ctx.fillStyle = "rgba(255,255,255,0.07)";
-                ctx.beginPath(); ctx.roundRect(150, 120, 500, 390, 20); ctx.fill();
+                ctx.beginPath(); ctx.roundRect(W*0.05, H*0.1, W*0.9, H*0.85, 20); ctx.fill();
                 ctx.fillStyle = "white";
-                ctx.font = "bold 28px 'Segoe UI', Arial";
+                ctx.font = `bold ${Math.min(28, W*0.035)}px 'Segoe UI', Arial`;
                 ctx.textAlign = "center";
-                ctx.fillText("Wybierz działanie", 400, 165);
+                ctx.fillText("Wybierz działanie", W/2, H*0.2);
                 ctx.textAlign = "left";
-                drawButton("← Powrót", 20, 16, 130, 42, "#7f8c8d", 17);
-                przyciskiOperacja.forEach(btn => drawButton(btn.txt, 230, btn.y, 340, 52, "#2c3e50"));
+                drawButton("← Powrót", 20, 16, 140, 42, "#7f8c8d", 17);
+                przyciskiOperacja.forEach((btn, i) => {
+                    const r = opBtnRect(i);
+                    drawButton(btn.txt, r.x, r.y, r.w, r.h, "#2c3e50", Math.min(20, W*0.025));
+                });
             } else if (menuEtap === "gra") {
-                chmury.forEach(c => { c.x = (c.x + 0.3) % 900; drawCloud(c.x, c.y * 2.5, c.r + 0.5); });
+                chmury.forEach(c => { c.x = (c.x + 0.3) % (W + 200); drawCloud(c.x, c.y * 2, c.r + 0.5); });
                 drawGround();
                 drawHUD();
-                drawButton("Menu", 662, 14, 128, 42, "#e67e22", 17);
-                // zadanie panel
+                drawButton("Menu", W-148, 14, 128, 42, "#e67e22", 17);
                 ctx.fillStyle = "rgba(255,255,255,0.12)";
-                ctx.beginPath(); ctx.roundRect(180, 65, 440, 70, 15); ctx.fill();
+                ctx.beginPath(); ctx.roundRect(W*0.1, 65, W*0.8, 70, 15); ctx.fill();
                 ctx.fillStyle = "white";
-                ctx.font = "bold 50px 'Segoe UI', Arial";
+                ctx.font = `bold ${Math.min(50, W*0.062)}px 'Segoe UI', Arial`;
                 ctx.textAlign = "center";
-                ctx.fillText(zadanie, 400, 120);
+                ctx.fillText(zadanie, W/2, 120);
                 ctx.textAlign = "left";
-                // eggs
-                opcje.forEach((val, i) => drawEgg((i+1)*200, jajkaY, val, false, i));
+                opcje.forEach((val, i) => drawEgg((i+1)*W/4, jajkaY, val, false, i));
                 drawBasket(koszykX);
                 drawGwiazdki();
             } else if (menuEtap === "koniec") {
@@ -392,19 +424,19 @@
                 else if (win) { msg = "ZWYCIĘSTWO! 🏆"; endColor = "#2ecc71"; }
                 else { msg = "SESJA ZAKOŃCZONA!"; endColor = "#f1c40f"; }
                 ctx.fillStyle = "rgba(255,255,255,0.08)";
-                ctx.beginPath(); ctx.roundRect(150, 120, 500, 360, 20); ctx.fill();
+                ctx.beginPath(); ctx.roundRect(W*0.05, H*0.12, W*0.9, H*0.76, 20); ctx.fill();
                 ctx.textAlign = "center";
-                ctx.font = "bold 52px 'Segoe UI', Arial";
+                ctx.font = `bold ${Math.min(52, W*0.065)}px 'Segoe UI', Arial`;
                 ctx.fillStyle = endColor;
-                ctx.fillText(msg, 400, 210);
-                ctx.font = "26px 'Segoe UI', Arial";
+                ctx.fillText(msg, W/2, H*0.3);
+                ctx.font = `${Math.min(26, W*0.032)}px 'Segoe UI', Arial`;
                 ctx.fillStyle = "white";
-                ctx.fillText(`Wynik końcowy: ${punkty}`, 400, 275);
-                ctx.fillText(`✅ Poprawne: ${poprawne}`, 400, 315);
-                ctx.fillText(`❌ Błędne: ${bledne}`, 400, 355);
-                ctx.font = "bold 20px 'Segoe UI', Arial";
+                ctx.fillText(`Wynik końcowy: ${punkty}`, W/2, H*0.43);
+                ctx.fillText(`✅ Poprawne: ${poprawne}`, W/2, H*0.53);
+                ctx.fillText(`❌ Błędne: ${bledne}`, W/2, H*0.63);
+                ctx.font = `bold ${Math.min(20, W*0.025)}px 'Segoe UI', Arial`;
                 ctx.fillStyle = "#aad4f5";
-                ctx.fillText("Dotknij, aby wrócić do menu", 400, 430);
+                ctx.fillText("Dotknij, aby wrócić do menu", W/2, H*0.77);
                 ctx.textAlign = "left";
             }
             requestAnimationFrame(draw);
@@ -412,11 +444,13 @@
 
         if (!CanvasRenderingContext2D.prototype.roundRect) {
             CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
-                this.beginPath(); this.moveTo(x + r, y); this.arcTo(x + w, y, x + w, y + h, r);
-                this.arcTo(x + w, y + h, x, y + h, r); this.arcTo(x, y + h, x, y, r);
-                this.arcTo(x, y, x + w, y, r); this.closePath(); return this;
+                const rad = Array.isArray(r) ? r[0] : r;
+                this.beginPath(); this.moveTo(x + rad, y); this.arcTo(x + w, y, x + w, y + h, rad);
+                this.arcTo(x + w, y + h, x, y + h, rad); this.arcTo(x, y + h, x, y, rad);
+                this.arcTo(x, y, x + w, y, rad); this.closePath(); return this;
             }
         }
+        resize();
         setInterval(update, 1000/60); draw();
     </script>
 </body>

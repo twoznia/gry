@@ -904,7 +904,12 @@ function renderQuestion() {
 
     // Answers
     const correctVal = bottomAttr === 'mapa' ? country.panstwo : country[bottomAttr];
-    const distractors = getDistractors(country, pool, bottomAttr);
+    // When top is a map, restrict distractors to the same continent as the correct country
+    // so the player must identify the specific country within its region.
+    const distractorPool = (topAttr === 'mapa' && bottomAttr !== 'mapa')
+        ? (COUNTRIES[COUNTRY_CONTINENT[country.panstwo]] || pool)
+        : pool;
+    const distractors = getDistractors(country, distractorPool, bottomAttr);
     const choices = shuffle([correctVal, ...distractors]);
 
     const grid = document.getElementById('answers-grid');
