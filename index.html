@@ -42,8 +42,8 @@
 
         .game-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(336px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: 1.5rem;
             width: 90%;
             max-width: 1200px;
         }
@@ -98,6 +98,44 @@
             margin-top: 4rem;
             font-size: 0.8rem;
             color: #475569;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                justify-content: flex-start;
+                padding: 2rem 0 2rem;
+            }
+
+            header {
+                margin-bottom: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .game-container {
+                gap: 1rem;
+                width: 92%;
+            }
+
+            .game-card {
+                padding: 1.5rem 1rem;
+                border-radius: 14px;
+            }
+
+            .icon {
+                font-size: 2.8rem;
+                margin-bottom: 1rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            footer {
+                margin-top: 2rem;
+            }
         }
     </style>
 </head>
