@@ -110,6 +110,20 @@
             padding: 5px 18px;
             border-radius: 20px;
         }
+        #word-hint.hint-hidden { display: none; }
+
+        #hint-btn {
+            background: none;
+            border: 2px solid #c4b5fd;
+            border-radius: 20px;
+            color: #7c3aed;
+            font-size: 0.85rem;
+            font-weight: bold;
+            padding: 4px 14px;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+        #hint-btn:active { opacity: 0.7; }
 
         /* ── Answer boxes ── */
         #answer-boxes {
@@ -172,7 +186,7 @@
 
         /* ── Check button ── */
         #check-btn {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: white;
             border: none;
             border-radius: 22px;
@@ -180,7 +194,7 @@
             font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 5px 0 #15803d;
+            box-shadow: 0 5px 0 #1d4ed8;
             display: none;
             transition: box-shadow 0.08s, transform 0.08s;
             -webkit-tap-highlight-color: transparent;
@@ -188,7 +202,7 @@
         #check-btn.show { display: inline-block; }
         #check-btn:active {
             transform: translateY(4px);
-            box-shadow: 0 1px 0 #15803d;
+            box-shadow: 0 1px 0 #1d4ed8;
         }
 
         /* ── Letter pool ── */
@@ -296,9 +310,10 @@
 
 <div id="game-card">
     <div id="emoji-area"></div>
-    <div id="word-hint"></div>
+    <button id="hint-btn" onclick="toggleHint()">💡 Podpowiedź</button>
+    <div id="word-hint" class="hint-hidden"></div>
     <div id="answer-boxes"></div>
-    <button id="check-btn" onclick="checkAnswer()">Sprawdź ✓</button>
+    <button id="check-btn" onclick="checkAnswer()">Sprawdź</button>
     <div id="letter-pool"></div>
 </div>
 
@@ -545,7 +560,10 @@ function loadWord() {
     }));
 
     // Hint
-    document.getElementById('word-hint').textContent = hint;
+    const hintEl = document.getElementById('word-hint');
+    hintEl.textContent = hint;
+    hintEl.classList.add('hint-hidden');
+    document.getElementById('hint-btn').textContent = '💡 Podpowiedź';
 
     // Reset state
     pool        = makePool(word);
@@ -555,6 +573,14 @@ function loadWord() {
 
     renderAll();
     document.getElementById('check-btn').classList.remove('show');
+}
+
+/* ─────────────── Hint ─────────────── */
+function toggleHint() {
+    const hintEl = document.getElementById('word-hint');
+    const btn    = document.getElementById('hint-btn');
+    const hidden = hintEl.classList.toggle('hint-hidden');
+    btn.textContent = hidden ? '💡 Podpowiedź' : '🙈 Ukryj';
 }
 
 /* ─────────────── Confetti ─────────────── */
