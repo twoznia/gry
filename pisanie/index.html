@@ -723,6 +723,36 @@ function spawnConfetti() {
     }
 }
 
+/* ─────────────── Keyboard input ─────────────── */
+document.addEventListener('keydown', e => {
+    // Ignore when overlay is open
+    if (document.getElementById('overlay').classList.contains('show')) return;
+
+    if (e.key === 'Backspace') {
+        e.preventDefault();
+        // Remove the last filled, non-locked box
+        for (let i = boxes.length - 1; i >= 0; i--) {
+            if (boxes[i] !== null && !lockedBoxes.has(i)) {
+                removeBoxLetter(i);
+                break;
+            }
+        }
+        return;
+    }
+
+    if (e.key === 'Enter') {
+        const btn = document.getElementById('check-btn');
+        if (btn.classList.contains('show')) checkAnswer();
+        return;
+    }
+
+    // Letter key: find matching unused pool item
+    const letter = e.key.toUpperCase();
+    if (letter.length !== 1) return;
+    const item = pool.find(p => !p.used && p.letter === letter);
+    if (item) addLetter(item.id);
+});
+
 /* ─────────────── Init ─────────────── */
 selectLevelWords(level);
 loadWord();
