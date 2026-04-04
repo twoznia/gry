@@ -269,6 +269,15 @@
                 <option value="mapa">📍 Mapa</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="sel-questions">Liczba pytań</label>
+            <select id="sel-questions">
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+        </div>
     </div>
 
     <div class="error-msg" id="setup-error"></div>
@@ -279,15 +288,9 @@
 <section id="screen-game" class="screen">
     <div class="hud" style="width:100%;max-width:560px;">
         <span id="q-counter">Pytanie 1 / 5</span>
-        <span>Punkty: <span class="score-val" id="score-display">0</span> / 15</span>
+        <span>Punkty: <span class="score-val" id="score-display">0</span> / <span id="score-max">15</span></span>
     </div>
-    <div class="progress-bar" id="progress-bar" style="width:100%;max-width:560px;">
-        <div class="progress-dot current"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-    </div>
+    <div class="progress-bar" id="progress-bar" style="width:100%;max-width:560px;"></div>
 
     <div class="card pop" id="top-card">
         <div class="q-attr-label" id="top-attr-label">Flaga</div>
@@ -307,7 +310,7 @@
 <section id="screen-results" class="screen">
     <div class="game-title">🏆 Wyniki</div>
     <div class="result-score" id="result-score">0</div>
-    <div class="result-max">na 15 możliwych punktów</div>
+    <div class="result-max" id="result-max">na 15 możliwych punktów</div>
     <div class="result-comment" id="result-comment"></div>
     <div class="card result-list" id="result-list"></div>
     <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
@@ -604,6 +607,7 @@ document.getElementById('btn-start').addEventListener('click', () => {
     const continent  = document.getElementById('sel-continent').value;
     const topAttr    = document.getElementById('sel-top').value;
     const bottomAttr = document.getElementById('sel-bottom').value;
+    const numQ       = parseInt(document.getElementById('sel-questions').value, 10);
     const errEl      = document.getElementById('setup-error');
 
     if (topAttr === bottomAttr) {
@@ -619,12 +623,13 @@ document.getElementById('btn-start').addEventListener('click', () => {
     }
 
     const shuffled = shuffle([...pool]);
-    const questions = shuffled.slice(0, 5);
+    const questions = shuffled.slice(0, Math.min(numQ, pool.length));
 
     state = {
         continent,
         topAttr,
         bottomAttr,
+        numQ: questions.length,
         questions,
         pool,
         currentQ: 0,
@@ -634,21 +639,32 @@ document.getElementById('btn-start').addEventListener('click', () => {
         results: [],        // { country, correct, pointsEarned }
     };
 
+    document.getElementById('score-max').textContent = state.numQ * 3;
+
     showScreen('game');
     renderQuestion();
 });
 
 // ─── Render Question ──────────────────────────────────────────────────────────
 function renderQuestion() {
-    const { currentQ, questions, topAttr, bottomAttr, pool, score } = state;
+    const { currentQ, questions, topAttr, bottomAttr, pool, score, numQ } = state;
     const country = questions[currentQ];
 
     // HUD
-    document.getElementById('q-counter').textContent = `Pytanie ${currentQ + 1} / 5`;
+    document.getElementById('q-counter').textContent = `Pytanie ${currentQ + 1} / ${numQ}`;
     document.getElementById('score-display').textContent = score;
 
     // Progress dots
-    const dots = document.querySelectorAll('#progress-bar .progress-dot');
+    const progressBar = document.getElementById('progress-bar');
+    if (progressBar.children.length !== numQ) {
+        progressBar.innerHTML = '';
+        for (let i = 0; i < numQ; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'progress-dot';
+            progressBar.appendChild(dot);
+        }
+    }
+    const dots = progressBar.querySelectorAll('.progress-dot');
     dots.forEach((d, i) => {
         d.classList.remove('done', 'current');
         if (i < currentQ)       d.classList.add('done');
@@ -705,7 +721,7 @@ function renderQuestion() {
     document.getElementById('feedback').className = 'feedback';
     const btnNext = document.getElementById('btn-next');
     btnNext.style.display = 'none';
-    btnNext.textContent = currentQ === 4 ? 'Zobacz Wyniki →' : 'Następne Pytanie →';
+    btnNext.textContent = currentQ === numQ - 1 ? 'Zobacz Wyniki →' : 'Następne Pytanie →';
 
     // Pop animation
     const topCard = document.getElementById('top-card');
@@ -777,7 +793,7 @@ function handleAnswer(chosen, correct) {
 // ─── Next Question ────────────────────────────────────────────────────────────
 document.getElementById('btn-next').addEventListener('click', () => {
     state.currentQ++;
-    if (state.currentQ >= 5) {
+    if (state.currentQ >= state.numQ) {
         showResults();
     } else {
         renderQuestion();
@@ -786,17 +802,19 @@ document.getElementById('btn-next').addEventListener('click', () => {
 
 // ─── Results ─────────────────────────────────────────────────────────────────
 function showResults() {
-    const { score, results, topAttr, bottomAttr } = state;
+    const { score, results, topAttr, bottomAttr, numQ } = state;
     showScreen('results');
 
     document.getElementById('result-score').textContent = score;
+    const maxPts = numQ * 3;
+    document.getElementById('result-max').textContent = `na ${maxPts} możliwych punktów`;
 
     let comment = '';
-    if (score >= 13)     comment = '🏆 Doskonale! Jesteś mistrzem geografii!';
-    else if (score >= 10) comment = '🌟 Świetnie! Znasz się na mapach!';
-    else if (score >= 7)  comment = '📚 Nieźle! Jest jeszcze pole do nauki.';
-    else if (score >= 4)  comment = '💪 Spróbuj jeszcze raz!';
-    else                   comment = '🌍 Warto więcej ćwiczyć!';
+    if (score >= maxPts * 0.87)      comment = '🏆 Doskonale! Jesteś mistrzem geografii!';
+    else if (score >= maxPts * 0.67) comment = '🌟 Świetnie! Znasz się na mapach!';
+    else if (score >= maxPts * 0.47) comment = '📚 Nieźle! Jest jeszcze pole do nauki.';
+    else if (score >= maxPts * 0.27) comment = '💪 Spróbuj jeszcze raz!';
+    else                              comment = '🌍 Warto więcej ćwiczyć!';
     document.getElementById('result-comment').textContent = comment;
 
     const list = document.getElementById('result-list');
