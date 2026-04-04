@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kraje | @twoznia</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #f59e0b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem 1rem 3rem;
+        }
+        a.back-link {
+            align-self: flex-start;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        a.back-link:hover { color: var(--accent); }
+
+        /* Screens */
+        .screen { width: 100%; max-width: 560px; display: none; flex-direction: column; align-items: center; gap: 1.25rem; }
+        .screen.active { display: flex; }
+
+        /* Typography */
+        .game-title { font-size: 2.5rem; text-align: center; }
+        .game-subtitle { color: var(--muted); text-align: center; font-size: 0.95rem; }
+
+        /* Card */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            width: 100%;
+        }
+
+        /* Form */
+        .form-group { margin-bottom: 1.1rem; }
+        .form-group:last-child { margin-bottom: 0; }
+        label { display: block; color: var(--muted); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+        select {
+            width: 100%;
+            background: var(--bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.65rem 2rem 0.65rem 0.85rem;
+            font-size: 1rem;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.8rem center;
+            cursor: pointer;
+        }
+        select:focus { outline: 2px solid var(--accent); border-color: transparent; }
+        .error-msg { color: var(--red); font-size: 0.88rem; text-align: center; min-height: 1.2rem; }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary { background: var(--accent); color: #000; }
+        .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+        .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+        .btn-secondary {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* Progress */
+        .hud {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+        .hud .score-val { color: var(--accent); font-weight: 700; font-size: 1.05rem; }
+        .progress-bar { width: 100%; display: flex; gap: 6px; }
+        .progress-dot { flex: 1; height: 5px; border-radius: 3px; background: var(--border); transition: background 0.3s; }
+        .progress-dot.done { background: var(--green); }
+        .progress-dot.current { background: var(--accent); }
+
+        /* Question top card */
+        .q-attr-label {
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            text-align: center;
+            margin-bottom: 0.6rem;
+        }
+        .q-value {
+            text-align: center;
+            font-size: 4rem;
+            line-height: 1.1;
+        }
+        .q-value.text-mode {
+            font-size: 1.9rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .q-value.small-text {
+            font-size: 1.4rem;
+        }
+        .q-instruction {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        /* Answers */
+        .answers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.7rem;
+            width: 100%;
+        }
+        .answer-btn {
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            padding: 1rem 0.6rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+            text-align: center;
+            line-height: 1.3;
+            min-height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .answer-btn.emoji { font-size: 2.2rem; }
+        .answer-btn:hover:not(:disabled) {
+            border-color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+        }
+        .answer-btn:disabled { cursor: default; }
+        .answer-btn.correct { border-color: var(--green) !important; background: rgba(34, 197, 94, 0.15) !important; }
+        .answer-btn.wrong   { border-color: var(--red)   !important; background: rgba(239, 68, 68, 0.15)  !important; }
+        .answer-btn.reveal  { border-color: var(--yellow)!important; background: rgba(245, 158, 11, 0.15) !important; }
+
+        /* Feedback */
+        .feedback {
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            min-height: 1.5rem;
+        }
+        .feedback.ok  { color: var(--green); }
+        .feedback.bad { color: var(--red); }
+        .feedback.info { color: var(--yellow); }
+
+        /* Results */
+        .result-score { font-size: 3.5rem; font-weight: 700; color: var(--accent); text-align: center; }
+        .result-max   { color: var(--muted); font-size: 0.95rem; text-align: center; }
+        .result-comment { font-size: 1.2rem; text-align: center; }
+        .result-list { width: 100%; }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.55rem 0;
+            border-bottom: 1px solid var(--border);
+            gap: 0.5rem;
+        }
+        .result-item:last-child { border-bottom: none; }
+        .result-item-left { font-size: 0.88rem; color: var(--muted); flex: 1; }
+        .result-item-ans  { font-size: 0.88rem; }
+        .result-item-pts  { font-weight: 700; font-size: 0.95rem; min-width: 2rem; text-align: right; }
+        .pts-3 { color: var(--green); }
+        .pts-1 { color: var(--yellow); }
+        .pts-0 { color: var(--red); }
+
+        footer { margin-top: 3rem; font-size: 0.78rem; color: #475569; }
+
+        @keyframes pop  { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 75%{transform:translateX(7px)} }
+        .pop   { animation: pop   0.25s ease-out; }
+        .shake { animation: shake 0.3s ease; }
+    </style>
+</head>
+<body>
+
+<a href="../" class="back-link">← Powrót do menu</a>
+
+<!-- ========== SETUP SCREEN ========== -->
+<section id="screen-setup" class="screen active">
+    <div class="game-title">🌍 Kraje</div>
+    <p class="game-subtitle">Quiz geograficzny – sprawdź swoją wiedzę!</p>
+
+    <div class="card">
+        <div class="form-group">
+            <label for="sel-continent">Kontynent</label>
+            <select id="sel-continent">
+                <option value="Wszystkie">🌐 Wszystkie</option>
+                <option value="Europa">🇪🇺 Europa</option>
+                <option value="Azja">🌏 Azja</option>
+                <option value="Ameryka Północna">🌎 Ameryka Północna</option>
+                <option value="Ameryka Południowa">🌎 Ameryka Południowa</option>
+                <option value="Afryka">🌍 Afryka</option>
+                <option value="Australia i Oceania">🌏 Australia i Oceania</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sel-top">Atrybut wyświetlany NA GÓRZE</label>
+            <select id="sel-top">
+                <option value="flaga">🏳️ Flaga</option>
+                <option value="panstwo">🗺️ Państwo</option>
+                <option value="stolica">🏛️ Stolica</option>
+                <option value="ludnosc">👥 Ludność</option>
+                <option value="powierzchnia">📐 Powierzchnia</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sel-bottom">Atrybut do wyboru NA DOLE</label>
+            <select id="sel-bottom">
+                <option value="panstwo">🗺️ Państwo</option>
+                <option value="stolica">🏛️ Stolica</option>
+                <option value="flaga">🏳️ Flaga</option>
+                <option value="ludnosc">👥 Ludność</option>
+                <option value="powierzchnia">📐 Powierzchnia</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="error-msg" id="setup-error"></div>
+    <button class="btn btn-primary" id="btn-start">Rozpocznij Quiz →</button>
+</section>
+
+<!-- ========== GAME SCREEN ========== -->
+<section id="screen-game" class="screen">
+    <div class="hud" style="width:100%;max-width:560px;">
+        <span id="q-counter">Pytanie 1 / 5</span>
+        <span>Punkty: <span class="score-val" id="score-display">0</span> / 15</span>
+    </div>
+    <div class="progress-bar" id="progress-bar" style="width:100%;max-width:560px;">
+        <div class="progress-dot current"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+    </div>
+
+    <div class="card pop" id="top-card">
+        <div class="q-attr-label" id="top-attr-label">Flaga</div>
+        <div class="q-value" id="top-value">🇵🇱</div>
+    </div>
+
+    <p class="q-instruction" id="q-instruction">Wybierz państwo:</p>
+
+    <div class="answers-grid" id="answers-grid"></div>
+
+    <div class="feedback" id="feedback"></div>
+
+    <button class="btn btn-primary" id="btn-next" style="display:none;">Następne Pytanie →</button>
+</section>
+
+<!-- ========== RESULTS SCREEN ========== -->
+<section id="screen-results" class="screen">
+    <div class="game-title">🏆 Wyniki</div>
+    <div class="result-score" id="result-score">0</div>
+    <div class="result-max">na 15 możliwych punktów</div>
+    <div class="result-comment" id="result-comment"></div>
+    <div class="card result-list" id="result-list"></div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+        <button class="btn btn-primary" id="btn-replay">Zagraj ponownie</button>
+        <a href="../" class="btn btn-secondary">← Menu główne</a>
+    </div>
+</section>
+
+<footer>@twoznia | 2026</footer>
+
+<script>
+// ─── Country Data ────────────────────────────────────────────────────────────
+const COUNTRIES = {
+    "Europa": [
+        { panstwo: "Polska",          stolica: "Warszawa",     flaga: "🇵🇱", ludnosc: "38,4 mln",   powierzchnia: "312,7 tys. km²" },
+        { panstwo: "Niemcy",          stolica: "Berlin",       flaga: "🇩🇪", ludnosc: "84,1 mln",   powierzchnia: "357,1 tys. km²" },
+        { panstwo: "Francja",         stolica: "Paryż",        flaga: "🇫🇷", ludnosc: "68,0 mln",   powierzchnia: "551,7 tys. km²" },
+        { panstwo: "Włochy",          stolica: "Rzym",         flaga: "🇮🇹", ludnosc: "60,4 mln",   powierzchnia: "301,3 tys. km²" },
+        { panstwo: "Hiszpania",       stolica: "Madryt",       flaga: "🇪🇸", ludnosc: "47,4 mln",   powierzchnia: "505,9 tys. km²" },
+        { panstwo: "Wielka Brytania", stolica: "Londyn",       flaga: "🇬🇧", ludnosc: "67,6 mln",   powierzchnia: "243,6 tys. km²" },
+        { panstwo: "Holandia",        stolica: "Amsterdam",    flaga: "🇳🇱", ludnosc: "17,9 mln",   powierzchnia: "41,5 tys. km²"  },
+        { panstwo: "Belgia",          stolica: "Bruksela",     flaga: "🇧🇪", ludnosc: "11,6 mln",   powierzchnia: "30,5 tys. km²"  },
+        { panstwo: "Szwecja",         stolica: "Sztokholm",    flaga: "🇸🇪", ludnosc: "10,5 mln",   powierzchnia: "450,3 tys. km²" },
+        { panstwo: "Norwegia",        stolica: "Oslo",         flaga: "🇳🇴", ludnosc: "5,4 mln",    powierzchnia: "385,2 tys. km²" },
+        { panstwo: "Dania",           stolica: "Kopenhaga",    flaga: "🇩🇰", ludnosc: "5,9 mln",    powierzchnia: "43,1 tys. km²"  },
+        { panstwo: "Finlandia",       stolica: "Helsinki",     flaga: "🇫🇮", ludnosc: "5,5 mln",    powierzchnia: "338,4 tys. km²" },
+        { panstwo: "Portugalia",      stolica: "Lizbona",      flaga: "🇵🇹", ludnosc: "10,3 mln",   powierzchnia: "92,2 tys. km²"  },
+        { panstwo: "Grecja",          stolica: "Ateny",        flaga: "🇬🇷", ludnosc: "10,6 mln",   powierzchnia: "131,9 tys. km²" },
+        { panstwo: "Austria",         stolica: "Wiedeń",       flaga: "🇦🇹", ludnosc: "9,0 mln",    powierzchnia: "83,9 tys. km²"  },
+        { panstwo: "Szwajcaria",      stolica: "Berno",        flaga: "🇨🇭", ludnosc: "8,7 mln",    powierzchnia: "41,3 tys. km²"  },
+        { panstwo: "Czechy",          stolica: "Praga",        flaga: "🇨🇿", ludnosc: "10,9 mln",   powierzchnia: "78,9 tys. km²"  },
+        { panstwo: "Węgry",           stolica: "Budapeszt",    flaga: "🇭🇺", ludnosc: "9,7 mln",    powierzchnia: "93,0 tys. km²"  },
+        { panstwo: "Rumunia",         stolica: "Bukareszt",    flaga: "🇷🇴", ludnosc: "19,0 mln",   powierzchnia: "238,4 tys. km²" },
+        { panstwo: "Ukraina",         stolica: "Kijów",        flaga: "🇺🇦", ludnosc: "43,5 mln",   powierzchnia: "603,6 tys. km²" },
+    ],
+    "Azja": [
+        { panstwo: "Chiny",              stolica: "Pekin",        flaga: "🇨🇳", ludnosc: "1 409 mln",  powierzchnia: "9 597 tys. km²" },
+        { panstwo: "Indie",              stolica: "Nowe Delhi",   flaga: "🇮🇳", ludnosc: "1 428 mln",  powierzchnia: "3 287 tys. km²" },
+        { panstwo: "Japonia",            stolica: "Tokio",        flaga: "🇯🇵", ludnosc: "124,5 mln",  powierzchnia: "377,9 tys. km²" },
+        { panstwo: "Korea Południowa",   stolica: "Seul",         flaga: "🇰🇷", ludnosc: "51,7 mln",   powierzchnia: "100,4 tys. km²" },
+        { panstwo: "Indonezja",          stolica: "Dżakarta",     flaga: "🇮🇩", ludnosc: "275,5 mln",  powierzchnia: "1 905 tys. km²" },
+        { panstwo: "Wietnam",            stolica: "Hanoi",        flaga: "🇻🇳", ludnosc: "97,3 mln",   powierzchnia: "331,2 tys. km²" },
+        { panstwo: "Tajlandia",          stolica: "Bangkok",      flaga: "🇹🇭", ludnosc: "71,6 mln",   powierzchnia: "513,1 tys. km²" },
+        { panstwo: "Arabia Saudyjska",   stolica: "Rijad",        flaga: "🇸🇦", ludnosc: "35,0 mln",   powierzchnia: "2 150 tys. km²" },
+        { panstwo: "Iran",               stolica: "Teheran",      flaga: "🇮🇷", ludnosc: "87,9 mln",   powierzchnia: "1 648 tys. km²" },
+        { panstwo: "Irak",               stolica: "Bagdad",       flaga: "🇮🇶", ludnosc: "42,3 mln",   powierzchnia: "438,3 tys. km²" },
+        { panstwo: "Turcja",             stolica: "Ankara",       flaga: "🇹🇷", ludnosc: "85,3 mln",   powierzchnia: "783,6 tys. km²" },
+        { panstwo: "Pakistan",           stolica: "Islamabad",    flaga: "🇵🇰", ludnosc: "231,4 mln",  powierzchnia: "881,9 tys. km²" },
+        { panstwo: "Bangladesz",         stolica: "Dhaka",        flaga: "🇧🇩", ludnosc: "166,3 mln",  powierzchnia: "147,6 tys. km²" },
+        { panstwo: "Malezja",            stolica: "Kuala Lumpur", flaga: "🇲🇾", ludnosc: "32,8 mln",   powierzchnia: "329,8 tys. km²" },
+        { panstwo: "Filipiny",           stolica: "Manila",       flaga: "🇵🇭", ludnosc: "115,6 mln",  powierzchnia: "300,0 tys. km²" },
+    ],
+    "Ameryka Północna": [
+        { panstwo: "Stany Zjednoczone", stolica: "Waszyngton",   flaga: "🇺🇸", ludnosc: "332,0 mln",  powierzchnia: "9 833 tys. km²" },
+        { panstwo: "Kanada",            stolica: "Ottawa",       flaga: "🇨🇦", ludnosc: "38,2 mln",   powierzchnia: "9 985 tys. km²" },
+        { panstwo: "Meksyk",            stolica: "Meksyk",       flaga: "🇲🇽", ludnosc: "130,3 mln",  powierzchnia: "1 964 tys. km²" },
+        { panstwo: "Kuba",              stolica: "Hawana",       flaga: "🇨🇺", ludnosc: "11,3 mln",   powierzchnia: "110,9 tys. km²" },
+        { panstwo: "Gwatemala",         stolica: "Gwatemala",    flaga: "🇬🇹", ludnosc: "17,1 mln",   powierzchnia: "108,9 tys. km²" },
+        { panstwo: "Honduras",          stolica: "Tegucigalpa",  flaga: "🇭🇳", ludnosc: "10,3 mln",   powierzchnia: "112,5 tys. km²" },
+        { panstwo: "Nikaragua",         stolica: "Managua",      flaga: "🇳🇮", ludnosc: "6,9 mln",    powierzchnia: "130,4 tys. km²" },
+        { panstwo: "Kostaryka",         stolica: "San José",     flaga: "🇨🇷", ludnosc: "5,2 mln",    powierzchnia: "51,1 tys. km²"  },
+        { panstwo: "Panama",            stolica: "Panama",       flaga: "🇵🇦", ludnosc: "4,4 mln",    powierzchnia: "75,4 tys. km²"  },
+        { panstwo: "Jamajka",           stolica: "Kingston",     flaga: "🇯🇲", ludnosc: "2,8 mln",    powierzchnia: "10,9 tys. km²"  },
+    ],
+    "Ameryka Południowa": [
+        { panstwo: "Brazylia",   stolica: "Brasília",     flaga: "🇧🇷", ludnosc: "215,3 mln",  powierzchnia: "8 516 tys. km²" },
+        { panstwo: "Argentyna",  stolica: "Buenos Aires", flaga: "🇦🇷", ludnosc: "45,8 mln",   powierzchnia: "2 780 tys. km²" },
+        { panstwo: "Kolumbia",   stolica: "Bogota",       flaga: "🇨🇴", ludnosc: "51,5 mln",   powierzchnia: "1 142 tys. km²" },
+        { panstwo: "Peru",       stolica: "Lima",         flaga: "🇵🇪", ludnosc: "33,3 mln",   powierzchnia: "1 285 tys. km²" },
+        { panstwo: "Wenezuela",  stolica: "Caracas",      flaga: "🇻🇪", ludnosc: "28,9 mln",   powierzchnia: "912,1 tys. km²" },
+        { panstwo: "Chile",      stolica: "Santiago",     flaga: "🇨🇱", ludnosc: "19,1 mln",   powierzchnia: "756,1 tys. km²" },
+        { panstwo: "Boliwia",    stolica: "Sucre",        flaga: "🇧🇴", ludnosc: "12,1 mln",   powierzchnia: "1 099 tys. km²" },
+        { panstwo: "Paragwaj",   stolica: "Asunción",     flaga: "🇵🇾", ludnosc: "7,4 mln",    powierzchnia: "406,8 tys. km²" },
+        { panstwo: "Urugwaj",    stolica: "Montevideo",   flaga: "🇺🇾", ludnosc: "3,5 mln",    powierzchnia: "176,2 tys. km²" },
+        { panstwo: "Ekwador",    stolica: "Quito",        flaga: "🇪🇨", ludnosc: "18,0 mln",   powierzchnia: "283,6 tys. km²" },
+    ],
+    "Afryka": [
+        { panstwo: "Nigeria",    stolica: "Abuja",        flaga: "🇳🇬", ludnosc: "220,0 mln",  powierzchnia: "923,8 tys. km²" },
+        { panstwo: "Etiopia",    stolica: "Addis Abeba",  flaga: "🇪🇹", ludnosc: "125,0 mln",  powierzchnia: "1 104 tys. km²" },
+        { panstwo: "Egipt",      stolica: "Kair",         flaga: "🇪🇬", ludnosc: "104,3 mln",  powierzchnia: "1 002 tys. km²" },
+        { panstwo: "Kongo",      stolica: "Kinszasa",     flaga: "🇨🇩", ludnosc: "100,0 mln",  powierzchnia: "2 345 tys. km²" },
+        { panstwo: "Tanzania",   stolica: "Dodoma",       flaga: "🇹🇿", ludnosc: "63,3 mln",   powierzchnia: "945,1 tys. km²" },
+        { panstwo: "Kenia",      stolica: "Nairobi",      flaga: "🇰🇪", ludnosc: "54,0 mln",   powierzchnia: "580,4 tys. km²" },
+        { panstwo: "Algieria",   stolica: "Algier",       flaga: "🇩🇿", ludnosc: "45,6 mln",   powierzchnia: "2 382 tys. km²" },
+        { panstwo: "Maroko",     stolica: "Rabat",        flaga: "🇲🇦", ludnosc: "37,5 mln",   powierzchnia: "446,6 tys. km²" },
+        { panstwo: "Mozambik",   stolica: "Maputo",       flaga: "🇲🇿", ludnosc: "32,8 mln",   powierzchnia: "801,6 tys. km²" },
+        { panstwo: "Ghana",      stolica: "Akra",         flaga: "🇬🇭", ludnosc: "32,4 mln",   powierzchnia: "238,5 tys. km²" },
+        { panstwo: "RPA",        stolica: "Pretoria",     flaga: "🇿🇦", ludnosc: "60,0 mln",   powierzchnia: "1 221 tys. km²" },
+        { panstwo: "Sudan",      stolica: "Chartum",      flaga: "🇸🇩", ludnosc: "46,9 mln",   powierzchnia: "1 887 tys. km²" },
+    ],
+    "Australia i Oceania": [
+        { panstwo: "Australia",          stolica: "Canberra",     flaga: "🇦🇺", ludnosc: "26,5 mln",   powierzchnia: "7 692 tys. km²" },
+        { panstwo: "Nowa Zelandia",      stolica: "Wellington",   flaga: "🇳🇿", ludnosc: "5,1 mln",    powierzchnia: "268,0 tys. km²" },
+        { panstwo: "Papua Nowa Gwinea",  stolica: "Port Moresby", flaga: "🇵🇬", ludnosc: "9,9 mln",    powierzchnia: "462,8 tys. km²" },
+        { panstwo: "Fidżi",              stolica: "Suva",         flaga: "🇫🇯", ludnosc: "0,93 mln",   powierzchnia: "18,3 tys. km²"  },
+        { panstwo: "Samoa",              stolica: "Apia",         flaga: "🇼🇸", ludnosc: "0,22 mln",   powierzchnia: "2,8 tys. km²"   },
+        { panstwo: "Tonga",              stolica: "Nukualofa",    flaga: "🇹🇴", ludnosc: "0,10 mln",   powierzchnia: "0,75 tys. km²"  },
+        { panstwo: "Vanuatu",            stolica: "Port Vila",    flaga: "🇻🇺", ludnosc: "0,33 mln",   powierzchnia: "12,2 tys. km²"  },
+        { panstwo: "Wyspy Salomona",     stolica: "Honiara",      flaga: "🇸🇧", ludnosc: "0,72 mln",   powierzchnia: "28,9 tys. km²"  },
+    ],
+};
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+const ATTR_LABELS = {
+    panstwo:      "🗺️ Państwo",
+    stolica:      "🏛️ Stolica",
+    flaga:        "🏳️ Flaga",
+    ludnosc:      "👥 Ludność",
+    powierzchnia: "📐 Powierzchnia",
+};
+
+const INSTRUCTIONS = {
+    "flaga|panstwo":      "Czyja to flaga? Wybierz państwo:",
+    "flaga|stolica":      "Jaka jest stolica kraju z tą flagą?",
+    "flaga|ludnosc":      "Jaka jest ludność kraju z tą flagą?",
+    "flaga|powierzchnia": "Jaka jest powierzchnia kraju z tą flagą?",
+    "panstwo|flaga":      "Wybierz flagę tego państwa:",
+    "panstwo|stolica":    "Jaka jest stolica tego państwa?",
+    "panstwo|ludnosc":    "Jaka jest ludność tego państwa?",
+    "panstwo|powierzchnia":"Jaka jest powierzchnia tego państwa?",
+    "stolica|flaga":      "Czyją flagę ma kraj z tą stolicą?",
+    "stolica|panstwo":    "W którym państwie jest ta stolica?",
+    "stolica|ludnosc":    "Jaka jest ludność kraju z tą stolicą?",
+    "stolica|powierzchnia":"Jaka jest powierzchnia kraju z tą stolicą?",
+    "ludnosc|flaga":      "Czyja flaga? (kraj z tą liczbą ludności)",
+    "ludnosc|panstwo":    "Które państwo ma tę liczbę ludności?",
+    "ludnosc|stolica":    "Jaka jest stolica kraju z tą liczbą ludności?",
+    "ludnosc|powierzchnia":"Jaka jest powierzchnia kraju z tą liczbą ludności?",
+    "powierzchnia|flaga": "Czyja flaga? (kraj o tej powierzchni)",
+    "powierzchnia|panstwo":"Które państwo ma tę powierzchnię?",
+    "powierzchnia|stolica":"Jaka jest stolica kraju o tej powierzchni?",
+    "powierzchnia|ludnosc":"Jaka jest ludność kraju o tej powierzchni?",
+};
+
+function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+function getPool(continent) {
+    if (continent === "Wszystkie") {
+        return Object.values(COUNTRIES).flat();
+    }
+    return [...COUNTRIES[continent]];
+}
+
+function getDistractors(correct, pool, attr, count = 3) {
+    const correctVal = correct[attr];
+    const candidates = pool.filter(c => c !== correct && c[attr] !== correctVal);
+    shuffle(candidates);
+    const used = new Set([correctVal]);
+    const result = [];
+    for (const c of candidates) {
+        if (!used.has(c[attr])) {
+            result.push(c[attr]);
+            used.add(c[attr]);
+            if (result.length === count) break;
+        }
+    }
+    // fallback: allow duplicates if not enough unique distractors
+    for (const c of candidates) {
+        if (result.length >= count) break;
+        if (!result.includes(c[attr])) result.push(c[attr]);
+    }
+    return result;
+}
+
+// ─── Game State ───────────────────────────────────────────────────────────────
+let state = {};
+
+// ─── DOM refs ─────────────────────────────────────────────────────────────────
+const screens = {
+    setup:   document.getElementById('screen-setup'),
+    game:    document.getElementById('screen-game'),
+    results: document.getElementById('screen-results'),
+};
+
+function showScreen(name) {
+    Object.values(screens).forEach(s => s.classList.remove('active'));
+    screens[name].classList.add('active');
+}
+
+// ─── Setup ────────────────────────────────────────────────────────────────────
+document.getElementById('btn-start').addEventListener('click', () => {
+    const continent  = document.getElementById('sel-continent').value;
+    const topAttr    = document.getElementById('sel-top').value;
+    const bottomAttr = document.getElementById('sel-bottom').value;
+    const errEl      = document.getElementById('setup-error');
+
+    if (topAttr === bottomAttr) {
+        errEl.textContent = '⚠️ Atrybut na górze i na dole muszą być różne!';
+        return;
+    }
+    errEl.textContent = '';
+
+    const pool = getPool(continent);
+    if (pool.length < 4) {
+        errEl.textContent = '⚠️ Za mało krajów na tym kontynencie!';
+        return;
+    }
+
+    const shuffled = shuffle([...pool]);
+    const questions = shuffled.slice(0, 5);
+
+    state = {
+        continent,
+        topAttr,
+        bottomAttr,
+        questions,
+        pool,
+        currentQ: 0,
+        score: 0,
+        attempts: 0,
+        answered: false,
+        results: [],        // { country, correct, pointsEarned }
+    };
+
+    showScreen('game');
+    renderQuestion();
+});
+
+// ─── Render Question ──────────────────────────────────────────────────────────
+function renderQuestion() {
+    const { currentQ, questions, topAttr, bottomAttr, pool, score } = state;
+    const country = questions[currentQ];
+
+    // HUD
+    document.getElementById('q-counter').textContent = `Pytanie ${currentQ + 1} / 5`;
+    document.getElementById('score-display').textContent = score;
+
+    // Progress dots
+    const dots = document.querySelectorAll('#progress-bar .progress-dot');
+    dots.forEach((d, i) => {
+        d.classList.remove('done', 'current');
+        if (i < currentQ)       d.classList.add('done');
+        else if (i === currentQ) d.classList.add('current');
+    });
+
+    // Top card
+    const topLabel = document.getElementById('top-attr-label');
+    const topValue = document.getElementById('top-value');
+    topLabel.textContent = ATTR_LABELS[topAttr];
+
+    const val = country[topAttr];
+    topValue.textContent = val;
+    topValue.className = 'q-value';
+    if (topAttr !== 'flaga') {
+        topValue.classList.add('text-mode');
+        if (val.length > 14) topValue.classList.add('small-text');
+    }
+
+    // Instruction
+    const key = `${topAttr}|${bottomAttr}`;
+    document.getElementById('q-instruction').textContent = INSTRUCTIONS[key] || 'Wybierz poprawną odpowiedź:';
+
+    // Answers
+    const correctVal = country[bottomAttr];
+    const distractors = getDistractors(country, pool, bottomAttr);
+    const choices = shuffle([correctVal, ...distractors]);
+
+    const grid = document.getElementById('answers-grid');
+    grid.innerHTML = '';
+    choices.forEach(choice => {
+        const btn = document.createElement('button');
+        btn.className = 'answer-btn' + (bottomAttr === 'flaga' ? ' emoji' : '');
+        btn.textContent = choice;
+        btn.dataset.value = choice;
+        btn.addEventListener('click', () => handleAnswer(choice, correctVal));
+        grid.appendChild(btn);
+    });
+
+    // Reset state
+    state.attempts = 0;
+    state.answered = false;
+    document.getElementById('feedback').textContent = '';
+    document.getElementById('feedback').className = 'feedback';
+    const btnNext = document.getElementById('btn-next');
+    btnNext.style.display = 'none';
+    btnNext.textContent = currentQ === 4 ? 'Zobacz Wyniki →' : 'Następne Pytanie →';
+
+    // Pop animation
+    const topCard = document.getElementById('top-card');
+    topCard.classList.remove('pop');
+    void topCard.offsetWidth;
+    topCard.classList.add('pop');
+}
+
+// ─── Handle Answer ────────────────────────────────────────────────────────────
+function handleAnswer(chosen, correct) {
+    if (state.answered) return;
+
+    const grid = document.getElementById('answers-grid');
+    const btns = grid.querySelectorAll('.answer-btn');
+    const feedEl = document.getElementById('feedback');
+
+    state.attempts++;
+
+    if (chosen === correct) {
+        // Correct
+        state.answered = true;
+        const pts = state.attempts === 1 ? 3 : 1;
+        state.score += pts;
+        state.results.push({ country: state.questions[state.currentQ], correct, pointsEarned: pts });
+
+        btns.forEach(b => {
+            b.disabled = true;
+            if (b.dataset.value === correct) b.classList.add('correct');
+        });
+
+        feedEl.className = 'feedback ok pop';
+        feedEl.textContent = state.attempts === 1 ? `✅ Brawo! +${pts} punkty` : `✅ Poprawnie! +${pts} punkt`;
+        document.getElementById('score-display').textContent = state.score;
+        document.getElementById('btn-next').style.display = 'inline-block';
+
+    } else {
+        // Wrong
+        btns.forEach(b => {
+            if (b.dataset.value === chosen) b.classList.add('wrong');
+        });
+
+        if (state.attempts === 1) {
+            // First wrong – allow retry
+            btns.forEach(b => {
+                if (b.dataset.value !== chosen) {
+                    b.disabled = false;
+                } else {
+                    b.disabled = true;
+                }
+            });
+            feedEl.className = 'feedback bad shake';
+            feedEl.textContent = '❌ Błąd! Spróbuj jeszcze raz…';
+        } else {
+            // Second wrong – reveal and end
+            state.answered = true;
+            state.results.push({ country: state.questions[state.currentQ], correct, pointsEarned: 0 });
+
+            btns.forEach(b => {
+                b.disabled = true;
+                if (b.dataset.value === correct) b.classList.add('reveal');
+            });
+            feedEl.className = 'feedback info pop';
+            feedEl.textContent = `😔 Poprawna odpowiedź: ${correct}`;
+            document.getElementById('btn-next').style.display = 'inline-block';
+        }
+    }
+}
+
+// ─── Next Question ────────────────────────────────────────────────────────────
+document.getElementById('btn-next').addEventListener('click', () => {
+    state.currentQ++;
+    if (state.currentQ >= 5) {
+        showResults();
+    } else {
+        renderQuestion();
+    }
+});
+
+// ─── Results ─────────────────────────────────────────────────────────────────
+function showResults() {
+    const { score, results, topAttr, bottomAttr } = state;
+    showScreen('results');
+
+    document.getElementById('result-score').textContent = score;
+
+    let comment = '';
+    if (score >= 13)     comment = '🏆 Doskonale! Jesteś mistrzem geografii!';
+    else if (score >= 10) comment = '🌟 Świetnie! Znasz się na mapach!';
+    else if (score >= 7)  comment = '📚 Nieźle! Jest jeszcze pole do nauki.';
+    else if (score >= 4)  comment = '💪 Spróbuj jeszcze raz!';
+    else                   comment = '🌍 Warto więcej ćwiczyć!';
+    document.getElementById('result-comment').textContent = comment;
+
+    const list = document.getElementById('result-list');
+    list.innerHTML = '';
+    results.forEach((r, i) => {
+        const item = document.createElement('div');
+        item.className = 'result-item';
+
+        const topVal = r.country[topAttr];
+        const label = `${i + 1}. ${ATTR_LABELS[topAttr]}: ${topVal}`;
+
+        item.innerHTML = `
+            <div class="result-item-left">${label}</div>
+            <div class="result-item-ans">${r.correct}</div>
+            <div class="result-item-pts ${r.pointsEarned === 3 ? 'pts-3' : r.pointsEarned === 1 ? 'pts-1' : 'pts-0'}">
+                ${r.pointsEarned > 0 ? '+' + r.pointsEarned : '0'}
+            </div>`;
+        list.appendChild(item);
+    });
+}
+
+// ─── Replay ───────────────────────────────────────────────────────────────────
+document.getElementById('btn-replay').addEventListener('click', () => {
+    showScreen('setup');
+});
+</script>
+</body>
+</html>
