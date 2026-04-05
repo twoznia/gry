@@ -318,7 +318,10 @@
 <a href="../" id="back-btn">← Menu</a>
 <a href="hasla.html" id="words-link" target="_blank" rel="noopener">hasła</a>
 
-<button id="lang-toggle" onclick="toggleLang()" title="Switch language" aria-label="Switch language" style="position:fixed;top:10px;right:10px;z-index:100;background:rgba(255,255,255,0.2);color:white;border:2px solid rgba(255,255,255,0.4);border-radius:20px;padding:6px 12px;font-size:1rem;cursor:pointer;">🇵🇱</button>
+<div id="lang-switcher" style="position:fixed;top:10px;right:10px;z-index:100;display:flex;gap:6px;">
+  <button id="lang-pl" onclick="setLang('pl')" title="Polski" aria-label="Polski" style="background:rgba(255,255,255,0.2);color:white;border:2px solid rgba(255,255,255,0.4);border-radius:20px;padding:6px 12px;font-size:1rem;cursor:pointer;">🇵🇱</button>
+  <button id="lang-en" onclick="setLang('en')" title="English" aria-label="English" style="background:rgba(255,255,255,0.2);color:white;border:2px solid rgba(255,255,255,0.4);border-radius:20px;padding:6px 12px;font-size:1rem;cursor:pointer;">🇬🇧</button>
+</div>
 
 <div id="progress">
     <div id="level-label">Poziom 1 • słowa 3-literowe</div>
@@ -347,21 +350,22 @@
 /* ─────────────── Language ─────────────── */
 const lang = localStorage.getItem('lang') || 'pl';
 
-function toggleLang() {
-    localStorage.setItem('lang', lang === 'pl' ? 'en' : 'pl');
+function setLang(l) {
+    localStorage.setItem('lang', l);
     location.reload();
 }
 
 (function() {
-    const btn = document.getElementById('lang-toggle');
+    const btnPl = document.getElementById('lang-pl');
+    const btnEn = document.getElementById('lang-en');
+    const activeStyle = { background: 'rgba(255,255,255,0.5)', border: '2px solid rgba(255,255,255,0.9)' };
+    const inactiveStyle = { background: 'rgba(255,255,255,0.15)', border: '2px solid rgba(255,255,255,0.3)' };
     if (lang === 'en') {
-        btn.textContent = '🇬🇧';
-        btn.style.background = 'rgba(255,255,255,0.35)';
-        btn.style.border = '2px solid rgba(255,255,255,0.9)';
+        Object.assign(btnEn.style, activeStyle);
+        Object.assign(btnPl.style, inactiveStyle);
     } else {
-        btn.textContent = '🇵🇱';
-        btn.style.background = 'rgba(255,255,255,0.35)';
-        btn.style.border = '2px solid rgba(255,255,255,0.9)';
+        Object.assign(btnPl.style, activeStyle);
+        Object.assign(btnEn.style, inactiveStyle);
     }
     document.getElementById('words-link').textContent = lang === 'en' ? 'words' : 'hasła';
     document.getElementById('hint-btn').textContent   = lang === 'en' ? '💡 Hint' : '💡 Podpowiedź';

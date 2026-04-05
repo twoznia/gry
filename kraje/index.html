@@ -233,7 +233,10 @@
 <body>
 
 <a href="../" class="back-link">← Menu</a>
-<button id="btn-lang" style="position:fixed;top:10px;right:10px;z-index:200;background:#334155;color:#fff;border:1px solid #475569;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;"></button>
+<div id="lang-switcher" style="position:fixed;top:10px;right:10px;z-index:200;display:flex;gap:6px;">
+  <button id="btn-lang-pl" style="background:#334155;color:#fff;border:1px solid #475569;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;">🇵🇱</button>
+  <button id="btn-lang-en" style="background:#334155;color:#fff;border:1px solid #475569;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;">🇬🇧</button>
+</div>
 
 <!-- ========== SETUP SCREEN ========== -->
 <section id="screen-setup" class="screen active">
@@ -826,13 +829,20 @@ const UI = {
 // ─── Language Button & UI Init ───────────────────────────────────────────────
 (function() {
     const ui = UI[lang];
-    const btn = document.getElementById('btn-lang');
-    if (!btn) return;
-    btn.textContent = lang === 'en' ? '🇬🇧' : '🇵🇱';
-    btn.addEventListener('click', () => {
-        localStorage.setItem('lang', lang === 'pl' ? 'en' : 'pl');
-        location.reload();
-    });
+    const btnPl = document.getElementById('btn-lang-pl');
+    const btnEn = document.getElementById('btn-lang-en');
+    if (!btnPl || !btnEn) return;
+    const activeStyle = { background: '#1e40af', border: '1px solid #3b82f6' };
+    const inactiveStyle = { background: '#334155', border: '1px solid #475569' };
+    if (lang === 'en') {
+        Object.assign(btnEn.style, activeStyle);
+        Object.assign(btnPl.style, inactiveStyle);
+    } else {
+        Object.assign(btnPl.style, activeStyle);
+        Object.assign(btnEn.style, inactiveStyle);
+    }
+    btnPl.addEventListener('click', () => { localStorage.setItem('lang', 'pl'); location.reload(); });
+    btnEn.addEventListener('click', () => { localStorage.setItem('lang', 'en'); location.reload(); });
 
     document.querySelector('.game-subtitle').textContent = ui.subtitle;
     document.querySelector('label[for="sel-continent"]').textContent = ui.continent;
