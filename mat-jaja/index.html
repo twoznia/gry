@@ -141,7 +141,9 @@
             } else if (menuEtap === "gra") {
                 if (mX > W-148 && mX < W-20 && mY > 14 && mY < 56) menuEtap = "wiek";
             } else if (menuEtap === "koniec") {
-                menuEtap = "wiek";
+                const btnW = W*0.35, btnH = H*0.09, btnY = H*0.83;
+                if (mX > W*0.1 && mX < W*0.1+btnW && mY > btnY && mY < btnY+btnH) menuEtap = "wiek";
+                else if (mX > W*0.55 && mX < W*0.55+btnW && mY > btnY && mY < btnY+btnH) { resetGry(); menuEtap = "gra"; }
             }
         }
 
@@ -170,7 +172,7 @@
 
         function resetGry() {
             punkty = 0; poprawne = 0; bledne = 0; ruchy = 20;
-            predkosc = 3 * H/600; jajkaY = -50; koszykX = W/2; gwiazdki = []; generujZadanie();
+            predkosc = (wybranyWiek === 6 ? 1 : 3) * H/600; jajkaY = -50; koszykX = W/2; gwiazdki = []; generujZadanie();
         }
 
         function spawnGwiazdki(x, y, ok) {
@@ -203,7 +205,7 @@
                 for (let i = 0; i < 3; i++) {
                     if (Math.abs(koszykX - eggXs[i]) < catchRange) {
                         const ok = opcje[i] === poprawnyWynik;
-                        if (ok) { punkty++; poprawne++; predkosc += 0.15 * H/600; }
+                        if (ok) { punkty++; poprawne++; predkosc += (wybranyWiek === 6 ? 0.05 : 0.15) * H/600; }
                         else { punkty--; bledne++; }
                         spawnGwiazdki(eggXs[i], H * 0.883, ok);
                         lastFeedback = ok ? "✓" : "✗";
@@ -436,8 +438,11 @@
                 ctx.fillText(`❌ Błędne: ${bledne}`, W/2, H*0.63);
                 ctx.font = `bold ${Math.min(20, W*0.025)}px 'Segoe UI', Arial`;
                 ctx.fillStyle = "#aad4f5";
-                ctx.fillText("Dotknij, aby wrócić do menu", W/2, H*0.77);
+                ctx.fillText("Dotknij przycisk, aby kontynuować", W/2, H*0.77);
                 ctx.textAlign = "left";
+                const btnW = W*0.35, btnH = H*0.09, btnY = H*0.83;
+                drawButton("← Menu", W*0.1, btnY, btnW, btnH, "#7f8c8d", Math.min(21, W*0.026));
+                drawButton("Ponów ↺", W*0.55, btnY, btnW, btnH, "#2980b9", Math.min(21, W*0.026));
             }
             requestAnimationFrame(draw);
         }
