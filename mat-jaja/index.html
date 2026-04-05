@@ -67,14 +67,14 @@
 
             if (tryb === "dodawanie") {
                 symbol = "+";
-                if (w == 6) { a = r(1, 12); b = r(1, 20-a); }
+                if (w == 6) { a = r(1, 9); b = r(1, 9); }
                 else if (w == 10) { a = r(10, 70); b = r(10, 99-a); }
                 else if (w == 14) { a = r(50, 400); b = r(50, 500-a); }
                 else { a = r(100, 800); b = r(100, 1000-a); }
                 wynik = a + b;
             } else if (tryb === "odejmowanie") {
                 symbol = "-";
-                if (w == 6) { a = r(10, 20); b = r(1, a-2); }
+                if (w == 6) { b = r(1, 9); wynik = r(2, 18); a = b + wynik; }
                 else if (w == 10) { a = r(30, 100); b = r(10, a-5); }
                 else if (w == 14) { a = r(100, 500); b = r(50, a-20); }
                 else { a = r(400, 1000); b = r(100, a-50); }
