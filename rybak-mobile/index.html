@@ -92,6 +92,8 @@
             font-weight: bold;
             cursor: pointer;
         }
+        .btn-reset { background: #888 !important; font-size: 0.9rem !important; padding: 10px 22px !important; margin-top: 10px !important; }
+        #hi-score-hud { font-size: 13px; opacity: 0.8; display: block; }
         #permission-screen {
             position: fixed;
             inset: 0;
@@ -191,7 +193,7 @@
 </div>
 
 <div id="ui">
-    <div>🐟 <span id="score">0</span>/<span id="target">10</span></div>
+    <div>🐟 <span id="score">0</span>/<span id="target">10</span><br><span id="hi-score-hud">Rekord: 0</span></div>
     <div id="lvl-display" style="color:#FFD700;">Poziom 1</div>
     <div>⏱ <span id="timer">60</span>s</div>
 </div>
@@ -207,13 +209,19 @@
     <h1>Koniec Połowu! 🎣</h1>
     <p>Łącznie ryb: <span id="total-score-time">0</span></p>
     <p>Osiągnięty poziom: <span id="final-lvl-time">1</span></p>
+    <p id="new-record-time" style="color:#FFD700;display:none;font-weight:bold;">🏆 NOWY REKORD!</p>
+    <p>Rekord: <span id="hi-score-time">0</span></p>
     <button onclick="location.reload()">Zagraj ponownie</button>
+    <button class="btn-reset" onclick="resetHiScore()">Resetuj rekord</button>
 </div>
 
 <div id="game-over" class="screen">
     <h1 style="color:#ff4444;">TRAFIONY! 💩</h1>
     <p>Łącznie ryb: <span id="total-score-bird">0</span></p>
+    <p id="new-record-bird" style="color:#FFD700;display:none;font-weight:bold;">🏆 NOWY REKORD!</p>
+    <p>Rekord: <span id="hi-score-bird">0</span></p>
     <button onclick="location.reload()">Spróbuj ponownie</button>
+    <button class="btn-reset" onclick="resetHiScore()">Resetuj rekord</button>
 </div>
 
 <canvas id="gameCanvas"></canvas>
@@ -274,6 +282,7 @@
     let totalScore = 0;
     let levelScore = 0;
     let level = 1;
+    let hiScore = parseInt(localStorage.getItem('rybak_hi')) || 0;
     let currentTarget = 10;
     let nextIncrement = 15;
     let cumulativeTarget = 10; // Łączny cel ryb (sumuje cele wszystkich poziomów)
@@ -289,6 +298,20 @@
     const lvlEl     = document.getElementById("lvl-display");
     const warnMsg   = document.getElementById("warning-msg");
     const levelMsg  = document.getElementById("level-msg");
+    const hiScoreHud = document.getElementById("hi-score-hud");
+
+    function updateHiScoreDisplay() {
+        hiScoreHud.innerText = "Rekord: " + hiScore;
+    }
+    updateHiScoreDisplay();
+
+    function resetHiScore() {
+        if (confirm("Wyzerować rekord?")) {
+            hiScore = 0;
+            localStorage.setItem('rybak_hi', 0);
+            updateHiScoreDisplay();
+        }
+    }
 
     let player, fishes, bird, birdDropping, waterLevel, timerInterval;
 
@@ -409,13 +432,23 @@
     function endGame(reason) {
         gameActive = false;
         clearInterval(timerInterval);
+        const isNewRecord = totalScore > hiScore;
+        if (isNewRecord) {
+            hiScore = totalScore;
+            localStorage.setItem('rybak_hi', hiScore);
+            updateHiScoreDisplay();
+        }
         if (reason === "time") {
             document.getElementById("time-up").style.display = "flex";
             document.getElementById("total-score-time").innerText = totalScore;
             document.getElementById("final-lvl-time").innerText = level;
+            document.getElementById("hi-score-time").innerText = hiScore;
+            if (isNewRecord) document.getElementById("new-record-time").style.display = "block";
         } else {
             document.getElementById("game-over").style.display = "flex";
             document.getElementById("total-score-bird").innerText = totalScore;
+            document.getElementById("hi-score-bird").innerText = hiScore;
+            if (isNewRecord) document.getElementById("new-record-bird").style.display = "block";
             warnMsg.style.display = "none";
         }
     }
