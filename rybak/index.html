@@ -153,10 +153,11 @@
         birdTimer--;
         if (birdTimer <= 0 && !bird) {
             const d = Math.random() > 0.5 ? 1 : -1;
-            bird = { x: d==1?-60:860, y: 30+Math.random()*40, speed: (4+Math.random()*2)*d, hasDropped: false, isAiming: false, aimCounter: 0 };
+            bird = { x: d==1?-60:860, y: 30+Math.random()*40, speed: (4+Math.random()*2)*d, hasDropped: false, isAiming: false, aimCounter: 0, wingPhase: 0 };
         }
         if (bird) {
             bird.x += bird.speed;
+            bird.wingPhase += 0.18;
             if (!bird.hasDropped && !bird.isAiming && Math.abs(bird.x - (player.x + 40)) < 150) bird.isAiming = true;
             if (bird.isAiming && !bird.hasDropped) {
                 bird.aimCounter++;
@@ -252,10 +253,33 @@
             ctx.restore();
         });
         if (bird) {
-            ctx.fillStyle = (bird.isAiming && !bird.hasDropped && bird.aimCounter%10<5) ? "red" : "white";
+            const flash = bird.isAiming && !bird.hasDropped && bird.aimCounter%10<5;
+            const birdColor = flash ? "red" : "white";
             const bd = bird.speed > 0 ? 1 : -1;
-            ctx.beginPath(); ctx.moveTo(bird.x, bird.y); ctx.lineTo(bird.x-15*bd, bird.y-10); ctx.lineTo(bird.x-25*bd, bird.y+5); ctx.lineTo(bird.x, bird.y+5); ctx.fill();
-            ctx.beginPath(); ctx.arc(bird.x+5*bd, bird.y, 5, 0, 7); ctx.fill();
+            const bx = bird.x, by = bird.y;
+            const wingFlap = Math.sin(bird.wingPhase) * 12;
+            ctx.fillStyle = birdColor;
+            // Wing (curves up and down with flapping motion)
+            ctx.beginPath();
+            ctx.moveTo(bx, by - 1);
+            ctx.quadraticCurveTo(bx - 13*bd, by - wingFlap, bx - 24*bd, by + 2 - wingFlap * 0.5);
+            ctx.quadraticCurveTo(bx - 11*bd, by + 6, bx, by + 2);
+            ctx.fill();
+            // Body
+            ctx.beginPath();
+            ctx.ellipse(bx + 1*bd, by + 1, 9, 5, 0, 0, Math.PI*2);
+            ctx.fill();
+            // Head
+            ctx.beginPath();
+            ctx.arc(bx + 9*bd, by - 2, 5, 0, Math.PI*2);
+            ctx.fill();
+            // Beak
+            ctx.fillStyle = flash ? "red" : "#FFD54F";
+            ctx.beginPath();
+            ctx.moveTo(bx + 13*bd, by - 3);
+            ctx.lineTo(bx + 19*bd, by - 1);
+            ctx.lineTo(bx + 13*bd, by + 1);
+            ctx.fill();
         }
         if (birdDropping) { ctx.fillStyle = "#6D4C41"; ctx.beginPath(); ctx.arc(birdDropping.x, birdDropping.y, 8, 0, 7); ctx.fill(); }
         // Fishing line (behind everything)
