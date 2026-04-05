@@ -141,57 +141,117 @@
 </head>
 <body>
 
-    <header>
-        <h1>🎮 Centrum Rozrywki</h1>
-        <p class="subtitle">Wybierz grę i pobij rekord!</p>
+    <header style="position:relative;">
+        <div id="lang-switcher" style="position:absolute;top:0;right:0;display:flex;gap:6px;">
+            <button id="btn-pl" onclick="setLang('pl')" style="background:transparent;border:1px solid #555;border-radius:20px;padding:4px 10px;font-size:1.2rem;cursor:pointer;">🇵🇱</button>
+            <button id="btn-en" onclick="setLang('en')" style="background:transparent;border:1px solid #555;border-radius:20px;padding:4px 10px;font-size:1.2rem;cursor:pointer;">🇬🇧</button>
+        </div>
+        <h1 id="main-title">🎮 Centrum Rozrywki</h1>
+        <p class="subtitle" id="main-subtitle">Wybierz grę i pobij rekord!</p>
     </header>
 
     <main class="game-container">
         
         <a href="./auta/" class="game-card">
             <span class="icon">🏎️</span>
-            <h2>Wyścigi Aut</h2>
-            <p style="color: #94a3b8; font-size: 0.9rem;">Szybka jazda i omijanie przeszkód.</p>
-            <div class="play-btn">Zagraj</div>
+            <h2 id="card-auta-title">Wyścigi Aut</h2>
+            <p id="card-auta-desc" style="color: #94a3b8; font-size: 0.9rem;">Szybka jazda i omijanie przeszkód.</p>
+            <div class="play-btn" id="play-auta">Zagraj</div>
         </a>
 
         <a href="./mat-jaja/" class="game-card">
             <span class="icon">🥚</span>
             <h2>Mat-Jaja</h2>
-            <p style="color: #94a3b8; font-size: 0.9rem;">Matematyczna zabawa z jajkami w roli głównej.</p>
-            <div class="play-btn">Zagraj</div>
+            <p id="card-matjaja-desc" style="color: #94a3b8; font-size: 0.9rem;">Matematyczna zabawa z jajkami w roli głównej.</p>
+            <div class="play-btn" id="play-matjaja">Zagraj</div>
         </a>
 
         <a id="rybak-card" href="./rybak/" class="game-card">
             <span class="icon">🚣‍♂️</span>
             <h2>Rybak</h2>
-            <p style="color: #94a3b8; font-size: 0.9rem;">Spokojny połów na pełnym jeziorze.</p>
-            <div class="play-btn">Zagraj</div>
+            <p id="card-rybak-desc" style="color: #94a3b8; font-size: 0.9rem;">Spokojny połów na pełnym jeziorze.</p>
+            <div class="play-btn" id="play-rybak">Zagraj</div>
         </a>
 
         <a href="./pisanie/" class="game-card">
             <span class="icon">🖊️</span>
-            <h2>Pisanie</h2>
-            <p style="color: #94a3b8; font-size: 0.9rem;">Naucz się pisać polskie słowa, literka po literce.</p>
-            <div class="play-btn">Zagraj</div>
+            <h2 id="card-pisanie-title">Pisanie</h2>
+            <p id="card-pisanie-desc" style="color: #94a3b8; font-size: 0.9rem;">Naucz się pisać polskie słowa, literka po literce.</p>
+            <div class="play-btn" id="play-pisanie">Zagraj</div>
         </a>
 
         <a href="./kraje/" class="game-card">
             <span class="icon">🌍</span>
-            <h2>Kraje</h2>
-            <p style="color: #94a3b8; font-size: 0.9rem;">Sprawdź swoją wiedzę o krajach, stolicach i flagach!</p>
-            <div class="play-btn">Zagraj</div>
+            <h2 id="card-kraje-title">Kraje</h2>
+            <p id="card-kraje-desc" style="color: #94a3b8; font-size: 0.9rem;">Sprawdź swoją wiedzę o krajach, stolicach i flagach!</p>
+            <div class="play-btn" id="play-kraje">Zagraj</div>
         </a>
 
     </main>
 
-    <footer>
+    <footer id="footer-text">
         Ostatnia aktualizacja: 2026 | @twoznia
     </footer>
     <script>
         if (window.matchMedia("(pointer: coarse)").matches) {
             document.getElementById("rybak-card").href = "./rybak-mobile/";
         }
+
+        const T = {
+            pl: {
+                title: 'Centrum Rozrywki',
+                subtitle: 'Wybierz grę i pobij rekord!',
+                autaTitle: 'Wyścigi Aut',
+                autaDesc: 'Szybka jazda i omijanie przeszkód.',
+                matjajaDesc: 'Matematyczna zabawa z jajkami w roli głównej.',
+                rybakDesc: 'Spokojny połów na pełnym jeziorze.',
+                pisanieTitle: 'Pisanie',
+                pisanieDesc: 'Naucz się pisać polskie słowa, literka po literce.',
+                krajeTitle: 'Kraje',
+                krajeDesc: 'Sprawdź swoją wiedzę o krajach, stolicach i flagach!',
+                play: 'Zagraj',
+                footer: 'Ostatnia aktualizacja: 2026 | @twoznia'
+            },
+            en: {
+                title: 'Game Center',
+                subtitle: 'Choose a game and beat the record!',
+                autaTitle: 'Car Racing',
+                autaDesc: 'Fast driving and avoiding obstacles.',
+                matjajaDesc: 'Mathematical fun with eggs.',
+                rybakDesc: 'Relaxing fishing on the lake.',
+                pisanieTitle: 'Spelling',
+                pisanieDesc: 'Learn to spell words, letter by letter.',
+                krajeTitle: 'Countries',
+                krajeDesc: 'Test your knowledge of countries, capitals, and flags!',
+                play: 'Play',
+                footer: 'Last updated: 2026 | @twoznia'
+            }
+        };
+
+        function applyLang(lang) {
+            const t = T[lang];
+            document.getElementById('main-title').textContent = '🎮 ' + t.title;
+            document.getElementById('main-subtitle').textContent = t.subtitle;
+            document.getElementById('card-auta-title').textContent = t.autaTitle;
+            document.getElementById('card-auta-desc').textContent = t.autaDesc;
+            document.getElementById('card-matjaja-desc').textContent = t.matjajaDesc;
+            document.getElementById('card-rybak-desc').textContent = t.rybakDesc;
+            document.getElementById('card-pisanie-title').textContent = t.pisanieTitle;
+            document.getElementById('card-pisanie-desc').textContent = t.pisanieDesc;
+            document.getElementById('card-kraje-title').textContent = t.krajeTitle;
+            document.getElementById('card-kraje-desc').textContent = t.krajeDesc;
+            document.querySelectorAll('.play-btn').forEach(el => el.textContent = t.play);
+            document.getElementById('footer-text').textContent = t.footer;
+            document.getElementById('btn-pl').style.borderColor = lang === 'pl' ? 'var(--accent-color)' : '#555';
+            document.getElementById('btn-en').style.borderColor = lang === 'en' ? 'var(--accent-color)' : '#555';
+        }
+
+        function setLang(lang) {
+            localStorage.setItem('lang', lang);
+            applyLang(lang);
+        }
+
+        applyLang(localStorage.getItem('lang') || 'pl');
     </script>
 
 </body>

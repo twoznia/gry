@@ -163,6 +163,10 @@
 <body>
 
 <a href="../" style="position:fixed;top:10px;left:10px;z-index:100;background:#555;color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px;font-family:'Courier New',Courier,monospace;border:1px solid #888;">← Menu</a>
+<div id="lang-switcher" style="position:fixed;top:10px;right:10px;z-index:100;display:flex;gap:4px;">
+    <button id="btn-pl" onclick="setLang('pl')" style="background:transparent;border:1px solid #888;border-radius:20px;padding:4px 10px;font-size:1.2rem;cursor:pointer;">🇵🇱</button>
+    <button id="btn-en" onclick="setLang('en')" style="background:transparent;border:1px solid #888;border-radius:20px;padding:4px 10px;font-size:1.2rem;cursor:pointer;">🇬🇧</button>
+</div>
 
 <div id="console">
     <div id="screen-border">
@@ -190,11 +194,48 @@
     <div class="controls">
         <button class="btn" onclick="handleMove('L')">LEWO</button>
         <button class="btn" onclick="handleMove('P')">PRAWO</button>
-        <button class="btn-reset" onclick="resetHiScore()">RESETUJ REKORD</button>
+        <button class="btn-reset" onclick="resetHiScore()" id="btn-reset-hi">RESETUJ REKORD</button>
     </div>
 </div>
 
 <script>
+    const T = {
+        pl: {
+            easyMode: 'TRYB SPOKOJNY\nHave Fun!!!',
+            crash: 'KRAKSA!',
+            yourScore: 'TWÓJ WYNIK:',
+            playAgain: 'ZAGRAJ PONOWNIE',
+            resetRecord: 'RESETUJ REKORD',
+            confirmReset: 'Wyzerować rekord?'
+        },
+        en: {
+            easyMode: 'EASY MODE\nHave Fun!!!',
+            crash: 'CRASH!',
+            yourScore: 'YOUR SCORE:',
+            playAgain: 'PLAY AGAIN',
+            resetRecord: 'RESET RECORD',
+            confirmReset: 'Reset high score?'
+        }
+    };
+    const lang = localStorage.getItem('lang') || 'pl';
+
+    function applyLang() {
+        const t = T[lang];
+        const finalInfoEl = document.getElementById('final-info');
+        if (finalInfoEl.dataset.state !== 'end') {
+            finalInfoEl.innerHTML = t.easyMode.replace('\n', '<br>');
+        }
+        document.getElementById('btn-reset-hi').innerText = t.resetRecord;
+        document.getElementById('btn-pl').style.borderColor = lang === 'pl' ? '#fff' : '#888';
+        document.getElementById('btn-en').style.borderColor = lang === 'en' ? '#fff' : '#888';
+    }
+
+    function setLang(l) {
+        localStorage.setItem('lang', l);
+        location.reload();
+    }
+
+    applyLang();
     const screen = document.getElementById('screen');
     const player = document.getElementById('player');
     const scoreEl = document.getElementById('score');
@@ -247,7 +288,7 @@
     updateHiScoreDisplay();
 
     function resetHiScore() {
-        if (confirm("Wyzerować rekord?")) {
+        if (confirm(T[lang].confirmReset)) {
             hiScore = 0;
             localStorage.setItem('autoslalom_hi', 0);
             updateHiScoreDisplay();
@@ -432,9 +473,10 @@
             localStorage.setItem('autoslalom_hi', hiScore);
             updateHiScoreDisplay();
         }
-        statusTitle.innerText = "KRAKSA!";
-        finalInfo.innerHTML = `TWÓJ WYNIK: ${score.toString().padStart(4, '0')}`;
-        actionBtn.innerText = "ZAGRAJ PONOWNIE";
+        statusTitle.innerText = T[lang].crash;
+        finalInfo.dataset.state = 'end';
+        finalInfo.innerHTML = `${T[lang].yourScore} ${score.toString().padStart(4, '0')}`;
+        actionBtn.innerText = T[lang].playAgain;
         overlay.style.display = 'flex';
     }
 </script>
