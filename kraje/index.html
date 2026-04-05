@@ -172,6 +172,7 @@
         }
         img.emoji { display: inline-block; vertical-align: -0.1em; width: 1em; height: 1em; }
         .q-value img.emoji { width: 6rem; height: 6rem; }
+        .q-value.text-mode img.emoji { width: 1.4em; height: 1.4em; vertical-align: -0.25em; }
         .answer-btn.emoji { padding: 0.4rem; }
         .answer-btn.emoji img.emoji { width: 100%; height: auto; vertical-align: middle; }
         .answer-btn:hover:not(:disabled) {
@@ -1033,12 +1034,20 @@ function renderQuestion() {
         topValue.innerHTML = generateMapSVG(country.panstwo, false);
         topValue.classList.add('map-mode');
     } else {
-        topValue.textContent = val;
-        if (topAttr !== 'flaga') {
+        if (topAttr === 'panstwo') {
+            const showFlag = bottomAttr !== 'flaga';
+            topValue.textContent = showFlag ? country.flaga + '\u00A0' + val : val;
             topValue.classList.add('text-mode');
             if (val.length > 14) topValue.classList.add('small-text');
+            if (showFlag) twemoji.parse(topValue, { folder: 'svg', ext: '.svg' });
         } else {
-            twemoji.parse(topValue, { folder: 'svg', ext: '.svg' });
+            topValue.textContent = val;
+            if (topAttr !== 'flaga') {
+                topValue.classList.add('text-mode');
+                if (val.length > 14) topValue.classList.add('small-text');
+            } else {
+                twemoji.parse(topValue, { folder: 'svg', ext: '.svg' });
+            }
         }
     }
 
