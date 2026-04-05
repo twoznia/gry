@@ -130,7 +130,7 @@
         }
         .q-value {
             text-align: center;
-            font-size: 3rem;
+            font-size: 6rem;
             line-height: 1.1;
         }
         .q-value.text-mode {
@@ -165,13 +165,13 @@
             transition: border-color 0.15s, background 0.15s;
             text-align: center;
             line-height: 1.3;
-            min-height: 52px;
+            min-height: 90px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         img.emoji { display: inline-block; vertical-align: -0.1em; width: 1em; height: 1em; }
-        .q-value img.emoji { width: 3rem; height: 3rem; }
+        .q-value img.emoji { width: 6rem; height: 6rem; }
         .answer-btn.emoji { padding: 0.4rem; }
         .answer-btn.emoji img.emoji { width: 100%; height: auto; vertical-align: middle; }
         .answer-btn:hover:not(:disabled) {
@@ -225,7 +225,7 @@
         /* Map attribute */
         .q-value.map-mode { font-size: unset; padding: 0; }
         .q-value.map-mode svg { border-radius: 8px; }
-        .answer-btn.map-btn { min-height: 100px; padding: 0.2rem; }
+        .answer-btn.map-btn { min-height: 150px; padding: 0.2rem; }
         .answer-btn.map-btn svg { pointer-events: none; border-radius: 8px; }
     </style>
 </head>
@@ -666,7 +666,7 @@ function generateMapSVG(countryName, small = false) {
     const path = CONTINENT_PATHS[continent] || '';
     const W = 300, H = 220;
     const r = small ? 7 : 11;
-    const maxH = small ? '90px' : '160px';
+    const maxH = small ? '130px' : '220px';
     return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:${maxH};display:block;margin:auto">
         <rect width="${W}" height="${H}" fill="#0f172a" rx="6"/>
         <path d="${path}" fill="#334155" stroke="#475569" stroke-width="${small ? 0.8 : 1.2}" stroke-linejoin="round"/>
