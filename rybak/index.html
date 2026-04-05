@@ -61,6 +61,7 @@
     let level = 1;
     let currentTarget = 10; 
     let nextIncrement = 15; // Ile ryb będzie potrzebne na następny poziom po obecnym
+    let cumulativeTarget = 10; // Łączny cel ryb (sumuje cele wszystkich poziomów)
     let timeLeft = 60;
     let gameActive = true;
     let spawnTimer = 0;
@@ -106,12 +107,13 @@
             // Nowa mechanika progresji: cel rośnie o 5 więcej niż poprzednio
             currentTarget = nextIncrement;
             nextIncrement += 5; // Każdy kolejny poziom będzie o 5 trudniejszy od poprzedniego (10, 15, 20, 25...)
+            cumulativeTarget += currentTarget;
             
             timeLeft += 15; // Większy bonus czasu za trudniejsze poziomy
             timeLeft += 5; // Dodatkowe +5s za złapanie wszystkich ryb w poziomie
             timerElement.innerText = timeLeft;
-            scoreElement.innerText = levelScore;
-            targetElement.innerText = currentTarget;
+            scoreElement.innerText = totalScore;
+            targetElement.innerText = cumulativeTarget;
             lvlDisplay.innerText = "Poziom: " + level;
             levelMsg.innerText = "POZIOM " + level + "! +5s";
             levelMsg.style.display = "block";
@@ -194,7 +196,7 @@
                 let dx = player.hookX - f.x, dy = player.hookY - f.y;
                 if (Math.sqrt(dx*dx + dy*dy) < 25) {
                     f.active = false; totalScore++; levelScore++;
-                    scoreElement.innerText = levelScore;
+                    scoreElement.innerText = totalScore;
                     checkLevelUp();
                 }
             }

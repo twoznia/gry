@@ -276,6 +276,7 @@
     let level = 1;
     let currentTarget = 10;
     let nextIncrement = 15;
+    let cumulativeTarget = 10; // Łączny cel ryb (sumuje cele wszystkich poziomów)
     let timeLeft = 60;
     let gameActive = false;
     let spawnTimer = 0;
@@ -332,10 +333,11 @@
             levelScore = 0;
             currentTarget = nextIncrement;
             nextIncrement += 5;
+            cumulativeTarget += currentTarget;
             timeLeft += 20;
             timerEl.innerText = timeLeft;
-            scoreEl.innerText = levelScore;
-            targetEl.innerText = currentTarget;
+            scoreEl.innerText = totalScore;
+            targetEl.innerText = cumulativeTarget;
             lvlEl.innerText = "Poziom " + level;
             levelMsg.innerText = "POZIOM " + level + "! +20s";
             levelMsg.style.display = "block";
@@ -452,7 +454,7 @@
                     f.active = false;
                     totalScore++;
                     levelScore++;
-                    scoreEl.innerText = levelScore;
+                    scoreEl.innerText = totalScore;
                     checkLevelUp();
                 }
             }
