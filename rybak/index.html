@@ -21,38 +21,107 @@
 <body>
 
     <a href="../" style="position:fixed;top:10px;left:10px;z-index:100;background:rgba(0,0,0,0.7);color:#FFD700;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:bold;border:1px solid #FFD700;">← Menu</a>
+    <div id="lang-switcher" style="position:fixed;top:10px;right:10px;z-index:100;display:flex;gap:4px;">
+        <button id="btn-pl" onclick="setLang('pl')" style="background:rgba(0,0,0,0.7);border:1px solid #888;border-radius:20px;padding:4px 10px;font-size:1.2rem;cursor:pointer;">🇵🇱</button>
+        <button id="btn-en" onclick="setLang('en')" style="background:rgba(0,0,0,0.7);border:1px solid #888;border-radius:20px;padding:4px 10px;font-size:1.2rem;cursor:pointer;">🇬🇧</button>
+    </div>
 
     <div id="ui">
-        <div>Ryby: <span id="score">0</span> / <span id="target">10</span><br><span id="hi-score">Rekord: 0</span></div>
+        <div><span id="lbl-fish">Ryby:</span> <span id="score">0</span> / <span id="target">10</span><br><span id="hi-score">Rekord: 0</span></div>
         <div id="lvl-display" style="color: #FFD700;">Poziom: 1</div>
-        <div>Czas: <span id="timer">60</span>s</div>
+        <div><span id="lbl-time">Czas:</span> <span id="timer">60</span>s</div>
     </div>
     
     <div id="warning-msg">UCIEKAJ!!!</div>
     <div id="level-msg">LEVEL UP!</div>
 
     <div id="time-up" class="screen">
-        <h1>Koniec Połowu!</h1>
-        <p>Łącznie ryb: <span id="total-score-time">0</span></p>
-        <p>Osiągnięty Poziom: <span id="final-lvl-time">1</span></p>
+        <h1 id="time-up-title">Koniec Połowu!</h1>
+        <p><span id="lbl-total-fish">Łącznie ryb:</span> <span id="total-score-time">0</span></p>
+        <p><span id="lbl-final-lvl">Osiągnięty Poziom:</span> <span id="final-lvl-time">1</span></p>
         <p id="new-record-time" style="color:#FFD700;display:none;font-weight:bold;">🏆 NOWY REKORD!</p>
-        <p>Rekord: <span id="hi-score-time">0</span></p>
-        <button onclick="location.reload()">Zagraj ponownie</button>
-        <button class="btn-reset" onclick="resetHiScore()">Resetuj rekord</button>
+        <p><span id="lbl-record-time">Rekord:</span> <span id="hi-score-time">0</span></p>
+        <button id="btn-play-again" onclick="location.reload()">Zagraj ponownie</button>
+        <button class="btn-reset" id="btn-reset-time" onclick="resetHiScore()">Resetuj rekord</button>
     </div>
 
     <div id="game-over" class="screen">
-        <h1 style="color: #ff4444;">TRAFIONY! 💩</h1>
-        <p>Łącznie ryb: <span id="total-score-bird">0</span></p>
+        <h1 id="game-over-title" style="color: #ff4444;">TRAFIONY! 💩</h1>
+        <p><span id="lbl-total-fish2">Łącznie ryb:</span> <span id="total-score-bird">0</span></p>
         <p id="new-record-bird" style="color:#FFD700;display:none;font-weight:bold;">🏆 NOWY REKORD!</p>
-        <p>Rekord: <span id="hi-score-bird">0</span></p>
-        <button onclick="location.reload()">Spróbuj ponownie</button>
-        <button class="btn-reset" onclick="resetHiScore()">Resetuj rekord</button>
+        <p><span id="lbl-record-bird">Rekord:</span> <span id="hi-score-bird">0</span></p>
+        <button id="btn-try-again" onclick="location.reload()">Spróbuj ponownie</button>
+        <button class="btn-reset" id="btn-reset-bird" onclick="resetHiScore()">Resetuj rekord</button>
     </div>
 
     <canvas id="gameCanvas"></canvas>
 
 <script>
+    const TRANSLATIONS = {
+        pl: {
+            fish: 'Ryby:',
+            time: 'Czas:',
+            record: 'Rekord:',
+            level: 'Poziom:',
+            run: 'UCIEKAJ!!!',
+            endFishing: 'Koniec Połowu!',
+            totalFish: 'Łącznie ryb:',
+            levelReached: 'Osiągnięty Poziom:',
+            newRecord: '🏆 NOWY REKORD!',
+            playAgain: 'Zagraj ponownie',
+            resetRecord: 'Resetuj rekord',
+            hit: 'TRAFIONY! 💩',
+            tryAgain: 'Spróbuj ponownie',
+            confirmReset: 'Wyzerować rekord?',
+            levelUp: (lvl) => `POZIOM ${lvl}! +5s`
+        },
+        en: {
+            fish: 'Fish:',
+            time: 'Time:',
+            record: 'Record:',
+            level: 'Level:',
+            run: 'RUN!!!',
+            endFishing: 'End of Fishing!',
+            totalFish: 'Total fish:',
+            levelReached: 'Level reached:',
+            newRecord: '🏆 NEW RECORD!',
+            playAgain: 'Play again',
+            resetRecord: 'Reset record',
+            hit: 'HIT! 💩',
+            tryAgain: 'Try again',
+            confirmReset: 'Reset high score?',
+            levelUp: (lvl) => `LEVEL ${lvl}! +5s`
+        }
+    };
+    const lang = localStorage.getItem('lang') || 'pl';
+    const t = TRANSLATIONS[lang];
+
+    function setLang(l) {
+        localStorage.setItem('lang', l);
+        location.reload();
+    }
+
+    function applyLang() {
+        document.getElementById('lbl-fish').textContent = t.fish;
+        document.getElementById('lbl-time').textContent = t.time;
+        document.getElementById('lbl-total-fish').textContent = t.totalFish;
+        document.getElementById('lbl-total-fish2').textContent = t.totalFish;
+        document.getElementById('lbl-final-lvl').textContent = t.levelReached;
+        document.getElementById('lbl-record-time').textContent = t.record;
+        document.getElementById('lbl-record-bird').textContent = t.record;
+        document.getElementById('new-record-time').textContent = t.newRecord;
+        document.getElementById('new-record-bird').textContent = t.newRecord;
+        document.getElementById('time-up-title').textContent = t.endFishing;
+        document.getElementById('game-over-title').textContent = t.hit;
+        document.getElementById('btn-play-again').textContent = t.playAgain;
+        document.getElementById('btn-try-again').textContent = t.tryAgain;
+        document.getElementById('btn-reset-time').textContent = t.resetRecord;
+        document.getElementById('btn-reset-bird').textContent = t.resetRecord;
+        document.getElementById('warning-msg').textContent = t.run;
+        document.getElementById('btn-pl').style.borderColor = lang === 'pl' ? '#FFD700' : '#888';
+        document.getElementById('btn-en').style.borderColor = lang === 'en' ? '#FFD700' : '#888';
+    }
+    applyLang();
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
     const scoreElement = document.getElementById("score");
@@ -124,8 +193,8 @@
             timerElement.innerText = timeLeft;
             scoreElement.innerText = totalScore;
             targetElement.innerText = cumulativeTarget;
-            lvlDisplay.innerText = "Poziom: " + level;
-            levelMsg.innerText = "POZIOM " + level + "! +5s";
+            lvlDisplay.innerText = t.level + " " + level;
+            levelMsg.innerText = t.levelUp(level);
             levelMsg.style.display = "block";
             setTimeout(() => { levelMsg.style.display = "none"; }, 2000);
         }
@@ -178,12 +247,12 @@
     }
 
     function updateHiScoreDisplay() {
-        hiScoreEl.innerText = "Rekord: " + hiScore;
+        hiScoreEl.innerText = t.record + " " + hiScore;
     }
     updateHiScoreDisplay();
 
     function resetHiScore() {
-        if (confirm("Wyzerować rekord?")) {
+        if (confirm(t.confirmReset)) {
             hiScore = 0;
             localStorage.setItem('rybak_hi', 0);
             updateHiScoreDisplay();
