@@ -1035,10 +1035,11 @@ function renderQuestion() {
         topValue.classList.add('map-mode');
     } else {
         if (topAttr === 'panstwo') {
-            topValue.textContent = country.flaga + '\u00A0' + val;
+            const showFlag = bottomAttr !== 'flaga';
+            topValue.textContent = showFlag ? country.flaga + '\u00A0' + val : val;
             topValue.classList.add('text-mode');
             if (val.length > 14) topValue.classList.add('small-text');
-            twemoji.parse(topValue, { folder: 'svg', ext: '.svg' });
+            if (showFlag) twemoji.parse(topValue, { folder: 'svg', ext: '.svg' });
         } else {
             topValue.textContent = val;
             if (topAttr !== 'flaga') {
