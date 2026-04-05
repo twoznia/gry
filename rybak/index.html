@@ -223,11 +223,53 @@
             ctx.beginPath(); ctx.arc(bird.x+5*bd, bird.y, 5, 0, 7); ctx.fill();
         }
         if (birdDropping) { ctx.fillStyle = "#6D4C41"; ctx.beginPath(); ctx.arc(birdDropping.x, birdDropping.y, 8, 0, 7); ctx.fill(); }
-        ctx.strokeStyle = "rgba(255,255,255,0.8)"; ctx.beginPath(); ctx.moveTo(player.x+40, player.y+5); ctx.lineTo(player.hookX, player.hookY); ctx.stroke();
-        ctx.strokeStyle = "#ccc"; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(player.hookX, player.hookY, 7, 0.6, 2.8); ctx.stroke();
-        ctx.fillStyle = "#4E342E"; ctx.beginPath(); ctx.moveTo(player.x, player.y); ctx.lineTo(player.x+80, player.y); ctx.lineTo(player.x+68, player.y+22); ctx.lineTo(player.x+12, player.y+22); ctx.fill();
-        ctx.fillStyle = "#FFCCBC"; ctx.beginPath(); ctx.arc(player.x+40, player.y-15, 8, 0, 7); ctx.fill();
-        ctx.fillStyle = "yellow"; ctx.fillRect(player.x+32, player.y-23, 16, 4);
+        // Fishing line (behind everything)
+        const rodTipX = player.x+57, rodTipY = player.y-26;
+        ctx.strokeStyle = "rgba(255,255,255,0.7)"; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(rodTipX, rodTipY); ctx.lineTo(player.hookX, player.hookY); ctx.stroke();
+        // Hook
+        ctx.strokeStyle = "#ccc"; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(player.hookX, player.hookY, 6, 0.6, 2.8); ctx.stroke();
+        // Boat hull
+        ctx.fillStyle = "#5D4037";
+        ctx.beginPath(); ctx.moveTo(player.x+2, player.y+2); ctx.lineTo(player.x+78, player.y+2); ctx.lineTo(player.x+68, player.y+24); ctx.lineTo(player.x+12, player.y+24); ctx.closePath(); ctx.fill();
+        // Boat interior
+        ctx.fillStyle = "#8D6E63";
+        ctx.beginPath(); ctx.moveTo(player.x+8, player.y+5); ctx.lineTo(player.x+72, player.y+5); ctx.lineTo(player.x+63, player.y+21); ctx.lineTo(player.x+17, player.y+21); ctx.closePath(); ctx.fill();
+        // Boat rim
+        ctx.fillStyle = "#3E2723"; ctx.fillRect(player.x, player.y, 80, 4);
+        // Boat plank
+        ctx.strokeStyle = "#4E342E"; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(player.x+40, player.y+6); ctx.lineTo(player.x+40, player.y+21); ctx.stroke();
+        // Fisherman pants
+        ctx.fillStyle = "#37474F"; ctx.fillRect(player.x+34, player.y-5, 12, 7);
+        // Fisherman torso / shirt
+        ctx.fillStyle = "#1565C0";
+        ctx.beginPath(); ctx.moveTo(player.x+30, player.y-18); ctx.lineTo(player.x+50, player.y-18); ctx.lineTo(player.x+48, player.y-5); ctx.lineTo(player.x+32, player.y-5); ctx.closePath(); ctx.fill();
+        // Left arm
+        ctx.strokeStyle = "#1565C0"; ctx.lineWidth = 4; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(player.x+32, player.y-15); ctx.lineTo(player.x+25, player.y-8); ctx.stroke();
+        // Right arm (holding rod)
+        ctx.beginPath(); ctx.moveTo(player.x+48, player.y-15); ctx.lineTo(player.x+55, player.y-23); ctx.stroke();
+        // Hands
+        ctx.fillStyle = "#FFCCBC";
+        ctx.beginPath(); ctx.arc(player.x+24, player.y-8, 3, 0, 7); ctx.fill();
+        ctx.beginPath(); ctx.arc(player.x+56, player.y-24, 3, 0, 7); ctx.fill();
+        // Head
+        ctx.beginPath(); ctx.arc(player.x+40, player.y-25, 9, 0, 7); ctx.fill();
+        // Eyes
+        ctx.fillStyle = "#333";
+        ctx.beginPath(); ctx.arc(player.x+37, player.y-26, 1.5, 0, 7); ctx.fill();
+        ctx.beginPath(); ctx.arc(player.x+43, player.y-26, 1.5, 0, 7); ctx.fill();
+        // Hat brim
+        ctx.fillStyle = "#F9A825"; ctx.fillRect(player.x+27, player.y-33, 26, 4);
+        // Hat top
+        ctx.fillStyle = "#F57F17"; ctx.fillRect(player.x+30, player.y-45, 20, 14);
+        // Hat band
+        ctx.fillStyle = "#E65100"; ctx.fillRect(player.x+30, player.y-34, 20, 3);
+        // Fishing rod
+        ctx.strokeStyle = "#6D4C41"; ctx.lineWidth = 3; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(player.x+43, player.y-4); ctx.lineTo(rodTipX, rodTipY); ctx.stroke();
     }
 
     function gameLoop() { update(); draw(); requestAnimationFrame(gameLoop); }
