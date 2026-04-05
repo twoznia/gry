@@ -197,7 +197,7 @@
             document.getElementById("rybak-card").href = "./rybak-mobile/";
         }
 
-        const T = {
+        const TRANSLATIONS = {
             pl: {
                 title: 'Centrum Rozrywki',
                 subtitle: 'Wybierz grę i pobij rekord!',
@@ -229,7 +229,7 @@
         };
 
         function applyLang(lang) {
-            const t = T[lang];
+            const t = TRANSLATIONS[lang];
             document.getElementById('main-title').textContent = '🎮 ' + t.title;
             document.getElementById('main-subtitle').textContent = t.subtitle;
             document.getElementById('card-auta-title').textContent = t.autaTitle;

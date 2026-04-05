@@ -199,7 +199,7 @@
 </div>
 
 <script>
-    const T = {
+    const TRANSLATIONS = {
         pl: {
             easyMode: 'TRYB SPOKOJNY\nHave Fun!!!',
             crash: 'KRAKSA!',
@@ -220,7 +220,7 @@
     const lang = localStorage.getItem('lang') || 'pl';
 
     function applyLang() {
-        const t = T[lang];
+        const t = TRANSLATIONS[lang];
         const finalInfoEl = document.getElementById('final-info');
         if (finalInfoEl.dataset.state !== 'end') {
             finalInfoEl.innerHTML = t.easyMode.replace('\n', '<br>');
@@ -288,7 +288,7 @@
     updateHiScoreDisplay();
 
     function resetHiScore() {
-        if (confirm(T[lang].confirmReset)) {
+        if (confirm(TRANSLATIONS[lang].confirmReset)) {
             hiScore = 0;
             localStorage.setItem('autoslalom_hi', 0);
             updateHiScoreDisplay();
@@ -473,10 +473,10 @@
             localStorage.setItem('autoslalom_hi', hiScore);
             updateHiScoreDisplay();
         }
-        statusTitle.innerText = T[lang].crash;
+        statusTitle.innerText = TRANSLATIONS[lang].crash;
         finalInfo.dataset.state = 'end';
-        finalInfo.innerHTML = `${T[lang].yourScore} ${score.toString().padStart(4, '0')}`;
-        actionBtn.innerText = T[lang].playAgain;
+        finalInfo.innerHTML = `${TRANSLATIONS[lang].yourScore} ${score.toString().padStart(4, '0')}`;
+        actionBtn.innerText = TRANSLATIONS[lang].playAgain;
         overlay.style.display = 'flex';
     }
 </script>

@@ -22,7 +22,7 @@
     <script>
         const lang = localStorage.getItem('lang') || 'pl';
 
-        const T = {
+        const TRANSLATIONS = {
             pl: {
                 ageBtn: ['Poziom: 6 lat', 'Poziom: 10 lat', 'Poziom: 14 lat', 'Poziom: Dorosły'],
                 opBtn: ['Dodawanie (+)', 'Odejmowanie (−)', 'Mnożenie (×)', 'Dzielenie (÷)', '🎲 Losowo'],
@@ -60,7 +60,7 @@
                 retryBtn: 'Retry ↺'
             }
         };
-        const t = T[lang];
+        const t = TRANSLATIONS[lang];
 
         function setLang(l) {
             localStorage.setItem('lang', l);

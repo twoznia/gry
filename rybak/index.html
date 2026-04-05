@@ -57,7 +57,7 @@
     <canvas id="gameCanvas"></canvas>
 
 <script>
-    const T = {
+    const TRANSLATIONS = {
         pl: {
             fish: 'Ryby:',
             time: 'Czas:',
@@ -94,7 +94,7 @@
         }
     };
     const lang = localStorage.getItem('lang') || 'pl';
-    const t = T[lang];
+    const t = TRANSLATIONS[lang];
 
     function setLang(l) {
         localStorage.setItem('lang', l);
