@@ -228,12 +228,30 @@
         .q-value.map-mode svg { border-radius: 8px; }
         .answer-btn.map-btn { min-height: 150px; padding: 0.2rem; }
         .answer-btn.map-btn svg { pointer-events: none; border-radius: 8px; }
+
+        /* Responsive – fit everything on small / mobile screens */
+        @media (max-height: 750px), (max-width: 400px) {
+            body { padding: 0.35rem 0.75rem 0.4rem; }
+            .screen { gap: 0.35rem; }
+            .card { padding: 0.55rem 0.85rem; }
+            .q-value { font-size: 3.5rem; line-height: 1; }
+            .q-value img.emoji { width: 3.5rem; height: 3.5rem; }
+            .q-value.text-mode { font-size: 1.5rem; }
+            .answer-btn { min-height: 60px; padding: 0.35rem 0.4rem; font-size: 0.88rem; }
+            .answer-btn.map-btn { min-height: 90px; }
+            .btn { padding: 0.5rem 1.4rem; font-size: 0.88rem; }
+            .feedback { font-size: 0.95rem; min-height: 1.2rem; }
+            footer { margin-top: 0.5rem; }
+        }
     </style>
 </head>
 <body>
 
 <a href="../" class="back-link">← Menu</a>
-<button id="btn-lang" style="position:fixed;top:10px;right:10px;z-index:200;background:#334155;color:#fff;border:1px solid #475569;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;"></button>
+<div id="lang-switcher" style="position:fixed;top:10px;right:10px;z-index:200;display:flex;gap:6px;">
+  <button id="btn-lang-pl" style="background:#334155;color:#fff;border:1px solid #475569;border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer;line-height:0;"><img src="https://flagcdn.com/24x18/pl.png" width="24" height="18" alt="Polski" style="display:block;border-radius:3px;"></button>
+  <button id="btn-lang-en" style="background:#334155;color:#fff;border:1px solid #475569;border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer;line-height:0;"><img src="https://flagcdn.com/24x18/gb.png" width="24" height="18" alt="English" style="display:block;border-radius:3px;"></button>
+</div>
 
 <!-- ========== SETUP SCREEN ========== -->
 <section id="screen-setup" class="screen active">
@@ -826,13 +844,20 @@ const UI = {
 // ─── Language Button & UI Init ───────────────────────────────────────────────
 (function() {
     const ui = UI[lang];
-    const btn = document.getElementById('btn-lang');
-    if (!btn) return;
-    btn.textContent = lang === 'en' ? '🇬🇧' : '🇵🇱';
-    btn.addEventListener('click', () => {
-        localStorage.setItem('lang', lang === 'pl' ? 'en' : 'pl');
-        location.reload();
-    });
+    const btnPl = document.getElementById('btn-lang-pl');
+    const btnEn = document.getElementById('btn-lang-en');
+    if (!btnPl || !btnEn) return;
+    const activeStyle = { background: '#1e40af', border: '1px solid #3b82f6' };
+    const inactiveStyle = { background: '#334155', border: '1px solid #475569' };
+    if (lang === 'en') {
+        Object.assign(btnEn.style, activeStyle);
+        Object.assign(btnPl.style, inactiveStyle);
+    } else {
+        Object.assign(btnPl.style, activeStyle);
+        Object.assign(btnEn.style, inactiveStyle);
+    }
+    btnPl.addEventListener('click', () => { localStorage.setItem('lang', 'pl'); location.reload(); });
+    btnEn.addEventListener('click', () => { localStorage.setItem('lang', 'en'); location.reload(); });
 
     document.querySelector('.game-subtitle').textContent = ui.subtitle;
     document.querySelector('label[for="sel-continent"]').textContent = ui.continent;
