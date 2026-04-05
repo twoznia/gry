@@ -293,7 +293,7 @@
 <section id="screen-game" class="screen">
     <div class="hud" style="width:100%;max-width:560px;">
         <span id="q-counter">Pytanie 1 / 5</span>
-        <span>Punkty: <span class="score-val" id="score-display">0</span> / <span id="score-max">15</span></span>
+        <span><span id="score-label">Punkty</span>: <span class="score-val" id="score-display">0</span> / <span id="score-max">15</span></span>
     </div>
     <div class="progress-bar" id="progress-bar" style="width:100%;max-width:560px;"></div>
 
@@ -313,7 +313,7 @@
 
 <!-- ========== RESULTS SCREEN ========== -->
 <section id="screen-results" class="screen">
-    <div class="game-title">🏆 Wyniki</div>
+    <div class="game-title" id="result-title">🏆 Wyniki</div>
     <div class="result-score" id="result-score">0</div>
     <div class="result-max" id="result-max">na 15 możliwych punktów</div>
     <div class="result-comment" id="result-comment"></div>
@@ -822,6 +822,37 @@ const UI = {
     },
 };
 
+// ─── Language Button & UI Init ───────────────────────────────────────────────
+(function() {
+    const ui = UI[lang];
+    const btn = document.getElementById('btn-lang');
+    if (!btn) return;
+    btn.textContent = lang === 'en' ? '🇬🇧' : '🇵🇱';
+    btn.addEventListener('click', () => {
+        localStorage.setItem('lang', lang === 'pl' ? 'en' : 'pl');
+        location.reload();
+    });
+
+    document.querySelector('.game-subtitle').textContent = ui.subtitle;
+    document.querySelector('label[for="sel-continent"]').textContent = ui.continent;
+    document.querySelector('label[for="sel-top"]').textContent = ui.attrTop;
+    document.querySelector('label[for="sel-bottom"]').textContent = ui.attrBottom;
+    document.querySelector('label[for="sel-questions"]').textContent = ui.numQ;
+    document.getElementById('btn-start').textContent = ui.startBtn;
+    document.getElementById('btn-replay').textContent = ui.replay;
+    document.getElementById('score-label').textContent = ui.score;
+    document.getElementById('result-title').textContent = ui.resTitle;
+
+    document.getElementById('sel-continent').querySelectorAll('option').forEach(opt => {
+        if (ui.continents[opt.value]) opt.textContent = ui.continents[opt.value];
+    });
+    ['sel-top', 'sel-bottom'].forEach(id => {
+        document.getElementById(id).querySelectorAll('option').forEach(opt => {
+            if (ui.attrOpts[opt.value]) opt.textContent = ui.attrOpts[opt.value];
+        });
+    });
+})();
+
 function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -929,14 +960,14 @@ document.getElementById('btn-start').addEventListener('click', () => {
     const errEl      = document.getElementById('setup-error');
 
     if (topAttr === bottomAttr) {
-        errEl.textContent = '⚠️ Atrybut na górze i na dole muszą być różne!';
+        errEl.textContent = UI[lang].errSame;
         return;
     }
     errEl.textContent = '';
 
     const pool = getPool(continent);
     if (pool.length < 4) {
-        errEl.textContent = '⚠️ Za mało krajów na tym kontynencie!';
+        errEl.textContent = UI[lang].errFew;
         return;
     }
 
@@ -1050,7 +1081,7 @@ function renderQuestion() {
     document.getElementById('feedback').className = 'feedback';
     const btnNext = document.getElementById('btn-next');
     btnNext.style.display = 'none';
-    btnNext.textContent = currentQ === numQ - 1 ? 'Zobacz Wyniki →' : 'Następne Pytanie →';
+    btnNext.textContent = currentQ === numQ - 1 ? UI[lang].seeResults : UI[lang].nextQ;
 
     // Pop animation
     const topCard = document.getElementById('top-card');
@@ -1082,7 +1113,7 @@ function handleAnswer(chosen, correct) {
         });
 
         feedEl.className = 'feedback ok pop';
-        feedEl.textContent = state.attempts === 1 ? `✅ Brawo! +${pts} punkty` : `✅ Poprawnie! +${pts} punkt`;
+        feedEl.textContent = state.attempts === 1 ? UI[lang].correct1(pts) : UI[lang].correct2();
         document.getElementById('score-display').textContent = state.score;
         document.getElementById('btn-next').style.display = 'inline-block';
 
@@ -1102,7 +1133,7 @@ function handleAnswer(chosen, correct) {
                 }
             });
             feedEl.className = 'feedback bad shake';
-            feedEl.textContent = '❌ Błąd! Spróbuj jeszcze raz…';
+            feedEl.textContent = UI[lang].wrong1;
         } else {
             // Second wrong – reveal and end
             state.answered = true;
@@ -1113,7 +1144,7 @@ function handleAnswer(chosen, correct) {
                 if (b.dataset.value === correct) b.classList.add('reveal');
             });
             feedEl.className = 'feedback info pop';
-            feedEl.textContent = `😔 Poprawna odpowiedź: ${correct}`;
+            feedEl.textContent = UI[lang].reveal(correct);
             document.getElementById('btn-next').style.display = 'inline-block';
         }
     }
@@ -1136,24 +1167,26 @@ function showResults() {
 
     document.getElementById('result-score').textContent = score;
     const maxPts = numQ * 3;
-    document.getElementById('result-max').textContent = `na ${maxPts} możliwych punktów`;
+    document.getElementById('result-max').textContent = UI[lang].resPts(maxPts);
 
+    const comments = UI[lang].comments;
     let comment = '';
-    if (score >= maxPts * 0.87)      comment = '🏆 Doskonale! Jesteś mistrzem geografii!';
-    else if (score >= maxPts * 0.67) comment = '🌟 Świetnie! Znasz się na mapach!';
-    else if (score >= maxPts * 0.47) comment = '📚 Nieźle! Jest jeszcze pole do nauki.';
-    else if (score >= maxPts * 0.27) comment = '💪 Spróbuj jeszcze raz!';
-    else                              comment = '🌍 Warto więcej ćwiczyć!';
+    if (score >= maxPts * 0.87)      comment = comments[0];
+    else if (score >= maxPts * 0.67) comment = comments[1];
+    else if (score >= maxPts * 0.47) comment = comments[2];
+    else if (score >= maxPts * 0.27) comment = comments[3];
+    else                              comment = comments[4];
     document.getElementById('result-comment').textContent = comment;
 
     const list = document.getElementById('result-list');
     list.innerHTML = '';
+    const attrLabels = lang === 'en' ? ATTR_LABELS_EN : ATTR_LABELS;
     results.forEach((r, i) => {
         const item = document.createElement('div');
         item.className = 'result-item';
 
         const topVal = topAttr === 'mapa' ? r.country.panstwo : r.country[topAttr];
-        const label = `${i + 1}. ${ATTR_LABELS[topAttr]}: ${topVal}`;
+        const label = `${i + 1}. ${attrLabels[topAttr]}: ${topVal}`;
 
         item.innerHTML = `
             <div class="result-item-left">${label}</div>
