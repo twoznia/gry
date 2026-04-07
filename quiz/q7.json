@@ -1,0 +1,814 @@
+{
+  "categories": [
+    {
+      "category_name": "Muzyka",
+      "subcategories": [
+        {
+          "subcategory_name": "Instrumenty Muzyczne",
+          "questions": [
+            {
+              "question": "Do jakiej podstawowej grupy instrumentów należą klasyczne skrzypce?",
+              "answers": [
+                { "text": "Smyczkowe", "is_correct": true },
+                { "text": "Dęte blaszane", "is_correct": false },
+                { "text": "Szarpane", "is_correct": false },
+                { "text": "Klawiszowe", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Ile strun posiada tradycyjna gitara klasyczna i akustyczna?",
+              "answers": [
+                { "text": "6", "is_correct": true },
+                { "text": "4", "is_correct": false },
+                { "text": "5", "is_correct": false },
+                { "text": "8", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Na jakim klawiszowym instrumencie swoje wielkie dzieła tworzył Fryderyk Chopin?",
+              "answers": [
+                { "text": "Na fortepianie", "is_correct": true },
+                { "text": "Na akordeonie", "is_correct": false },
+                { "text": "Na organach", "is_correct": false },
+                { "text": "Na harfie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki mały, strunowy instrument pochodzi z Hawajów i wyglądem przypomina miniaturową gitarę?",
+              "answers": [
+                { "text": "Ukulele", "is_correct": true },
+                { "text": "Mandolina", "is_correct": false },
+                { "text": "Bałałajka", "is_correct": false },
+                { "text": "Banjo", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego instrumentu słynął na całym świecie genialny wokalista i muzyk Louis Armstrong?",
+              "answers": [
+                { "text": "Z trąbki", "is_correct": true },
+                { "text": "Z saksofonu", "is_correct": false },
+                { "text": "Z klarnetu", "is_correct": false },
+                { "text": "Z puzonu", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Muzyka Elektroniczna",
+          "questions": [
+            {
+              "question": "Który francuski wirtuoz jest autorem kultowego albumu muzyki elektronicznej 'Oxygene'?",
+              "answers": [
+                { "text": "Jean-Michel Jarre", "is_correct": true },
+                { "text": "David Guetta", "is_correct": false },
+                { "text": "DJ Snake", "is_correct": false },
+                { "text": "Vangelis", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywał się uwielbiany szwedzki DJ i producent muzyczny, autor megahitu 'Wake Me Up'?",
+              "answers": [
+                { "text": "Avicii", "is_correct": true },
+                { "text": "Kygo", "is_correct": false },
+                { "text": "Martin Garrix", "is_correct": false },
+                { "text": "Tiësto", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki francuski duet elektroniczny przez dekady ukrywał twarze pod futurystycznymi hełmami?",
+              "answers": [
+                { "text": "Daft Punk", "is_correct": true },
+                { "text": "Justice", "is_correct": false },
+                { "text": "The Chemical Brothers", "is_correct": false },
+                { "text": "Disclosure", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się potężny i bajkowy festiwal muzyki elektronicznej organizowany w belgijskim Boom?",
+              "answers": [
+                { "text": "Tomorrowland", "is_correct": true },
+                { "text": "Ultra Music Festival", "is_correct": false },
+                { "text": "Creamfields", "is_correct": false },
+                { "text": "Mayday", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego europejskiego kraju wywodzi się zespół Kraftwerk, absolutni pionierzy elektro?",
+              "answers": [
+                { "text": "Z Niemiec", "is_correct": true },
+                { "text": "Z Francji", "is_correct": false },
+                { "text": "Z Wielkiej Brytanii", "is_correct": false },
+                { "text": "Ze Szwecji", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Wielkie Gwiazdy Estrady",
+          "questions": [
+            {
+              "question": "Kto wylansował ponadczasowe przeboje, takie jak 'My Way' czy 'Fly Me to the Moon'?",
+              "answers": [
+                { "text": "Frank Sinatra", "is_correct": true },
+                { "text": "Dean Martin", "is_correct": false },
+                { "text": "Elvis Presley", "is_correct": false },
+                { "text": "Tony Bennett", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka artystka wyśpiewała potężny utwór 'I Will Always Love You' do filmu 'Bodyguard'?",
+              "answers": [
+                { "text": "Whitney Houston", "is_correct": true },
+                { "text": "Mariah Carey", "is_correct": false },
+                { "text": "Celine Dion", "is_correct": false },
+                { "text": "Tina Turner", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który piosenkarz o znakomitym głosie śpiewał: 'Zacznij od Bacha' i grał na skrzypcach?",
+              "answers": [
+                { "text": "Zbigniew Wodecki", "is_correct": true },
+                { "text": "Krzysztof Krawczyk", "is_correct": false },
+                { "text": "Andrzej Zaucha", "is_correct": false },
+                { "text": "Ryszard Rynkowski", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaką amerykańską piosenkarkę, autorkę przebojów 'Poker Face' i 'Bad Romance', zwą Mother Monster?",
+              "answers": [
+                { "text": "Lady Gaga", "is_correct": true },
+                { "text": "Katy Perry", "is_correct": false },
+                { "text": "Rihanna", "is_correct": false },
+                { "text": "Taylor Swift", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który polski wokalista nagrał takie przeboje jak 'Parostatek' czy 'Chciałem być'?",
+              "answers": [
+                { "text": "Krzysztof Krawczyk", "is_correct": true },
+                { "text": "Jerzy Połomski", "is_correct": false },
+                { "text": "Zbigniew Wodecki", "is_correct": false },
+                { "text": "Stan Borys", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Teledyski i MTV",
+          "questions": [
+            {
+              "question": "Jaki przełomowy teledysk Michaela Jacksona z lat 80. był reżyserowany jak krótkometrażowy horror?",
+              "answers": [
+                { "text": "Thriller", "is_correct": true },
+                { "text": "Bad", "is_correct": false },
+                { "text": "Billie Jean", "is_correct": false },
+                { "text": "Beat It", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka światowa stacja muzyczna rozpoczęła swoje pierwsze nadawanie w 1981 roku?",
+              "answers": [
+                { "text": "MTV", "is_correct": true },
+                { "text": "VIVA", "is_correct": false },
+                { "text": "VH1", "is_correct": false },
+                { "text": "4fun.tv", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto w kontrowersyjnym teledysku do piosenki 'Like a Prayer' tańczył na tle płonących krzyży?",
+              "answers": [
+                { "text": "Madonna", "is_correct": true },
+                { "text": "Cher", "is_correct": false },
+                { "text": "Britney Spears", "is_correct": false },
+                { "text": "Christina Aguilera", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki był absolutnie pierwszy, symboliczny teledysk wyemitowany w historii stacji MTV?",
+              "answers": [
+                { "text": "Video Killed the Radio Star (The Buggles)", "is_correct": true },
+                { "text": "Money for Nothing (Dire Straits)", "is_correct": false },
+                { "text": "Thriller (Michael Jackson)", "is_correct": false },
+                { "text": "Take On Me (a-ha)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim teledysku zespołu a-ha z 1985 roku połączono niesamowitą animację ze światem realnym?",
+              "answers": [
+                { "text": "Take On Me", "is_correct": true },
+                { "text": "The Sun Always Shines on T.V.", "is_correct": false },
+                { "text": "Hunting High and Low", "is_correct": false },
+                { "text": "Cry Wolf", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Polska Muzyka Alternatywna",
+          "questions": [
+            {
+              "question": "Kto jest twórcą wielkich, alternatywno-popowych hitów z albumu 'Małomiasteczkowy'?",
+              "answers": [
+                { "text": "Dawid Podsiadło", "is_correct": true },
+                { "text": "Krzysztof Zalewski", "is_correct": false },
+                { "text": "Kortez", "is_correct": false },
+                { "text": "Ralph Kaminski", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki ekstrawagancki i barwny artysta nagrał całą płytę będącą hołdem dla piosenek Kory?",
+              "answers": [
+                { "text": "Ralph Kaminski", "is_correct": true },
+                { "text": "Michał Szpak", "is_correct": false },
+                { "text": "Dawid Kwiatkowski", "is_correct": false },
+                { "text": "Igor Herbut", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Pod jakim szyldem artystycznym występuje Katarzyna Nosowska po zawieszeniu działalności Hey?",
+              "answers": [
+                { "text": "Nosowska", "is_correct": true },
+                { "text": "Kaśka Sochacka", "is_correct": false },
+                { "text": "Daria Zawiałow", "is_correct": false },
+                { "text": "Mery Spolsky", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego docenianego alternatywnego zespołu rockowego w 2012 roku odszedł Artur Rojek?",
+              "answers": [
+                { "text": "Myslovitz", "is_correct": true },
+                { "text": "Lenny Valentino", "is_correct": false },
+                { "text": "Coma", "is_correct": false },
+                { "text": "happysad", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki znany marka piwa od ponad dekady jest głównym sponsorem trasy 'Męskie Granie'?",
+              "answers": [
+                { "text": "Żywiec", "is_correct": true },
+                { "text": "Tyskie", "is_correct": false },
+                { "text": "Okocim", "is_correct": false },
+                { "text": "Lech", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Hymny i Pieśni Patriotyczne",
+          "questions": [
+            {
+              "question": "W jakim włoskim mieście Józef Wybicki napisał oryginalne słowa Mazurka Dąbrowskiego?",
+              "answers": [
+                { "text": "W Reggio nell'Emilia", "is_correct": true },
+                { "text": "W Rzymie", "is_correct": false },
+                { "text": "W Neapolu", "is_correct": false },
+                { "text": "W Wenecji", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto jest autorką potężnego wiersza 'Rota', stanowiącego nieoficjalny hymn Polski?",
+              "answers": [
+                { "text": "Maria Konopnicka", "is_correct": true },
+                { "text": "Wisława Szymborska", "is_correct": false },
+                { "text": "Eliza Orzeszkowa", "is_correct": false },
+                { "text": "Zofia Nałkowska", "is_correct": false }
+              ]
+            },
+            {
+              "question": "O jakim kwiatach pod Monte Cassino mówi słynna pieśń upamiętniająca tamtejszą bitwę?",
+              "answers": [
+                { "text": "O czerwonych makach", "is_correct": true },
+                { "text": "O białych różach", "is_correct": false },
+                { "text": "O polnych chabrach", "is_correct": false },
+                { "text": "O wiosennych bzach", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaką dawną, maryjną pieśń śpiewali polscy rycerze przed bitwą pod Grunwaldem?",
+              "answers": [
+                { "text": "Bogurodzicę", "is_correct": true },
+                { "text": "Gaude Mater Polonia", "is_correct": false },
+                { "text": "Rotę", "is_correct": false },
+                { "text": "Marsz Pierwszej Brygady", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak zaczyna się pieśń będąca nieformalnym hymnem Powstania Warszawskiego?",
+              "answers": [
+                { "text": "Warszawskie dzieci, pójdziemy w bój", "is_correct": true },
+                { "text": "Hej, chłopcy, bagnet na broń", "is_correct": false },
+                { "text": "Pałacyk Michla, Żytnia, Wola", "is_correct": false },
+                { "text": "Deszcz jesienny, deszcz", "is_correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_name": "Sport",
+      "subcategories": [
+        {
+          "subcategory_name": "Piłka Nożna - Ekstraklasa",
+          "questions": [
+            {
+              "question": "Jaki legendarny polski klub ma w swoim herbie charakterystyczną czarną 'eLkę'?",
+              "answers": [
+                { "text": "Legia Warszawa", "is_correct": true },
+                { "text": "Lech Poznań", "is_correct": false },
+                { "text": "ŁKS Łódź", "is_correct": false },
+                { "text": "Lechia Gdańsk", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Która ekipa polskiej Ekstraklasy rozgrywa swoje domowe mecze na stadionie przy ulicy Bułgarskiej?",
+              "answers": [
+                { "text": "Lech Poznań", "is_correct": true },
+                { "text": "Wisła Kraków", "is_correct": false },
+                { "text": "Jagiellonia Białystok", "is_correct": false },
+                { "text": "Śląsk Wrocław", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak potocznie w Polsce określa się bezpardonowe mecze derbowe między Wisłą Kraków a Cracovią?",
+              "answers": [
+                { "text": "Święta Wojna", "is_correct": true },
+                { "text": "Wielkie Derby Śląska", "is_correct": false },
+                { "text": "Bitwa o Małopolskę", "is_correct": false },
+                { "text": "Derby Królów", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który zasłużony klub z Górnego Śląska sięgał po mistrzostwo Polski aż 14 razy (stan na 2023 r.)?",
+              "answers": [
+                { "text": "Górnik Zabrze", "is_correct": true },
+                { "text": "Pogoń Szczecin", "is_correct": false },
+                { "text": "Zagłębie Lubin", "is_correct": false },
+                { "text": "Korona Kielce", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie polskie miasto reprezentuje drużyna Jagiellonii, która zdobyła mistrza w sezonie 23/24?",
+              "answers": [
+                { "text": "Białystok", "is_correct": true },
+                { "text": "Lublin", "is_correct": false },
+                { "text": "Rzeszów", "is_correct": false },
+                { "text": "Olsztyn", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Reprezentacja Polski",
+          "questions": [
+            {
+              "question": "Kto z dumą nosi tytuł absolutnie najlepszego strzelca w historii piłkarskiej reprezentacji Polski?",
+              "answers": [
+                { "text": "Robert Lewandowski", "is_correct": true },
+                { "text": "Włodzimierz Lubański", "is_correct": false },
+                { "text": "Grzegorz Lato", "is_correct": false },
+                { "text": "Zbigniew Boniek", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który 'trener tysiąclecia' poprowadził reprezentację do słynnego remisu na Wembley w 1973 roku?",
+              "answers": [
+                { "text": "Kazimierz Górski", "is_correct": true },
+                { "text": "Antoni Piechniczek", "is_correct": false },
+                { "text": "Jacek Gmoch", "is_correct": false },
+                { "text": "Adam Nawałka", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie najwyższe historyczne miejsce zajęli Polacy na mundialach (1974 oraz 1982 r.)?",
+              "answers": [
+                { "text": "Trzecie miejsce", "is_correct": true },
+                { "text": "Drugie miejsce", "is_correct": false },
+                { "text": "Czwarte miejsce", "is_correct": false },
+                { "text": "Zwycięstwo (Pierwsze)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki wybitny polski bramkarz widowiskowo obronił karnego Lionela Messiego na Mundialu 2022?",
+              "answers": [
+                { "text": "Wojciech Szczęsny", "is_correct": true },
+                { "text": "Łukasz Fabiański", "is_correct": false },
+                { "text": "Artur Boruc", "is_correct": false },
+                { "text": "Jerzy Dudek", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakim państwem Polska zorganizowała piłkarskie Mistrzostwa Europy w 2012 roku?",
+              "answers": [
+                { "text": "Z Ukrainą", "is_correct": true },
+                { "text": "Z Niemcami", "is_correct": false },
+                { "text": "Z Czechami", "is_correct": false },
+                { "text": "Ze Słowacją", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Skoki Narciarskie",
+          "questions": [
+            {
+              "question": "Który fenomenalny polski skoczek zyskał status legendy i zrodził zjawisko nazwane od swego imienia?",
+              "answers": [
+                { "text": "Adam Małysz", "is_correct": true },
+                { "text": "Kamil Stoch", "is_correct": false },
+                { "text": "Piotr Żyła", "is_correct": false },
+                { "text": "Dawid Kubacki", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki skoczek z Polski był w stanie wygrać wszystkie cztery konkursy jednego Turnieju Czterech Skoczni?",
+              "answers": [
+                { "text": "Kamil Stoch", "is_correct": true },
+                { "text": "Adam Małysz", "is_correct": false },
+                { "text": "Dawid Kubacki", "is_correct": false },
+                { "text": "Maciej Kot", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakiej zimowej stolicy Polski umiejscowiona jest słynna skocznia narciarska, Wielka Krokiew?",
+              "answers": [
+                { "text": "W Zakopanem", "is_correct": true },
+                { "text": "W Wiśle", "is_correct": false },
+                { "text": "W Szczyrku", "is_correct": false },
+                { "text": "W Karpaczu", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim bawarskim miasteczku w Niemczech zazwyczaj rusza coroczny Turniej Czterech Skoczni?",
+              "answers": [
+                { "text": "W Oberstdorfie", "is_correct": true },
+                { "text": "W Garmisch-Partenkirchen", "is_correct": false },
+                { "text": "W Innsbrucku", "is_correct": false },
+                { "text": "W Bischofshofen", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki polski skoczek, słynący z poczucia humoru, został najstarszym mistrzem świata w 2023 r.?",
+              "answers": [
+                { "text": "Piotr Żyła", "is_correct": true },
+                { "text": "Dawid Kubacki", "is_correct": false },
+                { "text": "Stefan Hula", "is_correct": false },
+                { "text": "Kamil Stoch", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Siatkówka - Sukcesy Polaków",
+          "questions": [
+            {
+              "question": "Ile razy w swej historii męska reprezentacja Polski siatkarzy sięgnęła po Mistrzostwo Świata?",
+              "answers": [
+                { "text": "Trzy razy (1974, 2014, 2018)", "is_correct": true },
+                { "text": "Dwa razy (2014, 2018)", "is_correct": false },
+                { "text": "Tylko raz (2014)", "is_correct": false },
+                { "text": "Cztery razy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który francuski szkoleniowiec poprowadził Polaków do wielkiego mistrzostwa świata w 2014 r.?",
+              "answers": [
+                { "text": "Stéphane Antiga", "is_correct": true },
+                { "text": "Vital Heynen", "is_correct": false },
+                { "text": "Nikola Grbić", "is_correct": false },
+                { "text": "Raul Lozano", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki polski męski klub wygrał siatkarską Ligę Mistrzów trzy lata z rzędu (2021, 2022, 2023)?",
+              "answers": [
+                { "text": "ZAKSA Kędzierzyn-Koźle", "is_correct": true },
+                { "text": "Jastrzębski Węgiel", "is_correct": false },
+                { "text": "Skra Bełchatów", "is_correct": false },
+                { "text": "Asseco Resovia Rzeszów", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim państwie urodził się potężny przyjmujący polskiej kadry, Wilfredo León?",
+              "answers": [
+                { "text": "Na Kubie", "is_correct": true },
+                { "text": "W Brazylii", "is_correct": false },
+                { "text": "W Argentynie", "is_correct": false },
+                { "text": "We Włoszech", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki niesamowity trener zdobył z polskimi siatkarzami złoty medal Igrzysk Olimpijskich w 1976 r.?",
+              "answers": [
+                { "text": "Hubert Wagner", "is_correct": true },
+                { "text": "Andrzej Niemczyk", "is_correct": false },
+                { "text": "Ireneusz Mazur", "is_correct": false },
+                { "text": "Waldemar Wspaniały", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Tenis i Iga Świątek",
+          "questions": [
+            {
+              "question": "W którym turnieju wielkoszlemowym, granym na paryskiej mączce, króluje od lat Iga Świątek?",
+              "answers": [
+                { "text": "Roland Garros (French Open)", "is_correct": true },
+                { "text": "Wimbledon", "is_correct": false },
+                { "text": "US Open", "is_correct": false },
+                { "text": "Australian Open", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki wyjątkowy brytyjski turniej tenisowy jako jedyny rozgrywany jest w całości na naturalnej trawie?",
+              "answers": [
+                { "text": "Wimbledon", "is_correct": true },
+                { "text": "US Open", "is_correct": false },
+                { "text": "Australian Open", "is_correct": false },
+                { "text": "Roland Garros", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jaką znakomitą rywalką Agnieszka Radwańska stoczyła heroiczny, przegrany finał Wimbledonu (2012)?",
+              "answers": [
+                { "text": "Z Sereną Williams", "is_correct": true },
+                { "text": "Z Marią Szarapową", "is_correct": false },
+                { "text": "Z Venus Williams", "is_correct": false },
+                { "text": "Z Angelique Kerber", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się stan w gemie tenisowym oznaczający wynik '40-40', wymagający zdobycia przewagi?",
+              "answers": [
+                { "text": "Równowaga (deuce)", "is_correct": true },
+                { "text": "Tie-break", "is_correct": false },
+                { "text": "Match point", "is_correct": false },
+                { "text": "Break point", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakiego neonowego koloru piłkami tradycyjnie rozgrywa się współczesne turnieje tenisowe (od lat 80.)?",
+              "answers": [
+                { "text": "Żółtymi (optic yellow)", "is_correct": true },
+                { "text": "Białymi", "is_correct": false },
+                { "text": "Jasnozielonymi", "is_correct": false },
+                { "text": "Pomarańczowymi", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Igrzyska Olimpijskie",
+          "questions": [
+            {
+              "question": "Co symbolizuje słynne logo pięciu olimpijskich kół splecionych ze sobą na fladze?",
+              "answers": [
+                { "text": "Połączenie 5 kontynentów", "is_correct": true },
+                { "text": "Pięć głównych dyscyplin", "is_correct": false },
+                { "text": "Pięć epok w historii Grecji", "is_correct": false },
+                { "text": "Harmonię ciała i umysłu", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki działacz, uważany za ojca nowożytnego ruchu, ożywił Igrzyska Olimpijskie w 1896 r.?",
+              "answers": [
+                { "text": "Pierre de Coubertin", "is_correct": true },
+                { "text": "Avery Brundage", "is_correct": false },
+                { "text": "Thomas Bach", "is_correct": false },
+                { "text": "Juan Antonio Samaranch", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co ile lat odbywa się każde wielkie święto sportu – letnie igrzyska olimpijskie?",
+              "answers": [
+                { "text": "Co 4 lata", "is_correct": true },
+                { "text": "Co 2 lata", "is_correct": false },
+                { "text": "Co 5 lat", "is_correct": false },
+                { "text": "Co rok", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Wizerunek jakiej uskrzydlonej bogini z mitologii zawsze znajduje się na letnich medalach z igrzysk?",
+              "answers": [
+                { "text": "Bogini Nike", "is_correct": true },
+                { "text": "Bogini Ateny", "is_correct": false },
+                { "text": "Bogini Artemidy", "is_correct": false },
+                { "text": "Bogini Afrodyty", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto pobił historyczne rekordy sportowe zdobywając w sumie 23 złote medale olimpijskie na pływalni?",
+              "answers": [
+                { "text": "Michael Phelps", "is_correct": true },
+                { "text": "Mark Spitz", "is_correct": false },
+                { "text": "Ian Thorpe", "is_correct": false },
+                { "text": "Ryan Lochte", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Lekkoatletyka",
+          "questions": [
+            {
+              "question": "Jaką niesamowitą, precyzyjną długość w kilometrach ma koronny bieg maratoński?",
+              "answers": [
+                { "text": "42,195 km", "is_correct": true },
+                { "text": "40,000 km", "is_correct": false },
+                { "text": "45,500 km", "is_correct": false },
+                { "text": "21,097 km", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakiej ciężkiej dyscyplinie rzutowej Anita Włodarczyk sięgnęła po seryjne mistrzostwa i rekordy?",
+              "answers": [
+                { "text": "W rzucie młotem", "is_correct": true },
+                { "text": "W pchnięciu kulą", "is_correct": false },
+                { "text": "W rzucie oszczepem", "is_correct": false },
+                { "text": "W rzucie dyskiem", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który polski lekkoatleta został aż pięciokrotnym mistrzem świata na stadionie w rzucie młotem?",
+              "answers": [
+                { "text": "Paweł Fajdek", "is_correct": true },
+                { "text": "Wojciech Nowicki", "is_correct": false },
+                { "text": "Piotr Lisek", "is_correct": false },
+                { "text": "Tomasz Majewski", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie prestiżowe, sprinterskie konkurencje wielokrotnie zdominował fenomenalny Usain Bolt?",
+              "answers": [
+                { "text": "Biegi na 100 m i 200 m", "is_correct": true },
+                { "text": "Skok w dal", "is_correct": false },
+                { "text": "Trójskok i skok wzwyż", "is_correct": false },
+                { "text": "Biegi przez płotki", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z ilu składowych, urozmaiconych konkurencji składa się niezwykle wyczerpujący dziesięciobój?",
+              "answers": [
+                { "text": "Z dziesięciu", "is_correct": true },
+                { "text": "Z siedmiu", "is_correct": false },
+                { "text": "Z pięciu", "is_correct": false },
+                { "text": "Z dwunastu", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Formuła 1 i Robert Kubica",
+          "questions": [
+            {
+              "question": "W bolidzie jakiego niemiecko-szwajcarskiego zespołu Robert Kubica zadebiutował w Formule 1 (2006)?",
+              "answers": [
+                { "text": "BMW Sauber", "is_correct": true },
+                { "text": "Renault", "is_correct": false },
+                { "text": "Williams", "is_correct": false },
+                { "text": "Ferrari", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim państwie za oceanem Robert Kubica wygrał swój pierwszy i jedyny w karierze wyścig F1?",
+              "answers": [
+                { "text": "W Kanadzie", "is_correct": true },
+                { "text": "W USA", "is_correct": false },
+                { "text": "We Włoszech", "is_correct": false },
+                { "text": "W Niemczech", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak wygląda flaga, która tradycyjnie sygnalizuje kierowcom na torze ostateczne zakończenie wyścigu?",
+              "answers": [
+                { "text": "Biało-czarna szachownica", "is_correct": true },
+                { "text": "Czerwona", "is_correct": false },
+                { "text": "Żółta z czarnym pasem", "is_correct": false },
+                { "text": "Zielona", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W trakcie jakich niebezpiecznych zawodów (w 2011 r.) Robert Kubica uległ fatalnemu wypadkowi?",
+              "answers": [
+                { "text": "W małym rajdzie (Ronde di Andora)", "is_correct": true },
+                { "text": "Na treningu F1 w Monzy", "is_correct": false },
+                { "text": "Podczas rajdu Dakar", "is_correct": false },
+                { "text": "Na wyścigu 24h Le Mans", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto był absolutną gwiazdą i dominatorem torów, siedmiokrotnie wygrywając czempionat F1 w zespole Ferrari?",
+              "answers": [
+                { "text": "Michael Schumacher", "is_correct": true },
+                { "text": "Sebastian Vettel", "is_correct": false },
+                { "text": "Nico Rosberg", "is_correct": false },
+                { "text": "Niki Lauda", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Boks i MMA (KSW)",
+          "questions": [
+            {
+              "question": "Kto na stałe przeszedł do historii ringu jako niepokonany, amerykański bokser (bilans 50-0)?",
+              "answers": [
+                { "text": "Floyd Mayweather Jr.", "is_correct": true },
+                { "text": "Muhammad Ali", "is_correct": false },
+                { "text": "Mike Tyson", "is_correct": false },
+                { "text": "Rocky Marciano", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie duże, polskie miasto uznawane jest za siedzibę i miejsce startu największej federacji KSW?",
+              "answers": [
+                { "text": "Warszawa", "is_correct": true },
+                { "text": "Londyn", "is_correct": false },
+                { "text": "Berlin", "is_correct": false },
+                { "text": "Paryż", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który znany, bardzo silny zawodnik, były polski strongman, stał się główną gwiazdą napędową KSW?",
+              "answers": [
+                { "text": "Mariusz Pudzianowski", "is_correct": true },
+                { "text": "Mamed Chalidow", "is_correct": false },
+                { "text": "Borys Mańkowski", "is_correct": false },
+                { "text": "Michał Materla", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakim amerykańskim bokserem Andrzej Gołota przegrał przez faule w 1996 roku?",
+              "answers": [
+                { "text": "Riddick Bowe", "is_correct": true },
+                { "text": "Mike Tyson", "is_correct": false },
+                { "text": "Lennox Lewis", "is_correct": false },
+                { "text": "Evander Holyfield", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się klasyczne, bardzo często spotykane zapaśnicze duszenie, popularne w oktagonie MMA?",
+              "answers": [
+                { "text": "Duszenie zza pleców", "is_correct": true },
+                { "text": "Rzut przez ramię", "is_correct": false },
+                { "text": "Dźwignia na kolano", "is_correct": false },
+                { "text": "Prawy sierpowy", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Koszykówka i NBA",
+          "questions": [
+            {
+              "question": "W barwach jakiego kultowego zespołu występował przez większość kariery Michael Jordan?",
+              "answers": [
+                { "text": "Chicago Bulls", "is_correct": true },
+                { "text": "Los Angeles Lakers", "is_correct": false },
+                { "text": "Boston Celtics", "is_correct": false },
+                { "text": "Miami Heat", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który wysoki Polak, potocznie nazywany Polish Machine, zrobił wielką karierę w ligach NBA?",
+              "answers": [
+                { "text": "Marcin Gortat", "is_correct": true },
+                { "text": "Jeremy Sochan", "is_correct": false },
+                { "text": "Maciej Lampe", "is_correct": false },
+                { "text": "Cezary Trybański", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nagradzany punktowo jest spektakularny i precyzyjny rzut zza najdalszej, wyznaczonej na boisku linii?",
+              "answers": [
+                { "text": "Za trzy punkty", "is_correct": true },
+                { "text": "Za dwa punkty", "is_correct": false },
+                { "text": "Za jeden punkt", "is_correct": false },
+                { "text": "Za cztery punkty", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Na jakiej oficjalnej i powszechnej wysokości liczonej w centymetrach zawieszona jest obręcz kosza?",
+              "answers": [
+                { "text": "Na 305 cm", "is_correct": true },
+                { "text": "Na 290 cm", "is_correct": false },
+                { "text": "Na 315 cm", "is_correct": false },
+                { "text": "Na 300 cm", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka anglojęzyczna nazwa opisuje pokazowy mecz wielkich gwiazd, tradycyjnie uświetniający sezon NBA?",
+              "answers": [
+                { "text": "All-Star Game", "is_correct": true },
+                { "text": "Dream Team Match", "is_correct": false },
+                { "text": "The Legends", "is_correct": false },
+                { "text": "MVP Showcase", "is_correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
