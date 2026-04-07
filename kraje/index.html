@@ -174,7 +174,7 @@
         .q-value img.emoji { width: 6rem; height: 6rem; }
         .q-value.text-mode img.emoji { width: 1.4em; height: 1.4em; vertical-align: -0.25em; }
         .answer-btn.emoji { padding: 0.4rem; }
-        .answer-btn.emoji img.emoji { width: 100%; height: auto; vertical-align: middle; }
+        .answer-btn.emoji img.emoji { width: auto; height: 4.5rem; max-width: 100%; vertical-align: middle; }
         .answer-btn:hover:not(:disabled) {
             border-color: var(--accent);
             background: rgba(56, 189, 248, 0.1);
@@ -1229,6 +1229,7 @@ function showResults() {
                 ${r.pointsEarned > 0 ? '+' + r.pointsEarned : '0'}
             </div>`;
         list.appendChild(item);
+        twemoji.parse(item, { folder: 'svg', ext: '.svg' });
     });
 }
 
