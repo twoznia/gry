@@ -1,0 +1,814 @@
+{
+  "categories": [
+    {
+      "category_name": "Tradycje i Religie",
+      "subcategories": [
+        {
+          "subcategory_name": "Buddyzm i Hinduizm",
+          "questions": [
+            {
+              "question": "Kto był historycznym założycielem buddyzmu, potocznie nazywanym Przebudzonym?",
+              "answers": [
+                { "text": "Siddhartha Gautama", "is_correct": true },
+                { "text": "Dalajlama", "is_correct": false },
+                { "text": "Wisznu", "is_correct": false },
+                { "text": "Śiwa", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się stan najwyższego oświecenia i wyzwolenia z cyklu narodzin w wierzeniach buddyjskich?",
+              "answers": [
+                { "text": "Nirwana", "is_correct": true },
+                { "text": "Samsara", "is_correct": false },
+                { "text": "Karma", "is_correct": false },
+                { "text": "Dharma", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka ogromna rzeka w Indiach uchodzi za świętą i jest miejscem masowych, rytualnych kąpieli dla hinduistów?",
+              "answers": [
+                { "text": "Ganges", "is_correct": true },
+                { "text": "Indus", "is_correct": false },
+                { "text": "Brahmaputra", "is_correct": false },
+                { "text": "Jamuna", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się mocno związany z hinduizmem, niezwykle rygorystyczny system podziału społeczeństwa w tradycyjnych Indiach?",
+              "answers": [
+                { "text": "Kasty", "is_correct": true },
+                { "text": "Stany", "is_correct": false },
+                { "text": "Klasy społeczne", "is_correct": false },
+                { "text": "Klany", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Które potężne, hinduskie bóstwo, często przedstawiane jako niszczyciel, należy do Trimurti razem z Brahmą i Wisznu?",
+              "answers": [
+                { "text": "Śiwa", "is_correct": true },
+                { "text": "Ganeśa", "is_correct": false },
+                { "text": "Kryszna", "is_correct": false },
+                { "text": "Hanuman", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Święta w innych kulturach",
+          "questions": [
+            {
+              "question": "Jakie wielkie święto w USA obchodzi się w czwarty czwartek listopada, przygotowując tradycyjnie pieczonego indyka?",
+              "answers": [
+                { "text": "Święto Dziękczynienia", "is_correct": true },
+                { "text": "Halloween", "is_correct": false },
+                { "text": "Dzień Niepodległości", "is_correct": false },
+                { "text": "Dzień Pamięci", "is_correct": false }
+              ]
+            },
+            {
+              "question": "14 lutego na całym niemal świecie z ogromnym komercyjnym zaangażowaniem obchodzimy popularne...",
+              "answers": [
+                { "text": "Walentynki", "is_correct": true },
+                { "text": "Andrzejki", "is_correct": false },
+                { "text": "Mikołajki", "is_correct": false },
+                { "text": "Halloween", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim państwie na przełomie października i listopada hucznie, radośnie i bardzo kolorowo obchodzi się Dzień Zmarłych (Día de Muertos)?",
+              "answers": [
+                { "text": "W Meksyku", "is_correct": true },
+                { "text": "W Hiszpanii", "is_correct": false },
+                { "text": "W Brazylii", "is_correct": false },
+                { "text": "W USA", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czego symbolem są wydrążone, upiornie uśmiechnięte i świecące dynie (Jack-o'-lantern) podczas obchodów Halloween?",
+              "answers": [
+                { "text": "Odstraszania złych duchów", "is_correct": true },
+                { "text": "Podziękowania za obfite plony", "is_correct": false },
+                { "text": "Powitania nadchodzącej wiosny", "is_correct": false },
+                { "text": "Oddawania czci bogu słońca", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie wesołe i bardzo głośne marcowe święto, patrona całej Irlandii, na całym świecie kojarzy się z kolorem zielonym?",
+              "answers": [
+                { "text": "Dzień Świętego Patryka", "is_correct": true },
+                { "text": "Dzień Świętego Jerzego", "is_correct": false },
+                { "text": "Dzień Świętego Andrzeja", "is_correct": false },
+                { "text": "Dzień Świętego Marcina", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Obrzędy Przejścia",
+          "questions": [
+            {
+              "question": "Jak w bogatej kulturze i religii żydowskiej nazywa się niezwykle uroczyste wejście 13-letniego chłopca w dorosłość?",
+              "answers": [
+                { "text": "Bar micwa", "is_correct": true },
+                { "text": "Brit mila", "is_correct": false },
+                { "text": "Szabat", "is_correct": false },
+                { "text": "Purim", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki specyficzny kolor ubrania, w całkowitym przeciwieństwie do Europy, jest kolorem głębokiej żałoby w wielu krajach Azji (np. w Chinach)?",
+              "answers": [
+                { "text": "Biały", "is_correct": true },
+                { "text": "Czarny", "is_correct": false },
+                { "text": "Czerwony", "is_correct": false },
+                { "text": "Fioletowy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakiej żywej tradycji religijnej bliscy zmarli chowani są bardzo szybko, a ich ciało układa się z twarzą w stronę Mekki?",
+              "answers": [
+                { "text": "W islamie", "is_correct": true },
+                { "text": "W judaizmie", "is_correct": false },
+                { "text": "W hinduizmie", "is_correct": false },
+                { "text": "W prawosławiu", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym nowożeńcy w polskiej, ludowej i wciąż bardzo popularnej tradycji witani są przez rodziców zaraz przed wejściem na salę weselną?",
+              "answers": [
+                { "text": "Chlebem i solą", "is_correct": true },
+                { "text": "Kieliszkiem z czerwoną wódką", "is_correct": false },
+                { "text": "Gorzkim miodem", "is_correct": false },
+                { "text": "Słodkim kołaczem", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się absolutnie pierwszy i fundamentalny sakrament chrześcijański, polegający na polaniu głowy wodą?",
+              "answers": [
+                { "text": "Chrzest", "is_correct": true },
+                { "text": "Bierzmowanie", "is_correct": false },
+                { "text": "Pierwsza Komunia", "is_correct": false },
+                { "text": "Namaszczenie Chorych", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Wierzenia i Zabobony",
+          "questions": [
+            {
+              "question": "Jaka konkretna liczba jest w wielu krajach zachodnich powszechnie uznawana za pechową, przez co często omija się ją np. w windach hoteli?",
+              "answers": [
+                { "text": "Liczba 13", "is_correct": true },
+                { "text": "Liczba 7", "is_correct": false },
+                { "text": "Liczba 666", "is_correct": false },
+                { "text": "Liczba 4", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie wspaniałe zwierzę, jeśli tylko nagle przetnie i przebiegnie nam drogę, w klasycznym przesądzie zwiastuje murowanego pecha?",
+              "answers": [
+                { "text": "Czarny kot", "is_correct": true },
+                { "text": "Rudy lis", "is_correct": false },
+                { "text": "Szary wilk", "is_correct": false },
+                { "text": "Czarny kruk", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co według wierzeń ludowych należy zrobić ze znalezioną podkową, aby przynosiła domowi szczęście zawieszona nad drzwiami?",
+              "answers": [
+                { "text": "Powiesić ją rogami do góry (jak literę U)", "is_correct": true },
+                { "text": "Powiesić ją rogami do dołu", "is_correct": false },
+                { "text": "Pomalować na czerwono", "is_correct": false },
+                { "text": "Zakopać pod progiem", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego bardzo kruchego, codziennego przedmiotu, uszkodzenie lub rozbicie wróży podobno w przesądach aż 7 lat nieszczęścia?",
+              "answers": [
+                { "text": "Z lustra", "is_correct": true },
+                { "text": "Z solniczki", "is_correct": false },
+                { "text": "Z kryształowego wazonu", "is_correct": false },
+                { "text": "Z kieliszka ślubnego", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W co należy profilaktycznie zapukać, aby 'nie zapeszyć' i nie sprowadzić pecha po głośnym wypowiedzeniu swoich wielkich planów?",
+              "answers": [
+                { "text": "W niemalowane drewno", "is_correct": true },
+                { "text": "W przezroczystą szybę", "is_correct": false },
+                { "text": "W prawy nadgarstek", "is_correct": false },
+                { "text": "W żelazny pręt", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Mitologia Grecka i Rzymska",
+          "questions": [
+            {
+              "question": "Kto był najpotężniejszym i absolutnym władcą góry Olimp oraz greckim bogiem nieba i błyskawic?",
+              "answers": [
+                { "text": "Zeus", "is_correct": true },
+                { "text": "Posejdon", "is_correct": false },
+                { "text": "Hades", "is_correct": false },
+                { "text": "Ares", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakim długim, rozwidlonym i morderczym atrybutem na co dzień posługiwał się grecki bóg mórz i oceanów, Posejdon?",
+              "answers": [
+                { "text": "Trójzębem", "is_correct": true },
+                { "text": "Piorunem", "is_correct": false },
+                { "text": "Mieczem obosiecznym", "is_correct": false },
+                { "text": "Złotym łukiem", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Rzymskim bóstwem i idealnym odpowiednikiem greckiego, krwiożerczego boga wojny Aresa był...",
+              "answers": [
+                { "text": "Mars", "is_correct": true },
+                { "text": "Jowisz", "is_correct": false },
+                { "text": "Neptun", "is_correct": false },
+                { "text": "Apollo", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiej części ciała Zeusa miała wyskoczyć i niespodziewanie narodzić się w pełnej zbroi Atena - słynna bogini mądrości?",
+              "answers": [
+                { "text": "Z rozłupanej głowy", "is_correct": true },
+                { "text": "Z rozciętego uda", "is_correct": false },
+                { "text": "Z wyjętego żebra", "is_correct": false },
+                { "text": "Ze zranionego ramienia", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie bardzo dostojne imię i planetarną nazwę nosił rzymski władca wszystkich bogów, uosabiający władzę greckiego Zeusa?",
+              "answers": [
+                { "text": "Jowisz", "is_correct": true },
+                { "text": "Saturn", "is_correct": false },
+                { "text": "Merkury", "is_correct": false },
+                { "text": "Pluton", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Postacie Mityczne",
+          "questions": [
+            {
+              "question": "Jaki przerażający potwór z greckich mitów posiadał ludzkie ciało oraz głowę groźnego byka, a żył uwięziony w kreteńskim labiryncie?",
+              "answers": [
+                { "text": "Minotaur", "is_correct": true },
+                { "text": "Centaur", "is_correct": false },
+                { "text": "Cerber", "is_correct": false },
+                { "text": "Cyklop", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie bohaterskie imię nosił najsilniejszy z herosów mitologii, znany i podziwiany za zrealizowanie u króla aż 12 beznadziejnie trudnych prac?",
+              "answers": [
+                { "text": "Herakles (Herkules)", "is_correct": true },
+                { "text": "Achilles", "is_correct": false },
+                { "text": "Tezeusz", "is_correct": false },
+                { "text": "Perseusz", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak grecy starożytni określali w swoich opowieściach wielkich, mało mądrych i brzydkich olbrzymów, którzy posiadali na czele tylko jedno oko?",
+              "answers": [
+                { "text": "Cyklopi", "is_correct": true },
+                { "text": "Tytani", "is_correct": false },
+                { "text": "Hekatonchejrowie", "is_correct": false },
+                { "text": "Centaury", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki niesamowity, śnieżnobiały, latający i cudowny wierzchowiec (skrzydlaty koń) narodził się podobno z krwi pokonanej Meduzy Gorgony?",
+              "answers": [
+                { "text": "Pegaz", "is_correct": true },
+                { "text": "Gryf", "is_correct": false },
+                { "text": "Mantykora", "is_correct": false },
+                { "text": "Sfinks", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kogo w starożytnych greckich bajkach przerażający, wężowy wzrok potrafił dosłownie zamienić ofiarę w wielki, martwy głaz?",
+              "answers": [
+                { "text": "Meduzę", "is_correct": true },
+                { "text": "Lernejską Hydrę", "is_correct": false },
+                { "text": "Ziejącą ogniem Chimerę", "is_correct": false },
+                { "text": "Skrzydlatą Harpię", "is_correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_name": "Sztuka i Architektura",
+      "subcategories": [
+        {
+          "subcategory_name": "Słynni Malarze",
+          "questions": [
+            {
+              "question": "Kto bardzo starannie namalował we Włoszech jeden z absolutnie najbardziej znanych i tajemniczych portretów na świecie - \"Mona Lisę\"?",
+              "answers": [
+                { "text": "Leonardo da Vinci", "is_correct": true },
+                { "text": "Michał Anioł", "is_correct": false },
+                { "text": "Rafael Santi", "is_correct": false },
+                { "text": "Sandro Botticelli", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki borykający się z problemami psychicznymi holenderski postimpresjonista stworzył oszałamiające i wirujące barwami dzieło \"Gwiaździsta noc\"?",
+              "answers": [
+                { "text": "Vincent van Gogh", "is_correct": true },
+                { "text": "Claude Monet", "is_correct": false },
+                { "text": "Pablo Picasso", "is_correct": false },
+                { "text": "Salvador Dalí", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto osobiście, po długich latach na rusztowaniach u boku papieża, jest autorem wielkich, potężnych fresków w Kaplicy Sykstyńskiej w Watykanie?",
+              "answers": [
+                { "text": "Michał Anioł (Michelangelo)", "is_correct": true },
+                { "text": "Leonardo da Vinci", "is_correct": false },
+                { "text": "Tycjan", "is_correct": false },
+                { "text": "Caravaggio", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z którym charakterystycznym, bardzo kontrowersyjnym malarzem z Hiszpanii, namiętnie układającym zakręcone wąsy, najmocniej łączy się surrealizm?",
+              "answers": [
+                { "text": "Z Salvadorem Dalí", "is_correct": true },
+                { "text": "Z Pablem Picassem", "is_correct": false },
+                { "text": "Z Francisco Goyą", "is_correct": false },
+                { "text": "Z Diegiem Velázquezem", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który nowatorski twórca XX wieku na zawsze zasłynął z dziwnych, kubistycznych form oraz wielkiego antywojennego, czarno-białego płótna \"Guernica\"?",
+              "answers": [
+                { "text": "Pablo Picasso", "is_correct": true },
+                { "text": "Henri Matisse", "is_correct": false },
+                { "text": "Paul Cézanne", "is_correct": false },
+                { "text": "Edvard Munch", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Najdroższe Obrazy Świata",
+          "questions": [
+            {
+              "question": "Jaki niesamowicie upiorny, niezwykle mroczny i popularny norweski obraz namalowany przez Edvarda Muncha bywa notorycznie celem muzealnych kradzieży?",
+              "answers": [
+                { "text": "Krzyk", "is_correct": true },
+                { "text": "Pocałunek", "is_correct": false },
+                { "text": "Trwałość pamięci", "is_correct": false },
+                { "text": "Narodziny Wenus", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Pędzla jakiego wybitnego włoskiego artysty renesansu jest zjawiskowa i zagadkowa \"Mona Lisa\", chroniona grubą szybą kulooporną w paryskim Luwrze?",
+              "answers": [
+                { "text": "Leonarda da Vinci", "is_correct": true },
+                { "text": "Rembrandta", "is_correct": false },
+                { "text": "Sandro Botticellego", "is_correct": false },
+                { "text": "Jana Vermeera", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się w świecie popkultury tajemniczy artysta z ulicy, którego poszatkowany w niszczarce obraz \"Dziewczynka z balonikiem\" zdobył wielką cenę?",
+              "answers": [
+                { "text": "Banksy", "is_correct": true },
+                { "text": "Keith Haring", "is_correct": false },
+                { "text": "Jean-Michel Basquiat", "is_correct": false },
+                { "text": "Andy Warhol", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto niesamowicie subtelnie i z wyczuciem bieli namalował słynną \"Dziewczynę z perłą\", określaną często jako urocza Holenderska Mona Lisa?",
+              "answers": [
+                { "text": "Jan Vermeer", "is_correct": true },
+                { "text": "Rembrandt van Rijn", "is_correct": false },
+                { "text": "Peter Paul Rubens", "is_correct": false },
+                { "text": "Frans Hals", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie wielkie nazwisko dumnie nosi austriacki malarz z czasów secesji, niezwykły autor ogromnego i bogato pokrytego cienkim złotem obrazu \"Pocałunek\"?",
+              "answers": [
+                { "text": "Gustav Klimt", "is_correct": true },
+                { "text": "Egon Schiele", "is_correct": false },
+                { "text": "Oskar Kokoschka", "is_correct": false },
+                { "text": "Otto Dix", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Style Architektoniczne",
+          "questions": [
+            {
+              "question": "Jaki wysoki i mistyczny styl z wieków średnich w budownictwie charakteryzował się bardzo smukłymi wieżami, strzelistymi łukami oraz pięknymi oknami z witrażami?",
+              "answers": [
+                { "text": "Gotyk", "is_correct": true },
+                { "text": "Romanizm", "is_correct": false },
+                { "text": "Barok", "is_correct": false },
+                { "text": "Renesans", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który z europejskich wielkich stylów, bogaty i przepełniony potężnym wręcz przepychem, rzeźbami oraz złoceńmi, zachwycał kościoły od XVI wieku?",
+              "answers": [
+                { "text": "Barok", "is_correct": true },
+                { "text": "Rokoko", "is_correct": false },
+                { "text": "Klasycyzm", "is_correct": false },
+                { "text": "Secesja", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki bardzo wczesnośredniowieczny, zwalisty kierunek sztuki wyróżniał się ciężkimi, wręcz obronnymi grubymi murami oraz nad wyraz małymi oknami (w obawie przed najazdem)?",
+              "answers": [
+                { "text": "Styl romański", "is_correct": true },
+                { "text": "Styl gotycki", "is_correct": false },
+                { "text": "Styl bizantyjski", "is_correct": false },
+                { "text": "Styl renesansowy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co na zewnętrznej ścianie frontowej niezwykle majestatycznie posiadają klasyczne greckie czy rzymskie świątynie (zauważalne z daleka, np. Panteon w Rzymie czy Atenach)?",
+              "answers": [
+                { "text": "Potężne, pionowe kolumny", "is_correct": true },
+                { "text": "Wysokie i spiczaste wieże", "is_correct": false },
+                { "text": "Okrągłe, bogate witraże", "is_correct": false },
+                { "text": "Złocone z blachy kopuły", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki całkowicie nowoczesny, wręcz oszczędny do bólu styl architektoniczny XX wieku po odrzuceniu wszelkich ornamentów postawił nade wszystko na samą funkcję w betonowym i szklanym bloku?",
+              "answers": [
+                { "text": "Modernizm", "is_correct": true },
+                { "text": "Secesja", "is_correct": false },
+                { "text": "Eklektyzm", "is_correct": false },
+                { "text": "Rokoko", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Polscy Malarze",
+          "questions": [
+            {
+              "question": "Który wybitny, krakowski, XIX-wieczny malarz specjalizujący się w ogromnych polach bitewnych polskiej historii narysował z wielkim pietyzmem ogromne płótno \"Bitwa pod Grunwaldem\"?",
+              "answers": [
+                { "text": "Jan Matejko", "is_correct": true },
+                { "text": "Jacek Malczewski", "is_correct": false },
+                { "text": "Juliusz Kossak", "is_correct": false },
+                { "text": "Józef Chełmoński", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto z polskich realistycznych twórców jest znakomitym autorem pięknego, bardzo znanego i chwytającego za sielskie serce obrazu \"Bociany\" - ukazującego polskiego chłopa na zoranej roli?",
+              "answers": [
+                { "text": "Józef Chełmoński", "is_correct": true },
+                { "text": "Leon Wyczółkowski", "is_correct": false },
+                { "text": "Aleksander Gierymski", "is_correct": false },
+                { "text": "Jan Stanisławski", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki krakowski malarz bezapelacyjnie i zawsze powszechnie uważany jest za głównego, najwybitniejszego przedstawiciela i geniusza symbolizmu (na jego obrazach mieszają się zwykli ludzie z faunami, i upadłymi zjawami)?",
+              "answers": [
+                { "text": "Jacek Malczewski", "is_correct": true },
+                { "text": "Stanisław Wyspiański", "is_correct": false },
+                { "text": "Artur Grottger", "is_correct": false },
+                { "text": "Wojciech Kossak", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego konkretnego, powtarzanego i ulubionego bardzo przez malarzy motywu pejzażowego, ruszającego mocno w bój i galopującego często z ułanami po stepach, zasłynął szerzej znany jako artystyczny rod Kossaków (m.in. Wojciech czy Juliusz)?",
+              "answers": [
+                { "text": "Z pięknych scen ze spłoszonymi, galopującymi końmi (i batalistyką)", "is_correct": true },
+                { "text": "Z mrocznej, zgniłej martwej natury na stołach", "is_correct": false },
+                { "text": "Z oficjalnych i portretów dworskich magnaterii", "is_correct": false },
+                { "text": "Z dalekich horyzontów burzliwych pejzaży wielkiego morza", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka niezwykle ekstrawagancka, brylująca na salonach dwudziestowieczna, światowa, polska malarka zasłynęła mocno w USA i Paryżu eleganckimi portretami sławnych i bogatych i odważnymi kobiecymi aktami w nowym stylu - Art Deco?",
+              "answers": [
+                { "text": "Tamara Łempicka", "is_correct": true },
+                { "text": "Olga Boznańska", "is_correct": false },
+                { "text": "Zofia Stryjeńska", "is_correct": false },
+                { "text": "Magdalena Abakanowicz", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Słynne Rzeźby i Pomniki",
+          "questions": [
+            {
+              "question": "Który tytan i niewyobrażalny renesansowy mistrz w młodości z powodzeniem wydobył na zawsze z jednej, kłopotliwej, ogromnej bryły twardego, białego marmuru niesamowitą sylwetkę, wielkiego posągu biblijnego \"Dawida\"?",
+              "answers": [
+                { "text": "Michał Anioł (Michelangelo Buonarroti)", "is_correct": true },
+                { "text": "Donatello", "is_correct": false },
+                { "text": "Gian Lorenzo Bernini", "is_correct": false },
+                { "text": "Auguste Rodin", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki wspaniały, francuski tytan rzeźbiarstwa zaprojektował potężną, dumaną, niezwykle umięśnioną, nagą postać mocno siedzącego do zadumy mężczyzny z ciężką głową podpartą na dłoni, zwaną wszędzie dzisiaj \"Myślicielem\"?",
+              "answers": [
+                { "text": "Auguste Rodin", "is_correct": true },
+                { "text": "Edgar Degas", "is_correct": false },
+                { "text": "Camille Claudel", "is_correct": false },
+                { "text": "Constantin Brâncuși", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który gigantyczny, zjawiskowo pokryty zielonkawą powłoką patyny i oficjalnie kiedyś podarowany narodowi i rządowi z dumnej Francji wielki posąg, z wyciągniętą dłonią wita wędrowców, emigrantów i statki dopływające do Nowego Jorku z Europy?",
+              "answers": [
+                { "text": "Statua Wolności (Lady Liberty)", "is_correct": true },
+                { "text": "Pomnik Jerzego Waszyngtona", "is_correct": false },
+                { "text": "Ogromny Chrystus Zbawiciel", "is_correct": false },
+                { "text": "Pomnik Prezydenta Abrahama Lincolna", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiej szczególnej, otwartej formy i wyjątkowego gestu na świecie zasłynął wielki, podziwiany powszechnie brazylijski ogromny pomnik Chrystusa Odkupiciela, umiejscowiony na pięknym i urwistym szczycie góry Corcovado w zatłoczonym na dole Rio de Janeiro?",
+              "answers": [
+                { "text": "Z rozłożonych i szeroko, przyjaźnie otwartych i obejmujących rąk", "is_correct": true },
+                { "text": "Ze świecącej i ciężkiej złotej wysokiej korony z wielkich cierni na głowie", "is_correct": false },
+                { "text": "Z wycelowanej, bojowej dzidy i włóczni uniesionej do rzutu w jednej, prawej dłoni", "is_correct": false },
+                { "text": "Z niezwykle ciężkiego, potężnego kamiennego krzyża dumnie zawieszonego u niego na plecach", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czego fizycznie bardzo dotkliwie, lecz przy zachowaniu wielkiego antycznego artyzmu w proporcjach, brakuje w wyeksponowanym dumnie we francuskim Muzeum Luwrze, starożytnym greckim posągu na poły rozebranej bogini pieszczotliwie zwanej powszechnie \"Wenus z Milo\"?",
+              "answers": [
+                { "text": "Obu przednich i długich ułamanych niestety rąk posągu", "is_correct": true },
+                { "text": "Dużej, odłupanej kiedyś całkowicie przy upadku w piach pięknej głowy posągu", "is_correct": false },
+                { "text": "Urwanej po uderzeniu przez dawnych rzeźbiarzy całej zgiętej w lewo i uciętej nogi", "is_correct": false },
+                { "text": "Obitego ostrym rzemieniem długiego i zniszczonego greckiego smukłego i wielkiego nosa posągu", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Architektura Sakralna",
+          "questions": [
+            {
+              "question": "W jakim hiszpańskim, niesamowicie zakręconym, i gorącym wakacyjnym mieście Katalonii, do dzisiaj pod ciężkimi żurawiami, mozolnie, ciągle budowana od ponad bardzo długiego wieku z projektu Antonio Gaudiego wyrasta pod słońce bajkowa i dziwna wręcz bazylika zwaną powszechnie Sagrada Família?",
+              "answers": [
+                { "text": "W Barcelonie", "is_correct": true },
+                { "text": "W Madrycie", "is_correct": false },
+                { "text": "W Walencji", "is_correct": false },
+                { "text": "W Sewilli", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak konkretnie, z biblijnego imienia, nazywa się najważniejszy, absolutnie nadrzędny oraz potężnie wielki duszpasterski pierwszy na świecie świątynny chrześcijański kościół zlokalizowany pośrodku kurii w Watykanie, dysponujący ogromną kopułą pędzla renesansowego, wielce rzucającą się i zawsze dostrzegalną z odległych rzymskich ulic i wszystkich zakątków?",
+              "answers": [
+                { "text": "Bazylika Świętego Piotra na Watykanie", "is_correct": true },
+                { "text": "Katedra pod wezwaniem Notre-Dame w Rzymie", "is_correct": false },
+                { "text": "Rzymski zabytkowy Panteon Wszystkich Bogów", "is_correct": false },
+                { "text": "Rzymska, monumentalna Bazylika imienia Św. i wielkiego misjonarza Pawła", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka ogromna gotycka perła sztuki, symbol i znana turystycznie potężna paryska wyspowa katedra, która grała rolę u samego Victora Hugo, niestety uległa niespodziewanemu przez nikogo i potwornemu, niszczycielskiemu gigantycznemu pożarowi, podczas którego całkowicie spłoną i osypał się piękny dach wiosną w 2019 roku zszokowawszy Europę?",
+              "answers": [
+                { "text": "Katedra Notre-Dame", "is_correct": true },
+                { "text": "Bazylika Sacré-Cœur", "is_correct": false },
+                { "text": "Katedra w Chartres", "is_correct": false },
+                { "text": "Kaplica Sainte-Chapelle", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim odległym i niesamowitym kulturowo oraz historycznie wschodnim i wielkim kraju leży niezwykle zachwycający, znany na każdej karcie pocztówkowej świata biały, lśniący na słonecznym południu wielki marmurowy dawny islamski potężny grobowiec dla zmarłej kochającej żony na polecenie samego wielkiego władcy, nazywany poetycko Tadź Mahal?",
+              "answers": [
+                { "text": "W dawnych w Indiach", "is_correct": true },
+                { "text": "W muzułmańskim Pakistanie", "is_correct": false },
+                { "text": "W otomańskiej Turcji", "is_correct": false },
+                { "text": "W gorącym i piaskowym starożytnym Egipcie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co bardzo wyraziście z daleka zazwyczaj na szczycie i wysoko pod błękitem wieńczy, bogato wykańczając swym okrągłym kształtem dumnie na wysokich zwalistych wieżach, w wielu bogatych słowiańskich prawosławnych oraz klasycznie z wielkim złotym krzyżem tradycyjnych ruskich murowanych na pamiątkę cerkwiach ich najważniejszą górną część architektonicznego zewnętrznego budynku modlitewnego?",
+              "answers": [
+                { "text": "Pękata, najczęściej cebulasta i wielce pękata, malowana we wzory lub cała i okryta z blachy wielka miedziana i widocznie złocista i cebulowa pod spodem, szeroka ogromna obła kopuła, wraz ze strzelistym spiętym wysoko spiczastym miedzianym błyszczącym krzyżem prawosławnym.", "is_correct": true },
+                { "text": "Strzelista, bardzo pociągła wręcz strzelająca i niesamowicie ostra wprost długa betonowa i trójkątna w swym obrysie szpiczasta twarda, z metalową iglica do nieba.", "is_correct": false },
+                { "text": "Całkowicie i kompletnie po wybudowaniu prosty, równoległy wręcz odcięty i betonowy czy ociosany, ułożony z ciężkich wielkich prostokątnych belek bardzo płaski wielki czarny, potężny dach i sufit budowlany.", "is_correct": false },
+                { "text": "Wielki, mieniący i wspaniały rzemieślniczy olśniewający i lśniący, kolorowy, okrągły na szkle pod blask ogromny z pieca, witraż frontowy przypominający kształtem słońce i formowany tak w zwaną ozdobną kwiecistą i okrągłą różę do rozet", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Muzea i Galerie Sztuki",
+          "questions": [
+            {
+              "question": "Jakie niezwykle ogromne, znane i bogate eksponatami monumentalne i pociągłe z długimi skrzydłami historyczne już niemal paryskie ogromne centralne muzeum nad wodą, zasłynęło ze znanej z filmu i dodanej od góry kontrowersyjnie potężnej ogromnie szklanej nowożytnej piramidy od wejścia stojącej nowocześnie dumnie tuż przed pośrodku na głównym betonowym przed jego frontem dziedzińcu, uchodząc od lat za niebywale pierwsze i najbardziej urocze a także absolutnie i bezspornie najczęściej bezlitośnie odwiedzane w sezonie oraz oblegane wielce muzeum świata i globu?",
+              "answers": [
+                { "text": "Luwr", "is_correct": true },
+                { "text": "Musée d'Orsay", "is_correct": false },
+                { "text": "Centre Pompidou", "is_correct": false },
+                { "text": "Tate Modern", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim gorącym i wspaniałym historycznym europejskim słonecznym stołecznym i tętniącym niezwykłym wieczorem bardzo gwarnym miejskim na południu wielkim państwowym mieście znajduje się oficjalne słynne królewskie duże hiszpańskie narodowe Muzeum potężne nazwane i podpisane dawno od nazwy jako wielkie w tytule Prado, gromadzące m.in. bardzo wspaniałe, pełne zawiłości obrazy potężnie klasycznych mrocznych starych pędzli od malarskich światowych gigantów uwiecznionych we wnętrzach i dawno jak od Francisco de i wielkich Goi i wielkiego Diega i malarzy do Velázqueza?",
+              "answers": [
+                { "text": "W Madrycie", "is_correct": true },
+                { "text": "W Rzymie", "is_correct": false },
+                { "text": "W Paryżu", "is_correct": false },
+                { "text": "W Londynie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Które bardzo dostojne publiczne dumnie nazywane państwowo brytyjskie w wyspiarskiej dużej państwowej koronie państwowe królewskie historycznie ukształtowane centralnie wielkie stare publiczne narodowe na zbiory duże muzeum w stolicy zgromadziło u w swych zwalistych archiwach niezmiernie wielkie bogactwo, niesłychane bardzo skradzione gigantyczne oraz zebrane skarby od imperium bardzo unikatowe we wnętrzach w kolumnach przeogromne ze świata starożytne, liczne, duże dawne i unikalne jak chociażby przywieziony skamieniały zapis starożytnych faraonów słynny duży w językach wyryty na zawsze znany bardzo stary i ciężki czarny duży we wnętrzach rozpracowany lingwistycznie ogromny Kamień od wsi znany jako niezwykły z Rosetty tak z dawnego podboju z piramid w Egipcie lub niesamowicie zmumifikowane ze starożytności, zmarłych i zasuszonych od stuleci dawne mumie sprowadzone z tego kraju w skrzyniach potężnie egipskie do środka na wyspę i stolicy?",
+              "answers": [
+                { "text": "Muzeum Brytyjskie (British Museum)", "is_correct": true },
+                { "text": "The National Gallery", "is_correct": false },
+                { "text": "Tate Britain", "is_correct": false },
+                { "text": "Muzeum Historii Naturalnej w Mieście w Londynie (Natural History Museum)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakiej to bardzo zacnej, szanowanej, pięknej starej z wielką w starych murach królewską krakowską tradycją oraz ze wspaniałymi kolekcjami z dawnej wspanialej po rodowej i krakowskiej ważnej w turystyce krakowskiej zacnej wielkiej państwowej bardzo z wizerunkami i dumnej na cały naród artystycznie niezwykle znanej w Krakowie od wieku polskiej dumnej miejskiej zacnej, dumnie na Starym Rynku stojącej blisko dużej odnawianej instytucji w podwawelskim w Krakowie na ziemi z dużą ekspozycją, możemy po biletach i z wycieczką bez kłopotów i zwiedzając zobaczyć powszechnie dumnie i bardzo wielce słynne zbiory na wystawie w tym z bliska i ze znanych cudów sztuki zobaczyć namalowany na płótnie jedyny obecnie posiadany dzisiaj fizycznie bezwzględnie absolutnie oryginalny obraz ze znanych cudów z pod genialnego urokliwego ze szkoły samego i malującego ręką pędzla niesamowicie na zawsze od pociągnięcia z pędzla niezwykle bardzo wielkiego malarskiego cudownego mistrza potężnego arcydzieł mistrza ze starego kontynentu u samego boku wielce słynnego Leonarda da z Vinci (tajemniczy znany po tytule Dama i ten sam znany obraz jako wielka malowana pod blask obraz Dama w tle Dama w stroju z malutkim i ładnym na kolanach i obraz gronostajem)?",
+              "answers": [
+                { "text": "W zacnym u od fundatorów wybitnym od lat w zbiorach Muzeum od samej dawnej fundacji od zasłużonej państwowej kolekcji rodu od dawnych w budynku a Muzeum na wystawie w oddziale po Muzeum znanych z fundacji u rodziny jako dla zwiedzających wielkie i Muzeum im. od wielkiej kolekcji w zbiorze państwowym u samych Muzeum zasłużonego w narodzie i oddział zwane i Książąt rodu w rodzinie od samej zasłużonej pamiątkowej im. Muzeum Czartoryskich (oddział powszechnego z w Krakowie wielkiego dumnie MN Muzeum a Muzeum dumnie wielkiego jako na ekspozycji u samej Narodowego w z Krakowie)", "is_correct": true },
+                { "text": "We wnętrzach dumnego ze zbiorów zamku i w Muzeum w dumnym komnatach zamku na samym Zamku Królewskim bardzo wybitnym i dumne muzeum u w Krakowie jako komnatach Królewskim komnat i we wnętrzach Wawelu Wzgórzu i Wawelu pod dziedzińcem Wawelu u podnóża Zamku", "is_correct": false },
+                { "text": "W zacnym budynku starej w podziemiach Sukiennic na bardzo wielkim placu ogromnym Sukiennic na Głównym pod wielkim Starym zacnym jako na starym Głównym od lat wielkim Rynku na środku u pośrodku", "is_correct": false },
+                { "text": "W modernistycznie i bardzo super ze szkłem wielce pod nazwą po budowanym MOCAK muzeum jako po wielkiej na sztukę w nazwie Współczesnej w hali dużej Współczesnej przy MOCAK muzeum u na samym i pod nazwą i obok na Zabłociu w krakowskim w oddziale MOCAK Muzeum MOCAK-u Sztuki u MOCAK", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się niezwykle prestiżowe i w wielkim Nowym Jorku bardzo dumnie oraz bardzo popularnie i wysoce w przewodnikach powszechnie odwiedzane potężne jedno na wyspie z niezwykle po gigantycznych wspaniałych na ogromnym zbiorów z całego globu znanych jednych olbrzymich z na wybitnie największych turystycznie wielce ze znaczenia z arcydzieł zbiorem pod jednym w wielkim pawilonie potężnych na zachwycającym zachodzie jednym niesamowicie ogromnym z absolutnie z najbardziej uznanych i wielkich wielkich do w historii świata z obrazami zgromadzonym w wielkim Amerykańskim muzeum po potężnym w bardzo na mieście dużych powszechnie ogromnie zbiorami wielkich bardzo na zachodnim dla turystów na z muzeum wybitnych muzeów bardzo popularnych z w zbiorach sztuki dla zwiedzających z gigantycznym do zbiorów zgromadzonych dla sztuki po powszechnie z muzeum i z wybitnych sztuki znajdujące od w do zlokalizowane po do pod i się w dużym w wielkim dla turystów tętniącym ogromnym nowojorskim sercu ze sztuką na znanej okręgu wieżowców na z ulic na samym nowojorskim po Manhattan wyspie u samego słynnym okręgu a dokładniej przy dla wejścia na przy i wejściem i przy i szerokiej a przy znanej dumnym wejściem do znanej dumnym ekskluzywnym na ze sklepów wejście dla wejściem z po wielkiej od znanym pod w Piątej słynnym po wejściem na a na obok od do Alei znanym z wielkiej z znanym obok wielkiej dla a Piątej bardzo bardzo dla ulicy a wejścia a do Piątej szerokiej z przy wielkiej w Ameryce Alei?",
+              "answers": [
+                { "text": "Metropolitan z w Nowym znane Jorku w jako do nowojorskim Muzeum Jorku z po do Muzeum po Muzeum do sztuki w i pod sztuki z od i ze skrótem na w od i pod MET w z w dla znane od MET skrótowe w muzeum a od w MET muzeum powszechnie Metropolitan w Nowym Museum Metropolitan muzeum Nowym Nowym Museum Museum of Jorku do Museum powszechne z of Jorku pod muzeum of i ze Art Museum po do z i ze z Art powszechnie po Art skrótem od (MET pod Jorku w Nowym (MET powszechnie skrótowe skrótem w Jorku skrótem Jorku MET dla z of i w MET znane w a Museum of (MET)", "is_correct": true },
+                { "text": "MoMA pod muzeum z w skrótowe od pod i z w muzeum w Nowym w Nowym Jorku Jorku Jorku muzeum (Museum Nowym od Nowym z w pod i of z pod w od po Nowym (Museum w z (Museum w skrótem i of w powszechne pod a Jorku of od of pod z od od w Modern Modern muzeum Modern of z Jorku Modern Art ze z Art Art pod ze Art Jorku i skrótowym Jorku (Museum w a w a w powszechne Art z Jorku Art Art Jorku (Museum Jorku of (Museum z of Jorku od z w powszechnie w z ze a powszechne skrótowe MoMA)", "is_correct": false },
+                { "text": "Guggenheim Jorku w Jorku Nowym w Jorku powszechnie w Jorku w ze w Jorku z z i pod od w muzeum powszechne Museum Nowym Jorku Nowym Nowym w Nowym Nowym z w Nowym Nowym powszechnie Museum muzeum powszechnie po z pod ze pod od i z Museum Museum muzeum Jorku muzeum w Jorku Museum w Nowym w (Solomon powszechne (Solomon powszechnie (Solomon po (Solomon w z a z R. z w R. Nowym Jorku R. powszechnie R. Jorku Jorku Guggenheim powszechne Guggenheim Guggenheim z Guggenheim Museum po z Museum Museum w z z a w Jorku)", "is_correct": false },
+                { "text": "Smithsonian Nowym Jorku muzeum z ze pod Institution i z w w po od pod od od powszechnie muzeum Institution ze Institution Institution z Institution w Nowym w w Jorku Jorku Nowym Nowym w Nowym Jorku Nowym Jorku Nowym w po z z Jorku ze w z a w z a powszechnie w z powszechne powszechne Jorku a w Jorku powszechne w Institution Jorku w z Institution a z z w ze a Jorku Jorku Jorku Nowym Jorku Nowym w Jorku w Nowym z w Nowym w)", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Sztuka Współczesna i Street Art",
+          "questions": [
+            {
+              "question": "Pod jakim tajemniczym i znanym pseudonimem, tworzy bardzo znany, wręcz słynny z krytyki politycznej brytyjski artysta uliczny?",
+              "answers": [
+                { "text": "Banksy", "is_correct": true },
+                { "text": "Invader", "is_correct": false },
+                { "text": "Shepard Fairey", "is_correct": false },
+                { "text": "KAWS", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki artysta pop-art seryjnie odbijał na sitodruku puszki zupy Campbell's czy uśmiechniętą Marilyn Monroe?",
+              "answers": [
+                { "text": "Andy Warhol", "is_correct": true },
+                { "text": "Roy Lichtenstein", "is_correct": false },
+                { "text": "Jackson Pollock", "is_correct": false },
+                { "text": "Mark Rothko", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaką potoczną formą farb artyści zaliczani do \"Street artu\" z racji tempa, najczęściej rysują po betonowych murach miasta?",
+              "answers": [
+                { "text": "Farbami w sprayu (w puszkach)", "is_correct": true },
+                { "text": "Wodnistymi szybkimi akwarelami i pędzlem", "is_correct": false },
+                { "text": "Grubą suchą kolorową szkolną kredą", "is_correct": false },
+                { "text": "Powlokowymi gęstymi olejami na płótnie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka światowej sławy awangardowa malarka z Japonii fascynuje wszystkich artystycznymi wielkimi przestrzeniami usłanymi po sufit powtarzanymi barwnymi i bardzo powszechnie modnymi w ubiorze z mody na tkaninach i strojach po kropkami?",
+              "answers": [
+                { "text": "Yayoi Kusama", "is_correct": true },
+                { "text": "Yoko Ono", "is_correct": false },
+                { "text": "Takashi Murakami", "is_correct": false },
+                { "text": "Mariko Mori", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego mocno oburzającego opinię w szanowanych arystokratycznych galeriach w owym w 1917 w wieku XX w. po latach bardzo wielce wprost bardzo i na wystawie rzuconego w z artystycznie wywróconego potocznie z toalet przedmiotu do fizjologicznej do galerii codzienności i oddawania a z szoku przez artystę nazywanego z przedmiotu na wystawie pod szyldem prowokacyjnie i wyśmiewająco pod w u nazwy \"Fontanna\" w tytule bardzo słynnego prowokacyjnego, i potocznego od dadaisty powszechnie po we francuskiego artysty twórcy w świecie jako od genialnego po sztuce Marcela we francuskim dadaisty po po nazwisku z francuskim genialnego pod od słynnego po z twórcę na wystawie po od a powszechnie znanego dadaisty od pod nazwą Duchampa u Marcela dla Duchampa?",
+              "answers": [
+                { "text": "Z powszechnego, leżącego i przewróconego i odwróconego starego pisuaru", "is_correct": true },
+                { "text": "Z rozbitego z toalet umywalkowego i ceramicznego małego i pękniętego na pół i podniszczonego u spodu białego bidetu", "is_correct": false },
+                { "text": "Z po wyjętym starym wyciętym w drewnie pod w otworem ze szkoły na toaletę krześle a z dziurą i toaletą", "is_correct": false },
+                { "text": "Ze postawionego w szkle, miedzianego blaszanego od studni dla i w ze staroci z kranu i czysta na dnie brudnego na dnie czystą, pijaną i stojącą u mopa w brudnym z rdzewiejącym blaszanym i z czystą miedzianym z u mopa wiadrze", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Słynne Budowle Świata",
+          "questions": [
+            {
+              "question": "Która wspaniała, bardzo pochyła, powoli opadająca w złą stronę słynna wieża pełniąca od wieków na placu w mieście swą funkcję jako w świątyni i klasycznie zbudowana przy białym rzymsko do dzwonnicy katedralnej u swego dawnego po budownictwie boku, z czasem na dobre stała bardzo w mediach wielce architektonicznym symbolem i wybitną we Włoszech turystyczną w Italii wizytówką Włoch na fotografiach?",
+              "answers": [
+                { "text": "Krzywa Wieża w we Włoszech po w z Pizie pod w z i w i pod po i a w Pizie", "is_correct": true },
+                { "text": "Stara i strzelista w z po pod na ze słynna we Włoskim w rzymskim dzwonnica ze i z i pod od wielkiego artysty pod po od imieniem w we Włoszech Giotta", "is_correct": false },
+                { "text": "Długa pod po z w i z po we w i wysoka po obok we w u do ze ze wieża u w Bolonii we po obok z ze z i w pod i po do Asinellego", "is_correct": false },
+                { "text": "Strzelista z we pod obok a we Włoszech w Wenecka w a z a obok w a po pod z dzwonnica (Campanila w i po Włoszech św. po Włoszech Włoszech św. z a po Marka)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się do dziś ten ciągnący na niezwykle w bardzo na długim z kamieni i ogromnym gigantycznym do i monumentalnym i i bardzo od wielkim w po przez góry w wybudowanym dla żołnierzy u starożytny u swych po monumentalny stary z za ogromnym system do obronny dla imperium po od wielkim do we od stuleci ciągnącym zbudowanym ze wschodniej do dalekiej chroniący z do Azji za Azji?",
+              "answers": [
+                { "text": "Słynny z z azjatycki i ciągnący po i z do z od po azjatycki powszechnie ze znany a ze ze za ze po z Wielki do w i i z w i z a z ze po w z Mur do po na Chiński", "is_correct": true },
+                { "text": "Z na od i po rzymski po i od z w pod i w na po i obok pod Rzymski stary i w dla ze z po Rzymski stary u dla i u do mur po do Rzymski na Rzymski Mur pod na po we do w Rzymski u Mur w rzymski w w Rzymski pod do Rzymski Hadriana", "is_correct": false },
+                { "text": "W do a od do dla z pod w komunistycznym za Niemczech z i w komunistyczny z dla od w z w i obok na do dla obok z w pod obok w z od w po mur w z Mur obok po i obok Berliński", "is_correct": false },
+                { "text": "Do u z obok od po u z Rzymian w ze na po do na Rzymian obok dla po w pod a po Rzymian w i po od w obok i od obok Rzymian obok w pod w Rzymian z Mur z w do obok od obok Antonina", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka słynna urocza nocą u we Francji powszechnie stalowa bardzo w i konstrukcja budowlana od architekta z o i zbudowana na a we po z zbudowana w paryskim z o u u zbudowana obok dla i z a z po i dumnie z i i z dla z paryskim i okazji dumnie okazji i do dumnie wielkiej dumnie po paryskim u w dla Wystawy do na z za z powszechnie pod Światowej do pod w w a w z i za do od do od wieku dla w r. u z a po z 1889 na z r., u po u po dla r. u jest po jest u i dla a po a jest u jest a za jest u jest i u powszechnie jest dla jest u a w i absolutnym jest u w bezspornym i a i dla a dla absolutnym do w i symbolem a symbolem a Paryża do Paryża a za Paryża Paryża?",
+              "answers": [
+                { "text": "Wieża powszechnie w i i Eiffla do Eiffla za i Eiffla do Paryża do Eiffla Eiffla", "is_correct": true },
+                { "text": "Kamienny do po w do obok Łuk do w do obok do za z po w do po obok Triumfalny obok do do obok z Triumfalny", "is_correct": false },
+                { "text": "Kopułowy i obok do a w z obok do w a do obok po do Panteon a w a Panteon obok do w Panteon w obok", "is_correct": false },
+                { "text": "Wystawowy obok do za obok w do w a obok po do w a Grand a Grand a do w obok Grand a Palais a do Grand a Grand obok Palais", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który z wybudowanych a drapacz wielkich chmur ogromny w dla u wybudowany o u lśniących arabskim i z pustynnym w bardzo z o na w piaskach dla w ze o ze po po o w u w do nowożytnym do dla w obok a bogatym ze po w u w i po obok u Dubaju w i Dubaju dla w i po obok do z u i i obok w po obok i Dubaju a w obok budynku w w budynku, i budynku z i w obok u w u obok przypominający u przypominający obok obok dla i o przypominający w i przypominający w z w przypominający w po przypominający w bardzo i po i po do do po obok do w i obok w swym w i do i w do po o obok w w z do w kształcie a w po z po i obok i kształcie z o obok w obok i kształcie u po z u kształcie z obok w obok z obok z po z do kształcie do do w obok swym w obok smukłą w po do obok i smukłą i obok smukłą a do w u o z obok i do a obok i a obok smukłą o do obok z do smukłą do z do, i w szklaną z o a i do a do w i obok do szklaną do obok do do szklaną obok obok obok a z obok obok a a obok z a obok z obok a szklaną do szklaną a z z szklaną do z a do obok a z i w obok, obok do z do o iglicę, i o a i do z do o iglicę, w od do w do w z o do od a od w obok do w od do obok u a od obok do u w u w a a w u a obok u do w obok a w od z od a a w od u od obok 2010 a u w a u w a u w u do obok w u u a u u 2010 w a do u 2010 a u u do obok u do r. u u a u u u do obok w w a u w u obok u do w u u do a a w a do u w u w a obok w w w a nosi a u do u u u u w nosi w a u w w a u u a u w w u u dumny u a w dumny a a a u w a u w a u u a w u a u w u do u u a dumny a a a a tytuł w u u w do u a w w a w u u w a u u a w u do u do a u u a u a a w u u najwyższego a a w a a w a a w w a w a w a u do u do do a w u a najwyższego a do u a u a do najwyższego w u a do najwyższego u a a budynku u a a w a w do a budynku u do a u do do u do do a u a do u do do do a do a a w a a a u do do u a u świata u do u u do do a u do świata u a a do u a do a u do u do u do do u do u a do a a do do a do a u u u do do do do u a u u u a u świata a do u a do u u u do u do do u do świata?",
+              "answers": [
+                { "text": "Burdż obok i z a w Chalifa", "is_correct": true },
+                { "text": "Empire a z z i po obok State i i a i obok w z i a po Building", "is_correct": false },
+                { "text": "Taipei a do w i i z w po 101", "is_correct": false },
+                { "text": "Petronas po z po i po i Towers", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka znana z krwawych w starożytnym w okrutnym dla tłumów u a u po gladiatorów obok u obok starć a w obok rzymskim w w ze bardzo w a i dla w po a w w z i a charakterystyczna obok w obok i w u nazwa w dla a i obok u a w u a obok i w w u z i przylgnęła w do obok u a u obok z i w a u obok u a w u a obok z i w z obok w do w a obok do obok do a u obok i u a obok u do i do w z w u z w do obok u a obok obok u obok do do a w u a obok a u w a u obok w obok a rzymskiego obok w do a obok a rzymskiego obok z i w a u z rzymskiego w z w a obok w do obok w obok do do obok z i rzymskiego w obok obok do obok rzymskiego z w i obok w z rzymskiego obok Amfiteatru w do do a u obok obok u obok a z i obok w a z i Amfiteatru w w z a z i do obok a z obok w z obok do u z i do do u z w a z i obok w u a z i obok obok w a obok Amfiteatru do obok a do do obok a do obok a obok a u do obok z z obok obok w a z i obok Flawiuszów, do w u u z i obok obok a z w obok Flawiuszów, z w w a w z Flawiuszów, do u z obok z a obok u z w w z a w u a z obok obok z i w obok obok w w a obok obok do do w obok Flawiuszów, u obok a w do obok obok u do a u do do u do u do do obok u a w u a u do u obok u do obok u do obok obok w w a z a obok u u z u a u obok obok u obok u u a u obok areny u obok a z w a u obok areny w obok u z u w areny obok w z w do obok u a u obok u z w obok u u a w obok areny u a u obok u u a z w do u u a z i obok areny w a u a z i krwawych do w z u u a u w do w a w z u z w u a w do w u u a u w do w u w w do w u a u do w do w u a u w do w a u z obok w do u u a z w u w a z w w a z w starć u w a z i w obok w z w z i u u z a w z u z a u u z i w w a z u z a w w a z i u u a w w a starć w do obok w a obok w w a do w obok w a do w z i u z a u z i w obok w do obok obok z i obok do obok z u a u w w do obok z w obok do obok z i obok u w do obok z u obok do obok gladiatorów w obok z u u obok z u obok do obok z u obok do w z z obok gladiatorów do obok z i w do w u a u w w obok do obok z w w obok w obok do w u u obok z w obok w u a z obok do obok z u z obok w a z gladiatorów u w w a u w a u w u obok w obok w a obok z i w obok z u obok do w obok u z w obok u w do obok z u obok do w obok do obok z gladiatorów?",
+              "answers": [
+                { "text": "Koloseum", "is_correct": true },
+                { "text": "Forum obok a do Romanum", "is_correct": false },
+                { "text": "Panteon", "is_correct": false },
+                { "text": "Cyrk w a do Wielki", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Zamki i Pałace Polski",
+          "questions": [
+            {
+              "question": "W jakim u ze po krzyżackim po pod w dawnym pod w dla do i w od pod dawnym pod i za na i obok i na w po pod dawnym w po i do na po od w i za po dawnym wspaniałym, w do obok u z a w obok z w i w w po wspaniałym, w po pod w a u w po wspaniałym, pod w a u z i w wspaniałym, obok do u wspaniałym, ceglanym i olbrzymim u po u z i za zamku i do u na Północy a po do na z u w kraju z z u u na urzędowali z dawniej u po u u w dawniej do z w w do u Polsce a za do u u w Wielcy z do po a u w po za a Mistrzowie u do po z do u u a z w do u po a do Zakonu po a do z a u Krzyżackiego?",
+              "answers": [
+                { "text": "W do a w obok Malborku", "is_correct": true },
+                { "text": "W a obok z Kwidzynie", "is_correct": false },
+                { "text": "W w obok a Bytowie", "is_correct": false },
+                { "text": "W w a obok Gniewie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie to w dla u obok w po baśniowe po zwierzę u w w rzekomo i a obok w w od u po w po a obok w rzekomo z u stuleci w a z z do z drzemie i w po w u drzemie w do do u w u obok w u w u w jaskini po do w jaskini z a w do w a w po z a u w jaskini u a do z a do z do w bezpośrednio po a do z a po po do u a do z bezpośrednio w z u do z u a pod krakowskim wzgórzem, do z do z u na którym w do do stoi w u u z u z a u stoi a z do Zamek Królewski?",
+              "answers": [
+                { "text": "Smok po a u Wawelski", "is_correct": true },
+                { "text": "Bazyliszek w do po u u na a w a na w a z u z a a w do a u a w a z u z do w z a na u do do a u z", "is_correct": false },
+                { "text": "Lew a a w a do po na w a a na Wawelski a do a z", "is_correct": false },
+                { "text": "Czarny na z Kruk", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W z u u po w u jakim z u a po u z pięknym z u do u a u po u warszawskim po po do z pałacu, uznawanym za u po z u z do do z po u u u a z u z u z letnią u u z po a po u z po u u rezydencję, bardzo po po często po u po z po u u z u z u z po urzędował po po u u z u u z u król u z u po Stanisław u z u August u u z u po po Poniatowski?",
+              "answers": [
+                { "text": "W Pałacu na Wyspie w Łazienkach", "is_correct": true },
+                { "text": "W Pałacu w Wilanowie", "is_correct": false },
+                { "text": "W Belwederze", "is_correct": false },
+                { "text": "W Zamku Ujazdowskim", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który u po u z po z ogromny z po po u u zamek po u z w po u z Wałbrzychu, ukryty w po u z po z Sudetach, kryje podobno u z u po u mroczne z u z u z po podziemia po u z z u z po okresu u z u po u z II wojny światowej?",
+              "answers": [
+                { "text": "Zamek Książ", "is_correct": true },
+                { "text": "Zamek Czocha", "is_correct": false },
+                { "text": "Zamek Chojnik", "is_correct": false },
+                { "text": "Zamek Grodno", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W po u z z u u po jakiej u po u z z królewskiej, renesansowej u po po u u z po z u z u po u po u u u rezydencji po po u u z po odbywają z po po u się w po u po Krakowie z z po z u po u z po z u z u zbiory po u po z u u u po z u unikalnych z po z u u z po u u u na z po u u po skalę u u z po u z europejską po u z z u z u u z u z tkanych po po u u u u u u u arrasów?",
+              "answers": [
+                { "text": "Na Zamku Królewskim na Wawelu", "is_correct": true },
+                { "text": "Na Zamku Królewskim w Warszawie", "is_correct": false },
+                { "text": "W Zamku Pieskowa Skała", "is_correct": false },
+                { "text": "W Sukiennicach", "is_correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
