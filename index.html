@@ -187,6 +187,13 @@
             <div class="play-btn" id="play-kraje">Zagraj</div>
         </a>
 
+        <a href="./memo/" class="game-card">
+            <span class="icon">🧩</span>
+            <h2 id="card-memo-title">Memo</h2>
+            <p id="card-memo-desc" style="color: #94a3b8; font-size: 0.9rem;">Znajdź wszystkie pary ukrytych obrazków!</p>
+            <div class="play-btn" id="play-memo">Zagraj</div>
+        </a>
+
     </main>
 
     <footer id="footer-text">
@@ -209,6 +216,8 @@
                 pisanieDesc: 'Naucz się pisać polskie słowa, literka po literce.',
                 krajeTitle: 'Kraje',
                 krajeDesc: 'Sprawdź swoją wiedzę o krajach, stolicach i flagach!',
+                memoTitle: 'Memo',
+                memoDesc: 'Znajdź wszystkie pary ukrytych obrazków!',
                 play: 'Zagraj',
                 footer: 'Ostatnia aktualizacja: 2026 | @twoznia'
             },
@@ -223,6 +232,8 @@
                 pisanieDesc: 'Learn to spell words, letter by letter.',
                 krajeTitle: 'Countries',
                 krajeDesc: 'Test your knowledge of countries, capitals, and flags!',
+                memoTitle: 'Memo',
+                memoDesc: 'Find all matching pairs of hidden images!',
                 play: 'Play',
                 footer: 'Last updated: 2026 | @twoznia'
             }
@@ -240,6 +251,8 @@
             document.getElementById('card-pisanie-desc').textContent = t.pisanieDesc;
             document.getElementById('card-kraje-title').textContent = t.krajeTitle;
             document.getElementById('card-kraje-desc').textContent = t.krajeDesc;
+            document.getElementById('card-memo-title').textContent = t.memoTitle;
+            document.getElementById('card-memo-desc').textContent = t.memoDesc;
             document.querySelectorAll('.play-btn').forEach(el => el.textContent = t.play);
             document.getElementById('footer-text').textContent = t.footer;
             document.getElementById('btn-pl').style.borderColor = lang === 'pl' ? 'var(--accent-color)' : '#555';
