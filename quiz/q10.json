@@ -1,0 +1,814 @@
+{
+  "categories": [
+    {
+      "category_name": "Przyroda i Biologia",
+      "subcategories": [
+        {
+          "subcategory_name": "Ochrona Gatunkowa",
+          "questions": [
+            {
+              "question": "Jaki duży ptak drapieżny, widniejący w polskim godle, podlega u nas ścisłej ochronie gatunkowej?",
+              "answers": [
+                { "text": "Bielik", "is_correct": true },
+                { "text": "Sokół wędrowny", "is_correct": false },
+                { "text": "Jastrząb", "is_correct": false },
+                { "text": "Kruk", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka międzynarodowa księga zawiera oficjalny i uaktualniany spis gatunków zagrożonych wyginięciem?",
+              "answers": [
+                { "text": "Czerwona Księga", "is_correct": true },
+                { "text": "Czarna Księga", "is_correct": false },
+                { "text": "Zielona Księga", "is_correct": false },
+                { "text": "Księga Dżungli", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki sympatyczny azjatycki niedźwiedź stał się globalnym symbolem fundacji WWF?",
+              "answers": [
+                { "text": "Panda wielka", "is_correct": true },
+                { "text": "Koala", "is_correct": false },
+                { "text": "Grizzly", "is_correct": false },
+                { "text": "Niedźwiedź polarny", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się ochrona polegająca na dbaniu o gatunki całkowicie wymarłe w naturze w ogrodach zoo?",
+              "answers": [
+                { "text": "Ochrona ex situ", "is_correct": true },
+                { "text": "Ochrona in situ", "is_correct": false },
+                { "text": "Ochrona obszarowa", "is_correct": false },
+                { "text": "Ochrona rezerwatowa", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który duży polski ssak kopytny, zwany królem puszczy, został uratowany przed całkowitym wymarciem?",
+              "answers": [
+                { "text": "Żubr", "is_correct": true },
+                { "text": "Łoś", "is_correct": false },
+                { "text": "Jeleń", "is_correct": false },
+                { "text": "Dzik", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Zjawiska Atmosferyczne",
+          "questions": [
+            {
+              "question": "Jak potocznie określamy gwałtowne wyładowanie elektryczne w atmosferze z efektem świetlnym i hukiem?",
+              "answers": [
+                { "text": "Piorun (Błyskawica)", "is_correct": true },
+                { "text": "Huragan", "is_correct": false },
+                { "text": "Zorza", "is_correct": false },
+                { "text": "Grad", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co jest główną przyczyną powstawania malowniczej, wielokolorowej tęczy na niebie po deszczu?",
+              "answers": [
+                { "text": "Rozszczepienie światła w kroplach", "is_correct": true },
+                { "text": "Odbicie światła od chmur", "is_correct": false },
+                { "text": "Wyładowania elektrostatyczne", "is_correct": false },
+                { "text": "Parowanie wody z ziemi", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się zjawisko świetlne występujące najczęściej w pobliżu biegunów, tworzące barwne pasy?",
+              "answers": [
+                { "text": "Zorza polarna", "is_correct": true },
+                { "text": "Halo", "is_correct": false },
+                { "text": "Słońce poboczne", "is_correct": false },
+                { "text": "Widmo Brockenu", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki niebezpieczny wir powietrzny tworzy charakterystyczny lej od chmury aż do samej ziemi?",
+              "answers": [
+                { "text": "Trąba powietrzna (Tornado)", "is_correct": true },
+                { "text": "Tajfun", "is_correct": false },
+                { "text": "Cyklon", "is_correct": false },
+                { "text": "Monsun", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakiej postaci opada na ziemię woda, tworząc w chmurze lodowe, nieregularne bryłki podczas burzy?",
+              "answers": [
+                { "text": "Gradu", "is_correct": true },
+                { "text": "Śniegu", "is_correct": false },
+                { "text": "Szronu", "is_correct": false },
+                { "text": "Rosy", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Leśnictwo i Łowiectwo",
+          "questions": [
+            {
+              "question": "Jak nazywa się specjalna wieżyczka w lesie lub na skraju pola, służąca myśliwym do polowań?",
+              "answers": [
+                { "text": "Ambona", "is_correct": true },
+                { "text": "Paśnik", "is_correct": false },
+                { "text": "Zwyżka", "is_correct": false },
+                { "text": "Czatownia", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim obiekcie, popularnym zimą w lesie, leśnicy wykładają pożywienie dla dzikich zwierząt?",
+              "answers": [
+                { "text": "W paśniku", "is_correct": true },
+                { "text": "W karmniku", "is_correct": false },
+                { "text": "W ulu", "is_correct": false },
+                { "text": "W gawrze", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak określa się profesjonalistę zajmującego się sadzeniem, ochroną i wycinką drzew w lasach?",
+              "answers": [
+                { "text": "Leśnik", "is_correct": true },
+                { "text": "Myśliwy", "is_correct": false },
+                { "text": "Drwal", "is_correct": false },
+                { "text": "Gajowy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co to jest wargowy, głośny zew byków jelenia szlachetnego w okresie jesiennego godu?",
+              "answers": [
+                { "text": "Rykowisko", "is_correct": true },
+                { "text": "Bekowisko", "is_correct": false },
+                { "text": "Tokowisko", "is_correct": false },
+                { "text": "Bukowisko", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakich zwierząt składa się tzw. wataha w terminologii myśliwskiej i leśnej?",
+              "answers": [
+                { "text": "Z wilków lub dzików", "is_correct": true },
+                { "text": "Z jeleni i sarn", "is_correct": false },
+                { "text": "Z ptaków wędrownych", "is_correct": false },
+                { "text": "Z rysi i żbików", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Biologia Komórki",
+          "questions": [
+            {
+              "question": "Jak nazywa się centralna struktura komórki eukariotycznej, która przechowuje materiał genetyczny?",
+              "answers": [
+                { "text": "Jądro komórkowe", "is_correct": true },
+                { "text": "Mitochondrium", "is_correct": false },
+                { "text": "Rybosom", "is_correct": false },
+                { "text": "Wakuola", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Które organella potocznie nazywane są 'elektrowniami komórki', bo produkują życiodajną energię ATP?",
+              "answers": [
+                { "text": "Mitochondria", "is_correct": true },
+                { "text": "Lizosomy", "is_correct": false },
+                { "text": "Aparaty Golgiego", "is_correct": false },
+                { "text": "Chloroplasty", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki ważny, skomplikowany proces odpowiada w biologii za podział zwykłej komórki na dwie potomne?",
+              "answers": [
+                { "text": "Mitoza", "is_correct": true },
+                { "text": "Mejoza", "is_correct": false },
+                { "text": "Osmoza", "is_correct": false },
+                { "text": "Plazmoliza", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czego NIE posiada w swojej naturalnej strukturze ludzka komórka zwierzęca w odróżnieniu od roślin?",
+              "answers": [
+                { "text": "Ściany komórkowej i chloroplastów", "is_correct": true },
+                { "text": "Jądra i błony komórkowej", "is_correct": false },
+                { "text": "Cytoplazmy", "is_correct": false },
+                { "text": "Mitochondriów", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywają się mikroskopijne struktury w komórce, na których bezpośrednio zachodzi synteza białek?",
+              "answers": [
+                { "text": "Rybosomy", "is_correct": true },
+                { "text": "Centriole", "is_correct": false },
+                { "text": "Wakuole", "is_correct": false },
+                { "text": "Chloroplasty", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Genetyka",
+          "questions": [
+            {
+              "question": "Jak brzmi pełne rozwinięcie skrótu DNA, czyli nośnika naszej informacji genetycznej?",
+              "answers": [
+                { "text": "Kwas deoksyrybonukleinowy", "is_correct": true },
+                { "text": "Kwas rybonukleinowy", "is_correct": false },
+                { "text": "Kwas mlekowy", "is_correct": false },
+                { "text": "Kwas acetylosalicylowy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Ile par chromosomów występuje u zdrowego człowieka w każdej zwykłej, somatycznej komórce ciała?",
+              "answers": [
+                { "text": "23 pary (łącznie 46)", "is_correct": true },
+                { "text": "21 par", "is_correct": false },
+                { "text": "46 par", "is_correct": false },
+                { "text": "24 pary", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki zakonnik badając krzyżowanie grochu sformułował podstawowe prawa dziedziczenia i genetyki?",
+              "answers": [
+                { "text": "Grzegorz Mendel", "is_correct": true },
+                { "text": "Karol Darwin", "is_correct": false },
+                { "text": "Ludwik Pasteur", "is_correct": false },
+                { "text": "Thomas Hunt Morgan", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki chromosom decyduje u ssaków wprost o męskiej płci potomska, będąc przekazywanym przez ojca?",
+              "answers": [
+                { "text": "Chromosom Y", "is_correct": true },
+                { "text": "Chromosom X", "is_correct": false },
+                { "text": "Chromosom Z", "is_correct": false },
+                { "text": "Chromosom W", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak potocznie określa się organizmy, których DNA celowo zmieniono w laboratorium (np. kukurydza)?",
+              "answers": [
+                { "text": "Organizmy modyfikowane genetycznie (GMO)", "is_correct": true },
+                { "text": "Organizmy klonowane", "is_correct": false },
+                { "text": "Zmutowane hybrydy", "is_correct": false },
+                { "text": "Chimery", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Świat Mikrobów",
+          "questions": [
+            {
+              "question": "Jak nazywają się jednokomórkowe organizmy bez jądra, które mogą powodować infekcje lub np. kwaszenie?",
+              "answers": [
+                { "text": "Bakterie", "is_correct": true },
+                { "text": "Wirusy", "is_correct": false },
+                { "text": "Grzyby", "is_correct": false },
+                { "text": "Pierwotniaki", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co powoduje groźne choroby takie jak grypa, ospa czy COVID-19 i nie jest uznawane za w pełni żywe?",
+              "answers": [
+                { "text": "Wirus", "is_correct": true },
+                { "text": "Bakteria", "is_correct": false },
+                { "text": "Pasożyt", "is_correct": false },
+                { "text": "Pierwotniak", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak odkryto pierwszy na świecie antybiotyk, penicylinę, która na zawsze zmieniła walkę z mikrobami?",
+              "answers": [
+                { "text": "Odkryto go z pleśni (grzyba)", "is_correct": true },
+                { "text": "Zsyntetyzowano go z ropy", "is_correct": false },
+                { "text": "Pozyskano go z jadu żmii", "is_correct": false },
+                { "text": "Wyizolowano go z kory wierzby", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywają się pożyteczne drobnoustroje dodawane do jogurtów, które wspierają naszą florę jelit?",
+              "answers": [
+                { "text": "Probiotyki", "is_correct": true },
+                { "text": "Antybiotyki", "is_correct": false },
+                { "text": "Prebiotyki", "is_correct": false },
+                { "text": "Patogeny", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki organizm jednokomórkowy z grupy pierwotniaków porusza się majestatycznie dzięki nibynóżkom?",
+              "answers": [
+                { "text": "Ameba (Pełzak)", "is_correct": true },
+                { "text": "Pantofelek", "is_correct": false },
+                { "text": "Euglena zielona", "is_correct": false },
+                { "text": "Drożdż", "is_correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_name": "Kulinaria i Smaki",
+      "subcategories": [
+        {
+          "subcategory_name": "Tradycyjne Zupy Polskie",
+          "questions": [
+            {
+              "question": "Jaka kwaśna zupa, podawana z jajkiem i białą kiełbasą, króluje w Polsce na wielkanocnym stole?",
+              "answers": [
+                { "text": "Żurek", "is_correct": true },
+                { "text": "Barszcz czerwony", "is_correct": false },
+                { "text": "Ogórkowa", "is_correct": false },
+                { "text": "Pomidorowa", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakich tartych i fermentowanych warzyw przygotowuje się najpopularniejszy polski barszcz?",
+              "answers": [
+                { "text": "Z buraków", "is_correct": true },
+                { "text": "Z kapusty", "is_correct": false },
+                { "text": "Z pomidorów", "is_correct": false },
+                { "text": "Ze szczawiu", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co charakterystycznego z makaronu i żołądków (lub fragmentów żołądków) pływa w gęstych flaczkach?",
+              "answers": [
+                { "text": "Kawałki wołowych żołądków", "is_correct": true },
+                { "text": "Poszarpany drób", "is_correct": false },
+                { "text": "Wieprzowe jelita", "is_correct": false },
+                { "text": "Gotowane nerki", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Na jakim drobiowym wywarze zazwyczaj przygotowuje się klasyczny, niedzielny, polski rosół?",
+              "answers": [
+                { "text": "Na kurze (lub kaczce) i wołowinie", "is_correct": true },
+                { "text": "Na rybach", "is_correct": false },
+                { "text": "Na wieprzowinie i kościach", "is_correct": false },
+                { "text": "Tylko i wyłącznie na warzywach", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka zupa jest przyrządzana z podrobów, krwi wieprzowej (lub drobiowej) i ma bardzo ciemny kolor?",
+              "answers": [
+                { "text": "Czernina (Czarna polewka)", "is_correct": true },
+                { "text": "Żurek", "is_correct": false },
+                { "text": "Zalewajka", "is_correct": false },
+                { "text": "Krupnik", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Pierogi i Dania Mączne",
+          "questions": [
+            {
+              "question": "Jakie to bardzo znane pierogi, które w farszu oprócz cebulki i pieprzu łączą twaróg i ziemniaki?",
+              "answers": [
+                { "text": "Pierogi ruskie", "is_correct": true },
+                { "text": "Pierogi z kapustą i grzybami", "is_correct": false },
+                { "text": "Pierogi leniwe", "is_correct": false },
+                { "text": "Pierogi z mięsem", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywają się śląskie kluski robione z gotowanych ziemniaków i skrobi, z dziurką w środku?",
+              "answers": [
+                { "text": "Kluski śląskie", "is_correct": true },
+                { "text": "Kopytka", "is_correct": false },
+                { "text": "Knedle", "is_correct": false },
+                { "text": "Pielmieni", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z czym tradycyjnie, na słodko, Polacy latem jedzą mączne dania i pierogi oprócz śmietany i cukru?",
+              "answers": [
+                { "text": "Z jagodami lub truskawkami", "is_correct": true },
+                { "text": "Z bananami", "is_correct": false },
+                { "text": "Z ananasem", "is_correct": false },
+                { "text": "Z jabłkami", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie małe, bardzo drobne 'uszka' najczęściej wrzuca się do czystego, wigilijnego barszczu?",
+              "answers": [
+                { "text": "Uszka z grzybami", "is_correct": true },
+                { "text": "Uszka z serem", "is_correct": false },
+                { "text": "Uszka z mięsem", "is_correct": false },
+                { "text": "Uszka z łososiem", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z czego robione są kopytka, tradycyjnie podawane jako dodatek do sosów lub mięs obiadowych?",
+              "answers": [
+                { "text": "Z ziemniaków, mąki i jajka", "is_correct": true },
+                { "text": "Z kaszy manny", "is_correct": false },
+                { "text": "Z mąki kukurydzianej", "is_correct": false },
+                { "text": "Z ryżu", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Kuchnia Włoska",
+          "questions": [
+            {
+              "question": "Jaka klasyczna, bardzo cienka pizza z Neapolu posiada pomidory, mozzarellę i świeżą bazylię?",
+              "answers": [
+                { "text": "Margherita", "is_correct": true },
+                { "text": "Capricciosa", "is_correct": false },
+                { "text": "Pepperoni", "is_correct": false },
+                { "text": "Quattro Formaggi", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co jest absolutną bazą prawdziwego włoskiego sosu carbonara przygotowywanego w rejonie Rzymu?",
+              "answers": [
+                { "text": "Żółtka jaj, ser pecorino i guanciale", "is_correct": true },
+                { "text": "Śmietana i cebula", "is_correct": false },
+                { "text": "Mielone mięso i pomidory", "is_correct": false },
+                { "text": "Czosnek, oliwa i peperoncino", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się podłużny makaron w formie cieniutkich nitek, z którego robi się Spaghetti Bolognese?",
+              "answers": [
+                { "text": "Spaghetti", "is_correct": true },
+                { "text": "Penne", "is_correct": false },
+                { "text": "Farfalle", "is_correct": false },
+                { "text": "Fusilli", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki puszysty, włoski deser oparty na serku mascarpone jest nasączany aromatyczną kawą espresso?",
+              "answers": [
+                { "text": "Tiramisu", "is_correct": true },
+                { "text": "Panna cotta", "is_correct": false },
+                { "text": "Gelato", "is_correct": false },
+                { "text": "Cannoli", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co charakteryzuje popularne, małe pierożki o nazwie ravioli, typowe dla kuchni północnych Włoch?",
+              "answers": [
+                { "text": "Mają kwadratowy kształt i farsz w środku", "is_correct": true },
+                { "text": "Wyglądają jak kokardki", "is_correct": false },
+                { "text": "Są nadziewane wyłącznie lodami", "is_correct": false },
+                { "text": "Robi się je z ziemniaków", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Kuchnia Azjatycka",
+          "questions": [
+            {
+              "question": "Z jakiego kraju pochodzi oryginalnie sushi, w którym surową rybę i warzywa zawija się w ryż i glony?",
+              "answers": [
+                { "text": "Z Japonii", "is_correct": true },
+                { "text": "Z Chin", "is_correct": false },
+                { "text": "Z Korei Południowej", "is_correct": false },
+                { "text": "Z Tajlandii", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co to jest kimchi, bardzo popularny, narodowy wręcz i ostry dodatek prosto z kuchni koreańskiej?",
+              "answers": [
+                { "text": "Fermentowana kapusta na ostro", "is_correct": true },
+                { "text": "Zupa z pędów bambusa", "is_correct": false },
+                { "text": "Smażony ryż z jajkiem", "is_correct": false },
+                { "text": "Pieróg na parze", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakiej znanej i rozgrzewającej japońskiej zupie znajdziesz bulion, makaron, jajko i mięso lub tofu?",
+              "answers": [
+                { "text": "W ramenie", "is_correct": true },
+                { "text": "W pho", "is_correct": false },
+                { "text": "W tom yum", "is_correct": false },
+                { "text": "W pad thai", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakim naturalnym, ciemnym i wyrazistym, słonawym sosem często doprawia się azjatyckie dania wok?",
+              "answers": [
+                { "text": "Sosem sojowym", "is_correct": true },
+                { "text": "Sosem czosnkowym", "is_correct": false },
+                { "text": "Sosem tysiąca wysp", "is_correct": false },
+                { "text": "Ketchupem", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym jedzą Azjaci tradycyjny ryż, makaron czy sushi, używając do tego wyłącznie jednej dłoni?",
+              "answers": [
+                { "text": "Drewnianymi pałeczkami", "is_correct": true },
+                { "text": "Metalowymi widelcami", "is_correct": false },
+                { "text": "Małymi, drewnianymi łyżeczkami", "is_correct": false },
+                { "text": "Rękami", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Desery i Wypieki",
+          "questions": [
+            {
+              "question": "Jaki puszysty i uwielbiany deser powstaje poprzez dokładne upieczenie utartego sera twarogowego?",
+              "answers": [
+                { "text": "Sernik", "is_correct": true },
+                { "text": "Szarlotka", "is_correct": false },
+                { "text": "Pączek", "is_correct": false },
+                { "text": "Makowiec", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jaki czwartek w Polsce tradycyjnie i bez umiaru obżeramy się słodkimi pączkami oraz faworkami?",
+              "answers": [
+                { "text": "W Tłusty Czwartek", "is_correct": true },
+                { "text": "W Mokry Czwartek", "is_correct": false },
+                { "text": "W Słodki Czwartek", "is_correct": false },
+                { "text": "W Wielki Czwartek", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki flagowy, francuski maślany wypiek w kształcie półksiężyca spożywa się zwykle na śniadanie?",
+              "answers": [
+                { "text": "Croissant (Rogalik)", "is_correct": true },
+                { "text": "Bagietka", "is_correct": false },
+                { "text": "Ekler", "is_correct": false },
+                { "text": "Makaronik", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Głównym owocem w nadzieniu bardzo tradycyjnej, domowej polskiej szarlotki zawsze muszą być...",
+              "answers": [
+                { "text": "Jabłka (z cynamonem)", "is_correct": true },
+                { "text": "Śliwki", "is_correct": false },
+                { "text": "Wiśnie", "is_correct": false },
+                { "text": "Gruszki", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki znany, czekoladowy deser o płynnym, gorącym środku i zapiekanej otoczce podaje się w formie ciastka?",
+              "answers": [
+                { "text": "Fondant czekoladowy (Lava Cake)", "is_correct": true },
+                { "text": "Brownie", "is_correct": false },
+                { "text": "Tiramisu", "is_correct": false },
+                { "text": "Karpatka", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Owoce i Warzywa",
+          "questions": [
+            {
+              "question": "Jak nazywa się niezwykle kwaśny, żółty cytrus, którego sok chętnie wyciskamy rano do herbaty?",
+              "answers": [
+                { "text": "Cytryna", "is_correct": true },
+                { "text": "Limonka", "is_correct": false },
+                { "text": "Grejpfrut", "is_correct": false },
+                { "text": "Mandarynka", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego czerwonego warzywa bogatego w likopen można przygotować pyszny ketchup i pastę neapolitańską?",
+              "answers": [
+                { "text": "Z pomidora", "is_correct": true },
+                { "text": "Z papryki czerwonej", "is_correct": false },
+                { "text": "Z rzodkiewki", "is_correct": false },
+                { "text": "Z buraka", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie warzywo cebulowe ma mocny aromat i ząbki, a w bajkach wiesza się je na odgonienie wampirów?",
+              "answers": [
+                { "text": "Czosnek", "is_correct": true },
+                { "text": "Por", "is_correct": false },
+                { "text": "Szczypiorek", "is_correct": false },
+                { "text": "Cebula dymka", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który jesienny owoc, twardy i o wydłużonym kształcie, występuje w odmianie popularnie zwanej 'Konferencja'?",
+              "answers": [
+                { "text": "Gruszka", "is_correct": true },
+                { "text": "Śliwka", "is_correct": false },
+                { "text": "Jabłko", "is_correct": false },
+                { "text": "Pigwa", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W przypadku jakiego znanego warzywa o długim, pomarańczowym korzeniu króliki jedzą go ze smakiem?",
+              "answers": [
+                { "text": "Marchew", "is_correct": true },
+                { "text": "Pietruszka", "is_correct": false },
+                { "text": "Seler", "is_correct": false },
+                { "text": "Pasternak", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Przyprawy Świata",
+          "questions": [
+            {
+              "question": "Z mielenia jakiej bardzo ostrej i niepozornej rośliny strączkowej otrzymuje się przyprawę chili?",
+              "answers": [
+                { "text": "Z papryczki (np. jalapeno)", "is_correct": true },
+                { "text": "Z nasion pieprzu czarnego", "is_correct": false },
+                { "text": "Z korzenia imbiru", "is_correct": false },
+                { "text": "Z ziaren gorczycy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Która przyprawa o żółto-złotym zabarwieniu bywa bardzo droga i pochodzi z kwiatowych znamion krokusa?",
+              "answers": [
+                { "text": "Szafran", "is_correct": true },
+                { "text": "Kurkuma", "is_correct": false },
+                { "text": "Curry", "is_correct": false },
+                { "text": "Kmin rzymski", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki słodki, brązowy proszek robiony jest ze startej kory i idealnie pasuje do szarlotki z jabłkami?",
+              "answers": [
+                { "text": "Cynamon", "is_correct": true },
+                { "text": "Kakao", "is_correct": false },
+                { "text": "Gałka muszkatołowa", "is_correct": false },
+                { "text": "Kardamon", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czego w kuchni włoskiej głównie używa się do przyprawiania świeżych pomidorów obok oliwy i czosnku?",
+              "answers": [
+                { "text": "Bazylii i oregano", "is_correct": true },
+                { "text": "Majeranku i kminku", "is_correct": false },
+                { "text": "Koperku", "is_correct": false },
+                { "text": "Kurkumy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka wyrazista, azjatycka przyprawa posiada charakterystyczny, 'palący' korzeń, świetny na jesień?",
+              "answers": [
+                { "text": "Imbir", "is_correct": true },
+                { "text": "Chrzan", "is_correct": false },
+                { "text": "Anyż", "is_correct": false },
+                { "text": "Szafran", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Sery i Nabiał",
+          "questions": [
+            {
+              "question": "Jak brzmi nazwa tego szwajcarskiego żółtego sera z wielkimi, charakterystycznymi 'dziurami'?",
+              "answers": [
+                { "text": "Ementaler", "is_correct": true },
+                { "text": "Cheddar", "is_correct": false },
+                { "text": "Gouda", "is_correct": false },
+                { "text": "Parmezan", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który włoski, twardy i bardzo aromatyczny ser ścierany jest bardzo drobno jako posypka na makaron?",
+              "answers": [
+                { "text": "Parmezan (Parmigiano)", "is_correct": true },
+                { "text": "Gorgonzola", "is_correct": false },
+                { "text": "Mascarpone", "is_correct": false },
+                { "text": "Mozzarella", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki tradycyjny na Podhalu serek wędzony produkowany jest z mleka owczego w charakterystycznych wrzecionach?",
+              "answers": [
+                { "text": "Oscypek", "is_correct": true },
+                { "text": "Bryndza", "is_correct": false },
+                { "text": "Koryciński", "is_correct": false },
+                { "text": "Gouda", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co znajduje się wewnątrz prawdziwej i dobrej, włoskiej pizzy neapolitańskiej o nazwie Margherita?",
+              "answers": [
+                { "text": "Roztopiona, świeża mozzarella", "is_correct": true },
+                { "text": "Twardy ser gouda", "is_correct": false },
+                { "text": "Czeski smażony ser", "is_correct": false },
+                { "text": "Serek wiejski", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się bardzo miękki i delikatny ser pleśniowy, najczęściej pochodzący prosto z Francji?",
+              "answers": [
+                { "text": "Camembert lub Brie", "is_correct": true },
+                { "text": "Cheddar", "is_correct": false },
+                { "text": "Feta", "is_correct": false },
+                { "text": "Edamski", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Street Food i Fast Food",
+          "questions": [
+            {
+              "question": "Z parówki, podłużnej bułki pszennej i wielu sosów składa się na ulicznych stoiskach popularny...",
+              "answers": [
+                { "text": "Hot dog", "is_correct": true },
+                { "text": "Hamburger", "is_correct": false },
+                { "text": "Kebab", "is_correct": false },
+                { "text": "Zapiekanka", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki popularny turecki przysmak w bułce lub cieście składa się ze ścinanego, opiekanego mięsa?",
+              "answers": [
+                { "text": "Kebab (Doner/Durum)", "is_correct": true },
+                { "text": "Gyros", "is_correct": false },
+                { "text": "Burger", "is_correct": false },
+                { "text": "Quesadilla", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co charakterystycznego Polacy lubią chrupać na dworcach PKP, na połówce bagietki z serem i pieczarkami?",
+              "answers": [
+                { "text": "Zapiekankę z pieca", "is_correct": true },
+                { "text": "Calzone", "is_correct": false },
+                { "text": "Rogala z makiem", "is_correct": false },
+                { "text": "Tosty hawajskie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z czego tradycyjnie wyrabiane są złociste frytki kupowane tonami we wszystkich fast foodach świata?",
+              "answers": [
+                { "text": "Ze smażonych w głębokim tłuszczu ziemniaków", "is_correct": true },
+                { "text": "Z mąki i jajek", "is_correct": false },
+                { "text": "Z panierowanego kurczaka", "is_correct": false },
+                { "text": "Z prażonej kukurydzy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z czym tradycyjnie zjemy cienką, meksykańską tortillę w potrawie zwanej Taco lub Burrito?",
+              "answers": [
+                { "text": "Z farszem (np. mięso, fasola, kukurydza, ryż)", "is_correct": true },
+                { "text": "Na słodko z truskawkami", "is_correct": false },
+                { "text": "Z kiełbasą i musztardą", "is_correct": false },
+                { "text": "Z ugotowaną rybą w panierce", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Napoje i Alkohole",
+          "questions": [
+            {
+              "question": "Jaki pobudzający i popularny czarny napar powstaje w ekspresie przez zalanie palonych ziaren?",
+              "answers": [
+                { "text": "Kawa", "is_correct": true },
+                { "text": "Czysta herbata", "is_correct": false },
+                { "text": "Kakao", "is_correct": false },
+                { "text": "Mate", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który złocisty trunek z charakterystyczną pianką od wieków dominuje na stadionach i grillach w Polsce?",
+              "answers": [
+                { "text": "Piwo", "is_correct": true },
+                { "text": "Cydr", "is_correct": false },
+                { "text": "Wino", "is_correct": false },
+                { "text": "Wódka", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się słodki, gęsty syrop lub sok, produkowany na jesień i zimę m.in. z czarnego bzu i malin?",
+              "answers": [
+                { "text": "Sok malinowy (Syrop do herbaty)", "is_correct": true },
+                { "text": "Kwas chlebowy", "is_correct": false },
+                { "text": "Cydr", "is_correct": false },
+                { "text": "Kompot z suszu", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z czego tradycyjnie powstaje francuski szampan i większość klasycznych, gronowych win europejskich?",
+              "answers": [
+                { "text": "Z fermentowanych winogron", "is_correct": true },
+                { "text": "Z fermentowanych jabłek", "is_correct": false },
+                { "text": "Z miodu", "is_correct": false },
+                { "text": "Ze śliwek i wiśni", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak z hiszpańskiego nazywa się bardzo znany na Kubie napój alkoholowy z mięty, limonki, cukru i rumu?",
+              "answers": [
+                { "text": "Mojito", "is_correct": true },
+                { "text": "Margarita", "is_correct": false },
+                { "text": "Pina Colada", "is_correct": false },
+                { "text": "Sangria", "is_correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
