@@ -307,7 +307,7 @@
         @media (max-width: 520px) {
             .game-title { font-size: 1.9rem; }
             .setup-card { padding: 1rem; }
-            .size-grid { grid-template-columns: repeat(5, 1fr); gap: 0.35rem; }
+            .size-grid { grid-template-columns: repeat(3, 1fr); gap: 0.35rem; }
         }
     </style>
 </head>
@@ -463,14 +463,21 @@ const FLAG_POOL = [
     'hu','ro','ua','eg','ng','ke','sa','ae','th','id'
 ];
 
-// Board sizes: cols × rows → pairs count (cells / 2, floor for odd grids)
-const BOARD_SIZES = [
-    { key: '4x4',  cols: 4,  rows: 4,  pairs: 8  },
-    { key: '5x4',  cols: 5,  rows: 4,  pairs: 10 },
-    { key: '6x5',  cols: 6,  rows: 5,  pairs: 15 },
-    { key: '7x4',  cols: 7,  rows: 4,  pairs: 14 },
-    { key: '10x8', cols: 10, rows: 8,  pairs: 40 },
+// Board sizes per device: cols × rows → pairs count
+const BOARD_SIZES_MOBILE = [
+    { key: '4x4', cols: 4, rows: 4, pairs: 8  },
+    { key: '4x5', cols: 4, rows: 5, pairs: 10 },
+    { key: '4x6', cols: 4, rows: 6, pairs: 12 },
 ];
+const BOARD_SIZES_DESKTOP = [
+    { key: '4x4', cols: 4, rows: 4, pairs: 8  },
+    { key: '5x4', cols: 5, rows: 4, pairs: 10 },
+    { key: '6x4', cols: 6, rows: 4, pairs: 12 },
+    { key: '6x5', cols: 6, rows: 5, pairs: 15 },
+    { key: '8x6', cols: 8, rows: 6, pairs: 24 },
+];
+const ALL_BOARD_SIZES = [...BOARD_SIZES_MOBILE, ...BOARD_SIZES_DESKTOP];
+function getBoardSizes() { return window.innerWidth <= 520 ? BOARD_SIZES_MOBILE : BOARD_SIZES_DESKTOP; }
 
 /* ═══════════════════════════════════════
    STATE
@@ -489,7 +496,7 @@ let isLocked        = false;
 /* ═══════════════════════════════════════
    HELPERS
 ═══════════════════════════════════════ */
-function getSize()             { return BOARD_SIZES.find(s => s.key === selectedSizeKey); }
+function getSize()             { return ALL_BOARD_SIZES.find(s => s.key === selectedSizeKey); }
 function getRecord(key)        { const v = localStorage.getItem('memo-rec-' + key); return v !== null ? parseInt(v) : null; }
 function saveRecord(key, secs) { localStorage.setItem('memo-rec-' + key, secs); }
 function fmtTime(sec)          { return String(Math.floor(sec/60)).padStart(2,'0') + ':' + String(sec%60).padStart(2,'0'); }
@@ -514,7 +521,9 @@ function showScreen(id) {
 function renderSizeGrid() {
     const grid = document.getElementById('size-grid');
     grid.innerHTML = '';
-    BOARD_SIZES.forEach(size => {
+    const sizes = getBoardSizes();
+    grid.style.gridTemplateColumns = `repeat(${sizes.length}, 1fr)`;
+    sizes.forEach(size => {
         const rec = getRecord(size.key);
         const btn = document.createElement('button');
         btn.className = 'size-btn' + (size.key === selectedSizeKey ? ' selected' : '');
