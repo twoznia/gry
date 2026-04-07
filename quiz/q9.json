@@ -1,0 +1,729 @@
+{
+  "categories": [
+    {
+      "category_name": "Nauka i Odkrycia",
+      "subcategories": [
+        {
+          "subcategory_name": "Ewolucja i Dinozaury",
+          "questions": [
+            {
+              "question": "Kto w XIX wieku opublikował przełomową pracę 'O powstawaniu gatunków'?",
+              "answers": [
+                { "text": "Karol Darwin", "is_correct": true },
+                { "text": "Grzegorz Mendel", "is_correct": false },
+                { "text": "Ludwik Pasteur", "is_correct": false },
+                { "text": "Jean-Baptiste Lamarck", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który z tych potężnych prehistorycznych gadów poruszał się wyłącznie na dwóch łapach?",
+              "answers": [
+                { "text": "Tyranozaur (T-Rex)", "is_correct": true },
+                { "text": "Triceratops", "is_correct": false },
+                { "text": "Stegozaur", "is_correct": false },
+                { "text": "Brachiozaur", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywał się najbardziej rozpoznawalny i powszechnie zbadany gatunek hominida z Europy?",
+              "answers": [
+                { "text": "Neandertalczyk", "is_correct": true },
+                { "text": "Australopitek", "is_correct": false },
+                { "text": "Homo erectus", "is_correct": false },
+                { "text": "Homo habilis", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiej ery geologicznej, nazywanej 'erą gadów', pochodziły dinozaury?",
+              "answers": [
+                { "text": "Z mezozoiku", "is_correct": true },
+                { "text": "Z kenozoiku", "is_correct": false },
+                { "text": "Z paleozoiku", "is_correct": false },
+                { "text": "Z prekambru", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki owad zastygły miliony lat temu w bursztynie przyczynił się do fabuły 'Parku Jurajskiego'?",
+              "answers": [
+                { "text": "Komar", "is_correct": true },
+                { "text": "Mucha", "is_correct": false },
+                { "text": "Motyl", "is_correct": false },
+                { "text": "Pająk", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Wielcy Filozofowie",
+          "questions": [
+            {
+              "question": "Któremu ze starożytnych filozofów greckich przypisuje się autorstwo dzieła 'Państwo'?",
+              "answers": [
+                { "text": "Platonowi", "is_correct": true },
+                { "text": "Sokratesowi", "is_correct": false },
+                { "text": "Arystotelesowi", "is_correct": false },
+                { "text": "Epikurowi", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki nowożytny uczony i myśliciel wypowiedział słynne zdanie: 'Myślę, więc jestem'?",
+              "answers": [
+                { "text": "Kartezjusz (Rene Descartes)", "is_correct": true },
+                { "text": "Immanuel Kant", "is_correct": false },
+                { "text": "Friedrich Nietzsche", "is_correct": false },
+                { "text": "Baruch Spinoza", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto był najbardziej znanym i pojętnym uczniem wielkiego Sokratesa?",
+              "answers": [
+                { "text": "Platon", "is_correct": true },
+                { "text": "Arystoteles", "is_correct": false },
+                { "text": "Diogenes", "is_correct": false },
+                { "text": "Pitagoras", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego pojęcia filozoficznego (oznaczającego poszukiwanie szczęścia) zasłynął Epikur?",
+              "answers": [
+                { "text": "Z epikureizmu", "is_correct": true },
+                { "text": "Ze stoicyzmu", "is_correct": false },
+                { "text": "Z cynizmu", "is_correct": false },
+                { "text": "Ze sceptycyzmu", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który niemiecki filozof głosił nadejście nadczłowieka i twierdził, że 'Bóg umarł'?",
+              "answers": [
+                { "text": "Friedrich Nietzsche", "is_correct": true },
+                { "text": "Karl Marx", "is_correct": false },
+                { "text": "Georg Hegel", "is_correct": false },
+                { "text": "Arthur Schopenhauer", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Sztuczna Inteligencja",
+          "questions": [
+            {
+              "question": "Jak w informatyce nazywa się test mający dowieść, czy maszyna potrafi myśleć jak człowiek?",
+              "answers": [
+                { "text": "Test Turinga", "is_correct": true },
+                { "text": "Test Asimova", "is_correct": false },
+                { "text": "Algorytm Dijkstry", "is_correct": false },
+                { "text": "Próba von Neumanna", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Rozwinięciem jakiego angielskiego skrótu jest powszechnie używany termin AI?",
+              "answers": [
+                { "text": "Artificial Intelligence", "is_correct": true },
+                { "text": "Automated Interface", "is_correct": false },
+                { "text": "Applied Information", "is_correct": false },
+                { "text": "Advanced Innovation", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który słynny model językowy od firmy OpenAI stał się globalnym fenomenem w 2022 roku?",
+              "answers": [
+                { "text": "ChatGPT", "is_correct": true },
+                { "text": "Midjourney", "is_correct": false },
+                { "text": "DALL-E", "is_correct": false },
+                { "text": "Gemini", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywają się sieci naśladujące architekturę biologicznego ludzkiego mózgu?",
+              "answers": [
+                { "text": "Sieci neuronowe", "is_correct": true },
+                { "text": "Sieci kwantowe", "is_correct": false },
+                { "text": "Sieci binarne", "is_correct": false },
+                { "text": "Sieci rozproszone", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto jako pierwszy autor w literaturze sci-fi zdefiniował słynne 'Trzy Prawa Robotyki'?",
+              "answers": [
+                { "text": "Isaac Asimov", "is_correct": true },
+                { "text": "Stanisław Lem", "is_correct": false },
+                { "text": "Arthur C. Clarke", "is_correct": false },
+                { "text": "Philip K. Dick", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Eksploracja Oceanów",
+          "questions": [
+            {
+              "question": "Jak nazywa się niezwykle głęboki, najniżej położony punkt na kuli ziemskiej pod powierzchnią wody?",
+              "answers": [
+                { "text": "Rów Mariański", "is_correct": true },
+                { "text": "Rów Tonga", "is_correct": false },
+                { "text": "Głębia Challengera", "is_correct": false },
+                { "text": "Rów Filipiński", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który znany reżyser filmowy osobiście zanurkował jednoosobowym batyskafem na samo dno oceanu?",
+              "answers": [
+                { "text": "James Cameron", "is_correct": true },
+                { "text": "Steven Spielberg", "is_correct": false },
+                { "text": "Christopher Nolan", "is_correct": false },
+                { "text": "Ridley Scott", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się nauka, która w sposób kompleksowy bada budowę, chemię i życie zjawisk w oceanach?",
+              "answers": [
+                { "text": "Oceanografia", "is_correct": true },
+                { "text": "Hydrologia", "is_correct": false },
+                { "text": "Limnologia", "is_correct": false },
+                { "text": "Speleologia", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym był wynaleziony przez pioniera nurkowania Jacques'a Cousteau sprzęt o nazwie akwalung?",
+              "answers": [
+                { "text": "Aparatem do oddychania pod wodą", "is_correct": true },
+                { "text": "Pierwszym sonarem", "is_correct": false },
+                { "text": "Podwodnym dronem", "is_correct": false },
+                { "text": "Narzędziem do robienia zdjęć", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak określa się specjalistyczny, hermetyczny statek zdolny do opuszczania się na wielkie głębokości?",
+              "answers": [
+                { "text": "Batyskaf", "is_correct": true },
+                { "text": "Katamaran", "is_correct": false },
+                { "text": "Poduszkowiec", "is_correct": false },
+                { "text": "Niszczyciel", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Nobliści Naukowi",
+          "questions": [
+            {
+              "question": "Który genialny fizyk odebrał nagrodę Nobla za wyjaśnienie zjawiska efektu fotoelektrycznego?",
+              "answers": [
+                { "text": "Albert Einstein", "is_correct": true },
+                { "text": "Niels Bohr", "is_correct": false },
+                { "text": "Werner Heisenberg", "is_correct": false },
+                { "text": "Max Planck", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim szwedzkim mieście tradycyjnie odbywa się uroczyste wręczenie naukowych Nagród Nobla?",
+              "answers": [
+                { "text": "W Sztokholmie", "is_correct": true },
+                { "text": "W Oslo", "is_correct": false },
+                { "text": "W Göteborgu", "is_correct": false },
+                { "text": "W Uppsali", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Za jakie epokowe odkrycie medyczne Nagrodę Nobla zdobyli wspólnie Watson, Crick i Wilkins?",
+              "answers": [
+                { "text": "Za model podwójnej helisy DNA", "is_correct": true },
+                { "text": "Za odkrycie penicyliny", "is_correct": false },
+                { "text": "Za opisanie układu krążenia", "is_correct": false },
+                { "text": "Za odkrycie wirusa HIV", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiej dziedziny nagrodę przyznaje Bank Szwecji ku pamięci fundatora (tzw. szósty Nobel)?",
+              "answers": [
+                { "text": "Z ekonomii", "is_correct": true },
+                { "text": "Z matematyki", "is_correct": false },
+                { "text": "Z socjologii", "is_correct": false },
+                { "text": "Z architektury", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czego osobiście wynalazcą był przemysłowiec i filantrop Alfred Nobel, fundator nagrody?",
+              "answers": [
+                { "text": "Dynamitu", "is_correct": true },
+                { "text": "Prochu strzelniczego", "is_correct": false },
+                { "text": "Nitrogliceryny", "is_correct": false },
+                { "text": "Zapłonu elektrycznego", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Psychologia i Umysł",
+          "questions": [
+            {
+              "question": "Kto z dumą nosi tytuł słynnego ojca, stwórcy i najważniejszego pioniera psychoanalizy?",
+              "answers": [
+                { "text": "Sigmund Freud", "is_correct": true },
+                { "text": "Carl Jung", "is_correct": false },
+                { "text": "B.F. Skinner", "is_correct": false },
+                { "text": "Abraham Maslow", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakiego pojęcia używa się do określenia nieświadomego nawyku lub odruchu u badanego psa?",
+              "answers": [
+                { "text": "Odruch Pawłowa (warunkowy)", "is_correct": true },
+                { "text": "Efekt Placebo", "is_correct": false },
+                { "text": "Efekt motyla", "is_correct": false },
+                { "text": "Syndrom sztokholmski", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka jest najwyższa i najtrudniejsza do zaspokojenia potrzeba człowieka w piramidzie Maslowa?",
+              "answers": [
+                { "text": "Samorealizacji", "is_correct": true },
+                { "text": "Bezpieczeństwa", "is_correct": false },
+                { "text": "Fizjologiczna", "is_correct": false },
+                { "text": "Uznania i szacunku", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się naukowy, psychologiczny test polegający na ocenie pozornie przypadkowych plam z atramentu?",
+              "answers": [
+                { "text": "Test Rorschacha", "is_correct": true },
+                { "text": "Test IQ", "is_correct": false },
+                { "text": "Test Turinga", "is_correct": false },
+                { "text": "Eksperyment więzienny", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co oznacza potoczny termin 'syndrom sztokholmski' odnoszący się do stanu psychiki porwanego?",
+              "answers": [
+                { "text": "Więź z oprawcą", "is_correct": true },
+                { "text": "Amnezję wsteczną", "is_correct": false },
+                { "text": "Nienawiść do wybawicieli", "is_correct": false },
+                { "text": "Fobie przed zamknięciem", "is_correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_name": "Przyroda i Biologia",
+      "subcategories": [
+        {
+          "subcategory_name": "Zwierzęta Polskich Lasów",
+          "questions": [
+            {
+              "question": "Jaki wielki, dumnie spacerujący ssak parzystokopytny uznawany jest za bezsprzecznego króla puszczy?",
+              "answers": [
+                { "text": "Żubr", "is_correct": true },
+                { "text": "Niedźwiedź", "is_correct": false },
+                { "text": "Jeleń", "is_correct": false },
+                { "text": "Łoś", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak fachowo i prawidłowo nazywa się groźna, dorosła samica dzika prowadząca watahę?",
+              "answers": [
+                { "text": "Locha", "is_correct": true },
+                { "text": "Klępa", "is_correct": false },
+                { "text": "Łania", "is_correct": false },
+                { "text": "Wadera", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który rodzimy, uroczy ssak z kolcami chroni się w obliczu nagłego niebezpieczeństwa zwijając się w kulkę?",
+              "answers": [
+                { "text": "Jeż", "is_correct": true },
+                { "text": "Borsuk", "is_correct": false },
+                { "text": "Jeżozwierz", "is_correct": false },
+                { "text": "Kret", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki drapieżnik, wracający obecnie do polskich kniei, potocznie nazywany jest w bajkach 'Złym'?",
+              "answers": [
+                { "text": "Wilk", "is_correct": true },
+                { "text": "Lis", "is_correct": false },
+                { "text": "Ryś", "is_correct": false },
+                { "text": "Żbik", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który zwinny ssak z polskiego lasu potrafi mistrzowsko tamować rzeki poprzez budowę żeremi i tam?",
+              "answers": [
+                { "text": "Bóbr", "is_correct": true },
+                { "text": "Wydra", "is_correct": false },
+                { "text": "Borsuk", "is_correct": false },
+                { "text": "Ondatra", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Ptaki Polski",
+          "questions": [
+            {
+              "question": "Który z dużych, białych ptaków zakłada gniazda na dachach i jest symbolem szczęścia na wsi?",
+              "answers": [
+                { "text": "Bocian biały", "is_correct": true },
+                { "text": "Żuraw", "is_correct": false },
+                { "text": "Czapla", "is_correct": false },
+                { "text": "Łabędź", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki niewielki ptaszek z charakterystyczną czerwoną piersią zimuje z nami i lubi jeść nasiona?",
+              "answers": [
+                { "text": "Gil", "is_correct": true },
+                { "text": "Sikorka", "is_correct": false },
+                { "text": "Wróbel", "is_correct": false },
+                { "text": "Jaskółka", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który pracowity ptak dłubie intensywnie w drzewach w poszukiwaniu owadów i pędraków?",
+              "answers": [
+                { "text": "Dzięcioł", "is_correct": true },
+                { "text": "Sroka", "is_correct": false },
+                { "text": "Kowalik", "is_correct": false },
+                { "text": "Kruk", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się duży ptak łowny, o bardzo barwnym upierzeniu samca i z długim, zdobnym ogonem?",
+              "answers": [
+                { "text": "Bażant", "is_correct": true },
+                { "text": "Kuropatwa", "is_correct": false },
+                { "text": "Głuszec", "is_correct": false },
+                { "text": "Paw", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiej wyjątkowej zdolności, polegającej na naśladowaniu dźwięków innych ptaków, słynie szpak?",
+              "answers": [
+                { "text": "Ze świetnego imitowania odgłosów", "is_correct": true },
+                { "text": "Z długich lotów nurkowych", "is_correct": false },
+                { "text": "Z łowienia ryb nocą", "is_correct": false },
+                { "text": "Z noszenia kamieni w dziobie", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Flora i Roślinność",
+          "questions": [
+            {
+              "question": "Jak naukowo określa się złożony proces, w którym zielone rośliny produkują tlen wykorzystując światło?",
+              "answers": [
+                { "text": "Fotosynteza", "is_correct": true },
+                { "text": "Oddychanie komórkowe", "is_correct": false },
+                { "text": "Transpiracja", "is_correct": false },
+                { "text": "Osmoza", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki specjalny, zielony barwnik zawarty w roślinach pozwala im pochłaniać niezwykle cenną energię ze słońca?",
+              "answers": [
+                { "text": "Chlorofil", "is_correct": true },
+                { "text": "Melanina", "is_correct": false },
+                { "text": "Karoten", "is_correct": false },
+                { "text": "Hemoglobina", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który polski, dziki kwiat pod ścisłą ochroną najczęściej zachwyca turystów wiosną w Tatrach?",
+              "answers": [
+                { "text": "Krokus", "is_correct": true },
+                { "text": "Szarotka alpejska", "is_correct": false },
+                { "text": "Zawilec", "is_correct": false },
+                { "text": "Konwalia", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jaki naturalny i ułatwiający życie sposób nasiona żółtego dmuchawca transportowane są przez środowisko?",
+              "answers": [
+                { "text": "Przez wiatr (wiatropylność)", "is_correct": true },
+                { "text": "Przez owady (owadopylność)", "is_correct": false },
+                { "text": "Przez ptaki", "is_correct": false },
+                { "text": "Przez rzeki", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak na botanice nazywa się podziemna część rośliny, która skutecznie utrzymuje ją na miejscu w glebie?",
+              "answers": [
+                { "text": "Korzeń", "is_correct": true },
+                { "text": "Łodyga", "is_correct": false },
+                { "text": "Kłącze", "is_correct": false },
+                { "text": "Bulwa", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Grzybobranie",
+          "questions": [
+            {
+              "question": "Który jesienny, lubiany przez zbieraczy grzyb charakteryzuje się typowym, brązowym kapeluszem i grubym trzonem?",
+              "answers": [
+                { "text": "Borowik szlachetny (Prawdziwek)", "is_correct": true },
+                { "text": "Kurka", "is_correct": false },
+                { "text": "Opieńka", "is_correct": false },
+                { "text": "Maślak", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który bardzo trujący polski grzyb jest najczęstszą przyczyną bardzo poważnych i śmiertelnych zatruć na wsiach?",
+              "answers": [
+                { "text": "Muchomor sromotnikowy", "is_correct": true },
+                { "text": "Olszówka", "is_correct": false },
+                { "text": "Goryczak żółciowy", "is_correct": false },
+                { "text": "Lisówka", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak popularnie i kolokwialnie w Polsce nazywa się pieprznika jadalnego, wyśmienitego grzyba o żółtej barwie?",
+              "answers": [
+                { "text": "Kurka", "is_correct": true },
+                { "text": "Rydz", "is_correct": false },
+                { "text": "Maślak", "is_correct": false },
+                { "text": "Kania", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czego od spodu pod kapeluszem używa smaczny, leśny maślak do naturalnego wysypu drobnych zarodników?",
+              "answers": [
+                { "text": "Rurek (gąbki)", "is_correct": true },
+                { "text": "Blaszek", "is_correct": false },
+                { "text": "Kolców", "is_correct": false },
+                { "text": "Mchu", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym w budowie leśnej u sporej sowy jadalnej charakteryzuje się ogromny owocnik, czyli czubajka kania?",
+              "answers": [
+                { "text": "Ruchomym pierścieniem na trzonku", "is_correct": true },
+                { "text": "Żółtą gąbką pod spodem", "is_correct": false },
+                { "text": "Białymi kropkami", "is_correct": false },
+                { "text": "Lepkim kapeluszem", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Ekologia i Recykling",
+          "questions": [
+            {
+              "question": "Do jakiego konkretnego, powszechnego koloru pojemnika na osiedlach należy wyrzucać czysty papier i kartony?",
+              "answers": [
+                { "text": "Niebieskiego", "is_correct": true },
+                { "text": "Żółtego", "is_correct": false },
+                { "text": "Zielonego", "is_correct": false },
+                { "text": "Czarnego", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Do pojemnika żółtego, przeznaczonego do segregacji odpadów komunalnych, wyrzucamy w Polsce przede wszystkim...",
+              "answers": [
+                { "text": "Metale i tworzywa sztuczne", "is_correct": true },
+                { "text": "Papier i ulotki", "is_correct": false },
+                { "text": "Szkło kolorowe", "is_correct": false },
+                { "text": "Odpady zmieszane", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywamy naturalny i powszechnie zalecany nawóz, który zrobiony jest z domowych i ogrodowych resztek?",
+              "answers": [
+                { "text": "Kompost", "is_correct": true },
+                { "text": "Torf", "is_correct": false },
+                { "text": "Obornik", "is_correct": false },
+                { "text": "Saletra", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki potężny, trujący gaz w głównej mierze odpowiada dzisiaj za postępujący zjawisko efektu cieplarnianego?",
+              "answers": [
+                { "text": "Dwutlenek węgla (CO2)", "is_correct": true },
+                { "text": "Tlen", "is_correct": false },
+                { "text": "Azot", "is_correct": false },
+                { "text": "Hel", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co na co dzień dosłownie i w wolnym tłumaczeniu na polski oznacza angielskie słówko 'smog'?",
+              "answers": [
+                { "text": "Zlepienie dymu (smoke) i mgły (fog)", "is_correct": true },
+                { "text": "Zanieczyszczone powietrze", "is_correct": false },
+                { "text": "Pyliste chmury", "is_correct": false },
+                { "text": "Kwaśne deszcze", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Rasy Psów i Kotów",
+          "questions": [
+            {
+              "question": "Jaka dumna, polska rasa białych i niezwykle odważnych psów służy na południu kraju do ochrony stad owiec?",
+              "answers": [
+                { "text": "Owczarek podhalański", "is_correct": true },
+                { "text": "Polski owczarek nizinny", "is_correct": false },
+                { "text": "Ogar polski", "is_correct": false },
+                { "text": "Chart polski", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Która niewielka, dość specyficzna i bardzo charakterystyczna rasa krótkonożnego psa ulubiona była przez brytyjską królową?",
+              "answers": [
+                { "text": "Corgi", "is_correct": true },
+                { "text": "Jamnik", "is_correct": false },
+                { "text": "Buldog angielski", "is_correct": false },
+                { "text": "Mops", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się bezwłosa rasa dużych i dostojnych kotów hodowlanych o często bardzo niepokojącym wyglądzie?",
+              "answers": [
+                { "text": "Sfinks", "is_correct": true },
+                { "text": "Pers", "is_correct": false },
+                { "text": "Ragdoll", "is_correct": false },
+                { "text": "Maine Coon", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka największa domowa rasa mruczków z puszystym ogonem i pędzelkami przypomina do złudzenia dzikiego rysia?",
+              "answers": [
+                { "text": "Maine Coon", "is_correct": true },
+                { "text": "Kot brytyjski", "is_correct": false },
+                { "text": "Kot syjamski", "is_correct": false },
+                { "text": "Kot norweski leśny", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim znanym z animacji Disneya filmie głównymi bohaterami są psy charakteryzujące się łaciatą sierścią?",
+              "answers": [
+                { "text": "101 dalmatyńczyków", "is_correct": true },
+                { "text": "Zakochany kundel", "is_correct": false },
+                { "text": "Piorun", "is_correct": false },
+                { "text": "Oliver i spółka", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Zwierzęta Egzotyczne",
+          "questions": [
+            {
+              "question": "Z jakiej pożywnej, specyficznej i dość twardej rośliny w głównej mierze żywią się żyjące w Chinach pandy wielkie?",
+              "answers": [
+                { "text": "Z pędów bambusa", "is_correct": true },
+                { "text": "Z liści eukaliptusa", "is_correct": false },
+                { "text": "Z trzciny cukrowej", "is_correct": false },
+                { "text": "Z owoców mango", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie najwyższe dzisiejsze afrykańskie zwierzęta obdarzone są najdłuższą i najbardziej giętką szyją świata?",
+              "answers": [
+                { "text": "Żyrafy", "is_correct": true },
+                { "text": "Strusie", "is_correct": false },
+                { "text": "Słonie", "is_correct": false },
+                { "text": "Antylopy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak potocznie określa się lwa zamieszkującego afrykańską sawannę z racji na jego pozycję w strukturze?",
+              "answers": [
+                { "text": "Królem zwierząt", "is_correct": true },
+                { "text": "Królem dżungli", "is_correct": false },
+                { "text": "Królem równin", "is_correct": false },
+                { "text": "Władcą pustyni", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego konkretnego kraju i kontynentu na co dzień pochodzą torbacze, jakimi są w naturalnym środowisku kangury?",
+              "answers": [
+                { "text": "Z Australii", "is_correct": true },
+                { "text": "Z Madagaskaru", "is_correct": false },
+                { "text": "Z Afryki", "is_correct": false },
+                { "text": "Z Ameryki Południowej", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakiego dziwacznego, ziemnowodnego ssaka z wielkim, ptasim dziobem znano długo za mistyfikację rzemieślników?",
+              "answers": [
+                { "text": "Dziobaka", "is_correct": true },
+                { "text": "Pancernika", "is_correct": false },
+                { "text": "Mrówkojada", "is_correct": false },
+                { "text": "Leniwca", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Życie w Oceanach",
+          "questions": [
+            {
+              "question": "Jaki gigantyczny mieszkaniec oceanu jest obecnie całkowicie bezsprzecznie największym ssakiem żyjącym na Ziemi?",
+              "answers": [
+                { "text": "Płetwal błękitny", "is_correct": true },
+                { "text": "Orka", "is_correct": false },
+                { "text": "Rekin wielorybi", "is_correct": false },
+                { "text": "Kaszalot", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie bardzo inteligentne ssaki morskie potrafią posługiwać się systemem echolokacji i bawić dla przyjemności?",
+              "answers": [
+                { "text": "Delfiny", "is_correct": true },
+                { "text": "Morsy", "is_correct": false },
+                { "text": "Foki", "is_correct": false },
+                { "text": "Rekiny", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Która agresywna i żarłoczna bestia o drapieżnym wyglądzie rozsławiona została w kinowym horrorze 'Szczęki'?",
+              "answers": [
+                { "text": "Żarłacz biały", "is_correct": true },
+                { "text": "Rekin tygrysi", "is_correct": false },
+                { "text": "Rekin młot", "is_correct": false },
+                { "text": "Barakuda", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jaki sposób popularne ośmiornice i kalmary potrafią momentalnie zniknąć z oczu drapieżnikowi w głębinie?",
+              "answers": [
+                { "text": "Poprzez wypuszczenie ciemnego atramentu", "is_correct": true },
+                { "text": "Przez zagrzebanie się w piasku", "is_correct": false },
+                { "text": "Odrzucając jedną z macek", "is_correct": false },
+                { "text": "Zmieniając się w przeźroczystą masę", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co stanowi najbardziej kolorowe środowisko wodne, budowane ze szkieletów martwych, małych jamochłonów?",
+              "answers": [
+                { "text": "Rafa koralowa", "is_correct": true },
+                { "text": "Las wodorostów", "is_correct": false },
+                { "text": "Mokradła namorzynowe", "is_correct": false },
+                { "text": "Skalisko atolu", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Owady i Insekty",
+          "questions": [
+            {
+              "question": "Które bardzo pracowite żądłówki po zapylaniu zbierają nektar z okolicznych pól i woskiem produkują cenny miód?",
+              "answers": [
+                { "text": "Pszczoły miodne", "is_correct": true },
+                { "text": "Osy pospolite", "is_correct": false },
+                { "text": "Trzmiele", "is_correct": false },
+                { "text": "Szerszenie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Ile par skomplikowanych w budowie i symetrycznych nóg posiadają domowe oraz jadowite i wielkie pająki?",
+              "answers": [
+                { "text": "Cztery pary (razem 8 nóg)", "is_correct": true },
+                { "text": "Trzy pary (razem 6 nóg)", "is_correct": false },
+                { "text": "Pięć par (razem 10 nóg)", "is_correct": false },
+                { "text": "D
