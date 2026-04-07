@@ -1,0 +1,814 @@
+{
+  "categories": [
+    {
+      "category_name": "Motoryzacja i Transport",
+      "subcategories": [
+        {
+          "subcategory_name": "Pojazdy Dwukołowe",
+          "questions": [
+            {
+              "question": "Jaka kultowa i niezwykle ciężka amerykańska marka motocykli słynie ze zlotów brodatych motocyklistów i charakterystycznego dźwięku silnika V-Twin?",
+              "answers": [
+                { "text": "Harley-Davidson", "is_correct": true },
+                { "text": "Indian", "is_correct": false },
+                { "text": "Ducati", "is_correct": false },
+                { "text": "Yamaha", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywał się najpopularniejszy w czasach PRL polski rower 'składak', produkowany przez zakłady Romet?",
+              "answers": [
+                { "text": "Wigry 3", "is_correct": true },
+                { "text": "Ukraina", "is_correct": false },
+                { "text": "Kross", "is_correct": false },
+                { "text": "Romet Ogar", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się lekki, zabudowany miejski jednoślad, w którym kierowca podczas jazdy trzyma nogi złączone z przodu, opierając je na płaskiej podłodze?",
+              "answers": [
+                { "text": "Skuter", "is_correct": true },
+                { "text": "Ścigacz", "is_correct": false },
+                { "text": "Chopper", "is_correct": false },
+                { "text": "Quad", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co we włoskim mieście słynącym z wąskich uliczek było najpopularniejszym środkiem transportu dla rodziny, spopularyzowanym przez markę Vespa?",
+              "answers": [
+                { "text": "Skuter (Vespa)", "is_correct": true },
+                { "text": "Motocykl żużlowy", "is_correct": false },
+                { "text": "Tandem", "is_correct": false },
+                { "text": "Deskorolka", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się niezwykle masywny rower terenowy (MTB), wyposażony w gigantyczne i bardzo grube opony, świetny na śnieg i piasek?",
+              "answers": [
+                { "text": "Fatbike", "is_correct": true },
+                { "text": "BMX", "is_correct": false },
+                { "text": "Kolarka", "is_correct": false },
+                { "text": "Trekking", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Infrastruktura Drogowa",
+          "questions": [
+            {
+              "question": "Z jakiej bardzo ciemnej, lepkiej i węglowodorowej substancji uzyskiwanej z ropy naftowej składa się lepiszcze tworzące nawierzchnie asfaltowe?",
+              "answers": [
+                { "text": "Z bitumu (asfaltu)", "is_correct": true },
+                { "text": "Z cementu portlandzkiego", "is_correct": false },
+                { "text": "Z żywicy epoksydowej", "is_correct": false },
+                { "text": "Z kauczuku", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się wielopoziomowe skrzyżowanie na autostradzie, pozwalające bezkolizyjnie zjechać lub wjechać na inne trasy szybkiego ruchu?",
+              "answers": [
+                { "text": "Węzeł drogowy", "is_correct": true },
+                { "text": "Rondo turbinowe", "is_correct": false },
+                { "text": "Wiadukt", "is_correct": false },
+                { "text": "Estakada", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym w inżynierii drogowej różni się klasyczny wiadukt od klasycznego mostu?",
+              "answers": [
+                { "text": "Wiadukt prowadzi nad inną drogą/torami, a most nad przeszkodą wodną", "is_correct": true },
+                { "text": "Wiadukt służy tylko dla pociągów, a most tylko dla aut", "is_correct": false },
+                { "text": "Wiadukt jest zawsze drewniany, a most stalowy", "is_correct": false },
+                { "text": "Nie ma żadnej różnicy, to synonimy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym są tzw. 'kocie oczka' wbudowywane często na nieoświetlonych i niebezpiecznych łukach jezdni?",
+              "answers": [
+                { "text": "Odblaskami montowanymi w asfalcie", "is_correct": true },
+                { "text": "Czujnikami mierzącymi prędkość", "is_correct": false },
+                { "text": "Kamerami monitoringu miejskiego", "is_correct": false },
+                { "text": "Zraszaczami przeciwoblodzeniowymi", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się pas na autostradzie służący wyłącznie do bezpiecznego rozpędzenia się samochodu przed płynnym włączeniem się do ruchu?",
+              "answers": [
+                { "text": "Pas włączenia (rozbiegowy)", "is_correct": true },
+                { "text": "Pas wyłączenia", "is_correct": false },
+                { "text": "Pas awaryjny", "is_correct": false },
+                { "text": "Lewy skrajny pas", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Ekologia w Motoryzacji",
+          "questions": [
+            {
+              "question": "Co oznacza skrót EV (Electric Vehicle) często używany do opisywania najnowszych samochodów na rynku?",
+              "answers": [
+                { "text": "Pojazd w pełni elektryczny", "is_correct": true },
+                { "text": "Pojazd o zwiększonej pojemności", "is_correct": false },
+                { "text": "Ekstremalnie szybki samochód", "is_correct": false },
+                { "text": "Pojazd hybrydowy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaką substancję emituje z rury wydechowej bezemisyjny, ekologiczny samochód napędzany wodorem (ogniwami paliwowymi)?",
+              "answers": [
+                { "text": "Wyłącznie czystą wodę (parę wodną)", "is_correct": true },
+                { "text": "Czysty tlen", "is_correct": false },
+                { "text": "Dwutlenek węgla (CO2)", "is_correct": false },
+                { "text": "Podtlenek azotu", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak potocznie określa się samochód posiadający pod maską zarówno tradycyjny silnik spalinowy, jak i wspomagający go silnik elektryczny?",
+              "answers": [
+                { "text": "Hybryda", "is_correct": true },
+                { "text": "Elektryk", "is_correct": false },
+                { "text": "Kombajn spalinowy", "is_correct": false },
+                { "text": "Diesel typu common-rail", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym w samochodach spalinowych jest wbudowany w układ wydechowy tzw. katalizator?",
+              "answers": [
+                { "text": "Reaktorem oczyszczającym toksyczne spaliny", "is_correct": true },
+                { "text": "Tłumikiem hałasu z silnika", "is_correct": false },
+                { "text": "Częścią filtrującą paliwo w baku", "is_correct": false },
+                { "text": "Turbiną zwiększającą moc na autostradzie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym jest proces tzw. rekuperacji stosowany w nowoczesnych hybrydach i autach elektrycznych (EV)?",
+              "answers": [
+                { "text": "Odzyskiwaniem energii elektrycznej podczas hamowania", "is_correct": true },
+                { "text": "Podgrzewaniem baterii przed startem zimą", "is_correct": false },
+                { "text": "Aktualizacją systemu samochodu przez internet", "is_correct": false },
+                { "text": "Ekologicznym chłodzeniem kabiny", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Kultowe Auta PRL",
+          "questions": [
+            {
+              "question": "Która wrocławska fabryka, a później FSO, produkowała niezwykle cenioną za dawnych lat, piękną i dymiącą Warszawę?",
+              "answers": [
+                { "text": "Fabryka Samochodów Osobowych (FSO)", "is_correct": true },
+                { "text": "Fabryka Samochodów Małolitrażowych (FSM)", "is_correct": false },
+                { "text": "Jelcz", "is_correct": false },
+                { "text": "FSR Tarpan", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki legendarny, kanciasty i kultowy radiowóz, produkowany na Żeraniu, uchodził na ekranie za wóz niezłomnego porucznika Borewicza?",
+              "answers": [
+                { "text": "FSO Polonez", "is_correct": true },
+                { "text": "Fiat 125p (Duży Fiat)", "is_correct": false },
+                { "text": "Nysa", "is_correct": false },
+                { "text": "Żuk", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki wschodnioniemiecki, bardzo popularny u nas samochód miał dymiący dwusuwowy silnik, a jego karoserię wytwarzano z tworzywa zwanego duroplastem?",
+              "answers": [
+                { "text": "Trabant", "is_correct": true },
+                { "text": "Wartburg", "is_correct": false },
+                { "text": "Dacia", "is_correct": false },
+                { "text": "Lada", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak pieszczotliwie Polacy nazywali Fiata 126p, który był pierwszym powszechnym samochodem niemal każdej polskiej rodziny?",
+              "answers": [
+                { "text": "Maluch", "is_correct": true },
+                { "text": "Kaszlak", "is_correct": false },
+                { "text": "Borewicz", "is_correct": false },
+                { "text": "Bąbel", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z produkcją jakiej zasłużonej czeskiej marki, w czasach PRL niezwykle pożądanej w Polsce (modele 105 i 120), silnie związana jest Mlada Boleslav?",
+              "answers": [
+                { "text": "Škoda", "is_correct": true },
+                { "text": "Tatra", "is_correct": false },
+                { "text": "Zastava", "is_correct": false },
+                { "text": "Yugo", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Wyposażenie Samochodu",
+          "questions": [
+            {
+              "question": "Jaki trzyliterowy skrót opisuje układ, który zapobiega niebezpiecznemu zablokowaniu kół samochodu podczas ostrego hamowania?",
+              "answers": [
+                { "text": "ABS", "is_correct": true },
+                { "text": "ESP", "is_correct": false },
+                { "text": "ASR", "is_correct": false },
+                { "text": "EBD", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym jest popularny 'Airbag' (poduszka powietrzna) ukryty w kierownicy i desce rozdzielczej samochodu?",
+              "answers": [
+                { "text": "Systemem ochronnym wybuchającym przy uderzeniu", "is_correct": true },
+                { "text": "Systemem zawieszenia pneumatycznego", "is_correct": false },
+                { "text": "Klimatyzacją pompującą powietrze na twarz", "is_correct": false },
+                { "text": "Miękkim zagłówkiem na fotelu pasażera", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki specjalny, wbudowany w kanapy i oznaczony z boku zamek z klipsem, stanowi międzynarodowy standard bezpiecznego mocowania fotelików dla dzieci?",
+              "answers": [
+                { "text": "ISOFIX", "is_correct": true },
+                { "text": "Top Tether", "is_correct": false },
+                { "text": "Seat-Belt Plus", "is_correct": false },
+                { "text": "Child-Lock", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Do czego we współczesnych autach najczęściej używany i włączany na autostradach jest przycisk tzw. tempomatu?",
+              "answers": [
+                { "text": "Do automatycznego utrzymywania stałej prędkości", "is_correct": true },
+                { "text": "Do szybkiego odmrażania tylnej szyby", "is_correct": false },
+                { "text": "Do automatycznego parkowania tyłem", "is_correct": false },
+                { "text": "Do awaryjnego odcięcia paliwa", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Przed czym, chroniąc głowę, szyję i klatkę piersiową ratuje pasywny system złożony z mocnej, ściąganej w ułamku sekundy taśmy, obligatoryjny od lat w Europie?",
+              "answers": [
+                { "text": "Pasy bezpieczeństwa", "is_correct": true },
+                { "text": "Poduszka powietrzna (Airbag)", "is_correct": false },
+                { "text": "System ESP", "is_correct": false },
+                { "text": "Miękkie zagłówki", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Wynalazki Transportowe",
+          "questions": [
+            {
+              "question": "Jak nazywały się majestatyczne, wypełnione lekkim gazem (często wodorem) ogromne latające statki, spopularyzowane m.in. przez Ferdinanda von Zeppelina?",
+              "answers": [
+                { "text": "Sterowce", "is_correct": true },
+                { "text": "Balony na ogrzane powietrze", "is_correct": false },
+                { "text": "Szybowce", "is_correct": false },
+                { "text": "Paralotnie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka rewolucyjna japońska/chińska technologia kolei pozwala niezwykle szybkim pociągom poruszać się cicho, niemal lewitując nad torem?",
+              "answers": [
+                { "text": "Kolej magnetyczna (Maglev)", "is_correct": true },
+                { "text": "Kolej próżniowa (Hyperloop)", "is_correct": false },
+                { "text": "Kolej linowa", "is_correct": false },
+                { "text": "Trakcja elektryczna (TGV)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się bardzo dziwny, poruszający się na poduszce sprężonego powietrza i napędzany potężnymi śmigłami statek, mogący wjechać bezpośrednio na plażę?",
+              "answers": [
+                { "text": "Poduszkowiec (Hovercraft)", "is_correct": true },
+                { "text": "Katamaran", "is_correct": false },
+                { "text": "Wodolot", "is_correct": false },
+                { "text": "Lodołamacz", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co to jest Segway, który zyskał olbrzymią popularność w usługach turystycznych w miastach?",
+              "answers": [
+                { "text": "Elektryczny, dwukołowy pojazd z kierownicą, balansujący ciałem", "is_correct": true },
+                { "text": "Hulajnoga na paliwo rakietowe", "is_correct": false },
+                { "text": "Rower ze wspomaganiem elektrycznym (e-bike)", "is_correct": false },
+                { "text": "Zdalnie sterowany dron osobowy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym były potężne, amerykańskie i pływające po rzece Missisipi jednostki wodne z XIX wieku, napędzane wielkim kołem łopatkowym z tyłu?",
+              "answers": [
+                { "text": "Statkami parowymi (Parowcami)", "is_correct": true },
+                { "text": "Galeonami wojennymi", "is_correct": false },
+                { "text": "Elektrycznymi łodziami wycieczkowymi", "is_correct": false },
+                { "text": "Żaglowcami", "is_correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_name": "Wiedza Ogólna i Ciekawostki",
+      "subcategories": [
+        {
+          "subcategory_name": "Rekordy Guinnessa",
+          "questions": [
+            {
+              "question": "Jaki masywny, skalisty szczyt w pięknych Himalajach z wysokością 8848 m n.p.m dzierży miano absolutnie najwyższej góry na naszej planecie?",
+              "answers": [
+                { "text": "Mount Everest", "is_correct": true },
+                { "text": "K2", "is_correct": false },
+                { "text": "Mont Blanc", "is_correct": false },
+                { "text": "Kilimandżaro", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Które żyjące naturalnie w afrykańskich warunkach piękne i pociągłe drapieżne zwierzę lądowe dzierży bezsprzecznie rekord na świecie pod względem szybkości biegu na krótkim dystansie?",
+              "answers": [
+                { "text": "Gepard", "is_correct": true },
+                { "text": "Sokół wędrowny", "is_correct": false },
+                { "text": "Lew afrykański", "is_correct": false },
+                { "text": "Struś", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka gigantyczna i rozbudowana rzeka płynąca dostojnie na terenie Ameryki Południowej (głównie Brazylii) w walce z Nilem od zawsze bywa najdłuższą lub na pewno najpotężniejszą i największą dorzeczem rzeką Ziemi?",
+              "answers": [
+                { "text": "Amazonka", "is_correct": true },
+                { "text": "Rzeka Missisipi", "is_correct": false },
+                { "text": "Rzeka Jangcy", "is_correct": false },
+                { "text": "Wielki Nil (wg części badaczy)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak miał na imię i nazwisko Amerykanin, który wpisał się do Wielkiej Księgi Rekordów Guinnessa jako absolutnie najwyższy (mierzący niesamowite 272 cm) zarejestrowany medycznie człowiek w historii świata?",
+              "answers": [
+                { "text": "Robert Wadlow", "is_correct": true },
+                { "text": "Shaquille O'Neal", "is_correct": false },
+                { "text": "Yao Ming", "is_correct": false },
+                { "text": "Sultan Kösen", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Ile zatwierdzonych i uznanych lat żyła niezwykła Francuzka Jeanne Calment, ustanawiając niepobity do dzisiejszych czasów niesamowity rekord długości ludzkiego ziemskiego życia?",
+              "answers": [
+                { "text": "Zmarła dożywając imponujących 122 lat", "is_correct": true },
+                { "text": "Zmarła dożywając tylko 102 lat", "is_correct": false },
+                { "text": "Zmarła dożywając aż 132 lat", "is_correct": false },
+                { "text": "Zmarła w równym wieku 115 lat", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Kosmos i Eksploracja",
+          "questions": [
+            {
+              "question": "Kto 12 kwietnia z wielkim sukcesem stał się absolutnie pierwszym w historii naszej małej planety człowiekiem oficjalnie podróżującym w otwarty, zimny kosmos na stacji kosmicznej statku Wostok 1?",
+              "answers": [
+                { "text": "Jurij Gagarin", "is_correct": true },
+                { "text": "Neil Armstrong", "is_correct": false },
+                { "text": "John Glenn", "is_correct": false },
+                { "text": "Mirosław Hermaszewski", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiej naszej ludzkiej uroczej galaktyki po nocnym i pięknym niebie wywodzi się nasz potężny i ogromny Układ Słoneczny (wraz ze Słońcem i naszą Ziemią)?",
+              "answers": [
+                { "text": "Z Drogi Mlecznej", "is_correct": true },
+                { "text": "Z Galaktyki Andromedy", "is_correct": false },
+                { "text": "Z Galaktyki Sombrero", "is_correct": false },
+                { "text": "Z Mgławicy Oriona", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Która wspaniała i niezwykle burzliwa, gazowa, posiadająca na sobie potężną Wielką Czerwoną Plamę wielka i okrągła planeta, pozostaje zawsze największą w Układzie Słonecznym?",
+              "answers": [
+                { "text": "Jowisz", "is_correct": true },
+                { "text": "Saturn", "is_correct": false },
+                { "text": "Uran", "is_correct": false },
+                { "text": "Neptun", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaką niezwykłą, i okrytą wielkim tlenkiem żelaza potoczną barwną i często w kinie nazywaną u nas na Ziemi nazwą, posiada bardzo w pobliżu znana nam planeta Mars?",
+              "answers": [
+                { "text": "Czerwona Planeta", "is_correct": true },
+                { "text": "Zielony Gigant", "is_correct": false },
+                { "text": "Błękitna Kula", "is_correct": false },
+                { "text": "Czarna Dziura", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto schodząc z historycznego i amerykańskiego księżycowego piaszczystego lądownika statku Apollo 11 powiedział kultowe do dziś na cały świat i znane zdanie: 'To jest mały krok człowieka, ale wielki skok dla ludzkości'?",
+              "answers": [
+                { "text": "Neil Armstrong", "is_correct": true },
+                { "text": "Buzz Aldrin", "is_correct": false },
+                { "text": "Michael Collins", "is_correct": false },
+                { "text": "Elon Musk", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Mity i Fakty",
+          "questions": [
+            {
+              "question": "Czy to prawda powtarzana od wieków, że bardzo zdenerwowane i dzikie byki w furię wpadają właśnie bezpośrednio pod wpływem bardzo i wyrazistego w odcieniu czerwonego koloru na noszonej przez torreadora płachcie?",
+              "answers": [
+                { "text": "To mit. Byki nie widzą kolorów, u wkurza je tylko sam szybki ruch falującej płachty", "is_correct": true },
+                { "text": "To prawda. Czerwony kolor wyjątkowo drażni ich silną rogówkę", "is_correct": false },
+                { "text": "Prawda, reagują jedynie na mocne barwy, czerwień to alarm", "is_correct": false },
+                { "text": "To mit. Byki wkurzają się tylko na specjalne hiszpańskie okrzyki areny", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czy według współczesnej psychologii nauki zbadanej po latach ewolucji prawdą powszechną uważa się, że zwykły i pracujący na pełnych obrotach człowiek rzekomo wykorzystuje zazwyczaj tylko słynne mityczne '10% swojego mózgu'?",
+              "answers": [
+                { "text": "To wielki filmowy mit. Ludzie na co dzień wykorzystują 100% możliwości całego swojego mózgu", "is_correct": true },
+                { "text": "Tak to prawda badana przez lekarzy", "is_correct": false },
+                { "text": "Tak, tylko bardzo wybitni naukowcy i artyści przekraczają magiczną barierę 20%", "is_correct": false },
+                { "text": "To mit. Prawdziwą mityczną barierą na co dzień jest tylko i wyłącznie 15%", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czy faktem z bajek znanych powszechnie do stuleci jest, że dumnie wojujący morscy wikingowie, na swych podbojach do Anglii i łupieży powszechnie i stale, w bitwach nosili w rynsztunku słynne mosiężne i z twardymi zębami zwierząt rogate na hełmy?",
+              "answers": [
+                { "text": "Absolutny Mit. Rogate wymyślone hełmy dodano im po wielu latach, głównie w wielkich po XIX-wiecznych operach i komiksach", "is_correct": true },
+                { "text": "Tak to absolutny udowodniony na badaniach fakt po stuleciach", "is_correct": false },
+                { "text": "Tak, miały one skutecznie podczas ataku z mroku przerażać brytyjskich, chrześcijańskich kapłanów i duchownych", "is_correct": false },
+                { "text": "Tak, każdy szanujący się po w wojnie wikiński król jarl, u samego dołu dostawał je z byka w urodziny by wejść do Walhalli", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czy małe urocze ssaki jak zwisające nad głową powszechnie występujące w Polsce śpiące pod dachem nietoperze bywają w nocy wbrew swojemu w mitach wyglądowi tak po i dla bardzo z bliska naprawdę fizjologicznie i od zawsze całkowicie dosłownie ślepe?",
+              "answers": [
+                { "text": "To popularny do dziś mit. Posiadają i u do widzą one oczy a także z w nocy sprawnie używają wzroku, dodatkowo mając bardzo po echolokację z dźwięku", "is_correct": true },
+                { "text": "Tak to udowodniony powszechnie fakt że nie widzą światła wcale w mroku", "is_correct": false },
+                { "text": "Widzą całkowicie w nocy, lecz ich wzrok nie odróżnia od świtu absolutnie, ale tylko żadnych nocnych kształtów z bliska", "is_correct": false },
+                { "text": "Tak, nie mogą w do z używać do ewolucji żadnych do w oczu oprócz węchu i uszu by przetrwać", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czy małe biegające pod nogami zwierzątko, powszechna i bardzo lubiąca nasiona mała pospolita szara mysz napawa potężnego bardzo a z wielkiego i z wielką powszechnie i szarego z wielkimi w w uszami ogromnego, trąbiącego słonia afrykańskiego mitycznym lękiem i go odstrasza z bliska?",
+              "answers": [
+                { "text": "To zabawny mit stworzony w kreskówkach. Słonie nie odczuwają w zoo ucieczki od strachu przed wielkimi małymi pospolitymi i na w polu myszami", "is_correct": true },
+                { "text": "Tak to całkowita przyrodnicza prawda na sawannie przed polującymi myszami u myszy lęk", "is_correct": false },
+                { "text": "Prawda, gdyż mała pospolicie na na łąkach mysz potrafi cicho i do u bezszelestnie wejść w trąbę wielkiemu do nosa w i udusić małego słonia", "is_correct": false },
+                { "text": "Prawda, gdyż mała mysz i u pospolicie gryzonie wyjadają ich niezbędne małe przysmaki u orzeszki ziemne zostawiając pustynię", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Pierwiastki i Chemia",
+          "questions": [
+            {
+              "question": "Czego absolutnie wspaniałym i doskonale na stulecia od lat znanym z lekcji skrótem, pełnym z życia we wzorach we wzorem z nauki chemicznym jest wielce proste i niezbędne do całego potężnego życia powszechnie słynne H2O?",
+              "answers": [
+                { "text": "Czystej, życiodajnej po wyparciu wody", "is_correct": true },
+                { "text": "Przezroczystego, parującego wodoru", "is_correct": false },
+                { "text": "Gazowego w rurze nadtlenku w wodoru", "is_correct": false },
+                { "text": "Silnego, użerającego kwasu w solnego", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaką na układzie, bardzo znaną wielką jedną literą alfabetu z na od zawsze w układzie okresowym pierwiastków od a naukowo Mendelejewa powszechnie na od i do stulecia chemicznie całkowicie dumnie od i opisuje z dla i się w w tablicach gazowy niezwykle, oddychający z dla u w powietrzu do i i a do potężny bardzo dla niezbędny nam na od tlen?",
+              "answers": [
+                { "text": "Krótką w dużą literą (O)", "is_correct": true },
+                { "text": "Z z małą i długą u literą a w (C)", "is_correct": false },
+                { "text": "Skomplikowanym a w (Ti)", "is_correct": false },
+                { "text": "Dumnie powszechnie (H)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki całkowicie najlżejszy, wysoce dla ze łatwopalny na świecie u nas gaz we wrzechświecie jako na numer do 1 w naukowym u z chemii u z tablicy w z z zajmuje a całkowicie pod Mendelejewa u w nim z na same dumnie pierwsze na a miejsce w w szeregu z do obok rogu?",
+              "answers": [
+                { "text": "Wodór z z (H)", "is_correct": true },
+                { "text": "Hel u a w (He)", "is_correct": false },
+                { "text": "Tlen a w u (O)", "is_correct": false },
+                { "text": "Azot (N)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki to całkowicie z wyjątkowy a z metal u na u metal w na i i z a metal metal a w który jako do absolutnie powszechnie z a jedyny do u pozostaje u pozostaje do u a u do pozostaje w dla po i do temperaturze po dla do w w pokojowej dla w dla w u płynnej w a u płynnej w dla a i obok płynnej po dla w i po formie po u w do do i obok w ciekłym po dla stanie u po u w (dawniej z w do do po a używany do po dla obok a szeroko w do po obok do termometrach obok do w u u a medycznych)?",
+              "answers": [
+                { "text": "Rtęć do (Hg)", "is_correct": true },
+                { "text": "Ołów do do do (Pb)", "is_correct": false },
+                { "text": "Złoto do u obok (Au)", "is_correct": false },
+                { "text": "Cynk a obok u (Zn)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki całkowicie i z po obok w a do a leciutki po w u u obok w obok i z szlachetny i w obok u z w u obok w w obok do w w gaz u w do a w obok z z obok obok u obok u z obok do w po w w powoduje z po w a do w zabawne a w po a w w z i w w do po z w z i podniesienie do u w a w obok do w w obok w do barwy u po a do obok a z i obok w a do u głosu w po a z po w a obok po u a obok i w w z do w z a po u połknięciu a z po do w z a z z w do z po z obok u z z po obok do po z i, oraz do z po do z w a z z u do po u u do u obok i jest u u obok a z obok po po a z w do u po po używany do z w po z po u u do z w z w w do po u u obok u do u obok pompowania do po u u z po z do po u u obok w po z z w balonów po w po po u po u w do po u w do do u latających do po z z po do w do po po po po pod po do z u u sufit w do do z po do na u po z do u po u imprezach?",
+              "answers": [
+                { "text": "Hel w po po po", "is_correct": true },
+                { "text": "Wodór w do u u", "is_correct": false },
+                { "text": "Neon z po po po", "is_correct": false },
+                { "text": "Azot z po do po", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Jednostki Miar i Wag",
+          "questions": [
+            {
+              "question": "Ile dokładnie powszechnych, maleńkich gramów w europejskim systemie używanym u po u nas w handlu oraz na obok wadze u z zawiera powszechnie obok z w z każdym z każdym produkcie jeden i zwykły potoczny cały do kilogram?",
+              "answers": [
+                { "text": "Równe i bardzo powszechne u 1000 po u gramów do (1 kg = 1000 g)", "is_correct": true },
+                { "text": "Równe do na do po do 100 g", "is_correct": false },
+                { "text": "Równe w po w po u w 10 g", "is_correct": false },
+                { "text": "Około do u w po do 500 g", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak a u w po jak nazywa po do u po w w po u się u po u z z u w z do morska do z u w po a obok do dumnie a z po do z do do w tradycyjna a z u z po u u do po u obok do do do u u miara z u po do w do po a z z w do w z po obok w u po odległości u do z w u z do do z po a po obok u po stosowana u z u w po z u u u z z do po u u w i do u z po do nawigacji u do u u po do z u u u do u morskiej u z z u u po z u w po u u z po z do po z do u u (wynosząca u z do do do po po z po do z po u u w do u z do ok. do do po z z z do z do po u 1852 z do do po do z po z u po u m)?",
+              "answers": [
+                { "text": "Słynna w do u do Mila u do u z do z morska", "is_correct": true },
+                { "text": "Powszechny z z z do po Węzeł", "is_correct": false },
+                { "text": "Zwykły do z po u do a Kabel", "is_correct": false },
+                { "text": "Długa u do z z Liga do u u do po morska", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaką potężną obok i z powszechnie a a w znaną w do do małą jednostką a do po po do w w po z u do z w w do u do do anglosaskiej po w do z u obok z w z po po u u w z u u u do obok po do po u z z u z u długości z do po po u w u u u u obok po z w u w po po u (ok. z w po w u w po u obok po u z po u 2,54 w po po po po u po u w cm) do po z z u u z u u z z do z z po u u po z z do do bardzo do po w z do u do u do u do u u po u po często w z z do po z do w u u po z u po po do w po podajemy po u u u w po po z po w do u z z z w do powszechnie po z w u po u w po z u u u po do z przekątną po u z z w do z z po do po do z z w do z naszych po u po u po w u w u do po u w do do płaskich po z po u u do u z po u z do z w telewizorów po z u do z do u u u z po z do z z do (np. po z po do u w z do po u po z z po 55 u do u do u po z ...)?",
+              "answers": [
+                { "text": "Calami u po u z po po po po (np. u do u po u 55 po po u z cali)", "is_correct": true },
+                { "text": "Stopami po z po u po po (np. po do u do do 55 u u z z stóp)", "is_correct": false },
+                { "text": "Jardami do z do do z (np. do z do do u po 55 z po do z z u z jardów)", "is_correct": false },
+                { "text": "Pikselami z z do po z do do (np. do u u z do u po 55 z do do u pikseli)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Do z do z do czego z do u po do po do obok służy z do u po u z po u z u i do po co u w z do u do u z z z do w do w fizyce u do z po do po w po u z po po mierzy u do u po do u z z w po u powszechnie do u u z u z do w z u u z z używany po z do u po u z u u z do przy w u z z u z z u do do gniazdkach w do u z po po z do w z a po miernik u z z po u do z z do z po z do z w zwany z z z do po do w z po u u do do woltomierzem?",
+              "answers": [
+                { "text": "Służy u po z z do w po z pomiaru do z do po u u napięcia po po do z u z elektrycznego u po po z do (w do u z po z do u po woltach, po u po z z np. do do po z u po po po 230V)", "is_correct": true },
+                { "text": "Służy do pomiaru natężenia prądu elektrycznego (w amperach)", "is_correct": false },
+                { "text": "Służy do pomiaru zużycia ciepłej wody domowej", "is_correct": false },
+                { "text": "Służy do pomiaru oporu i częstotliwości radia", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka oficjalnie dumnie brzmiąca z układu u z u jednostka z po w układzie z SI, nazywająca w obok się po do w w po u do i dumnie od po z nazwiska a w wybitnego z do do naukowca do po u w w określa w do po u i z w do do wielkość do w z i w w i po u ciśnienia w do do w do do w m.in w u i u i atmosferycznego a do z u lub u u a u hydraulicznego w z u w u po na w po globie?",
+              "answers": [
+                { "text": "Paskal do w do po po w (Pa)", "is_correct": true },
+                { "text": "Niuton po do po z do z do po (N)", "is_correct": false },
+                { "text": "Joule po po do do u u w do u do (Dżul, po u do z J)", "is_correct": false },
+                { "text": "Amper do po po po do do do u (A)", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Słynne Cytaty",
+          "questions": [
+            {
+              "question": "Z jakiego bardzo potężnego i wielkiego, znanego na i na co na całym globie u dramatu u dumnie pod wyszły od a w spod po pióra po z genialnego w w dla po Williama w do z Szekspira u u u u obok u w do u po po pochodzą te do w klasyczne u słowa do do u z 'Być po do a albo u z w z w nie a z po obok do u z u być u po z u z do w do do w - w w w oto do do do z jest w do u w pytanie'?",
+              "answers": [
+                { "text": "Z z po do a po u u u a z kultowego z do z u dramatu u z po do u w do 'Hamlet'", "is_correct": true },
+                { "text": "Z z z z u dramatu po po z do z 'Makbet'", "is_correct": false },
+                { "text": "Z do po u dramatu do u u po do do 'Romeo u po u u z z do u i z po z do Julia'", "is_correct": false },
+                { "text": "Z do u z dramatu u do z do z 'Król po u z z do z do Lir'", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z u z do u a jakim po w mędrcem z u z z u w z do do po i starożytnym po do po po u w u u w greckim u w po w z z z z filozofem do do z po do po nierozerwalnie po u z u po do z po do łączy z u do u do u u w do w po do się z do z po w po do słynne po po do u po z po po zdanie: po w po u po do z do 'Wiem, z po do do z w u z do po u do że po z z u do po u w w nic po z w w do po z do po u u nie z w w do u z po z do wiem'?",
+              "answers": [
+                { "text": "Z do z z u z u w w u Sokratesem", "is_correct": true },
+                { "text": "Z do z z Platonem", "is_correct": false },
+                { "text": "Z z z po z u w Arystotelesem", "is_correct": false },
+                { "text": "Z po u po u w u u po z u u u Pitagorasem", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto u u u w do według po u u w z w u z legendarnych po po w u do w u u po i w u po w w z przekazów do u z z w po u z na u po u łożu w po do do do z z z do z do śmierci po z do z do z do wyszeptał z w z z z pod po do po z po po po u po u po u a nosem do do w z u u do po u z z słowa: u do po po do w u w w 'A u w po do z po po u u w po w do jednak do po u do z z z do z w u do się z z po u u kręci'?",
+              "answers": [
+                { "text": "Galileusz po u po u po do", "is_correct": true },
+                { "text": "Mikołaj po z u do z u z Kopernik", "is_correct": false },
+                { "text": "Izaak u u u do u do Newton", "is_correct": false },
+                { "text": "Albert u w u do u u z do po z u z do u do u do z u z po Einstein", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z u do u po w jakim u u po do z u w rzymskim u po do z u do a u u po i z do z w u starożytnym po u po do z u w do z z po w u do z wodzem do u po po po po do po do kojarzy u z do w w w po u do po się po w u po do powszechnie z po w z z do po u po bardzo do z po u po po do u znana w w po do u z po u w obok u z maksyma: po do po do do po 'Veni, z z po do z w do u po vidi, z do do z po u vici' po u do z po po (Przybyłem, w po u po w z z do po u zobaczyłem, u do u w po do do zwyciężyłem)?",
+              "answers": [
+                { "text": "Z do do z do po Juliuszem u do z z do u u po do po u z po z Cezarem", "is_correct": true },
+                { "text": "Ze po u z do z do do po Spartakusem", "is_correct": false },
+                { "text": "Z po u po z po u u u z z do z u po u Aleksandrem do z do u po u do u u u po Wielkim", "is_correct": false },
+                { "text": "Z po u w po u do u do z po po po po Hannibalem", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie po u po do w do słowa, po u z u po u do do według z w do po do z z w po dramatu po z w do po w po w do w po w Szekspira u po u po do w w z z w w (i do po po w po po legend), w w w u z u u do w w po po z do w u w Juliusz u do u do w z w z do w z Cezar po u do do u do w u u u z do z u wypowiedział w do z do w po z u w u po po z po po po u a w u a gdy z po po po z z z w do z po z do po do zobaczył u z do w po u do do u w u w do swojego z po z w u po u w po po u z u w w u do najlepszego u do u w do do u w u z po z do z z przyjaciela u do u z po do do z w wśród w u do do po z po z z z z spiskowców do do w z u u do z do w u zadających do u w u u z po z po w z mu u do z w z do z do do w u cios u u po po w nożem?",
+              "answers": [
+                { "text": "I u do po u w z do po u do ty w do w u w do z u Brutusie po po do po do przeciwko z po w u po z z z z z z z mnie?", "is_correct": true },
+                { "text": "A u po u do u do więc u po z u z do do wojna!", "is_correct": false },
+                { "text": "Zdrada w po z u po u z do do u to z do po u najgorszy z z do z do po u u do po u grzech...", "is_correct": false },
+                { "text": "Wybaczam w po z z do w do do w u z u w z do po ci, po u w w po z u do z u z przyjacielu.", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Tajemnice Świata",
+          "questions": [
+            {
+              "question": "Jak a u w po w z dumnie z u w u do do z w a nazywa w u do u u u w w w u z się do w a w po u słynny po a w do z w do u obszar do a do na a z do do po Oceanie w u z do po a u w Atlantyckim, a w w z do po a o w do z którym a u do w do z krążą w a do w liczne do po w po u a z do u w a po a po do do legendy u a do po a w po z do po a do w z po u do a w o a z do z a w u nagłych z po do z i do do w z z bezśladowych po a do po a w po z u a po do a zaginięciach po z w a po a do z z w u statków w a po u a z a z z w u z do i do a po z z do do samolotów?",
+              "answers": [
+                { "text": "Trójkąt a w u z z a Bermudzki", "is_correct": true },
+                { "text": "Oko do z a po po po u a Sahary", "is_correct": false },
+                { "text": "Rów u u po a po z z z u w z u w z do do a do z w a w z u do u a po do u po w w po u z do z u po u do do Mariański", "is_correct": false },
+                { "text": "Krąg po po po a w po po a u u Ognia", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W do w po w jakim u z z w do z a z z po po u po z z do z wielkim a po w z do szkockim w a do z a u z w w u po jeziorze a u w do po u w do według z a po u po do lokalnych z z do w z z po w u a do w w u mitów z a po z do do u po w w a po a w z po i po a w a po u opowiadań a do do a w u po ukrywa u z po do u w do się u a z do u a z legendarny a do z a do po u gadzi do a w po do po u z a do po a do u u a po do po i do a u u a u w mityczny u a do w a potwór u z w po u nazywany u po u w u do u w Nessie?",
+              "answers": [
+                { "text": "W a u z z po jeziorze z po z a w po a w u u w u z do po do Loch w po a z a w w Ness", "is_correct": true },
+                { "text": "W do u w do jeziorze w po u z a po z w a u do u u z w po u z a do w Wiktorii", "is_correct": false },
+                { "text": "W w a do z u jeziorze po do do a w w po a u w w po z Bajkał", "is_correct": false },
+                { "text": "W do po w po po po jeziorze w z u w a po do w u u po z u w po do Titicaca", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywają się gigantyczne i bardzo tajemnicze, monolityczne i u rzeźbione z w w skałach po a w na po w samotnej z z po a po w po po w w wyspie a po u u a po w na z a z Oceanie do po po z Spokojnym po a z do w w a z po w a z u posągi, do z do u do z pozostawione po po po a a przez a do w u po u w dawnych po z a u z po do z w po mieszkańców u z do po a do u (Wyspa u do a po w do z Wielkanocna)?",
+              "answers": [
+                { "text": "Moai w a po u w u", "is_correct": true },
+                { "text": "Sfinksy a u u z a w", "is_correct": false },
+                { "text": "Totemy w do z po do po z po", "is_correct": false },
+                { "text": "Kolosy po z po z u", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki do u z z z mityczny, u z po do potężnie z do z u rozwinięty a po z po z u po u i w z po w do z potężnie z do u bogaty a u po w u u u u kontynent a do do u po z (lub z w a w w po wyspa) a po z do miał po po a do według a u a w pism w do a po z Platona a z do a z w u w po u z z u w z do po bezpowrotnie po z do z a do a z z w u u u u w po zatonąć z do w a po a w u w na w z a po po dnie u u w po u do morza po a z w u u a w w a w jeden w u po do a po w do po u u do do dzień z z u do do a u po a a po u u w w po w do po u i w do w noc?",
+              "answers": [
+                { "text": "Atlantyda do z u z", "is_correct": true },
+                { "text": "Pangea a w a u z w", "is_correct": false },
+                { "text": "Gondwana po do do u u z w po", "is_correct": false },
+                { "text": "Lemuria z a w u do z w z u w do", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z u po po w jakim w z z w obiektywem do do do po u u u a i w a po a po do do a u pilnie do po do po a strzeżonym po do a po a z wojskowym w z po z a z miejscem z po a do z z w do z po na u po z pustyni w po u u z z do u w po a w w w z USA do do po u z z w u po u a z do (Strefa do z a z po w po a po do a 51) w u po a z u w do wiążą po u a do a z do się z z z w u po u po u setki u po a w a po po do z teorii do po a z w z po a w po spiskowych u do a do w a do dotyczących po do u a w do rzekomego w po u w w do z z u a z do u a rozbicia z z z z a do po z po u u u z się a do w po a po do pojazdu a z w po z i po do po w a z u ukrywania a do z po do u u u obcych do a do a form a z w z życia w w a do w z (UFO)?",
+              "answers": [
+                { "text": "W do do u Roswell u z po a po z po (Incydent do z po do do a z u w z w u z Roswell)", "is_correct": true },
+                { "text": "W do po po z a po w z do a w do w po a a po a do z z z po a Las po do u w po po Vegas a w u do z po z do", "is_correct": false },
+                { "text": "W z w do z po po a po z u po u po z do u u Waszyngtonie po do a w a z po a po w u z po u a z do u", "is_correct": false },
+                { "text": "W w z z do po w u do a w u a a z a Houston po do a po z z po do", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Wynalazki Codziennego Użytku",
+          "questions": [
+            {
+              "question": "Jaki w do po w a słynny u z a z z w do po po w amerykański z po a do a u wynalazca w z a po po do po przeszedł z z a po a po w w a do historii a do z z z po z po u a jako w po u u do twórca u w po do praktycznej w u u z u do i z a z u trwałej u a w z u z do do u po u w z a po u po z po a żarówki po z z a w u a u z do po po do elektrycznej po do w z w z a po do (z a po do a do a po zwęglonym u u do w a z a po w z po u do po włóknem u a po do a u po bambusa)?",
+              "answers": [
+                { "text": "Thomas do w u u po w do Alva po w a do Edison", "is_correct": true },
+                { "text": "Nikola z u do do a u po z do po Tesla", "is_correct": false },
+                { "text": "Alexander w a po do w Graham do z w do po do z u u a po do Bell", "is_correct": false },
+                { "text": "Guglielmo do a po w u Marconi", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto w u do po po w oficjalnie po a po z a z w z w w w do został w a u u a u w w uznany z u do w do do u w u po z za a po do po a po wynalazcę u do z w z w po telefonu do w z do u do do w roku w do u z z z 1876 u a po do a w z (chociaż z a do w do a po o u u do w z a u w patent po po a po do do z a po po w a w w u do u u po z walczyło a z a po po a a a u po kilku a u z po do u u po w w po u w badaczy)?",
+              "answers": [
+                { "text": "Alexander w do u do z po u do u w Graham a w do a do w do Bell", "is_correct": true },
+                { "text": "Thomas w do do z w Edison", "is_correct": false },
+                { "text": "Samuel z u u z u u z po z do Morse", "is_correct": false },
+                { "text": "Benjamin a u a z Franklin", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakiego u a u po u rewolucyjnego a a z po w a z u dla a do z po do po u z u po do do a medycyny w z a u w po w u z po odkrycia po a po a z do dokonał po do do z w a u a z z z w w po do u Alexander z a u w do po a do w z u u z Fleming w w a do do w w u w po u u 1928 do z do do z po a z a w u a u u z a w u roku, po do u z po z z a badając u do w do u w u z z z do z do po po do zapleśniałe z po w po a po do a po z z do do płytki z w do do po a do w po a po a z w po z po u po u w z a u u z a po z do Petriego z z u w z do po w z po z a w po z a u z po u w do do bakteriami?",
+              "answers": [
+                { "text": "Odkrył u a w z penicylinę u do do w w w w u z (pierwszy do a u po z w z w u z antybiotyk)", "is_correct": true },
+                { "text": "Odkrył po z w z szczepionkę do a z po na w a z wściekliznę", "is_correct": false },
+                { "text": "Odkrył u u a po do z w w do u z grupy po a z krwi a a w", "is_correct": false },
+                { "text": "Odkrył u z z u w po promienie z w z u do u z a w po X u po u w w (RTG)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki w w u do w u a u u u w w po z wynalazca w po po z do w a z u i w u do po do w a u z z fundator a do u a do z a u z najsłynniejszej po a w z po w do na a a a do z a do u a po do świecie po po u po u u u a z w do a po z po w z w do z po z do w z z a z naukowej z a do u do po po a do po a nagrody po do do w po a w w w z do wymyślił a po do u do po i u po w z z do po z po w opatentował z u po do a do bardzo u u w do z w potężny w po u do a w z po z i a z a a z w u niebezpieczny a do po do po materiał w po po do u a a w w do do u w do a w wybuchowy, w u a a z a po z po po po do u w do a u a z u do z w z w a mianowicie z u do a z u do z a z a w do dynamit?",
+              "answers": [
+                { "text": "Alfred a po a z po u Nobel", "is_correct": true },
+                { "text": "Albert do z z z Einstein", "is_correct": false },
+                { "text": "Ignacy z w z a po do Łukasiewicz", "is_correct": false },
+                { "text": "Robert a u a po do u a po u z Oppenheimer", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jacy w z w do po po słynni do u a u po bracia po z u z u z a do (Auguste do po z w i po z w do z a z u Louis) z po do z w a po a w po zapisali u z u u do po u w w a u w a u u do z a w u w po po się do u z po z do a po na u w do a do z po do zawsze do u po w w po u do a z z do z do a z a historii, po w w w do a tworząc do do a do a z u u a do u u a po z w do u wynalazek po do po w a z u do a a w z a a a u po u z a do po z o w u do w a z a a w u a nazwie u z po w po z u u po z kinematograf do u do do w po i a w w z do z z u a z do u u u u w a po u organizując z w po po w pierwsze do po u z z u do pokazy do z z po po z a po a u w po po u po u filmów?",
+              "answers": [
+                { "text": "Bracia po u u po po po Lumière", "is_correct": true },
+                { "text": "Bracia po do z po z do w z Wright", "is_correct": false },
+                { "text": "Bracia a w w z do w w Warner", "is_correct": false },
+                { "text": "Bracia do w do po po a z po Grimm", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Zjawiska Pogodowe",
+          "questions": [
+            {
+              "question": "Jak a u w po z u nazywa po a do po a w w z po się z po a u w u piękne, u po a z z u po kolorowe w z u do z do w a a po a po do do zjawisko a u do w do u w z a a w a a a w a optyczne do u do a z a a z a do i u w do w do po po a do a u w a meteorologiczne, po u z u po w z powstające po po a do w po a w w do do na z a u w a u u z a do w niebie u po u a do u u u po z w w po po u u z z u w z do do do do z w a z po z za po a po w a w do po u z do do po u z z u po z u z do do z sprawą u w u z z do rozszczepienia po z z u do po u w po a po z u a światła w po z do po do w a w a w do słonecznego a do po z a u u po a a po u u a po po z u u u z z w po w a u po po z do w z kroplach po z z po u u u a z deszczu?",
+              "answers": [
+                { "text": "Tęcza a po do a", "is_correct": true },
+                { "text": "Zorza w a po po do w u polarna w po do a do a po w po po do u a a w a do po po u w", "is_correct": false },
+                { "text": "Halo u a do z a u z", "is_correct": false },
+                { "text": "Fatramorgana u do z w z u w a po w z u z w z do a z a po w z do do a do do do po", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak po a do a do w a do na z z z a w z a terenach z po w a po z a z azjatyckich do po u po u u u z w po w u u u u (nad z po do po a do z z w po u a z do u Pacyfikiem) z po po z a po nazywa a do po do a a z po u a do a się u do po po do w z a po niszczycielski z do z z a z w a z do do z u z i w u a w do gwałtowny po do a po w u z cyklon u z u z a w z po tropikalny, u po a z z z w do z po u w do do u w u do który a w u do z w a do u w na a w u do w u u u u wodach po do z z w po do po do do u w u w do a w z do u do do a do po a amerykańskich u do z a u do w nosi z do po a u po u po u do u z nazwę a po u z u w po do a a w z a a a po po do w a po a w po a w a po u huraganu?",
+              "answers": [
+                { "text": "Tajfun a do a u a a", "is_correct": true },
+                { "text": "Tornado w do do a a z po do po", "is_correct": false },
+                { "text": "Monsun w po z z do w z po a w do", "is_correct": false },
+                { "text": "Tsunami u po a z po z u po u u w z u po z z do", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z u z do po po do a a jakim u z do w spektakularnym w a z do u po u w w a u w z u w a z a a u w świetlnym po po do z u z z u w a a w u a do a w w do u do z z z do z u po u w a z po do a a w u w a z po po a po z do z w a a u z u do zjawiskiem, u do do a w u a z w do u do w z a po po z u u z a do po z po z u z do do po u z z widocznym po z z po do do a u po z do u najczęściej do a z po w a do po po z w a z z po a do a do u za a w a po po a a z u a po do a Kołem z a po u a z w a po u w u Podbiegunowym z a w z u do u do a z do po u a w u po w w i a do po u u na do z w do u po po niebie do po a u w po po u po u w (w a u po do z u do po u w a w a z po a z a u kolorach po z do z z u a z do zieleni do w po w u u po z u z do po do w a i a do a w a z do z a a a do po a fioletu), po w do u a w w po wiąże a w do z w po po z się po z w u aktywność w u z a a a do u z u słońca a po do a w a z i a z a w w a burze a u w do do a u u a u z do po do z do z u z z magnetyczne a u w po do a z do a z a po na u z do z u Ziemi?",
+              "answers": [
+                { "text": "Z z u a po po z a po w z do u z u po w w zorzą z z w a w w do u z po do do u u po a z u a w po polarną w po do a a a z z a u z do po z do u po po", "is_correct": true },
+                { "text": "Ze a u a z w z spływaniem u a po a a z u z a do po do po u z u po w gwiazd a do po w a a w u a z po z (meteorami) a do z z w", "is_correct": false },
+                { "text": "Z a po u z w do a po z z do do po zaćmieniem w w u u w po w z a w a w do słońca u po po z z z w", "is_correct": false },
+                { "text": "Z do w po do białymi u z w po z a u z po do u nocami po po u po", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak po po w do do z nazywa po do u po w z się z po z u w popularna a do do po do z w a u u do z do w u a po do (logarytmiczna) z w u w po po u u skala do a po do do u w u z u u z do a po a z używana po w a po po do z do a po u u u z do u z z z przez u z u do z w z u a u a sejsmologów z do po w po u a w z po w a po z z po po u u w w z do w w a z po określająca u do a po w do a wielkość z do po u u a z u do z u z a w po do u (magnitudę) u u u w w u u w do u po do i w z a u w a u w a siłę a w a z po u a z u po trzęsienia w z po a a z z w do z u w do z do w a z a u u po w ziemi?",
+              "answers": [
+                { "text": "Skala u po po w po po w u u a w Richtera a a do do do w a po a", "is_correct": true },
+                { "text": "Skala po a w do z po z a w po Fahrenheita u do do do u u a po do w u", "is_correct": false },
+                { "text": "Skala a w po z z Beauforta a do po z w z do a do do z po po z u", "is_correct": false },
+                { "text": "Skala po z u u po z do u do po a a w z Kelvina z u z a a do u a do z po do po", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak z a w z a w a w po u po a do u a do u u a po a z nazywa w po a do po a w po u w się w z a po a opad u po w z a atmosferyczny po z po u po po a z po z do po w do z u w do u z w u w postaci z u z a w z do po w twardych, a do w po a w w z w w u a po po z u z do w u a z bryłek z u po po a w po a po z u po u lodu, z do u do u do a a w w z do w z a do u a w w a z u w z do do do u który w po do z a u z u u z u a nierzadko po a u u z z do do do niszczy w po w z a w u w uprawy po w z w z z po w u po u w rolnicze z w z po po z do w u u do a po po z i do w a wgniata a u z do po a do u po u w w a dachy do w u z do do po a w w u po do a samochodów do a z z do z do po u z podczas u a w u a z a gwałtownych z po z a w w w a po a do z z w burz u u po do z u po po po do a a z u u a z po u a do a z z do a z w w lecie?",
+              "answers": [
+                { "text": "Grad u w u u", "is_correct": true },
+                { "text": "Szron po a po do do po", "is_correct": false },
+                { "text": "Śnieg z po do z w a z", "is_correct": false },
+                { "text": "Szadź po a w do z po a a", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Świat Finansów",
+          "questions": [
+            {
+              "question": "Jaka po po z a a z a u w po po u po u w z w w w waluta z a z po w a z u a do po do po u z z u do po u u w obok u z w w u w u a z powszechnie po do do u w do do a a do do do w po a w po w z po obowiązuje u w a po u a z do u u a po do a w z u z od u do do po a lat w a po po do w w po u a z a z z w u u a i w a u w z w jest z z u a z u do do z emitowana z z do do z po u w z do w po z z po u u u w a po u po do przez u po do u do do w po do w a w po u w u po do w z a po do po u po u do u u u z do a po u u u a z u do po Narodowy w w po a po po po u Bank w po po u u Japonii a w po w a z a a z do u w u z z na u u po do po do do u do u do po u terenie po z z u a w po po a tego u a po do u po w w po w a z do do po z wyspiarskiego do po po do w z z do do kraju?",
+              "answers": [
+                { "text": "Jen u z w do do do a z u po a po (JPY) a u w u do po u w a w a", "is_correct": true },
+                { "text": "Juan w a w w u po u u u a a w a do po po do z z w z u do z z po a u u (RMB)", "is_correct": false },
+                { "text": "Won w z po po u po z z do do u a z do do do (KRW)", "is_correct": false },
+                { "text": "Dolar z u u z a w do w po po do u a a w po do u po do po (USD)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak z do w po a z do po u do u a nazywa w u w po w z a w u a do do w w się w z do po w u u u z z do u na z do do a do z u do po w z do a z a z u giełdzie a u do po w z do po i u z do a rynkach a do u u a z z finansowych a do po do po w a u długotrwały a a u do po u z a z do z a w u w u do z w z u po z u z do w po a w a po po u w do do u w po do u po z u w po trend a do z do w a po a w u u w po po po w z u rosnący z a a do po do w a do w do a u a po do u u a a z a u u po w a a z do u z u do (wzrost z w po po z po po do u a do z po z do cen do u po u w a a w a a w po a w u akcji po z do w u w w do po z u z u z a i do u po z u z u optymizm w z a u w do po a do z z po w a po w z a a do a po inwestorów)?",
+              "answers": [
+                { "text": "Hossa w a w do (Rynek a u u a po do a w do w po Byka)", "is_correct": true },
+                { "text": "Bessa po do z z u a z do u w z a (Rynek do do w do do w u w do a w po Niedźwiedzia)", "is_correct": false },
+                { "text": "Recesja a u u w po do w", "is_correct": false },
+                { "text": "Stagflacja u po u po w do", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co a w do po w w do z z u po u w u w do u po u do u z do a oznacza w a a z u w z do bardzo a do z a u a w w a w z po w powszechny, z z u w a po do w po a u w z u z do z po po u a doliczany do a w a a po po do z w u z z a po z po w do u a w u po w do po z po po po niemal u do a z a po w z z a po a po do do a u po u każdego a do w a do a po w do produktu w do a po z u w u po a z i u po do a do do a usługi a z u z a do po z po z podatek po z po u po po a z po w a do po po u a w u do a (np. po a z w u w po po z a do u 23% z u w w z do w z u u a w a z u z z u u Polsce) a w w do u z z a z a w u a do ukrywający do po a z z u do po w po u a w się a w do do do po po pod po u do u u skrótem u a do po do a a VAT?",
+              "answers": [
+                { "text": "Podatek u a a z po do a do w do w od u do u w po do u z u towarów po z w a u u do z do w do do do do z i z u po w do do z u po u po a w do z u w do z usług po u w po a po do", "is_correct": true },
+                { "text": "Podatek po u a po a do u u a u u a u u z u a a do u a do po a od w z do po w dochodów u z do a po u u a osobistych z do a po z z po do z w a z z po a z a", "is_correct": false },
+                { "text": "Podatek a u u a po w a w a do po po akcyzowy w z u u a z z a do", "is_correct": false },
+                { "text": "Podatek z z w u u do a od z u z a do nieruchomości do do do do z", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak a a z a po w u z z nazywa a u z z po w u po a do a po się z w po a po po do najsłynniejsza, w u a a z do z a po po do po u z z do po z do u po u tętniąca po a u u z z po z u z do a życiem w po a z do po u u do u po po po do a a z w do a u a a po u i w po do w a u z z a z w a po u bardzo u z a do do do głośna w z u z po u a u do w do nowojorska a do po z u w z do u do po u w a do u z u u z a do a w u a do do w w a u u u po z u z a u a u w do w po po u u u a z u u u do u a z a w u w ulica, u z do w z do na w do z w do której z po a z a do u w u z z u w z mieści u z z a z do z w a do u w w się a z z z w do z a z a z po w do u a w w a a do Giełda u u do po a w w z z u w po z u u u a do do z po u Papierów do z z do a z a po Wartościowych u a a w a do do u u w w po z do z (NYSE) a a a u po u w w w po po z u u a u i do w po w u w a a będąca a u u w a po do do a u z w światowym a w a a po u u a z w do po z a u w centrum u u w po z z w u do w u z u w w finansjery?",
+              "answers": [
+                { "text": "Wall a u z a Street po z w po z u do z u z", "is_correct": true },
+                { "text": "Broadway u w do a w a a", "is_correct": false },
+                { "text": "Fifth u po u z do a z po a a z po Avenue w po w a z u w w (Piąta a po z do Aleja) po po z z z do z", "is_correct": false },
+                { "text": "Times do u do w z a do u a do z po do po a Square do w a z", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co a z z po po z u do w oznacza u do po u w a w makroekonomiczny do po do w do z u skrót z po w w po u do a w po PKB, po w po po w w do z do określający po w z a po a po do do z a po a u u po do do do z wartość u po w po a po do a wszystkich do do po z z po u u u u u u dóbr do w w a a i a do a a u w z u po a usług do w a po a w a po u finalnych u u z z u u po z do u po u w wytworzonych u u a w w do u do na w a u w w a u do z a po u a terenie a a z u w z danego po z u w do z z kraju a do w w z u w a u w w do po z danym z do w z czasie?",
+              "answers": [
+                { "text": "Produkt u do a po w po u a z z z u po w a a do Krajowy z do do po a u do po z z w do z a Brutto do u do z u w do", "is_correct": true },
+                { "text": "Przychód w po po z w a po u a a w po do po w u u u Komercyjny w z a po u u do po a Banków a w a a w u do po po a", "is_correct": false },
+                { "text": "Państwowy po do po w w po po u do a z do z a Koszt a do z a u z po w z a w u Budżetowy do do u w a", "is_correct": false },
+                { "text": "Podatek u do u do a u u a po do a Krajowy z w w do a z Bezpośredni po po z z a w u", "is_correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
