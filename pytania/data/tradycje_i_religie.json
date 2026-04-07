@@ -1,0 +1,1766 @@
+{
+  "category": "Tradycje i Religie",
+  "icon": "⛪",
+  "questions": [
+    {
+      "subcategory": "Święta Bożego Narodzenia",
+      "question": "Zgodnie z piękną, polską tradycją kulinarną, ile bezmięsnych potraw powinno znaleźć się na stole wigilijnym?",
+      "answers": [
+        {
+          "text": "Dwanaście potraw",
+          "is_correct": true
+        },
+        {
+          "text": "Siedem potraw",
+          "is_correct": false
+        },
+        {
+          "text": "Dziesięć potraw",
+          "is_correct": false
+        },
+        {
+          "text": "Jedenaście potraw",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta Bożego Narodzenia",
+      "question": "Dla kogo od pokoleń i zwyczajowo kładzie się puste nakrycie i dodatkowy talerz przy polskim wigilijnym stole?",
+      "answers": [
+        {
+          "text": "Dla niespodziewanego wędrowca",
+          "is_correct": true
+        },
+        {
+          "text": "Dla księdza po kolędzie",
+          "is_correct": false
+        },
+        {
+          "text": "Dla Anioła Stróża",
+          "is_correct": false
+        },
+        {
+          "text": "Dla świętego Mikołaja",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta Bożego Narodzenia",
+      "question": "Czym w chrześcijańskiej Polsce dzielimy się z rodziną, składając sobie życzenia, zanim rozpoczniemy kolację?",
+      "answers": [
+        {
+          "text": "Białym opłatkiem",
+          "is_correct": true
+        },
+        {
+          "text": "Chlebem maczanym w soli",
+          "is_correct": false
+        },
+        {
+          "text": "Czerwonym winem",
+          "is_correct": false
+        },
+        {
+          "text": "Słodką kutią",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta Bożego Narodzenia",
+      "question": "Jak nazywa się niezwykle radosna, wesoła Msza Święta odprawiana w katolickich kościołach o północy w Wigilię?",
+      "answers": [
+        {
+          "text": "Pasterka",
+          "is_correct": true
+        },
+        {
+          "text": "Jutrznia",
+          "is_correct": false
+        },
+        {
+          "text": "Rezurekcja",
+          "is_correct": false
+        },
+        {
+          "text": "Suma Bożonarodzeniowa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta Bożego Narodzenia",
+      "question": "Pod jaką zieloną gałązką, zawieszaną zazwyczaj pod samym sufitem, bezkarnie całują się zakochani w czasie Świąt?",
+      "answers": [
+        {
+          "text": "Pod jemiołą",
+          "is_correct": true
+        },
+        {
+          "text": "Pod świerkiem",
+          "is_correct": false
+        },
+        {
+          "text": "Pod ostrokrzewem",
+          "is_correct": false
+        },
+        {
+          "text": "Pod sosną",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkanoc w Polsce",
+      "question": "Jak popularnie i pieszczotliwie nazywa się drugi dzień polskich Świąt Wielkanocnych, słynący z oblewania się wodą?",
+      "answers": [
+        {
+          "text": "Lany Poniedziałek (Śmigus-dyngus)",
+          "is_correct": true
+        },
+        {
+          "text": "Mokra Niedziela",
+          "is_correct": false
+        },
+        {
+          "text": "Tłusty Czwartek",
+          "is_correct": false
+        },
+        {
+          "text": "Wielki Wtorek",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkanoc w Polsce",
+      "question": "Co wkłada się w Wielką Sobotę do małych wiklinowych koszyczków, by ksiądz pobłogosławił to w kościele?",
+      "answers": [
+        {
+          "text": "Święconkę",
+          "is_correct": true
+        },
+        {
+          "text": "Hostię",
+          "is_correct": false
+        },
+        {
+          "text": "Popiół",
+          "is_correct": false
+        },
+        {
+          "text": "Olej Krzyżma",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkanoc w Polsce",
+      "question": "Jakie specjalne, kolorowe lub zdobione woskiem kurze jaja od stuleci królują na polskich wielkanocnych stołach?",
+      "answers": [
+        {
+          "text": "Pisanki / Kraszanki",
+          "is_correct": true
+        },
+        {
+          "text": "Sadzone",
+          "is_correct": false
+        },
+        {
+          "text": "Białka wielkanocne",
+          "is_correct": false
+        },
+        {
+          "text": "Faberge",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkanoc w Polsce",
+      "question": "W który posępny, wyciszony dzień Wielkiego Tygodnia Kościół wspomina bezpośrednio mękę i śmierć Jezusa na krzyżu?",
+      "answers": [
+        {
+          "text": "W Wielki Piątek",
+          "is_correct": true
+        },
+        {
+          "text": "W Wielki Czwartek",
+          "is_correct": false
+        },
+        {
+          "text": "W Wielką Sobotę",
+          "is_correct": false
+        },
+        {
+          "text": "W Niedzielę Palmową",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkanoc w Polsce",
+      "question": "Z jakiej słodkiej masy najczęściej wypiekany jest jadalny baranek, zajmujący centralne miejsce w koszyczku wielkanocnym?",
+      "answers": [
+        {
+          "text": "Z cukru lub marcepanu (także ciasta)",
+          "is_correct": true
+        },
+        {
+          "text": "Z mięsa jagnięcego",
+          "is_correct": false
+        },
+        {
+          "text": "Z białego sera",
+          "is_correct": false
+        },
+        {
+          "text": "Z topionego wosku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polskie Zwyczaje Ludowe",
+      "question": "Kogo tradycyjnie na wsiach, na pożegnanie zimy i powitanie wiosny, topi się lub widowiskowo podpala w marcu?",
+      "answers": [
+        {
+          "text": "Marzannę",
+          "is_correct": true
+        },
+        {
+          "text": "Kupałę",
+          "is_correct": false
+        },
+        {
+          "text": "Śmiercichę",
+          "is_correct": false
+        },
+        {
+          "text": "Dziewannę",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polskie Zwyczaje Ludowe",
+      "question": "Jak nazywa się ludowy, magiczny wieczór wróżb w nocy z 29 na 30 listopada, słynący m.in. z lania rozgrzanego wosku?",
+      "answers": [
+        {
+          "text": "Andrzejki",
+          "is_correct": true
+        },
+        {
+          "text": "Katarzynki",
+          "is_correct": false
+        },
+        {
+          "text": "Zaduszki",
+          "is_correct": false
+        },
+        {
+          "text": "Ostatki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polskie Zwyczaje Ludowe",
+      "question": "Co legendarnie kwitnie tylko raz w roku, podczas najkrótszej, czerwcowej Nocy Świętojańskiej?",
+      "answers": [
+        {
+          "text": "Kwiat paproci",
+          "is_correct": true
+        },
+        {
+          "text": "Kwiat lilii wodnej",
+          "is_correct": false
+        },
+        {
+          "text": "Złota Róża",
+          "is_correct": false
+        },
+        {
+          "text": "Górska Szarotka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polskie Zwyczaje Ludowe",
+      "question": "Jak nazywają się przebierańcy z turoniem, aniołem, diabłem i wielką gwiazdą, pukający zimą do domów?",
+      "answers": [
+        {
+          "text": "Kolędnicy",
+          "is_correct": true
+        },
+        {
+          "text": "Zapustnicy",
+          "is_correct": false
+        },
+        {
+          "text": "Lajkoniki",
+          "is_correct": false
+        },
+        {
+          "text": "Herody",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polskie Zwyczaje Ludowe",
+      "question": "Jakie wielkie, polskie rolnicze święto jest uroczystym zwieńczeniem ciężkich, sierpniowych prac przy żniwach?",
+      "answers": [
+        {
+          "text": "Dożynki",
+          "is_correct": true
+        },
+        {
+          "text": "Wianki",
+          "is_correct": false
+        },
+        {
+          "text": "Okrężne",
+          "is_correct": false
+        },
+        {
+          "text": "Święto Wiosny",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Biblia i Postacie Biblijne",
+      "question": "Kto, według Księgi Rodzaju, został poinstruowany przez Boga i wybudował gigantyczną arkę na czas potopu?",
+      "answers": [
+        {
+          "text": "Noe",
+          "is_correct": true
+        },
+        {
+          "text": "Mojżesz",
+          "is_correct": false
+        },
+        {
+          "text": "Abraham",
+          "is_correct": false
+        },
+        {
+          "text": "Hiob",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Biblia i Postacie Biblijne",
+      "question": "Który niepozorny, biblijny pasterz powalił potężnego, uzbrojonego wojownika Goliata za pomocą procy?",
+      "answers": [
+        {
+          "text": "Dawid",
+          "is_correct": true
+        },
+        {
+          "text": "Samson",
+          "is_correct": false
+        },
+        {
+          "text": "Gedeon",
+          "is_correct": false
+        },
+        {
+          "text": "Jozue",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Biblia i Postacie Biblijne",
+      "question": "Jaki patriarcha wyprowadził Izraelitów z niewoli i otrzymał od Boga dziesięć przykazań na górze Synaj?",
+      "answers": [
+        {
+          "text": "Mojżesz",
+          "is_correct": true
+        },
+        {
+          "text": "Izaak",
+          "is_correct": false
+        },
+        {
+          "text": "Józef",
+          "is_correct": false
+        },
+        {
+          "text": "Jakub",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Biblia i Postacie Biblijne",
+      "question": "Kto za trzydzieści srebrników wskazał i podstępnie zdradził wrogom Jezusa pocałunkiem w Ogrójcu?",
+      "answers": [
+        {
+          "text": "Judasz Iskariota",
+          "is_correct": true
+        },
+        {
+          "text": "Piotr Apostoł",
+          "is_correct": false
+        },
+        {
+          "text": "Poncjusz Piłat",
+          "is_correct": false
+        },
+        {
+          "text": "Kajfasz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Biblia i Postacie Biblijne",
+      "question": "Jak miał na imię ojciec całego rodu ludzkiego i absolutnie pierwszy człowiek stworzony z prochu ziemi?",
+      "answers": [
+        {
+          "text": "Adam",
+          "is_correct": true
+        },
+        {
+          "text": "Kain",
+          "is_correct": false
+        },
+        {
+          "text": "Abel",
+          "is_correct": false
+        },
+        {
+          "text": "Set",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Chrześcijaństwo",
+      "question": "Jaki jest najwyższy i najważniejszy tytuł głowy kościoła, pełniącego obecnie swoją służbę na Watykanie?",
+      "answers": [
+        {
+          "text": "Papież",
+          "is_correct": true
+        },
+        {
+          "text": "Patriarcha",
+          "is_correct": false
+        },
+        {
+          "text": "Prymas",
+          "is_correct": false
+        },
+        {
+          "text": "Kardynał",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Chrześcijaństwo",
+      "question": "W jakim niezwykle ważnym, niewielkim mieście położonym w dawnej Judei narodził się Jezus Chrystus?",
+      "answers": [
+        {
+          "text": "W Betlejem",
+          "is_correct": true
+        },
+        {
+          "text": "W Jerozolimie",
+          "is_correct": false
+        },
+        {
+          "text": "W Nazarecie",
+          "is_correct": false
+        },
+        {
+          "text": "W Kafarnaum",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Chrześcijaństwo",
+      "question": "Jak nazywa się niezwykle obszerna i podstawowa, absolutnie najświętsza księga wyznawców chrześcijaństwa?",
+      "answers": [
+        {
+          "text": "Biblia (Pismo Święte)",
+          "is_correct": true
+        },
+        {
+          "text": "Tora",
+          "is_correct": false
+        },
+        {
+          "text": "Koran",
+          "is_correct": false
+        },
+        {
+          "text": "Talmud",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Chrześcijaństwo",
+      "question": "Jaki wschodni i dominujący odłam wyznania chrześcijańskiego posługuje się w kościołach pięknymi ikonami?",
+      "answers": [
+        {
+          "text": "Prawosławie",
+          "is_correct": true
+        },
+        {
+          "text": "Luteranizm",
+          "is_correct": false
+        },
+        {
+          "text": "Kalwinizm",
+          "is_correct": false
+        },
+        {
+          "text": "Anglikanizm",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Chrześcijaństwo",
+      "question": "W jaki szczególny i symboliczny sposób chrześcijanie (niezależnie od odłamu) przyjmują i inicjują wiarę w kościele?",
+      "answers": [
+        {
+          "text": "Przez sakrament chrztu wodą",
+          "is_correct": true
+        },
+        {
+          "text": "Przez namaszczenie czoła krwią",
+          "is_correct": false
+        },
+        {
+          "text": "Przez przejście przez ogień",
+          "is_correct": false
+        },
+        {
+          "text": "Przez pielgrzymkę do Rzymu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Islam",
+      "question": "Jak powszechnie na całym globie nazywa się jedyna i najświętsza księga objawień, z której korzystają muzułmanie?",
+      "answers": [
+        {
+          "text": "Koran",
+          "is_correct": true
+        },
+        {
+          "text": "Tora",
+          "is_correct": false
+        },
+        {
+          "text": "Biblia",
+          "is_correct": false
+        },
+        {
+          "text": "Wedy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Islam",
+      "question": "Kto według wierzeń wyznawców religii islamskiej, był ostatnim i zarazem największym bożym prorokiem na ziemi?",
+      "answers": [
+        {
+          "text": "Mahomet",
+          "is_correct": true
+        },
+        {
+          "text": "Abraham",
+          "is_correct": false
+        },
+        {
+          "text": "Mojżesz",
+          "is_correct": false
+        },
+        {
+          "text": "Jezus (Isa)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Islam",
+      "question": "Do jakiego konkretnego i niezwykle świętego miasta muzułmanie z całego świata odbywają raz w życiu pielgrzymkę (Hadżdż)?",
+      "answers": [
+        {
+          "text": "Do Mekki",
+          "is_correct": true
+        },
+        {
+          "text": "Do Medyny",
+          "is_correct": false
+        },
+        {
+          "text": "Do Jerozolimy",
+          "is_correct": false
+        },
+        {
+          "text": "Do Dubaju",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Islam",
+      "question": "Jak nazywa się 30-dniowy muzułmański i bardzo rygorystyczny post, trwający przez okrągły, dziewiąty miesiąc roku?",
+      "answers": [
+        {
+          "text": "Ramadan",
+          "is_correct": true
+        },
+        {
+          "text": "Szabat",
+          "is_correct": false
+        },
+        {
+          "text": "Wielki Post",
+          "is_correct": false
+        },
+        {
+          "text": "Kurban Bajram",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Islam",
+      "question": "Jak fachowo określa się w architekturze wspaniały i często zwieńczony kopułą budynek muzułmańskich modlitw?",
+      "answers": [
+        {
+          "text": "Meczet",
+          "is_correct": true
+        },
+        {
+          "text": "Minaret",
+          "is_correct": false
+        },
+        {
+          "text": "Synagoga",
+          "is_correct": false
+        },
+        {
+          "text": "Cerkiew",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Judaizm",
+      "question": "Z czego składa się Tora, będąca najważniejszą, zwojową księgą praw oraz objawienia w religii wyznawców judaizmu?",
+      "answers": [
+        {
+          "text": "Z pierwszych pięciu ksiąg Biblii (Pięcioksięgu Mojżesza)",
+          "is_correct": true
+        },
+        {
+          "text": "Z całej Starego i Nowego Testamentu",
+          "is_correct": false
+        },
+        {
+          "text": "Z 10 przykazań i proroctw wersetów Koranu",
+          "is_correct": false
+        },
+        {
+          "text": "Z psalmów i ksiąg mądrości Salomona",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Judaizm",
+      "question": "Jak w religii żydowskiej nazywa się święty i nakazany przez Boga absolutny dzień odpoczynku, świętowany w sobotę?",
+      "answers": [
+        {
+          "text": "Szabat",
+          "is_correct": true
+        },
+        {
+          "text": "Purim",
+          "is_correct": false
+        },
+        {
+          "text": "Chanuka",
+          "is_correct": false
+        },
+        {
+          "text": "Pesach",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Judaizm",
+      "question": "Jak w architekturze nazywa się żydowski budynek przeznaczony zarówno do wspólnych modlitw, jak i studiowania pism?",
+      "answers": [
+        {
+          "text": "Synagoga",
+          "is_correct": true
+        },
+        {
+          "text": "Meczet",
+          "is_correct": false
+        },
+        {
+          "text": "Bazylika",
+          "is_correct": false
+        },
+        {
+          "text": "Pogańska Świątynia",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Judaizm",
+      "question": "Co to jest kipa (zwana powszechnie w Polsce jarmułką), noszona przez bardzo wielu Żydów i wyznawców religii?",
+      "answers": [
+        {
+          "text": "Niewielka, płaska czapeczka na czubek głowy",
+          "is_correct": true
+        },
+        {
+          "text": "Długi płaszcz noszony w trakcie modłów",
+          "is_correct": false
+        },
+        {
+          "text": "Pasek z filakteriami obwijany na rękach",
+          "is_correct": false
+        },
+        {
+          "text": "Biała chusta noszona na karku w święta",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Judaizm",
+      "question": "Jaki specjalny siedmioramienny kandelabr i świecznik stał się po wiekach jednym z najważniejszych żydowskich symboli?",
+      "answers": [
+        {
+          "text": "Menora",
+          "is_correct": true
+        },
+        {
+          "text": "Gwiazda Dawida",
+          "is_correct": false
+        },
+        {
+          "text": "Mezuza",
+          "is_correct": false
+        },
+        {
+          "text": "Cadyk",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Nordycka",
+      "question": "Kto był absolutnie i niepodważalnie najwyższym, nieskończenie mądrym oraz potężnym bóstwem w mitologii wikingów?",
+      "answers": [
+        {
+          "text": "Odyn (Odin)",
+          "is_correct": true
+        },
+        {
+          "text": "Thor",
+          "is_correct": false
+        },
+        {
+          "text": "Loki",
+          "is_correct": false
+        },
+        {
+          "text": "Frey",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Nordycka",
+      "question": "Jaki groźny, niezwykle silny bóg, chroniący ludzi przed gigantami, dysponował niszczycielskim młotem (Mjölnirem)?",
+      "answers": [
+        {
+          "text": "Thor",
+          "is_correct": true
+        },
+        {
+          "text": "Odyn",
+          "is_correct": false
+        },
+        {
+          "text": "Tyr",
+          "is_correct": false
+        },
+        {
+          "text": "Heimdall",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Nordycka",
+      "question": "Jak nazywała się gigantyczna i wieczna sala, w której mężni wojownicy spędzali czas po chwalebnej, mężnej śmierci?",
+      "answers": [
+        {
+          "text": "Walhalla",
+          "is_correct": true
+        },
+        {
+          "text": "Asgard",
+          "is_correct": false
+        },
+        {
+          "text": "Midgard",
+          "is_correct": false
+        },
+        {
+          "text": "Helheim",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Nordycka",
+      "question": "Jak nazywał się podstępny bóg oszustów, bardzo psotny i zmiennokształtny, którego dzieci doprowadziły świat do upadku?",
+      "answers": [
+        {
+          "text": "Loki",
+          "is_correct": true
+        },
+        {
+          "text": "Odyn",
+          "is_correct": false
+        },
+        {
+          "text": "Baldur",
+          "is_correct": false
+        },
+        {
+          "text": "Fenrir",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Nordycka",
+      "question": "Co symbolizuje w przepowiedniach wikingów straszliwy i tragiczny w skutkach 'Ragnarök', będący zmierzchem bogów?",
+      "answers": [
+        {
+          "text": "Epicki koniec i ostateczne zniszczenie świata",
+          "is_correct": true
+        },
+        {
+          "text": "Stworzenie pierwszego z ludzi przez bogów",
+          "is_correct": false
+        },
+        {
+          "text": "Odkrycie nowego kontynentu (Winlandii)",
+          "is_correct": false
+        },
+        {
+          "text": "Powrót zmarłych na statkach",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Bogowie Starożytnego Egiptu",
+      "question": "Które naczelne, słoneczne bóstwo nosiło na głowie potężny, błyszczący, boski dysk na wzór gorącego Słońca?",
+      "answers": [
+        {
+          "text": "Bóg Ra",
+          "is_correct": true
+        },
+        {
+          "text": "Bóg Anubis",
+          "is_correct": false
+        },
+        {
+          "text": "Bóg Ozyrys",
+          "is_correct": false
+        },
+        {
+          "text": "Bóg Set",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Bogowie Starożytnego Egiptu",
+      "question": "Jak zwała się kocia bogini, dbająca w państwie i domostwach o ognisko domowe, plony, taniec oraz ogólną radość?",
+      "answers": [
+        {
+          "text": "Bastet",
+          "is_correct": true
+        },
+        {
+          "text": "Izyda",
+          "is_correct": false
+        },
+        {
+          "text": "Hathor",
+          "is_correct": false
+        },
+        {
+          "text": "Neftyda",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Bogowie Starożytnego Egiptu",
+      "question": "Jaki bóg posiadał tajemniczą głowę szakala i nadzorował mroczne oraz złożone procesy balsamowania ciał i mumifikacji?",
+      "answers": [
+        {
+          "text": "Anubis",
+          "is_correct": true
+        },
+        {
+          "text": "Tot",
+          "is_correct": false
+        },
+        {
+          "text": "Horus",
+          "is_correct": false
+        },
+        {
+          "text": "Amon",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Bogowie Starożytnego Egiptu",
+      "question": "Opiekunem jakiego, życiodajnego w wodę, największego i powszechnie cenionego zbiornika w państwie był sam bóg Hapi?",
+      "answers": [
+        {
+          "text": "Rzeki Nil",
+          "is_correct": true
+        },
+        {
+          "text": "Morza Czerwonego",
+          "is_correct": false
+        },
+        {
+          "text": "Jeziora Wiktorii",
+          "is_correct": false
+        },
+        {
+          "text": "Morza Śródziemnego",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Bogowie Starożytnego Egiptu",
+      "question": "Jaki absolutny władca, noszący chłodną w nazwie koronę po obu stronach rzeki uchodził na co dzień za wcielenie boga na Ziemi?",
+      "answers": [
+        {
+          "text": "Faraon",
+          "is_correct": true
+        },
+        {
+          "text": "Wezyr",
+          "is_correct": false
+        },
+        {
+          "text": "Prorok",
+          "is_correct": false
+        },
+        {
+          "text": "Kapłan Wód",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia Słowian",
+      "question": "Kto był jednym z głównych słowiańskich bogów, władcą piorunów i nieba, uważanym za odpowiednika nordyckiego Thora?",
+      "answers": [
+        {
+          "text": "Perun",
+          "is_correct": true
+        },
+        {
+          "text": "Weles",
+          "is_correct": false
+        },
+        {
+          "text": "Swaróg",
+          "is_correct": false
+        },
+        {
+          "text": "Trzygłów",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia Słowian",
+      "question": "Jaki wielki słowiański i mroczny władca zasiadał potężnie w zaświatach, w mrocznej i chłodnej krainie Nawii?",
+      "answers": [
+        {
+          "text": "Weles",
+          "is_correct": true
+        },
+        {
+          "text": "Perun",
+          "is_correct": false
+        },
+        {
+          "text": "Swarożyc",
+          "is_correct": false
+        },
+        {
+          "text": "Strzybóg",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia Słowian",
+      "question": "Jak nazywano niebezpieczne, powabne i bardzo wodne żeńskie demony, które bardzo gęsto wabiły w topiel mężów?",
+      "answers": [
+        {
+          "text": "Rusałki",
+          "is_correct": true
+        },
+        {
+          "text": "Upiory",
+          "is_correct": false
+        },
+        {
+          "text": "Domowiki",
+          "is_correct": false
+        },
+        {
+          "text": "Lesze",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia Słowian",
+      "question": "Jak nazywało się najważniejsze, letnie pogańskie święto żywiołów (wody i ognia), w czasie którego panny wiły wianki?",
+      "answers": [
+        {
+          "text": "Noc Kupały (Sobótki)",
+          "is_correct": true
+        },
+        {
+          "text": "Szczodre Gody",
+          "is_correct": false
+        },
+        {
+          "text": "Dziady",
+          "is_correct": false
+        },
+        {
+          "text": "Zielone Świątki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia Słowian",
+      "question": "Jak nazywał się domowy, zwykle pożyteczny i dbający o ognisko duszek, któremu zostawiano np. resztki kaszy w misce?",
+      "answers": [
+        {
+          "text": "Domowik",
+          "is_correct": true
+        },
+        {
+          "text": "Utopiec",
+          "is_correct": false
+        },
+        {
+          "text": "Leszy",
+          "is_correct": false
+        },
+        {
+          "text": "Południca",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Buddyzm i Hinduizm",
+      "question": "Kto był historycznym założycielem buddyzmu, potocznie nazywanym Przebudzonym?",
+      "answers": [
+        {
+          "text": "Siddhartha Gautama",
+          "is_correct": true
+        },
+        {
+          "text": "Dalajlama",
+          "is_correct": false
+        },
+        {
+          "text": "Wisznu",
+          "is_correct": false
+        },
+        {
+          "text": "Śiwa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Buddyzm i Hinduizm",
+      "question": "Jak nazywa się stan najwyższego oświecenia i wyzwolenia z cyklu narodzin w wierzeniach buddyjskich?",
+      "answers": [
+        {
+          "text": "Nirwana",
+          "is_correct": true
+        },
+        {
+          "text": "Samsara",
+          "is_correct": false
+        },
+        {
+          "text": "Karma",
+          "is_correct": false
+        },
+        {
+          "text": "Dharma",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Buddyzm i Hinduizm",
+      "question": "Jaka ogromna rzeka w Indiach uchodzi za świętą i jest miejscem masowych, rytualnych kąpieli dla hinduistów?",
+      "answers": [
+        {
+          "text": "Ganges",
+          "is_correct": true
+        },
+        {
+          "text": "Indus",
+          "is_correct": false
+        },
+        {
+          "text": "Brahmaputra",
+          "is_correct": false
+        },
+        {
+          "text": "Jamuna",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Buddyzm i Hinduizm",
+      "question": "Jak nazywa się mocno związany z hinduizmem, niezwykle rygorystyczny system podziału społeczeństwa w tradycyjnych Indiach?",
+      "answers": [
+        {
+          "text": "Kasty",
+          "is_correct": true
+        },
+        {
+          "text": "Stany",
+          "is_correct": false
+        },
+        {
+          "text": "Klasy społeczne",
+          "is_correct": false
+        },
+        {
+          "text": "Klany",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Buddyzm i Hinduizm",
+      "question": "Które potężne, hinduskie bóstwo, często przedstawiane jako niszczyciel, należy do Trimurti razem z Brahmą i Wisznu?",
+      "answers": [
+        {
+          "text": "Śiwa",
+          "is_correct": true
+        },
+        {
+          "text": "Ganeśa",
+          "is_correct": false
+        },
+        {
+          "text": "Kryszna",
+          "is_correct": false
+        },
+        {
+          "text": "Hanuman",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta w innych kulturach",
+      "question": "Jakie wielkie święto w USA obchodzi się w czwarty czwartek listopada, przygotowując tradycyjnie pieczonego indyka?",
+      "answers": [
+        {
+          "text": "Święto Dziękczynienia",
+          "is_correct": true
+        },
+        {
+          "text": "Halloween",
+          "is_correct": false
+        },
+        {
+          "text": "Dzień Niepodległości",
+          "is_correct": false
+        },
+        {
+          "text": "Dzień Pamięci",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta w innych kulturach",
+      "question": "14 lutego na całym niemal świecie z ogromnym komercyjnym zaangażowaniem obchodzimy popularne...",
+      "answers": [
+        {
+          "text": "Walentynki",
+          "is_correct": true
+        },
+        {
+          "text": "Andrzejki",
+          "is_correct": false
+        },
+        {
+          "text": "Mikołajki",
+          "is_correct": false
+        },
+        {
+          "text": "Halloween",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta w innych kulturach",
+      "question": "W jakim państwie na przełomie października i listopada hucznie, radośnie i bardzo kolorowo obchodzi się Dzień Zmarłych (Día de Muertos)?",
+      "answers": [
+        {
+          "text": "W Meksyku",
+          "is_correct": true
+        },
+        {
+          "text": "W Hiszpanii",
+          "is_correct": false
+        },
+        {
+          "text": "W Brazylii",
+          "is_correct": false
+        },
+        {
+          "text": "W USA",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta w innych kulturach",
+      "question": "Czego symbolem są wydrążone, upiornie uśmiechnięte i świecące dynie (Jack-o'-lantern) podczas obchodów Halloween?",
+      "answers": [
+        {
+          "text": "Odstraszania złych duchów",
+          "is_correct": true
+        },
+        {
+          "text": "Podziękowania za obfite plony",
+          "is_correct": false
+        },
+        {
+          "text": "Powitania nadchodzącej wiosny",
+          "is_correct": false
+        },
+        {
+          "text": "Oddawania czci bogu słońca",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta w innych kulturach",
+      "question": "Jakie wesołe i bardzo głośne marcowe święto, patrona całej Irlandii, na całym świecie kojarzy się z kolorem zielonym?",
+      "answers": [
+        {
+          "text": "Dzień Świętego Patryka",
+          "is_correct": true
+        },
+        {
+          "text": "Dzień Świętego Jerzego",
+          "is_correct": false
+        },
+        {
+          "text": "Dzień Świętego Andrzeja",
+          "is_correct": false
+        },
+        {
+          "text": "Dzień Świętego Marcina",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Obrzędy Przejścia",
+      "question": "Jak w bogatej kulturze i religii żydowskiej nazywa się niezwykle uroczyste wejście 13-letniego chłopca w dorosłość?",
+      "answers": [
+        {
+          "text": "Bar micwa",
+          "is_correct": true
+        },
+        {
+          "text": "Brit mila",
+          "is_correct": false
+        },
+        {
+          "text": "Szabat",
+          "is_correct": false
+        },
+        {
+          "text": "Purim",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Obrzędy Przejścia",
+      "question": "Jaki specyficzny kolor ubrania, w całkowitym przeciwieństwie do Europy, jest kolorem głębokiej żałoby w wielu krajach Azji (np. w Chinach)?",
+      "answers": [
+        {
+          "text": "Biały",
+          "is_correct": true
+        },
+        {
+          "text": "Czarny",
+          "is_correct": false
+        },
+        {
+          "text": "Czerwony",
+          "is_correct": false
+        },
+        {
+          "text": "Fioletowy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Obrzędy Przejścia",
+      "question": "W jakiej żywej tradycji religijnej bliscy zmarli chowani są bardzo szybko, a ich ciało układa się z twarzą w stronę Mekki?",
+      "answers": [
+        {
+          "text": "W islamie",
+          "is_correct": true
+        },
+        {
+          "text": "W judaizmie",
+          "is_correct": false
+        },
+        {
+          "text": "W hinduizmie",
+          "is_correct": false
+        },
+        {
+          "text": "W prawosławiu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Obrzędy Przejścia",
+      "question": "Czym nowożeńcy w polskiej, ludowej i wciąż bardzo popularnej tradycji witani są przez rodziców zaraz przed wejściem na salę weselną?",
+      "answers": [
+        {
+          "text": "Chlebem i solą",
+          "is_correct": true
+        },
+        {
+          "text": "Kieliszkiem z czerwoną wódką",
+          "is_correct": false
+        },
+        {
+          "text": "Gorzkim miodem",
+          "is_correct": false
+        },
+        {
+          "text": "Słodkim kołaczem",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Obrzędy Przejścia",
+      "question": "Jak nazywa się absolutnie pierwszy i fundamentalny sakrament chrześcijański, polegający na polaniu głowy wodą?",
+      "answers": [
+        {
+          "text": "Chrzest",
+          "is_correct": true
+        },
+        {
+          "text": "Bierzmowanie",
+          "is_correct": false
+        },
+        {
+          "text": "Pierwsza Komunia",
+          "is_correct": false
+        },
+        {
+          "text": "Namaszczenie Chorych",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia i Zabobony",
+      "question": "Jaka konkretna liczba jest w wielu krajach zachodnich powszechnie uznawana za pechową, przez co często omija się ją np. w windach hoteli?",
+      "answers": [
+        {
+          "text": "Liczba 13",
+          "is_correct": true
+        },
+        {
+          "text": "Liczba 7",
+          "is_correct": false
+        },
+        {
+          "text": "Liczba 666",
+          "is_correct": false
+        },
+        {
+          "text": "Liczba 4",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia i Zabobony",
+      "question": "Jakie wspaniałe zwierzę, jeśli tylko nagle przetnie i przebiegnie nam drogę, w klasycznym przesądzie zwiastuje murowanego pecha?",
+      "answers": [
+        {
+          "text": "Czarny kot",
+          "is_correct": true
+        },
+        {
+          "text": "Rudy lis",
+          "is_correct": false
+        },
+        {
+          "text": "Szary wilk",
+          "is_correct": false
+        },
+        {
+          "text": "Czarny kruk",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia i Zabobony",
+      "question": "Co według wierzeń ludowych należy zrobić ze znalezioną podkową, aby przynosiła domowi szczęście zawieszona nad drzwiami?",
+      "answers": [
+        {
+          "text": "Powiesić ją rogami do góry (jak literę U)",
+          "is_correct": true
+        },
+        {
+          "text": "Powiesić ją rogami do dołu",
+          "is_correct": false
+        },
+        {
+          "text": "Pomalować na czerwono",
+          "is_correct": false
+        },
+        {
+          "text": "Zakopać pod progiem",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia i Zabobony",
+      "question": "Z jakiego bardzo kruchego, codziennego przedmiotu, uszkodzenie lub rozbicie wróży podobno w przesądach aż 7 lat nieszczęścia?",
+      "answers": [
+        {
+          "text": "Z lustra",
+          "is_correct": true
+        },
+        {
+          "text": "Z solniczki",
+          "is_correct": false
+        },
+        {
+          "text": "Z kryształowego wazonu",
+          "is_correct": false
+        },
+        {
+          "text": "Z kieliszka ślubnego",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia i Zabobony",
+      "question": "W co należy profilaktycznie zapukać, aby 'nie zapeszyć' i nie sprowadzić pecha po głośnym wypowiedzeniu swoich wielkich planów?",
+      "answers": [
+        {
+          "text": "W niemalowane drewno",
+          "is_correct": true
+        },
+        {
+          "text": "W przezroczystą szybę",
+          "is_correct": false
+        },
+        {
+          "text": "W prawy nadgarstek",
+          "is_correct": false
+        },
+        {
+          "text": "W żelazny pręt",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Grecka i Rzymska",
+      "question": "Kto był najpotężniejszym i absolutnym władcą góry Olimp oraz greckim bogiem nieba i błyskawic?",
+      "answers": [
+        {
+          "text": "Zeus",
+          "is_correct": true
+        },
+        {
+          "text": "Posejdon",
+          "is_correct": false
+        },
+        {
+          "text": "Hades",
+          "is_correct": false
+        },
+        {
+          "text": "Ares",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Grecka i Rzymska",
+      "question": "Jakim długim, rozwidlonym i morderczym atrybutem na co dzień posługiwał się grecki bóg mórz i oceanów, Posejdon?",
+      "answers": [
+        {
+          "text": "Trójzębem",
+          "is_correct": true
+        },
+        {
+          "text": "Piorunem",
+          "is_correct": false
+        },
+        {
+          "text": "Mieczem obosiecznym",
+          "is_correct": false
+        },
+        {
+          "text": "Złotym łukiem",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Grecka i Rzymska",
+      "question": "Rzymskim bóstwem i idealnym odpowiednikiem greckiego, krwiożerczego boga wojny Aresa był...",
+      "answers": [
+        {
+          "text": "Mars",
+          "is_correct": true
+        },
+        {
+          "text": "Jowisz",
+          "is_correct": false
+        },
+        {
+          "text": "Neptun",
+          "is_correct": false
+        },
+        {
+          "text": "Apollo",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Grecka i Rzymska",
+      "question": "Z jakiej części ciała Zeusa miała wyskoczyć i niespodziewanie narodzić się w pełnej zbroi Atena - słynna bogini mądrości?",
+      "answers": [
+        {
+          "text": "Z rozłupanej głowy",
+          "is_correct": true
+        },
+        {
+          "text": "Z rozciętego uda",
+          "is_correct": false
+        },
+        {
+          "text": "Z wyjętego żebra",
+          "is_correct": false
+        },
+        {
+          "text": "Ze zranionego ramienia",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Grecka i Rzymska",
+      "question": "Jakie bardzo dostojne imię i planetarną nazwę nosił rzymski władca wszystkich bogów, uosabiający władzę greckiego Zeusa?",
+      "answers": [
+        {
+          "text": "Jowisz",
+          "is_correct": true
+        },
+        {
+          "text": "Saturn",
+          "is_correct": false
+        },
+        {
+          "text": "Merkury",
+          "is_correct": false
+        },
+        {
+          "text": "Pluton",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Postacie Mityczne",
+      "question": "Jaki przerażający potwór z greckich mitów posiadał ludzkie ciało oraz głowę groźnego byka, a żył uwięziony w kreteńskim labiryncie?",
+      "answers": [
+        {
+          "text": "Minotaur",
+          "is_correct": true
+        },
+        {
+          "text": "Centaur",
+          "is_correct": false
+        },
+        {
+          "text": "Cerber",
+          "is_correct": false
+        },
+        {
+          "text": "Cyklop",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Postacie Mityczne",
+      "question": "Jakie bohaterskie imię nosił najsilniejszy z herosów mitologii, znany i podziwiany za zrealizowanie u króla aż 12 beznadziejnie trudnych prac?",
+      "answers": [
+        {
+          "text": "Herakles (Herkules)",
+          "is_correct": true
+        },
+        {
+          "text": "Achilles",
+          "is_correct": false
+        },
+        {
+          "text": "Tezeusz",
+          "is_correct": false
+        },
+        {
+          "text": "Perseusz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Postacie Mityczne",
+      "question": "Jak grecy starożytni określali w swoich opowieściach wielkich, mało mądrych i brzydkich olbrzymów, którzy posiadali na czele tylko jedno oko?",
+      "answers": [
+        {
+          "text": "Cyklopi",
+          "is_correct": true
+        },
+        {
+          "text": "Tytani",
+          "is_correct": false
+        },
+        {
+          "text": "Hekatonchejrowie",
+          "is_correct": false
+        },
+        {
+          "text": "Centaury",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Postacie Mityczne",
+      "question": "Jaki niesamowity, śnieżnobiały, latający i cudowny wierzchowiec (skrzydlaty koń) narodził się podobno z krwi pokonanej Meduzy Gorgony?",
+      "answers": [
+        {
+          "text": "Pegaz",
+          "is_correct": true
+        },
+        {
+          "text": "Gryf",
+          "is_correct": false
+        },
+        {
+          "text": "Mantykora",
+          "is_correct": false
+        },
+        {
+          "text": "Sfinks",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Postacie Mityczne",
+      "question": "Kogo w starożytnych greckich bajkach przerażający, wężowy wzrok potrafił dosłownie zamienić ofiarę w wielki, martwy głaz?",
+      "answers": [
+        {
+          "text": "Meduzę",
+          "is_correct": true
+        },
+        {
+          "text": "Lernejską Hydrę",
+          "is_correct": false
+        },
+        {
+          "text": "Ziejącą ogniem Chimerę",
+          "is_correct": false
+        },
+        {
+          "text": "Skrzydlatą Harpię",
+          "is_correct": false
+        }
+      ]
+    }
+  ]
+}

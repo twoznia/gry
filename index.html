@@ -194,6 +194,13 @@
             <div class="play-btn" id="play-memo">Zagraj</div>
         </a>
 
+        <a href="./pytania/" class="game-card">
+            <span class="icon">🧠</span>
+            <h2 id="card-pytania-title">Pytania</h2>
+            <p id="card-pytania-desc" style="color: #94a3b8; font-size: 0.9rem;">Quiz wiedzy ogólnej – historia, nauka, kultura i wiele więcej!</p>
+            <div class="play-btn" id="play-pytania">Zagraj</div>
+        </a>
+
     </main>
 
     <footer id="footer-text">
@@ -218,6 +225,8 @@
                 krajeDesc: 'Sprawdź swoją wiedzę o krajach, stolicach i flagach!',
                 memoTitle: 'Memo',
                 memoDesc: 'Znajdź wszystkie pary ukrytych obrazków!',
+                pytaniaTitle: 'Pytania',
+                pytaniaDesc: 'Quiz wiedzy ogólnej – historia, nauka, kultura i wiele więcej!',
                 play: 'Zagraj',
                 footer: 'Ostatnia aktualizacja: 2026 | @twoznia'
             },
@@ -234,6 +243,8 @@
                 krajeDesc: 'Test your knowledge of countries, capitals, and flags!',
                 memoTitle: 'Memo',
                 memoDesc: 'Find all matching pairs of hidden images!',
+                pytaniaTitle: 'Questions',
+                pytaniaDesc: 'General knowledge quiz – history, science, culture and more!',
                 play: 'Play',
                 footer: 'Last updated: 2026 | @twoznia'
             }
@@ -253,6 +264,8 @@
             document.getElementById('card-kraje-desc').textContent = t.krajeDesc;
             document.getElementById('card-memo-title').textContent = t.memoTitle;
             document.getElementById('card-memo-desc').textContent = t.memoDesc;
+            document.getElementById('card-pytania-title').textContent = t.pytaniaTitle;
+            document.getElementById('card-pytania-desc').textContent = t.pytaniaDesc;
             document.querySelectorAll('.play-btn').forEach(el => el.textContent = t.play);
             document.getElementById('footer-text').textContent = t.footer;
             document.getElementById('btn-pl').style.borderColor = lang === 'pl' ? 'var(--accent-color)' : '#555';

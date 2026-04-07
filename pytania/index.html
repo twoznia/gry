@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pytania | @twoznia</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #f59e0b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.75rem 1rem 1.5rem;
+        }
+        a.back-link {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+            background: #334155;
+            color: #fff;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            padding: 8px 14px;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        a.back-link:hover { background: #475569; }
+
+        /* Screens */
+        .screen { width: 100%; max-width: 560px; display: none; flex-direction: column; align-items: center; gap: 0.75rem; }
+        .screen.active { display: flex; }
+
+        /* Typography */
+        .game-title { font-size: 2rem; text-align: center; }
+        .game-subtitle { color: var(--muted); text-align: center; font-size: 0.95rem; }
+
+        /* Card */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        /* Form */
+        .form-group { margin-bottom: 1.1rem; }
+        .form-group:last-child { margin-bottom: 0; }
+        label { display: block; color: var(--muted); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+        select {
+            width: 100%;
+            background: var(--bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.65rem 2rem 0.65rem 0.85rem;
+            font-size: 1rem;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.8rem center;
+            cursor: pointer;
+        }
+        select:focus { outline: 2px solid var(--accent); border-color: transparent; }
+        .error-msg { color: var(--red); font-size: 0.88rem; text-align: center; min-height: 1.2rem; }
+
+        /* Buttons */
+        .btn {
+            padding: 0.65rem 1.75rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary { background: var(--accent); color: #000; }
+        .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+        .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+        .btn-secondary {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* Progress */
+        .hud {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+        .hud .score-val { color: var(--accent); font-weight: 700; font-size: 1.05rem; }
+        .progress-bar { width: 100%; display: flex; gap: 6px; }
+        .progress-dot { flex: 1; height: 4px; border-radius: 3px; background: var(--border); transition: background 0.3s; }
+        .progress-dot.done { background: var(--green); }
+        .progress-dot.done.wrong { background: var(--red); }
+        .progress-dot.current { background: var(--accent); }
+
+        /* Question card */
+        .q-meta {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .q-category-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .q-category-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .q-subcategory-name {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 0.15rem;
+        }
+        .q-question {
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.45;
+            padding: 0.5rem 0 0.25rem;
+        }
+
+        /* Answers */
+        .answers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            width: 100%;
+        }
+        .answer-btn {
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            padding: 0.75rem 0.6rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: border-color 0.15s, background 0.15s;
+            text-align: center;
+            line-height: 1.3;
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .answer-btn:hover:not(:disabled) {
+            border-color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+        }
+        .answer-btn:disabled { cursor: default; }
+        .answer-btn.correct { border-color: var(--green) !important; background: rgba(34, 197, 94, 0.15) !important; }
+        .answer-btn.wrong   { border-color: var(--red)   !important; background: rgba(239, 68, 68, 0.15)  !important; }
+        .answer-btn.reveal  { border-color: var(--yellow)!important; background: rgba(245, 158, 11, 0.15) !important; }
+
+        /* Feedback */
+        .feedback {
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            min-height: 1.5rem;
+        }
+        .feedback.ok  { color: var(--green); }
+        .feedback.bad { color: var(--red); }
+
+        /* Results */
+        .result-score { font-size: 3.5rem; font-weight: 700; color: var(--accent); text-align: center; }
+        .result-max   { color: var(--muted); font-size: 0.95rem; text-align: center; }
+        .result-comment { font-size: 1.1rem; text-align: center; font-weight: 600; }
+        .result-list { width: 100%; }
+        .result-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 0.55rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.88rem;
+        }
+        .result-row:last-child { border-bottom: none; }
+        .result-icon { font-size: 1rem; flex-shrink: 0; padding-top: 1px; }
+        .result-q { flex: 1; }
+        .result-q .q-text { color: var(--text); margin-bottom: 0.2rem; }
+        .result-q .q-ans { color: var(--muted); font-size: 0.82rem; }
+        .result-q .q-ans .correct-ans { color: var(--green); }
+
+        footer { margin-top: 2rem; font-size: 0.8rem; color: #475569; }
+
+        @media (max-width: 480px) {
+            .screen { gap: 0.4rem; }
+            .game-title { font-size: 1.6rem; }
+            .q-question { font-size: 1rem; }
+            .answer-btn { min-height: 58px; font-size: 0.88rem; padding: 0.5rem 0.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<a class="back-link" href="../">← Wróć</a>
+
+<!-- ========== SETUP SCREEN ========== -->
+<section id="screen-setup" class="screen active">
+    <div class="game-title">🧠 Pytania</div>
+    <p class="game-subtitle">Sprawdź swoją wiedzę z różnych dziedzin!</p>
+
+    <div class="card">
+        <div class="form-group">
+            <label for="sel-category">Kategoria</label>
+            <select id="sel-category">
+                <option value="__random__">🎲 Losowa</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sel-questions">Liczba pytań</label>
+            <select id="sel-questions">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="error-msg" id="setup-error"></div>
+    <button class="btn btn-primary" id="btn-start" disabled>Ładowanie…</button>
+</section>
+
+<!-- ========== GAME SCREEN ========== -->
+<section id="screen-game" class="screen">
+    <div class="hud" style="width:100%;max-width:560px;">
+        <span id="q-counter">Pytanie 1 / 10</span>
+        <span>Wynik: <span class="score-val" id="score-display">0</span></span>
+    </div>
+    <div class="progress-bar" id="progress-bar" style="width:100%;max-width:560px;"></div>
+
+    <div class="card" id="top-card">
+        <div class="q-meta">
+            <div class="q-category-label">Kategoria</div>
+            <div class="q-category-name" id="q-category-name"></div>
+            <div class="q-subcategory-name" id="q-subcategory-name"></div>
+        </div>
+        <div class="q-question" id="q-question"></div>
+    </div>
+
+    <div class="answers-grid" id="answers-grid"></div>
+
+    <div class="feedback" id="feedback"></div>
+
+    <button class="btn btn-primary" id="btn-next" style="display:none;">Następne pytanie →</button>
+</section>
+
+<!-- ========== RESULTS SCREEN ========== -->
+<section id="screen-results" class="screen">
+    <div class="game-title">🏆 Wyniki</div>
+    <div class="result-score" id="result-score">0</div>
+    <div class="result-max" id="result-max">na 10 pytań</div>
+    <div class="result-comment" id="result-comment"></div>
+    <div class="card result-list" id="result-list"></div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+        <button class="btn btn-primary" id="btn-replay">Zagraj ponownie</button>
+        <a class="btn btn-secondary" href="../">Strona główna</a>
+    </div>
+</section>
+
+<footer>@twoznia | 2026</footer>
+
+<script>
+// ── Data loading ─────────────────────────────────────────────────────────────
+let allData = [];      // [{category, icon, questions:[{subcategory,question,answers}]}]
+let loadError = false;
+
+async function loadAllData() {
+    try {
+        const manifest = await fetch('./data/manifest.json').then(r => r.json());
+        const results = await Promise.all(
+            manifest.map(m => fetch('./data/' + m.file).then(r => r.json()).catch(() => null))
+        );
+        allData = results.filter(Boolean);
+        document.getElementById('btn-start').disabled = false;
+        document.getElementById('btn-start').textContent = 'Rozpocznij Quiz →';
+        populateCategorySelect();
+    } catch (e) {
+        loadError = true;
+        document.getElementById('setup-error').textContent = 'Błąd ładowania danych.';
+    }
+}
+
+function populateCategorySelect() {
+    const sel = document.getElementById('sel-category');
+    allData.forEach(d => {
+        const opt = document.createElement('option');
+        opt.value = d.category;
+        opt.textContent = (d.icon || '❓') + ' ' + d.category;
+        sel.appendChild(opt);
+    });
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function getQuestions(categoryName, numQ) {
+    let pool;
+    if (categoryName === '__random__') {
+        pool = allData.flatMap(d => d.questions.map(q => ({ ...q, _category: d.category })));
+    } else {
+        const catData = allData.find(d => d.category === categoryName);
+        if (!catData) return [];
+        pool = catData.questions.map(q => ({ ...q, _category: catData.category }));
+    }
+    return shuffle(pool).slice(0, numQ);
+}
+
+// ── Screens ──────────────────────────────────────────────────────────────────
+const screens = {
+    setup:   document.getElementById('screen-setup'),
+    game:    document.getElementById('screen-game'),
+    results: document.getElementById('screen-results'),
+};
+
+function showScreen(name) {
+    Object.values(screens).forEach(s => s.classList.remove('active'));
+    screens[name].classList.add('active');
+}
+
+// ── State ────────────────────────────────────────────────────────────────────
+let state = {};
+
+function startGame() {
+    const categoryName = document.getElementById('sel-category').value;
+    const numQ = parseInt(document.getElementById('sel-questions').value, 10);
+    const questions = getQuestions(categoryName, numQ);
+
+    if (!questions.length) {
+        document.getElementById('setup-error').textContent = 'Brak pytań dla wybranej kategorii.';
+        return;
+    }
+
+    state = {
+        questions,
+        currentQ: 0,
+        score: 0,
+        answered: false,
+        results: [],
+    };
+
+    buildProgressBar(questions.length);
+    renderQuestion();
+    showScreen('game');
+}
+
+// ── Progress bar ─────────────────────────────────────────────────────────────
+function buildProgressBar(n) {
+    const bar = document.getElementById('progress-bar');
+    bar.innerHTML = '';
+    for (let i = 0; i < n; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'progress-dot';
+        bar.appendChild(dot);
+    }
+}
+
+function updateProgressBar(idx, isCorrect) {
+    const dots = document.getElementById('progress-bar').children;
+    if (dots[idx]) {
+        dots[idx].classList.remove('current');
+        dots[idx].classList.add('done');
+        if (!isCorrect) dots[idx].classList.add('wrong');
+    }
+    if (dots[idx + 1]) dots[idx + 1].classList.add('current');
+}
+
+function initProgressBar(idx) {
+    const dots = document.getElementById('progress-bar').children;
+    if (dots[idx]) dots[idx].classList.add('current');
+}
+
+// ── Render question ───────────────────────────────────────────────────────────
+function renderQuestion() {
+    const { currentQ, questions } = state;
+    const q = questions[currentQ];
+
+    document.getElementById('q-counter').textContent = `Pytanie ${currentQ + 1} / ${questions.length}`;
+    document.getElementById('score-display').textContent = state.score;
+    document.getElementById('q-category-name').textContent = q._category;
+    document.getElementById('q-subcategory-name').textContent = q.subcategory;
+    document.getElementById('q-question').textContent = q.question;
+    document.getElementById('feedback').textContent = '';
+    document.getElementById('feedback').className = 'feedback';
+    document.getElementById('btn-next').style.display = 'none';
+
+    initProgressBar(currentQ);
+
+    const correctAnswer = q.answers.find(a => a.is_correct);
+    const shuffledAnswers = shuffle(q.answers);
+
+    const grid = document.getElementById('answers-grid');
+    grid.innerHTML = '';
+    shuffledAnswers.forEach(ans => {
+        const btn = document.createElement('button');
+        btn.className = 'answer-btn';
+        btn.textContent = ans.text;
+        btn.addEventListener('click', () => handleAnswer(ans, correctAnswer));
+        grid.appendChild(btn);
+    });
+
+    state.answered = false;
+}
+
+// ── Handle answer ─────────────────────────────────────────────────────────────
+function handleAnswer(chosen, correct) {
+    if (state.answered) return;
+    state.answered = true;
+
+    const grid = document.getElementById('answers-grid');
+    const btns = grid.querySelectorAll('.answer-btn');
+    const isCorrect = chosen.is_correct;
+
+    btns.forEach(btn => {
+        btn.disabled = true;
+        if (btn.textContent === correct.text) btn.classList.add('correct');
+    });
+
+    if (!isCorrect) {
+        btns.forEach(btn => {
+            if (btn.textContent === chosen.text) btn.classList.add('wrong');
+        });
+    }
+
+    const fb = document.getElementById('feedback');
+    if (isCorrect) {
+        state.score++;
+        fb.textContent = '✅ Dobrze!';
+        fb.className = 'feedback ok';
+    } else {
+        fb.textContent = `❌ Błąd! Prawidłowa: ${correct.text}`;
+        fb.className = 'feedback bad';
+    }
+
+    document.getElementById('score-display').textContent = state.score;
+    updateProgressBar(state.currentQ, isCorrect);
+
+    state.results.push({
+        question: state.questions[state.currentQ],
+        chosenText: chosen.text,
+        isCorrect,
+    });
+
+    document.getElementById('btn-next').style.display = 'inline-block';
+}
+
+// ── Next question / finish ────────────────────────────────────────────────────
+document.getElementById('btn-next').addEventListener('click', () => {
+    state.currentQ++;
+    if (state.currentQ >= state.questions.length) {
+        showResults();
+    } else {
+        renderQuestion();
+    }
+});
+
+// ── Results ───────────────────────────────────────────────────────────────────
+function showResults() {
+    const { score, questions, results } = state;
+    const n = questions.length;
+    const pct = score / n;
+
+    document.getElementById('result-score').textContent = score;
+    document.getElementById('result-max').textContent = `na ${n} pytań`;
+
+    let comment = '';
+    if (pct === 1)       comment = '🏆 Doskonale! Bezbłędny wynik!';
+    else if (pct >= 0.8) comment = '🎉 Świetny wynik!';
+    else if (pct >= 0.6) comment = '👍 Nieźle!';
+    else if (pct >= 0.4) comment = '📖 Jest nad czym popracować.';
+    else                 comment = '💪 Spróbuj jeszcze raz!';
+    document.getElementById('result-comment').textContent = comment;
+
+    const list = document.getElementById('result-list');
+    list.innerHTML = '';
+    results.forEach(r => {
+        const row = document.createElement('div');
+        row.className = 'result-row';
+        const icon = r.isCorrect ? '✅' : '❌';
+        const correctText = r.question.answers.find(a => a.is_correct).text;
+        row.innerHTML = `
+            <span class="result-icon">${icon}</span>
+            <div class="result-q">
+                <div class="q-text">${r.question.question}</div>
+                <div class="q-ans">
+                    ${r.isCorrect
+                        ? `<span class="correct-ans">${r.chosenText}</span>`
+                        : `Twoja: ${r.chosenText} → <span class="correct-ans">${correctText}</span>`
+                    }
+                </div>
+            </div>`;
+        list.appendChild(row);
+    });
+
+    showScreen('results');
+}
+
+// ── Replay ────────────────────────────────────────────────────────────────────
+document.getElementById('btn-replay').addEventListener('click', () => {
+    showScreen('setup');
+});
+
+// ── Start button ──────────────────────────────────────────────────────────────
+document.getElementById('btn-start').addEventListener('click', () => {
+    document.getElementById('setup-error').textContent = '';
+    startGame();
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+loadAllData();
+</script>
+</body>
+</html>

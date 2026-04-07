@@ -1,0 +1,666 @@
+{
+  "category": "Przyroda i Biologia",
+  "icon": "🌿",
+  "questions": [
+    {
+      "subcategory": "Ochrona Gatunkowa",
+      "question": "Jaki duży ptak drapieżny, widniejący w polskim godle, podlega u nas ścisłej ochronie gatunkowej?",
+      "answers": [
+        {
+          "text": "Bielik",
+          "is_correct": true
+        },
+        {
+          "text": "Sokół wędrowny",
+          "is_correct": false
+        },
+        {
+          "text": "Jastrząb",
+          "is_correct": false
+        },
+        {
+          "text": "Kruk",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ochrona Gatunkowa",
+      "question": "Jaka międzynarodowa księga zawiera oficjalny i uaktualniany spis gatunków zagrożonych wyginięciem?",
+      "answers": [
+        {
+          "text": "Czerwona Księga",
+          "is_correct": true
+        },
+        {
+          "text": "Czarna Księga",
+          "is_correct": false
+        },
+        {
+          "text": "Zielona Księga",
+          "is_correct": false
+        },
+        {
+          "text": "Księga Dżungli",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ochrona Gatunkowa",
+      "question": "Jaki sympatyczny azjatycki niedźwiedź stał się globalnym symbolem fundacji WWF?",
+      "answers": [
+        {
+          "text": "Panda wielka",
+          "is_correct": true
+        },
+        {
+          "text": "Koala",
+          "is_correct": false
+        },
+        {
+          "text": "Grizzly",
+          "is_correct": false
+        },
+        {
+          "text": "Niedźwiedź polarny",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ochrona Gatunkowa",
+      "question": "Jak nazywa się ochrona polegająca na dbaniu o gatunki całkowicie wymarłe w naturze w ogrodach zoo?",
+      "answers": [
+        {
+          "text": "Ochrona ex situ",
+          "is_correct": true
+        },
+        {
+          "text": "Ochrona in situ",
+          "is_correct": false
+        },
+        {
+          "text": "Ochrona obszarowa",
+          "is_correct": false
+        },
+        {
+          "text": "Ochrona rezerwatowa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ochrona Gatunkowa",
+      "question": "Który duży polski ssak kopytny, zwany królem puszczy, został uratowany przed całkowitym wymarciem?",
+      "answers": [
+        {
+          "text": "Żubr",
+          "is_correct": true
+        },
+        {
+          "text": "Łoś",
+          "is_correct": false
+        },
+        {
+          "text": "Jeleń",
+          "is_correct": false
+        },
+        {
+          "text": "Dzik",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zjawiska Atmosferyczne",
+      "question": "Jak potocznie określamy gwałtowne wyładowanie elektryczne w atmosferze z efektem świetlnym i hukiem?",
+      "answers": [
+        {
+          "text": "Piorun (Błyskawica)",
+          "is_correct": true
+        },
+        {
+          "text": "Huragan",
+          "is_correct": false
+        },
+        {
+          "text": "Zorza",
+          "is_correct": false
+        },
+        {
+          "text": "Grad",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zjawiska Atmosferyczne",
+      "question": "Co jest główną przyczyną powstawania malowniczej, wielokolorowej tęczy na niebie po deszczu?",
+      "answers": [
+        {
+          "text": "Rozszczepienie światła w kroplach",
+          "is_correct": true
+        },
+        {
+          "text": "Odbicie światła od chmur",
+          "is_correct": false
+        },
+        {
+          "text": "Wyładowania elektrostatyczne",
+          "is_correct": false
+        },
+        {
+          "text": "Parowanie wody z ziemi",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zjawiska Atmosferyczne",
+      "question": "Jak nazywa się zjawisko świetlne występujące najczęściej w pobliżu biegunów, tworzące barwne pasy?",
+      "answers": [
+        {
+          "text": "Zorza polarna",
+          "is_correct": true
+        },
+        {
+          "text": "Halo",
+          "is_correct": false
+        },
+        {
+          "text": "Słońce poboczne",
+          "is_correct": false
+        },
+        {
+          "text": "Widmo Brockenu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zjawiska Atmosferyczne",
+      "question": "Jaki niebezpieczny wir powietrzny tworzy charakterystyczny lej od chmury aż do samej ziemi?",
+      "answers": [
+        {
+          "text": "Trąba powietrzna (Tornado)",
+          "is_correct": true
+        },
+        {
+          "text": "Tajfun",
+          "is_correct": false
+        },
+        {
+          "text": "Cyklon",
+          "is_correct": false
+        },
+        {
+          "text": "Monsun",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zjawiska Atmosferyczne",
+      "question": "W jakiej postaci opada na ziemię woda, tworząc w chmurze lodowe, nieregularne bryłki podczas burzy?",
+      "answers": [
+        {
+          "text": "Gradu",
+          "is_correct": true
+        },
+        {
+          "text": "Śniegu",
+          "is_correct": false
+        },
+        {
+          "text": "Szronu",
+          "is_correct": false
+        },
+        {
+          "text": "Rosy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Leśnictwo i Łowiectwo",
+      "question": "Jak nazywa się specjalna wieżyczka w lesie lub na skraju pola, służąca myśliwym do polowań?",
+      "answers": [
+        {
+          "text": "Ambona",
+          "is_correct": true
+        },
+        {
+          "text": "Paśnik",
+          "is_correct": false
+        },
+        {
+          "text": "Zwyżka",
+          "is_correct": false
+        },
+        {
+          "text": "Czatownia",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Leśnictwo i Łowiectwo",
+      "question": "W jakim obiekcie, popularnym zimą w lesie, leśnicy wykładają pożywienie dla dzikich zwierząt?",
+      "answers": [
+        {
+          "text": "W paśniku",
+          "is_correct": true
+        },
+        {
+          "text": "W karmniku",
+          "is_correct": false
+        },
+        {
+          "text": "W ulu",
+          "is_correct": false
+        },
+        {
+          "text": "W gawrze",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Leśnictwo i Łowiectwo",
+      "question": "Jak określa się profesjonalistę zajmującego się sadzeniem, ochroną i wycinką drzew w lasach?",
+      "answers": [
+        {
+          "text": "Leśnik",
+          "is_correct": true
+        },
+        {
+          "text": "Myśliwy",
+          "is_correct": false
+        },
+        {
+          "text": "Drwal",
+          "is_correct": false
+        },
+        {
+          "text": "Gajowy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Leśnictwo i Łowiectwo",
+      "question": "Co to jest wargowy, głośny zew byków jelenia szlachetnego w okresie jesiennego godu?",
+      "answers": [
+        {
+          "text": "Rykowisko",
+          "is_correct": true
+        },
+        {
+          "text": "Bekowisko",
+          "is_correct": false
+        },
+        {
+          "text": "Tokowisko",
+          "is_correct": false
+        },
+        {
+          "text": "Bukowisko",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Leśnictwo i Łowiectwo",
+      "question": "Z jakich zwierząt składa się tzw. wataha w terminologii myśliwskiej i leśnej?",
+      "answers": [
+        {
+          "text": "Z wilków lub dzików",
+          "is_correct": true
+        },
+        {
+          "text": "Z jeleni i sarn",
+          "is_correct": false
+        },
+        {
+          "text": "Z ptaków wędrownych",
+          "is_correct": false
+        },
+        {
+          "text": "Z rysi i żbików",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Biologia Komórki",
+      "question": "Jak nazywa się centralna struktura komórki eukariotycznej, która przechowuje materiał genetyczny?",
+      "answers": [
+        {
+          "text": "Jądro komórkowe",
+          "is_correct": true
+        },
+        {
+          "text": "Mitochondrium",
+          "is_correct": false
+        },
+        {
+          "text": "Rybosom",
+          "is_correct": false
+        },
+        {
+          "text": "Wakuola",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Biologia Komórki",
+      "question": "Które organella potocznie nazywane są 'elektrowniami komórki', bo produkują życiodajną energię ATP?",
+      "answers": [
+        {
+          "text": "Mitochondria",
+          "is_correct": true
+        },
+        {
+          "text": "Lizosomy",
+          "is_correct": false
+        },
+        {
+          "text": "Aparaty Golgiego",
+          "is_correct": false
+        },
+        {
+          "text": "Chloroplasty",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Biologia Komórki",
+      "question": "Jaki ważny, skomplikowany proces odpowiada w biologii za podział zwykłej komórki na dwie potomne?",
+      "answers": [
+        {
+          "text": "Mitoza",
+          "is_correct": true
+        },
+        {
+          "text": "Mejoza",
+          "is_correct": false
+        },
+        {
+          "text": "Osmoza",
+          "is_correct": false
+        },
+        {
+          "text": "Plazmoliza",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Biologia Komórki",
+      "question": "Czego NIE posiada w swojej naturalnej strukturze ludzka komórka zwierzęca w odróżnieniu od roślin?",
+      "answers": [
+        {
+          "text": "Ściany komórkowej i chloroplastów",
+          "is_correct": true
+        },
+        {
+          "text": "Jądra i błony komórkowej",
+          "is_correct": false
+        },
+        {
+          "text": "Cytoplazmy",
+          "is_correct": false
+        },
+        {
+          "text": "Mitochondriów",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Biologia Komórki",
+      "question": "Jak nazywają się mikroskopijne struktury w komórce, na których bezpośrednio zachodzi synteza białek?",
+      "answers": [
+        {
+          "text": "Rybosomy",
+          "is_correct": true
+        },
+        {
+          "text": "Centriole",
+          "is_correct": false
+        },
+        {
+          "text": "Wakuole",
+          "is_correct": false
+        },
+        {
+          "text": "Chloroplasty",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Genetyka",
+      "question": "Jak brzmi pełne rozwinięcie skrótu DNA, czyli nośnika naszej informacji genetycznej?",
+      "answers": [
+        {
+          "text": "Kwas deoksyrybonukleinowy",
+          "is_correct": true
+        },
+        {
+          "text": "Kwas rybonukleinowy",
+          "is_correct": false
+        },
+        {
+          "text": "Kwas mlekowy",
+          "is_correct": false
+        },
+        {
+          "text": "Kwas acetylosalicylowy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Genetyka",
+      "question": "Ile par chromosomów występuje u zdrowego człowieka w każdej zwykłej, somatycznej komórce ciała?",
+      "answers": [
+        {
+          "text": "23 pary (łącznie 46)",
+          "is_correct": true
+        },
+        {
+          "text": "21 par",
+          "is_correct": false
+        },
+        {
+          "text": "46 par",
+          "is_correct": false
+        },
+        {
+          "text": "24 pary",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Genetyka",
+      "question": "Jaki zakonnik badając krzyżowanie grochu sformułował podstawowe prawa dziedziczenia i genetyki?",
+      "answers": [
+        {
+          "text": "Grzegorz Mendel",
+          "is_correct": true
+        },
+        {
+          "text": "Karol Darwin",
+          "is_correct": false
+        },
+        {
+          "text": "Ludwik Pasteur",
+          "is_correct": false
+        },
+        {
+          "text": "Thomas Hunt Morgan",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Genetyka",
+      "question": "Jaki chromosom decyduje u ssaków wprost o męskiej płci potomska, będąc przekazywanym przez ojca?",
+      "answers": [
+        {
+          "text": "Chromosom Y",
+          "is_correct": true
+        },
+        {
+          "text": "Chromosom X",
+          "is_correct": false
+        },
+        {
+          "text": "Chromosom Z",
+          "is_correct": false
+        },
+        {
+          "text": "Chromosom W",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Genetyka",
+      "question": "Jak potocznie określa się organizmy, których DNA celowo zmieniono w laboratorium (np. kukurydza)?",
+      "answers": [
+        {
+          "text": "Organizmy modyfikowane genetycznie (GMO)",
+          "is_correct": true
+        },
+        {
+          "text": "Organizmy klonowane",
+          "is_correct": false
+        },
+        {
+          "text": "Zmutowane hybrydy",
+          "is_correct": false
+        },
+        {
+          "text": "Chimery",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Mikrobów",
+      "question": "Jak nazywają się jednokomórkowe organizmy bez jądra, które mogą powodować infekcje lub np. kwaszenie?",
+      "answers": [
+        {
+          "text": "Bakterie",
+          "is_correct": true
+        },
+        {
+          "text": "Wirusy",
+          "is_correct": false
+        },
+        {
+          "text": "Grzyby",
+          "is_correct": false
+        },
+        {
+          "text": "Pierwotniaki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Mikrobów",
+      "question": "Co powoduje groźne choroby takie jak grypa, ospa czy COVID-19 i nie jest uznawane za w pełni żywe?",
+      "answers": [
+        {
+          "text": "Wirus",
+          "is_correct": true
+        },
+        {
+          "text": "Bakteria",
+          "is_correct": false
+        },
+        {
+          "text": "Pasożyt",
+          "is_correct": false
+        },
+        {
+          "text": "Pierwotniak",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Mikrobów",
+      "question": "Jak odkryto pierwszy na świecie antybiotyk, penicylinę, która na zawsze zmieniła walkę z mikrobami?",
+      "answers": [
+        {
+          "text": "Odkryto go z pleśni (grzyba)",
+          "is_correct": true
+        },
+        {
+          "text": "Zsyntetyzowano go z ropy",
+          "is_correct": false
+        },
+        {
+          "text": "Pozyskano go z jadu żmii",
+          "is_correct": false
+        },
+        {
+          "text": "Wyizolowano go z kory wierzby",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Mikrobów",
+      "question": "Jak nazywają się pożyteczne drobnoustroje dodawane do jogurtów, które wspierają naszą florę jelit?",
+      "answers": [
+        {
+          "text": "Probiotyki",
+          "is_correct": true
+        },
+        {
+          "text": "Antybiotyki",
+          "is_correct": false
+        },
+        {
+          "text": "Prebiotyki",
+          "is_correct": false
+        },
+        {
+          "text": "Patogeny",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Mikrobów",
+      "question": "Jaki organizm jednokomórkowy z grupy pierwotniaków porusza się majestatycznie dzięki nibynóżkom?",
+      "answers": [
+        {
+          "text": "Ameba (Pełzak)",
+          "is_correct": true
+        },
+        {
+          "text": "Pantofelek",
+          "is_correct": false
+        },
+        {
+          "text": "Euglena zielona",
+          "is_correct": false
+        },
+        {
+          "text": "Drożdż",
+          "is_correct": false
+        }
+      ]
+    }
+  ]
+}

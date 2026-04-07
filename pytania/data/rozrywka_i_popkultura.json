@@ -1,0 +1,2866 @@
+{
+  "category": "Rozrywka i Popkultura",
+  "icon": "🎭",
+  "questions": [
+    {
+      "subcategory": "Świat Harry'ego Pottera",
+      "question": "Jak nazywała się słynna, magiczna brytyjska szkoła ukryta w zamku, do której uczęszczał nastoletni Harry Potter?",
+      "answers": [
+        {
+          "text": "Hogwart",
+          "is_correct": true
+        },
+        {
+          "text": "Durmstrang",
+          "is_correct": false
+        },
+        {
+          "text": "Beauxbatons",
+          "is_correct": false
+        },
+        {
+          "text": "Ilvermorny",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Harry'ego Pottera",
+      "question": "Jak miał na imię główny i najpotężniejszy, pozbawiony nosa czarnoksiężnik (Sami-Wiecie-Kto), z którym walczył Harry?",
+      "answers": [
+        {
+          "text": "Lord Voldemort",
+          "is_correct": true
+        },
+        {
+          "text": "Gellert Grindelwald",
+          "is_correct": false
+        },
+        {
+          "text": "Lucjusz Malfoy",
+          "is_correct": false
+        },
+        {
+          "text": "Severus Snape",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Harry'ego Pottera",
+      "question": "Jaki magiczny, niesamowicie szybki sport, rozgrywany wysoko w powietrzu na latających miotłach, uwielbiali czarodzieje?",
+      "answers": [
+        {
+          "text": "Quidditch",
+          "is_correct": true
+        },
+        {
+          "text": "Siatkówka bagienna",
+          "is_correct": false
+        },
+        {
+          "text": "Szachy czarodziejów",
+          "is_correct": false
+        },
+        {
+          "text": "Polo na hipogryfach",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Harry'ego Pottera",
+      "question": "Kto napisał całą genialną i bestsellerową, wielotomową serię powieści o przygodach Harry'ego Pottera?",
+      "answers": [
+        {
+          "text": "J.K. Rowling",
+          "is_correct": true
+        },
+        {
+          "text": "Stephen King",
+          "is_correct": false
+        },
+        {
+          "text": "J.R.R. Tolkien",
+          "is_correct": false
+        },
+        {
+          "text": "George R.R. Martin",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Harry'ego Pottera",
+      "question": "Jak miał na imię wierny i uroczy, wyzwolony za pomocą małej skarpetki skrzat domowy z wielkimi uszami?",
+      "answers": [
+        {
+          "text": "Zgredek (Dobby)",
+          "is_correct": true
+        },
+        {
+          "text": "Stworek",
+          "is_correct": false
+        },
+        {
+          "text": "Mrużka",
+          "is_correct": false
+        },
+        {
+          "text": "Krzywołap",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiezdne Wojny",
+      "question": "Jakie kultowe, ciężko oddychające w masce i ubrane na czarno nazwisko nosił Anakin Skywalker po przejściu na Ciemną Stronę Mocy?",
+      "answers": [
+        {
+          "text": "Darth Vader",
+          "is_correct": true
+        },
+        {
+          "text": "Imperator Palpatine",
+          "is_correct": false
+        },
+        {
+          "text": "Kylo Ren",
+          "is_correct": false
+        },
+        {
+          "text": "Hrabia Dooku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiezdne Wojny",
+      "question": "Czym w świecie Jedi jest słynny na cały wszechświat miecz, potrafiący przeciąć niemal wszystko, posiadający różne kolory klingi?",
+      "answers": [
+        {
+          "text": "Mieczem świetlnym",
+          "is_correct": true
+        },
+        {
+          "text": "Mieczem laserowym",
+          "is_correct": false
+        },
+        {
+          "text": "Ostrzem plazmowym",
+          "is_correct": false
+        },
+        {
+          "text": "Złotym Excaliburem",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiezdne Wojny",
+      "question": "Kto oryginalnie stworzył, wyreżyserował i zapoczątkował całą gigantyczną franczyzę filmową 'Gwiezdnych Wojen' w 1977 roku?",
+      "answers": [
+        {
+          "text": "George Lucas",
+          "is_correct": true
+        },
+        {
+          "text": "Steven Spielberg",
+          "is_correct": false
+        },
+        {
+          "text": "James Cameron",
+          "is_correct": false
+        },
+        {
+          "text": "J.J. Abrams",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiezdne Wojny",
+      "question": "Jak nazywał się legendarny i bardzo zwinny statek kosmiczny pilotowany sprawnie przez Hana Solo oraz Chewbaccę?",
+      "answers": [
+        {
+          "text": "Sokół Millennium",
+          "is_correct": true
+        },
+        {
+          "text": "Niszczyciel Gwiazd",
+          "is_correct": false
+        },
+        {
+          "text": "X-Wing",
+          "is_correct": false
+        },
+        {
+          "text": "Gwiazda Śmierci",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiezdne Wojny",
+      "question": "Jak miał na imię niski, mądry, bardzo stary i zielony Mistrz Jedi, słynący z bardzo specyficznego, przestawnego szyku zdań?",
+      "answers": [
+        {
+          "text": "Yoda",
+          "is_correct": true
+        },
+        {
+          "text": "Obi-Wan Kenobi",
+          "is_correct": false
+        },
+        {
+          "text": "Qui-Gon Jinn",
+          "is_correct": false
+        },
+        {
+          "text": "Mace Windu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komiksy Marvela",
+      "question": "Który bystry nastolatek z Nowego Jorku zyskał pajęcze supermoce, gdy w laboratorium ugryzł go zmutowany pająk?",
+      "answers": [
+        {
+          "text": "Peter Parker (Spider-Man)",
+          "is_correct": true
+        },
+        {
+          "text": "Tony Stark",
+          "is_correct": false
+        },
+        {
+          "text": "Bruce Banner",
+          "is_correct": false
+        },
+        {
+          "text": "Steve Rogers",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komiksy Marvela",
+      "question": "Jak zwała się drużyna najpotężniejszych bohaterów Ziemi, zrzeszająca m.in. Iron Mana, Hulka, Thora oraz Kapitana Amerykę?",
+      "answers": [
+        {
+          "text": "Avengers (Mściciele)",
+          "is_correct": true
+        },
+        {
+          "text": "X-Men",
+          "is_correct": false
+        },
+        {
+          "text": "Fantastyczna Czwórka",
+          "is_correct": false
+        },
+        {
+          "text": "Strażnicy Galaktyki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komiksy Marvela",
+      "question": "Który znany, fioletowy i obsesyjny superzłoczyńca zapragnął zniszczyć połowę życia we wszechświecie przy użyciu Kamieni Nieskończoności?",
+      "answers": [
+        {
+          "text": "Thanos",
+          "is_correct": true
+        },
+        {
+          "text": "Ultron",
+          "is_correct": false
+        },
+        {
+          "text": "Loki",
+          "is_correct": false
+        },
+        {
+          "text": "Galactus",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komiksy Marvela",
+      "question": "Z jakiego ukrytego i wysoce rozwiniętego technologicznie afrykańskiego państwa komiksowego pochodził bohaterski Czarna Pantera?",
+      "answers": [
+        {
+          "text": "Z Wakandy",
+          "is_correct": true
+        },
+        {
+          "text": "Z Genoshy",
+          "is_correct": false
+        },
+        {
+          "text": "Z Asgardu",
+          "is_correct": false
+        },
+        {
+          "text": "Z Latverii",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komiksy Marvela",
+      "question": "Jaki uśmiechnięty staruszek i genialny scenarzysta wymyślił większość głównych postaci Marvela i słynął z gościnnych ról (cameo) w filmach?",
+      "answers": [
+        {
+          "text": "Stan Lee",
+          "is_correct": true
+        },
+        {
+          "text": "Jack Kirby",
+          "is_correct": false
+        },
+        {
+          "text": "Steve Ditko",
+          "is_correct": false
+        },
+        {
+          "text": "Todd McFarlane",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Seriale TV",
+      "question": "W jakim znanym nowojorskim sitcomie z lat 90. szóstka tytułowych i nierozłącznych znajomych spędzała długie godziny w kawiarni Central Perk?",
+      "answers": [
+        {
+          "text": "Przyjaciele (Friends)",
+          "is_correct": true
+        },
+        {
+          "text": "Jak poznałem waszą matkę",
+          "is_correct": false
+        },
+        {
+          "text": "Teoria wielkiego podrywu",
+          "is_correct": false
+        },
+        {
+          "text": "Seinfeld",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Seriale TV",
+      "question": "Jaki genialny chemik, po diagnozie raka, w głośnym serialu 'Breaking Bad' postanawia produkować doskonałą, niebieską metamfetaminę?",
+      "answers": [
+        {
+          "text": "Walter White (Heisenberg)",
+          "is_correct": true
+        },
+        {
+          "text": "Jesse Pinkman",
+          "is_correct": false
+        },
+        {
+          "text": "Hank Schrader",
+          "is_correct": false
+        },
+        {
+          "text": "Saul Goodman",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Seriale TV",
+      "question": "O co toczyła się główna, polityczna i bardzo krwawa walka potężnych rodów z Westeros w monumentalnym serialu 'Gra o Tron'?",
+      "answers": [
+        {
+          "text": "O władzę i zasiadanie na Żelaznym Tronie",
+          "is_correct": true
+        },
+        {
+          "text": "O posiadanie wszystkich żyjących smoków",
+          "is_correct": false
+        },
+        {
+          "text": "O wielkie zasoby złota u Lannisterów",
+          "is_correct": false
+        },
+        {
+          "text": "O możliwość ucieczki na inny kontynent",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Seriale TV",
+      "question": "W jakim dziwnym amerykańskim miasteczku, atakowanym przez demony z 'Drugiej Strony', rozgrywa się w latach 80. popularna akcja 'Stranger Things'?",
+      "answers": [
+        {
+          "text": "W Hawkins",
+          "is_correct": true
+        },
+        {
+          "text": "W Riverdale",
+          "is_correct": false
+        },
+        {
+          "text": "W Twin Peaks",
+          "is_correct": false
+        },
+        {
+          "text": "W Derry",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Seriale TV",
+      "question": "O pracy jakiego specyficznego, papierowego przedsiębiorstwa z ekscentrycznym szefem Michaelem Scottem opowiadał hitowy serial komediowy (tzw. mockument)?",
+      "answers": [
+        {
+          "text": "The Office (Biuro)",
+          "is_correct": true
+        },
+        {
+          "text": "Parks and Recreation",
+          "is_correct": false
+        },
+        {
+          "text": "Korporacja",
+          "is_correct": false
+        },
+        {
+          "text": "Technicy-magicy (IT Crowd)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gry Planszowe i Karciane",
+      "question": "W jakiej bezwzględnie najpopularniejszej grze planszowej na świecie kupuje się ulice i miasta, buduje domy oraz wymusza gigantyczne czynsze na hotelach?",
+      "answers": [
+        {
+          "text": "W Monopoly (lub Eurobiznes)",
+          "is_correct": true
+        },
+        {
+          "text": "W Catan",
+          "is_correct": false
+        },
+        {
+          "text": "W Scrabble",
+          "is_correct": false
+        },
+        {
+          "text": "W Carcassonne",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gry Planszowe i Karciane",
+      "question": "Jak nazywa się wiekowa, mistrzowska i wysoce strategiczna gra na 64 polach, której celem jest zaatakowanie i finalne danie mata królowi przeciwnika?",
+      "answers": [
+        {
+          "text": "Szachy",
+          "is_correct": true
+        },
+        {
+          "text": "Warcaby",
+          "is_correct": false
+        },
+        {
+          "text": "Tryktrak (Backgammon)",
+          "is_correct": false
+        },
+        {
+          "text": "Go",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gry Planszowe i Karciane",
+      "question": "Jakie głośne słowo musi bezwzględnie wykrzyczeć gracz, by nie otrzymać kary, w momencie, gdy zrzuca na kupkę przedostatnią kartę i zostaje mu w ręce tylko jedna?",
+      "answers": [
+        {
+          "text": "UNO!",
+          "is_correct": true
+        },
+        {
+          "text": "Makao!",
+          "is_correct": false
+        },
+        {
+          "text": "Bingo!",
+          "is_correct": false
+        },
+        {
+          "text": "Pas!",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gry Planszowe i Karciane",
+      "question": "Jaka światowa gra intelektualna polega na losowaniu kafelków z różnymi literami i układaniu z nich na krzyż na tarczy punktowanych, istniejących słów?",
+      "answers": [
+        {
+          "text": "Scrabble",
+          "is_correct": true
+        },
+        {
+          "text": "Rummikub",
+          "is_correct": false
+        },
+        {
+          "text": "Taboo",
+          "is_correct": false
+        },
+        {
+          "text": "Kalambury",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gry Planszowe i Karciane",
+      "question": "Kim jest w świecie gier fabularnych (RPG) tzw. Mistrz Gry (Dungeon Master) prowadzący sesję dla reszty graczy?",
+      "answers": [
+        {
+          "text": "Narratorem kierującym fabułą i otoczeniem",
+          "is_correct": true
+        },
+        {
+          "text": "Najsilniejszym wojownikiem w drużynie",
+          "is_correct": false
+        },
+        {
+          "text": "Graczem z największą pulą pieniędzy (bankierem)",
+          "is_correct": false
+        },
+        {
+          "text": "Twórcą fizycznej planszy przed rozpoczęciem",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kreskówki z Dzieciństwa",
+      "question": "Jaki legendarny, bardzo burzliwy i kreskówkowy duet wiecznie goniących i lejących się patelniami zwierzaków (kota i myszy) wykreowali Hanna i Barbera?",
+      "answers": [
+        {
+          "text": "Tom i Jerry",
+          "is_correct": true
+        },
+        {
+          "text": "Struś Pędziwiatr i Kojot",
+          "is_correct": false
+        },
+        {
+          "text": "Królik Bugs i Kaczor Daffy",
+          "is_correct": false
+        },
+        {
+          "text": "Sylwester i Tweety",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kreskówki z Dzieciństwa",
+      "question": "W jakiej bajce Disneya, przy genialnej muzyce Eltona Johna i Hansa Zimmera, mały lewek Simba musiał dorosnąć po tragicznej śmierci swojego wspaniałego ojca Mufasy?",
+      "answers": [
+        {
+          "text": "Król Lew",
+          "is_correct": true
+        },
+        {
+          "text": "Tarzan",
+          "is_correct": false
+        },
+        {
+          "text": "Księga Dżungli",
+          "is_correct": false
+        },
+        {
+          "text": "Mulan",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kreskówki z Dzieciństwa",
+      "question": "Jaki strachliwy, brązowy i stale głodny potężny dog niemiecki, jeżdżący wehikułem tajemnic wraz z Kudłatym, na co dzień bał się duchów?",
+      "answers": [
+        {
+          "text": "Scooby-Doo",
+          "is_correct": true
+        },
+        {
+          "text": "Snoopy",
+          "is_correct": false
+        },
+        {
+          "text": "Reksio",
+          "is_correct": false
+        },
+        {
+          "text": "Goofy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kreskówki z Dzieciństwa",
+      "question": "Jakie urocze, małe i jaskrawo niebieskie stworki z małymi białymi czapkami mieszkały w leśnych grzybach, uciekając w bajce przed starym czarodziejem Gargamelem?",
+      "answers": [
+        {
+          "text": "Smerfy",
+          "is_correct": true
+        },
+        {
+          "text": "Gumisie",
+          "is_correct": false
+        },
+        {
+          "text": "Muminki",
+          "is_correct": false
+        },
+        {
+          "text": "Minionki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kreskówki z Dzieciństwa",
+      "question": "Jak nazywała się powszechnie lubiana animowana rodzina z epoki kamienia łupanego, gdzie w autach pracowano nogami i używano małych dinozaurów jako sprzętu AGD?",
+      "answers": [
+        {
+          "text": "Flintstonowie",
+          "is_correct": true
+        },
+        {
+          "text": "Jetsonowie",
+          "is_correct": false
+        },
+        {
+          "text": "Simpsonowie",
+          "is_correct": false
+        },
+        {
+          "text": "Rodzina Addamsów",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Muzyki Pop",
+      "question": "Którego genialnego artystę, odpowiedzialnego za taneczny i innowacyjny album 'Thriller' oraz księżycowy spacer, określa się wielkim, zmarłym Królem Popu?",
+      "answers": [
+        {
+          "text": "Michaela Jacksona",
+          "is_correct": true
+        },
+        {
+          "text": "Elvisa Presleya",
+          "is_correct": false
+        },
+        {
+          "text": "Prince'a",
+          "is_correct": false
+        },
+        {
+          "text": "Freddiego Mercury'ego",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Muzyki Pop",
+      "question": "Jaka światowej i ogromnej klasy wokalistka znana powszechnie m.in z hitów 'Like a Virgin', od dziesięcioleci dumnie i zasłużenie nazywana jest Królową Popu?",
+      "answers": [
+        {
+          "text": "Madonna",
+          "is_correct": true
+        },
+        {
+          "text": "Whitney Houston",
+          "is_correct": false
+        },
+        {
+          "text": "Britney Spears",
+          "is_correct": false
+        },
+        {
+          "text": "Cher",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Muzyki Pop",
+      "question": "Kto obecnie jest najbogatszą amerykańską piosenkarką i gwiazdą z armią fanów (Swifties), bijącą gigantyczne rekordy frekwencji na niesamowitej trasie Eras Tour?",
+      "answers": [
+        {
+          "text": "Taylor Swift",
+          "is_correct": true
+        },
+        {
+          "text": "Beyoncé",
+          "is_correct": false
+        },
+        {
+          "text": "Ariana Grande",
+          "is_correct": false
+        },
+        {
+          "text": "Billie Eilish",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Muzyki Pop",
+      "question": "Jak brzmi sceniczny i modny, arystokratyczny pseudonim Stefani Germanotty, autorki przebojów muzycznych z list takich jak 'Poker Face' czy też 'Bad Romance'?",
+      "answers": [
+        {
+          "text": "Lady Gaga",
+          "is_correct": true
+        },
+        {
+          "text": "Katy Perry",
+          "is_correct": false
+        },
+        {
+          "text": "Rihanna",
+          "is_correct": false
+        },
+        {
+          "text": "Dua Lipa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Muzyki Pop",
+      "question": "Jak nazywał się absolutnie legendarny kwartet z Liverpoolu (w składzie m.in. John, Paul), który na stałe ukształtował wielką muzykę pop lat 60. na zawsze?",
+      "answers": [
+        {
+          "text": "The Beatles",
+          "is_correct": true
+        },
+        {
+          "text": "The Rolling Stones",
+          "is_correct": false
+        },
+        {
+          "text": "Queen",
+          "is_correct": false
+        },
+        {
+          "text": "ABBA",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Uniwersum DC",
+      "question": "Jaki bohater po wielkiej stracie rodziców na własną rękę broni mrocznego miasta Gotham przed kryminalistami, samemu nie mając nadludzkich mocy tylko mnóstwo gadżetów?",
+      "answers": [
+        {
+          "text": "Batman",
+          "is_correct": true
+        },
+        {
+          "text": "Flash",
+          "is_correct": false
+        },
+        {
+          "text": "Green Arrow",
+          "is_correct": false
+        },
+        {
+          "text": "Aquaman",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Uniwersum DC",
+      "question": "Kto ukrywa się w codziennym i dziennikarskim życiu pod maską z czerwoną peleryną wielkiego i przybyłego statkiem z innej i obcej planety Supermana?",
+      "answers": [
+        {
+          "text": "Clark Kent",
+          "is_correct": true
+        },
+        {
+          "text": "Bruce Wayne",
+          "is_correct": false
+        },
+        {
+          "text": "Barry Allen",
+          "is_correct": false
+        },
+        {
+          "text": "Arthur Curry",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Uniwersum DC",
+      "question": "Jaki psychopatyczny złoczyńca o przerażającym i często klaunim, umalowanym uśmiechu na twarzy jest bezwzględnie najbardziej rozpoznawalnym, wiecznym wrogiem Batmana?",
+      "answers": [
+        {
+          "text": "Joker",
+          "is_correct": true
+        },
+        {
+          "text": "Lex Luthor",
+          "is_correct": false
+        },
+        {
+          "text": "Dwie Twarze (Two-Face)",
+          "is_correct": false
+        },
+        {
+          "text": "Człowiek Zagadka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Uniwersum DC",
+      "question": "Jaki zielonkawy, radioaktywny kamień stanowiący osłabiający odłamek nieistniejącej zniszczonej ojczyzny Kal-Ela, potrafił osłabić potężnego do bólu Supermana?",
+      "answers": [
+        {
+          "text": "Kryptonit",
+          "is_correct": true
+        },
+        {
+          "text": "Adamantium",
+          "is_correct": false
+        },
+        {
+          "text": "Vibranium",
+          "is_correct": false
+        },
+        {
+          "text": "Tesserakt",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Uniwersum DC",
+      "question": "Która wielka zjednoczona liga połączyła siły komiksowych bohaterów od DC Comics (takich jak Wonder Woman, Batman, Superman czy zwinny Flash) by bronić Ziemi?",
+      "answers": [
+        {
+          "text": "Liga Sprawiedliwości (Justice League)",
+          "is_correct": true
+        },
+        {
+          "text": "Avengers",
+          "is_correct": false
+        },
+        {
+          "text": "Legion Samobójców (Suicide Squad)",
+          "is_correct": false
+        },
+        {
+          "text": "X-Men",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Memy i Internet",
+      "question": "Jak zwała się sympatyczna rasa japońskiego i bardzo znanego we wczesnych latach sieci pieska (Shiba Inu), na którego zabawnym pysku z błędem językowym zbudowano mema 'Doge' (Pieseł)?",
+      "answers": [
+        {
+          "text": "Pieseł (Doge)",
+          "is_correct": true
+        },
+        {
+          "text": "Kot (Grumpy Cat)",
+          "is_correct": false
+        },
+        {
+          "text": "Nyan Cat",
+          "is_correct": false
+        },
+        {
+          "text": "Żaba Pepe",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Memy i Internet",
+      "question": "Jaki kultowy stary wideoklip Ricka Astleya 'Never Gonna Give You Up' służy i robił za przynętę w bardzo popularnym, trollującym zjawisku fałszywych linków ukrytych na wielu forach w internecie?",
+      "answers": [
+        {
+          "text": "Rickroll",
+          "is_correct": true
+        },
+        {
+          "text": "Trollface",
+          "is_correct": false
+        },
+        {
+          "text": "Clickbait",
+          "is_correct": false
+        },
+        {
+          "text": "Harlem Shake",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Memy i Internet",
+      "question": "Jaka animowana na rysunkach smutna i uśmiechnięta na przemian żaba z komiksów Matta Furiego stała się, początkowo przypadkowo ogromnym symbolem i memem w świecie internetowym?",
+      "answers": [
+        {
+          "text": "Żaba Pepe",
+          "is_correct": true
+        },
+        {
+          "text": "Kermit",
+          "is_correct": false
+        },
+        {
+          "text": "Żaba Crazy Frog",
+          "is_correct": false
+        },
+        {
+          "text": "Smutny Żółw",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Memy i Internet",
+      "question": "Jak powszechnie określa się internetowy i niesamowicie szybko rozprzestrzeniający się trend wirusowy lub krótki żart obrazkowy masowo przesyłany dalej, ewoluujący i śmieszny z założenia?",
+      "answers": [
+        {
+          "text": "Mem",
+          "is_correct": true
+        },
+        {
+          "text": "Gif",
+          "is_correct": false
+        },
+        {
+          "text": "Spam",
+          "is_correct": false
+        },
+        {
+          "text": "Blog",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Memy i Internet",
+      "question": "Jaki starszy pan o imieniu András Arató z Węgier zasłynął całkowicie potężnie z pozowania do zwykłych zdjęć z baz stockowych z widocznym niesamowicie wymuszonym uśmiechem na bólu?",
+      "answers": [
+        {
+          "text": "Dziadek Harold (Hide the Pain Harold)",
+          "is_correct": true
+        },
+        {
+          "text": "Zły Wujek (Bad Luck Brian)",
+          "is_correct": false
+        },
+        {
+          "text": "Dziki Bill",
+          "is_correct": false
+        },
+        {
+          "text": "Wąsaty Janusz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody i Gale",
+      "question": "Jak powszechnie i nieoficjalnie nazywa się nagrodę Amerykańskiej Akademii Wiedzy i Sztuki Filmowej, wręczaną zwycięzcom w postaci wielkiej, pozłacanej, złotej i lśniącej rycerskiej statuetki?",
+      "answers": [
+        {
+          "text": "Oscar",
+          "is_correct": true
+        },
+        {
+          "text": "Złoty Glob",
+          "is_correct": false
+        },
+        {
+          "text": "Złota Palma",
+          "is_correct": false
+        },
+        {
+          "text": "Emmy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody i Gale",
+      "question": "Jaka nagroda o kształcie starego gramofonu to bezsprzecznie najbardziej pożądane, potężne na świecie i amerykańskie, najważniejsze wyróżnienie dla artystów i całego dużego przemysłu w wielkiej muzyce?",
+      "answers": [
+        {
+          "text": "Grammy",
+          "is_correct": true
+        },
+        {
+          "text": "MTV Video Music Award",
+          "is_correct": false
+        },
+        {
+          "text": "Brit Award",
+          "is_correct": false
+        },
+        {
+          "text": "Billboard Music Award",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody i Gale",
+      "question": "W jakim znanym i pięknym mieście we Francji, co roku uroczyście na Lazurowym Wybrzeżu, wręcza się podczas potężnego europejskiego festiwalu filmowego bardzo ważną nagrodę - Złotą Palmę?",
+      "answers": [
+        {
+          "text": "W Cannes",
+          "is_correct": true
+        },
+        {
+          "text": "W Paryżu",
+          "is_correct": false
+        },
+        {
+          "text": "W Wenecji",
+          "is_correct": false
+        },
+        {
+          "text": "W Berlinie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody i Gale",
+      "question": "Jaką anty-nagrodę owocową co roku z uśmiechem (dzień przed Oscarami) w USA bardzo uroczyście, ale negatywnie wręcza się we wręcz złośliwy dla najgorszych twórców sposób za najgorsze filmy w kinie w całym ubiegłym i danym roku?",
+      "answers": [
+        {
+          "text": "Złote Maliny (Razzies)",
+          "is_correct": true
+        },
+        {
+          "text": "Srebrne Cytryny",
+          "is_correct": false
+        },
+        {
+          "text": "Zgniłe Pomidory",
+          "is_correct": false
+        },
+        {
+          "text": "Drewniane Żołędzie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody i Gale",
+      "question": "Jaka popularna w USA i na świecie, wręczana podczas uroczystej wielkiej gali telewizyjnej od lat potężna nagroda bywa określana po prostu absolutnie i wprost najważniejszym 'Telewizyjnym Oscarem' za świetne seriale?",
+      "answers": [
+        {
+          "text": "Nagroda Emmy",
+          "is_correct": true
+        },
+        {
+          "text": "Złoty Glob",
+          "is_correct": false
+        },
+        {
+          "text": "Nagroda Tony",
+          "is_correct": false
+        },
+        {
+          "text": "Saturn",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Harry'ego Pottera",
+      "question": "Jak nazywała się słynna, magiczna brytyjska szkoła ukryta w zamku, do której uczęszczał nastoletni Harry Potter?",
+      "answers": [
+        {
+          "text": "Hogwart",
+          "is_correct": true
+        },
+        {
+          "text": "Durmstrang",
+          "is_correct": false
+        },
+        {
+          "text": "Beauxbatons",
+          "is_correct": false
+        },
+        {
+          "text": "Ilvermorny",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Harry'ego Pottera",
+      "question": "Jak miał na imię główny i najpotężniejszy, pozbawiony nosa czarnoksiężnik (Sami-Wiecie-Kto), z którym walczył Harry?",
+      "answers": [
+        {
+          "text": "Lord Voldemort",
+          "is_correct": true
+        },
+        {
+          "text": "Gellert Grindelwald",
+          "is_correct": false
+        },
+        {
+          "text": "Lucjusz Malfoy",
+          "is_correct": false
+        },
+        {
+          "text": "Severus Snape",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Harry'ego Pottera",
+      "question": "Jaki magiczny, niesamowicie szybki sport, rozgrywany wysoko w powietrzu na latających miotłach, uwielbiali czarodzieje?",
+      "answers": [
+        {
+          "text": "Quidditch",
+          "is_correct": true
+        },
+        {
+          "text": "Siatkówka bagienna",
+          "is_correct": false
+        },
+        {
+          "text": "Szachy czarodziejów",
+          "is_correct": false
+        },
+        {
+          "text": "Polo na hipogryfach",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Harry'ego Pottera",
+      "question": "Kto napisał całą genialną i bestsellerową, wielotomową serię powieści o przygodach Harry'ego Pottera?",
+      "answers": [
+        {
+          "text": "J.K. Rowling",
+          "is_correct": true
+        },
+        {
+          "text": "Stephen King",
+          "is_correct": false
+        },
+        {
+          "text": "J.R.R. Tolkien",
+          "is_correct": false
+        },
+        {
+          "text": "George R.R. Martin",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Harry'ego Pottera",
+      "question": "Jak miał na imię wierny i uroczy, wyzwolony za pomocą małej skarpetki skrzat domowy z wielkimi uszami?",
+      "answers": [
+        {
+          "text": "Zgredek (Dobby)",
+          "is_correct": true
+        },
+        {
+          "text": "Stworek",
+          "is_correct": false
+        },
+        {
+          "text": "Mrużka",
+          "is_correct": false
+        },
+        {
+          "text": "Krzywołap",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiezdne Wojny",
+      "question": "Jakie kultowe, ciężko oddychające w masce i ubrane na czarno nazwisko nosił Anakin Skywalker po przejściu na Ciemną Stronę Mocy?",
+      "answers": [
+        {
+          "text": "Darth Vader",
+          "is_correct": true
+        },
+        {
+          "text": "Imperator Palpatine",
+          "is_correct": false
+        },
+        {
+          "text": "Kylo Ren",
+          "is_correct": false
+        },
+        {
+          "text": "Hrabia Dooku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiezdne Wojny",
+      "question": "Czym w świecie Jedi jest słynny na cały wszechświat miecz, potrafiący przeciąć niemal wszystko, posiadający różne kolory klingi?",
+      "answers": [
+        {
+          "text": "Mieczem świetlnym",
+          "is_correct": true
+        },
+        {
+          "text": "Mieczem laserowym",
+          "is_correct": false
+        },
+        {
+          "text": "Ostrzem plazmowym",
+          "is_correct": false
+        },
+        {
+          "text": "Złotym Excaliburem",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiezdne Wojny",
+      "question": "Kto oryginalnie stworzył, wyreżyserował i zapoczątkował całą gigantyczną franczyzę filmową 'Gwiezdnych Wojen' w 1977 roku?",
+      "answers": [
+        {
+          "text": "George Lucas",
+          "is_correct": true
+        },
+        {
+          "text": "Steven Spielberg",
+          "is_correct": false
+        },
+        {
+          "text": "James Cameron",
+          "is_correct": false
+        },
+        {
+          "text": "J.J. Abrams",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiezdne Wojny",
+      "question": "Jak nazywał się legendarny i bardzo zwinny statek kosmiczny pilotowany sprawnie przez Hana Solo oraz Chewbaccę?",
+      "answers": [
+        {
+          "text": "Sokół Millennium",
+          "is_correct": true
+        },
+        {
+          "text": "Niszczyciel Gwiazd",
+          "is_correct": false
+        },
+        {
+          "text": "X-Wing",
+          "is_correct": false
+        },
+        {
+          "text": "Gwiazda Śmierci",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiezdne Wojny",
+      "question": "Jak miał na imię niski, mądry, bardzo stary i zielony Mistrz Jedi, słynący z bardzo specyficznego, przestawnego szyku zdań?",
+      "answers": [
+        {
+          "text": "Yoda",
+          "is_correct": true
+        },
+        {
+          "text": "Obi-Wan Kenobi",
+          "is_correct": false
+        },
+        {
+          "text": "Qui-Gon Jinn",
+          "is_correct": false
+        },
+        {
+          "text": "Mace Windu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komiksy Marvela",
+      "question": "Który bystry nastolatek z Nowego Jorku zyskał pajęcze supermoce, gdy w laboratorium ugryzł go zmutowany pająk?",
+      "answers": [
+        {
+          "text": "Peter Parker (Spider-Man)",
+          "is_correct": true
+        },
+        {
+          "text": "Tony Stark",
+          "is_correct": false
+        },
+        {
+          "text": "Bruce Banner",
+          "is_correct": false
+        },
+        {
+          "text": "Steve Rogers",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komiksy Marvela",
+      "question": "Jak zwała się drużyna najpotężniejszych bohaterów Ziemi, zrzeszająca m.in. Iron Mana, Hulka, Thora oraz Kapitana Amerykę?",
+      "answers": [
+        {
+          "text": "Avengers (Mściciele)",
+          "is_correct": true
+        },
+        {
+          "text": "X-Men",
+          "is_correct": false
+        },
+        {
+          "text": "Fantastyczna Czwórka",
+          "is_correct": false
+        },
+        {
+          "text": "Strażnicy Galaktyki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komiksy Marvela",
+      "question": "Który znany, fioletowy i obsesyjny superzłoczyńca zapragnął zniszczyć połowę życia we wszechświecie przy użyciu Kamieni Nieskończoności?",
+      "answers": [
+        {
+          "text": "Thanos",
+          "is_correct": true
+        },
+        {
+          "text": "Ultron",
+          "is_correct": false
+        },
+        {
+          "text": "Loki",
+          "is_correct": false
+        },
+        {
+          "text": "Galactus",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komiksy Marvela",
+      "question": "Z jakiego ukrytego i wysoce rozwiniętego technologicznie afrykańskiego państwa komiksowego pochodził bohaterski Czarna Pantera?",
+      "answers": [
+        {
+          "text": "Z Wakandy",
+          "is_correct": true
+        },
+        {
+          "text": "Z Genoshy",
+          "is_correct": false
+        },
+        {
+          "text": "Z Asgardu",
+          "is_correct": false
+        },
+        {
+          "text": "Z Latverii",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komiksy Marvela",
+      "question": "Jaki uśmiechnięty staruszek i genialny scenarzysta wymyślił większość głównych postaci Marvela i słynął z gościnnych ról (cameo) w filmach?",
+      "answers": [
+        {
+          "text": "Stan Lee",
+          "is_correct": true
+        },
+        {
+          "text": "Jack Kirby",
+          "is_correct": false
+        },
+        {
+          "text": "Steve Ditko",
+          "is_correct": false
+        },
+        {
+          "text": "Todd McFarlane",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Seriale TV",
+      "question": "W jakim znanym nowojorskim sitcomie z lat 90. szóstka tytułowych i nierozłącznych znajomych spędzała długie godziny w kawiarni Central Perk?",
+      "answers": [
+        {
+          "text": "Przyjaciele (Friends)",
+          "is_correct": true
+        },
+        {
+          "text": "Jak poznałem waszą matkę",
+          "is_correct": false
+        },
+        {
+          "text": "Teoria wielkiego podrywu",
+          "is_correct": false
+        },
+        {
+          "text": "Seinfeld",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Seriale TV",
+      "question": "Jaki genialny chemik, po diagnozie raka, w głośnym serialu 'Breaking Bad' postanawia produkować doskonałą, niebieską metamfetaminę?",
+      "answers": [
+        {
+          "text": "Walter White (Heisenberg)",
+          "is_correct": true
+        },
+        {
+          "text": "Jesse Pinkman",
+          "is_correct": false
+        },
+        {
+          "text": "Hank Schrader",
+          "is_correct": false
+        },
+        {
+          "text": "Saul Goodman",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Seriale TV",
+      "question": "O co toczyła się główna, polityczna i bardzo krwawa walka potężnych rodów z Westeros w monumentalnym serialu 'Gra o Tron'?",
+      "answers": [
+        {
+          "text": "O władzę i zasiadanie na Żelaznym Tronie",
+          "is_correct": true
+        },
+        {
+          "text": "O posiadanie wszystkich żyjących smoków",
+          "is_correct": false
+        },
+        {
+          "text": "O wielkie zasoby złota u Lannisterów",
+          "is_correct": false
+        },
+        {
+          "text": "O możliwość ucieczki na inny kontynent",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Seriale TV",
+      "question": "W jakim dziwnym amerykańskim miasteczku, atakowanym przez demony z 'Drugiej Strony', rozgrywa się w latach 80. popularna akcja 'Stranger Things'?",
+      "answers": [
+        {
+          "text": "W Hawkins",
+          "is_correct": true
+        },
+        {
+          "text": "W Riverdale",
+          "is_correct": false
+        },
+        {
+          "text": "W Twin Peaks",
+          "is_correct": false
+        },
+        {
+          "text": "W Derry",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Seriale TV",
+      "question": "O pracy jakiego specyficznego, papierowego przedsiębiorstwa z ekscentrycznym szefem Michaelem Scottem opowiadał hitowy serial komediowy (tzw. mockument)?",
+      "answers": [
+        {
+          "text": "The Office (Biuro)",
+          "is_correct": true
+        },
+        {
+          "text": "Parks and Recreation",
+          "is_correct": false
+        },
+        {
+          "text": "Korporacja",
+          "is_correct": false
+        },
+        {
+          "text": "Technicy-magicy (IT Crowd)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gry Planszowe i Karciane",
+      "question": "W jakiej bezwzględnie najpopularniejszej grze planszowej na świecie kupuje się ulice i miasta, buduje domy oraz wymusza gigantyczne czynsze na hotelach?",
+      "answers": [
+        {
+          "text": "W Monopoly (lub Eurobiznes)",
+          "is_correct": true
+        },
+        {
+          "text": "W Catan",
+          "is_correct": false
+        },
+        {
+          "text": "W Scrabble",
+          "is_correct": false
+        },
+        {
+          "text": "W Carcassonne",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gry Planszowe i Karciane",
+      "question": "Jak nazywa się wiekowa, mistrzowska i wysoce strategiczna gra na 64 polach, której celem jest zaatakowanie i finalne danie mata królowi przeciwnika?",
+      "answers": [
+        {
+          "text": "Szachy",
+          "is_correct": true
+        },
+        {
+          "text": "Warcaby",
+          "is_correct": false
+        },
+        {
+          "text": "Tryktrak (Backgammon)",
+          "is_correct": false
+        },
+        {
+          "text": "Go",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gry Planszowe i Karciane",
+      "question": "Jakie głośne słowo musi bezwzględnie wykrzyczeć gracz, by nie otrzymać kary, w momencie, gdy zrzuca na kupkę przedostatnią kartę i zostaje mu w ręce tylko jedna?",
+      "answers": [
+        {
+          "text": "UNO!",
+          "is_correct": true
+        },
+        {
+          "text": "Makao!",
+          "is_correct": false
+        },
+        {
+          "text": "Bingo!",
+          "is_correct": false
+        },
+        {
+          "text": "Pas!",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gry Planszowe i Karciane",
+      "question": "Jaka światowa gra intelektualna polega na losowaniu kafelków z różnymi literami i układaniu z nich na krzyż na tarczy punktowanych, istniejących słów?",
+      "answers": [
+        {
+          "text": "Scrabble",
+          "is_correct": true
+        },
+        {
+          "text": "Rummikub",
+          "is_correct": false
+        },
+        {
+          "text": "Taboo",
+          "is_correct": false
+        },
+        {
+          "text": "Kalambury",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gry Planszowe i Karciane",
+      "question": "Kim jest w świecie gier fabularnych (RPG) tzw. Mistrz Gry (Dungeon Master) prowadzący sesję dla reszty graczy?",
+      "answers": [
+        {
+          "text": "Narratorem kierującym fabułą i otoczeniem",
+          "is_correct": true
+        },
+        {
+          "text": "Najsilniejszym wojownikiem w drużynie",
+          "is_correct": false
+        },
+        {
+          "text": "Graczem z największą pulą pieniędzy (bankierem)",
+          "is_correct": false
+        },
+        {
+          "text": "Twórcą fizycznej planszy przed rozpoczęciem",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kreskówki z Dzieciństwa",
+      "question": "Jaki legendarny, bardzo burzliwy i kreskówkowy duet wiecznie goniących i lejących się patelniami zwierzaków (kota i myszy) wykreowali Hanna i Barbera?",
+      "answers": [
+        {
+          "text": "Tom i Jerry",
+          "is_correct": true
+        },
+        {
+          "text": "Struś Pędziwiatr i Kojot",
+          "is_correct": false
+        },
+        {
+          "text": "Królik Bugs i Kaczor Daffy",
+          "is_correct": false
+        },
+        {
+          "text": "Sylwester i Tweety",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kreskówki z Dzieciństwa",
+      "question": "W jakiej bajce Disneya, przy genialnej muzyce Eltona Johna i Hansa Zimmera, mały lewek Simba musiał dorosnąć po tragicznej śmierci swojego wspaniałego ojca Mufasy?",
+      "answers": [
+        {
+          "text": "Król Lew",
+          "is_correct": true
+        },
+        {
+          "text": "Tarzan",
+          "is_correct": false
+        },
+        {
+          "text": "Księga Dżungli",
+          "is_correct": false
+        },
+        {
+          "text": "Mulan",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kreskówki z Dzieciństwa",
+      "question": "Jaki strachliwy, brązowy i stale głodny potężny dog niemiecki, jeżdżący wehikułem tajemnic wraz z Kudłatym, na co dzień bał się duchów?",
+      "answers": [
+        {
+          "text": "Scooby-Doo",
+          "is_correct": true
+        },
+        {
+          "text": "Snoopy",
+          "is_correct": false
+        },
+        {
+          "text": "Reksio",
+          "is_correct": false
+        },
+        {
+          "text": "Goofy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kreskówki z Dzieciństwa",
+      "question": "Jakie urocze, małe i jaskrawo niebieskie stworki z małymi białymi czapkami mieszkały w leśnych grzybach, uciekając w bajce przed starym czarodziejem Gargamelem?",
+      "answers": [
+        {
+          "text": "Smerfy",
+          "is_correct": true
+        },
+        {
+          "text": "Gumisie",
+          "is_correct": false
+        },
+        {
+          "text": "Muminki",
+          "is_correct": false
+        },
+        {
+          "text": "Minionki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kreskówki z Dzieciństwa",
+      "question": "Jak nazywała się powszechnie lubiana animowana rodzina z epoki kamienia łupanego, gdzie w autach pracowano nogami i używano małych dinozaurów jako sprzętu AGD?",
+      "answers": [
+        {
+          "text": "Flintstonowie",
+          "is_correct": true
+        },
+        {
+          "text": "Jetsonowie",
+          "is_correct": false
+        },
+        {
+          "text": "Simpsonowie",
+          "is_correct": false
+        },
+        {
+          "text": "Rodzina Addamsów",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Muzyki Pop",
+      "question": "Którego genialnego artystę, odpowiedzialnego za taneczny i innowacyjny album 'Thriller' oraz księżycowy spacer, określa się wielkim, zmarłym Królem Popu?",
+      "answers": [
+        {
+          "text": "Michaela Jacksona",
+          "is_correct": true
+        },
+        {
+          "text": "Elvisa Presleya",
+          "is_correct": false
+        },
+        {
+          "text": "Prince'a",
+          "is_correct": false
+        },
+        {
+          "text": "Freddiego Mercury'ego",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Muzyki Pop",
+      "question": "Jaka światowej i ogromnej klasy wokalistka znana powszechnie m.in z hitów 'Like a Virgin', od dziesięcioleci dumnie i zasłużenie nazywana jest Królową Popu?",
+      "answers": [
+        {
+          "text": "Madonna",
+          "is_correct": true
+        },
+        {
+          "text": "Whitney Houston",
+          "is_correct": false
+        },
+        {
+          "text": "Britney Spears",
+          "is_correct": false
+        },
+        {
+          "text": "Cher",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Muzyki Pop",
+      "question": "Kto obecnie jest najbogatszą amerykańską piosenkarką i gwiazdą z armią fanów (Swifties), bijącą gigantyczne rekordy frekwencji na niesamowitej trasie Eras Tour?",
+      "answers": [
+        {
+          "text": "Taylor Swift",
+          "is_correct": true
+        },
+        {
+          "text": "Beyoncé",
+          "is_correct": false
+        },
+        {
+          "text": "Ariana Grande",
+          "is_correct": false
+        },
+        {
+          "text": "Billie Eilish",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Muzyki Pop",
+      "question": "Jak brzmi sceniczny i modny, arystokratyczny pseudonim Stefani Germanotty, autorki przebojów muzycznych z list takich jak 'Poker Face' czy też 'Bad Romance'?",
+      "answers": [
+        {
+          "text": "Lady Gaga",
+          "is_correct": true
+        },
+        {
+          "text": "Katy Perry",
+          "is_correct": false
+        },
+        {
+          "text": "Rihanna",
+          "is_correct": false
+        },
+        {
+          "text": "Dua Lipa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Muzyki Pop",
+      "question": "Jak nazywał się absolutnie legendarny kwartet z Liverpoolu (w składzie m.in. John, Paul), który na stałe ukształtował wielką muzykę pop lat 60. na zawsze?",
+      "answers": [
+        {
+          "text": "The Beatles",
+          "is_correct": true
+        },
+        {
+          "text": "The Rolling Stones",
+          "is_correct": false
+        },
+        {
+          "text": "Queen",
+          "is_correct": false
+        },
+        {
+          "text": "ABBA",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Uniwersum DC",
+      "question": "Jaki bohater po wielkiej stracie rodziców na własną rękę broni mrocznego miasta Gotham przed kryminalistami, samemu nie mając nadludzkich mocy tylko mnóstwo gadżetów?",
+      "answers": [
+        {
+          "text": "Batman",
+          "is_correct": true
+        },
+        {
+          "text": "Flash",
+          "is_correct": false
+        },
+        {
+          "text": "Green Arrow",
+          "is_correct": false
+        },
+        {
+          "text": "Aquaman",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Uniwersum DC",
+      "question": "Kto ukrywa się w codziennym i dziennikarskim życiu pod maską z czerwoną peleryną wielkiego i przybyłego statkiem z innej i obcej planety Supermana?",
+      "answers": [
+        {
+          "text": "Clark Kent",
+          "is_correct": true
+        },
+        {
+          "text": "Bruce Wayne",
+          "is_correct": false
+        },
+        {
+          "text": "Barry Allen",
+          "is_correct": false
+        },
+        {
+          "text": "Arthur Curry",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Uniwersum DC",
+      "question": "Jaki psychopatyczny złoczyńca o przerażającym i często klaunim, umalowanym uśmiechu na twarzy jest bezwzględnie najbardziej rozpoznawalnym, wiecznym wrogiem Batmana?",
+      "answers": [
+        {
+          "text": "Joker",
+          "is_correct": true
+        },
+        {
+          "text": "Lex Luthor",
+          "is_correct": false
+        },
+        {
+          "text": "Dwie Twarze (Two-Face)",
+          "is_correct": false
+        },
+        {
+          "text": "Człowiek Zagadka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Uniwersum DC",
+      "question": "Jaki zielonkawy, radioaktywny kamień stanowiący osłabiający odłamek nieistniejącej zniszczonej ojczyzny Kal-Ela, potrafił osłabić potężnego do bólu Supermana?",
+      "answers": [
+        {
+          "text": "Kryptonit",
+          "is_correct": true
+        },
+        {
+          "text": "Adamantium",
+          "is_correct": false
+        },
+        {
+          "text": "Vibranium",
+          "is_correct": false
+        },
+        {
+          "text": "Tesserakt",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Uniwersum DC",
+      "question": "Która wielka zjednoczona liga połączyła siły komiksowych bohaterów od DC Comics (takich jak Wonder Woman, Batman, Superman czy zwinny Flash) by bronić Ziemi?",
+      "answers": [
+        {
+          "text": "Liga Sprawiedliwości (Justice League)",
+          "is_correct": true
+        },
+        {
+          "text": "Avengers",
+          "is_correct": false
+        },
+        {
+          "text": "Legion Samobójców (Suicide Squad)",
+          "is_correct": false
+        },
+        {
+          "text": "X-Men",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Memy i Internet",
+      "question": "Jak zwała się sympatyczna rasa japońskiego i bardzo znanego we wczesnych latach sieci pieska (Shiba Inu), na którego zabawnym pysku z błędem językowym zbudowano mema 'Doge' (Pieseł)?",
+      "answers": [
+        {
+          "text": "Pieseł (Doge)",
+          "is_correct": true
+        },
+        {
+          "text": "Kot (Grumpy Cat)",
+          "is_correct": false
+        },
+        {
+          "text": "Nyan Cat",
+          "is_correct": false
+        },
+        {
+          "text": "Żaba Pepe",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Memy i Internet",
+      "question": "Jaki kultowy stary wideoklip Ricka Astleya 'Never Gonna Give You Up' służy i robił za przynętę w bardzo popularnym, trollującym zjawisku fałszywych linków ukrytych na wielu forach w internecie?",
+      "answers": [
+        {
+          "text": "Rickroll",
+          "is_correct": true
+        },
+        {
+          "text": "Trollface",
+          "is_correct": false
+        },
+        {
+          "text": "Clickbait",
+          "is_correct": false
+        },
+        {
+          "text": "Harlem Shake",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Memy i Internet",
+      "question": "Jaka animowana na rysunkach smutna i uśmiechnięta na przemian żaba z komiksów Matta Furiego stała się, początkowo przypadkowo ogromnym symbolem i memem w świecie internetowym?",
+      "answers": [
+        {
+          "text": "Żaba Pepe",
+          "is_correct": true
+        },
+        {
+          "text": "Kermit",
+          "is_correct": false
+        },
+        {
+          "text": "Żaba Crazy Frog",
+          "is_correct": false
+        },
+        {
+          "text": "Smutny Żółw",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Memy i Internet",
+      "question": "Jak powszechnie określa się internetowy i niesamowicie szybko rozprzestrzeniający się trend wirusowy lub krótki żart obrazkowy masowo przesyłany dalej, ewoluujący i śmieszny z założenia?",
+      "answers": [
+        {
+          "text": "Mem",
+          "is_correct": true
+        },
+        {
+          "text": "Gif",
+          "is_correct": false
+        },
+        {
+          "text": "Spam",
+          "is_correct": false
+        },
+        {
+          "text": "Blog",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Memy i Internet",
+      "question": "Jaki starszy pan o imieniu András Arató z Węgier zasłynął całkowicie potężnie z pozowania do zwykłych zdjęć z baz stockowych z widocznym niesamowicie wymuszonym uśmiechem na bólu?",
+      "answers": [
+        {
+          "text": "Dziadek Harold (Hide the Pain Harold)",
+          "is_correct": true
+        },
+        {
+          "text": "Zły Wujek (Bad Luck Brian)",
+          "is_correct": false
+        },
+        {
+          "text": "Dziki Bill",
+          "is_correct": false
+        },
+        {
+          "text": "Wąsaty Janusz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody i Gale",
+      "question": "Jak powszechnie i nieoficjalnie nazywa się nagrodę Amerykańskiej Akademii Wiedzy i Sztuki Filmowej, wręczaną zwycięzcom w postaci wielkiej, pozłacanej, złotej i lśniącej rycerskiej statuetki?",
+      "answers": [
+        {
+          "text": "Oscar",
+          "is_correct": true
+        },
+        {
+          "text": "Złoty Glob",
+          "is_correct": false
+        },
+        {
+          "text": "Złota Palma",
+          "is_correct": false
+        },
+        {
+          "text": "Emmy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody i Gale",
+      "question": "Jaka nagroda o kształcie starego gramofonu to bezsprzecznie najbardziej pożądane, potężne na świecie i amerykańskie, najważniejsze wyróżnienie dla artystów i całego dużego przemysłu w wielkiej muzyce?",
+      "answers": [
+        {
+          "text": "Grammy",
+          "is_correct": true
+        },
+        {
+          "text": "MTV Video Music Award",
+          "is_correct": false
+        },
+        {
+          "text": "Brit Award",
+          "is_correct": false
+        },
+        {
+          "text": "Billboard Music Award",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody i Gale",
+      "question": "W jakim znanym i pięknym mieście we Francji, co roku uroczyście na Lazurowym Wybrzeżu, wręcza się podczas potężnego europejskiego festiwalu filmowego bardzo ważną nagrodę - Złotą Palmę?",
+      "answers": [
+        {
+          "text": "W Cannes",
+          "is_correct": true
+        },
+        {
+          "text": "W Paryżu",
+          "is_correct": false
+        },
+        {
+          "text": "W Wenecji",
+          "is_correct": false
+        },
+        {
+          "text": "W Berlinie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody i Gale",
+      "question": "Jaką anty-nagrodę owocową co roku z uśmiechem (dzień przed Oscarami) w USA bardzo uroczyście, ale negatywnie wręcza się we wręcz złośliwy dla najgorszych twórców sposób za najgorsze filmy w kinie w całym ubiegłym i danym roku?",
+      "answers": [
+        {
+          "text": "Złote Maliny (Razzies)",
+          "is_correct": true
+        },
+        {
+          "text": "Srebrne Cytryny",
+          "is_correct": false
+        },
+        {
+          "text": "Zgniłe Pomidory",
+          "is_correct": false
+        },
+        {
+          "text": "Drewniane Żołędzie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody i Gale",
+      "question": "Jaka popularna w USA i na świecie, wręczana podczas uroczystej wielkiej gali telewizyjnej od lat potężna nagroda bywa określana po prostu absolutnie i wprost najważniejszym 'Telewizyjnym Oscarem' za świetne seriale?",
+      "answers": [
+        {
+          "text": "Nagroda Emmy",
+          "is_correct": true
+        },
+        {
+          "text": "Złoty Glob",
+          "is_correct": false
+        },
+        {
+          "text": "Nagroda Tony",
+          "is_correct": false
+        },
+        {
+          "text": "Saturn",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Anime i Manga",
+      "question": "Z jakiej znanej japońskiej serii wywodzi się mały, żółty i uroczy, strzelający prądem stworek Pikachu?",
+      "answers": [
+        {
+          "text": "Z Pokémonów",
+          "is_correct": true
+        },
+        {
+          "text": "Z Digimonów",
+          "is_correct": false
+        },
+        {
+          "text": "Z Dragon Balla",
+          "is_correct": false
+        },
+        {
+          "text": "Z Czarodziejki z Księżyca",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Anime i Manga",
+      "question": "Jak miał na imię główny, niesamowicie silny bohater z ogonem, walczący w obronie Ziemi w kultowym anime 'Dragon Ball'?",
+      "answers": [
+        {
+          "text": "Son Goku",
+          "is_correct": true
+        },
+        {
+          "text": "Vegeta",
+          "is_correct": false
+        },
+        {
+          "text": "Naruto Uzumaki",
+          "is_correct": false
+        },
+        {
+          "text": "Ichigo Kurosaki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Anime i Manga",
+      "question": "Które słynne japońskie studio animacyjne (założone m.in. przez Hayao Miyazakiego) stworzyło oscarowe 'Spirited Away: W krainie bogów'?",
+      "answers": [
+        {
+          "text": "Studio Ghibli",
+          "is_correct": true
+        },
+        {
+          "text": "Toei Animation",
+          "is_correct": false
+        },
+        {
+          "text": "Madhouse",
+          "is_correct": false
+        },
+        {
+          "text": "Bones",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Anime i Manga",
+      "question": "O kim marzył zostać tytułowy bohater w pomarańczowym dresie, z wioski Ukrytego Liścia w anime 'Naruto'?",
+      "answers": [
+        {
+          "text": "Chciał zostać Hokage (przywódcą wioski)",
+          "is_correct": true
+        },
+        {
+          "text": "Chciał zostać Królem Piratów",
+          "is_correct": false
+        },
+        {
+          "text": "Chciał zostać Mistrzem Pokémon",
+          "is_correct": false
+        },
+        {
+          "text": "Chciał zostać Władcą Demonów",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Anime i Manga",
+      "question": "Która japońska superbohaterka w marynarskim mundurku, wraz z innymi wojowniczkami, walczyła o dobro wszechświata?",
+      "answers": [
+        {
+          "text": "Czarodziejka z Księżyca (Sailor Moon)",
+          "is_correct": true
+        },
+        {
+          "text": "Cardcaptor Sakura",
+          "is_correct": false
+        },
+        {
+          "text": "Evangelion",
+          "is_correct": false
+        },
+        {
+          "text": "Miku Hatsune",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Klasyka Kina",
+      "question": "W jakim legendarnym filmie mafijnym Marlon Brando wcielił się w niezapomnianą rolę Don Vito Corleone?",
+      "answers": [
+        {
+          "text": "W Ojcu Chrzestnym",
+          "is_correct": true
+        },
+        {
+          "text": "W Chłopcach z ferajny",
+          "is_correct": false
+        },
+        {
+          "text": "W Człowieku z blizną",
+          "is_correct": false
+        },
+        {
+          "text": "W Kasynie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Klasyka Kina",
+      "question": "Jakie wielkie, zakochane w sobie podczas rejsu postacie zagrali Leonardo DiCaprio i Kate Winslet w gigantycznym hicie 'Titanic'?",
+      "answers": [
+        {
+          "text": "Jacka i Rose",
+          "is_correct": true
+        },
+        {
+          "text": "Romea i Julię",
+          "is_correct": false
+        },
+        {
+          "text": "Boba i Alice",
+          "is_correct": false
+        },
+        {
+          "text": "Sama i Molly",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Klasyka Kina",
+      "question": "Który aktor wcielił się w hakera Neo (Wybrańca), unikającego kultowo kul na dachu w hicie sci-fi 'Matrix'?",
+      "answers": [
+        {
+          "text": "Keanu Reeves",
+          "is_correct": true
+        },
+        {
+          "text": "Tom Cruise",
+          "is_correct": false
+        },
+        {
+          "text": "Brad Pitt",
+          "is_correct": false
+        },
+        {
+          "text": "Will Smith",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Klasyka Kina",
+      "question": "Z jakiego wzruszającego filmu z Tomem Hanksem pochodzi słynny cytat: 'Życie jest jak pudełko czekoladek'?",
+      "answers": [
+        {
+          "text": "Z Forresta Gumpa",
+          "is_correct": true
+        },
+        {
+          "text": "Z Zielonej Mili",
+          "is_correct": false
+        },
+        {
+          "text": "Z Cast Away: Poza światem",
+          "is_correct": false
+        },
+        {
+          "text": "Z Szeregowca Ryana",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Klasyka Kina",
+      "question": "Z jakim wymarłym zagrożeniem mierzyli się bohaterowie kultowego hitu w reżyserii Stevena Spielberga z 1993 roku na Isla Nublar?",
+      "answers": [
+        {
+          "text": "Z genetycznie sklonowanymi dinozaurami (Park Jurajski)",
+          "is_correct": true
+        },
+        {
+          "text": "Z atakiem kosmitów",
+          "is_correct": false
+        },
+        {
+          "text": "Z rekinem ludojadem",
+          "is_correct": false
+        },
+        {
+          "text": "Ze zbuntowanymi robotami",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Władca Pierścieni",
+      "question": "Kto jest autorem fantastycznego świata Śródziemia i epickiej powieści 'Władca Pierścieni'?",
+      "answers": [
+        {
+          "text": "J.R.R. Tolkien",
+          "is_correct": true
+        },
+        {
+          "text": "C.S. Lewis",
+          "is_correct": false
+        },
+        {
+          "text": "George R.R. Martin",
+          "is_correct": false
+        },
+        {
+          "text": "Terry Pratchett",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Władca Pierścieni",
+      "question": "Jak miał na imię mądry i potężny czarodziej z długą brodą, przewodnik Drużyny Pierścienia?",
+      "answers": [
+        {
+          "text": "Gandalf",
+          "is_correct": true
+        },
+        {
+          "text": "Saruman",
+          "is_correct": false
+        },
+        {
+          "text": "Radagast",
+          "is_correct": false
+        },
+        {
+          "text": "Dumbledore",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Władca Pierścieni",
+      "question": "Gdzie fizycznie hobbit Frodo Baggins musiał dotrzeć, by ostatecznie zniszczyć Jedyny Pierścień?",
+      "answers": [
+        {
+          "text": "Do Góry Przeznaczenia w Mordorze",
+          "is_correct": true
+        },
+        {
+          "text": "Do Samotnej Góry",
+          "is_correct": false
+        },
+        {
+          "text": "Do Minas Tirith",
+          "is_correct": false
+        },
+        {
+          "text": "Do Shire",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Władca Pierścieni",
+      "question": "Który zwinny książę Leśnych Elfów o blond włosach i sokolim wzroku strzelał bezbłędnie z łuku?",
+      "answers": [
+        {
+          "text": "Legolas",
+          "is_correct": true
+        },
+        {
+          "text": "Elrond",
+          "is_correct": false
+        },
+        {
+          "text": "Thranduil",
+          "is_correct": false
+        },
+        {
+          "text": "Gimli",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Władca Pierścieni",
+      "question": "Jaka żałosna i zepsuta przez magię pierścienia istota ciągle podążała za hobbitem, nazywając pierścień 'swoim ssskarbem'?",
+      "answers": [
+        {
+          "text": "Gollum (Smeagol)",
+          "is_correct": true
+        },
+        {
+          "text": "Uruk-hai",
+          "is_correct": false
+        },
+        {
+          "text": "Balrog",
+          "is_correct": false
+        },
+        {
+          "text": "Nazgul",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynni Reżyserzy",
+      "question": "Który uznany reżyser uwielbia drastyczną przemoc, szybkie dialogi i nakręcił takie hity jak 'Pulp Fiction' i 'Django'?",
+      "answers": [
+        {
+          "text": "Quentin Tarantino",
+          "is_correct": true
+        },
+        {
+          "text": "Martin Scorsese",
+          "is_correct": false
+        },
+        {
+          "text": "Francis Ford Coppola",
+          "is_correct": false
+        },
+        {
+          "text": "Wes Anderson",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynni Reżyserzy",
+      "question": "Jak nazywa się twórca niesamowicie zawiłych fabularnie widowisk takich jak 'Incepcja', 'Interstellar' czy 'Mroczny Rycerz'?",
+      "answers": [
+        {
+          "text": "Christopher Nolan",
+          "is_correct": true
+        },
+        {
+          "text": "James Cameron",
+          "is_correct": false
+        },
+        {
+          "text": "Ridley Scott",
+          "is_correct": false
+        },
+        {
+          "text": "Denis Villeneuve",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynni Reżyserzy",
+      "question": "Kto do dziś nosi w kinie dumne miano 'Mistrza Suspensu' i zrealizował dreszczowce takie jak 'Psychoza' czy 'Ptaki'?",
+      "answers": [
+        {
+          "text": "Alfred Hitchcock",
+          "is_correct": true
+        },
+        {
+          "text": "Stanley Kubrick",
+          "is_correct": false
+        },
+        {
+          "text": "Steven Spielberg",
+          "is_correct": false
+        },
+        {
+          "text": "Roman Polański",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynni Reżyserzy",
+      "question": "Jaki amerykański gigant kina zrealizował 'Taksówkarza', 'Chłopców z ferajny' oraz 'Wilka z Wall Street'?",
+      "answers": [
+        {
+          "text": "Martin Scorsese",
+          "is_correct": true
+        },
+        {
+          "text": "Clint Eastwood",
+          "is_correct": false
+        },
+        {
+          "text": "Oliver Stone",
+          "is_correct": false
+        },
+        {
+          "text": "Brian De Palma",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynni Reżyserzy",
+      "question": "Który genialny, ale ekscentryczny reżyser stworzył m.in. 'Lśnienie' i monumentalną '2001: Odyseję kosmiczną'?",
+      "answers": [
+        {
+          "text": "Stanley Kubrick",
+          "is_correct": true
+        },
+        {
+          "text": "George Lucas",
+          "is_correct": false
+        },
+        {
+          "text": "David Lynch",
+          "is_correct": false
+        },
+        {
+          "text": "Tim Burton",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Książki i Literatura Bestsellerowa",
+      "question": "Jaka brytyjska pisarka, nazywana Królową Kryminału, powołała do życia genialnego, belgijskiego detektywa Herkulesa Poirota?",
+      "answers": [
+        {
+          "text": "Agatha Christie",
+          "is_correct": true
+        },
+        {
+          "text": "Arthur Conan Doyle",
+          "is_correct": false
+        },
+        {
+          "text": "Jane Austen",
+          "is_correct": false
+        },
+        {
+          "text": "J.K. Rowling",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Książki i Literatura Bestsellerowa",
+      "question": "Kto napisał piękną, filozoficzną powieść dla dzieci i dorosłych 'Mały Książę', w której chłopiec spotyka m.in. Lisa i Różę?",
+      "answers": [
+        {
+          "text": "Antoine de Saint-Exupéry",
+          "is_correct": true
+        },
+        {
+          "text": "Hans Christian Andersen",
+          "is_correct": false
+        },
+        {
+          "text": "Astrid Lindgren",
+          "is_correct": false
+        },
+        {
+          "text": "Lewis Carroll",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Książki i Literatura Bestsellerowa",
+      "question": "Który amerykański autor to niekwestionowany 'Król Grozy', odpowiedzialny za książki takie jak 'To', 'Lśnienie' i 'Zielona Mila'?",
+      "answers": [
+        {
+          "text": "Stephen King",
+          "is_correct": true
+        },
+        {
+          "text": "H.P. Lovecraft",
+          "is_correct": false
+        },
+        {
+          "text": "Edgar Allan Poe",
+          "is_correct": false
+        },
+        {
+          "text": "Dean Koontz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Książki i Literatura Bestsellerowa",
+      "question": "Jaki polski pisarz fantasy zyskał światową i potężną sławę jako ojciec kultowej sagi o przygodach Geralta z Rivii?",
+      "answers": [
+        {
+          "text": "Andrzej Sapkowski",
+          "is_correct": true
+        },
+        {
+          "text": "Stanisław Lem",
+          "is_correct": false
+        },
+        {
+          "text": "Jacek Dukaj",
+          "is_correct": false
+        },
+        {
+          "text": "Remigiusz Mróz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Książki i Literatura Bestsellerowa",
+      "question": "Kto od wielu, bardzo wielu lat każe czytelnikom czekać na zakończenie serii 'Pieśń Lodu i Ognia' (Gry o Tron)?",
+      "answers": [
+        {
+          "text": "George R.R. Martin",
+          "is_correct": true
+        },
+        {
+          "text": "J.R.R. Tolkien",
+          "is_correct": false
+        },
+        {
+          "text": "Neil Gaiman",
+          "is_correct": false
+        },
+        {
+          "text": "Terry Pratchett",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwale Muzyczne",
+      "question": "Jaki słynny festiwal z 1969 roku w USA przeszedł do legendy jako symbol buntu, ruchu hipisowskiego i pokoju na świecie?",
+      "answers": [
+        {
+          "text": "Woodstock",
+          "is_correct": true
+        },
+        {
+          "text": "Coachella",
+          "is_correct": false
+        },
+        {
+          "text": "Glastonbury",
+          "is_correct": false
+        },
+        {
+          "text": "Lollapalooza",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwale Muzyczne",
+      "question": "Jak nazywa się ogromny, niezwykle medialny i designerski festiwal muzyczny odbywający się co roku w kalifornijskiej dolinie (USA)?",
+      "answers": [
+        {
+          "text": "Coachella",
+          "is_correct": true
+        },
+        {
+          "text": "Tomorrowland",
+          "is_correct": false
+        },
+        {
+          "text": "Burning Man",
+          "is_correct": false
+        },
+        {
+          "text": "Sziget",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwale Muzyczne",
+      "question": "Który belgijski festiwal muzyki elektronicznej (EDM) słynie z iście bajkowych, gigantycznych dekoracji i wielkich fajerwerków?",
+      "answers": [
+        {
+          "text": "Tomorrowland",
+          "is_correct": true
+        },
+        {
+          "text": "Ultra Music Festival",
+          "is_correct": false
+        },
+        {
+          "text": "Creamfields",
+          "is_correct": false
+        },
+        {
+          "text": "Awakenings",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwale Muzyczne",
+      "question": "Jaki wielki, plenerowy festiwal muzyczny rokrocznie przyciąga w lipcu tłumy fanów na lotnisko Kosakowo w Gdyni?",
+      "answers": [
+        {
+          "text": "Open'er Festival",
+          "is_correct": true
+        },
+        {
+          "text": "OFF Festival",
+          "is_correct": false
+        },
+        {
+          "text": "Orange Warsaw Festival",
+          "is_correct": false
+        },
+        {
+          "text": "Kraków Live Festival",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwale Muzyczne",
+      "question": "Pod jaką obecną nazwą funkcjonuje dziś darmowy, potężny polski festiwal Jurka Owsiaka, znany przez lata jako Przystanek Woodstock?",
+      "answers": [
+        {
+          "text": "Pol'and'Rock Festival",
+          "is_correct": true
+        },
+        {
+          "text": "Rock in Poland",
+          "is_correct": false
+        },
+        {
+          "text": "Jarocin Festiwal",
+          "is_correct": false
+        },
+        {
+          "text": "Wielka Orkiestra Świątecznej Pomocy Fest",
+          "is_correct": false
+        }
+      ]
+    }
+  ]
+}
