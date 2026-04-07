@@ -1,0 +1,814 @@
+{
+  "categories": [
+    {
+      "category_name": "Kulinaria i Smaki",
+      "subcategories": [
+        {
+          "subcategory_name": "Mięsa i Wędliny",
+          "questions": [
+            {
+              "question": "Z jakiego mięsa tradycyjnie powinno się przygotowywać w Polsce niedzielnego kotleta schabowego?",
+              "answers": [
+                { "text": "Z wieprzowiny (schabu)", "is_correct": true },
+                { "text": "Z piersi kurczaka", "is_correct": false },
+                { "text": "Z wołowiny", "is_correct": false },
+                { "text": "Z cielęciny", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywają się cienkie, bardzo mocno uwędzone i wysuszone polskie kiełbaski (często wieprzowe)?",
+              "answers": [
+                { "text": "Kabanosy", "is_correct": true },
+                { "text": "Parówki", "is_correct": false },
+                { "text": "Salami", "is_correct": false },
+                { "text": "Kaszanki", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego surowego, bardzo drobno siekanego mięsa z żółtkiem i cebulą przygotowuje się tatar?",
+              "answers": [
+                { "text": "Z polędwicy wołowej", "is_correct": true },
+                { "text": "Z karkówki wieprzowej", "is_correct": false },
+                { "text": "Z mięsa z indyka", "is_correct": false },
+                { "text": "Z boczku", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się włoska, długo dojrzewająca wędlina o cienkich plastrach, często jedzona z melonem?",
+              "answers": [
+                { "text": "Szynka parmeńska", "is_correct": true },
+                { "text": "Mortadela", "is_correct": false },
+                { "text": "Chorizo", "is_correct": false },
+                { "text": "Pepperoni", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym w tradycyjnej polskiej kaszance (krupnioku) łączy się kaszę (np. gryczaną) z podrobami?",
+              "answers": [
+                { "text": "Kwią wieprzową", "is_correct": true },
+                { "text": "Sokiem z buraków", "is_correct": false },
+                { "text": "Smalcem", "is_correct": false },
+                { "text": "Sosem pieczeniowym", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Ryby i Owoce Morza",
+          "questions": [
+            {
+              "question": "Jaka słodkowodna ryba tradycyjnie, często smażona w dzwonkach, pojawia się na wigilijnym stole w Polsce?",
+              "answers": [
+                { "text": "Karp", "is_correct": true },
+                { "text": "Łosoś", "is_correct": false },
+                { "text": "Pstrąg", "is_correct": false },
+                { "text": "Tuńczyk", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego mięsa pochodzi bardzo drogi, ekskluzywny czarny kawior?",
+              "answers": [
+                { "text": "Z ikry jesiotra", "is_correct": true },
+                { "text": "Z mięsa homara", "is_correct": false },
+                { "text": "Z wątroby dorsza", "is_correct": false },
+                { "text": "Z ikry łososia", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Które owoce morza, podawane często z czosnkiem i masłem, w surowej formie mają szary kolor a po ugotowaniu różowy?",
+              "answers": [
+                { "text": "Krewetki", "is_correct": true },
+                { "text": "Małże", "is_correct": false },
+                { "text": "Ostrygi", "is_correct": false },
+                { "text": "Kalmary", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka ryba o charakterystycznym różowo-pomarańczowym mięsie często wykorzystywana jest do japońskiego sushi?",
+              "answers": [
+                { "text": "Łosoś", "is_correct": true },
+                { "text": "Dorsz", "is_correct": false },
+                { "text": "Szprot", "is_correct": false },
+                { "text": "Karp", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Które słone, drobne rybki, serwowane z olejem i często cebulą, to popularna polska zakąska śledziowa?",
+              "answers": [
+                { "text": "Matiasy", "is_correct": true },
+                { "text": "Sardynki", "is_correct": false },
+                { "text": "Anchois", "is_correct": false },
+                { "text": "Pstrągi", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Kuchnia Polska Dawniej",
+          "questions": [
+            {
+              "question": "Jak nazywa się staropolskie danie jednogarnkowe robione z kiszonej kapusty, mięs, kiełbas i grzybów?",
+              "answers": [
+                { "text": "Bigos", "is_correct": true },
+                { "text": "Leczo", "is_correct": false },
+                { "text": "Forszmak", "is_correct": false },
+                { "text": "Gulasz", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z czego przyrządzano w dawnej Polsce podpłomyki, jedne z najstarszych form pieczywa?",
+              "answers": [
+                { "text": "Z mąki, wody i soli pieczonych na blasze", "is_correct": true },
+                { "text": "Z ciasta drożdżowego z jabłkami", "is_correct": false },
+                { "text": "Ze słodkiego ciasta z miodem", "is_correct": false },
+                { "text": "Z gotowanych i tłuczonych ziemniaków", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki owadzi produkt fermentowano z wodą w dawnej Polsce, tworząc szlachetny alkohol (np. trójniak)?",
+              "answers": [
+                { "text": "Miód (Miód pitny)", "is_correct": true },
+                { "text": "Nektar", "is_correct": false },
+                { "text": "Pyłek pszczeli", "is_correct": false },
+                { "text": "Wosk pszczeli", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie skorupiaki, dziś bardzo rzadkie, dawniej w polskiej kuchni szlacheckiej łowiono i jedzono garściami?",
+              "answers": [
+                { "text": "Raki rzeczne", "is_correct": true },
+                { "text": "Kraby", "is_correct": false },
+                { "text": "Krewetki słodkowodne", "is_correct": false },
+                { "text": "Homary", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym w tradycji szlacheckiej częstowano niechcianego zalotnika, na znak odmowy ręki panny?",
+              "answers": [
+                { "text": "Czarną polewką (Czerniną)", "is_correct": true },
+                { "text": "Zepsutym winem", "is_correct": false },
+                { "text": "Pustym chlebem", "is_correct": false },
+                { "text": "Zimnym bigosem", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Kuchnia Amerykańska",
+          "questions": [
+            {
+              "question": "Co to jest tradycyjny amerykański 'Mac and Cheese', często jedzony z pudełka?",
+              "answers": [
+                { "text": "Makaron z sosem serowym", "is_correct": true },
+                { "text": "Burgery z serem gorgonzola", "is_correct": false },
+                { "text": "Smażone krążki serowe", "is_correct": false },
+                { "text": "Sałatka z makaronu i sera fety", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakim słodkim i gęstym syropem Amerykanie najczęściej polewają swoje grube śniadaniowe pancakes (naleśniki)?",
+              "answers": [
+                { "text": "Syropem klonowym", "is_correct": true },
+                { "text": "Syropem malinowym", "is_correct": false },
+                { "text": "Miodem", "is_correct": false },
+                { "text": "Melasą", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego mięsa robi się klasyczny, gruby i soczysty stek z rusztu w USA?",
+              "answers": [
+                { "text": "Z wołowiny", "is_correct": true },
+                { "text": "Z wieprzowiny", "is_correct": false },
+                { "text": "Z baraniny", "is_correct": false },
+                { "text": "Z koniny", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym w amerykańskim cukiernictwie jest słodki 'Donut' spopularyzowany przez policjantów na filmach?",
+              "answers": [
+                { "text": "Pączkiem z dziurką w środku (oponką)", "is_correct": true },
+                { "text": "Czekoladowym ciastkiem z kawałkami czekolady", "is_correct": false },
+                { "text": "Kruchym rogalikiem", "is_correct": false },
+                { "text": "Lodami w chrupiącym wafelku", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki skrót opisuje metodę powolnego pieczenia i wędzenia mięsa nad ogniem lub w dymie (np. żeberek)?",
+              "answers": [
+                { "text": "BBQ (Barbecue)", "is_correct": true },
+                { "text": "KFC", "is_correct": false },
+                { "text": "BLT", "is_correct": false },
+                { "text": "PB&J", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Słodycze i Przekąski",
+          "questions": [
+            {
+              "question": "Jak nazywają się tradycyjne polskie, bardzo słodkie cukierki z masy kajmakowej (krówki), które z czasem kruszeją?",
+              "answers": [
+                { "text": "Krówki", "is_correct": true },
+                { "text": "Kukułki", "is_correct": false },
+                { "text": "Raczkie", "is_correct": false },
+                { "text": "Irysy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki delikatny deser to lekka, mleczno-waniliowa pianka oblana cienką warstwą kruchej czekolady?",
+              "answers": [
+                { "text": "Ptasie Mleczko", "is_correct": true },
+                { "text": "Chałwa", "is_correct": false },
+                { "text": "Sezamki", "is_correct": false },
+                { "text": "Jeżyki", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego kruszonego surowca i karmelu robiona jest zazwyczaj krucha i tłusta, wschodnia chałwa?",
+              "answers": [
+                { "text": "Z ziaren sezamu", "is_correct": true },
+                { "text": "Z orzechów włoskich", "is_correct": false },
+                { "text": "Z płatków migdałów", "is_correct": false },
+                { "text": "Z maku", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym przeważnie posypane są na zewnątrz chrupiące, wypiekane, tradycyjne polskie paluszki (np. Beskidzkie)?",
+              "answers": [
+                { "text": "Grubą solą", "is_correct": true },
+                { "text": "Słodkim cukrem", "is_correct": false },
+                { "text": "Kminem", "is_correct": false },
+                { "text": "Proszkiem paprykowym", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z jakiego składnika odzwierzęcego produkuje się popularne kolorowe, miękkie żelki (np. Misie Haribo)?",
+              "answers": [
+                { "text": "Z żelatyny (kolagenu)", "is_correct": true },
+                { "text": "Z agaru", "is_correct": false },
+                { "text": "Z miodu", "is_correct": false },
+                { "text": "Ze skrobi ziemniaczanej", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Słynni Szefowie Kuchni",
+          "questions": [
+            {
+              "question": "Która bardzo charyzmatyczna restauratorka od lat prowadzi program 'Kuchenne rewolucje' w Polsce?",
+              "answers": [
+                { "text": "Magda Gessler", "is_correct": true },
+                { "text": "Ewa Wachowicz", "is_correct": false },
+                { "text": "Anna Starmach", "is_correct": false },
+                { "text": "Nigella Lawson", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się wybuchowy, szkocki szef kuchni, znany z ostrych przekleństw w programie 'Hell's Kitchen'?",
+              "answers": [
+                { "text": "Gordon Ramsay", "is_correct": true },
+                { "text": "Jamie Oliver", "is_correct": false },
+                { "text": "Marco Pierre White", "is_correct": false },
+                { "text": "Anthony Bourdain", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który znany, polski krytyk kulinarny i podróżnik zasłynął powiedzonkiem 'Eeeeee' i śmiechem przy jedzeniu?",
+              "answers": [
+                { "text": "Robert Makłowicz", "is_correct": true },
+                { "text": "Kuba Wojewódzki", "is_correct": false },
+                { "text": "Michel Moran", "is_correct": false },
+                { "text": "Karol Okrasa", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak ma na imię brytyjski kucharz, który poprowadził kampanię o zdrowe żywienie w szkołach (Nagi Szef)?",
+              "answers": [
+                { "text": "Jamie Oliver", "is_correct": true },
+                { "text": "Gordon Ramsay", "is_correct": false },
+                { "text": "Heston Blumenthal", "is_correct": false },
+                { "text": "Paul Hollywood", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który polski szef kuchni jako pierwszy w historii Polski zdobył w 2013 roku prestiżową Gwiazdkę Michelin?",
+              "answers": [
+                { "text": "Wojciech Modest Amaro", "is_correct": true },
+                { "text": "Mateusz Gessler", "is_correct": false },
+                { "text": "Dariusz Barański", "is_correct": false },
+                { "text": "Andrzej Polan", "is_correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category_name": "Społeczeństwo i Prawo",
+      "subcategories": [
+        {
+          "subcategory_name": "Konstytucja RP",
+          "questions": [
+            {
+              "question": "W którym roku uchwalono obowiązującą obecnie Konstytucję Rzeczypospolitej Polskiej?",
+              "answers": [
+                { "text": "W 1997 roku", "is_correct": true },
+                { "text": "W 1989 roku", "is_correct": false },
+                { "text": "W 1992 roku", "is_correct": false },
+                { "text": "W 2004 roku", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak określa się uroczysty, poetycki i ważny wstęp do Konstytucji, wyjaśniający jej powody powstania?",
+              "answers": [
+                { "text": "Preambuła", "is_correct": true },
+                { "text": "Epilog", "is_correct": false },
+                { "text": "Inwokacja", "is_correct": false },
+                { "text": "Postulat", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Na jakim fundamentalnym podziale opiera się ustrój państwa polskiego według Konstytucji?",
+              "answers": [
+                { "text": "Na trójpodziale władzy", "is_correct": true },
+                { "text": "Na władzy absolutnej", "is_correct": false },
+                { "text": "Na systemie dwupartyjnym", "is_correct": false },
+                { "text": "Na dwupodziale władzy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się najwyższy akt prawny w państwie, nazywany 'ustawą zasadniczą'?",
+              "answers": [
+                { "text": "Konstytucja", "is_correct": true },
+                { "text": "Kodeks Karny", "is_correct": false },
+                { "text": "Ustawa Sejmowa", "is_correct": false },
+                { "text": "Dekret", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Ilu dokładnie posłów zgodnie z Konstytucją zasiada zawsze w polskim Sejmie?",
+              "answers": [
+                { "text": "460 posłów", "is_correct": true },
+                { "text": "100 posłów", "is_correct": false },
+                { "text": "300 posłów", "is_correct": false },
+                { "text": "560 posłów", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Unia Europejska",
+          "questions": [
+            {
+              "question": "W którym roku Polska formalnie i oficjalnie stała się pełnoprawnym państwem członkowskim Unii Europejskiej?",
+              "answers": [
+                { "text": "W 2004 roku", "is_correct": true },
+                { "text": "W 1999 roku", "is_correct": false },
+                { "text": "W 2007 roku", "is_correct": false },
+                { "text": "W 1989 roku", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Które belgijskie miasto bywa powszechnie i potocznie nazywane nieformalną 'stolicą' Unii Europejskiej?",
+              "answers": [
+                { "text": "Bruksela", "is_correct": true },
+                { "text": "Brugia", "is_correct": false },
+                { "text": "Antwerpia", "is_correct": false },
+                { "text": "Genewa", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie porozumienie z 1985 roku znosi na co dzień fizyczne kontrole graniczne w większości Europy?",
+              "answers": [
+                { "text": "Układ z Schengen", "is_correct": true },
+                { "text": "Traktat Lizboński", "is_correct": false },
+                { "text": "Pakt Północnoatlantycki", "is_correct": false },
+                { "text": "Traktat Wersalski", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka wspólna waluta europejska obowiązuje dziś w większości państw członkowskich Unii (Strefa...)?",
+              "answers": [
+                { "text": "Euro", "is_correct": true },
+                { "text": "Dolar", "is_correct": false },
+                { "text": "Funt", "is_correct": false },
+                { "text": "Frank", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie ciało ustawodawcze Unii wybierane jest w bezpośrednich wyborach co 5 lat przez obywateli państw?",
+              "answers": [
+                { "text": "Parlament Europejski", "is_correct": true },
+                { "text": "Komisja Europejska", "is_correct": false },
+                { "text": "Rada Europejska", "is_correct": false },
+                { "text": "Trybunał Sprawiedliwości UE", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Systemy Polityczne",
+          "questions": [
+            {
+              "question": "W jakim współczesnym systemie politycznym to obywatele mają realny i największy wpływ na władzę w państwie?",
+              "answers": [
+                { "text": "W demokracji", "is_correct": true },
+                { "text": "W monarchii absolutnej", "is_correct": false },
+                { "text": "W totalitaryzmie", "is_correct": false },
+                { "text": "W autorytaryzmie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się państwo, w którym głową państwa jest dożywotni, zazwyczaj dziedziczny król lub cesarz?",
+              "answers": [
+                { "text": "Monarchia", "is_correct": true },
+                { "text": "Republika", "is_correct": false },
+                { "text": "Federacja", "is_correct": false },
+                { "text": "Demokracja", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z greckiego, jak dosłownie tłumaczy się słowo 'demokracja'?",
+              "answers": [
+                { "text": "Władza ludu", "is_correct": true },
+                { "text": "Władza mędrców", "is_correct": false },
+                { "text": "Władza najbogatszych", "is_correct": false },
+                { "text": "Władza siły", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywamy skrajnie opresyjny ustrój (jak u Stalina), w którym państwo kontroluje całkowicie życie obywateli?",
+              "answers": [
+                { "text": "Totalitaryzm", "is_correct": true },
+                { "text": "Anarchia", "is_correct": false },
+                { "text": "Monarchia parlamentarna", "is_correct": false },
+                { "text": "Teokracja", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki ustrój religijny panuje np. w Watykanie, gdzie najwyższą władzę pełni przywódca duchowy/religijny?",
+              "answers": [
+                { "text": "Teokracja", "is_correct": true },
+                { "text": "Republika", "is_correct": false },
+                { "text": "Plutokracja", "is_correct": false },
+                { "text": "Oligarchia", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Władza w Polsce",
+          "questions": [
+            {
+              "question": "Kto w Polsce stanowi Władzę Ustawodawczą i podejmuje decyzje o nowych prawach w kraju?",
+              "answers": [
+                { "text": "Sejm i Senat", "is_correct": true },
+                { "text": "Prezydent RP", "is_correct": false },
+                { "text": "Rada Ministrów i Premier", "is_correct": false },
+                { "text": "Sąd Najwyższy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie weto wobec przegłosowanej przez sejm ustawy posiada z ramienia konstytucji Prezydent RP?",
+              "answers": [
+                { "text": "Weto prezydenckie (ustawodawcze)", "is_correct": true },
+                { "text": "Weto absolutne", "is_correct": false },
+                { "text": "Liberum Veto", "is_correct": false },
+                { "text": "Weto ludowe", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto kieruje na co dzień pracami całej polskiej Rady Ministrów (Rządu) i koordynuje prace poszczególnych ministrów?",
+              "answers": [
+                { "text": "Prezes Rady Ministrów (Premier)", "is_correct": true },
+                { "text": "Prezydent RP", "is_correct": false },
+                { "text": "Marszałek Sejmu", "is_correct": false },
+                { "text": "Prezes Najwyższej Izby Kontroli", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Kto zgodnie z konstytucją zastępuje Prezydenta RP w razie jego śmierci lub niezdolności do pełnienia urzędu?",
+              "answers": [
+                { "text": "Marszałek Sejmu", "is_correct": true },
+                { "text": "Premier", "is_correct": false },
+                { "text": "Marszałek Senatu", "is_correct": false },
+                { "text": "Pierwszy Prezes Sądu Najwyższego", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Ilu dokładnie senatorów liczy wyższa izba polskiego parlamentu - Senat?",
+              "answers": [
+                { "text": "100 senatorów", "is_correct": true },
+                { "text": "460 senatorów", "is_correct": false },
+                { "text": "50 senatorów", "is_correct": false },
+                { "text": "300 senatorów", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Prawa Człowieka",
+          "questions": [
+            {
+              "question": "Jaki przełomowy dokument przyjęło Zgromadzenie Ogólne ONZ w 1948 r. w Paryżu w odpowiedzi na II Wojnę?",
+              "answers": [
+                { "text": "Powszechną Deklarację Praw Człowieka", "is_correct": true },
+                { "text": "Deklarację Niepodległości", "is_correct": false },
+                { "text": "Deklarację Praw Dziecka", "is_correct": false },
+                { "text": "Konwencję Genewską", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Skrót z jakiej nazwy organu działającego w Polsce, broniącego wolności obywatela przed państwem, to RPO?",
+              "answers": [
+                { "text": "Rzecznik Praw Obywatelskich", "is_correct": true },
+                { "text": "Rada Praw Osądzonych", "is_correct": false },
+                { "text": "Rejonowy Prokurator Okręgowy", "is_correct": false },
+                { "text": "Rzecznik Praw Ojca", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się wielka międzynarodowa organizacja pozarządowa, słynąca z obrony więźniów sumienia?",
+              "answers": [
+                { "text": "Amnesty International", "is_correct": true },
+                { "text": "Greenpeace", "is_correct": false },
+                { "text": "Czerwony Krzyż", "is_correct": false },
+                { "text": "UNICEF", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim znanym francuskim mieście we wschodniej części kraju mieści się Europejski Trybunał Praw Człowieka?",
+              "answers": [
+                { "text": "W Strasburgu", "is_correct": true },
+                { "text": "W Paryżu", "is_correct": false },
+                { "text": "W Lyonie", "is_correct": false },
+                { "text": "W Marsylii", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie fundamentalne prawo każdego z nas widnieje na samym szczycie we wszystkich umowach międzynarodowych?",
+              "answers": [
+                { "text": "Prawo do życia", "is_correct": true },
+                { "text": "Prawo do własności", "is_correct": false },
+                { "text": "Prawo do pracy", "is_correct": false },
+                { "text": "Prawo do rozrywki", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Podatki i Finanse",
+          "questions": [
+            {
+              "question": "Co oznacza w Polsce powszechny skrót PIT w odniesieniu do corocznego rozliczania się z urzędem?",
+              "answers": [
+                { "text": "Podatek dochodowy od osób fizycznych", "is_correct": true },
+                { "text": "Podatek od towarów i usług", "is_correct": false },
+                { "text": "Podatek od nieruchomości", "is_correct": false },
+                { "text": "Państwowy Instytut Transakcji", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się pośredni podatek nałożony w sklepie na każdy produkt i usługę w Polsce?",
+              "answers": [
+                { "text": "Podatek VAT", "is_correct": true },
+                { "text": "Podatek PIT", "is_correct": false },
+                { "text": "Podatek CIT", "is_correct": false },
+                { "text": "Podatek akcyzowy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Która państwowa instytucja w Polsce odpowiada za emisję naszych banknotów oraz bilonu?",
+              "answers": [
+                { "text": "Narodowy Bank Polski (NBP)", "is_correct": true },
+                { "text": "Mennica Polska", "is_correct": false },
+                { "text": "Ministerstwo Finansów", "is_correct": false },
+                { "text": "Polska Wytwórnia Papierów Wartościowych", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakim terminem makroekonomicznym w gospodarce nazywamy ogólny, stały wzrost cen towarów na rynku?",
+              "answers": [
+                { "text": "Inflacją", "is_correct": true },
+                { "text": "Deflacją", "is_correct": false },
+                { "text": "Hossą", "is_correct": false },
+                { "text": "Recesją", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Na jakie szkodliwe lub luksusowe towary nałożony jest w Polsce wysoki, specjalny podatek zwany akcyzą?",
+              "answers": [
+                { "text": "Na alkohol, papierosy i paliwa", "is_correct": true },
+                { "text": "Na leki i wyroby medyczne", "is_correct": false },
+                { "text": "Na książki i gazety", "is_correct": false },
+                { "text": "Na chleb i nabiał", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Instytucje Państwowe",
+          "questions": [
+            {
+              "question": "Jaka publiczna instytucja pobiera w Polsce z Twojej pensji ogromne składki m.in na twoją emeryturę?",
+              "answers": [
+                { "text": "ZUS (Zakład Ubezpieczeń Społecznych)", "is_correct": true },
+                { "text": "NFZ (Narodowy Fundusz Zdrowia)", "is_correct": false },
+                { "text": "GUS (Główny Urząd Statystyczny)", "is_correct": false },
+                { "text": "US (Urząd Skarbowy)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Z kim placówki medyczne podpisują kontrakty, by polscy pacjenci mogli leczyć się państwowo i bez opłat?",
+              "answers": [
+                { "text": "Z Narodowym Funduszem Zdrowia (NFZ)", "is_correct": true },
+                { "text": "Z Ministerstwem Zdrowia", "is_correct": false },
+                { "text": "Z Zakładem Ubezpieczeń Społecznych", "is_correct": false },
+                { "text": "Z Głównym Inspektoratem Sanitarnym", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaka państwowa organizacja zajmuje się zbieraniem ankiet i prowadzeniem spisów (np. spisu powszechnego)?",
+              "answers": [
+                { "text": "GUS (Główny Urząd Statystyczny)", "is_correct": true },
+                { "text": "CBOS", "is_correct": false },
+                { "text": "NIK", "is_correct": false },
+                { "text": "ZUS", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Która instytucja to naczelny organ kontroli państwowej w Polsce, dbający m.in o przejrzystość finansów?",
+              "answers": [
+                { "text": "Najwyższa Izba Kontroli (NIK)", "is_correct": true },
+                { "text": "Urząd Ochrony Konkurencji i Konsumentów", "is_correct": false },
+                { "text": "Sąd Najwyższy", "is_correct": false },
+                { "text": "Centralne Biuro Antykorupcyjne", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Co bada powołany w Polsce IPN, zajmujący się w głównej mierze archiwami komunistycznymi?",
+              "answers": [
+                { "text": "Instytut Pamięci Narodowej bada zbrodnie nazistowskie i komunistyczne", "is_correct": true },
+                { "text": "Instytut Podatków Narodowych bada korupcję", "is_correct": false },
+                { "text": "Instytucja Policji Narodowej tropi przestępców", "is_correct": false },
+                { "text": "Instytut Polskich Nauk gromadzi wiedzę o kraju", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Wybory i Głosowanie",
+          "questions": [
+            {
+              "question": "Jakie fundamentalne prawo obywatela określa minimalny wiek potrzebny do czynnego udziału w wyborach?",
+              "answers": [
+                { "text": "Czynne prawo wyborcze (18 lat)", "is_correct": true },
+                { "text": "Bierne prawo wyborcze", "is_correct": false },
+                { "text": "Prawo prezydenckie", "is_correct": false },
+                { "text": "Obywatelski wniosek wyborczy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się okres przeddzień wyborów, w którym kategorycznie zakazane jest agitowanie na rzecz kandydatów?",
+              "answers": [
+                { "text": "Cisza wyborcza", "is_correct": true },
+                { "text": "Noc wyborcza", "is_correct": false },
+                { "text": "Kwarantanna polityczna", "is_correct": false },
+                { "text": "Dzień refleksji", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Przez ile lat z rzędu w polskim państwie trwa pojedyncza, standardowa kadencja urzędu Prezydenta RP?",
+              "answers": [
+                { "text": "5 lat", "is_correct": true },
+                { "text": "4 lata", "is_correct": false },
+                { "text": "6 lat", "is_correct": false },
+                { "text": "7 lat", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak określa się procentowy stosunek obywateli biorących realny udział w głosowaniu do wszystkich uprawnionych?",
+              "answers": [
+                { "text": "Frekwencja wyborcza", "is_correct": true },
+                { "text": "Większość bezwzględna", "is_correct": false },
+                { "text": "Proporcjonalność", "is_correct": false },
+                { "text": "Mobilizacja sondażowa", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jaki sposób wybierany jest Prezydent RP, jeśli wszyscy uprawnieni Polacy oddają bezpośrednio na niego głos?",
+              "answers": [
+                { "text": "W wyborach powszechnych i bezpośrednich", "is_correct": true },
+                { "text": "Przez zgromadzenie elektorów", "is_correct": false },
+                { "text": "W głosowaniu jawnym sejmu i senatu", "is_correct": false },
+                { "text": "Przez radę narodową", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Prawo Karne i Sądowe",
+          "questions": [
+            {
+              "question": "Jaka naczelna, złota zasada w prawie każe nam uważać oskarżonego za niewinnego, zanim zapadnie prawomocny wyrok?",
+              "answers": [
+                { "text": "Domniemanie niewinności", "is_correct": true },
+                { "text": "Zasada wzajemności", "is_correct": false },
+                { "text": "Wolność słowa", "is_correct": false },
+                { "text": "Obrona konieczna", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który z podanych organów jest naczelnym i najważniejszym organem instancji sądowej w całej Rzeczypospolitej Polskiej?",
+              "answers": [
+                { "text": "Sąd Najwyższy", "is_correct": true },
+                { "text": "Sąd Rejonowy", "is_correct": false },
+                { "text": "Trybunał Stanu", "is_correct": false },
+                { "text": "Sąd Okręgowy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak określa się przedstawiciela państwa (zawsze prawnika), który wnosi akt oskarżenia w procesie karnym przed sądem?",
+              "answers": [
+                { "text": "Prokurator", "is_correct": true },
+                { "text": "Adwokat", "is_correct": false },
+                { "text": "Radca prawny", "is_correct": false },
+                { "text": "Notariusz", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Czym w śledztwach policyjnych jest tzw. alibi, przedstawiane przez oskarżonego lub podejrzanego?",
+              "answers": [
+                { "text": "Dowodem przebywania w innym miejscu", "is_correct": true },
+                { "text": "Fałszywym zeznaniem", "is_correct": false },
+                { "text": "Przyznaniem się do winy", "is_correct": false },
+                { "text": "Rodzajem wyroku", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim obszernym zbiorze przepisów znajdziemy dokładną listę przestępstw obowiązujących w Polsce oraz kar?",
+              "answers": [
+                { "text": "W Kodeksie Karnym", "is_correct": true },
+                { "text": "W Kodeksie Cywilnym", "is_correct": false },
+                { "text": "W Konstytucji", "is_correct": false },
+                { "text": "W Kodeksie Pracy", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Edukacja i Szkolnictwo",
+          "questions": [
+            {
+              "question": "Jaki tradycyjnie i ogólnopolski egzamin, nazywany 'egzaminem dojrzałości', otwiera w Polsce drogę na studia?",
+              "answers": [
+                { "text": "Matura", "is_correct": true },
+                { "text": "Egzamin ósmoklasisty", "is_correct": false },
+                { "text": "Egzamin zawodowy", "is_correct": false },
+                { "text": "Obrona pracy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak brzmi skrót nazwy ministerstwa w Polsce, które opiekuje się szkołami od przedszkola po licea?",
+              "answers": [
+                { "text": "MEN (Ministerstwo Edukacji Narodowej)", "is_correct": true },
+                { "text": "MON (Ministerstwo Obrony Narodowej)", "is_correct": false },
+                { "text": "NFZ (Narodowy Fundusz Zdrowia)", "is_correct": false },
+                { "text": "ZHP (Związek Harcerstwa Polskiego)", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Do którego roku życia na terenie państwa polskiego każde dziecko, ze względu na wiek, jest objęte powszechnym obowiązkiem nauki?",
+              "answers": [
+                { "text": "Do 18. roku życia", "is_correct": true },
+                { "text": "Do 15. roku życia", "is_correct": false },
+                { "text": "Do 21. roku życia", "is_correct": false },
+                { "text": "Do 16. roku życia", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaką potoczną i tradycyjną nazwę nosi książeczka studenta, będąca przed laty dowodem wpisu do sesji i zdania egzaminów?",
+              "answers": [
+                { "text": "Indeks", "is_correct": true },
+                { "text": "Dziennik", "is_correct": false },
+                { "text": "Paszport", "is_correct": false },
+                { "text": "Dzienniczek ucznia", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak tytułowany jest uroczyście najważniejszy urzędnik, najwyższy przełożony pracowników i studentów danej wyższej uczelni?",
+              "answers": [
+                { "text": "Jego Magnificencja Rektor", "is_correct": true },
+                { "text": "Dziekan Wydziału", "is_correct": false },
+                { "text": "Dyrektor Uczelni", "is_correct": false },
+                { "text": "Promotor", "is_correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
