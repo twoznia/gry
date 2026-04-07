@@ -184,7 +184,7 @@
             font-weight: 800;
         }
 
-        #pairs-counter {
+        #pairs-counter, #moves-counter {
             font-size: 0.95rem;
             font-weight: 600;
             color: rgba(255,255,255,0.65);
@@ -270,6 +270,7 @@
         .win-emoji { font-size: 5rem; line-height: 1; }
         .win-title { font-size: 2rem; font-weight: 900; }
         .win-time { font-size: 3.5rem; font-weight: 900; color: #fbbf24; letter-spacing: -2px; }
+        .win-moves { font-size: 1.15rem; font-weight: 700; color: rgba(255,255,255,0.75); margin-top: -0.25rem; }
         .win-record { font-size: 1rem; color: rgba(255,255,255,0.65); }
         .win-record.new-record { color: #fbbf24; font-size: 1.2rem; font-weight: 700; }
 
@@ -354,6 +355,7 @@
     <div id="hud">
         <span id="timer-display">00:00</span>
         <span id="pairs-counter"></span>
+        <span id="moves-counter"></span>
     </div>
     <div id="board"></div>
 </div>
@@ -363,6 +365,7 @@
     <div class="win-emoji">🎉</div>
     <div class="win-title" id="win-title">Brawo!</div>
     <div class="win-time" id="win-time"></div>
+    <div class="win-moves" id="win-moves"></div>
     <div class="win-record" id="win-record"></div>
     <div class="win-btns">
         <button class="btn btn-primary" id="win-again-btn" onclick="startGame()">🔄 Jeszcze raz</button>
@@ -391,6 +394,7 @@ const T = {
         winMenu: '🏠 Menu',
         newRecord: '🏆 Nowy rekord!',
         prevRecord: 'Poprzedni rekord:',
+        moves: 'ruchów',
     },
     en: {
         backLabel: 'Menu',
@@ -406,6 +410,7 @@ const T = {
         winMenu: '🏠 Menu',
         newRecord: '🏆 New record!',
         prevRecord: 'Previous record:',
+        moves: 'moves',
     }
 };
 
@@ -478,6 +483,7 @@ let elapsedSeconds  = 0;
 let flippedCards    = [];
 let matchedPairs    = 0;
 let totalPairs      = 0;
+let moveCount       = 0;
 let isLocked        = false;
 
 /* ═══════════════════════════════════════
@@ -548,6 +554,7 @@ function startGame() {
     totalPairs  = size.pairs;
     matchedPairs = 0;
     flippedCards = [];
+    moveCount    = 0;
     isLocked     = false;
     elapsedSeconds = 0;
 
@@ -642,6 +649,8 @@ function startGame() {
 function updatePairsCounter() {
     const el = document.getElementById('pairs-counter');
     if (el) el.textContent = `${matchedPairs}/${totalPairs} ${T[lang].pairs}`;
+    const mv = document.getElementById('moves-counter');
+    if (mv) mv.textContent = `${moveCount} ${T[lang].moves}`;
 }
 
 function flipCard(card) {
@@ -654,6 +663,8 @@ function flipCard(card) {
 
     if (flippedCards.length === 2) {
         isLocked = true;
+        moveCount++;
+        updatePairsCounter();
         checkMatch();
     }
 }
@@ -690,7 +701,8 @@ function endGame() {
     if (isNew) saveRecord(selectedSizeKey, finalSec);
 
     const t = T[lang];
-    document.getElementById('win-time').textContent = fmtTime(finalSec);
+    document.getElementById('win-time').textContent  = fmtTime(finalSec);
+    document.getElementById('win-moves').textContent = `${moveCount} ${t.moves}`;
 
     const recEl = document.getElementById('win-record');
     if (isNew) {
