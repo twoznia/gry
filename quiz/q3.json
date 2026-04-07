@@ -1,0 +1,259 @@
+{
+  "categories": [
+    {
+      "category_name": "Geografia i Turystyka",
+      "subcategories": [
+        {
+          "subcategory_name": "Cuda Świata UNESCO",
+          "questions": [
+            {
+              "question": "Który zamek z cegły w Polsce jest na liście UNESCO?",
+              "answers": [
+                { "text": "Zamek w Malborku", "is_correct": true },
+                { "text": "Wawel", "is_correct": false },
+                { "text": "Zamek Książ", "is_correct": false },
+                { "text": "Zamek Królewski w Warszawie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jak nazywa się prehistoryczna kopalnia krzemienia pasiastego w Polsce?",
+              "answers": [
+                { "text": "Krzemionki Opatowskie", "is_correct": true },
+                { "text": "Kopalnia w Wieliczce", "is_correct": false },
+                { "text": "Biskupin", "is_correct": false },
+                { "text": "Jaskinia Raj", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki słynny indyjski grobowiec z białego marmuru jest na liście UNESCO?",
+              "answers": [
+                { "text": "Tadż Mahal", "is_correct": true },
+                { "text": "Angkor Wat", "is_correct": false },
+                { "text": "Machu Picchu", "is_correct": false },
+                { "text": "Petra", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który las na granicy polsko-białoruskiej jest dziedzictwem UNESCO?",
+              "answers": [
+                { "text": "Puszcza Białowieska", "is_correct": true },
+                { "text": "Puszcza Kampinoska", "is_correct": false },
+                { "text": "Bory Tucholskie", "is_correct": false },
+                { "text": "Puszcza Niepołomicka", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim kraju znajduje się starożytne miasto Inków, Machu Picchu?",
+              "answers": [
+                { "text": "W Peru", "is_correct": true },
+                { "text": "W Meksyku", "is_correct": false },
+                { "text": "W Boliwii", "is_correct": false },
+                { "text": "W Kolumbii", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Parki Narodowe w Polsce",
+          "questions": [
+            {
+              "question": "Który park narodowy chroni największy obszar wydm ruchomych w Polsce?",
+              "answers": [
+                { "text": "Słowiński PN", "is_correct": true },
+                { "text": "Woliński PN", "is_correct": false },
+                { "text": "Kampinoski PN", "is_correct": false },
+                { "text": "Poleski PN", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Symbol jakiego parku narodowego przedstawia żubra?",
+              "answers": [
+                { "text": "Białowieskiego PN", "is_correct": true },
+                { "text": "Bieszczadzkiego PN", "is_correct": false },
+                { "text": "Świętokrzyskiego PN", "is_correct": false },
+                { "text": "Tatrzańskiego PN", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie góry obejmuje park narodowy z symbolem rysia w herbie?",
+              "answers": [
+                { "text": "Bieszczady", "is_correct": true },
+                { "text": "Tatry", "is_correct": false },
+                { "text": "Karkonosze", "is_correct": false },
+                { "text": "Pieniny", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Gdzie w Polsce znajdziesz Maczugę Herkulesa?",
+              "answers": [
+                { "text": "W Ojcowskim PN", "is_correct": true },
+                { "text": "W Tatrzańskim PN", "is_correct": false },
+                { "text": "W Pienińskim PN", "is_correct": false },
+                { "text": "W Karkonoskim PN", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki park narodowy znany jest z pięknych, jeziornych krajobrazów?",
+              "answers": [
+                { "text": "Wigierski PN", "is_correct": true },
+                { "text": "Poleski PN", "is_correct": false },
+                { "text": "Roztoczański PN", "is_correct": false },
+                { "text": "Biebrzański PN", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Kontynenty i Oceany",
+          "questions": [
+            {
+              "question": "Który kontynent jest największy pod względem powierzchni i ludności?",
+              "answers": [
+                { "text": "Azja", "is_correct": true },
+                { "text": "Afryka", "is_correct": false },
+                { "text": "Ameryka Północna", "is_correct": false },
+                { "text": "Europa", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki ocean oblewający Europę od zachodu jest drugim co do wielkości?",
+              "answers": [
+                { "text": "Ocean Atlantycki", "is_correct": true },
+                { "text": "Ocean Spokojny", "is_correct": false },
+                { "text": "Ocean Indyjski", "is_correct": false },
+                { "text": "Ocean Arktyczny", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Który kontynent jest w całości pokryty lodem i nie ma stałych mieszkańców?",
+              "answers": [
+                { "text": "Antarktyda", "is_correct": true },
+                { "text": "Arktyka", "is_correct": false },
+                { "text": "Australia", "is_correct": false },
+                { "text": "Grenlandia", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki ocean jest największy i najgłębszy na naszej planecie?",
+              "answers": [
+                { "text": "Ocean Spokojny", "is_correct": true },
+                { "text": "Ocean Atlantycki", "is_correct": false },
+                { "text": "Ocean Indyjski", "is_correct": false },
+                { "text": "Ocean Południowy", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Gdzie leży pustynia Sahara?",
+              "answers": [
+                { "text": "W Afryce Północnej", "is_correct": true },
+                { "text": "W Ameryce Południowej", "is_correct": false },
+                { "text": "W Australii", "is_correct": false },
+                { "text": "W Azji Środkowej", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Województwa i Miasta Polski",
+          "questions": [
+            {
+              "question": "W jakim województwie znajduje się Wrocław?",
+              "answers": [
+                { "text": "Dolnośląskim", "is_correct": true },
+                { "text": "Śląskim", "is_correct": false },
+                { "text": "Opolskim", "is_correct": false },
+                { "text": "Wielkopolskim", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie miasto jest stolicą województwa podkarpackiego?",
+              "answers": [
+                { "text": "Rzeszów", "is_correct": true },
+                { "text": "Lublin", "is_correct": false },
+                { "text": "Przemyśl", "is_correct": false },
+                { "text": "Kielce", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Które województwo słynie z jezior i jest nazywane 'Krainą Tysiąca Jezior'?",
+              "answers": [
+                { "text": "Warmińsko-mazurskie", "is_correct": true },
+                { "text": "Pomorskie", "is_correct": false },
+                { "text": "Zachodniopomorskie", "is_correct": false },
+                { "text": "Podlaskie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Gdzie znajduje się słynna ulica Piotrkowska?",
+              "answers": [
+                { "text": "W Łodzi", "is_correct": true },
+                { "text": "W Krakowie", "is_correct": false },
+                { "text": "W Warszawie", "is_correct": false },
+                { "text": "We Wrocławiu", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W którym mieście zjesz tradycyjne rogale świętomarcińskie?",
+              "answers": [
+                { "text": "W Poznaniu", "is_correct": true },
+                { "text": "W Bydgoszczy", "is_correct": false },
+                { "text": "W Toruniu", "is_correct": false },
+                { "text": "W Gnieźnie", "is_correct": false }
+              ]
+            }
+          ]
+        },
+        {
+          "subcategory_name": "Góry Świata",
+          "questions": [
+            {
+              "question": "Jaki jest najwyższy szczyt Ziemi?",
+              "answers": [
+                { "text": "Mount Everest", "is_correct": true },
+                { "text": "K2", "is_correct": false },
+                { "text": "Kilimandżaro", "is_correct": false },
+                { "text": "Mont Blanc", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim paśmie górskim leży Mount Everest?",
+              "answers": [
+                { "text": "W Himalajach", "is_correct": true },
+                { "text": "W Andach", "is_correct": false },
+                { "text": "W Alpach", "is_correct": false },
+                { "text": "W Kaukazie", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jaki jest najwyższy szczyt Afryki?",
+              "answers": [
+                { "text": "Kilimandżaro", "is_correct": true },
+                { "text": "Góra Kenia", "is_correct": false },
+                { "text": "Atlas", "is_correct": false },
+                { "text": "Fudżi", "is_correct": false }
+              ]
+            },
+            {
+              "question": "Jakie góry oddzielają Europę od Azji na wschodzie?",
+              "answers": [
+                { "text": "Ural", "is_correct": true },
+                { "text": "Kaukaz", "is_correct": false },
+                { "text": "Pireneje", "is_correct": false },
+                { "text": "Karpaty", "is_correct": false }
+              ]
+            },
+            {
+              "question": "W jakim kraju znajduje się wulkan Fudżi?",
+              "answers": [
+                { "text": "W Japonii", "is_correct": true },
+                { "text": "W Indonezji", "is_correct": false },
+                { "text": "W Nowej Zelandii", "is_correct": false },
+                { "text": "We Włoszech", "is_correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
