@@ -1,0 +1,1766 @@
+{
+  "category": "Film i Telewizja",
+  "icon": "🎬",
+  "questions": [
+    {
+      "subcategory": "Komedie Stanisława Barei",
+      "question": "Jakiego fikcyjnego klubu sportowego prezesem jest Ryszard Ochódzki w filmie 'Miś'?",
+      "answers": [
+        {
+          "text": "KS Tęcza",
+          "is_correct": true
+        },
+        {
+          "text": "KS Orzeł",
+          "is_correct": false
+        },
+        {
+          "text": "KS Polonia",
+          "is_correct": false
+        },
+        {
+          "text": "KS Sparta",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komedie Stanisława Barei",
+      "question": "Kto gra kultową rolę gospodarza domu, Stanisława Anioła, w serialu 'Alternatywy 4'?",
+      "answers": [
+        {
+          "text": "Roman Wilhelmi",
+          "is_correct": true
+        },
+        {
+          "text": "Stanisław Tym",
+          "is_correct": false
+        },
+        {
+          "text": "Janusz Gajos",
+          "is_correct": false
+        },
+        {
+          "text": "Bronisław Pawlik",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komedie Stanisława Barei",
+      "question": "Z jakiego filmu pochodzi tekst: 'Nie mamy pańskiego płaszcza i co pan nam zrobi?'?",
+      "answers": [
+        {
+          "text": "Z filmu 'Miś'",
+          "is_correct": true
+        },
+        {
+          "text": "Z 'Bruneta wieczorową porą'",
+          "is_correct": false
+        },
+        {
+          "text": "Z 'Co mi zrobisz, jak mnie złapiesz'",
+          "is_correct": false
+        },
+        {
+          "text": "Z 'Rozmów kontrolowanych'",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komedie Stanisława Barei",
+      "question": "Jaki tytuł nosi komedia Barei o historyku sztuki ukrywającym się w przebraniu pomocy domowej?",
+      "answers": [
+        {
+          "text": "Poszukiwany, poszukiwana",
+          "is_correct": true
+        },
+        {
+          "text": "Zmiennicy",
+          "is_correct": false
+        },
+        {
+          "text": "Żona dla Australijczyka",
+          "is_correct": false
+        },
+        {
+          "text": "Małżeństwo z rozsądku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komedie Stanisława Barei",
+      "question": "Jakim kolorem taksówki jeździł bohater w kultowym serialu 'Zmiennicy'?",
+      "answers": [
+        {
+          "text": "Żółtym (Polski Fiat 125p)",
+          "is_correct": true
+        },
+        {
+          "text": "Czerwonym (Polonez)",
+          "is_correct": false
+        },
+        {
+          "text": "Czarnym (Wołga)",
+          "is_correct": false
+        },
+        {
+          "text": "Białym (Warszawa)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody Oscar",
+      "question": "Jaki reżyser otrzymał Oscara za polski dramat 'Ida', wybrany najlepszym filmem nieanglojęzycznym?",
+      "answers": [
+        {
+          "text": "Paweł Pawlikowski",
+          "is_correct": true
+        },
+        {
+          "text": "Andrzej Wajda",
+          "is_correct": false
+        },
+        {
+          "text": "Roman Polański",
+          "is_correct": false
+        },
+        {
+          "text": "Jerzy Skolimowski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody Oscar",
+      "question": "Z czego faktycznie wykonana jest rdzenna część słynnej amerykańskiej statuetki Oscara?",
+      "answers": [
+        {
+          "text": "Z brązu (pokrytego 24-karatowym złotem)",
+          "is_correct": true
+        },
+        {
+          "text": "Z litego złota",
+          "is_correct": false
+        },
+        {
+          "text": "Ze srebra (pozłacanego)",
+          "is_correct": false
+        },
+        {
+          "text": "Z mosiądzu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody Oscar",
+      "question": "Kto wyreżyserował film 'Lista Schindlera', za który zdobył m.in. Oscara dla Najlepszego Reżysera?",
+      "answers": [
+        {
+          "text": "Steven Spielberg",
+          "is_correct": true
+        },
+        {
+          "text": "Martin Scorsese",
+          "is_correct": false
+        },
+        {
+          "text": "Francis Ford Coppola",
+          "is_correct": false
+        },
+        {
+          "text": "James Cameron",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody Oscar",
+      "question": "Który z tych epickich filmów zdobył historyczny rekord aż 11 Oscarów?",
+      "answers": [
+        {
+          "text": "Władca Pierścieni: Powrót Króla",
+          "is_correct": true
+        },
+        {
+          "text": "Przeminęło z wiatrem",
+          "is_correct": false
+        },
+        {
+          "text": "Ojciec Chrzestny",
+          "is_correct": false
+        },
+        {
+          "text": "Forrest Gump",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody Oscar",
+      "question": "Która legendarna aktorka jest rekordzistką pod względem ilości zdobytych Oscarów za grę aktorską?",
+      "answers": [
+        {
+          "text": "Katharine Hepburn (4 statuetki)",
+          "is_correct": true
+        },
+        {
+          "text": "Meryl Streep",
+          "is_correct": false
+        },
+        {
+          "text": "Ingrid Bergman",
+          "is_correct": false
+        },
+        {
+          "text": "Jane Fonda",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Polskie Seriale",
+      "question": "Jak wabił się słynny owczarek niemiecki z serialu 'Czterej pancerni i pies'?",
+      "answers": [
+        {
+          "text": "Szarik",
+          "is_correct": true
+        },
+        {
+          "text": "Reksio",
+          "is_correct": false
+        },
+        {
+          "text": "Cywil",
+          "is_correct": false
+        },
+        {
+          "text": "Puszek",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Polskie Seriale",
+      "question": "Który polski aktor wcielał się w rolę brawurowego agenta J-23 (Hansa Klossa)?",
+      "answers": [
+        {
+          "text": "Stanisław Mikulski",
+          "is_correct": true
+        },
+        {
+          "text": "Emil Karewicz",
+          "is_correct": false
+        },
+        {
+          "text": "Janusz Gajos",
+          "is_correct": false
+        },
+        {
+          "text": "Andrzej Kopiczyński",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Polskie Seriale",
+      "question": "Jak miał na imię inżynier Karwowski, główny bohater popularnego serialu z lat 70.?",
+      "answers": [
+        {
+          "text": "Stefan",
+          "is_correct": true
+        },
+        {
+          "text": "Ryszard",
+          "is_correct": false
+        },
+        {
+          "text": "Marian",
+          "is_correct": false
+        },
+        {
+          "text": "Andrzej",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Polskie Seriale",
+      "question": "Jaki warszawski serial komediowy opowiada o perypetiach rodziny Norków i Krawczyków?",
+      "answers": [
+        {
+          "text": "Miodowe lata",
+          "is_correct": true
+        },
+        {
+          "text": "Świat według Kiepskich",
+          "is_correct": false
+        },
+        {
+          "text": "Graczykowie",
+          "is_correct": false
+        },
+        {
+          "text": "Kasia i Tomek",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Polskie Seriale",
+      "question": "O jakiej rodzinie opowiada uwielbiany polski serial 'Rodzinka.pl' z Tomaszem Karolakiem?",
+      "answers": [
+        {
+          "text": "O rodzinie Boskich",
+          "is_correct": true
+        },
+        {
+          "text": "O rodzinie Lubiczów",
+          "is_correct": false
+        },
+        {
+          "text": "O rodzinie Zduńskich",
+          "is_correct": false
+        },
+        {
+          "text": "O rodzinie Mostowiaków",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kino Marvela i DC",
+      "question": "Kto brawurowo zagrał rolę Tony'ego Starka w kultowym filmie 'Iron Man' z 2008 r.?",
+      "answers": [
+        {
+          "text": "Robert Downey Jr.",
+          "is_correct": true
+        },
+        {
+          "text": "Chris Evans",
+          "is_correct": false
+        },
+        {
+          "text": "Chris Hemsworth",
+          "is_correct": false
+        },
+        {
+          "text": "Mark Ruffalo",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kino Marvela i DC",
+      "question": "Jak w komiksach i filmach DC brzmi prawdziwe imię i nazwisko człowieka-nietoperza, Batmana?",
+      "answers": [
+        {
+          "text": "Bruce Wayne",
+          "is_correct": true
+        },
+        {
+          "text": "Clark Kent",
+          "is_correct": false
+        },
+        {
+          "text": "Barry Allen",
+          "is_correct": false
+        },
+        {
+          "text": "Peter Parker",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kino Marvela i DC",
+      "question": "Z jakiego niezwykle wytrzymałego, fikcyjnego metalu zrobiona jest tarcza Kapitana Ameryki?",
+      "answers": [
+        {
+          "text": "Z vibranium",
+          "is_correct": true
+        },
+        {
+          "text": "Z adamantium",
+          "is_correct": false
+        },
+        {
+          "text": "Z kryptonitu",
+          "is_correct": false
+        },
+        {
+          "text": "Z uru",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kino Marvela i DC",
+      "question": "Który z superbohaterów uniwersum DC jest w połowie człowiekiem, a w połowie Atlantą?",
+      "answers": [
+        {
+          "text": "Aquaman",
+          "is_correct": true
+        },
+        {
+          "text": "Flash",
+          "is_correct": false
+        },
+        {
+          "text": "Cyborg",
+          "is_correct": false
+        },
+        {
+          "text": "Superman",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kino Marvela i DC",
+      "question": "Jaki kolor skóry charakteryzuje Thanosa, głównego antagonistę w sadze filmów 'Avengers'?",
+      "answers": [
+        {
+          "text": "Fioletowy",
+          "is_correct": true
+        },
+        {
+          "text": "Zielony",
+          "is_correct": false
+        },
+        {
+          "text": "Niebieski",
+          "is_correct": false
+        },
+        {
+          "text": "Szary",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Hollywood",
+      "question": "Jaki hollywoodzki aktor zagrał przejmującą, główną rolę w filmie 'Forrest Gump'?",
+      "answers": [
+        {
+          "text": "Tom Hanks",
+          "is_correct": true
+        },
+        {
+          "text": "Brad Pitt",
+          "is_correct": false
+        },
+        {
+          "text": "Tom Cruise",
+          "is_correct": false
+        },
+        {
+          "text": "Nicolas Cage",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Hollywood",
+      "question": "Który aktor wcielił się w rolę młodego artysty Jacka Dawsona w megaprodukcji 'Titanic'?",
+      "answers": [
+        {
+          "text": "Leonardo DiCaprio",
+          "is_correct": true
+        },
+        {
+          "text": "Johnny Depp",
+          "is_correct": false
+        },
+        {
+          "text": "Matt Damon",
+          "is_correct": false
+        },
+        {
+          "text": "Matthew McConaughey",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Hollywood",
+      "question": "Jak nazywa się aktorka, która wcieliła się w tytułową, kultową rolę w hicie 'Barbie' z 2023 r.?",
+      "answers": [
+        {
+          "text": "Margot Robbie",
+          "is_correct": true
+        },
+        {
+          "text": "Emma Stone",
+          "is_correct": false
+        },
+        {
+          "text": "Jennifer Lawrence",
+          "is_correct": false
+        },
+        {
+          "text": "Scarlett Johansson",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Hollywood",
+      "question": "Z jakim aktorem na planie filmu 'Pan i Pani Smith' poznała się Angelina Jolie?",
+      "answers": [
+        {
+          "text": "Z Bradem Pittem",
+          "is_correct": true
+        },
+        {
+          "text": "Z Georgem Clooneyem",
+          "is_correct": false
+        },
+        {
+          "text": "Z Antonio Banderasem",
+          "is_correct": false
+        },
+        {
+          "text": "Z Keanu Reevesem",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Hollywood",
+      "question": "W jakiej wielkiej, morskiej serii filmów Johnny Depp wykreował postać Kapitana Jacka Sparrowa?",
+      "answers": [
+        {
+          "text": "Piraci z Karaibów",
+          "is_correct": true
+        },
+        {
+          "text": "Pan i Władca: Na krańcu świata",
+          "is_correct": false
+        },
+        {
+          "text": "Wodny Świat",
+          "is_correct": false
+        },
+        {
+          "text": "Ostatni Mohikanin",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polscy Reżyserzy",
+      "question": "Kto z polskich reżyserów stworzył adaptację słynnej Sienkiewiczowskiej Trylogii?",
+      "answers": [
+        {
+          "text": "Jerzy Hoffman",
+          "is_correct": true
+        },
+        {
+          "text": "Andrzej Wajda",
+          "is_correct": false
+        },
+        {
+          "text": "Krzysztof Zanussi",
+          "is_correct": false
+        },
+        {
+          "text": "Roman Polański",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polscy Reżyserzy",
+      "question": "Który reżyser z Polski jest twórcą światowych hitów jak 'Pianista' czy 'Chinatown'?",
+      "answers": [
+        {
+          "text": "Roman Polański",
+          "is_correct": true
+        },
+        {
+          "text": "Agnieszka Holland",
+          "is_correct": false
+        },
+        {
+          "text": "Andrzej Żuławski",
+          "is_correct": false
+        },
+        {
+          "text": "Jerzy Skolimowski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polscy Reżyserzy",
+      "question": "Za co legendarny polski twórca Andrzej Wajda odebrał statuetkę Oscara w 2000 r.?",
+      "answers": [
+        {
+          "text": "Za całokształt twórczości",
+          "is_correct": true
+        },
+        {
+          "text": "Za film 'Katyń'",
+          "is_correct": false
+        },
+        {
+          "text": "Za film 'Człowiek z żelaza'",
+          "is_correct": false
+        },
+        {
+          "text": "Za najlepszy scenariusz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polscy Reżyserzy",
+      "question": "Jak nazywa się młody reżyser nominowany do Oscara za poruszający film 'Boże Ciało'?",
+      "answers": [
+        {
+          "text": "Jan Komasa",
+          "is_correct": true
+        },
+        {
+          "text": "Patryk Vega",
+          "is_correct": false
+        },
+        {
+          "text": "Wojciech Smarzowski",
+          "is_correct": false
+        },
+        {
+          "text": "Mitja Okorn",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polscy Reżyserzy",
+      "question": "Kto jest twórcą znakomitego, wieloczęściowego cyklu telewizyjnego 'Dekalog'?",
+      "answers": [
+        {
+          "text": "Krzysztof Kieślowski",
+          "is_correct": true
+        },
+        {
+          "text": "Stanisław Bareja",
+          "is_correct": false
+        },
+        {
+          "text": "Władysław Pasikowski",
+          "is_correct": false
+        },
+        {
+          "text": "Juliusz Machulski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Filmy Animowane",
+      "question": "Gdzie rozgrywa się akcja animowanego klasyku Disneya 'Król Lew'?",
+      "answers": [
+        {
+          "text": "Na afrykańskiej sawannie",
+          "is_correct": true
+        },
+        {
+          "text": "W indyjskiej dżungli",
+          "is_correct": false
+        },
+        {
+          "text": "W australijskim buszu",
+          "is_correct": false
+        },
+        {
+          "text": "Na amerykańskiej prerii",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Filmy Animowane",
+      "question": "Jak ma na imię zrzędliwy, zielony ogr z bagien, główny bohater hitu studia DreamWorks?",
+      "answers": [
+        {
+          "text": "Shrek",
+          "is_correct": true
+        },
+        {
+          "text": "Hulk",
+          "is_correct": false
+        },
+        {
+          "text": "Stitch",
+          "is_correct": false
+        },
+        {
+          "text": "Olaf",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Filmy Animowane",
+      "question": "Z jakiego, obecnie największego studia animacji, pierwotnie pochodzi postać Myszki Miki?",
+      "answers": [
+        {
+          "text": "Z Walt Disney Animation Studios",
+          "is_correct": true
+        },
+        {
+          "text": "Z Pixar Animation Studios",
+          "is_correct": false
+        },
+        {
+          "text": "Ze Studio Ghibli",
+          "is_correct": false
+        },
+        {
+          "text": "Z Warner Bros.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Filmy Animowane",
+      "question": "Jak ma na imię mała, pomarańczowa rybka (błazenek), której szuka ojciec w filmie Pixara?",
+      "answers": [
+        {
+          "text": "Nemo",
+          "is_correct": true
+        },
+        {
+          "text": "Dory",
+          "is_correct": false
+        },
+        {
+          "text": "Marlin",
+          "is_correct": false
+        },
+        {
+          "text": "Flounder",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Filmy Animowane",
+      "question": "Jak nazywają się dwie królewskie siostry, bohaterki kinowego hitu 'Kraina Lodu'?",
+      "answers": [
+        {
+          "text": "Elsa i Anna",
+          "is_correct": true
+        },
+        {
+          "text": "Ariel i Bella",
+          "is_correct": false
+        },
+        {
+          "text": "Mulan i Merida",
+          "is_correct": false
+        },
+        {
+          "text": "Fiona i Śnieżka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Seriale Netflix i HBO",
+      "question": "Jak nazywa się niezwykle popularny serial HBO, w którym wielkie rody walczą o Żelazny Tron?",
+      "answers": [
+        {
+          "text": "Gra o Tron",
+          "is_correct": true
+        },
+        {
+          "text": "Rodów Smoka",
+          "is_correct": false
+        },
+        {
+          "text": "Sukcesja",
+          "is_correct": false
+        },
+        {
+          "text": "Wikingowie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Seriale Netflix i HBO",
+      "question": "O jakiej postaci historycznej z brytyjskiej rodziny królewskiej opowiada serial Netflixa 'The Crown'?",
+      "answers": [
+        {
+          "text": "O królowej Elżbiecie II",
+          "is_correct": true
+        },
+        {
+          "text": "O księżnej Dianie",
+          "is_correct": false
+        },
+        {
+          "text": "O królowej Wiktorii",
+          "is_correct": false
+        },
+        {
+          "text": "O Henryku VIII",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Seriale Netflix i HBO",
+      "question": "Jak nazywa się amerykańskie miasteczko lat 80., w którym toczy się akcja 'Stranger Things'?",
+      "answers": [
+        {
+          "text": "Hawkins",
+          "is_correct": true
+        },
+        {
+          "text": "Riverdale",
+          "is_correct": false
+        },
+        {
+          "text": "Twin Peaks",
+          "is_correct": false
+        },
+        {
+          "text": "Smallville",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Seriale Netflix i HBO",
+      "question": "Który hiszpańskojęzyczny megahit opowiada o grupie przestępców okradających narodową mennicę?",
+      "answers": [
+        {
+          "text": "Dom z papieru (La Casa de Papel)",
+          "is_correct": true
+        },
+        {
+          "text": "Narcos",
+          "is_correct": false
+        },
+        {
+          "text": "Szkoła dla elity",
+          "is_correct": false
+        },
+        {
+          "text": "Vis a vis",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Seriale Netflix i HBO",
+      "question": "Kto gra głównego bohatera, zabójcę potworów Geralta z Rivii, w serialu 'Wiedźmin' od Netflixa?",
+      "answers": [
+        {
+          "text": "Henry Cavill (w pierwszych sezonach)",
+          "is_correct": true
+        },
+        {
+          "text": "Michał Żebrowski",
+          "is_correct": false
+        },
+        {
+          "text": "Chris Hemsworth",
+          "is_correct": false
+        },
+        {
+          "text": "Mads Mikkelsen",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kino Akcji",
+      "question": "W rolę jakiego charyzmatycznego policjanta wciela się Bruce Willis w serii 'Szklana pułapka'?",
+      "answers": [
+        {
+          "text": "W Johna McClane'a",
+          "is_correct": true
+        },
+        {
+          "text": "W Martina Riggsa",
+          "is_correct": false
+        },
+        {
+          "text": "W Brudnego Harry'ego",
+          "is_correct": false
+        },
+        {
+          "text": "W Ethana Hunta",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kino Akcji",
+      "question": "Jaki słynny agent brytyjskiego wywiadu używa numeru kodowego 007?",
+      "answers": [
+        {
+          "text": "James Bond",
+          "is_correct": true
+        },
+        {
+          "text": "Jason Bourne",
+          "is_correct": false
+        },
+        {
+          "text": "Ethan Hunt",
+          "is_correct": false
+        },
+        {
+          "text": "Jack Reacher",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kino Akcji",
+      "question": "Który słynny amerykański aktor o austriackich korzeniach wcielił się w rolę 'Terminatora'?",
+      "answers": [
+        {
+          "text": "Arnold Schwarzenegger",
+          "is_correct": true
+        },
+        {
+          "text": "Sylvester Stallone",
+          "is_correct": false
+        },
+        {
+          "text": "Jean-Claude Van Damme",
+          "is_correct": false
+        },
+        {
+          "text": "Dolph Lundgren",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kino Akcji",
+      "question": "Jakiego koloru pigułkę wybrał w filmie 'Matrix' główny bohater Neo, aby poznać prawdę?",
+      "answers": [
+        {
+          "text": "Czerwoną",
+          "is_correct": true
+        },
+        {
+          "text": "Niebieską",
+          "is_correct": false
+        },
+        {
+          "text": "Zieloną",
+          "is_correct": false
+        },
+        {
+          "text": "Czarną",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kino Akcji",
+      "question": "W kogo wciela się w najnowszych kinowych hitach akcji Keanu Reeves, mszcząc się za zabitego psa?",
+      "answers": [
+        {
+          "text": "W Johna Wicka",
+          "is_correct": true
+        },
+        {
+          "text": "W Neo",
+          "is_correct": false
+        },
+        {
+          "text": "W Jacka Reachera",
+          "is_correct": false
+        },
+        {
+          "text": "W Franka Martina",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Horrory i Thrillery",
+      "question": "Jak nazywa się genialny psychiatra i psychopatyczny kanibal z filmu 'Milczenie owiec'?",
+      "answers": [
+        {
+          "text": "Hannibal Lecter",
+          "is_correct": true
+        },
+        {
+          "text": "Norman Bates",
+          "is_correct": false
+        },
+        {
+          "text": "John Doe",
+          "is_correct": false
+        },
+        {
+          "text": "Patrick Bateman",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Horrory i Thrillery",
+      "question": "W jakim hotelu popada w obłęd Jack Torrance z głośnego horroru 'Lśnienie'?",
+      "answers": [
+        {
+          "text": "W hotelu Overlook",
+          "is_correct": true
+        },
+        {
+          "text": "W hotelu Bates",
+          "is_correct": false
+        },
+        {
+          "text": "W hotelu Cortez",
+          "is_correct": false
+        },
+        {
+          "text": "W hotelu Dolphin",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Horrory i Thrillery",
+      "question": "Jak nazywa się upiorna lalka, będąca głównym motywem znanej serii w uniwersum 'Obecności'?",
+      "answers": [
+        {
+          "text": "Annabelle",
+          "is_correct": true
+        },
+        {
+          "text": "Chucky",
+          "is_correct": false
+        },
+        {
+          "text": "Brahms",
+          "is_correct": false
+        },
+        {
+          "text": "Billy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Horrory i Thrillery",
+      "question": "Kto nawiedzał we śnie i mordował nastolatków w kultowym 'Koszmarze z ulicy Wiązów'?",
+      "answers": [
+        {
+          "text": "Freddy Krueger",
+          "is_correct": true
+        },
+        {
+          "text": "Jason Voorhees",
+          "is_correct": false
+        },
+        {
+          "text": "Michael Myers",
+          "is_correct": false
+        },
+        {
+          "text": "Pennywise",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Horrory i Thrillery",
+      "question": "Jaką bronią najczęściej posługiwał się psychopata Leatherface w horrorach kręconych w Teksasie?",
+      "answers": [
+        {
+          "text": "Piłą mechaniczną",
+          "is_correct": true
+        },
+        {
+          "text": "Maczetą",
+          "is_correct": false
+        },
+        {
+          "text": "Nożem kuchennym",
+          "is_correct": false
+        },
+        {
+          "text": "Siekierą",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzyka Filmowa",
+      "question": "Kto skomponował epicką muzykę do trylogii 'Władca Pierścieni'?",
+      "answers": [
+        {
+          "text": "Howard Shore",
+          "is_correct": true
+        },
+        {
+          "text": "Hans Zimmer",
+          "is_correct": false
+        },
+        {
+          "text": "John Williams",
+          "is_correct": false
+        },
+        {
+          "text": "Ennio Morricone",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzyka Filmowa",
+      "question": "Z jakim reżyserem na stałe współpracuje kompozytor John Williams?",
+      "answers": [
+        {
+          "text": "Ze Stevenem Spielbergiem",
+          "is_correct": true
+        },
+        {
+          "text": "Z Christopherem Nolanem",
+          "is_correct": false
+        },
+        {
+          "text": "Z Quentinem Tarantino",
+          "is_correct": false
+        },
+        {
+          "text": "Z Martinem Scorsese",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzyka Filmowa",
+      "question": "Jaki polski kompozytor zdobył Oscara za muzykę do filmu 'Marzyciel'?",
+      "answers": [
+        {
+          "text": "Jan A.P. Kaczmarek",
+          "is_correct": true
+        },
+        {
+          "text": "Wojciech Kilar",
+          "is_correct": false
+        },
+        {
+          "text": "Michał Lorenc",
+          "is_correct": false
+        },
+        {
+          "text": "Krzysztof Komeda",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzyka Filmowa",
+      "question": "Z jakiego głośnego filmu z lat 90. pochodzi utwór 'My Heart Will Go On'?",
+      "answers": [
+        {
+          "text": "Z 'Titanica'",
+          "is_correct": true
+        },
+        {
+          "text": "Z 'Bodyguard'",
+          "is_correct": false
+        },
+        {
+          "text": "Z 'Pearl Harbor'",
+          "is_correct": false
+        },
+        {
+          "text": "Z 'Armageddonu'",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzyka Filmowa",
+      "question": "Kto jest autorem mrocznego, charakterystycznego motywu muzycznego z filmu 'Szczęki'?",
+      "answers": [
+        {
+          "text": "John Williams",
+          "is_correct": true
+        },
+        {
+          "text": "Hans Zimmer",
+          "is_correct": false
+        },
+        {
+          "text": "Danny Elfman",
+          "is_correct": false
+        },
+        {
+          "text": "Alan Silvestri",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Programy Rozrywkowe (Show)",
+      "question": "Kto jest wieloletnim, legendarnym prowadzącym teleturniej 'Jeden z dziesięciu'?",
+      "answers": [
+        {
+          "text": "Tadeusz Sznuk",
+          "is_correct": true
+        },
+        {
+          "text": "Karol Strasburger",
+          "is_correct": false
+        },
+        {
+          "text": "Hubert Urbański",
+          "is_correct": false
+        },
+        {
+          "text": "Krzysztof Ibisz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Programy Rozrywkowe (Show)",
+      "question": "W jakim programie na początku lat 00. uczestnicy wygrywali tzw. 'Złoty Pociąg'?",
+      "answers": [
+        {
+          "text": "W 'Awanturze o kasę'",
+          "is_correct": true
+        },
+        {
+          "text": "W 'Idź na całość'",
+          "is_correct": false
+        },
+        {
+          "text": "W 'Życiowej szansie'",
+          "is_correct": false
+        },
+        {
+          "text": "W 'Dwa światy'",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Programy Rozrywkowe (Show)",
+      "question": "Kto zasłynął rozdawaniem samochodów i maskotek Zonka w programie 'Idź na całość'?",
+      "answers": [
+        {
+          "text": "Zygmunt Chajzer",
+          "is_correct": true
+        },
+        {
+          "text": "Krzysztof Ibisz",
+          "is_correct": false
+        },
+        {
+          "text": "Hubert Urbański",
+          "is_correct": false
+        },
+        {
+          "text": "Piotr Gąsowski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Programy Rozrywkowe (Show)",
+      "question": "Z jakiego familijnego programu pochodzi słynny tekst: 'Więcej niż jedno zwierzę to...'?",
+      "answers": [
+        {
+          "text": "Z 'Familiady'",
+          "is_correct": true
+        },
+        {
+          "text": "Z 'Koła Fortuny'",
+          "is_correct": false
+        },
+        {
+          "text": "Z 'Milionerów'",
+          "is_correct": false
+        },
+        {
+          "text": "Z 'Va Banque'",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Programy Rozrywkowe (Show)",
+      "question": "Jaki program muzyczny poszukiwał nowych talentów wokalnych 'w ciemno'?",
+      "answers": [
+        {
+          "text": "The Voice of Poland",
+          "is_correct": true
+        },
+        {
+          "text": "Mam Talent",
+          "is_correct": false
+        },
+        {
+          "text": "X Factor",
+          "is_correct": false
+        },
+        {
+          "text": "Idol",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Kina",
+      "question": "W którym roku bracia Lumière zorganizowali pierwszy publiczny pokaz filmowy?",
+      "answers": [
+        {
+          "text": "W 1895 r.",
+          "is_correct": true
+        },
+        {
+          "text": "W 1888 r.",
+          "is_correct": false
+        },
+        {
+          "text": "W 1905 r.",
+          "is_correct": false
+        },
+        {
+          "text": "W 1912 r.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Kina",
+      "question": "Jaki tytuł nosił pierwszy pełnometrażowy film udźwiękowiony z 1927 roku?",
+      "answers": [
+        {
+          "text": "Śpiewak jazzowy",
+          "is_correct": true
+        },
+        {
+          "text": "Dzisiejsze czasy",
+          "is_correct": false
+        },
+        {
+          "text": "Obywatel Kane",
+          "is_correct": false
+        },
+        {
+          "text": "Metropolis",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Kina",
+      "question": "Który wybitny komik ery kina niemego stworzył popularną postać Trampa?",
+      "answers": [
+        {
+          "text": "Charlie Chaplin",
+          "is_correct": true
+        },
+        {
+          "text": "Buster Keaton",
+          "is_correct": false
+        },
+        {
+          "text": "Harold Lloyd",
+          "is_correct": false
+        },
+        {
+          "text": "Oliver Hardy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Kina",
+      "question": "Jak nazywał się rygorystyczny zbiór zasad cenzury obyczajowej w dawnym Hollywood?",
+      "answers": [
+        {
+          "text": "Kodeks Haysa",
+          "is_correct": true
+        },
+        {
+          "text": "Prawo Murphy'ego",
+          "is_correct": false
+        },
+        {
+          "text": "Reguła Forda",
+          "is_correct": false
+        },
+        {
+          "text": "Ustawa McCarthy'ego",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Kina",
+      "question": "Kto w 1941 roku wyreżyserował i zagrał główną rolę w przełomowym 'Obywatelu Kane'?",
+      "answers": [
+        {
+          "text": "Orson Welles",
+          "is_correct": true
+        },
+        {
+          "text": "Alfred Hitchcock",
+          "is_correct": false
+        },
+        {
+          "text": "John Ford",
+          "is_correct": false
+        },
+        {
+          "text": "Howard Hawks",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Złote Myśli z Ekranu",
+      "question": "W jakiej wielkiej sadze sci-fi padają słowa: 'Niech moc będzie z tobą'?",
+      "answers": [
+        {
+          "text": "Gwiezdne wojny",
+          "is_correct": true
+        },
+        {
+          "text": "Star Trek",
+          "is_correct": false
+        },
+        {
+          "text": "Matrix",
+          "is_correct": false
+        },
+        {
+          "text": "Diuna",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Złote Myśli z Ekranu",
+      "question": "Z jakiego mafijnego arcydzieła pochodzi cytat: 'Zrobię mu propozycję nie do odrzucenia'?",
+      "answers": [
+        {
+          "text": "Z 'Ojca chrzestnego'",
+          "is_correct": true
+        },
+        {
+          "text": "Z 'Chłopców z ferajny'",
+          "is_correct": false
+        },
+        {
+          "text": "Z 'Człowieka z blizną'",
+          "is_correct": false
+        },
+        {
+          "text": "Z 'Pulp Fiction'",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Złote Myśli z Ekranu",
+      "question": "Kto z kinowych twardzieli na pożegnanie wypowiedział słynne: 'Hasta la vista, baby'?",
+      "answers": [
+        {
+          "text": "Terminator",
+          "is_correct": true
+        },
+        {
+          "text": "Rambo",
+          "is_correct": false
+        },
+        {
+          "text": "John McClane",
+          "is_correct": false
+        },
+        {
+          "text": "Rocky Balboa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Złote Myśli z Ekranu",
+      "question": "W jakim kultowym polskim filmie padły absurdalne słowa: 'Kopernik była kobietą!'?",
+      "answers": [
+        {
+          "text": "Seksmisja",
+          "is_correct": true
+        },
+        {
+          "text": "Kiler",
+          "is_correct": false
+        },
+        {
+          "text": "Miś",
+          "is_correct": false
+        },
+        {
+          "text": "Vabank",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Złote Myśli z Ekranu",
+      "question": "W jakiej ekstremalnej sytuacji wypowiedziano w filmie słowa 'Houston, mamy problem'?",
+      "answers": [
+        {
+          "text": "Podczas awarii misji Apollo 13",
+          "is_correct": true
+        },
+        {
+          "text": "Podczas ataku obcych na Ziemię",
+          "is_correct": false
+        },
+        {
+          "text": "Przed zderzeniem z asteroidą",
+          "is_correct": false
+        },
+        {
+          "text": "Podczas buntu maszyn w kosmosie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwal w Gdyni",
+      "question": "Jaką główną nagrodę otrzymuje najlepszy film Festiwalu Polskich Filmów Fabularnych?",
+      "answers": [
+        {
+          "text": "Złote Lwy",
+          "is_correct": true
+        },
+        {
+          "text": "Złote Orły",
+          "is_correct": false
+        },
+        {
+          "text": "Złote Kaczki",
+          "is_correct": false
+        },
+        {
+          "text": "Złote Niedźwiedzie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwal w Gdyni",
+      "question": "W jakim polskim mieście nad Bałtykiem odbywa się ten prestiżowy festiwal?",
+      "answers": [
+        {
+          "text": "W Gdyni",
+          "is_correct": true
+        },
+        {
+          "text": "W Gdańsku",
+          "is_correct": false
+        },
+        {
+          "text": "W Sopocie",
+          "is_correct": false
+        },
+        {
+          "text": "W Kołobrzegu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwal w Gdyni",
+      "question": "Który reżyser w 2014 r. zdobył Złote Lwy za rewelacyjny film medyczny pt. 'Bogowie'?",
+      "answers": [
+        {
+          "text": "Łukasz Palkowski",
+          "is_correct": true
+        },
+        {
+          "text": "Władysław Pasikowski",
+          "is_correct": false
+        },
+        {
+          "text": "Wojciech Smarzowski",
+          "is_correct": false
+        },
+        {
+          "text": "Paweł Pawlikowski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwal w Gdyni",
+      "question": "Jaki film o losach rodziny Beksińskich zdobył Złote Lwy w 2016 roku?",
+      "answers": [
+        {
+          "text": "Ostatnia rodzina",
+          "is_correct": true
+        },
+        {
+          "text": "Róża",
+          "is_correct": false
+        },
+        {
+          "text": "Ida",
+          "is_correct": false
+        },
+        {
+          "text": "Cicha noc",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwal w Gdyni",
+      "question": "W jakim nowoczesnym obiekcie od 2015 roku ma swoje główne centrum gdyński festiwal?",
+      "answers": [
+        {
+          "text": "W Gdyńskim Centrum Filmowym",
+          "is_correct": true
+        },
+        {
+          "text": "Na Skwerze Kościuszki",
+          "is_correct": false
+        },
+        {
+          "text": "W Ergo Arenie",
+          "is_correct": false
+        },
+        {
+          "text": "W Hali Gdynia Arena",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Aktorzy Starszego Pokolenia",
+      "question": "Jaki aktor genialnie zagrał krewkiego Władysława Pawlaka w trylogii 'Sami swoi'?",
+      "answers": [
+        {
+          "text": "Wacław Kowalski",
+          "is_correct": true
+        },
+        {
+          "text": "Władysław Hańcza",
+          "is_correct": false
+        },
+        {
+          "text": "Leon Niemczyk",
+          "is_correct": false
+        },
+        {
+          "text": "Franciszek Pieczka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Aktorzy Starszego Pokolenia",
+      "question": "Jak miał na nazwisko aktor, który równie brawurowo wcielił się w sąsiada Kargula?",
+      "answers": [
+        {
+          "text": "Hańcza (Władysław)",
+          "is_correct": true
+        },
+        {
+          "text": "Pieczka (Franciszek)",
+          "is_correct": false
+        },
+        {
+          "text": "Gołas (Wiesław)",
+          "is_correct": false
+        },
+        {
+          "text": "Pokora (Wojciech)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Aktorzy Starszego Pokolenia",
+      "question": "Który legendarny aktor użyczył twarzy sympatycznemu Gustikowi w 'Czterech pancernych'?",
+      "answers": [
+        {
+          "text": "Franciszek Pieczka",
+          "is_correct": true
+        },
+        {
+          "text": "Janusz Gajos",
+          "is_correct": false
+        },
+        {
+          "text": "Roman Wilhelmi",
+          "is_correct": false
+        },
+        {
+          "text": "Włodzimierz Press",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Aktorzy Starszego Pokolenia",
+      "question": "Jak nazywał się wielki przedwojenny amant, Eugeniusz, ofiara sowieckich łagrów?",
+      "answers": [
+        {
+          "text": "Eugeniusz Bodo",
+          "is_correct": true
+        },
+        {
+          "text": "Aleksander Żabczyński",
+          "is_correct": false
+        },
+        {
+          "text": "Adolf Dymsza",
+          "is_correct": false
+        },
+        {
+          "text": "Kazimierz Krukowski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Aktorzy Starszego Pokolenia",
+      "question": "Jaka wybitna polska aktorka wcieliła się w postać Barbary Niechcic w 'Nocach i dniach'?",
+      "answers": [
+        {
+          "text": "Jadwiga Barańska",
+          "is_correct": true
+        },
+        {
+          "text": "Beata Tyszkiewicz",
+          "is_correct": false
+        },
+        {
+          "text": "Anna Dymna",
+          "is_correct": false
+        },
+        {
+          "text": "Krystyna Janda",
+          "is_correct": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1766 @@
+{
+  "category": "Motoryzacja i Transport",
+  "icon": "🚗",
+  "questions": [
+    {
+      "subcategory": "Marki Samochodów",
+      "question": "Jaka legendarna, włoska marka samochodów sportowych ma w swoim żółtym logo czarnego, wierzgającego na tylnych nogach konia?",
+      "answers": [
+        {
+          "text": "Ferrari",
+          "is_correct": true
+        },
+        {
+          "text": "Porsche",
+          "is_correct": false
+        },
+        {
+          "text": "Lamborghini",
+          "is_correct": false
+        },
+        {
+          "text": "Maserati",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Marki Samochodów",
+      "question": "Logo jakiego uznanego producenta z Niemiec składa się z czterech, zachodzących na siebie metalowych pierścieni?",
+      "answers": [
+        {
+          "text": "Audi",
+          "is_correct": true
+        },
+        {
+          "text": "BMW",
+          "is_correct": false
+        },
+        {
+          "text": "Mercedes-Benz",
+          "is_correct": false
+        },
+        {
+          "text": "Volkswagen",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Marki Samochodów",
+      "question": "Jaka potężna japońska marka znana jest na całym świecie m.in z produkcji niezniszczalnej Corolli oraz hybrydowego Priusa?",
+      "answers": [
+        {
+          "text": "Toyota",
+          "is_correct": true
+        },
+        {
+          "text": "Honda",
+          "is_correct": false
+        },
+        {
+          "text": "Mazda",
+          "is_correct": false
+        },
+        {
+          "text": "Nissan",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Marki Samochodów",
+      "question": "Z czego wywodzi się biało-niebieska kolorystyka charakterystycznego, okrągłego logo (szachownicy/śmigła) marki BMW?",
+      "answers": [
+        {
+          "text": "Z barw flagi Bawarii",
+          "is_correct": true
+        },
+        {
+          "text": "Z barw narodowych Niemiec",
+          "is_correct": false
+        },
+        {
+          "text": "Z nieba i białych chmur",
+          "is_correct": false
+        },
+        {
+          "text": "Od koloru mundurów lotniczych",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Marki Samochodów",
+      "question": "Na masce jakich eleganckich i luksusowych, często państwowych limuzyn z Niemiec widnieje charakterystyczna trójramienna gwiazda?",
+      "answers": [
+        {
+          "text": "Na autach Mercedes-Benz",
+          "is_correct": true
+        },
+        {
+          "text": "Na autach Audi",
+          "is_correct": false
+        },
+        {
+          "text": "Na autach Maybach",
+          "is_correct": false
+        },
+        {
+          "text": "Na autach Bentley",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Motoryzacji",
+      "question": "Kto zrewolucjonizował świat, wprowadzając Model T i uruchamiając na masową skalę w USA pierwszą linię montażową?",
+      "answers": [
+        {
+          "text": "Henry Ford",
+          "is_correct": true
+        },
+        {
+          "text": "Karl Benz",
+          "is_correct": false
+        },
+        {
+          "text": "Gottlieb Daimler",
+          "is_correct": false
+        },
+        {
+          "text": "Enzo Ferrari",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Motoryzacji",
+      "question": "Kto pod koniec XIX wieku w Niemczech zbudował trójkołowy wehikuł z silnikiem spalinowym, powszechnie uznany za pierwszy automobil w historii?",
+      "answers": [
+        {
+          "text": "Karl Benz",
+          "is_correct": true
+        },
+        {
+          "text": "Henry Ford",
+          "is_correct": false
+        },
+        {
+          "text": "Ferdinand Porsche",
+          "is_correct": false
+        },
+        {
+          "text": "Nikolaus Otto",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Motoryzacji",
+      "question": "Jaki niemiecki samochód 'dla ludu', o bardzo zaokrąglonym kształcie, produkowany od lat 30., pobił wiele światowych rekordów sprzedaży?",
+      "answers": [
+        {
+          "text": "Volkswagen Garbus (Beetle)",
+          "is_correct": true
+        },
+        {
+          "text": "Volkswagen Golf",
+          "is_correct": false
+        },
+        {
+          "text": "Porsche 911",
+          "is_correct": false
+        },
+        {
+          "text": "Trabant",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Motoryzacji",
+      "question": "Jaki legendarny w Polsce, bardzo mały i ciasny samochód o kwadratowych rysach masowo zmotoryzował Polskę z początkiem lat 70.?",
+      "answers": [
+        {
+          "text": "Fiat 126p (Maluch)",
+          "is_correct": true
+        },
+        {
+          "text": "FSO Polonez",
+          "is_correct": false
+        },
+        {
+          "text": "Syrena 105",
+          "is_correct": false
+        },
+        {
+          "text": "Fiat 125p (Duży Fiat)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Motoryzacji",
+      "question": "Jaki sportowy, amerykański samochód z podnoszonymi do góry drzwiami stał się kultowym wehikułem czasu w filmie 'Powrót do przyszłości'?",
+      "answers": [
+        {
+          "text": "DeLorean DMC-12",
+          "is_correct": true
+        },
+        {
+          "text": "Pontiac Firebird",
+          "is_correct": false
+        },
+        {
+          "text": "Ford Mustang",
+          "is_correct": false
+        },
+        {
+          "text": "Chevrolet Corvette",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Budowa Samochodu",
+      "question": "Jaki bardzo widoczny element tuż za atrapą z przodu auta, wykorzystując opływające ją powietrze, chroni płyn i silnik przed przegrzaniem?",
+      "answers": [
+        {
+          "text": "Chłodnica",
+          "is_correct": true
+        },
+        {
+          "text": "Alternator",
+          "is_correct": false
+        },
+        {
+          "text": "Miska olejowa",
+          "is_correct": false
+        },
+        {
+          "text": "Skrzynia biegów",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Budowa Samochodu",
+      "question": "Co odpowiada za magazynowanie w samochodzie energii elektrycznej, umożliwiając m.in. rozruch silnika, gdy auto jest wyłączone?",
+      "answers": [
+        {
+          "text": "Akumulator",
+          "is_correct": true
+        },
+        {
+          "text": "Prądnica",
+          "is_correct": false
+        },
+        {
+          "text": "Kondensator",
+          "is_correct": false
+        },
+        {
+          "text": "Bezpiecznik",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Budowa Samochodu",
+      "question": "W jaki specjalistyczny element wyposażony jest tradycyjny silnik benzynowy, aby wygenerować przeskok iskry i zainicjować zapłon mieszanki?",
+      "answers": [
+        {
+          "text": "W świecę zapłonową",
+          "is_correct": true
+        },
+        {
+          "text": "W świecę żarową",
+          "is_correct": false
+        },
+        {
+          "text": "W wtryskiwacz paliwa",
+          "is_correct": false
+        },
+        {
+          "text": "W przepustnicę",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Budowa Samochodu",
+      "question": "Jak nazywa się prądnica w samochodzie, która jest napędzana paskiem i podczas jazdy ładuje akumulator?",
+      "answers": [
+        {
+          "text": "Alternator",
+          "is_correct": true
+        },
+        {
+          "text": "Rozrusznik",
+          "is_correct": false
+        },
+        {
+          "text": "Turbosprężarka",
+          "is_correct": false
+        },
+        {
+          "text": "Rozdzielacz zapłonu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Budowa Samochodu",
+      "question": "Jaki mechanizm w układzie napędowym pozwala na zmianę przełożenia, decydując o sile i prędkości przekazywanej na koła?",
+      "answers": [
+        {
+          "text": "Skrzynia biegów",
+          "is_correct": true
+        },
+        {
+          "text": "Mechanizm różnicowy",
+          "is_correct": false
+        },
+        {
+          "text": "Wał Kardana",
+          "is_correct": false
+        },
+        {
+          "text": "Sprzęgło",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Przepisy Drogowe",
+      "question": "Jaki wyjątkowy, czerwony znak drogowy jako jedyny w Europie posiada unikalny kształt ośmiokąta?",
+      "answers": [
+        {
+          "text": "Znak STOP",
+          "is_correct": true
+        },
+        {
+          "text": "Znak Ustąp pierwszeństwa",
+          "is_correct": false
+        },
+        {
+          "text": "Znak Droga z pierwszeństwem",
+          "is_correct": false
+        },
+        {
+          "text": "Znak Zakaz wjazdu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Przepisy Drogowe",
+      "question": "Jak w przepisach określa się skrzyżowanie z wyspą pośrodku, na którym ruch odbywa się jednokierunkowo, najczęściej przeciwnie do wskazówek zegara?",
+      "answers": [
+        {
+          "text": "Skrzyżowanie o ruchu okrężnym (Rondo)",
+          "is_correct": true
+        },
+        {
+          "text": "Skrzyżowanie równorzędne",
+          "is_correct": false
+        },
+        {
+          "text": "Węzeł drogowy",
+          "is_correct": false
+        },
+        {
+          "text": "Skrzyżowanie bezkolizyjne",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Przepisy Drogowe",
+      "question": "Jaka naczelna zasada pierwszeństwa obowiązuje w Polsce na skrzyżowaniu dróg równorzędnych (bez znaków)?",
+      "answers": [
+        {
+          "text": "Zasada prawej ręki (pierwszeństwo ma nadjeżdżający z prawej)",
+          "is_correct": true
+        },
+        {
+          "text": "Zasada dłuższego pojazdu",
+          "is_correct": false
+        },
+        {
+          "text": "Zasada pierwszeństwa na drodze szerszej",
+          "is_correct": false
+        },
+        {
+          "text": "Zasada jazdy na wprost",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Przepisy Drogowe",
+      "question": "Jaki jest dopuszczalny limit stężenia alkoholu we krwi u kierowcy prowadzącego pojazd w Polsce?",
+      "answers": [
+        {
+          "text": "Do 0,2 promila",
+          "is_correct": true
+        },
+        {
+          "text": "Do 0,5 promila",
+          "is_correct": false
+        },
+        {
+          "text": "Całkowite 0,0 promila",
+          "is_correct": false
+        },
+        {
+          "text": "Do 0,8 promila",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Przepisy Drogowe",
+      "question": "Jaki kolor światła emitują z tyłu pojazdu tzw. światła cofania, uruchamiane podczas wrzucenia biegu wstecznego?",
+      "answers": [
+        {
+          "text": "Biały",
+          "is_correct": true
+        },
+        {
+          "text": "Czerwony",
+          "is_correct": false
+        },
+        {
+          "text": "Pomarańczowy",
+          "is_correct": false
+        },
+        {
+          "text": "Żółty selektywny",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Formuła 1 i Motorsport",
+      "question": "Jak nazywa się jedyny polski kierowca w historii, który zdobył punkty i wygrał wyścig w Formule 1?",
+      "answers": [
+        {
+          "text": "Robert Kubica",
+          "is_correct": true
+        },
+        {
+          "text": "Krzysztof Hołowczyc",
+          "is_correct": false
+        },
+        {
+          "text": "Kajetan Kajetanowicz",
+          "is_correct": false
+        },
+        {
+          "text": "Michał Kościuszko",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Formuła 1 i Motorsport",
+      "question": "Jaki niemiecki kierowca przez lata dominował w zespole Ferrari, zdobywając aż siedem tytułów mistrza świata F1?",
+      "answers": [
+        {
+          "text": "Michael Schumacher",
+          "is_correct": true
+        },
+        {
+          "text": "Sebastian Vettel",
+          "is_correct": false
+        },
+        {
+          "text": "Nico Rosberg",
+          "is_correct": false
+        },
+        {
+          "text": "Ayrton Senna",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Formuła 1 i Motorsport",
+      "question": "Jaki legendarny, niezwykle trudny wieloetapowy rajd terenowy dla aut, motocykli i ciężarówek, dawniej kończył się w stolicy Senegalu?",
+      "answers": [
+        {
+          "text": "Rajd Dakar",
+          "is_correct": true
+        },
+        {
+          "text": "Rajd Monte Carlo",
+          "is_correct": false
+        },
+        {
+          "text": "Baja 1000",
+          "is_correct": false
+        },
+        {
+          "text": "Rajd Safari",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Formuła 1 i Motorsport",
+      "question": "Jak w sportach motorowych nazywa się opływowy, jednomiejscowy wyścigowy samochód wyczynowy z odsłoniętymi kołami?",
+      "answers": [
+        {
+          "text": "Bolid",
+          "is_correct": true
+        },
+        {
+          "text": "Gokart",
+          "is_correct": false
+        },
+        {
+          "text": "Dragster",
+          "is_correct": false
+        },
+        {
+          "text": "Samochód turystyczny",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Formuła 1 i Motorsport",
+      "question": "Jakim charakterystycznym wzorem i kolorem macha sędzia na mecie wyścigu motorowego, obwieszczając jego koniec?",
+      "answers": [
+        {
+          "text": "Czarno-białą szachownicą",
+          "is_correct": true
+        },
+        {
+          "text": "Czerwoną flagą",
+          "is_correct": false
+        },
+        {
+          "text": "Białą flagą",
+          "is_correct": false
+        },
+        {
+          "text": "Czarną flagą z krzyżem",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Lotnictwo i Samoloty",
+      "question": "Jacy amerykańscy bracia przeszli do historii jako twórcy pierwszej udanej, napędzanej silnikiem i sterowanej maszyny latającej?",
+      "answers": [
+        {
+          "text": "Bracia Wright (Orville i Wilbur)",
+          "is_correct": true
+        },
+        {
+          "text": "Bracia Montgolfier",
+          "is_correct": false
+        },
+        {
+          "text": "Bracia Lilienthal",
+          "is_correct": false
+        },
+        {
+          "text": "Bracia Boeing",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Lotnictwo i Samoloty",
+      "question": "Jaki szerokokadłubowy, amerykański odrzutowiec pasażerski z 'garbem' z przodu nosi dumne miano 'Jumbo Jeta'?",
+      "answers": [
+        {
+          "text": "Boeing 747",
+          "is_correct": true
+        },
+        {
+          "text": "Airbus A380",
+          "is_correct": false
+        },
+        {
+          "text": "Antonov An-225",
+          "is_correct": false
+        },
+        {
+          "text": "Lockheed C-5 Galaxy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Lotnictwo i Samoloty",
+      "question": "Jak nazywał się legendarny brytyjsko-francuski samolot pasażerski, który potrafił latać z prędkością naddźwiękową?",
+      "answers": [
+        {
+          "text": "Concorde",
+          "is_correct": true
+        },
+        {
+          "text": "Tupolew Tu-144",
+          "is_correct": false
+        },
+        {
+          "text": "Boeing 787 Dreamliner",
+          "is_correct": false
+        },
+        {
+          "text": "Airbus A350",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Lotnictwo i Samoloty",
+      "question": "Jakiego jaskrawego koloru są w rzeczywistości, dla ułatwienia poszukiwań po katastrofie, lotnicze rejestratory zwane 'czarnymi skrzynkami'?",
+      "answers": [
+        {
+          "text": "Pomarańczowego",
+          "is_correct": true
+        },
+        {
+          "text": "Czarnego",
+          "is_correct": false
+        },
+        {
+          "text": "Czerwonego",
+          "is_correct": false
+        },
+        {
+          "text": "Białego odblaskowego",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Lotnictwo i Samoloty",
+      "question": "Jak nazywa się przypominający kierownicę lub podwójny drążek element sterujący w kokpicie większości samolotów pasażerskich?",
+      "answers": [
+        {
+          "text": "Wolant",
+          "is_correct": true
+        },
+        {
+          "text": "Kierownica pionowa",
+          "is_correct": false
+        },
+        {
+          "text": "Manetka",
+          "is_correct": false
+        },
+        {
+          "text": "Orbczyk",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kolejnictwo i Pociągi",
+      "question": "Jak w Polsce określa się włoskie składy dużych prędkości klasy Express InterCity Premium, posiadające charakterystyczny aerodynamiczny 'nos'?",
+      "answers": [
+        {
+          "text": "Pendolino",
+          "is_correct": true
+        },
+        {
+          "text": "TGV",
+          "is_correct": false
+        },
+        {
+          "text": "Dart",
+          "is_correct": false
+        },
+        {
+          "text": "Flirt",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kolejnictwo i Pociągi",
+      "question": "Jaki trzyliterowy skrót oznacza słynne francuskie pociągi dużych prędkości, które wielokrotnie biły światowe rekordy na torach?",
+      "answers": [
+        {
+          "text": "TGV",
+          "is_correct": true
+        },
+        {
+          "text": "ICE",
+          "is_correct": false
+        },
+        {
+          "text": "AVE",
+          "is_correct": false
+        },
+        {
+          "text": "KDP",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kolejnictwo i Pociągi",
+      "question": "Jak nazywa się historyczny typ lokomotywy, w której spalany węgiel podgrzewał wodę, a powstałe ciśnienie napędzało tłoki?",
+      "answers": [
+        {
+          "text": "Parowóz",
+          "is_correct": true
+        },
+        {
+          "text": "Spalinowóz",
+          "is_correct": false
+        },
+        {
+          "text": "Elektrowóz",
+          "is_correct": false
+        },
+        {
+          "text": "Drezyna",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kolejnictwo i Pociągi",
+      "question": "Jaki najbardziej luksusowy i owiany legendą pociąg pasażerski świata kursował dawniej na trasie z Paryża do Stambułu?",
+      "answers": [
+        {
+          "text": "Orient Express",
+          "is_correct": true
+        },
+        {
+          "text": "Transsyberyjska",
+          "is_correct": false
+        },
+        {
+          "text": "Glacier Express",
+          "is_correct": false
+        },
+        {
+          "text": "Pociąg Złotego Wieku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kolejnictwo i Pociągi",
+      "question": "Jak oficjalnie nazywa się zawód osoby, która na co dzień steruje pociągiem lub lokomotywą w kabinie z przodu składu?",
+      "answers": [
+        {
+          "text": "Maszynista",
+          "is_correct": true
+        },
+        {
+          "text": "Kierownik pociągu",
+          "is_correct": false
+        },
+        {
+          "text": "Konduktor",
+          "is_correct": false
+        },
+        {
+          "text": "Pilot szynowy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Statki i Transport Wodny",
+      "question": "W jaką wielką, dryfującą, naturalną przeszkodę uderzył podczas dziewiczego rejsu w 1912 roku pasażerski liniowiec RMS Titanic?",
+      "answers": [
+        {
+          "text": "W górę lodową",
+          "is_correct": true
+        },
+        {
+          "text": "W niewidoczną rafę koralową",
+          "is_correct": false
+        },
+        {
+          "text": "W inny statek towarowy",
+          "is_correct": false
+        },
+        {
+          "text": "W minę morską",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Statki i Transport Wodny",
+      "question": "Jak brzmi najwyższy, oficjalny tytuł osoby odpowiedzialnej i dowodzącej całą jednostką morską (statkiem lub okrętem)?",
+      "answers": [
+        {
+          "text": "Kapitan",
+          "is_correct": true
+        },
+        {
+          "text": "Bosman",
+          "is_correct": false
+        },
+        {
+          "text": "Sternik",
+          "is_correct": false
+        },
+        {
+          "text": "Admirał",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Statki i Transport Wodny",
+      "question": "Jaki gigantyczny okręt wojenny posiada własny pas startowy i służy jako pływająca baza dla myśliwców lotnictwa morskiego?",
+      "answers": [
+        {
+          "text": "Lotniskowiec",
+          "is_correct": true
+        },
+        {
+          "text": "Krążownik",
+          "is_correct": false
+        },
+        {
+          "text": "Niszczyciel",
+          "is_correct": false
+        },
+        {
+          "text": "Fregata",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Statki i Transport Wodny",
+      "question": "Jaki bojowy okręt jest przystosowany do operowania i pływania w głębinach, uderzając np. torpedami całkowicie w ukryciu?",
+      "answers": [
+        {
+          "text": "Okręt podwodny",
+          "is_correct": true
+        },
+        {
+          "text": "Poduszkowiec",
+          "is_correct": false
+        },
+        {
+          "text": "Batyskaf",
+          "is_correct": false
+        },
+        {
+          "text": "Kuter torpedowy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Statki i Transport Wodny",
+      "question": "Jak fachowo, w żargonie żeglarskim i morskim, nazywa się odpowiednio lewą oraz prawą burtę statku (patrząc od rufy w kierunku dziobu)?",
+      "answers": [
+        {
+          "text": "Bakburta (lewa) i sterburta (prawa)",
+          "is_correct": true
+        },
+        {
+          "text": "Aport i starboard",
+          "is_correct": false
+        },
+        {
+          "text": "Kambuz i mesa",
+          "is_correct": false
+        },
+        {
+          "text": "Grot i kil",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Trasy i Mosty",
+      "question": "Jak nazywa się słynna, opiewana w piosenkach amerykańska 'Droga Matka', łącząca dawniej Chicago z Los Angeles?",
+      "answers": [
+        {
+          "text": "Route 66",
+          "is_correct": true
+        },
+        {
+          "text": "Pan-American Highway",
+          "is_correct": false
+        },
+        {
+          "text": "Autostrada Słońca",
+          "is_correct": false
+        },
+        {
+          "text": "Pacific Coast Highway",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Trasy i Mosty",
+      "question": "Jaką nazwę nosi najdłuższa linia kolejowa na świecie, przebiegająca z Moskwy aż do Władywostoku nad Pacyfikiem?",
+      "answers": [
+        {
+          "text": "Kolej Transsyberyjska",
+          "is_correct": true
+        },
+        {
+          "text": "Orient Express",
+          "is_correct": false
+        },
+        {
+          "text": "Kolej Bajkalsko-Amurska",
+          "is_correct": false
+        },
+        {
+          "text": "Magistrala Środkowoazjatycka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Trasy i Mosty",
+      "question": "Jaki potężny, wiszący, rdzawo-czerwony most jest najbardziej rozpoznawalnym punktem i symbolem San Francisco?",
+      "answers": [
+        {
+          "text": "Golden Gate Bridge",
+          "is_correct": true
+        },
+        {
+          "text": "Most Brookliński",
+          "is_correct": false
+        },
+        {
+          "text": "London Bridge",
+          "is_correct": false
+        },
+        {
+          "text": "Tower Bridge",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Trasy i Mosty",
+      "question": "W jakim państwie Europy po bardzo nowoczesnych autostradach (Autobahn) na wyznaczonych odcinkach nie obowiązują limity prędkości?",
+      "answers": [
+        {
+          "text": "W Niemczech",
+          "is_correct": true
+        },
+        {
+          "text": "We Włoszech",
+          "is_correct": false
+        },
+        {
+          "text": "W Holandii",
+          "is_correct": false
+        },
+        {
+          "text": "W Szwajcarii",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Trasy i Mosty",
+      "question": "Jaki stworzony przez człowieka kanał skrócił dramatycznie drogę statków, łącząc ocean Atlantycki bezpośrednio z Pacyfikiem?",
+      "answers": [
+        {
+          "text": "Kanał Panamski",
+          "is_correct": true
+        },
+        {
+          "text": "Kanał Sueski",
+          "is_correct": false
+        },
+        {
+          "text": "Kanał Kiloński",
+          "is_correct": false
+        },
+        {
+          "text": "Kanał La Manche",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Transport Miejski",
+      "question": "W jakim europejskim mieście znakiem rozpoznawczym są wysokie, dwupiętrowe, czerwone autobusy, tzw. double-deckery?",
+      "answers": [
+        {
+          "text": "W Londynie",
+          "is_correct": true
+        },
+        {
+          "text": "W Paryżu",
+          "is_correct": false
+        },
+        {
+          "text": "W Rzymie",
+          "is_correct": false
+        },
+        {
+          "text": "W Dublinie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Transport Miejski",
+      "question": "Z jakiego konkretnego i krzykliwego koloru flot wozów taksówkarskich na całym świecie słynie Nowy Jork?",
+      "answers": [
+        {
+          "text": "Z żółtych taksówek (Yellow cabs)",
+          "is_correct": true
+        },
+        {
+          "text": "Z czarnych taksówek",
+          "is_correct": false
+        },
+        {
+          "text": "Z biało-niebieskich taksówek",
+          "is_correct": false
+        },
+        {
+          "text": "Z czerwonych taksówek",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Transport Miejski",
+      "question": "Jak nazywa się bezkolizyjny system szybkiej kolei miejskiej, którego pociągi poruszają się w większości specjalnymi podziemnymi tunelami?",
+      "answers": [
+        {
+          "text": "Metro",
+          "is_correct": true
+        },
+        {
+          "text": "Tramwaj",
+          "is_correct": false
+        },
+        {
+          "text": "Trolejbus",
+          "is_correct": false
+        },
+        {
+          "text": "Kolej gondolowa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Transport Miejski",
+      "question": "Jaki elektryczny miejski pojazd szynowy, w odróżnieniu od metra, porusza się w poziomie jezdni, pobierając prąd z napowietrznej sieci pantografem?",
+      "answers": [
+        {
+          "text": "Tramwaj",
+          "is_correct": true
+        },
+        {
+          "text": "Autobus hybrydowy",
+          "is_correct": false
+        },
+        {
+          "text": "Maglev",
+          "is_correct": false
+        },
+        {
+          "text": "Trolejbus",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Transport Miejski",
+      "question": "Jak nazywają się tradycyjne, smukłe łodzie wiosłowe używane od wieków do transportu pasażerów w wąskich kanałach Wenecji?",
+      "answers": [
+        {
+          "text": "Gondole",
+          "is_correct": true
+        },
+        {
+          "text": "Motorówki",
+          "is_correct": false
+        },
+        {
+          "text": "Galery",
+          "is_correct": false
+        },
+        {
+          "text": "Kajaki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Pojazdy Dwukołowe",
+      "question": "Jaka kultowa i niezwykle ciężka amerykańska marka motocykli słynie ze zlotów brodatych motocyklistów i charakterystycznego dźwięku silnika V-Twin?",
+      "answers": [
+        {
+          "text": "Harley-Davidson",
+          "is_correct": true
+        },
+        {
+          "text": "Indian",
+          "is_correct": false
+        },
+        {
+          "text": "Ducati",
+          "is_correct": false
+        },
+        {
+          "text": "Yamaha",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Pojazdy Dwukołowe",
+      "question": "Jak nazywał się najpopularniejszy w czasach PRL polski rower 'składak', produkowany przez zakłady Romet?",
+      "answers": [
+        {
+          "text": "Wigry 3",
+          "is_correct": true
+        },
+        {
+          "text": "Ukraina",
+          "is_correct": false
+        },
+        {
+          "text": "Kross",
+          "is_correct": false
+        },
+        {
+          "text": "Romet Ogar",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Pojazdy Dwukołowe",
+      "question": "Jak nazywa się lekki, zabudowany miejski jednoślad, w którym kierowca podczas jazdy trzyma nogi złączone z przodu, opierając je na płaskiej podłodze?",
+      "answers": [
+        {
+          "text": "Skuter",
+          "is_correct": true
+        },
+        {
+          "text": "Ścigacz",
+          "is_correct": false
+        },
+        {
+          "text": "Chopper",
+          "is_correct": false
+        },
+        {
+          "text": "Quad",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Pojazdy Dwukołowe",
+      "question": "Co we włoskim mieście słynącym z wąskich uliczek było najpopularniejszym środkiem transportu dla rodziny, spopularyzowanym przez markę Vespa?",
+      "answers": [
+        {
+          "text": "Skuter (Vespa)",
+          "is_correct": true
+        },
+        {
+          "text": "Motocykl żużlowy",
+          "is_correct": false
+        },
+        {
+          "text": "Tandem",
+          "is_correct": false
+        },
+        {
+          "text": "Deskorolka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Pojazdy Dwukołowe",
+      "question": "Jak nazywa się niezwykle masywny rower terenowy (MTB), wyposażony w gigantyczne i bardzo grube opony, świetny na śnieg i piasek?",
+      "answers": [
+        {
+          "text": "Fatbike",
+          "is_correct": true
+        },
+        {
+          "text": "BMX",
+          "is_correct": false
+        },
+        {
+          "text": "Kolarka",
+          "is_correct": false
+        },
+        {
+          "text": "Trekking",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Infrastruktura Drogowa",
+      "question": "Z jakiej bardzo ciemnej, lepkiej i węglowodorowej substancji uzyskiwanej z ropy naftowej składa się lepiszcze tworzące nawierzchnie asfaltowe?",
+      "answers": [
+        {
+          "text": "Z bitumu (asfaltu)",
+          "is_correct": true
+        },
+        {
+          "text": "Z cementu portlandzkiego",
+          "is_correct": false
+        },
+        {
+          "text": "Z żywicy epoksydowej",
+          "is_correct": false
+        },
+        {
+          "text": "Z kauczuku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Infrastruktura Drogowa",
+      "question": "Jak nazywa się wielopoziomowe skrzyżowanie na autostradzie, pozwalające bezkolizyjnie zjechać lub wjechać na inne trasy szybkiego ruchu?",
+      "answers": [
+        {
+          "text": "Węzeł drogowy",
+          "is_correct": true
+        },
+        {
+          "text": "Rondo turbinowe",
+          "is_correct": false
+        },
+        {
+          "text": "Wiadukt",
+          "is_correct": false
+        },
+        {
+          "text": "Estakada",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Infrastruktura Drogowa",
+      "question": "Czym w inżynierii drogowej różni się klasyczny wiadukt od klasycznego mostu?",
+      "answers": [
+        {
+          "text": "Wiadukt prowadzi nad inną drogą/torami, a most nad przeszkodą wodną",
+          "is_correct": true
+        },
+        {
+          "text": "Wiadukt służy tylko dla pociągów, a most tylko dla aut",
+          "is_correct": false
+        },
+        {
+          "text": "Wiadukt jest zawsze drewniany, a most stalowy",
+          "is_correct": false
+        },
+        {
+          "text": "Nie ma żadnej różnicy, to synonimy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Infrastruktura Drogowa",
+      "question": "Czym są tzw. 'kocie oczka' wbudowywane często na nieoświetlonych i niebezpiecznych łukach jezdni?",
+      "answers": [
+        {
+          "text": "Odblaskami montowanymi w asfalcie",
+          "is_correct": true
+        },
+        {
+          "text": "Czujnikami mierzącymi prędkość",
+          "is_correct": false
+        },
+        {
+          "text": "Kamerami monitoringu miejskiego",
+          "is_correct": false
+        },
+        {
+          "text": "Zraszaczami przeciwoblodzeniowymi",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Infrastruktura Drogowa",
+      "question": "Jak nazywa się pas na autostradzie służący wyłącznie do bezpiecznego rozpędzenia się samochodu przed płynnym włączeniem się do ruchu?",
+      "answers": [
+        {
+          "text": "Pas włączenia (rozbiegowy)",
+          "is_correct": true
+        },
+        {
+          "text": "Pas wyłączenia",
+          "is_correct": false
+        },
+        {
+          "text": "Pas awaryjny",
+          "is_correct": false
+        },
+        {
+          "text": "Lewy skrajny pas",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ekologia w Motoryzacji",
+      "question": "Co oznacza skrót EV (Electric Vehicle) często używany do opisywania najnowszych samochodów na rynku?",
+      "answers": [
+        {
+          "text": "Pojazd w pełni elektryczny",
+          "is_correct": true
+        },
+        {
+          "text": "Pojazd o zwiększonej pojemności",
+          "is_correct": false
+        },
+        {
+          "text": "Ekstremalnie szybki samochód",
+          "is_correct": false
+        },
+        {
+          "text": "Pojazd hybrydowy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ekologia w Motoryzacji",
+      "question": "Jaką substancję emituje z rury wydechowej bezemisyjny, ekologiczny samochód napędzany wodorem (ogniwami paliwowymi)?",
+      "answers": [
+        {
+          "text": "Wyłącznie czystą wodę (parę wodną)",
+          "is_correct": true
+        },
+        {
+          "text": "Czysty tlen",
+          "is_correct": false
+        },
+        {
+          "text": "Dwutlenek węgla (CO2)",
+          "is_correct": false
+        },
+        {
+          "text": "Podtlenek azotu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ekologia w Motoryzacji",
+      "question": "Jak potocznie określa się samochód posiadający pod maską zarówno tradycyjny silnik spalinowy, jak i wspomagający go silnik elektryczny?",
+      "answers": [
+        {
+          "text": "Hybryda",
+          "is_correct": true
+        },
+        {
+          "text": "Elektryk",
+          "is_correct": false
+        },
+        {
+          "text": "Kombajn spalinowy",
+          "is_correct": false
+        },
+        {
+          "text": "Diesel typu common-rail",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ekologia w Motoryzacji",
+      "question": "Czym w samochodach spalinowych jest wbudowany w układ wydechowy tzw. katalizator?",
+      "answers": [
+        {
+          "text": "Reaktorem oczyszczającym toksyczne spaliny",
+          "is_correct": true
+        },
+        {
+          "text": "Tłumikiem hałasu z silnika",
+          "is_correct": false
+        },
+        {
+          "text": "Częścią filtrującą paliwo w baku",
+          "is_correct": false
+        },
+        {
+          "text": "Turbiną zwiększającą moc na autostradzie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ekologia w Motoryzacji",
+      "question": "Czym jest proces tzw. rekuperacji stosowany w nowoczesnych hybrydach i autach elektrycznych (EV)?",
+      "answers": [
+        {
+          "text": "Odzyskiwaniem energii elektrycznej podczas hamowania",
+          "is_correct": true
+        },
+        {
+          "text": "Podgrzewaniem baterii przed startem zimą",
+          "is_correct": false
+        },
+        {
+          "text": "Aktualizacją systemu samochodu przez internet",
+          "is_correct": false
+        },
+        {
+          "text": "Ekologicznym chłodzeniem kabiny",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Auta PRL",
+      "question": "Która wrocławska fabryka, a później FSO, produkowała niezwykle cenioną za dawnych lat, piękną i dymiącą Warszawę?",
+      "answers": [
+        {
+          "text": "Fabryka Samochodów Osobowych (FSO)",
+          "is_correct": true
+        },
+        {
+          "text": "Fabryka Samochodów Małolitrażowych (FSM)",
+          "is_correct": false
+        },
+        {
+          "text": "Jelcz",
+          "is_correct": false
+        },
+        {
+          "text": "FSR Tarpan",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Auta PRL",
+      "question": "Jaki legendarny, kanciasty i kultowy radiowóz, produkowany na Żeraniu, uchodził na ekranie za wóz niezłomnego porucznika Borewicza?",
+      "answers": [
+        {
+          "text": "FSO Polonez",
+          "is_correct": true
+        },
+        {
+          "text": "Fiat 125p (Duży Fiat)",
+          "is_correct": false
+        },
+        {
+          "text": "Nysa",
+          "is_correct": false
+        },
+        {
+          "text": "Żuk",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Auta PRL",
+      "question": "Jaki wschodnioniemiecki, bardzo popularny u nas samochód miał dymiący dwusuwowy silnik, a jego karoserię wytwarzano z tworzywa zwanego duroplastem?",
+      "answers": [
+        {
+          "text": "Trabant",
+          "is_correct": true
+        },
+        {
+          "text": "Wartburg",
+          "is_correct": false
+        },
+        {
+          "text": "Dacia",
+          "is_correct": false
+        },
+        {
+          "text": "Lada",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Auta PRL",
+      "question": "Jak pieszczotliwie Polacy nazywali Fiata 126p, który był pierwszym powszechnym samochodem niemal każdej polskiej rodziny?",
+      "answers": [
+        {
+          "text": "Maluch",
+          "is_correct": true
+        },
+        {
+          "text": "Kaszlak",
+          "is_correct": false
+        },
+        {
+          "text": "Borewicz",
+          "is_correct": false
+        },
+        {
+          "text": "Bąbel",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Auta PRL",
+      "question": "Z produkcją jakiej zasłużonej czeskiej marki, w czasach PRL niezwykle pożądanej w Polsce (modele 105 i 120), silnie związana jest Mlada Boleslav?",
+      "answers": [
+        {
+          "text": "Škoda",
+          "is_correct": true
+        },
+        {
+          "text": "Tatra",
+          "is_correct": false
+        },
+        {
+          "text": "Zastava",
+          "is_correct": false
+        },
+        {
+          "text": "Yugo",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wyposażenie Samochodu",
+      "question": "Jaki trzyliterowy skrót opisuje układ, który zapobiega niebezpiecznemu zablokowaniu kół samochodu podczas ostrego hamowania?",
+      "answers": [
+        {
+          "text": "ABS",
+          "is_correct": true
+        },
+        {
+          "text": "ESP",
+          "is_correct": false
+        },
+        {
+          "text": "ASR",
+          "is_correct": false
+        },
+        {
+          "text": "EBD",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wyposażenie Samochodu",
+      "question": "Czym jest popularny 'Airbag' (poduszka powietrzna) ukryty w kierownicy i desce rozdzielczej samochodu?",
+      "answers": [
+        {
+          "text": "Systemem ochronnym wybuchającym przy uderzeniu",
+          "is_correct": true
+        },
+        {
+          "text": "Systemem zawieszenia pneumatycznego",
+          "is_correct": false
+        },
+        {
+          "text": "Klimatyzacją pompującą powietrze na twarz",
+          "is_correct": false
+        },
+        {
+          "text": "Miękkim zagłówkiem na fotelu pasażera",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wyposażenie Samochodu",
+      "question": "Jaki specjalny, wbudowany w kanapy i oznaczony z boku zamek z klipsem, stanowi międzynarodowy standard bezpiecznego mocowania fotelików dla dzieci?",
+      "answers": [
+        {
+          "text": "ISOFIX",
+          "is_correct": true
+        },
+        {
+          "text": "Top Tether",
+          "is_correct": false
+        },
+        {
+          "text": "Seat-Belt Plus",
+          "is_correct": false
+        },
+        {
+          "text": "Child-Lock",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wyposażenie Samochodu",
+      "question": "Do czego we współczesnych autach najczęściej używany i włączany na autostradach jest przycisk tzw. tempomatu?",
+      "answers": [
+        {
+          "text": "Do automatycznego utrzymywania stałej prędkości",
+          "is_correct": true
+        },
+        {
+          "text": "Do szybkiego odmrażania tylnej szyby",
+          "is_correct": false
+        },
+        {
+          "text": "Do automatycznego parkowania tyłem",
+          "is_correct": false
+        },
+        {
+          "text": "Do awaryjnego odcięcia paliwa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wyposażenie Samochodu",
+      "question": "Przed czym, chroniąc głowę, szyję i klatkę piersiową ratuje pasywny system złożony z mocnej, ściąganej w ułamku sekundy taśmy, obligatoryjny od lat w Europie?",
+      "answers": [
+        {
+          "text": "Pasy bezpieczeństwa",
+          "is_correct": true
+        },
+        {
+          "text": "Poduszka powietrzna (Airbag)",
+          "is_correct": false
+        },
+        {
+          "text": "System ESP",
+          "is_correct": false
+        },
+        {
+          "text": "Miękkie zagłówki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wynalazki Transportowe",
+      "question": "Jak nazywały się majestatyczne, wypełnione lekkim gazem (często wodorem) ogromne latające statki, spopularyzowane m.in. przez Ferdinanda von Zeppelina?",
+      "answers": [
+        {
+          "text": "Sterowce",
+          "is_correct": true
+        },
+        {
+          "text": "Balony na ogrzane powietrze",
+          "is_correct": false
+        },
+        {
+          "text": "Szybowce",
+          "is_correct": false
+        },
+        {
+          "text": "Paralotnie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wynalazki Transportowe",
+      "question": "Jaka rewolucyjna japońska/chińska technologia kolei pozwala niezwykle szybkim pociągom poruszać się cicho, niemal lewitując nad torem?",
+      "answers": [
+        {
+          "text": "Kolej magnetyczna (Maglev)",
+          "is_correct": true
+        },
+        {
+          "text": "Kolej próżniowa (Hyperloop)",
+          "is_correct": false
+        },
+        {
+          "text": "Kolej linowa",
+          "is_correct": false
+        },
+        {
+          "text": "Trakcja elektryczna (TGV)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wynalazki Transportowe",
+      "question": "Jak nazywa się bardzo dziwny, poruszający się na poduszce sprężonego powietrza i napędzany potężnymi śmigłami statek, mogący wjechać bezpośrednio na plażę?",
+      "answers": [
+        {
+          "text": "Poduszkowiec (Hovercraft)",
+          "is_correct": true
+        },
+        {
+          "text": "Katamaran",
+          "is_correct": false
+        },
+        {
+          "text": "Wodolot",
+          "is_correct": false
+        },
+        {
+          "text": "Lodołamacz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wynalazki Transportowe",
+      "question": "Co to jest Segway, który zyskał olbrzymią popularność w usługach turystycznych w miastach?",
+      "answers": [
+        {
+          "text": "Elektryczny, dwukołowy pojazd z kierownicą, balansujący ciałem",
+          "is_correct": true
+        },
+        {
+          "text": "Hulajnoga na paliwo rakietowe",
+          "is_correct": false
+        },
+        {
+          "text": "Rower ze wspomaganiem elektrycznym (e-bike)",
+          "is_correct": false
+        },
+        {
+          "text": "Zdalnie sterowany dron osobowy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wynalazki Transportowe",
+      "question": "Czym były potężne, amerykańskie i pływające po rzece Missisipi jednostki wodne z XIX wieku, napędzane wielkim kołem łopatkowym z tyłu?",
+      "answers": [
+        {
+          "text": "Statkami parowymi (Parowcami)",
+          "is_correct": true
+        },
+        {
+          "text": "Galeonami wojennymi",
+          "is_correct": false
+        },
+        {
+          "text": "Elektrycznymi łodziami wycieczkowymi",
+          "is_correct": false
+        },
+        {
+          "text": "Żaglowcami",
+          "is_correct": false
+        }
+      ]
+    }
+  ]
+}

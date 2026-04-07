@@ -1,0 +1,1766 @@
+{
+  "category": "Muzyka",
+  "icon": "🎵",
+  "questions": [
+    {
+      "subcategory": "Fryderyk Chopin i Klasyka",
+      "question": "W jakiej podwarszawskiej miejscowości w 1810 roku urodził się Fryderyk Chopin?",
+      "answers": [
+        {
+          "text": "W Żelazowej Woli",
+          "is_correct": true
+        },
+        {
+          "text": "W Radzyminie",
+          "is_correct": false
+        },
+        {
+          "text": "W Sulejówku",
+          "is_correct": false
+        },
+        {
+          "text": "W Otwocku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Fryderyk Chopin i Klasyka",
+      "question": "Dla jakiego instrumentu Fryderyk Chopin skomponował większość swoich znakomitych dzieł?",
+      "answers": [
+        {
+          "text": "Dla fortepianu",
+          "is_correct": true
+        },
+        {
+          "text": "Dla skrzypiec",
+          "is_correct": false
+        },
+        {
+          "text": "Dla wiolonczeli",
+          "is_correct": false
+        },
+        {
+          "text": "Dla organów",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Fryderyk Chopin i Klasyka",
+      "question": "Co odbywa się w Warszawie co 5 lat i przyciąga pianistów z całego świata?",
+      "answers": [
+        {
+          "text": "Konkurs Chopinowski",
+          "is_correct": true
+        },
+        {
+          "text": "Konkurs Wieniawskiego",
+          "is_correct": false
+        },
+        {
+          "text": "Festiwal Beethovenowski",
+          "is_correct": false
+        },
+        {
+          "text": "Warszawska Jesień",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Fryderyk Chopin i Klasyka",
+      "question": "Kto skomponował operę 'Czarodziejski flet' oraz monumentalne i niedokończone 'Requiem'?",
+      "answers": [
+        {
+          "text": "Wolfgang Amadeus Mozart",
+          "is_correct": true
+        },
+        {
+          "text": "Ludwig van Beethoven",
+          "is_correct": false
+        },
+        {
+          "text": "Johann Sebastian Bach",
+          "is_correct": false
+        },
+        {
+          "text": "Antonio Vivaldi",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Fryderyk Chopin i Klasyka",
+      "question": "Jaki włoski wirtuoz jest autorem słynnego cyklu koncertów skrzypcowych 'Cztery pory roku'?",
+      "answers": [
+        {
+          "text": "Antonio Vivaldi",
+          "is_correct": true
+        },
+        {
+          "text": "Johann Strauss",
+          "is_correct": false
+        },
+        {
+          "text": "Piotr Czajkowski",
+          "is_correct": false
+        },
+        {
+          "text": "Niccolò Paganini",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polski Rock",
+      "question": "Kto był legendarnym, wieloletnim wokalistą bluesrockowego zespołu Dżem?",
+      "answers": [
+        {
+          "text": "Ryszard Riedel",
+          "is_correct": true
+        },
+        {
+          "text": "Marek Piekarczyk",
+          "is_correct": false
+        },
+        {
+          "text": "Grzegorz Markowski",
+          "is_correct": false
+        },
+        {
+          "text": "Krzysztof Cugowski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polski Rock",
+      "question": "Z jakiego polskiego miasta wywodzi się poprockowy zespół T.Love pod wodzą Muńka Staszczyka?",
+      "answers": [
+        {
+          "text": "Z Częstochowy",
+          "is_correct": true
+        },
+        {
+          "text": "Z Warszawy",
+          "is_correct": false
+        },
+        {
+          "text": "Z Krakowa",
+          "is_correct": false
+        },
+        {
+          "text": "Z Katowic",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polski Rock",
+      "question": "Jaki znany polski zespół nagrał kultowy 'hymn pokoleń' pt. 'Autobiografia'?",
+      "answers": [
+        {
+          "text": "Perfect",
+          "is_correct": true
+        },
+        {
+          "text": "Lady Pank",
+          "is_correct": false
+        },
+        {
+          "text": "Republika",
+          "is_correct": false
+        },
+        {
+          "text": "Maanam",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polski Rock",
+      "question": "Kto był charyzmatycznym wokalistą, twórcą tekstów i liderem zespołu Republika?",
+      "answers": [
+        {
+          "text": "Grzegorz Ciechowski",
+          "is_correct": true
+        },
+        {
+          "text": "Tomasz Lipiński",
+          "is_correct": false
+        },
+        {
+          "text": "Robert Gawliński",
+          "is_correct": false
+        },
+        {
+          "text": "Paweł Kukiz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polski Rock",
+      "question": "Jak miała na imię niezwykle wyrazista, ikoniczna wokalistka zespołu Maanam?",
+      "answers": [
+        {
+          "text": "Kora (Olga Jackowska)",
+          "is_correct": true
+        },
+        {
+          "text": "Kasia Kowalska",
+          "is_correct": false
+        },
+        {
+          "text": "Edyta Bartosiewicz",
+          "is_correct": false
+        },
+        {
+          "text": "Agnieszka Chylińska",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Disco Polo i Biesiada",
+      "question": "Jaki utwór zespołu Akcent z Zenonem Martyniukiem z 2014 roku pobił rekordy popularności?",
+      "answers": [
+        {
+          "text": "Przez twe oczy zielone",
+          "is_correct": true
+        },
+        {
+          "text": "Jesteś szalona",
+          "is_correct": false
+        },
+        {
+          "text": "Wolność",
+          "is_correct": false
+        },
+        {
+          "text": "Ona tańczy dla mnie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Disco Polo i Biesiada",
+      "question": "Która grupa muzyczna odpowiedzialna jest za wielki hit dyskotek 'Ona tańczy dla mnie'?",
+      "answers": [
+        {
+          "text": "Weekend",
+          "is_correct": true
+        },
+        {
+          "text": "Boys",
+          "is_correct": false
+        },
+        {
+          "text": "Milano",
+          "is_correct": false
+        },
+        {
+          "text": "Bayer Full",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Disco Polo i Biesiada",
+      "question": "Jaki znany zespół pod wodzą Marcina Millera wykonuje słynny szlagier 'Jesteś szalona'?",
+      "answers": [
+        {
+          "text": "Boys",
+          "is_correct": true
+        },
+        {
+          "text": "Classic",
+          "is_correct": false
+        },
+        {
+          "text": "Akcent",
+          "is_correct": false
+        },
+        {
+          "text": "Top One",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Disco Polo i Biesiada",
+      "question": "Jak potocznie określa się rodzimy nurt polskiej muzyki tanecznej, popularny na weselach?",
+      "answers": [
+        {
+          "text": "Disco polo",
+          "is_correct": true
+        },
+        {
+          "text": "Polo pop",
+          "is_correct": false
+        },
+        {
+          "text": "Biesiada polska",
+          "is_correct": false
+        },
+        {
+          "text": "Dance music",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Disco Polo i Biesiada",
+      "question": "Z jakiej znanej, tradycyjnej pieśni biesiadnej pochodzą słowa: 'kto w styczniu urodzony jest...'?",
+      "answers": [
+        {
+          "text": "Pije Kuba do Jakuba",
+          "is_correct": true
+        },
+        {
+          "text": "Szła dzieweczka do laseczka",
+          "is_correct": false
+        },
+        {
+          "text": "Hej sokoły",
+          "is_correct": false
+        },
+        {
+          "text": "Góralu czy ci nie żal",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Światowy Pop",
+      "question": "Który wybitny artysta przez dekady nosił dumnie tytuł 'Króla Popu'?",
+      "answers": [
+        {
+          "text": "Michael Jackson",
+          "is_correct": true
+        },
+        {
+          "text": "Elvis Presley",
+          "is_correct": false
+        },
+        {
+          "text": "Prince",
+          "is_correct": false
+        },
+        {
+          "text": "George Michael",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Światowy Pop",
+      "question": "Jaka światowa gwiazda wylansowała wielkie hity takie jak 'Like a Virgin' i 'Material Girl'?",
+      "answers": [
+        {
+          "text": "Madonna",
+          "is_correct": true
+        },
+        {
+          "text": "Whitney Houston",
+          "is_correct": false
+        },
+        {
+          "text": "Mariah Carey",
+          "is_correct": false
+        },
+        {
+          "text": "Celine Dion",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Światowy Pop",
+      "question": "Który z brytyjskich piosenkarzy i kompozytorów zaśpiewał w 2017 r. wielki hit 'Shape of You'?",
+      "answers": [
+        {
+          "text": "Ed Sheeran",
+          "is_correct": true
+        },
+        {
+          "text": "Harry Styles",
+          "is_correct": false
+        },
+        {
+          "text": "Justin Bieber",
+          "is_correct": false
+        },
+        {
+          "text": "Shawn Mendes",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Światowy Pop",
+      "question": "Jak nazywa się kolumbijska piosenkarka, która wykonała hymn mundialu w 2010 r., utwór 'Waka Waka'?",
+      "answers": [
+        {
+          "text": "Shakira",
+          "is_correct": true
+        },
+        {
+          "text": "Jennifer Lopez",
+          "is_correct": false
+        },
+        {
+          "text": "Beyoncé",
+          "is_correct": false
+        },
+        {
+          "text": "Rihanna",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Światowy Pop",
+      "question": "W skład jakiego znanego, amerykańskiego boysbandu wchodził Justin Timberlake?",
+      "answers": [
+        {
+          "text": "*NSYNC",
+          "is_correct": true
+        },
+        {
+          "text": "Backstreet Boys",
+          "is_correct": false
+        },
+        {
+          "text": "Take That",
+          "is_correct": false
+        },
+        {
+          "text": "One Direction",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Legendarne Zespoły",
+      "question": "Jaki zespół z Liverpoolu na stałe zmienił muzykę pop m.in. z hitami 'Hey Jude' i 'Let It Be'?",
+      "answers": [
+        {
+          "text": "The Beatles",
+          "is_correct": true
+        },
+        {
+          "text": "The Rolling Stones",
+          "is_correct": false
+        },
+        {
+          "text": "The Who",
+          "is_correct": false
+        },
+        {
+          "text": "Pink Floyd",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Legendarne Zespoły",
+      "question": "Kto był wybitnie charyzmatycznym wokalistą brytyjskiej grupy rockowej Queen?",
+      "answers": [
+        {
+          "text": "Freddie Mercury",
+          "is_correct": true
+        },
+        {
+          "text": "Mick Jagger",
+          "is_correct": false
+        },
+        {
+          "text": "Robert Plant",
+          "is_correct": false
+        },
+        {
+          "text": "Axl Rose",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Legendarne Zespoły",
+      "question": "Jaki klasyczny rockowy zespół nagrał kultowy, rozbudowany utwór 'Stairway to Heaven'?",
+      "answers": [
+        {
+          "text": "Led Zeppelin",
+          "is_correct": true
+        },
+        {
+          "text": "Black Sabbath",
+          "is_correct": false
+        },
+        {
+          "text": "Deep Purple",
+          "is_correct": false
+        },
+        {
+          "text": "The Doors",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Legendarne Zespoły",
+      "question": "Kurt Cobain był wokalistą jakiej przełomowej, amerykańskiej grupy grunge'owej?",
+      "answers": [
+        {
+          "text": "Nirvana",
+          "is_correct": true
+        },
+        {
+          "text": "Pearl Jam",
+          "is_correct": false
+        },
+        {
+          "text": "Alice in Chains",
+          "is_correct": false
+        },
+        {
+          "text": "Soundgarden",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Legendarne Zespoły",
+      "question": "Jak nazywa się ikoniczna, szwedzka grupa popowa z lat 70., która podbiła świat hitem 'Waterloo'?",
+      "answers": [
+        {
+          "text": "ABBA",
+          "is_correct": true
+        },
+        {
+          "text": "Roxette",
+          "is_correct": false
+        },
+        {
+          "text": "Ace of Base",
+          "is_correct": false
+        },
+        {
+          "text": "Europe",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwal w Opolu i Sopocie",
+      "question": "W jakim obiekcie tradycyjnie od 1963 roku odbywa się Krajowy Festiwal Piosenki Polskiej?",
+      "answers": [
+        {
+          "text": "W Amfiteatrze Tysiąclecia w Opolu",
+          "is_correct": true
+        },
+        {
+          "text": "W Operze Leśnej",
+          "is_correct": false
+        },
+        {
+          "text": "Na Stadionie Narodowym",
+          "is_correct": false
+        },
+        {
+          "text": "W Spodku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwal w Opolu i Sopocie",
+      "question": "W jakim specyficznym miejscu w Sopocie mieści się duża, otwarta scena letnich festiwali?",
+      "answers": [
+        {
+          "text": "W Operze Leśnej",
+          "is_correct": true
+        },
+        {
+          "text": "W Amfiteatrze Kadzielnia",
+          "is_correct": false
+        },
+        {
+          "text": "W Hali Stulecia",
+          "is_correct": false
+        },
+        {
+          "text": "Na Sopockim Molo",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwal w Opolu i Sopocie",
+      "question": "Która prestiżowa nagroda jest głównym trofeum na opolskim koncercie debiutów i premier?",
+      "answers": [
+        {
+          "text": "Karolinka",
+          "is_correct": true
+        },
+        {
+          "text": "Bursztynowy Słowik",
+          "is_correct": false
+        },
+        {
+          "text": "Złoty Mikrofon",
+          "is_correct": false
+        },
+        {
+          "text": "Statuetka Fryderyka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwal w Opolu i Sopocie",
+      "question": "Jakie cenne wyróżnienie często zdobywają główni zwycięzcy festiwalu w Sopocie?",
+      "answers": [
+        {
+          "text": "Bursztynowego Słowika",
+          "is_correct": true
+        },
+        {
+          "text": "Złotą Lirę",
+          "is_correct": false
+        },
+        {
+          "text": "Srebrnego Dzwonu",
+          "is_correct": false
+        },
+        {
+          "text": "Złotą Płytę",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwal w Opolu i Sopocie",
+      "question": "Kto wyśpiewał mroczny, poruszający utwór 'Dziwny jest ten świat', który wstrząsnął Opolem?",
+      "answers": [
+        {
+          "text": "Czesław Niemen",
+          "is_correct": true
+        },
+        {
+          "text": "Marek Grechuta",
+          "is_correct": false
+        },
+        {
+          "text": "Stan Borys",
+          "is_correct": false
+        },
+        {
+          "text": "Krzysztof Krawczyk",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Konkurs Eurowizji",
+      "question": "Jaki zespół zajął historyczne 1. miejsce dla Szwecji w 1974 r. z rytmiczną piosenką 'Waterloo'?",
+      "answers": [
+        {
+          "text": "ABBA",
+          "is_correct": true
+        },
+        {
+          "text": "Roxette",
+          "is_correct": false
+        },
+        {
+          "text": "The Cardigans",
+          "is_correct": false
+        },
+        {
+          "text": "Ace of Base",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Konkurs Eurowizji",
+      "question": "W którym roku piosenkarka Edyta Górniak zajęła aż 2. miejsce z hitem 'To nie ja!'?",
+      "answers": [
+        {
+          "text": "W 1994 r.",
+          "is_correct": true
+        },
+        {
+          "text": "W 1998 r.",
+          "is_correct": false
+        },
+        {
+          "text": "W 2003 r.",
+          "is_correct": false
+        },
+        {
+          "text": "W 1990 r.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Konkurs Eurowizji",
+      "question": "Kto z Polski pojechał na konkurs Eurowizji w 2014 roku z przaśnym utworem 'My Słowianie'?",
+      "answers": [
+        {
+          "text": "Donatan i Cleo",
+          "is_correct": true
+        },
+        {
+          "text": "Ich Troje",
+          "is_correct": false
+        },
+        {
+          "text": "Tulia",
+          "is_correct": false
+        },
+        {
+          "text": "Michał Szpak",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Konkurs Eurowizji",
+      "question": "W jakim kraju gościnnie odbyła się Eurowizja w 2023 r., zorganizowana w imieniu Ukrainy?",
+      "answers": [
+        {
+          "text": "W Wielkiej Brytanii",
+          "is_correct": true
+        },
+        {
+          "text": "W Szwecji",
+          "is_correct": false
+        },
+        {
+          "text": "W Niemczech",
+          "is_correct": false
+        },
+        {
+          "text": "We Włoszech",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Konkurs Eurowizji",
+      "question": "Która współczesna szwedzka artystka zdołała wygrać Konkurs Eurowizji aż dwukrotnie?",
+      "answers": [
+        {
+          "text": "Loreen",
+          "is_correct": true
+        },
+        {
+          "text": "Carola",
+          "is_correct": false
+        },
+        {
+          "text": "Mans Zelmerlow",
+          "is_correct": false
+        },
+        {
+          "text": "Helena Paparizou",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Hip-hop i Rap (Polska)",
+      "question": "Jaki warszawski skład hip-hopowy wydał przełomowy dla kultury ulicznej album 'Skandal' w 1998 r.?",
+      "answers": [
+        {
+          "text": "Molesta Ewenement",
+          "is_correct": true
+        },
+        {
+          "text": "Paktofonika",
+          "is_correct": false
+        },
+        {
+          "text": "Kaliber 44",
+          "is_correct": false
+        },
+        {
+          "text": "Slums Attack",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Hip-hop i Rap (Polska)",
+      "question": "Kto jest założycielem dużej marki Prosto i raperem znanym z takich zespołów jak ZIP Skład czy WWO?",
+      "answers": [
+        {
+          "text": "Sokół",
+          "is_correct": true
+        },
+        {
+          "text": "Tede",
+          "is_correct": false
+        },
+        {
+          "text": "Pezet",
+          "is_correct": false
+        },
+        {
+          "text": "O.S.T.R.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Hip-hop i Rap (Polska)",
+      "question": "O trudnej historii jakiego śląskiego składu rapowego opowiada głośny film 'Jesteś Bogiem'?",
+      "answers": [
+        {
+          "text": "O Paktofonice",
+          "is_correct": true
+        },
+        {
+          "text": "O Kalibrze 44",
+          "is_correct": false
+        },
+        {
+          "text": "O Pokahontaz",
+          "is_correct": false
+        },
+        {
+          "text": "O zespole 3xKlan",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Hip-hop i Rap (Polska)",
+      "question": "Jak nazywa się popularny łódzki raper i producent, który jest wykształconym wirtuozem skrzypiec?",
+      "answers": [
+        {
+          "text": "O.S.T.R.",
+          "is_correct": true
+        },
+        {
+          "text": "Zeus",
+          "is_correct": false
+        },
+        {
+          "text": "Tede",
+          "is_correct": false
+        },
+        {
+          "text": "Peja",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Hip-hop i Rap (Polska)",
+      "question": "Który znany warszawski raper we wczesnych latach 00. stworzył genialny duet z producentem Noonem?",
+      "answers": [
+        {
+          "text": "Pezet",
+          "is_correct": true
+        },
+        {
+          "text": "Onar",
+          "is_correct": false
+        },
+        {
+          "text": "Ten Typ Mes",
+          "is_correct": false
+        },
+        {
+          "text": "Sokół",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Jazz i Blues",
+      "question": "Jaki słynny na cały świat czarnoskóry muzyk zasłynął pełnym ciepła utworem 'What a Wonderful World'?",
+      "answers": [
+        {
+          "text": "Louis Armstrong",
+          "is_correct": true
+        },
+        {
+          "text": "Miles Davis",
+          "is_correct": false
+        },
+        {
+          "text": "John Coltrane",
+          "is_correct": false
+        },
+        {
+          "text": "Charlie Parker",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Jazz i Blues",
+      "question": "Jak nazywał się genialny polski kompozytor muzyki jazzowej i filmowej (m.in. do 'Dziecka Rosemary')?",
+      "answers": [
+        {
+          "text": "Krzysztof Komeda",
+          "is_correct": true
+        },
+        {
+          "text": "Michał Urbaniak",
+          "is_correct": false
+        },
+        {
+          "text": "Tomasz Stańko",
+          "is_correct": false
+        },
+        {
+          "text": "Leszek Możdżer",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Jazz i Blues",
+      "question": "Kto z amerykańskich muzyków nosił tytuł 'Króla Bluesa' i grał na gitarze o nazwie 'Lucille'?",
+      "answers": [
+        {
+          "text": "B.B. King",
+          "is_correct": true
+        },
+        {
+          "text": "Muddy Waters",
+          "is_correct": false
+        },
+        {
+          "text": "Eric Clapton",
+          "is_correct": false
+        },
+        {
+          "text": "Chuck Berry",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Jazz i Blues",
+      "question": "Który współczesny muzyk z Polski to wybitny wirtuoz fortepianu jazzowego o międzynarodowej sławie?",
+      "answers": [
+        {
+          "text": "Leszek Możdżer",
+          "is_correct": true
+        },
+        {
+          "text": "Tomasz Stańko",
+          "is_correct": false
+        },
+        {
+          "text": "Jan Ptaszyn Wróblewski",
+          "is_correct": false
+        },
+        {
+          "text": "Zbigniew Namysłowski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Jazz i Blues",
+      "question": "Jakie miasto na południu USA na ogół uważane jest za główną, historyczną kolebkę muzyki jazzowej?",
+      "answers": [
+        {
+          "text": "Nowy Orlean",
+          "is_correct": true
+        },
+        {
+          "text": "Chicago",
+          "is_correct": false
+        },
+        {
+          "text": "Nowy Jork",
+          "is_correct": false
+        },
+        {
+          "text": "Memphis",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teksty Piosenek",
+      "question": "Dokończ słowa wielkiego hitu Budki Suflera: 'Znowu w życiu mi nie wyszło, uciec...'?",
+      "answers": [
+        {
+          "text": "...chciałem dokądkolwiek",
+          "is_correct": true
+        },
+        {
+          "text": "...muszę przed siebie",
+          "is_correct": false
+        },
+        {
+          "text": "...chciałem w nieznane",
+          "is_correct": false
+        },
+        {
+          "text": "...pragnę stąd szybko",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teksty Piosenek",
+      "question": "Jak brzmi wers piosenki Maanamu: 'Czekam na wiatr co rozgoni...'?",
+      "answers": [
+        {
+          "text": "...ciemne skłębione zasłony",
+          "is_correct": true
+        },
+        {
+          "text": "...czarne burzowe chmury",
+          "is_correct": false
+        },
+        {
+          "text": "...mgłę co zasłania mi świat",
+          "is_correct": false
+        },
+        {
+          "text": "...smutne myśli z mej głowy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teksty Piosenek",
+      "question": "Kto śpiewał z humorem o dziewczynach: 'Baśka miała fajny biust, Ania styl, a Zośka coś...'?",
+      "answers": [
+        {
+          "text": "...co lubię",
+          "is_correct": true
+        },
+        {
+          "text": "...czego brak",
+          "is_correct": false
+        },
+        {
+          "text": "...w sobie",
+          "is_correct": false
+        },
+        {
+          "text": "...co chciałem",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teksty Piosenek",
+      "question": "Jak Krzysztof Krawczyk dokończył frazę 'Chciałem być marynarzem...'?",
+      "answers": [
+        {
+          "text": "...chciałem mieć tatuaże",
+          "is_correct": true
+        },
+        {
+          "text": "...chciałem pływać po świecie",
+          "is_correct": false
+        },
+        {
+          "text": "...chciałem żeglować w dal",
+          "is_correct": false
+        },
+        {
+          "text": "...chciałem statkiem sterować",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teksty Piosenek",
+      "question": "Z jakiego poetyckiego utworu Marka Grechuty pochodzą słowa 'Ważne są tylko te dni, których...'?",
+      "answers": [
+        {
+          "text": "Dni, których nie znamy",
+          "is_correct": true
+        },
+        {
+          "text": "Czas nas uczy pogody",
+          "is_correct": false
+        },
+        {
+          "text": "Przeżyj to sam",
+          "is_correct": false
+        },
+        {
+          "text": "Zegarmistrz światła",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Instrumenty Muzyczne",
+      "question": "Do jakiej podstawowej grupy instrumentów należą klasyczne skrzypce?",
+      "answers": [
+        {
+          "text": "Smyczkowe",
+          "is_correct": true
+        },
+        {
+          "text": "Dęte blaszane",
+          "is_correct": false
+        },
+        {
+          "text": "Szarpane",
+          "is_correct": false
+        },
+        {
+          "text": "Klawiszowe",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Instrumenty Muzyczne",
+      "question": "Ile strun posiada tradycyjna gitara klasyczna i akustyczna?",
+      "answers": [
+        {
+          "text": "6",
+          "is_correct": true
+        },
+        {
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "text": "8",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Instrumenty Muzyczne",
+      "question": "Na jakim klawiszowym instrumencie swoje wielkie dzieła tworzył Fryderyk Chopin?",
+      "answers": [
+        {
+          "text": "Na fortepianie",
+          "is_correct": true
+        },
+        {
+          "text": "Na akordeonie",
+          "is_correct": false
+        },
+        {
+          "text": "Na organach",
+          "is_correct": false
+        },
+        {
+          "text": "Na harfie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Instrumenty Muzyczne",
+      "question": "Jaki mały, strunowy instrument pochodzi z Hawajów i wyglądem przypomina miniaturową gitarę?",
+      "answers": [
+        {
+          "text": "Ukulele",
+          "is_correct": true
+        },
+        {
+          "text": "Mandolina",
+          "is_correct": false
+        },
+        {
+          "text": "Bałałajka",
+          "is_correct": false
+        },
+        {
+          "text": "Banjo",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Instrumenty Muzyczne",
+      "question": "Z jakiego instrumentu słynął na całym świecie genialny wokalista i muzyk Louis Armstrong?",
+      "answers": [
+        {
+          "text": "Z trąbki",
+          "is_correct": true
+        },
+        {
+          "text": "Z saksofonu",
+          "is_correct": false
+        },
+        {
+          "text": "Z klarnetu",
+          "is_correct": false
+        },
+        {
+          "text": "Z puzonu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzyka Elektroniczna",
+      "question": "Który francuski wirtuoz jest autorem kultowego albumu muzyki elektronicznej 'Oxygene'?",
+      "answers": [
+        {
+          "text": "Jean-Michel Jarre",
+          "is_correct": true
+        },
+        {
+          "text": "David Guetta",
+          "is_correct": false
+        },
+        {
+          "text": "DJ Snake",
+          "is_correct": false
+        },
+        {
+          "text": "Vangelis",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzyka Elektroniczna",
+      "question": "Jak nazywał się uwielbiany szwedzki DJ i producent muzyczny, autor megahitu 'Wake Me Up'?",
+      "answers": [
+        {
+          "text": "Avicii",
+          "is_correct": true
+        },
+        {
+          "text": "Kygo",
+          "is_correct": false
+        },
+        {
+          "text": "Martin Garrix",
+          "is_correct": false
+        },
+        {
+          "text": "Tiësto",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzyka Elektroniczna",
+      "question": "Jaki francuski duet elektroniczny przez dekady ukrywał twarze pod futurystycznymi hełmami?",
+      "answers": [
+        {
+          "text": "Daft Punk",
+          "is_correct": true
+        },
+        {
+          "text": "Justice",
+          "is_correct": false
+        },
+        {
+          "text": "The Chemical Brothers",
+          "is_correct": false
+        },
+        {
+          "text": "Disclosure",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzyka Elektroniczna",
+      "question": "Jak nazywa się potężny i bajkowy festiwal muzyki elektronicznej organizowany w belgijskim Boom?",
+      "answers": [
+        {
+          "text": "Tomorrowland",
+          "is_correct": true
+        },
+        {
+          "text": "Ultra Music Festival",
+          "is_correct": false
+        },
+        {
+          "text": "Creamfields",
+          "is_correct": false
+        },
+        {
+          "text": "Mayday",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzyka Elektroniczna",
+      "question": "Z jakiego europejskiego kraju wywodzi się zespół Kraftwerk, absolutni pionierzy elektro?",
+      "answers": [
+        {
+          "text": "Z Niemiec",
+          "is_correct": true
+        },
+        {
+          "text": "Z Francji",
+          "is_correct": false
+        },
+        {
+          "text": "Z Wielkiej Brytanii",
+          "is_correct": false
+        },
+        {
+          "text": "Ze Szwecji",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkie Gwiazdy Estrady",
+      "question": "Kto wylansował ponadczasowe przeboje, takie jak 'My Way' czy 'Fly Me to the Moon'?",
+      "answers": [
+        {
+          "text": "Frank Sinatra",
+          "is_correct": true
+        },
+        {
+          "text": "Dean Martin",
+          "is_correct": false
+        },
+        {
+          "text": "Elvis Presley",
+          "is_correct": false
+        },
+        {
+          "text": "Tony Bennett",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkie Gwiazdy Estrady",
+      "question": "Jaka artystka wyśpiewała potężny utwór 'I Will Always Love You' do filmu 'Bodyguard'?",
+      "answers": [
+        {
+          "text": "Whitney Houston",
+          "is_correct": true
+        },
+        {
+          "text": "Mariah Carey",
+          "is_correct": false
+        },
+        {
+          "text": "Celine Dion",
+          "is_correct": false
+        },
+        {
+          "text": "Tina Turner",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkie Gwiazdy Estrady",
+      "question": "Który piosenkarz o znakomitym głosie śpiewał: 'Zacznij od Bacha' i grał na skrzypcach?",
+      "answers": [
+        {
+          "text": "Zbigniew Wodecki",
+          "is_correct": true
+        },
+        {
+          "text": "Krzysztof Krawczyk",
+          "is_correct": false
+        },
+        {
+          "text": "Andrzej Zaucha",
+          "is_correct": false
+        },
+        {
+          "text": "Ryszard Rynkowski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkie Gwiazdy Estrady",
+      "question": "Jaką amerykańską piosenkarkę, autorkę przebojów 'Poker Face' i 'Bad Romance', zwą Mother Monster?",
+      "answers": [
+        {
+          "text": "Lady Gaga",
+          "is_correct": true
+        },
+        {
+          "text": "Katy Perry",
+          "is_correct": false
+        },
+        {
+          "text": "Rihanna",
+          "is_correct": false
+        },
+        {
+          "text": "Taylor Swift",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkie Gwiazdy Estrady",
+      "question": "Który polski wokalista nagrał takie przeboje jak 'Parostatek' czy 'Chciałem być'?",
+      "answers": [
+        {
+          "text": "Krzysztof Krawczyk",
+          "is_correct": true
+        },
+        {
+          "text": "Jerzy Połomski",
+          "is_correct": false
+        },
+        {
+          "text": "Zbigniew Wodecki",
+          "is_correct": false
+        },
+        {
+          "text": "Stan Borys",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teledyski i MTV",
+      "question": "Jaki przełomowy teledysk Michaela Jacksona z lat 80. był reżyserowany jak krótkometrażowy horror?",
+      "answers": [
+        {
+          "text": "Thriller",
+          "is_correct": true
+        },
+        {
+          "text": "Bad",
+          "is_correct": false
+        },
+        {
+          "text": "Billie Jean",
+          "is_correct": false
+        },
+        {
+          "text": "Beat It",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teledyski i MTV",
+      "question": "Jaka światowa stacja muzyczna rozpoczęła swoje pierwsze nadawanie w 1981 roku?",
+      "answers": [
+        {
+          "text": "MTV",
+          "is_correct": true
+        },
+        {
+          "text": "VIVA",
+          "is_correct": false
+        },
+        {
+          "text": "VH1",
+          "is_correct": false
+        },
+        {
+          "text": "4fun.tv",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teledyski i MTV",
+      "question": "Kto w kontrowersyjnym teledysku do piosenki 'Like a Prayer' tańczył na tle płonących krzyży?",
+      "answers": [
+        {
+          "text": "Madonna",
+          "is_correct": true
+        },
+        {
+          "text": "Cher",
+          "is_correct": false
+        },
+        {
+          "text": "Britney Spears",
+          "is_correct": false
+        },
+        {
+          "text": "Christina Aguilera",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teledyski i MTV",
+      "question": "Jaki był absolutnie pierwszy, symboliczny teledysk wyemitowany w historii stacji MTV?",
+      "answers": [
+        {
+          "text": "Video Killed the Radio Star (The Buggles)",
+          "is_correct": true
+        },
+        {
+          "text": "Money for Nothing (Dire Straits)",
+          "is_correct": false
+        },
+        {
+          "text": "Thriller (Michael Jackson)",
+          "is_correct": false
+        },
+        {
+          "text": "Take On Me (a-ha)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teledyski i MTV",
+      "question": "W jakim teledysku zespołu a-ha z 1985 roku połączono niesamowitą animację ze światem realnym?",
+      "answers": [
+        {
+          "text": "Take On Me",
+          "is_correct": true
+        },
+        {
+          "text": "The Sun Always Shines on T.V.",
+          "is_correct": false
+        },
+        {
+          "text": "Hunting High and Low",
+          "is_correct": false
+        },
+        {
+          "text": "Cry Wolf",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polska Muzyka Alternatywna",
+      "question": "Kto jest twórcą wielkich, alternatywno-popowych hitów z albumu 'Małomiasteczkowy'?",
+      "answers": [
+        {
+          "text": "Dawid Podsiadło",
+          "is_correct": true
+        },
+        {
+          "text": "Krzysztof Zalewski",
+          "is_correct": false
+        },
+        {
+          "text": "Kortez",
+          "is_correct": false
+        },
+        {
+          "text": "Ralph Kaminski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polska Muzyka Alternatywna",
+      "question": "Jaki ekstrawagancki i barwny artysta nagrał całą płytę będącą hołdem dla piosenek Kory?",
+      "answers": [
+        {
+          "text": "Ralph Kaminski",
+          "is_correct": true
+        },
+        {
+          "text": "Michał Szpak",
+          "is_correct": false
+        },
+        {
+          "text": "Dawid Kwiatkowski",
+          "is_correct": false
+        },
+        {
+          "text": "Igor Herbut",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polska Muzyka Alternatywna",
+      "question": "Pod jakim szyldem artystycznym występuje Katarzyna Nosowska po zawieszeniu działalności Hey?",
+      "answers": [
+        {
+          "text": "Nosowska",
+          "is_correct": true
+        },
+        {
+          "text": "Kaśka Sochacka",
+          "is_correct": false
+        },
+        {
+          "text": "Daria Zawiałow",
+          "is_correct": false
+        },
+        {
+          "text": "Mery Spolsky",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polska Muzyka Alternatywna",
+      "question": "Z jakiego docenianego alternatywnego zespołu rockowego w 2012 roku odszedł Artur Rojek?",
+      "answers": [
+        {
+          "text": "Myslovitz",
+          "is_correct": true
+        },
+        {
+          "text": "Lenny Valentino",
+          "is_correct": false
+        },
+        {
+          "text": "Coma",
+          "is_correct": false
+        },
+        {
+          "text": "happysad",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polska Muzyka Alternatywna",
+      "question": "Jaki znany marka piwa od ponad dekady jest głównym sponsorem trasy 'Męskie Granie'?",
+      "answers": [
+        {
+          "text": "Żywiec",
+          "is_correct": true
+        },
+        {
+          "text": "Tyskie",
+          "is_correct": false
+        },
+        {
+          "text": "Okocim",
+          "is_correct": false
+        },
+        {
+          "text": "Lech",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Hymny i Pieśni Patriotyczne",
+      "question": "W jakim włoskim mieście Józef Wybicki napisał oryginalne słowa Mazurka Dąbrowskiego?",
+      "answers": [
+        {
+          "text": "W Reggio nell'Emilia",
+          "is_correct": true
+        },
+        {
+          "text": "W Rzymie",
+          "is_correct": false
+        },
+        {
+          "text": "W Neapolu",
+          "is_correct": false
+        },
+        {
+          "text": "W Wenecji",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Hymny i Pieśni Patriotyczne",
+      "question": "Kto jest autorką potężnego wiersza 'Rota', stanowiącego nieoficjalny hymn Polski?",
+      "answers": [
+        {
+          "text": "Maria Konopnicka",
+          "is_correct": true
+        },
+        {
+          "text": "Wisława Szymborska",
+          "is_correct": false
+        },
+        {
+          "text": "Eliza Orzeszkowa",
+          "is_correct": false
+        },
+        {
+          "text": "Zofia Nałkowska",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Hymny i Pieśni Patriotyczne",
+      "question": "O jakim kwiatach pod Monte Cassino mówi słynna pieśń upamiętniająca tamtejszą bitwę?",
+      "answers": [
+        {
+          "text": "O czerwonych makach",
+          "is_correct": true
+        },
+        {
+          "text": "O białych różach",
+          "is_correct": false
+        },
+        {
+          "text": "O polnych chabrach",
+          "is_correct": false
+        },
+        {
+          "text": "O wiosennych bzach",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Hymny i Pieśni Patriotyczne",
+      "question": "Jaką dawną, maryjną pieśń śpiewali polscy rycerze przed bitwą pod Grunwaldem?",
+      "answers": [
+        {
+          "text": "Bogurodzicę",
+          "is_correct": true
+        },
+        {
+          "text": "Gaude Mater Polonia",
+          "is_correct": false
+        },
+        {
+          "text": "Rotę",
+          "is_correct": false
+        },
+        {
+          "text": "Marsz Pierwszej Brygady",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Hymny i Pieśni Patriotyczne",
+      "question": "Jak zaczyna się pieśń będąca nieformalnym hymnem Powstania Warszawskiego?",
+      "answers": [
+        {
+          "text": "Warszawskie dzieci, pójdziemy w bój",
+          "is_correct": true
+        },
+        {
+          "text": "Hej, chłopcy, bagnet na broń",
+          "is_correct": false
+        },
+        {
+          "text": "Pałacyk Michla, Żytnia, Wola",
+          "is_correct": false
+        },
+        {
+          "text": "Deszcz jesienny, deszcz",
+          "is_correct": false
+        }
+      ]
+    }
+  ]
+}
