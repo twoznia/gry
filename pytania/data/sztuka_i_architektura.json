@@ -862,28 +862,6 @@
     },
     {
       "subcategory": "Słynne Budowle Świata",
-      "question": "Która wspaniała, bardzo pochyła, powoli opadająca w złą stronę słynna wieża pełniąca od wieków na placu w mieście swą funkcję jako w świątyni i klasycznie zbudowana przy białym rzymsko do dzwonnicy katedralnej u swego dawnego po budownictwie boku, z czasem na dobre stała bardzo w mediach wielce architektonicznym symbolem i wybitną we Włoszech turystyczną w Italii wizytówką Włoch na fotografiach?",
-      "answers": [
-        {
-          "text": "Krzywa Wieża w we Włoszech po w z Pizie pod w z i w i pod po i a w Pizie",
-          "is_correct": true
-        },
-        {
-          "text": "Stara i strzelista w z po pod na ze słynna we Włoskim w rzymskim dzwonnica ze i z i pod od wielkiego artysty pod po od imieniem w we Włoszech Giotta",
-          "is_correct": false
-        },
-        {
-          "text": "Długa pod po z w i z po we w i wysoka po obok we w u do ze ze wieża u w Bolonii we po obok z ze z i w pod i po do Asinellego",
-          "is_correct": false
-        },
-        {
-          "text": "Strzelista z we pod obok a we Włoszech w Wenecka w a z a obok w a po pod z dzwonnica (Campanila w i po Włoszech św. po Włoszech Włoszech św. z a po Marka)",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Słynne Budowle Świata",
       "question": "Jak nazywa się starożytna chińska budowla obronna ciągnąca się przez góry na długości tysięcy kilometrów?",
       "answers": [
         {
@@ -1010,72 +988,6 @@
         },
         {
           "text": "Czarny Kruk",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Zamki i Pałace Polski",
-      "question": "W z u u po w u jakim z u a po u z pięknym z u do u a u po u warszawskim po po do z pałacu, uznawanym za u po z u z do do z po u u u a z u z u z letnią u u z po a po u z po u u rezydencję, bardzo po po często po u po z po u u z u z u z po urzędował po po u u z u u z u król u z u po Stanisław u z u August u u z u po po Poniatowski?",
-      "answers": [
-        {
-          "text": "W Pałacu na Wyspie w Łazienkach",
-          "is_correct": true
-        },
-        {
-          "text": "W Pałacu w Wilanowie",
-          "is_correct": false
-        },
-        {
-          "text": "W Belwederze",
-          "is_correct": false
-        },
-        {
-          "text": "W Zamku Ujazdowskim",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Zamki i Pałace Polski",
-      "question": "Który u po u z po z ogromny z po po u u zamek po u z w po u z Wałbrzychu, ukryty w po u z po z Sudetach, kryje podobno u z u po u mroczne z u z u z po podziemia po u z z u z po okresu u z u po u z II wojny światowej?",
-      "answers": [
-        {
-          "text": "Zamek Książ",
-          "is_correct": true
-        },
-        {
-          "text": "Zamek Czocha",
-          "is_correct": false
-        },
-        {
-          "text": "Zamek Chojnik",
-          "is_correct": false
-        },
-        {
-          "text": "Zamek Grodno",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Zamki i Pałace Polski",
-      "question": "W po u z z u u po jakiej u po u z z królewskiej, renesansowej u po po u u z po z u z u po u po u u u rezydencji po po u u z po odbywają z po po u się w po u po Krakowie z z po z u po u z po z u z u zbiory po u po z u u u po z u unikalnych z po z u u z po u u u na z po u u po skalę u u z po u z europejską po u z z u z u u z u z tkanych po po u u u u u u u arrasów?",
-      "answers": [
-        {
-          "text": "Na Zamku Królewskim na Wawelu",
-          "is_correct": true
-        },
-        {
-          "text": "Na Zamku Królewskim w Warszawie",
-          "is_correct": false
-        },
-        {
-          "text": "W Zamku Pieskowa Skała",
-          "is_correct": false
-        },
-        {
-          "text": "W Sukiennicach",
           "is_correct": false
         }
       ]
