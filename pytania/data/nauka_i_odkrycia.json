@@ -26,28 +26,6 @@
     },
     {
       "subcategory": "Maria Skłodowska-Curie",
-      "question": "Z jakich dziedzin nauki Maria, jako jedyna kobieta w historii, otrzymała nagrodę Nobla?",
-      "answers": [
-        {
-          "text": "Z fizyki i chemii",
-          "is_correct": true
-        },
-        {
-          "text": "Z biologii i medycyny",
-          "is_correct": false
-        },
-        {
-          "text": "Z fizyki i matematyki",
-          "is_correct": false
-        },
-        {
-          "text": "Z chemii i literatury",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Maria Skłodowska-Curie",
       "question": "Z jakim zdolnym francuskim fizykiem wzięła ślub, by wspólnie w biedzie prowadzić badania?",
       "answers": [
         {

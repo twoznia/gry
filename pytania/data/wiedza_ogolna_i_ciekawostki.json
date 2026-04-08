@@ -114,28 +114,6 @@
     },
     {
       "subcategory": "Kosmos i Eksploracja",
-      "question": "Kto 12 kwietnia z wielkim sukcesem stał się absolutnie pierwszym w historii naszej małej planety człowiekiem oficjalnie podróżującym w otwarty, zimny kosmos na stacji kosmicznej statku Wostok 1?",
-      "answers": [
-        {
-          "text": "Jurij Gagarin",
-          "is_correct": true
-        },
-        {
-          "text": "Neil Armstrong",
-          "is_correct": false
-        },
-        {
-          "text": "John Glenn",
-          "is_correct": false
-        },
-        {
-          "text": "Mirosław Hermaszewski",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Kosmos i Eksploracja",
       "question": "Z jakiej naszej ludzkiej uroczej galaktyki po nocnym i pięknym niebie wywodzi się nasz potężny i ogromny Układ Słoneczny (wraz ze Słońcem i naszą Ziemią)?",
       "answers": [
         {
