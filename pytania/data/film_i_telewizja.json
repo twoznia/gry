@@ -136,28 +136,6 @@
     },
     {
       "subcategory": "Nagrody Oscar",
-      "question": "Z czego faktycznie wykonana jest rdzenna część słynnej amerykańskiej statuetki Oscara?",
-      "answers": [
-        {
-          "text": "Z brązu (pokrytego 24-karatowym złotem)",
-          "is_correct": true
-        },
-        {
-          "text": "Z litego złota",
-          "is_correct": false
-        },
-        {
-          "text": "Ze srebra (pozłacanego)",
-          "is_correct": false
-        },
-        {
-          "text": "Z mosiądzu",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Nagrody Oscar",
       "question": "Kto wyreżyserował film 'Lista Schindlera', za który zdobył m.in. Oscara dla Najlepszego Reżysera?",
       "answers": [
         {

@@ -290,28 +290,6 @@
     },
     {
       "subcategory": "Style Architektoniczne",
-      "question": "Co na zewnętrznej ścianie frontowej niezwykle majestatycznie posiadają klasyczne greckie czy rzymskie świątynie (zauważalne z daleka, np. Panteon w Rzymie czy Atenach)?",
-      "answers": [
-        {
-          "text": "Potężne, pionowe kolumny",
-          "is_correct": true
-        },
-        {
-          "text": "Wysokie i spiczaste wieże",
-          "is_correct": false
-        },
-        {
-          "text": "Okrągłe, bogate witraże",
-          "is_correct": false
-        },
-        {
-          "text": "Złocone z blachy kopuły",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Style Architektoniczne",
       "question": "Jaki całkowicie nowoczesny, wręcz oszczędny do bólu styl architektoniczny XX wieku po odrzuceniu wszelkich ornamentów postawił nade wszystko na samą funkcję w betonowym i szklanym bloku?",
       "answers": [
         {
@@ -664,7 +642,7 @@
     },
     {
       "subcategory": "Muzea i Galerie Sztuki",
-      "question": "Jakie niezwykle ogromne, znane i bogate eksponatami monumentalne i pociągłe z długimi skrzydłami historyczne już niemal paryskie ogromne centralne muzeum nad wodą, zasłynęło ze znanej z filmu i dodanej od góry kontrowersyjnie potężnej ogromnie szklanej nowożytnej piramidy od wejścia stojącej nowocześnie dumnie tuż przed pośrodku na głównym betonowym przed jego frontem dziedzińcu, uchodząc od lat za niebywale pierwsze i najbardziej urocze a także absolutnie i bezspornie najczęściej bezlitośnie odwiedzane w sezonie oraz oblegane wielce muzeum świata i globu?",
+      "question": "Jakie słynne muzeum w Paryżu zasłynęło z kontrowersyjnej szklanej piramidy ustawionej przy wejściu?",
       "answers": [
         {
           "text": "Luwr",
@@ -686,7 +664,7 @@
     },
     {
       "subcategory": "Muzea i Galerie Sztuki",
-      "question": "W jakim gorącym i wspaniałym historycznym europejskim słonecznym stołecznym i tętniącym niezwykłym wieczorem bardzo gwarnym miejskim na południu wielkim państwowym mieście znajduje się oficjalne słynne królewskie duże hiszpańskie narodowe Muzeum potężne nazwane i podpisane dawno od nazwy jako wielkie w tytule Prado, gromadzące m.in. bardzo wspaniałe, pełne zawiłości obrazy potężnie klasycznych mrocznych starych pędzli od malarskich światowych gigantów uwiecznionych we wnętrzach i dawno jak od Francisco de i wielkich Goi i wielkiego Diega i malarzy do Velázqueza?",
+      "question": "W jakim europejskim mieście znajduje się słynne Muzeum Prado z jedną z największych kolekcji malarstwa europejskiego?",
       "answers": [
         {
           "text": "W Madrycie",
@@ -708,7 +686,7 @@
     },
     {
       "subcategory": "Muzea i Galerie Sztuki",
-      "question": "Które bardzo dostojne publiczne dumnie nazywane państwowo brytyjskie w wyspiarskiej dużej państwowej koronie państwowe królewskie historycznie ukształtowane centralnie wielkie stare publiczne narodowe na zbiory duże muzeum w stolicy zgromadziło u w swych zwalistych archiwach niezmiernie wielkie bogactwo, niesłychane bardzo skradzione gigantyczne oraz zebrane skarby od imperium bardzo unikatowe we wnętrzach w kolumnach przeogromne ze świata starożytne, liczne, duże dawne i unikalne jak chociażby przywieziony skamieniały zapis starożytnych faraonów słynny duży w językach wyryty na zawsze znany bardzo stary i ciężki czarny duży we wnętrzach rozpracowany lingwistycznie ogromny Kamień od wsi znany jako niezwykły z Rosetty tak z dawnego podboju z piramid w Egipcie lub niesamowicie zmumifikowane ze starożytności, zmarłych i zasuszonych od stuleci dawne mumie sprowadzone z tego kraju w skrzyniach potężnie egipskie do środka na wyspę i stolicy?",
+      "question": "Które wielkie narodowe muzeum w Londynie gromadzi ponad 8 milionów eksponatów z całego świata, w tym słynny Kamień z Rosetty?",
       "answers": [
         {
           "text": "Muzeum Brytyjskie (British Museum)",
@@ -723,51 +701,51 @@
           "is_correct": false
         },
         {
-          "text": "Muzeum Historii Naturalnej w Mieście w Londynie (Natural History Museum)",
+          "text": "Muzeum Historii Naturalnej w Londynie (Natural History Museum)",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Muzea i Galerie Sztuki",
-      "question": "W jakiej to bardzo zacnej, szanowanej, pięknej starej z wielką w starych murach królewską krakowską tradycją oraz ze wspaniałymi kolekcjami z dawnej wspanialej po rodowej i krakowskiej ważnej w turystyce krakowskiej zacnej wielkiej państwowej bardzo z wizerunkami i dumnej na cały naród artystycznie niezwykle znanej w Krakowie od wieku polskiej dumnej miejskiej zacnej, dumnie na Starym Rynku stojącej blisko dużej odnawianej instytucji w podwawelskim w Krakowie na ziemi z dużą ekspozycją, możemy po biletach i z wycieczką bez kłopotów i zwiedzając zobaczyć powszechnie dumnie i bardzo wielce słynne zbiory na wystawie w tym z bliska i ze znanych cudów sztuki zobaczyć namalowany na płótnie jedyny obecnie posiadany dzisiaj fizycznie bezwzględnie absolutnie oryginalny obraz ze znanych cudów z pod genialnego urokliwego ze szkoły samego i malującego ręką pędzla niesamowicie na zawsze od pociągnięcia z pędzla niezwykle bardzo wielkiego malarskiego cudownego mistrza potężnego arcydzieł mistrza ze starego kontynentu u samego boku wielce słynnego Leonarda da z Vinci (tajemniczy znany po tytule Dama i ten sam znany obraz jako wielka malowana pod blask obraz Dama w tle Dama w stroju z malutkim i ładnym na kolanach i obraz gronostajem)?",
+      "question": "W którym krakowskim muzeum można zobaczyć słynny obraz Leonarda da Vinci 'Dama z gronostajem'?",
       "answers": [
         {
-          "text": "W zacnym u od fundatorów wybitnym od lat w zbiorach Muzeum od samej dawnej fundacji od zasłużonej państwowej kolekcji rodu od dawnych w budynku a Muzeum na wystawie w oddziale po Muzeum znanych z fundacji u rodziny jako dla zwiedzających wielkie i Muzeum im. od wielkiej kolekcji w zbiorze państwowym u samych Muzeum zasłużonego w narodzie i oddział zwane i Książąt rodu w rodzinie od samej zasłużonej pamiątkowej im. Muzeum Czartoryskich (oddział powszechnego z w Krakowie wielkiego dumnie MN Muzeum a Muzeum dumnie wielkiego jako na ekspozycji u samej Narodowego w z Krakowie)",
+          "text": "Muzeum Czartoryskich (oddział Muzeum Narodowego w Krakowie)",
           "is_correct": true
         },
         {
-          "text": "We wnętrzach dumnego ze zbiorów zamku i w Muzeum w dumnym komnatach zamku na samym Zamku Królewskim bardzo wybitnym i dumne muzeum u w Krakowie jako komnatach Królewskim komnat i we wnętrzach Wawelu Wzgórzu i Wawelu pod dziedzińcem Wawelu u podnóża Zamku",
+          "text": "Na Zamku Królewskim na Wawelu",
           "is_correct": false
         },
         {
-          "text": "W zacnym budynku starej w podziemiach Sukiennic na bardzo wielkim placu ogromnym Sukiennic na Głównym pod wielkim Starym zacnym jako na starym Głównym od lat wielkim Rynku na środku u pośrodku",
+          "text": "W Sukiennicach na Rynku Głównym",
           "is_correct": false
         },
         {
-          "text": "W modernistycznie i bardzo super ze szkłem wielce pod nazwą po budowanym MOCAK muzeum jako po wielkiej na sztukę w nazwie Współczesnej w hali dużej Współczesnej przy MOCAK muzeum u na samym i pod nazwą i obok na Zabłociu w krakowskim w oddziale MOCAK Muzeum MOCAK-u Sztuki u MOCAK",
+          "text": "W MOCAK (Muzeum Sztuki Współczesnej w Krakowie)",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Muzea i Galerie Sztuki",
-      "question": "Jak nazywa się niezwykle prestiżowe i w wielkim Nowym Jorku bardzo dumnie oraz bardzo popularnie i wysoce w przewodnikach powszechnie odwiedzane potężne jedno na wyspie z niezwykle po gigantycznych wspaniałych na ogromnym zbiorów z całego globu znanych jednych olbrzymich z na wybitnie największych turystycznie wielce ze znaczenia z arcydzieł zbiorem pod jednym w wielkim pawilonie potężnych na zachwycającym zachodzie jednym niesamowicie ogromnym z absolutnie z najbardziej uznanych i wielkich wielkich do w historii świata z obrazami zgromadzonym w wielkim Amerykańskim muzeum po potężnym w bardzo na mieście dużych powszechnie ogromnie zbiorami wielkich bardzo na zachodnim dla turystów na z muzeum wybitnych muzeów bardzo popularnych z w zbiorach sztuki dla zwiedzających z gigantycznym do zbiorów zgromadzonych dla sztuki po powszechnie z muzeum i z wybitnych sztuki znajdujące od w do zlokalizowane po do pod i się w dużym w wielkim dla turystów tętniącym ogromnym nowojorskim sercu ze sztuką na znanej okręgu wieżowców na z ulic na samym nowojorskim po Manhattan wyspie u samego słynnym okręgu a dokładniej przy dla wejścia na przy i wejściem i przy i szerokiej a przy znanej dumnym wejściem do znanej dumnym ekskluzywnym na ze sklepów wejście dla wejściem z po wielkiej od znanym pod w Piątej słynnym po wejściem na a na obok od do Alei znanym z wielkiej z znanym obok wielkiej dla a Piątej bardzo bardzo dla ulicy a wejścia a do Piątej szerokiej z przy wielkiej w Ameryce Alei?",
+      "question": "Jak nazywa się największe muzeum sztuki w Nowym Jorku, znane powszechnie pod skrótem 'The Met'?",
       "answers": [
         {
-          "text": "Metropolitan z w Nowym znane Jorku w jako do nowojorskim Muzeum Jorku z po do Muzeum po Muzeum do sztuki w i pod sztuki z od i ze skrótem na w od i pod MET w z w dla znane od MET skrótowe w muzeum a od w MET muzeum powszechnie Metropolitan w Nowym Museum Metropolitan muzeum Nowym Nowym Museum Museum of Jorku do Museum powszechne z of Jorku pod muzeum of i ze Art Museum po do z i ze z Art powszechnie po Art skrótem od (MET pod Jorku w Nowym (MET powszechnie skrótowe skrótem w Jorku skrótem Jorku MET dla z of i w MET znane w a Museum of (MET)",
+          "text": "Metropolitan Museum of Art",
           "is_correct": true
         },
         {
-          "text": "MoMA pod muzeum z w skrótowe od pod i z w muzeum w Nowym w Nowym Jorku Jorku Jorku muzeum (Museum Nowym od Nowym z w pod i of z pod w od po Nowym (Museum w z (Museum w skrótem i of w powszechne pod a Jorku of od of pod z od od w Modern Modern muzeum Modern of z Jorku Modern Art ze z Art Art pod ze Art Jorku i skrótowym Jorku (Museum w a w a w powszechne Art z Jorku Art Art Jorku (Museum Jorku of (Museum z of Jorku od z w powszechnie w z ze a powszechne skrótowe MoMA)",
+          "text": "MoMA (Museum of Modern Art)",
           "is_correct": false
         },
         {
-          "text": "Guggenheim Jorku w Jorku Nowym w Jorku powszechnie w Jorku w ze w Jorku z z i pod od w muzeum powszechne Museum Nowym Jorku Nowym Nowym w Nowym Nowym z w Nowym Nowym powszechnie Museum muzeum powszechnie po z pod ze pod od i z Museum Museum muzeum Jorku muzeum w Jorku Museum w Nowym w (Solomon powszechne (Solomon powszechnie (Solomon po (Solomon w z a z R. z w R. Nowym Jorku R. powszechnie R. Jorku Jorku Guggenheim powszechne Guggenheim Guggenheim z Guggenheim Museum po z Museum Museum w z z a w Jorku)",
+          "text": "Guggenheim Museum",
           "is_correct": false
         },
         {
-          "text": "Smithsonian Nowym Jorku muzeum z ze pod Institution i z w w po od pod od od powszechnie muzeum Institution ze Institution Institution z Institution w Nowym w w Jorku Jorku Nowym Nowym w Nowym Jorku Nowym Jorku Nowym w po z z Jorku ze w z a w z a powszechnie w z powszechne powszechne Jorku a w Jorku powszechne w Institution Jorku w z Institution a z z w ze a Jorku Jorku Jorku Nowym Jorku Nowym w Jorku w Nowym z w Nowym w)",
+          "text": "Smithsonian Institution",
           "is_correct": false
         }
       ]
@@ -862,22 +840,22 @@
     },
     {
       "subcategory": "Sztuka Współczesna i Street Art",
-      "question": "Z jakiego mocno oburzającego opinię w szanowanych arystokratycznych galeriach w owym w 1917 w wieku XX w. po latach bardzo wielce wprost bardzo i na wystawie rzuconego w z artystycznie wywróconego potocznie z toalet przedmiotu do fizjologicznej do galerii codzienności i oddawania a z szoku przez artystę nazywanego z przedmiotu na wystawie pod szyldem prowokacyjnie i wyśmiewająco pod w u nazwy \"Fontanna\" w tytule bardzo słynnego prowokacyjnego, i potocznego od dadaisty powszechnie po we francuskiego artysty twórcy w świecie jako od genialnego po sztuce Marcela we francuskim dadaisty po po nazwisku z francuskim genialnego pod od słynnego po z twórcę na wystawie po od a powszechnie znanego dadaisty od pod nazwą Duchampa u Marcela dla Duchampa?",
+      "question": "Z jakiego codziennego przedmiotu Marcel Duchamp stworzył słynne dadaistyczne dzieło 'Fontanna' (1917), szokując ówczesny świat sztuki?",
       "answers": [
         {
-          "text": "Z powszechnego, leżącego i przewróconego i odwróconego starego pisuaru",
+          "text": "Z pisuaru",
           "is_correct": true
         },
         {
-          "text": "Z rozbitego z toalet umywalkowego i ceramicznego małego i pękniętego na pół i podniszczonego u spodu białego bidetu",
+          "text": "Z bidetu",
           "is_correct": false
         },
         {
-          "text": "Z po wyjętym starym wyciętym w drewnie pod w otworem ze szkoły na toaletę krześle a z dziurą i toaletą",
+          "text": "Z krzesła z wyciętym otworem",
           "is_correct": false
         },
         {
-          "text": "Ze postawionego w szkle, miedzianego blaszanego od studni dla i w ze staroci z kranu i czysta na dnie brudnego na dnie czystą, pijaną i stojącą u mopa w brudnym z rdzewiejącym blaszanym i z czystą miedzianym z u mopa wiadrze",
+          "text": "Z kranu wodociągowego",
           "is_correct": false
         }
       ]
@@ -906,80 +884,36 @@
     },
     {
       "subcategory": "Słynne Budowle Świata",
-      "question": "Jak nazywa się do dziś ten ciągnący na niezwykle w bardzo na długim z kamieni i ogromnym gigantycznym do i monumentalnym i i bardzo od wielkim w po przez góry w wybudowanym dla żołnierzy u starożytny u swych po monumentalny stary z za ogromnym system do obronny dla imperium po od wielkim do we od stuleci ciągnącym zbudowanym ze wschodniej do dalekiej chroniący z do Azji za Azji?",
+      "question": "Jak nazywa się starożytna chińska budowla obronna ciągnąca się przez góry na długości tysięcy kilometrów?",
       "answers": [
         {
-          "text": "Słynny z z azjatycki i ciągnący po i z do z od po azjatycki powszechnie ze znany a ze ze za ze po z Wielki do w i i z w i z a z ze po w z Mur do po na Chiński",
+          "text": "Wielki Mur Chiński",
           "is_correct": true
         },
         {
-          "text": "Z na od i po rzymski po i od z w pod i w na po i obok pod Rzymski stary i w dla ze z po Rzymski stary u dla i u do mur po do Rzymski na Rzymski Mur pod na po we do w Rzymski u Mur w rzymski w w Rzymski pod do Rzymski Hadriana",
+          "text": "Mur Hadriana",
           "is_correct": false
         },
         {
-          "text": "W do a od do dla z pod w komunistycznym za Niemczech z i w komunistyczny z dla od w z w i obok na do dla obok z w pod obok w z od w po mur w z Mur obok po i obok Berliński",
+          "text": "Mur Berliński",
           "is_correct": false
         },
         {
-          "text": "Do u z obok od po u z Rzymian w ze na po do na Rzymian obok dla po w pod a po Rzymian w i po od w obok i od obok Rzymian obok w pod w Rzymian z Mur z w do obok od obok Antonina",
+          "text": "Mur Aureliana",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Słynne Budowle Świata",
-      "question": "Jaka słynna urocza nocą u we Francji powszechnie stalowa bardzo w i konstrukcja budowlana od architekta z o i zbudowana na a we po z zbudowana w paryskim z o u u zbudowana obok dla i z a z po i dumnie z i i z dla z paryskim i okazji dumnie okazji i do dumnie wielkiej dumnie po paryskim u w dla Wystawy do na z za z powszechnie pod Światowej do pod w w a w z i za do od do od wieku dla w r. u z a po z 1889 na z r., u po u po dla r. u jest po jest u i dla a po a jest u jest a za jest u jest i u powszechnie jest dla jest u a w i absolutnym jest u w bezspornym i a i dla a dla absolutnym do w i symbolem a symbolem a Paryża do Paryża a za Paryża Paryża?",
+      "question": "Jaka stalowa wieża wybudowana w Paryżu na Wystawę Światową w 1889 roku jest dziś symbolem Francji?",
       "answers": [
         {
-          "text": "Wieża powszechnie w i i Eiffla do Eiffla za i Eiffla do Paryża do Eiffla Eiffla",
+          "text": "Wieża Eiffla",
           "is_correct": true
         },
         {
-          "text": "Kamienny do po w do obok Łuk do w do obok do za z po w do po obok Triumfalny obok do do obok z Triumfalny",
-          "is_correct": false
-        },
-        {
-          "text": "Kopułowy i obok do a w z obok do w a do obok po do Panteon a w a Panteon obok do w Panteon w obok",
-          "is_correct": false
-        },
-        {
-          "text": "Wystawowy obok do za obok w do w a obok po do w a Grand a Grand a do w obok Grand a Palais a do Grand a Grand obok Palais",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Słynne Budowle Świata",
-      "question": "Który z wybudowanych a drapacz wielkich chmur ogromny w dla u wybudowany o u lśniących arabskim i z pustynnym w bardzo z o na w piaskach dla w ze o ze po po o w u w do nowożytnym do dla w obok a bogatym ze po w u w i po obok u Dubaju w i Dubaju dla w i po obok do z u i i obok w po obok i Dubaju a w obok budynku w w budynku, i budynku z i w obok u w u obok przypominający u przypominający obok obok dla i o przypominający w i przypominający w z w przypominający w po przypominający w bardzo i po i po do do po obok do w i obok w swym w i do i w do po o obok w w z do w kształcie a w po z po i obok i kształcie z o obok w obok i kształcie u po z u kształcie z obok w obok z obok z po z do kształcie do do w obok swym w obok smukłą w po do obok i smukłą i obok smukłą a do w u o z obok i do a obok i a obok smukłą o do obok z do smukłą do z do, i w szklaną z o a i do a do w i obok do szklaną do obok do do szklaną obok obok obok a z obok obok a a obok z a obok z obok a szklaną do szklaną a z z szklaną do z a do obok a z i w obok, obok do z do o iglicę, i o a i do z do o iglicę, w od do w do w z o do od a od w obok do w od do obok u a od obok do u w u w a a w u a obok u do w obok a w od z od a a w od u od obok 2010 a u w a u w a u w u do obok w u u a u u 2010 w a do u 2010 a u u do obok u do r. u u a u u u do obok w w a u w u obok u do w u u do a a w a do u w u w a obok w w w a nosi a u do u u u u w nosi w a u w w a u u a u w w u u dumny u a w dumny a a a u w a u w a u u a w u a u w u do u u a dumny a a a a tytuł w u u w do u a w w a w u u w a u u a w u do u do a u u a u a a w u u najwyższego a a w a a w a a w w a w a w a u do u do do a w u a najwyższego a do u a u a do najwyższego w u a do najwyższego u a a budynku u a a w a w do a budynku u do a u do do u do do a u a do u do do do a do a a w a a a u do do u a u świata u do u u do do a u do świata u a a do u a do a u do u do u do do u do u a do a a do do a do a u u u do do do do u a u u u a u świata a do u a do u u u do u do do u do świata?",
-      "answers": [
-        {
-          "text": "Burdż obok i z a w Chalifa",
-          "is_correct": true
-        },
-        {
-          "text": "Empire a z z i po obok State i i a i obok w z i a po Building",
-          "is_correct": false
-        },
-        {
-          "text": "Taipei a do w i i z w po 101",
-          "is_correct": false
-        },
-        {
-          "text": "Petronas po z po i po i Towers",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Słynne Budowle Świata",
-      "question": "Jaka znana z krwawych w starożytnym w okrutnym dla tłumów u a u po gladiatorów obok u obok starć a w obok rzymskim w w ze bardzo w a i dla w po a w w z i a charakterystyczna obok w obok i w u nazwa w dla a i obok u a w u a obok i w w u z i przylgnęła w do obok u a u obok z i w a u obok u a w u a obok z i w z obok w do w a obok do obok do a u obok i u a obok u do i do w z w u z w do obok u a obok obok u obok do do a w u a obok a u w a u obok w obok a rzymskiego obok w do a obok a rzymskiego obok z i w a u z rzymskiego w z w a obok w do obok w obok do do obok z i rzymskiego w obok obok do obok rzymskiego z w i obok w z rzymskiego obok Amfiteatru w do do a u obok obok u obok a z i obok w a z i Amfiteatru w w z a z i do obok a z obok w z obok do u z i do do u z w a z i obok w u a z i obok obok w a obok Amfiteatru do obok a do do obok a do obok a obok a u do obok z z obok obok w a z i obok Flawiuszów, do w u u z i obok obok a z w obok Flawiuszów, z w w a w z Flawiuszów, do u z obok z a obok u z w w z a w u a z obok obok z i w obok obok w w a obok obok do do w obok Flawiuszów, u obok a w do obok obok u do a u do do u do u do do obok u a w u a u do u obok u do obok u do obok obok w w a z a obok u u z u a u obok obok u obok u u a u obok areny u obok a z w a u obok areny w obok u z u w areny obok w z w do obok u a u obok u z w obok u u a w obok areny u a u obok u u a z w do u u a z i obok areny w a u a z i krwawych do w z u u a u w do w a w z u z w u a w do w u u a u w do w u w w do w u a u do w do w u a u w do w a u z obok w do u u a z w u w a z w w a z w starć u w a z i w obok w z w z i u u z a w z u z a u u z i w w a z u z a w w a z i u u a w w a starć w do obok w a obok w w a do w obok w a do w z i u z a u z i w obok w do obok obok z i obok do obok z u a u w w do obok z w obok do obok z i obok u w do obok z u obok do obok gladiatorów w obok z u u obok z u obok do obok z u obok do w z z obok gladiatorów do obok z i w do w u a u w w obok do obok z w w obok w obok do w u u obok z w obok w u a z obok do obok z u z obok w a z gladiatorów u w w a u w a u w u obok w obok w a obok z i w obok z u obok do w obok u z w obok u w do obok z u obok do w obok do obok z gladiatorów?",
-      "answers": [
-        {
-          "text": "Koloseum",
-          "is_correct": true
-        },
-        {
-          "text": "Forum obok a do Romanum",
+          "text": "Łuk Triumfalny",
           "is_correct": false
         },
         {
@@ -987,51 +921,95 @@
           "is_correct": false
         },
         {
-          "text": "Cyrk w a do Wielki",
+          "text": "Grand Palais",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Budowle Świata",
+      "question": "Który wieżowiec w Dubaju jest najwyższym budynkiem na świecie?",
+      "answers": [
+        {
+          "text": "Burdż Chalifa",
+          "is_correct": true
+        },
+        {
+          "text": "Empire State Building",
+          "is_correct": false
+        },
+        {
+          "text": "Taipei 101",
+          "is_correct": false
+        },
+        {
+          "text": "Petronas Towers",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Budowle Świata",
+      "question": "Jak nazywa się słynny starożytny amfiteatr w Rzymie, gdzie odbywały się walki gladiatorów?",
+      "answers": [
+        {
+          "text": "Koloseum",
+          "is_correct": true
+        },
+        {
+          "text": "Forum Romanum",
+          "is_correct": false
+        },
+        {
+          "text": "Panteon",
+          "is_correct": false
+        },
+        {
+          "text": "Cyrk Wielki",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Zamki i Pałace Polski",
-      "question": "W jakim u ze po krzyżackim po pod w dawnym pod w dla do i w od pod dawnym pod i za na i obok i na w po pod dawnym w po i do na po od w i za po dawnym wspaniałym, w do obok u z a w obok z w i w w po wspaniałym, w po pod w a u w po wspaniałym, pod w a u z i w wspaniałym, obok do u wspaniałym, ceglanym i olbrzymim u po u z i za zamku i do u na Północy a po do na z u w kraju z z u u na urzędowali z dawniej u po u u w dawniej do z w w do u Polsce a za do u u w Wielcy z do po a u w po za a Mistrzowie u do po z do u u a z w do u po a do Zakonu po a do z a u Krzyżackiego?",
+      "question": "W jakim polskim mieście znajduje się największy na świecie gotycki zamek, dawna siedziba Wielkich Mistrzów Krzyżackich?",
       "answers": [
         {
-          "text": "W do a w obok Malborku",
+          "text": "W Malborku",
           "is_correct": true
         },
         {
-          "text": "W a obok z Kwidzynie",
+          "text": "W Kwidzynie",
           "is_correct": false
         },
         {
-          "text": "W w obok a Bytowie",
+          "text": "W Bytowie",
           "is_correct": false
         },
         {
-          "text": "W w a obok Gniewie",
+          "text": "W Gniewie",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Zamki i Pałace Polski",
-      "question": "Jakie to w dla u obok w po baśniowe po zwierzę u w w rzekomo i a obok w w od u po w po a obok w rzekomo z u stuleci w a z z do z drzemie i w po w u drzemie w do do u w u obok w u w u w jaskini po do w jaskini z a w do w a w po z a u w jaskini u a do z a do z do w bezpośrednio po a do z a po po do u a do z bezpośrednio w z u do z u a pod krakowskim wzgórzem, do z do z u na którym w do do stoi w u u z u z a u stoi a z do Zamek Królewski?",
+      "question": "Jakie legendarne zwierzę rzekomo drzemało przez stulecia w jaskini pod Wzgórzem Wawelskim w Krakowie?",
       "answers": [
         {
-          "text": "Smok po a u Wawelski",
+          "text": "Smok Wawelski",
           "is_correct": true
         },
         {
-          "text": "Bazyliszek w do po u u na a w a na w a z u z a a w do a u a w a z u z do w z a na u do do a u z",
+          "text": "Bazyliszek",
           "is_correct": false
         },
         {
-          "text": "Lew a a w a do po na w a a na Wawelski a do a z",
+          "text": "Lew Wawelski",
           "is_correct": false
         },
         {
-          "text": "Czarny na z Kruk",
+          "text": "Czarny Kruk",
           "is_correct": false
         }
       ]
@@ -1274,688 +1252,6 @@
         },
         {
           "text": "Claude Monet",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Impresjonizm",
-      "question": "Jaką technikę szybkiego nakładania małych, wyraźnych plam czystego koloru stosowali powszechnie impresjoniści?",
-      "answers": [
-        {
-          "text": "Pointylizm (lub puentylizm)",
-          "is_correct": true
-        },
-        {
-          "text": "Sfumato",
-          "is_correct": false
-        },
-        {
-          "text": "Chiaroscuro (światłocień)",
-          "is_correct": false
-        },
-        {
-          "text": "Fresk",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Impresjonizm",
-      "question": "W jakim mieście impresjonizm narodził się w II połowie XIX wieku i rozwijał najprężniej, stając się centrum sztuki?",
-      "answers": [
-        {
-          "text": "W Paryżu",
-          "is_correct": true
-        },
-        {
-          "text": "W Rzymie",
-          "is_correct": false
-        },
-        {
-          "text": "W Londynie",
-          "is_correct": false
-        },
-        {
-          "text": "W Wiedniu",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Polska Sztuka Ludowa",
-      "question": "Jaka polska wieś na Powiślu Dąbrowskim słynie w całej Europie z malowania domów w przepiękne, barwne kwiaty?",
-      "answers": [
-        {
-          "text": "Zalipie",
-          "is_correct": true
-        },
-        {
-          "text": "Koniaków",
-          "is_correct": false
-        },
-        {
-          "text": "Zakopane",
-          "is_correct": false
-        },
-        {
-          "text": "Łowicz",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Polska Sztuka Ludowa",
-      "question": "Z jakiego trudnego i misternego rękodzieła koronkarskiego słynie niewielka miejscowość Koniaków na Śląsku Cieszyńskim?",
-      "answers": [
-        {
-          "text": "Z koronek koniakowskich",
-          "is_correct": true
-        },
-        {
-          "text": "Z malowania pisanek",
-          "is_correct": false
-        },
-        {
-          "text": "Z rzeźbienia w węglu",
-          "is_correct": false
-        },
-        {
-          "text": "Z wycinanek łowickich",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Polska Sztuka Ludowa",
-      "question": "Z czego wykonuje się tradycyjne, polskie wielkanocne palmy z okolic Kurpiów, sięgające nierzadko kilkunastu metrów?",
-      "answers": [
-        {
-          "text": "Z bibuły, wstążek i roślin",
-          "is_correct": true
-        },
-        {
-          "text": "Z metalu i drutu",
-          "is_correct": false
-        },
-        {
-          "text": "Z wikliny i gliny",
-          "is_correct": false
-        },
-        {
-          "text": "Z plastiku",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Polska Sztuka Ludowa",
-      "question": "Jaki wyjątkowy, drewniany styl architektoniczny w górach zapoczątkował pod koniec XIX wieku Stanisław Witkiewicz?",
-      "answers": [
-        {
-          "text": "Styl zakopiański",
-          "is_correct": true
-        },
-        {
-          "text": "Styl krakowski",
-          "is_correct": false
-        },
-        {
-          "text": "Styl kurpiowski",
-          "is_correct": false
-        },
-        {
-          "text": "Styl kaszubski",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Polska Sztuka Ludowa",
-      "question": "Z jakiego kolorowego papieru z użyciem nożyc do strzyżenia owiec powstają tradycyjne, ludowe wycinanki z Łowicza?",
-      "answers": [
-        {
-          "text": "Z glansowanego (kolorowego) papieru",
-          "is_correct": true
-        },
-        {
-          "text": "Z czerpanego pergaminu",
-          "is_correct": false
-        },
-        {
-          "text": "Z bibuły marszczonej",
-          "is_correct": false
-        },
-        {
-          "text": "Z folii aluminiowej",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Sztuka Orientu",
-      "question": "Jak w sztuce Japonii nazywa się znana na całym świecie precyzyjna i tradycyjna sztuka składania papieru bez użycia nożyczek?",
-      "answers": [
-        {
-          "text": "Origami",
-          "is_correct": true
-        },
-        {
-          "text": "Ikebana",
-          "is_correct": false
-        },
-        {
-          "text": "Bonsai",
-          "is_correct": false
-        },
-        {
-          "text": "Kintsugi",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Sztuka Orientu",
-      "question": "Jak nazywa się japońska sztuka i wielka filozofia estetyczna układania ściętych kwiatów i gałęzi?",
-      "answers": [
-        {
-          "text": "Ikebana",
-          "is_correct": true
-        },
-        {
-          "text": "Origami",
-          "is_correct": false
-        },
-        {
-          "text": "Bonsai",
-          "is_correct": false
-        },
-        {
-          "text": "Haiku",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Sztuka Orientu",
-      "question": "Jaka słynna, dynamiczna rycina przedstawiająca ogromną, morską grzywę przed górą Fudżi jest dziełem Katsushiki Hokusaia?",
-      "answers": [
-        {
-          "text": "Wielka fala w Kanagawie",
-          "is_correct": true
-        },
-        {
-          "text": "Spokojne Morze Wewnętrzne",
-          "is_correct": false
-        },
-        {
-          "text": "Tsunami",
-          "is_correct": false
-        },
-        {
-          "text": "Burza nad Tokio",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Sztuka Orientu",
-      "question": "Co jest podstawą kaligrafii, traktowanej w krajach Dalekiego Wschodu (jak Chiny) jako wyrafinowana gałąź sztuk pięknych?",
-      "answers": [
-        {
-          "text": "Sztuka pięknego i starannego pisania znaków (pędzlem)",
-          "is_correct": true
-        },
-        {
-          "text": "Sztuka parzenia herbaty",
-          "is_correct": false
-        },
-        {
-          "text": "Sztuka rysowania smoków tuszem",
-          "is_correct": false
-        },
-        {
-          "text": "Sztuka wypalania ceramiki",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Sztuka Orientu",
-      "question": "Jak nazywają się małe, formowane latami miniaturowe drzewka w doniczkach, będące japońską formą rzeźbienia natury?",
-      "answers": [
-        {
-          "text": "Bonsai",
-          "is_correct": true
-        },
-        {
-          "text": "Netsuke",
-          "is_correct": false
-        },
-        {
-          "text": "Origami",
-          "is_correct": false
-        },
-        {
-          "text": "Sushi",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Fotografia i Sztuka Cyfrowa",
-      "question": "Jak nazywał się najstarszy, prymitywny przyrząd optyczny w postaci ciemnej skrzynki z otworkiem, będący prototypem aparatu?",
-      "answers": [
-        {
-          "text": "Camera obscura",
-          "is_correct": true
-        },
-        {
-          "text": "Kalejdoskop",
-          "is_correct": false
-        },
-        {
-          "text": "Dagerotyp",
-          "is_correct": false
-        },
-        {
-          "text": "Teleskop",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Fotografia i Sztuka Cyfrowa",
-      "question": "Jaka firma na przełomie XIX i XX w. spopularyzowała pierwszą amatorską kliszę z hasłem 'Ty naciskasz guzik, my robimy resztę'?",
-      "answers": [
-        {
-          "text": "Kodak",
-          "is_correct": true
-        },
-        {
-          "text": "Polaroid",
-          "is_correct": false
-        },
-        {
-          "text": "Canon",
-          "is_correct": false
-        },
-        {
-          "text": "Nikon",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Fotografia i Sztuka Cyfrowa",
-      "question": "Czym charakteryzuje się kultowy aparat marki Polaroid, wynaleziony w połowie ubiegłego wieku?",
-      "answers": [
-        {
-          "text": "Błyskawicznym wywoływaniem zdjęcia prosto z aparatu",
-          "is_correct": true
-        },
-        {
-          "text": "Zapisem wideo na taśmie magnetycznej",
-          "is_correct": false
-        },
-        {
-          "text": "Działaniem w całkowitej ciemności bez lampy",
-          "is_correct": false
-        },
-        {
-          "text": "Zapisem cyfrowym na kartę pamięci",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Fotografia i Sztuka Cyfrowa",
-      "question": "Jaki profesjonalny, światowy program komputerowy od firmy Adobe stał się w branży synonimem retuszu grafiki i zdjęć?",
-      "answers": [
-        {
-          "text": "Photoshop",
-          "is_correct": true
-        },
-        {
-          "text": "CorelDRAW",
-          "is_correct": false
-        },
-        {
-          "text": "Lightroom",
-          "is_correct": false
-        },
-        {
-          "text": "Paint",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Fotografia i Sztuka Cyfrowa",
-      "question": "Jak w fotografii cyfrowej nazywa się najmniejszy, pojedynczy punkt świetlny składający się na całą matrycę obrazu?",
-      "answers": [
-        {
-          "text": "Piksel",
-          "is_correct": true
-        },
-        {
-          "text": "Megabajt",
-          "is_correct": false
-        },
-        {
-          "text": "Wektor",
-          "is_correct": false
-        },
-        {
-          "text": "Ziarno",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Teatr i Opera",
-      "question": "Jakie dwa antyczne symbole, najczęściej w formie połączonych twarzy, są powszechnym logotypem sztuki teatralnej?",
-      "answers": [
-        {
-          "text": "Maska tragiczna i komiczna",
-          "is_correct": true
-        },
-        {
-          "text": "Waga i miecz",
-          "is_correct": false
-        },
-        {
-          "text": "Złota lira i wieniec",
-          "is_correct": false
-        },
-        {
-          "text": "Czerwona i czarna kurtyna",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Teatr i Opera",
-      "question": "Kto napisał najsłynniejszy i najczęściej wystawiany dramat romantyczny w historii, 'Romeo i Julię'?",
-      "answers": [
-        {
-          "text": "William Szekspir",
-          "is_correct": true
-        },
-        {
-          "text": "Molière",
-          "is_correct": false
-        },
-        {
-          "text": "Johann Wolfgang von Goethe",
-          "is_correct": false
-        },
-        {
-          "text": "Sofokles",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Teatr i Opera",
-      "question": "Jak w sztuce operowej nazywa się rozbudowana, solowa pieśń z akompaniamentem orkiestry, pokazująca kunszt wokalisty?",
-      "answers": [
-        {
-          "text": "Aria",
-          "is_correct": true
-        },
-        {
-          "text": "Uwertura",
-          "is_correct": false
-        },
-        {
-          "text": "Libretto",
-          "is_correct": false
-        },
-        {
-          "text": "Chór",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Teatr i Opera",
-      "question": "W jakim włoskim mieście znajduje się prawdopodobnie najsłynniejszy i najbardziej prestiżowy gmach opery - La Scala?",
-      "answers": [
-        {
-          "text": "W Mediolanie",
-          "is_correct": true
-        },
-        {
-          "text": "W Wenecji",
-          "is_correct": false
-        },
-        {
-          "text": "W Rzymie",
-          "is_correct": false
-        },
-        {
-          "text": "We Florencji",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Teatr i Opera",
-      "question": "Czym jest 'libretto' w kontekście spektaklu operowego lub operetki?",
-      "answers": [
-        {
-          "text": "Tekstem (scenariuszem) całego utworu",
-          "is_correct": true
-        },
-        {
-          "text": "Pałeczką dyrygenta orkiestry",
-          "is_correct": false
-        },
-        {
-          "text": "Główną i najdłuższą przerwą podczas sztuki",
-          "is_correct": false
-        },
-        {
-          "text": "Balkonem dla najbogatszych widzów",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Starożytność i Antyk",
-      "question": "Jak nazywa się słynna, znajdująca się na ateńskim Akropolu świątynia poświęcona bogini Atenie?",
-      "answers": [
-        {
-          "text": "Partenon",
-          "is_correct": true
-        },
-        {
-          "text": "Panteon",
-          "is_correct": false
-        },
-        {
-          "text": "Erechtejon",
-          "is_correct": false
-        },
-        {
-          "text": "Ziggurat",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Starożytność i Antyk",
-      "question": "Jaki antyczny, grecki rzeźbiarz jest autorem słynnego rzeźby 'Dyskobol', przedstawiającej atletę tuż przed rzutem dyskiem?",
-      "answers": [
-        {
-          "text": "Myron",
-          "is_correct": true
-        },
-        {
-          "text": "Fidiasz",
-          "is_correct": false
-        },
-        {
-          "text": "Poliklet",
-          "is_correct": false
-        },
-        {
-          "text": "Praksyteles",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Starożytność i Antyk",
-      "question": "W jakim kraju zachowały się monumentalne grobowce w kształcie ostrosłupów, z których największy należy do Cheopsa?",
-      "answers": [
-        {
-          "text": "W Egipcie",
-          "is_correct": true
-        },
-        {
-          "text": "W Grecji",
-          "is_correct": false
-        },
-        {
-          "text": "W Meksyku",
-          "is_correct": false
-        },
-        {
-          "text": "W Peru",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Starożytność i Antyk",
-      "question": "Jak w starożytnej Grecji nazywano ozdobne, ceramiczne naczynie z dwoma uchwytami, służące do przechowywania wina lub oliwy?",
-      "answers": [
-        {
-          "text": "Amfora",
-          "is_correct": true
-        },
-        {
-          "text": "Kielich",
-          "is_correct": false
-        },
-        {
-          "text": "Urna",
-          "is_correct": false
-        },
-        {
-          "text": "Dzban",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Starożytność i Antyk",
-      "question": "Jakie trzy klasyczne porządki architektoniczne wyróżniamy w starożytnej Grecji, patrząc na kształt kolumn?",
-      "answers": [
-        {
-          "text": "Dorycki, joński i koryncki",
-          "is_correct": true
-        },
-        {
-          "text": "Romański, gotycki i renesansowy",
-          "is_correct": false
-        },
-        {
-          "text": "Klasyczny, barokowy i rokokowy",
-          "is_correct": false
-        },
-        {
-          "text": "Tuskański, kompozytowy i dorycki",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Impresjonizm",
-      "question": "Od tytułu obrazu jakiego malarza ('Impresja, wschód słońca') pochodzi nazwa całego kierunku - impresjonizmu?",
-      "answers": [
-        {
-          "text": "Claude'a Moneta",
-          "is_correct": true
-        },
-        {
-          "text": "Vincenta van Gogha",
-          "is_correct": false
-        },
-        {
-          "text": "Edgara Degasa",
-          "is_correct": false
-        },
-        {
-          "text": "Pierra-Auguste'a Renoira",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Impresjonizm",
-      "question": "Co było głównym założeniem i celem malarzy impresjonistów wychodzących ze sztalugami w plener?",
-      "answers": [
-        {
-          "text": "Uchwycenie ulotnej chwili i światła",
-          "is_correct": true
-        },
-        {
-          "text": "Realistyczne odwzorowanie bitew historycznych",
-          "is_correct": false
-        },
-        {
-          "text": "Malowanie w konwencji mrocznego absurdu",
-          "is_correct": false
-        },
-        {
-          "text": "Dokładne, geometryczne kształty",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Impresjonizm",
-      "question": "Który francuski impresjonista zasłynął przede wszystkim z malowania delikatnych tancerek baletowych?",
-      "answers": [
-        {
-          "text": "Edgar Degas",
-          "is_correct": true
-        },
-        {
-          "text": "Paul Cézanne",
-          "is_correct": false
-        },
-        {
-          "text": "Édouard Manet",
-          "is_correct": false
-        },
-        {
-          "text": "Claude Monet",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Impresjonizm",
-      "question": "Jaką technikę szybkiego nakładania małych, wyraźnych plam czystego koloru stosowali powszechnie impresjoniści?",
-      "answers": [
-        {
-          "text": "Pointylizm (lub puentylizm)",
-          "is_correct": true
-        },
-        {
-          "text": "Sfumato",
-          "is_correct": false
-        },
-        {
-          "text": "Chiaroscuro (światłocień)",
-          "is_correct": false
-        },
-        {
-          "text": "Fresk",
           "is_correct": false
         }
       ]

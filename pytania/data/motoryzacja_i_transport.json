@@ -466,28 +466,6 @@
     },
     {
       "subcategory": "Formuła 1 i Motorsport",
-      "question": "Jaki niemiecki kierowca przez lata dominował w zespole Ferrari, zdobywając aż siedem tytułów mistrza świata F1?",
-      "answers": [
-        {
-          "text": "Michael Schumacher",
-          "is_correct": true
-        },
-        {
-          "text": "Sebastian Vettel",
-          "is_correct": false
-        },
-        {
-          "text": "Nico Rosberg",
-          "is_correct": false
-        },
-        {
-          "text": "Ayrton Senna",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Formuła 1 i Motorsport",
       "question": "Jaki legendarny, niezwykle trudny wieloetapowy rajd terenowy dla aut, motocykli i ciężarówek, dawniej kończył się w stolicy Senegalu?",
       "answers": [
         {
@@ -1428,28 +1406,6 @@
         },
         {
           "text": "Ekologicznym chłodzeniem kabiny",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Kultowe Auta PRL",
-      "question": "Która wrocławska fabryka, a później FSO, produkowała niezwykle cenioną za dawnych lat, piękną i dymiącą Warszawę?",
-      "answers": [
-        {
-          "text": "Fabryka Samochodów Osobowych (FSO)",
-          "is_correct": true
-        },
-        {
-          "text": "Fabryka Samochodów Małolitrażowych (FSM)",
-          "is_correct": false
-        },
-        {
-          "text": "Jelcz",
-          "is_correct": false
-        },
-        {
-          "text": "FSR Tarpan",
           "is_correct": false
         }
       ]

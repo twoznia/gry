@@ -268,28 +268,6 @@
     },
     {
       "subcategory": "Internet i WWW",
-      "question": "Rozwinięciem jakiego niezwykle pożądanego w kawiarniach i biurach skrótu jest popularne, bezprzewodowe połączenie internetowe?",
-      "answers": [
-        {
-          "text": "Wi-Fi (Wireless Fidelity)",
-          "is_correct": true
-        },
-        {
-          "text": "LAN (Local Area Network)",
-          "is_correct": false
-        },
-        {
-          "text": "Bluetooth",
-          "is_correct": false
-        },
-        {
-          "text": "LTE (Long Term Evolution)",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Internet i WWW",
       "question": "W jakim uniwersalnym języku znaczników stworzona jest graficznie na ekranie każda przeciętna i standardowa strona internetowa?",
       "answers": [
         {
@@ -548,28 +526,6 @@
         },
         {
           "text": "Port Jack 3.5mm",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Języki Programowania",
-      "question": "Który niezwykle popularny, oparty na wcięciach wierszy i czytelny język programowania nosi nazwę pewnego potężnego węża?",
-      "answers": [
-        {
-          "text": "Python",
-          "is_correct": true
-        },
-        {
-          "text": "Cobra",
-          "is_correct": false
-        },
-        {
-          "text": "Anaconda",
-          "is_correct": false
-        },
-        {
-          "text": "Viper",
           "is_correct": false
         }
       ]

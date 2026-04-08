@@ -224,28 +224,6 @@
     },
     {
       "subcategory": "Disco Polo i Biesiada",
-      "question": "Jaki utwór zespołu Akcent z Zenonem Martyniukiem z 2014 roku pobił rekordy popularności?",
-      "answers": [
-        {
-          "text": "Przez twe oczy zielone",
-          "is_correct": true
-        },
-        {
-          "text": "Jesteś szalona",
-          "is_correct": false
-        },
-        {
-          "text": "Wolność",
-          "is_correct": false
-        },
-        {
-          "text": "Ona tańczy dla mnie",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Disco Polo i Biesiada",
       "question": "Która grupa muzyczna odpowiedzialna jest za wielki hit dyskotek 'Ona tańczy dla mnie'?",
       "answers": [
         {

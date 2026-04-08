@@ -861,28 +861,6 @@
       ]
     },
     {
-      "subcategory": "Formuła 1 i Robert Kubica",
-      "question": "Kto był absolutną gwiazdą i dominatorem torów, siedmiokrotnie wygrywając czempionat F1 w zespole Ferrari?",
-      "answers": [
-        {
-          "text": "Michael Schumacher",
-          "is_correct": true
-        },
-        {
-          "text": "Sebastian Vettel",
-          "is_correct": false
-        },
-        {
-          "text": "Nico Rosberg",
-          "is_correct": false
-        },
-        {
-          "text": "Niki Lauda",
-          "is_correct": false
-        }
-      ]
-    },
-    {
       "subcategory": "Boks i MMA (KSW)",
       "question": "Kto na stałe przeszedł do historii ringu jako niepokonany, amerykański bokser (bilans 50-0)?",
       "answers": [
@@ -1714,28 +1692,6 @@
         },
         {
           "text": "Skokami na motocyklach crossowych",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Sporty Motorowe",
-      "question": "Kto był najbardziej utytułowanym polskim żużlowcem zdobywając w 2010 r. mistrzostwo świata?",
-      "answers": [
-        {
-          "text": "Tomasz Gollob",
-          "is_correct": true
-        },
-        {
-          "text": "Bartosz Zmarzlik",
-          "is_correct": false
-        },
-        {
-          "text": "Jarosław Hampel",
-          "is_correct": false
-        },
-        {
-          "text": "Piotr Protasiewicz",
           "is_correct": false
         }
       ]

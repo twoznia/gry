@@ -48,28 +48,6 @@
     },
     {
       "subcategory": "Tradycyjne Zupy Polskie",
-      "question": "Co charakterystycznego z makaronu i żołądków (lub fragmentów żołądków) pływa w gęstych flaczkach?",
-      "answers": [
-        {
-          "text": "Kawałki wołowych żołądków",
-          "is_correct": true
-        },
-        {
-          "text": "Poszarpany drób",
-          "is_correct": false
-        },
-        {
-          "text": "Wieprzowe jelita",
-          "is_correct": false
-        },
-        {
-          "text": "Gotowane nerki",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Tradycyjne Zupy Polskie",
       "question": "Na jakim drobiowym wywarze zazwyczaj przygotowuje się klasyczny, niedzielny, polski rosół?",
       "answers": [
         {
@@ -658,28 +636,6 @@
         },
         {
           "text": "Pasternak",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Przyprawy Świata",
-      "question": "Z mielenia jakiej bardzo ostrej i niepozornej rośliny strączkowej otrzymuje się przyprawę chili?",
-      "answers": [
-        {
-          "text": "Z papryczki (np. jalapeno)",
-          "is_correct": true
-        },
-        {
-          "text": "Z nasion pieprzu czarnego",
-          "is_correct": false
-        },
-        {
-          "text": "Z korzenia imbiru",
-          "is_correct": false
-        },
-        {
-          "text": "Z ziaren gorczycy",
           "is_correct": false
         }
       ]

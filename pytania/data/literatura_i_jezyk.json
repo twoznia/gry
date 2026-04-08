@@ -1170,28 +1170,6 @@
     },
     {
       "subcategory": "Przysłowia i Powiedzenia",
-      "question": "Jaką część garderoby uszyto potocznie ze 'strachu'?",
-      "answers": [
-        {
-          "text": "Ma wielkie oczy",
-          "is_correct": true
-        },
-        {
-          "text": "Ma krótkie nogi",
-          "is_correct": false
-        },
-        {
-          "text": "Ma długie ręce",
-          "is_correct": false
-        },
-        {
-          "text": "Ma dziurawe kieszenie",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Przysłowia i Powiedzenia",
       "question": "Kto rano wstaje, temu...?",
       "answers": [
         {
@@ -1230,28 +1208,6 @@
         },
         {
           "text": "Robert Graves",
-          "is_correct": false
-        }
-      ]
-    },
-    {
-      "subcategory": "Mitologia w Literaturze",
-      "question": "Z czego rzymski rzemieślnik Dedal ulepił skrzydła dla siebie i swojego syna Ikara?",
-      "answers": [
-        {
-          "text": "Z ptasich piór i wosku",
-          "is_correct": true
-        },
-        {
-          "text": "Z płótna żaglowego i drewna",
-          "is_correct": false
-        },
-        {
-          "text": "Z liści palmy i żywicy",
-          "is_correct": false
-        },
-        {
-          "text": "Ze skóry i kości",
           "is_correct": false
         }
       ]
