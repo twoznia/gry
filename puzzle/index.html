@@ -65,10 +65,10 @@
       letter-spacing: 0.5px;
     }
     #board-wrap {
-      background: white;
+      background: #0f172a;
       border-radius: 16px;
       padding: 10px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.55);
       margin-bottom: 18px;
     }
     #board { display: block; border-radius: 8px; }
@@ -85,7 +85,8 @@
       gap: 18px;
       justify-content: center;
       align-items: center;
-      background: rgba(0,0,0,0.15);
+      background: rgba(5,5,30,0.55);
+      border: 2px solid rgba(255,255,255,0.12);
       border-radius: 18px;
       padding: 14px 24px;
       min-height: 100px;
@@ -95,6 +96,13 @@
     .tray-slot { cursor: grab; display: flex; align-items: center; justify-content: center; }
     .tray-slot:active { cursor: grabbing; }
     .tray-slot canvas { display: block; }
+    .tray-slot-new canvas {
+      animation: popIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.4); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
     #drag-piece {
       position: fixed;
       pointer-events: none;
@@ -143,6 +151,9 @@
     <option value="ges">🪿 Gęś</option>
     <option value="okno">🪟 Okno</option>
     <option value="wiadro">🪣 Wiadro</option>
+    <option value="dom">🏠 Dom</option>
+    <option value="auto">🚗 Auto</option>
+    <option value="most">🌉 Most</option>
   </select>
   <select id="size-select">
     <option value="4">16 el.</option>
@@ -184,7 +195,10 @@ const IMAGES = {
   foka:   '../pisanie/images/foka.svg',
   ges:    '../pisanie/images/ges.svg',
   okno:   '../pisanie/images/okno.svg',
-  wiadro: '../pisanie/images/wiadro.svg'
+  wiadro: '../pisanie/images/wiadro.svg',
+  dom:    '../pisanie/images/dom.svg',
+  auto:   '../pisanie/images/auto.svg',
+  most:   '../pisanie/images/most.svg'
 };
 
 // DOM refs
@@ -341,10 +355,11 @@ function initGame() {
   }
 }
 
-function fillTray() {
+function fillTray(newSlots = null) {
   for (let i = 0; i < 3; i++) {
     if (tray[i] === null && remaining.length > 0) {
       tray[i] = remaining.shift();
+      if (newSlots) newSlots.push(i);
     }
   }
 }
@@ -386,7 +401,7 @@ function drawBoard() {
   boardCtx.clearRect(0, 0, boardPx, boardPx);
 
   // Board background
-  boardCtx.fillStyle = '#dde0ef';
+  boardCtx.fillStyle = '#0f172a';
   boardCtx.fillRect(0, 0, boardPx, boardPx);
 
   for (let r = 0; r < N; r++) {
@@ -407,16 +422,16 @@ function drawBoard() {
         boardCtx.lineWidth = 1;
         boardCtx.stroke();
       } else {
-        // Empty slot – light inner fill
+        // Empty slot – subtle inner fill
         buildPath(boardCtx, r, c, 0, 0);
-        boardCtx.fillStyle = 'rgba(160,160,200,0.18)';
+        boardCtx.fillStyle = 'rgba(255,255,255,0.05)';
         boardCtx.fill();
         boardCtx.restore();
 
         // Dashed outline
         boardCtx.save();
         buildPath(boardCtx, r, c, 0, 0);
-        boardCtx.strokeStyle = 'rgba(80,80,150,0.5)';
+        boardCtx.strokeStyle = 'rgba(148,163,184,0.55)';
         boardCtx.lineWidth = 1.5;
         boardCtx.setLineDash([5, 4]);
         boardCtx.stroke();
@@ -436,13 +451,14 @@ function renderTray() {
   for (let i = 0; i < 3; i++) renderSlot(i);
 }
 
-function renderSlot(i) {
+function renderSlot(i, isNew = false) {
   const slot = traySlots[i];
   const cvs  = slot.querySelector('canvas');
 
   if (!tray[i]) {
     cvs.width = cvs.height = 1;
     cvs.style.filter = '';
+    slot.classList.remove('tray-slot-new');
     return;
   }
 
@@ -455,11 +471,18 @@ function renderSlot(i) {
 
   cvs.width  = cw;
   cvs.height = ch;
-  cvs.style.filter = 'drop-shadow(2px 4px 8px rgba(0,0,0,0.35))';
+  cvs.style.filter = 'drop-shadow(2px 4px 10px rgba(0,0,0,0.55))';
 
   const ctx = cvs.getContext('2d');
   ctx.clearRect(0, 0, cw, ch);
   drawPieceOnCtx(ctx, r, c, scale);
+
+  if (isNew) {
+    slot.classList.remove('tray-slot-new');
+    // Force reflow to restart animation
+    void slot.offsetWidth;
+    slot.classList.add('tray-slot-new');
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -504,9 +527,11 @@ function endDrag(clientX, clientY) {
     if (r === dragR && c === dragC && !placed[r][c]) {
       placed[r][c] = true;
       tray[dragSlotIdx] = null;
-      fillTray();
+      const newSlots = [];
+      fillTray(newSlots);
       drawBoard();
-      renderTray();
+      // Render all slots; animate the newly filled ones
+      for (let i = 0; i < 3; i++) renderSlot(i, newSlots.includes(i));
       updateProgress();
       checkWin();
       accepted = true;
