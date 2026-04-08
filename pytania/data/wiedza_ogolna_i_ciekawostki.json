@@ -378,44 +378,44 @@
     },
     {
       "subcategory": "Pierwiastki i Chemia",
-      "question": "Jaki to całkowicie z wyjątkowy a z metal u na u metal w na i i z a metal metal a w który jako do absolutnie powszechnie z a jedyny do u pozostaje u pozostaje do u a u do pozostaje w dla po i do temperaturze po dla do w w pokojowej dla w dla w u płynnej w a u płynnej w dla a i obok płynnej po dla w i po formie po u w do do i obok w ciekłym po dla stanie u po u w (dawniej z w do do po a używany do po dla obok a szeroko w do po obok do termometrach obok do w u u a medycznych)?",
+      "question": "Który metal jest jedynym, który pozostaje w stanie ciekłym w temperaturze pokojowej?",
       "answers": [
         {
-          "text": "Rtęć do (Hg)",
+          "text": "Rtęć (Hg)",
           "is_correct": true
         },
         {
-          "text": "Ołów do do do (Pb)",
+          "text": "Ołów (Pb)",
           "is_correct": false
         },
         {
-          "text": "Złoto do u obok (Au)",
+          "text": "Złoto (Au)",
           "is_correct": false
         },
         {
-          "text": "Cynk a obok u (Zn)",
+          "text": "Cynk (Zn)",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Pierwiastki i Chemia",
-      "question": "Jaki całkowicie i z po obok w a do a leciutki po w u u obok w obok i z szlachetny i w obok u z w u obok w w obok do w w gaz u w do a w obok z z obok obok u obok u z obok do w po w w powoduje z po w a do w zabawne a w po a w w z i w w do po z w z i podniesienie do u w a w obok do w w obok w do barwy u po a do obok a z i obok w a do u głosu w po a z po w a obok po u a obok i w w z do w z a po u połknięciu a z po do w z a z z w do z po z obok u z z po obok do po z i, oraz do z po do z w a z z u do po u u do u obok i jest u u obok a z obok po po a z w do u po po używany do z w po z po u u do z w z w w do po u u obok u do u obok pompowania do po u u z po z do po u u obok w po z z w balonów po w po po u po u w do po u w do do u latających do po z z po do w do po po po po pod po do z u u sufit w do do z po do na u po z do u po u imprezach?",
+      "question": "Który szlachetny gaz powoduje zabawne podniesienie barwy głosu po jego wdychaniu?",
       "answers": [
         {
-          "text": "Hel w po po po",
+          "text": "Hel",
           "is_correct": true
         },
         {
-          "text": "Wodór w do u u",
+          "text": "Wodór",
           "is_correct": false
         },
         {
-          "text": "Neon z po po po",
+          "text": "Neon",
           "is_correct": false
         },
         {
-          "text": "Azot z po do po",
+          "text": "Azot",
           "is_correct": false
         }
       ]
@@ -444,54 +444,54 @@
     },
     {
       "subcategory": "Jednostki Miar i Wag",
-      "question": "Jak a u w po jak nazywa po do u po w w po u się u po u z z u w z do morska do z u w po a obok do dumnie a z po do z do do w tradycyjna a z u z po u u do po u obok do do do u u miara z u po do w do po a z z w do w z po obok w u po odległości u do z w u z do do z po a po obok u po stosowana u z u w po z u u u z z do po u u w i do u z po do nawigacji u do u u po do z u u u do u morskiej u z z u u po z u w po u u z po z do po z do u u (wynosząca u z do do do po po z po do z po u u w do u z do ok. do do po z z z do z do po u 1852 z do do po do z po z u po u m)?",
+      "question": "Jak nazywa się tradycyjna morska miara odległości stosowana w nawigacji morskiej i lotniczej?",
       "answers": [
         {
-          "text": "Słynna w do u do Mila u do u z do z morska",
+          "text": "Mila morska",
           "is_correct": true
         },
         {
-          "text": "Powszechny z z z do po Węzeł",
+          "text": "Węzeł",
           "is_correct": false
         },
         {
-          "text": "Zwykły do z po u do a Kabel",
+          "text": "Kabel",
           "is_correct": false
         },
         {
-          "text": "Długa u do z z Liga do u u do po morska",
+          "text": "Liga morska",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Jednostki Miar i Wag",
-      "question": "Jaką potężną obok i z powszechnie a a w znaną w do do małą jednostką a do po po do w w po z u do z w w do u do do anglosaskiej po w do z u obok z w z po po u u w z u u u do obok po do po u z z u z u długości z do po po u w u u u u obok po z w u w po po u (ok. z w po w u w po u obok po u z po u 2,54 w po po po po u po u w cm) do po z z u u z u u z z do z z po u u po z z do do bardzo do po w z do u do u do u do u u po u po często w z z do po z do w u u po z u po po do w po podajemy po u u u w po po z po w do u z z z w do powszechnie po z w u po u w po z u u u po do z przekątną po u z z w do z z po do po do z z w do z naszych po u po u po w u w u do po u w do do płaskich po z po u u do u z po u z do z w telewizorów po z u do z do u u u z po z do z z do (np. po z po do u w z do po u po z z po 55 u do u do u po z ...)?",
+      "question": "Jaką jednostką mierzy się przekątną ekranów telewizorów i monitorów w systemie anglosaskim?",
       "answers": [
         {
-          "text": "Calami u po u z po po po po (np. u do u po u 55 po po u z cali)",
+          "text": "Calami (np. 55 cali)",
           "is_correct": true
         },
         {
-          "text": "Stopami po z po u po po (np. po do u do do 55 u u z z stóp)",
+          "text": "Stopami (np. 55 stóp)",
           "is_correct": false
         },
         {
-          "text": "Jardami do z do do z (np. do z do do u po 55 z po do z z u z jardów)",
+          "text": "Jardami (np. 55 jardów)",
           "is_correct": false
         },
         {
-          "text": "Pikselami z z do po z do do (np. do u u z do u po 55 z do do u pikseli)",
+          "text": "Pikselami (np. 55 pikseli)",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Jednostki Miar i Wag",
-      "question": "Do z do z do czego z do u po do po do obok służy z do u po u z po u z u i do po co u w z do u do u z z z do w do w fizyce u do z po do po w po u z po po mierzy u do u po do u z z w po u powszechnie do u u z u z do w z u u z z używany po z do u po u z u u z do przy w u z z u z z u do do gniazdkach w do u z po po z do w z a po miernik u z z po u do z z do z po z do z w zwany z z z do po do w z po u u do do woltomierzem?",
+      "question": "Do czego służy woltomierz stosowany powszechnie przy instalacjach elektrycznych?",
       "answers": [
         {
-          "text": "Służy u po z z do w po z pomiaru do z do po u u napięcia po po do z u z elektrycznego u po po z do (w do u z po z do u po woltach, po u po z z np. do do po z u po po po 230V)",
+          "text": "Służy do pomiaru napięcia elektrycznego (w woltach)",
           "is_correct": true
         },
         {
@@ -554,22 +554,22 @@
     },
     {
       "subcategory": "Słynne Cytaty",
-      "question": "Z u z do u a jakim po w mędrcem z u z z u w z do do po i starożytnym po do po po u w u u w greckim u w po w z z z z filozofem do do z po do po nierozerwalnie po u z u po do z po do łączy z u do u do u u w do w po do się z do z po w po do słynne po po do u po z po po zdanie: po w po u po do z do 'Wiem, z po do do z w u z do po u do że po z z u do po u w w nic po z w w do po z do po u u nie z w w do u z po z do wiem'?",
+      "question": "Z jakim starożytnym greckim filozofem nierozłącznie łączy się zdanie: 'Wiem, że nic nie wiem'?",
       "answers": [
         {
-          "text": "Z do z z u z u w w u Sokratesem",
+          "text": "Z Sokratesem",
           "is_correct": true
         },
         {
-          "text": "Z do z z Platonem",
+          "text": "Z Platonem",
           "is_correct": false
         },
         {
-          "text": "Z z z po z u w Arystotelesem",
+          "text": "Z Arystotelesem",
           "is_correct": false
         },
         {
-          "text": "Z po u po u w u u po z u u u Pitagorasem",
+          "text": "Z Pitagorasem",
           "is_correct": false
         }
       ]
@@ -598,88 +598,88 @@
     },
     {
       "subcategory": "Słynne Cytaty",
-      "question": "Z u do u po w jakim u u po do z u w rzymskim u po do z u do a u u po i z do z w u starożytnym po u po do z u w do z z po w u do z wodzem do u po po po po do po do kojarzy u z do w w w po u do po się po w u po do powszechnie z po w z z do po u po bardzo do z po u po po do u znana w w po do u z po u w obok u z maksyma: po do po do do po 'Veni, z z po do z w do u po vidi, z do do z po u vici' po u do z po po (Przybyłem, w po u po w z z do po u zobaczyłem, u do u w po do do zwyciężyłem)?",
+      "question": "Z jakim starożytnym rzymskim wodzem kojarzy się powszechnie słynne zdanie: 'Alea iacta est' (Kości zostały rzucone)?",
       "answers": [
         {
-          "text": "Z do do z do po Juliuszem u do z z do u u po do po u z po z Cezarem",
+          "text": "Z Juliuszem Cezarem",
           "is_correct": true
         },
         {
-          "text": "Ze po u z do z do do po Spartakusem",
+          "text": "Ze Spartakusem",
           "is_correct": false
         },
         {
-          "text": "Z po u po z po u u u z z do z u po u Aleksandrem do z do u po u do u u u po Wielkim",
+          "text": "Z Aleksandrem Wielkim",
           "is_correct": false
         },
         {
-          "text": "Z po u w po u do u do z po po po po Hannibalem",
+          "text": "Z Hannibalem",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Słynne Cytaty",
-      "question": "Jakie po u po do w do słowa, po u z u po u do do według z w do po do z z w po dramatu po z w do po w po w do w po w Szekspira u po u po do w w z z w w (i do po po w po po legend), w w w u z u u do w w po po z do w u w Juliusz u do u do w z w z do w z Cezar po u do do u do w u u u z do z u wypowiedział w do z do w po z u w u po po z po po po u a w u a gdy z po po po z z z w do z po z do po do zobaczył u z do w po u do do u w u w do swojego z po z w u po u w po po u z u w w u do najlepszego u do u w do do u w u z po z do z z przyjaciela u do u z po do do z w wśród w u do do po z po z z z z spiskowców do do w z u u do z do w u zadających do u w u u z po z po w z mu u do z w z do z do do w u cios u u po po w nożem?",
+      "question": "Jakie słowa, według dramatu Szekspira, wypowiedział Juliusz Cezar po zdradzie bliskiej mu osoby?",
       "answers": [
         {
-          "text": "I u do po u w z do po u do ty w do w u w do z u Brutusie po po do po do przeciwko z po w u po z z z z z z z mnie?",
+          "text": "I ty, Brutusie, przeciwko mnie?",
           "is_correct": true
         },
         {
-          "text": "A u po u do u do więc u po z u z do do wojna!",
+          "text": "A więc wojna!",
           "is_correct": false
         },
         {
-          "text": "Zdrada w po z u po u z do do u to z do po u najgorszy z z do z do po u u do po u grzech...",
+          "text": "Zdrada to najgorszy grzech...",
           "is_correct": false
         },
         {
-          "text": "Wybaczam w po z z do w do do w u z u w z do po ci, po u w w po z u do z u z przyjacielu.",
+          "text": "Wybaczam ci, przyjacielu.",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Tajemnice Świata",
-      "question": "Jak a u w po w z dumnie z u w u do do z w a nazywa w u do u u u w w w u z się do w a w po u słynny po a w do z w do u obszar do a do na a z do do po Oceanie w u z do po a u w Atlantyckim, a w w z do po a o w do z którym a u do w do z krążą w a do w liczne do po w po u a z do u w a po a po do do legendy u a do po a w po z do po a do w z po u do a w o a z do z a w u nagłych z po do z i do do w z z bezśladowych po a do po a w po z u a po do a zaginięciach po z w a po a do z z w u statków w a po u a z a z z w u z do i do a po z z do do samolotów?",
+      "question": "Jak nazywa się tajemniczy obszar na Oceanie Atlantyckim, w którym rzekomo bez śladu ginęły statki i samoloty?",
       "answers": [
         {
-          "text": "Trójkąt a w u z z a Bermudzki",
+          "text": "Trójkąt Bermudzki",
           "is_correct": true
         },
         {
-          "text": "Oko do z a po po po u a Sahary",
+          "text": "Oko Sahary",
           "is_correct": false
         },
         {
-          "text": "Rów u u po a po z z z u w z u w z do do a do z w a w z u do u a po do u po w w po u z do z u po u do do Mariański",
+          "text": "Rów Mariański",
           "is_correct": false
         },
         {
-          "text": "Krąg po po po a w po po a u u Ognia",
+          "text": "Krąg Ognia",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Tajemnice Świata",
-      "question": "W do w po w jakim u z z w do z a z z po po u po z z do z wielkim a po w z do szkockim w a do z a u z w w u po jeziorze a u w do po u w do według z a po u po do lokalnych z z do w z z po w u a do w w u mitów z a po z do do u po w w a po a w z po i po a w a po u opowiadań a do do a w u po ukrywa u z po do u w do się u a z do u a z legendarny a do z a do po u gadzi do a w po do po u z a do po a do u u a po do po i do a u u a u w mityczny u a do w a potwór u z w po u nazywany u po u w u do u w Nessie?",
+      "question": "W jakim szkockim jeziorze według lokalnych legend ukrywa się tajemnicze stworzenie zwane Nessie?",
       "answers": [
         {
-          "text": "W a u z z po jeziorze z po z a w po a w u u w u z do po do Loch w po a z a w w Ness",
+          "text": "W jeziorze Loch Ness",
           "is_correct": true
         },
         {
-          "text": "W do u w do jeziorze w po u z a po z w a u do u u z w po u z a do w Wiktorii",
+          "text": "W jeziorze Wiktorii",
           "is_correct": false
         },
         {
-          "text": "W w a do z u jeziorze po do do a w w po a u w w po z Bajkał",
+          "text": "W jeziorze Bajkał",
           "is_correct": false
         },
         {
-          "text": "W do po w po po po jeziorze w z u w a po do w u u po z u w po do Titicaca",
+          "text": "W jeziorze Titicaca",
           "is_correct": false
         }
       ]
@@ -708,374 +708,374 @@
     },
     {
       "subcategory": "Tajemnice Świata",
-      "question": "Jaki do u z z z mityczny, u z po do potężnie z do z u rozwinięty a po z po z u po u i w z po w do z potężnie z do u bogaty a u po w u u u u kontynent a do do u po z (lub z w a w w po wyspa) a po z do miał po po a do według a u a w pism w do a po z Platona a z do a z w u w po u z z u w z do po bezpowrotnie po z do z a do a z z w u u u u w po zatonąć z do w a po a w u w na w z a po po dnie u u w po u do morza po a z w u u a w w a w jeden w u po do a po w do po u u do do dzień z z u do do a u po a a po u u w w po w do po u i w do w noc?",
+      "question": "Jak nazywa się mityczny bogaty kontynent (lub wyspa), który według pism Platona miał zatonąć w oceanie?",
       "answers": [
         {
-          "text": "Atlantyda do z u z",
+          "text": "Atlantyda",
           "is_correct": true
         },
         {
-          "text": "Pangea a w a u z w",
+          "text": "Pangea",
           "is_correct": false
         },
         {
-          "text": "Gondwana po do do u u z w po",
+          "text": "Gondwana",
           "is_correct": false
         },
         {
-          "text": "Lemuria z a w u do z w z u w do",
+          "text": "Lemuria",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Tajemnice Świata",
-      "question": "Z u po po w jakim w z z w obiektywem do do do po u u u a i w a po a po do do a u pilnie do po do po a strzeżonym po do a po a z wojskowym w z po z a z miejscem z po a do z z w do z po na u po z pustyni w po u u z z do u w po a w w w z USA do do po u z z w u po u a z do (Strefa do z a z po w po a po do a 51) w u po a z u w do wiążą po u a do a z do się z z z w u po u po u setki u po a w a po po do z teorii do po a z w z po a w po spiskowych u do a do w a do dotyczących po do u a w do rzekomego w po u w w do z z u a z do u a rozbicia z z z z a do po z po u u u z się a do w po a po do pojazdu a z w po z i po do po w a z u ukrywania a do z po do u u u obcych do a do a form a z w z życia w w a do w z (UFO)?",
+      "question": "W jakim pilnie strzeżonym wojskowym miejscu na pustyni w USA (Nevada) według teorii spiskowych ukrywa się rozbitą latający talerz?",
       "answers": [
         {
-          "text": "W do do u Roswell u z po a po z po (Incydent do z po do do a z u w z w u z Roswell)",
+          "text": "W Strefie 51 (Area 51)",
           "is_correct": true
         },
         {
-          "text": "W do po po z a po w z do a w do w po a a po a do z z z po a Las po do u w po po Vegas a w u do z po z do",
+          "text": "W Las Vegas",
           "is_correct": false
         },
         {
-          "text": "W z w do z po po a po z u po u po z do u u Waszyngtonie po do a w a z po a po w u z po u a z do u",
+          "text": "W Waszyngtonie",
           "is_correct": false
         },
         {
-          "text": "W w z z do po w u do a w u a a z a Houston po do a po z z po do",
+          "text": "W Houston",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Wynalazki Codziennego Użytku",
-      "question": "Jaki w do po w a słynny u z a z z w do po po w amerykański z po a do a u wynalazca w z a po po do po przeszedł z z a po a po w w a do historii a do z z z po z po u a jako w po u u do twórca u w po do praktycznej w u u z u do i z a z u trwałej u a w z u z do do u po u w z a po u po z po a żarówki po z z a w u a u z do po po do elektrycznej po do w z w z a po do (z a po do a do a po zwęglonym u u do w a z a po w z po u do po włóknem u a po do a u po bambusa)?",
+      "question": "Który słynny amerykański wynalazca przeszedł do historii jako twórca praktycznej żarówki elektrycznej?",
       "answers": [
         {
-          "text": "Thomas do w u u po w do Alva po w a do Edison",
+          "text": "Thomas Alva Edison",
           "is_correct": true
         },
         {
-          "text": "Nikola z u do do a u po z do po Tesla",
+          "text": "Nikola Tesla",
           "is_correct": false
         },
         {
-          "text": "Alexander w a po do w Graham do z w do po do z u u a po do Bell",
+          "text": "Alexander Graham Bell",
           "is_correct": false
         },
         {
-          "text": "Guglielmo do a po w u Marconi",
+          "text": "Guglielmo Marconi",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Wynalazki Codziennego Użytku",
-      "question": "Kto w u do po po w oficjalnie po a po z a z w z w w w do został w a u u a u w w uznany z u do w do do u w u po z za a po do po a po wynalazcę u do z w z w po telefonu do w z do u do do w roku w do u z z z 1876 u a po do a w z (chociaż z a do w do a po o u u do w z a u w patent po po a po do do z a po po w a w w u do u u po z walczyło a z a po po a a a u po kilku a u z po do u u po w w po u w badaczy)?",
+      "question": "Kto oficjalnie został uznany za wynalazcę telefonu w roku 1876?",
       "answers": [
         {
-          "text": "Alexander w do u do z po u do u w Graham a w do a do w do Bell",
+          "text": "Alexander Graham Bell",
           "is_correct": true
         },
         {
-          "text": "Thomas w do do z w Edison",
+          "text": "Thomas Edison",
           "is_correct": false
         },
         {
-          "text": "Samuel z u u z u u z po z do Morse",
+          "text": "Samuel Morse",
           "is_correct": false
         },
         {
-          "text": "Benjamin a u a z Franklin",
+          "text": "Benjamin Franklin",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Wynalazki Codziennego Użytku",
-      "question": "Jakiego u a u po u rewolucyjnego a a z po w a z u dla a do z po do po u z u po do do a medycyny w z a u w po w u z po odkrycia po a po a z do dokonał po do do z w a u a z z z w w po do u Alexander z a u w do po a do w z u u z Fleming w w a do do w w u w po u u 1928 do z do do z po a z a w u a u u z a w u roku, po do u z po z z a badając u do w do u w u z z z do z do po po do zapleśniałe z po w po a po do a po z z do do płytki z w do do po a do w po a po a z w po z po u po u w z a u u z a po z do Petriego z z u w z do po w z po z a w po z a u z po u w do do bakteriami?",
+      "question": "Jakiego rewolucyjnego odkrycia dla medycyny dokonał Alexander Fleming w 1928 roku?",
       "answers": [
         {
-          "text": "Odkrył u a w z penicylinę u do do w w w w u z (pierwszy do a u po z w z w u z antybiotyk)",
+          "text": "Odkrył penicylinę (pierwszy antybiotyk)",
           "is_correct": true
         },
         {
-          "text": "Odkrył po z w z szczepionkę do a z po na w a z wściekliznę",
+          "text": "Odkrył szczepionkę na wściekliznę",
           "is_correct": false
         },
         {
-          "text": "Odkrył u u a po do z w w do u z grupy po a z krwi a a w",
+          "text": "Odkrył grupy krwi",
           "is_correct": false
         },
         {
-          "text": "Odkrył u z z u w po promienie z w z u do u z a w po X u po u w w (RTG)",
+          "text": "Odkrył promienie X (RTG)",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Wynalazki Codziennego Użytku",
-      "question": "Jaki w w u do w u a u u u w w po z wynalazca w po po z do w a z u i w u do po do w a u z z fundator a do u a do z a u z najsłynniejszej po a w z po w do na a a a do z a do u a po do świecie po po u po u u u a z w do a po z po w z w do z po z do w z z a z naukowej z a do u do po po a do po a nagrody po do do w po a w w w z do wymyślił a po do u do po i u po w z z do po z po w opatentował z u po do a do bardzo u u w do z w potężny w po u do a w z po z i a z a a z w u niebezpieczny a do po do po materiał w po po do u a a w w do do u w do a w wybuchowy, w u a a z a po z po po po do u w do a u a z u do z w z w a mianowicie z u do a z u do z a z a w do dynamit?",
+      "question": "Jaki wynalazca dynamitu jest jednocześnie fundatorem najsłynniejszej na świecie nagrody naukowej?",
       "answers": [
         {
-          "text": "Alfred a po a z po u Nobel",
+          "text": "Alfred Nobel",
           "is_correct": true
         },
         {
-          "text": "Albert do z z z Einstein",
+          "text": "Albert Einstein",
           "is_correct": false
         },
         {
-          "text": "Ignacy z w z a po do Łukasiewicz",
+          "text": "Ignacy Łukasiewicz",
           "is_correct": false
         },
         {
-          "text": "Robert a u a po do u a po u z Oppenheimer",
+          "text": "Robert Oppenheimer",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Wynalazki Codziennego Użytku",
-      "question": "Jacy w z w do po po słynni do u a u po bracia po z u z u z a do (Auguste do po z w i po z w do z a z u Louis) z po do z w a po a w po zapisali u z u u do po u w w a u w a u u do z a w u w po po się do u z po z do a po na u w do a do z po do zawsze do u po w w po u do a z z do z do a z a historii, po w w w do a tworząc do do a do a z u u a do u u a po z w do u wynalazek po do po w a z u do a a w z a a a u po u z a do po z o w u do w a z a a w u a nazwie u z po w po z u u po z kinematograf do u do do w po i a w w z do z z u a z do u u u u w a po u organizując z w po po w pierwsze do po u z z u do pokazy do z z po po z a po a u w po po u po u filmów?",
+      "question": "Jacy słynni bracia (Auguste i Louis) zapisali się na zawsze w historii jako pionierzy kina?",
       "answers": [
         {
-          "text": "Bracia po u u po po po Lumière",
+          "text": "Bracia Lumière",
           "is_correct": true
         },
         {
-          "text": "Bracia po do z po z do w z Wright",
+          "text": "Bracia Wright",
           "is_correct": false
         },
         {
-          "text": "Bracia a w w z do w w Warner",
+          "text": "Bracia Warner",
           "is_correct": false
         },
         {
-          "text": "Bracia do w do po po a z po Grimm",
+          "text": "Bracia Grimm",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Zjawiska Pogodowe",
-      "question": "Jak a u w po z u nazywa po a do po a w w z po się z po a u w u piękne, u po a z z u po kolorowe w z u do z do w a a po a po do do zjawisko a u do w do u w z a a w a a a w a optyczne do u do a z a a z a do i u w do w do po po a do a u w a meteorologiczne, po u z u po w z powstające po po a do w po a w w do do na z a u w a u u z a do w niebie u po u a do u u u po z w w po po u u z z u w z do do do do z w a z po z za po a po w a w do po u z do do po u z z u po z u z do do z sprawą u w u z z do rozszczepienia po z z u do po u w po a po z u a światła w po z do po do w a w a w do słonecznego a do po z a u u po a a po u u a po po z u u u z z w po w a u po po z do w z kroplach po z z po u u u a z deszczu?",
+      "question": "Jak nazywa się piękne, kolorowe zjawisko optyczne i meteorologiczne powstające gdy słońce świeci podczas deszczu?",
       "answers": [
         {
-          "text": "Tęcza a po do a",
+          "text": "Tęcza",
           "is_correct": true
         },
         {
-          "text": "Zorza w a po po do w u polarna w po do a do a po w po po do u a a w a do po po u w",
+          "text": "Zorza polarna",
           "is_correct": false
         },
         {
-          "text": "Halo u a do z a u z",
+          "text": "Halo",
           "is_correct": false
         },
         {
-          "text": "Fatramorgana u do z w z u w a po w z u z w z do a z a po w z do do a do do do po",
+          "text": "Fatamorgana",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Zjawiska Pogodowe",
-      "question": "Jak po a do a do w a do na z z z a w z a terenach z po w a po z a z azjatyckich do po u po u u u z w po w u u u u (nad z po do po a do z z w po u a z do u Pacyfikiem) z po po z a po nazywa a do po do a a z po u a do a się u do po po do w z a po niszczycielski z do z z a z w a z do do z u z i w u a w do gwałtowny po do a po w u z cyklon u z u z a w z po tropikalny, u po a z z z w do z po u w do do u w u do który a w u do z w a do u w na a w u do w u u u u wodach po do z z w po do po do do u w u w do a w z do u do do a do po a amerykańskich u do z a u do w nosi z do po a u po u po u do u z nazwę a po u z u w po do a a w z a a a po po do w a po a w po a w a po u huraganu?",
+      "question": "Jak nazywa się niszczycielski huragan na terenach azjatyckich, szczególnie nad Pacyfikiem?",
       "answers": [
         {
-          "text": "Tajfun a do a u a a",
+          "text": "Tajfun",
           "is_correct": true
         },
         {
-          "text": "Tornado w do do a a z po do po",
+          "text": "Tornado",
           "is_correct": false
         },
         {
-          "text": "Monsun w po z z do w z po a w do",
+          "text": "Monsun",
           "is_correct": false
         },
         {
-          "text": "Tsunami u po a z po z u po u u w z u po z z do",
+          "text": "Tsunami",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Zjawiska Pogodowe",
-      "question": "Z u z do po po do a a jakim u z do w spektakularnym w a z do u po u w w a u w z u w a z a a u w świetlnym po po do z u z z u w a a w u a do a w w do u do z z z do z u po u w a z po do a a w u w a z po po a po z do z w a a u z u do zjawiskiem, u do do a w u a z w do u do w z a po po z u u z a do po z po z u z do do po u z z widocznym po z z po do do a u po z do u najczęściej do a z po w a do po po z w a z z po a do a do u za a w a po po a a z u a po do a Kołem z a po u a z w a po u w u Podbiegunowym z a w z u do u do a z do po u a w u po w w i a do po u u na do z w do u po po niebie do po a u w po po u po u w (w a u po do z u do po u w a w a z po a z a u kolorach po z do z z u a z do zieleni do w po w u u po z u z do po do w a i a do a w a z do z a a a do po a fioletu), po w do u a w w po wiąże a w do z w po po z się po z w u aktywność w u z a a a do u z u słońca a po do a w a z i a z a w w a burze a u w do do a u u a u z do po do z do z u z z magnetyczne a u w po do a z do a z a po na u z do z u Ziemi?",
+      "question": "Z jakim spektakularnym świetlnym zjawiskiem na nocnym niebie, widocznym w okolicach biegunów, kojarzy się Skandynawia?",
       "answers": [
         {
-          "text": "Z z u a po po z a po w z do u z u po w w zorzą z z w a w w do u z po do do u u po a z u a w po polarną w po do a a a z z a u z do po z do u po po",
+          "text": "Zorza polarna",
           "is_correct": true
         },
         {
-          "text": "Ze a u a z w z spływaniem u a po a a z u z a do po do po u z u po w gwiazd a do po w a a w u a z po z (meteorami) a do z z w",
+          "text": "Deszcz meteorów (spływ gwiazd)",
           "is_correct": false
         },
         {
-          "text": "Z a po u z w do a po z z do do po zaćmieniem w w u u w po w z a w a w do słońca u po po z z z w",
+          "text": "Zaćmienie słońca",
           "is_correct": false
         },
         {
-          "text": "Z do w po do białymi u z w po z a u z po do u nocami po po u po",
+          "text": "Białe noce",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Zjawiska Pogodowe",
-      "question": "Jak po po w do do z nazywa po do u po w z się z po z u w popularna a do do po do z w a u u do z do w u a po do (logarytmiczna) z w u w po po u u skala do a po do do u w u z u u z do a po a z używana po w a po po do z do a po u u u z do u z z z przez u z u do z w z u a u a sejsmologów z do po w po u a w z po w a po z z po po u u w w z do w w a z po określająca u do a po w do a wielkość z do po u u a z u do z u z a w po do u (magnitudę) u u u w w u u w do u po do i w z a u w a u w a siłę a w a z po u a z u po trzęsienia w z po a a z z w do z u w do z do w a z a u u po w ziemi?",
+      "question": "Jak nazywa się logarytmiczna skala używana przez sejsmologów do mierzenia siły trzęsień ziemi?",
       "answers": [
         {
-          "text": "Skala u po po w po po w u u a w Richtera a a do do do w a po a",
+          "text": "Skala Richtera",
           "is_correct": true
         },
         {
-          "text": "Skala po a w do z po z a w po Fahrenheita u do do do u u a po do w u",
+          "text": "Skala Fahrenheita",
           "is_correct": false
         },
         {
-          "text": "Skala a w po z z Beauforta a do po z w z do a do do z po po z u",
+          "text": "Skala Beauforta",
           "is_correct": false
         },
         {
-          "text": "Skala po z u u po z do u do po a a w z Kelvina z u z a a do u a do z po do po",
+          "text": "Skala Kelvina",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Zjawiska Pogodowe",
-      "question": "Jak z a w z a w a w po u po a do u a do u u a po a z nazywa w po a do po a w po u w się w z a po a opad u po w z a atmosferyczny po z po u po po a z po z do po w do z u w do u z w u w postaci z u z a w z do po w twardych, a do w po a w w z w w u a po po z u z do w u a z bryłek z u po po a w po a po z u po u lodu, z do u do u do a a w w z do w z a do u a w w a z u w z do do do u który w po do z a u z u u z u a nierzadko po a u u z z do do do niszczy w po w z a w u w uprawy po w z w z z po w u po u w rolnicze z w z po po z do w u u do a po po z i do w a wgniata a u z do po a do u po u w w a dachy do w u z do do po a w w u po do a samochodów do a z z do z do po u z podczas u a w u a z a gwałtownych z po z a w w w a po a do z z w burz u u po do z u po po po do a a z u u a z po u a do a z z do a z w w lecie?",
+      "question": "Jak nazywa się opad atmosferyczny w postaci twardych bryłek lodu, często niszczący uprawy?",
       "answers": [
         {
-          "text": "Grad u w u u",
+          "text": "Grad",
           "is_correct": true
         },
         {
-          "text": "Szron po a po do do po",
+          "text": "Szron",
           "is_correct": false
         },
         {
-          "text": "Śnieg z po do z w a z",
+          "text": "Śnieg",
           "is_correct": false
         },
         {
-          "text": "Szadź po a w do z po a a",
+          "text": "Szadź",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Świat Finansów",
-      "question": "Jaka po po z a a z a u w po po u po u w z w w w waluta z a z po w a z u a do po do po u z z u do po u u w obok u z w w u w u a z powszechnie po do do u w do do a a do do do w po a w po w z po obowiązuje u w a po u a z do u u a po do a w z u z od u do do po a lat w a po po do w w po u a z a z z w u u a i w a u w z w jest z z u a z u do do z emitowana z z do do z po u w z do w po z z po u u u w a po u po do przez u po do u do do w po do w a w po u w u po do w z a po do po u po u do u u u z do a po u u u a z u do po Narodowy w w po a po po po u Bank w po po u u Japonii a w po w a z a a z do u w u z z na u u po do po do do u do u do po u terenie po z z u a w po po a tego u a po do u po w w po w a z do do po z wyspiarskiego do po po do w z z do do kraju?",
+      "question": "Jaka waluta powszechnie obowiązuje w Japonii?",
       "answers": [
         {
-          "text": "Jen u z w do do do a z u po a po (JPY) a u w u do po u w a w a",
+          "text": "Jen (JPY)",
           "is_correct": true
         },
         {
-          "text": "Juan w a w w u po u u u a a w a do po po do z z w z u do z z po a u u (RMB)",
+          "text": "Juan (RMB)",
           "is_correct": false
         },
         {
-          "text": "Won w z po po u po z z do do u a z do do do (KRW)",
+          "text": "Won (KRW)",
           "is_correct": false
         },
         {
-          "text": "Dolar z u u z a w do w po po do u a a w po do u po do po (USD)",
+          "text": "Dolar (USD)",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Świat Finansów",
-      "question": "Jak z do w po a z do po u do u a nazywa w u w po w z a w u a do do w w się w z do po w u u u z z do u na z do do a do z u do po w z do a z a z u giełdzie a u do po w z do po i u z do a rynkach a do u u a z z finansowych a do po do po w a u długotrwały a a u do po u z a z do z a w u w u do z w z u po z u z do w po a w a po po u w do do u w po do u po z u w po trend a do z do w a po a w u u w po po po w z u rosnący z a a do po do w a do w do a u a po do u u a a z a u u po w a a z do u z u do (wzrost z w po po z po po do u a do z po z do cen do u po u w a a w a a w po a w u akcji po z do w u w w do po z u z u z a i do u po z u z u optymizm w z a u w do po a do z z po w a po w z a a do a po inwestorów)?",
+      "question": "Jak na giełdzie i rynkach finansowych nazywa się długotrwały wzrost cen akcji?",
       "answers": [
         {
-          "text": "Hossa w a w do (Rynek a u u a po do a w do w po Byka)",
+          "text": "Hossa (Rynek Byka)",
           "is_correct": true
         },
         {
-          "text": "Bessa po do z z u a z do u w z a (Rynek do do w do do w u w do a w po Niedźwiedzia)",
+          "text": "Bessa (Rynek Niedźwiedzia)",
           "is_correct": false
         },
         {
-          "text": "Recesja a u u w po do w",
+          "text": "Recesja",
           "is_correct": false
         },
         {
-          "text": "Stagflacja u po u po w do",
+          "text": "Stagflacja",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Świat Finansów",
-      "question": "Co a w do po w w do z z u po u w u w do u po u do u z do a oznacza w a a z u w z do bardzo a do z a u a w w a w z po w powszechny, z z u w a po do w po a u w z u z do z po po u a doliczany do a w a a po po do z w u z z a po z po w do u a w u po w do po z po po po niemal u do a z a po w z z a po a po do do a u po u każdego a do w a do a po w do produktu w do a po z u w u po a z i u po do a do do a usługi a z u z a do po z po z podatek po z po u po po a z po w a do po po u a w u do a (np. po a z w u w po po z a do u 23% z u w w z do w z u u a w a z u z z u u Polsce) a w w do u z z a z a w u a do ukrywający do po a z z u do po w po u a w się a w do do do po po pod po u do u u skrótem u a do po do a a VAT?",
+      "question": "Co oznacza skrót VAT doliczany do ceny niemal wszystkich towarów i usług?",
       "answers": [
         {
-          "text": "Podatek u a a z po do a do w do w od u do u w po do u z u towarów po z w a u u do z do w do do do do z i z u po w do do z u po u po a w do z u w do z usług po u w po a po do",
+          "text": "Podatek od towarów i usług",
           "is_correct": true
         },
         {
-          "text": "Podatek po u a po a do u u a u u a u u z u a a do u a do po a od w z do po w dochodów u z do a po u u a osobistych z do a po z z po do z w a z z po a z a",
+          "text": "Podatek od dochodów osobistych",
           "is_correct": false
         },
         {
-          "text": "Podatek a u u a po w a w a do po po akcyzowy w z u u a z z a do",
+          "text": "Podatek akcyzowy",
           "is_correct": false
         },
         {
-          "text": "Podatek z z w u u do a od z u z a do nieruchomości do do do do z",
+          "text": "Podatek od nieruchomości",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Świat Finansów",
-      "question": "Jak a a z a po w u z z nazywa a u z z po w u po a do a po się z w po a po po do najsłynniejsza, w u a a z do z a po po do po u z z do po z do u po u tętniąca po a u u z z po z u z do a życiem w po a z do po u u do u po po po do a a z w do a u a a po u i w po do w a u z z a z w a po u bardzo u z a do do do głośna w z u z po u a u do w do nowojorska a do po z u w z do u do po u w a do u z u u z a do a w u a do do w w a u u u po z u z a u a u w do w po po u u u a z u u u do u a z a w u w ulica, u z do w z do na w do z w do której z po a z a do u w u z z u w z mieści u z z a z do z w a do u w w się a z z z w do z a z a z po w do u a w w a a do Giełda u u do po a w w z z u w po z u u u a do do z po u Papierów do z z do a z a po Wartościowych u a a w a do do u u w w po z do z (NYSE) a a a u po u w w w po po z u u a u i do w po w u w a a będąca a u u w a po do do a u z w światowym a w a a po u u a z w do po z a u w centrum u u w po z z w u do w u z u w w finansjery?",
+      "question": "Jak nazywa się najsłynniejsza nowojorska ulica, tętniąca życiem finansowym i siedziba giełdy NYSE?",
       "answers": [
         {
-          "text": "Wall a u z a Street po z w po z u do z u z",
+          "text": "Wall Street",
           "is_correct": true
         },
         {
-          "text": "Broadway u w do a w a a",
+          "text": "Broadway",
           "is_correct": false
         },
         {
-          "text": "Fifth u po u z do a z po a a z po Avenue w po w a z u w w (Piąta a po z do Aleja) po po z z z do z",
+          "text": "Fifth Avenue (Piąta Aleja)",
           "is_correct": false
         },
         {
-          "text": "Times do u do w z a do u a do z po do po a Square do w a z",
+          "text": "Times Square",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Świat Finansów",
-      "question": "Co a z z po po z u do w oznacza u do po u w a w makroekonomiczny do po do w do z u skrót z po w w po u do a w po PKB, po w po po w w do z do określający po w z a po a po do do z a po a u u po do do do z wartość u po w po a po do a wszystkich do do po z z po u u u u u u dóbr do w w a a i a do a a u w z u po a usług do w a po a w a po u finalnych u u z z u u po z do u po u w wytworzonych u u a w w do u do na w a u w w a u do z a po u a terenie a a z u w z danego po z u w do z z kraju a do w w z u w a u w w do po z danym z do w z czasie?",
+      "question": "Co oznacza skrót PKB, określający wartość wszystkich dóbr i usług wytworzonych w kraju w ciągu roku?",
       "answers": [
         {
-          "text": "Produkt u do a po w po u a z z z u po w a a do Krajowy z do do po a u do po z z w do z a Brutto do u do z u w do",
+          "text": "Produkt Krajowy Brutto",
           "is_correct": true
         },
         {
-          "text": "Przychód w po po z w a po u a a w po do po w u u u Komercyjny w z a po u u do po a Banków a w a a w u do po po a",
+          "text": "Przychód Komercyjny Banków",
           "is_correct": false
         },
         {
-          "text": "Państwowy po do po w w po po u do a z do z a Koszt a do z a u z po w z a w u Budżetowy do do u w a",
+          "text": "Państwowy Koszt Budżetowy",
           "is_correct": false
         },
         {
-          "text": "Podatek u do u do a u u a po do a Krajowy z w w do a z Bezpośredni po po z z a w u",
+          "text": "Podatek Krajowy Bezpośredni",
           "is_correct": false
         }
       ]
