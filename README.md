@@ -4,12 +4,11 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 
 ## Zawartość
 
-- **[Wyścigi Aut](./auta/)** 🏎️ – Gra wyścigowa, w której omijasz przeszkody i jedziesz jak najszybciej. Sterowanie: strzałki klawiatury lub swipe na ekranie dotykowym.
+- **[Wyścigi Aut](./auta/)** 🏎️ – Gra wyścigowa, w której omijasz przeszkody i jedziesz jak najszybciej.
 - **[Mat-Jaja](./mat-jaja/)** 🥚 – Matematyczna zabawa z jajkami w roli głównej.
 - **[Rybak](./rybak/)** 🚣 – Spokojna gra wędkarska na jeziorze.
 - **[Pisanie](./pisanie/)** 🖊️ – Nauka pisania polskich słów, literka po literce.
 - **[Kraje](./kraje/)** 🌍 – Sprawdź swoją wiedzę o krajach, stolicach i flagach.
-
-## Jak grać
-
-Otwórz główny plik `index.html` w przeglądarce, wybierz grę z menu, lub wejdź bezpośrednio do folderu wybranej gry.
+- **[Memo](./memo/)** 🃏 – Znajdź wszystkie pary ukrytych obrazków.
+- **[Puzzle](./puzzle/)** 🧩 – Składaj obrazki z puzzli, kawałek po kawałku.
+- **[Pytania](./pytania/)** 🧠 – Quiz wiedzy ogólnej – historia, nauka, kultura i wiele więcej.
