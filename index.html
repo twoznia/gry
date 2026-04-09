@@ -141,150 +141,79 @@
 </head>
 <body>
 
-    <header style="position:relative;">
-        <div id="lang-switcher" style="position:absolute;top:0;right:0;display:flex;gap:6px;">
-            <button id="btn-pl" onclick="setLang('pl')" style="background:transparent;border:1px solid #555;border-radius:20px;padding:4px 10px;line-height:0;cursor:pointer;"><img src="https://flagcdn.com/24x18/pl.png" width="24" height="18" alt="Polski" style="display:block;border-radius:3px;"></button>
-            <button id="btn-en" onclick="setLang('en')" style="background:transparent;border:1px solid #555;border-radius:20px;padding:4px 10px;line-height:0;cursor:pointer;"><img src="https://flagcdn.com/24x18/gb.png" width="24" height="18" alt="English" style="display:block;border-radius:3px;"></button>
-        </div>
-        <h1 id="main-title">🎮 Centrum Rozrywki</h1>
-        <p class="subtitle" id="main-subtitle">Wybierz grę i pobij rekord!</p>
+    <header>
+        <h1>🎮 Centrum Rozrywki</h1>
+        <p class="subtitle">Wybierz grę i pobij rekord!</p>
     </header>
 
     <main class="game-container">
-        
+
         <a href="./auta/" class="game-card">
             <span class="icon">🏎️</span>
-            <h2 id="card-auta-title">Wyścigi Aut</h2>
-            <p id="card-auta-desc" style="color: #94a3b8; font-size: 0.9rem;">Szybka jazda i omijanie przeszkód.</p>
-            <div class="play-btn" id="play-auta">Zagraj</div>
+            <h2>Wyścigi Aut</h2>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Szybka jazda i omijanie przeszkód.</p>
+            <div class="play-btn">Zagraj</div>
         </a>
 
         <a href="./mat-jaja/" class="game-card">
             <span class="icon">🥚</span>
             <h2>Mat-Jaja</h2>
-            <p id="card-matjaja-desc" style="color: #94a3b8; font-size: 0.9rem;">Matematyczna zabawa z jajkami w roli głównej.</p>
-            <div class="play-btn" id="play-matjaja">Zagraj</div>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Matematyczna zabawa z jajkami w roli głównej.</p>
+            <div class="play-btn">Zagraj</div>
         </a>
 
         <a id="rybak-card" href="./rybak/" class="game-card">
             <span class="icon">🚣‍♂️</span>
             <h2>Rybak</h2>
-            <p id="card-rybak-desc" style="color: #94a3b8; font-size: 0.9rem;">Spokojny połów na pełnym jeziorze.</p>
-            <div class="play-btn" id="play-rybak">Zagraj</div>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Spokojny połów na pełnym jeziorze.</p>
+            <div class="play-btn">Zagraj</div>
         </a>
 
         <a href="./pisanie/" class="game-card">
             <span class="icon">🖊️</span>
-            <h2 id="card-pisanie-title">Pisanie</h2>
-            <p id="card-pisanie-desc" style="color: #94a3b8; font-size: 0.9rem;">Naucz się pisać polskie słowa, literka po literce.</p>
-            <div class="play-btn" id="play-pisanie">Zagraj</div>
+            <h2>Pisanie</h2>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Naucz się pisać polskie słowa, literka po literce.</p>
+            <div class="play-btn">Zagraj</div>
         </a>
 
         <a href="./kraje/" class="game-card">
             <span class="icon">🌍</span>
-            <h2 id="card-kraje-title">Kraje</h2>
-            <p id="card-kraje-desc" style="color: #94a3b8; font-size: 0.9rem;">Sprawdź swoją wiedzę o krajach, stolicach i flagach!</p>
-            <div class="play-btn" id="play-kraje">Zagraj</div>
+            <h2>Kraje</h2>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Sprawdź swoją wiedzę o krajach, stolicach i flagach!</p>
+            <div class="play-btn">Zagraj</div>
         </a>
 
         <a href="./memo/" class="game-card">
             <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="0.5em" viewBox="0 0 80 40" style="display:inline-block;vertical-align:middle;filter:drop-shadow(0 0 10px rgba(255,255,255,0.1))"><rect x="0"  y="0" width="17" height="40" rx="4" fill="#f472b6"/><rect x="21" y="0" width="17" height="40" rx="4" fill="#34d399"/><rect x="42" y="0" width="17" height="40" rx="4" fill="#60a5fa"/><rect x="63" y="0" width="17" height="40" rx="4" fill="#fbbf24"/></svg></span>
-            <h2 id="card-memo-title">Memo</h2>
-            <p id="card-memo-desc" style="color: #94a3b8; font-size: 0.9rem;">Znajdź wszystkie pary ukrytych obrazków!</p>
-            <div class="play-btn" id="play-memo">Zagraj</div>
+            <h2>Memo</h2>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Znajdź wszystkie pary ukrytych obrazków!</p>
+            <div class="play-btn">Zagraj</div>
         </a>
 
         <a href="./puzzle/" class="game-card">
             <span class="icon">🧩</span>
-            <h2 id="card-puzzle-title">Puzzle</h2>
-            <p id="card-puzzle-desc" style="color: #94a3b8; font-size: 0.9rem;">Składaj obrazki z puzzli, kawałek po kawałku.</p>
-            <div class="play-btn" id="play-puzzle">Zagraj</div>
+            <h2>Puzzle</h2>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Składaj obrazki z puzzli, kawałek po kawałku.</p>
+            <div class="play-btn">Zagraj</div>
         </a>
 
         <a href="./pytania/" class="game-card">
             <span class="icon">🧠</span>
-            <h2 id="card-pytania-title">Pytania</h2>
-            <p id="card-pytania-desc" style="color: #94a3b8; font-size: 0.9rem;">Quiz wiedzy ogólnej – historia, nauka, kultura i wiele więcej!</p>
-            <div class="play-btn" id="play-pytania">Zagraj</div>
+            <h2>Pytania</h2>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Quiz wiedzy ogólnej – historia, nauka, kultura i wiele więcej!</p>
+            <div class="play-btn">Zagraj</div>
         </a>
 
     </main>
 
-    <footer id="footer-text">
+    <footer>
         Ostatnia aktualizacja: 2026 | @twoznia
     </footer>
+
     <script>
         if (window.matchMedia("(pointer: coarse)").matches) {
             document.getElementById("rybak-card").href = "./rybak-mobile/";
         }
-
-        const TRANSLATIONS = {
-            pl: {
-                title: 'Centrum Rozrywki',
-                subtitle: 'Wybierz grę i pobij rekord!',
-                autaTitle: 'Wyścigi Aut',
-                autaDesc: 'Szybka jazda i omijanie przeszkód.',
-                matjajaDesc: 'Matematyczna zabawa z jajkami w roli głównej.',
-                rybakDesc: 'Spokojny połów na pełnym jeziorze.',
-                pisanieTitle: 'Pisanie',
-                pisanieDesc: 'Naucz się pisać polskie słowa, literka po literce.',
-                krajeTitle: 'Kraje',
-                krajeDesc: 'Sprawdź swoją wiedzę o krajach, stolicach i flagach!',
-                memoTitle: 'Memo',
-                memoDesc: 'Znajdź wszystkie pary ukrytych obrazków!',
-                pytaniaTitle: 'Pytania',
-                pytaniaDesc: 'Quiz wiedzy ogólnej – historia, nauka, kultura i wiele więcej!',
-                play: 'Zagraj',
-                footer: 'Ostatnia aktualizacja: 2026 | @twoznia'
-            },
-            en: {
-                title: 'Game Center',
-                subtitle: 'Choose a game and beat the record!',
-                autaTitle: 'Car Racing',
-                autaDesc: 'Fast driving and avoiding obstacles.',
-                matjajaDesc: 'Mathematical fun with eggs.',
-                rybakDesc: 'Relaxing fishing on the lake.',
-                pisanieTitle: 'Spelling',
-                pisanieDesc: 'Learn to spell words, letter by letter.',
-                krajeTitle: 'Countries',
-                krajeDesc: 'Test your knowledge of countries, capitals, and flags!',
-                memoTitle: 'Memo',
-                memoDesc: 'Find all matching pairs of hidden images!',
-                pytaniaTitle: 'Questions',
-                pytaniaDesc: 'General knowledge quiz – history, science, culture and more!',
-                play: 'Play',
-                footer: 'Last updated: 2026 | @twoznia'
-            }
-        };
-
-        function applyLang(lang) {
-            const t = TRANSLATIONS[lang];
-            document.getElementById('main-title').textContent = '🎮 ' + t.title;
-            document.getElementById('main-subtitle').textContent = t.subtitle;
-            document.getElementById('card-auta-title').textContent = t.autaTitle;
-            document.getElementById('card-auta-desc').textContent = t.autaDesc;
-            document.getElementById('card-matjaja-desc').textContent = t.matjajaDesc;
-            document.getElementById('card-rybak-desc').textContent = t.rybakDesc;
-            document.getElementById('card-pisanie-title').textContent = t.pisanieTitle;
-            document.getElementById('card-pisanie-desc').textContent = t.pisanieDesc;
-            document.getElementById('card-kraje-title').textContent = t.krajeTitle;
-            document.getElementById('card-kraje-desc').textContent = t.krajeDesc;
-            document.getElementById('card-memo-title').textContent = t.memoTitle;
-            document.getElementById('card-memo-desc').textContent = t.memoDesc;
-            document.getElementById('card-pytania-title').textContent = t.pytaniaTitle;
-            document.getElementById('card-pytania-desc').textContent = t.pytaniaDesc;
-            document.querySelectorAll('.play-btn').forEach(el => el.textContent = t.play);
-            document.getElementById('footer-text').textContent = t.footer;
-            document.getElementById('btn-pl').style.borderColor = lang === 'pl' ? 'var(--accent-color)' : '#555';
-            document.getElementById('btn-en').style.borderColor = lang === 'en' ? 'var(--accent-color)' : '#555';
-        }
-
-        function setLang(lang) {
-            localStorage.setItem('lang', lang);
-            applyLang(lang);
-        }
-
-        applyLang(localStorage.getItem('lang') || 'pl');
     </script>
 
 </body>
