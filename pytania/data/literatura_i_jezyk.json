@@ -1795,6 +1795,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Lektury Szkolne",
+      "question": "W którym roku po raz pierwszy wystawiono dramat 'Wesele' Stanisława Wyspiańskiego na scenie Teatru Miejskiego w Krakowie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1901",
+          "is_correct": true
+        },
+        {
+          "text": "1898",
+          "is_correct": false
+        },
+        {
+          "text": "1905",
+          "is_correct": false
+        },
+        {
+          "text": "1910",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Eposy i Dramaty",
+      "question": "Ile ksiąg liczy 'Iliada' Homera?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "24",
+          "is_correct": true
+        },
+        {
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "text": "36",
+          "is_correct": false
+        },
+        {
+          "text": "48",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Fantasy i Sci-Fi",
+      "question": "Kto jest autorem cyklu powieści science fiction 'Fundacja', opublikowanego po raz pierwszy w latach 1951–1953?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Isaac Asimov",
+          "is_correct": true
+        },
+        {
+          "text": "Arthur C. Clarke",
+          "is_correct": false
+        },
+        {
+          "text": "Ray Bradbury",
+          "is_correct": false
+        },
+        {
+          "text": "Philip K. Dick",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gramatyka i Ortografia",
+      "question": "Ile liter liczy polski alfabet (wraz ze wszystkimi literami ze znakami diakrytycznymi)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "32",
+          "is_correct": true
+        },
+        {
+          "text": "26",
+          "is_correct": false
+        },
+        {
+          "text": "28",
+          "is_correct": false
+        },
+        {
+          "text": "35",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwara i Dialekty",
+      "question": "W którym roku język kaszubski uzyskał oficjalny status języka regionalnego w Polsce, zgodnie z ustawą o mniejszościach narodowych i etnicznych?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "2005",
+          "is_correct": true
+        },
+        {
+          "text": "1997",
+          "is_correct": false
+        },
+        {
+          "text": "2000",
+          "is_correct": false
+        },
+        {
+          "text": "2010",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Języki Obce",
+      "question": "Ile liter zawierał klasyczny alfabet łaciński w swojej oryginalnej formie (bez liter J, U i W dodanych w późniejszych wiekach)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "23",
+          "is_correct": true
+        },
+        {
+          "text": "24",
+          "is_correct": false
+        },
+        {
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "text": "26",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Klasyka Światowa",
+      "question": "Ile tomów liczy cykl powieściowy Marcela Prousta 'W poszukiwaniu straconego czasu'?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "7",
+          "is_correct": true
+        },
+        {
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "text": "9",
+          "is_correct": false
+        },
+        {
+          "text": "12",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komiksy i Powieści Graficzne",
+      "question": "Jak brzmiało prawdziwe nazwisko belgijskiego rysownika ukrywającego się pod pseudonimem 'Hergé', twórcy przygód Tintina?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Remi",
+          "is_correct": true
+        },
+        {
+          "text": "Dupont",
+          "is_correct": false
+        },
+        {
+          "text": "Leblanc",
+          "is_correct": false
+        },
+        {
+          "text": "Charlier",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kryminały i Thrillery",
+      "question": "Która powieść Agathy Christie z 1939 roku, opowiadająca o dziesięciorgu gościach uwięzionych na wyspie, jest uważana za najlepiej sprzedający się kryminał wszech czasów?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "I potem nie było już nikogo",
+          "is_correct": true
+        },
+        {
+          "text": "Morderstwo w Orient Expressie",
+          "is_correct": false
+        },
+        {
+          "text": "Śmierć na Nilu",
+          "is_correct": false
+        },
+        {
+          "text": "ABC Morderstwa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Literatura Dziecięca",
+      "question": "Jakie było prawdziwe nazwisko Carlo Collodiego, włoskiego pisarza i autora 'Pinokia'?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Lorenzini",
+          "is_correct": true
+        },
+        {
+          "text": "Bianchi",
+          "is_correct": false
+        },
+        {
+          "text": "Ferretti",
+          "is_correct": false
+        },
+        {
+          "text": "Moretti",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia w Literaturze",
+      "question": "Jak w mitologii nordyckiej nazywa się kosmiczne drzewo-świat, którego gałęzie i korzenie łączą dziewięć krain?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Yggdrasil",
+          "is_correct": true
+        },
+        {
+          "text": "Mjolnir",
+          "is_correct": false
+        },
+        {
+          "text": "Asgard",
+          "is_correct": false
+        },
+        {
+          "text": "Valhalla",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Poezja Polska",
+      "question": "W którym roku ukazał się pierwszy tom 'Poezji' Adama Mickiewicza, zawierający cykl 'Ballady i romanse'?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1822",
+          "is_correct": true
+        },
+        {
+          "text": "1830",
+          "is_correct": false
+        },
+        {
+          "text": "1815",
+          "is_correct": false
+        },
+        {
+          "text": "1834",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polscy Nobliści",
+      "question": "Ilu polskich autorów zdobyło Nagrodę Nobla w dziedzinie literatury do roku 2024?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "text": "6",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Przysłowia i Powiedzenia",
+      "question": "Jak nazywa się wydany w latach 1889–1894 monumentalny zbiór polskich przysłów zebrany przez Samuela Adalberga?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Księga przysłów, przypowieści i wyrażeń przysłowiowych polskich",
+          "is_correct": true
+        },
+        {
+          "text": "Słownik przysłów narodowych",
+          "is_correct": false
+        },
+        {
+          "text": "Złota księga polskiej mądrości",
+          "is_correct": false
+        },
+        {
+          "text": "Zbiór przysłów staropolskich",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Cytaty Literackie",
+      "question": "Z którego dramatu Williama Szekspira pochodzi cytat: 'Cały świat to scena, a ludzie na nim to tylko aktorzy'?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Jak wam się podoba",
+          "is_correct": true
+        },
+        {
+          "text": "Hamlet",
+          "is_correct": false
+        },
+        {
+          "text": "Burza",
+          "is_correct": false
+        },
+        {
+          "text": "Sen nocy letniej",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Współcześni Pisarze Polscy",
+      "question": "Jaką polską nagrodę literacką otrzymała Olga Tokarczuk za powieść 'Bieguni' w 2008 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Nagrodę Nike",
+          "is_correct": true
+        },
+        {
+          "text": "Nagrodę Kościelskich",
+          "is_correct": false
+        },
+        {
+          "text": "Paszport Polityki",
+          "is_correct": false
+        },
+        {
+          "text": "Nagrodę Literacką Gdynia",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
