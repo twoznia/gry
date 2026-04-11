@@ -2209,6 +2209,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Biblia i Postacie Biblijne",
+      "question": "Jak w Biblii nazywa się miasto, na które Bóg zesłał ogień i siarkę za grzechy jego mieszkańców, a które jako jedyne wspomniane jest razem z Gomorą?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Sodoma",
+          "is_correct": true
+        },
+        {
+          "text": "Jerycho",
+          "is_correct": false
+        },
+        {
+          "text": "Babilon",
+          "is_correct": false
+        },
+        {
+          "text": "Niniwa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Bogowie Starożytnego Egiptu",
+      "question": "Który starożytny egipski bóg, czczony w Hermopolis, był patronem wiedzy, pisma i magii, a wyobrażano go z głową ibisa lub pawiana?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Thoth",
+          "is_correct": true
+        },
+        {
+          "text": "Ptah",
+          "is_correct": false
+        },
+        {
+          "text": "Khnum",
+          "is_correct": false
+        },
+        {
+          "text": "Sobek",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Buddyzm i Hinduizm",
+      "question": "Jak w buddyzmie nazywa się stan całkowitego wygaśnięcia pragnień i cierpień, ostateczny cel drogi duchowej, oznaczający wyzwolenie z kręgu wcieleń (samsary)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Nirwana",
+          "is_correct": true
+        },
+        {
+          "text": "Moksha",
+          "is_correct": false
+        },
+        {
+          "text": "Satori",
+          "is_correct": false
+        },
+        {
+          "text": "Samadhi",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Grecka i Rzymska",
+      "question": "Jak miał na imię syn Dedala, który wypadł z łask bogów po tym, jak przylecił zbyt blisko słońca, co stopiło jego woskowe skrzydła i spowodowało jego śmierć w morzu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Ikar",
+          "is_correct": true
+        },
+        {
+          "text": "Orfeus",
+          "is_correct": false
+        },
+        {
+          "text": "Perseusz",
+          "is_correct": false
+        },
+        {
+          "text": "Tezeusz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Nordycka",
+      "question": "Jak w mitologii nordyckiej nazywa się wielki dąb lub jesion kosmiczny, którego korzenie i konary podtrzymują dziewięć światów, a u którego podstawy mieszka smok Nídhöggr?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Yggdrasil",
+          "is_correct": true
+        },
+        {
+          "text": "Bifröst",
+          "is_correct": false
+        },
+        {
+          "text": "Mimisbrunn",
+          "is_correct": false
+        },
+        {
+          "text": "Urdarbrunn",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Obrzędy Przejścia",
+      "question": "Jak w tradycji muzułmańskiej nazywa się obrzęd rytualnego obrzezania chłopców, będący jednym z najważniejszych obrzędów przejścia i symbolicznie włączający ich do wspólnoty wiernych?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Khitan",
+          "is_correct": true
+        },
+        {
+          "text": "Aqiqah",
+          "is_correct": false
+        },
+        {
+          "text": "Sunna",
+          "is_correct": false
+        },
+        {
+          "text": "Maulid",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polskie Zwyczaje Ludowe",
+      "question": "Jak w polskim folklorze nazywa się zwyczaj śmigania witkami wierzbowymi lub palmowymi w Poniedziałek Wielkanocny, niegdyś mający zapewniać zdrowie i płodność?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Śmigus-dyngus",
+          "is_correct": true
+        },
+        {
+          "text": "Sobótka",
+          "is_correct": false
+        },
+        {
+          "text": "Chodzenie z gaikiem",
+          "is_correct": false
+        },
+        {
+          "text": "Szczepanki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Postacie Mityczne",
+      "question": "Jak w mitologii greckiej miała na imię jedyna śmiertelna Gorgona, której odcięta głowa (z wężami zamiast włosów) miała moc zamieniania ludzi w kamień?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Meduza",
+          "is_correct": true
+        },
+        {
+          "text": "Syrena",
+          "is_correct": false
+        },
+        {
+          "text": "Charybda",
+          "is_correct": false
+        },
+        {
+          "text": "Scylla",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Chrześcijaństwo",
+      "question": "Który sobór powszechny w 325 roku n.e. uchwalił Credo Nicejskie i potępił arianizm jako herezję, potwierdzając boskość Jezusa Chrystusa?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Sobór Nicejski I",
+          "is_correct": true
+        },
+        {
+          "text": "Sobór Chalcedoński",
+          "is_correct": false
+        },
+        {
+          "text": "Sobór Efeski",
+          "is_correct": false
+        },
+        {
+          "text": "Sobór Konstantynopolitański I",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Islam",
+      "question": "Jak w islamie nazywa się miesięczny post przypadający na dziewiąty miesiąc kalendarza muzułmańskiego, podczas którego wierni wstrzymują się od jedzenia i picia od świtu do zachodu słońca?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Ramadan",
+          "is_correct": true
+        },
+        {
+          "text": "Muharram",
+          "is_correct": false
+        },
+        {
+          "text": "Dhul Hidżdża",
+          "is_correct": false
+        },
+        {
+          "text": "Radżab",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Judaizm",
+      "question": "Jak w judaizmie nazywa się uroczyste świętowanie szabatu kończącego tydzień, podczas którego zapalane są dwie świece i odmawiana jest modlitwa Kidusz nad kielichem wina?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Kabalat Szabat",
+          "is_correct": true
+        },
+        {
+          "text": "Hawdala",
+          "is_correct": false
+        },
+        {
+          "text": "Mincha",
+          "is_correct": false
+        },
+        {
+          "text": "Maariv",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkanoc w Polsce",
+      "question": "Jak nazywa się tradycyjny wielkanocny placek z Mazowsza i wschodniej Polski, pieczony z drożdżowego ciasta w okrągłej formie, posypywany cukrem pudrem?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Babka wielkanocna",
+          "is_correct": true
+        },
+        {
+          "text": "Mazurek",
+          "is_correct": false
+        },
+        {
+          "text": "Sernik",
+          "is_correct": false
+        },
+        {
+          "text": "Paska",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia Słowian",
+      "question": "Jak w mitologii słowiańskiej nazywała się bogini zimy, mroku i śmierci, której imię jest etymologicznie spokrewnione ze słowem oznaczającym moc lub potęgę?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Morena",
+          "is_correct": true
+        },
+        {
+          "text": "Mokosz",
+          "is_correct": false
+        },
+        {
+          "text": "Żywa",
+          "is_correct": false
+        },
+        {
+          "text": "Łada",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia i Zabobony",
+      "question": "Według polskiego (i szerzej europejskiego) przesądu, ile lat złego losu grozi osobie, która przypadkowo rozbije lustro?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Siedem lat",
+          "is_correct": true
+        },
+        {
+          "text": "Trzy lata",
+          "is_correct": false
+        },
+        {
+          "text": "Dziesięć lat",
+          "is_correct": false
+        },
+        {
+          "text": "Rok i jeden dzień",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta Bożego Narodzenia",
+      "question": "Jak w tradycji kościelnej nazywa się okres czterech tygodni poprzedzający Boże Narodzenie, będący czasem oczekiwania i przygotowania do przyjścia Chrystusa?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Adwent",
+          "is_correct": true
+        },
+        {
+          "text": "Epifania",
+          "is_correct": false
+        },
+        {
+          "text": "Oktawa",
+          "is_correct": false
+        },
+        {
+          "text": "Nowenna",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta w innych kulturach",
+      "question": "Jak nazywa się japońskie święto obserwowania kwitnących wiśni, podczas którego rodziny i przyjaciele gromadzą się w parkach na piknikach, podziwiając krótkotrwałe kwitnienie sakury?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Hanami",
+          "is_correct": true
+        },
+        {
+          "text": "Matsuri",
+          "is_correct": false
+        },
+        {
+          "text": "Obon",
+          "is_correct": false
+        },
+        {
+          "text": "Setsubun",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
