@@ -1841,6 +1841,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Stolice Świata",
+      "question": "Które miasto jest stolicą Kazachstanu od 2019 roku, kiedy zmieniono jego nazwę na cześć byłego prezydenta?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Nur-Sułtan (Astana)",
+          "is_correct": true
+        },
+        {
+          "text": "Ałmaty",
+          "is_correct": false
+        },
+        {
+          "text": "Szymkent",
+          "is_correct": false
+        },
+        {
+          "text": "Aktobe",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Tatry i Podhale",
+      "question": "Jak nazywa się przełęcz oddzielająca Tatry Wysokie od Zachodnich, przez którą przebiega główny grzbiet Tatr?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Liliowe",
+          "is_correct": true
+        },
+        {
+          "text": "Zawrat",
+          "is_correct": false
+        },
+        {
+          "text": "Śwnica",
+          "is_correct": false
+        },
+        {
+          "text": "Krzyżne",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Rzeki i Jeziora Polski",
+      "question": "Które jezioro w Polsce jest najgłębsze i jaką osiąga maksymalną głębokość?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Hańcza – 108,5 m",
+          "is_correct": true
+        },
+        {
+          "text": "Śnardwy – 23,4 m",
+          "is_correct": false
+        },
+        {
+          "text": "Mamry – 43,8 m",
+          "is_correct": false
+        },
+        {
+          "text": "Wigry – 74,2 m",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Flagi i Hymny",
+      "question": "Flaga którego państwa przedstawia czerwony liść klonu na białym tle z dwoma czerwonymi pionowymi pasami po bokach?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Kanady",
+          "is_correct": true
+        },
+        {
+          "text": "Japonii",
+          "is_correct": false
+        },
+        {
+          "text": "Szwajcarii",
+          "is_correct": false
+        },
+        {
+          "text": "Danii",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polskie Wybrzeże",
+      "question": "Jak nazywa się najdłuższa mierzeja na polskim wybrzeżu Bałtyku, oddzielająca Zalew Wiślany od Morza Bałtyckiego?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Mierzeja Wiślana",
+          "is_correct": true
+        },
+        {
+          "text": "Mierzeja Helska",
+          "is_correct": false
+        },
+        {
+          "text": "Mierzeja Łebska",
+          "is_correct": false
+        },
+        {
+          "text": "Mierzeja Kurońska",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Cuda Świata UNESCO",
+      "question": "W którym roku Wielki Mur Chiński został wpisany na Listę Światowego Dziedzictwa UNESCO?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1987",
+          "is_correct": true
+        },
+        {
+          "text": "1972",
+          "is_correct": false
+        },
+        {
+          "text": "2000",
+          "is_correct": false
+        },
+        {
+          "text": "1994",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Parki Narodowe w Polsce",
+      "question": "Który polski park narodowy jest jedynym w Polsce posiadającym status Rezerwatu Biosfery UNESCO i leży na obszarze Puszczy Białowieskiej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Białowieski Park Narodowy",
+          "is_correct": true
+        },
+        {
+          "text": "Biebrzański Park Narodowy",
+          "is_correct": false
+        },
+        {
+          "text": "Narwiański Park Narodowy",
+          "is_correct": false
+        },
+        {
+          "text": "Wigierski Park Narodowy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kontynenty i Oceany",
+      "question": "Który ocean ma największą średnią głębokość spośród wszystkich oceanów świata?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Ocean Spokojny",
+          "is_correct": true
+        },
+        {
+          "text": "Ocean Atlantycki",
+          "is_correct": false
+        },
+        {
+          "text": "Ocean Indyjski",
+          "is_correct": false
+        },
+        {
+          "text": "Ocean Arktyczny",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Województwa i Miasta Polski",
+      "question": "Które województwo w Polsce ma największą liczbę jezior i jest nazywane Kraina Tysiąca Jezior?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Warmińsko-mazurskie",
+          "is_correct": true
+        },
+        {
+          "text": "Podlaskie",
+          "is_correct": false
+        },
+        {
+          "text": "Pomorskie",
+          "is_correct": false
+        },
+        {
+          "text": "Kujawsko-pomorskie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Góry Świata",
+      "question": "Jak nazywa się drugi co do wysokości szczyt świata i w jakim paśmie górskim się znajduje?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "K2, Karakorum",
+          "is_correct": true
+        },
+        {
+          "text": "Kangczendzonga, Himalaje",
+          "is_correct": false
+        },
+        {
+          "text": "Lhotse, Himalaje",
+          "is_correct": false
+        },
+        {
+          "text": "Makalu, Himalaje",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Pustynie i Dżungle",
+      "question": "Jak nazywa się największa gorąca pustynia świata i na jakim kontynencie się znajduje?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Sahara, Afryka",
+          "is_correct": true
+        },
+        {
+          "text": "Pustynia Arabska, Azja",
+          "is_correct": false
+        },
+        {
+          "text": "Gobi, Azja",
+          "is_correct": false
+        },
+        {
+          "text": "Kalahari, Afryka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Wyspy",
+      "question": "Która wyspa jest największą wyspą świata i do jakiego kraju należy?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Grenlandia, Dania",
+          "is_correct": true
+        },
+        {
+          "text": "Nowa Gwinea, Papua-Nowa Gwinea",
+          "is_correct": false
+        },
+        {
+          "text": "Borneo, Malezja/Indonezja/Brunei",
+          "is_correct": false
+        },
+        {
+          "text": "Madagaskar, Madagaskar",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Atrakcje Turystyczne Europy",
+      "question": "W którym mieście znajduje się Sagrada Familia – niedokończona bazylika zaprojektowana przez Antoniego Gaudiego?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Barcelonie",
+          "is_correct": true
+        },
+        {
+          "text": "Madrycie",
+          "is_correct": false
+        },
+        {
+          "text": "Lizbonie",
+          "is_correct": false
+        },
+        {
+          "text": "Walencji",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mapy i Współrzędne",
+      "question": "Przez które miasto przebiega południk 0 stopni (południk Greenwich), będący podstawą do wyznaczania długości geograficznej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Londyn",
+          "is_correct": true
+        },
+        {
+          "text": "Paryż",
+          "is_correct": false
+        },
+        {
+          "text": "Bruksela",
+          "is_correct": false
+        },
+        {
+          "text": "Berlin",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Geologia i Wulkany",
+      "question": "Jak nazywa się najwyższy czynny wulkan Europy, położony na Sycylii?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Etna",
+          "is_correct": true
+        },
+        {
+          "text": "Wezuwiusz",
+          "is_correct": false
+        },
+        {
+          "text": "Stromboli",
+          "is_correct": false
+        },
+        {
+          "text": "Santorini",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Orientacja w terenie",
+      "question": "Jak nazywa się kąt między kierunkiem na geograficzną północ a kierunkiem na magnetyczną północ, istotny przy nawigacji z kompasem?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Deklinacja magnetyczna",
+          "is_correct": true
+        },
+        {
+          "text": "Azymut magnetyczny",
+          "is_correct": false
+        },
+        {
+          "text": "Inklinacja magnetyczna",
+          "is_correct": false
+        },
+        {
+          "text": "Dewiacja kompasu",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
