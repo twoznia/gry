@@ -1844,7 +1844,7 @@
     },
     {
       "subcategory": "Biblia i Postacie Biblijne",
-      "question": "Jak nazywa się brat Mojżesza, który stał się pierwszym arcykapłanem Izraela i którego laska zakwitła jako znak Bożego wybraństwa?",
+      "question": "Jak miał na imię pierwszy arcykapłan starożytnego Izraela, brat Mojżesza, który według Księgi Wyjścia sporządził złotego cielca podczas pobytu ludu u stóp góry Synaj?",
       "level": "trudne",
       "answers": [
         {
@@ -1852,160 +1852,160 @@
           "is_correct": true
         },
         {
+          "text": "Lewi",
+          "is_correct": false
+        },
+        {
+          "text": "Eleazar",
+          "is_correct": false
+        },
+        {
           "text": "Jozue",
-          "is_correct": false
-        },
-        {
-          "text": "Kaleb",
-          "is_correct": false
-        },
-        {
-          "text": "Eliasz",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Bogowie Starożytnego Egiptu",
-      "question": "Który starożytny egipski bóg, wyobrażany z głową szakala, był opiekunem mumifikacji i strażnikiem przejścia do krainy umarłych?",
+      "question": "Jak nazywało się egipskie pojęcie kosmicznego ładu, sprawiedliwości i prawdy, personifikowane przez boginię z piórem strusim na głowie, ważonym na szali podczas sądu nad duszą?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Anubis",
+          "text": "Ma'at",
           "is_correct": true
         },
         {
-          "text": "Thoth",
+          "text": "Nefertari",
           "is_correct": false
         },
         {
-          "text": "Set",
+          "text": "Neftyda",
           "is_correct": false
         },
         {
-          "text": "Horus",
+          "text": "Mut",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Buddyzm i Hinduizm",
-      "question": "Jak w hinduizmie nazywa się zbiór najstarszych świętych tekstów religijnych podzielony na cztery części, z których najstarsza i najważniejsza nosi nazwę Rygweda?",
+      "question": "Jak nazywa się najważniejszy tekst filozofii hinduskiej, będący częścią eposu Mahabharata, w którym bóg Kryszna objaśnia wojownikowi Ardżunie sens obowiązku, duszy i drogi do wyzwolenia?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Wedy",
+          "text": "Bhagawadgita",
           "is_correct": true
+        },
+        {
+          "text": "Ramajana",
+          "is_correct": false
         },
         {
           "text": "Upaniszady",
           "is_correct": false
         },
         {
-          "text": "Purany",
-          "is_correct": false
-        },
-        {
-          "text": "Bhagawadgita",
+          "text": "Rigweda",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Mitologia Grecka i Rzymska",
-      "question": "Jak miał na imię mityczny król Frygii, który za swoją chciwość otrzymał od boga Dionizosa dar zamieniania wszystkiego, czego dotknie, w złoto?",
+      "question": "Jak miał na imię król Troi, ojciec Hektora i Parysa, który panował w mieście podczas słynnej dziesięcioletniej wojny z Grekami opisanej w Iliadzie Homera?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Midas",
+          "text": "Priam",
           "is_correct": true
         },
         {
-          "text": "Tantalos",
+          "text": "Agamemnon",
           "is_correct": false
         },
         {
-          "text": "Syzyf",
+          "text": "Menelaos",
           "is_correct": false
         },
         {
-          "text": "Prometeusz",
+          "text": "Odyseusz",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Mitologia Nordycka",
-      "question": "Jak w mitologii nordyckiej nazywa się tęczowy most zbudowany przez bogów, łączący Midgard (świat ludzi) z Asgardem (siedzibą bogów)?",
+      "question": "Jak w mitologii nordyckiej nazywały się dwa kruki Odyna – symbolizujące Myśl i Pamięć – które każdego dnia oblatywały cały świat i przynosiły bogu wieści o wszystkim, co się dzieje?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Bifröst",
+          "text": "Huginn i Muninn",
           "is_correct": true
         },
         {
-          "text": "Yggdrasil",
+          "text": "Mimir i Baldur",
           "is_correct": false
         },
         {
-          "text": "Valhalla",
+          "text": "Fenrir i Jörmungandr",
           "is_correct": false
         },
         {
-          "text": "Gjallarbru",
+          "text": "Freyr i Freja",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Obrzędy Przejścia",
-      "question": "Jak nazywa się żydowski rytuał inicjacji religijnej chłopca, odbywający się po ukończeniu przez niego 13. roku życia, po którym staje się on pełnoprawnym członkiem wspólnoty?",
+      "question": "Jak w tradycji japońskiej nazywa się oficjalne święto państwowe celebrujące wejście 20-latków w dorosłość, obchodzone corocznie w drugi poniedziałek stycznia?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Bar Micwa",
+          "text": "Seijin no Hi",
           "is_correct": true
         },
         {
-          "text": "Brit Mila",
+          "text": "Tanabata",
           "is_correct": false
         },
         {
-          "text": "Bat Micwa",
+          "text": "Shichi-go-san",
           "is_correct": false
         },
         {
-          "text": "Simchat Torah",
+          "text": "Obon",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Polskie Zwyczaje Ludowe",
-      "question": "Jak w polskich tradycjach ludowych nazywa się słomiana kukła wynoszona poza wieś i topiona lub palona w obrzędzie pożegnania zimy, zazwyczaj w czwartą niedzielę Wielkiego Postu?",
+      "question": "Jak w polskim folklorze Kurpiów i Łowicza nazywa się kolorowa, symetryczna ozdoba wycinana z papieru, niegdyś wieszana na ścianach wiejskich chat jako barwna dekoracja?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Marzanna",
+          "text": "Wycinanka",
           "is_correct": true
         },
         {
-          "text": "Gaik",
+          "text": "Pisanka",
           "is_correct": false
         },
         {
-          "text": "Zielony Jurek",
+          "text": "Pająk",
           "is_correct": false
         },
         {
-          "text": "Sobótka",
+          "text": "Palma",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Postacie Mityczne",
-      "question": "Jak w mitologii greckiej nazywa się potwór o ciele lwa, głowie kozy i ogonie węża, zioniący ogniem, którego zabił heros Bellerofont dosiadający skrzydlatego konia Pegaza?",
+      "question": "Jak w mitologii greckiej nazywało się ogniem ziejące monstrum z głową lwa, tułowiem kozy i ogonem w postaci węża, pokonane przez herosa Bellerofonta dosiadającego Pegaza?",
       "level": "trudne",
       "answers": [
         {
@@ -2013,199 +2013,567 @@
           "is_correct": true
         },
         {
-          "text": "Bazyliszek",
+          "text": "Harpia",
           "is_correct": false
         },
         {
-          "text": "Gryf",
+          "text": "Sfinks",
           "is_correct": false
         },
         {
-          "text": "Mantykor",
+          "text": "Hydra",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Religie Świata: Chrześcijaństwo",
-      "question": "W którym roku doszło do Wielkiej Schizmy Wschodniej, w wyniku której chrześcijaństwo podzieliło się na Kościół katolicki (zachodni) i prawosławny (wschodni)?",
+      "question": "Jak w teologii katolickiej nazywa się dogmat ogłoszony przez papieża Piusa IX w 1854 roku, głoszący że Maryja, Matka Boża, została poczęta bez zmazy grzechu pierworodnego?",
       "level": "trudne",
       "answers": [
         {
-          "text": "1054",
+          "text": "Niepokalane Poczęcie",
           "is_correct": true
         },
         {
-          "text": "1517",
+          "text": "Wniebowzięcie Maryi",
           "is_correct": false
         },
         {
-          "text": "1378",
+          "text": "Boskie Macierzyństwo",
           "is_correct": false
         },
         {
-          "text": "637",
+          "text": "Theotokos",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Religie Świata: Islam",
-      "question": "Jak nazywa się islamskie prawo religijne oparte na Koranie i Sunnie, regulujące wszystkie aspekty życia muzułmanina zarówno w sferze prywatnej, jak i publicznej?",
+      "question": "Jak w islamie nazywa się zapis wypowiedzi, czynów i milczącej zgody proroka Mahometa, stanowiący obok Koranu drugie główne źródło prawa islamskiego (szariatu)?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Szariat",
+          "text": "Hadis",
           "is_correct": true
-        },
-        {
-          "text": "Dżihad",
-          "is_correct": false
         },
         {
           "text": "Fatwa",
           "is_correct": false
         },
         {
-          "text": "Hadis",
+          "text": "Sura",
+          "is_correct": false
+        },
+        {
+          "text": "Hidżra",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Religie Świata: Judaizm",
-      "question": "Jak nazywa się szabasowy świecznik o siedmiu ramionach, będący jednym z najważniejszych symboli judaizmu i umieszczony w herbie państwa Izrael?",
+      "question": "Jak nazywa się kodeks prawa żydowskiego zredagowany przez Józefa Karo w XVI wieku, będący do dziś podstawowym podręcznikiem religijno-prawnym dla ortodoksyjnych Żydów?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Menora",
+          "text": "Szulchan Aruch",
           "is_correct": true
         },
         {
-          "text": "Chanukija",
+          "text": "Miszna",
           "is_correct": false
         },
         {
-          "text": "Mezuza",
+          "text": "Zohar",
           "is_correct": false
         },
         {
-          "text": "Magen David",
+          "text": "Talmud Jerozolimski",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Wielkanoc w Polsce",
-      "question": "Jak w tradycji Kościoła katolickiego w Polsce nazywa się liturgia sprawowana w nocy z Wielkiej Soboty na Niedzielę Wielkanocną, określana dawniej jako matka wszystkich wigilii?",
+      "question": "W której małopolskiej miejscowości odbywa się coroczna procesja z najwyższymi w Polsce palmami wielkanocnymi, a tradycja ta została wpisana na listę dziedzictwa niematerialnego UNESCO?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Wigilia Paschalna",
+          "text": "Lipnica Murowana",
           "is_correct": true
         },
         {
-          "text": "Pasterka",
+          "text": "Łowicz",
           "is_correct": false
         },
         {
-          "text": "Jutrznia Rezurekcyjna",
+          "text": "Tokarnia",
           "is_correct": false
         },
         {
-          "text": "Gorzkie Żale",
+          "text": "Kalwaria Zebrzydowska",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Wierzenia Słowian",
-      "question": "Jak w wierzeniach słowiańskich nazywa się duch domowy – opiekun domostwa i jego mieszkańców, zamieszkujący zazwyczaj za piecem lub pod progiem chaty?",
+      "question": "Jak w mitologii słowiańskiej nazywał się leśny demon wyobrażany jako wysoki, brodaty mężczyzna z odwróconymi stopami, który lubił mylić i gubić podróżnych w gęstwinie leśnej?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Domowik",
+          "text": "Leszy",
           "is_correct": true
         },
         {
-          "text": "Leszy",
-          "is_correct": false
-        },
-        {
-          "text": "Rusałka",
-          "is_correct": false
-        },
-        {
           "text": "Południca",
+          "is_correct": false
+        },
+        {
+          "text": "Kikimora",
+          "is_correct": false
+        },
+        {
+          "text": "Strzyga",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Wierzenia i Zabobony",
-      "question": "Jak w polskich wierzeniach ludowych nazywa się demon nocny, siadający na piersi śpiącej osoby i wywołujący koszmary oraz uczucie duszenia, odpowiadający angielskiemu pojęciu nightmare?",
+      "question": "Jak w tradycji europejskiej nazywa się noc z 30 kwietnia na 1 maja, kiedy według dawnych wierzeń wiedźmy i demony zbierały się na sabat na górskich szczytach, witając nadejście wiosny?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Zmora",
+          "text": "Noc Walpurgii",
           "is_correct": true
         },
         {
-          "text": "Strzyga",
+          "text": "Halloween",
           "is_correct": false
         },
         {
-          "text": "Południca",
+          "text": "Noc Świętojańska",
           "is_correct": false
         },
         {
-          "text": "Wiły",
+          "text": "Noc Kupały",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Święta Bożego Narodzenia",
-      "question": "Jak w folklorze alpejskim (głównie austriackim i bawarskim) nazywa się złowrogi, rogaty towarzysz świętego Mikołaja, który karze niegrzeczne dzieci?",
+      "question": "Jak w tradycji polskich Kresów Wschodnich i Ukrainy nazywa się wigilijna potrawa przyrządzana z gotowanej pszenicy, miodu, maku i bakalii, obowiązkowo spożywana podczas Wigilii?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Krampus",
+          "text": "Kutia",
           "is_correct": true
         },
         {
-          "text": "Belznickel",
+          "text": "Siemieniotka",
           "is_correct": false
         },
         {
-          "text": "Knecht Ruprecht",
+          "text": "Kasza z makiem",
           "is_correct": false
         },
         {
-          "text": "Zwarte Piet",
+          "text": "Uzwar",
           "is_correct": false
         }
       ]
     },
     {
       "subcategory": "Święta w innych kulturach",
-      "question": "Jak nazywa się hinduskie Święto Świateł obchodzone jesienią, podczas którego zapalane są tysiące lampek olejnych (diyas) na pamiątkę powrotu boga Ramy do Ajodji po pokonaniu demona Rawany?",
+      "question": "Jak nazywa się irańskie i perskie Nowe Roku, obchodzone podczas astronomicznej równonocy wiosennej, będące najważniejszym świętem w Iranie i wśród diaspory perskiej na całym świecie?",
       "level": "trudne",
       "answers": [
         {
-          "text": "Diwali",
+          "text": "Nouruz",
           "is_correct": true
+        },
+        {
+          "text": "Eid al-Fitr",
+          "is_correct": false
+        },
+        {
+          "text": "Diwali",
+          "is_correct": false
         },
         {
           "text": "Holi",
           "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Biblia i Postacie Biblijne",
+      "question": "Jak w Biblii nazywa się miasto, na które Bóg zesłał ogień i siarkę za grzechy jego mieszkańców, a które jako jedyne wspomniane jest razem z Gomorą?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Sodoma",
+          "is_correct": true
         },
         {
-          "text": "Navaratri",
+          "text": "Jerycho",
           "is_correct": false
         },
         {
-          "text": "Ugadi",
+          "text": "Babilon",
+          "is_correct": false
+        },
+        {
+          "text": "Niniwa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Bogowie Starożytnego Egiptu",
+      "question": "Który starożytny egipski bóg, czczony w Hermopolis, był patronem wiedzy, pisma i magii, a wyobrażano go z głową ibisa lub pawiana?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Thoth",
+          "is_correct": true
+        },
+        {
+          "text": "Ptah",
+          "is_correct": false
+        },
+        {
+          "text": "Khnum",
+          "is_correct": false
+        },
+        {
+          "text": "Sobek",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Buddyzm i Hinduizm",
+      "question": "Jak w buddyzmie nazywa się stan całkowitego wygaśnięcia pragnień i cierpień, ostateczny cel drogi duchowej, oznaczający wyzwolenie z kręgu wcieleń (samsary)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Nirwana",
+          "is_correct": true
+        },
+        {
+          "text": "Moksha",
+          "is_correct": false
+        },
+        {
+          "text": "Satori",
+          "is_correct": false
+        },
+        {
+          "text": "Samadhi",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Grecka i Rzymska",
+      "question": "Jak miał na imię syn Dedala, który wypadł z łask bogów po tym, jak przylecił zbyt blisko słońca, co stopiło jego woskowe skrzydła i spowodowało jego śmierć w morzu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Ikar",
+          "is_correct": true
+        },
+        {
+          "text": "Orfeus",
+          "is_correct": false
+        },
+        {
+          "text": "Perseusz",
+          "is_correct": false
+        },
+        {
+          "text": "Tezeusz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Nordycka",
+      "question": "Jak w mitologii nordyckiej nazywa się wielki dąb lub jesion kosmiczny, którego korzenie i konary podtrzymują dziewięć światów, a u którego podstawy mieszka smok Nídhöggr?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Yggdrasil",
+          "is_correct": true
+        },
+        {
+          "text": "Bifröst",
+          "is_correct": false
+        },
+        {
+          "text": "Mimisbrunn",
+          "is_correct": false
+        },
+        {
+          "text": "Urdarbrunn",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Obrzędy Przejścia",
+      "question": "Jak w tradycji muzułmańskiej nazywa się obrzęd rytualnego obrzezania chłopców, będący jednym z najważniejszych obrzędów przejścia i symbolicznie włączający ich do wspólnoty wiernych?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Khitan",
+          "is_correct": true
+        },
+        {
+          "text": "Aqiqah",
+          "is_correct": false
+        },
+        {
+          "text": "Sunna",
+          "is_correct": false
+        },
+        {
+          "text": "Maulid",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polskie Zwyczaje Ludowe",
+      "question": "Jak w polskim folklorze nazywa się zwyczaj śmigania witkami wierzbowymi lub palmowymi w Poniedziałek Wielkanocny, niegdyś mający zapewniać zdrowie i płodność?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Śmigus-dyngus",
+          "is_correct": true
+        },
+        {
+          "text": "Sobótka",
+          "is_correct": false
+        },
+        {
+          "text": "Chodzenie z gaikiem",
+          "is_correct": false
+        },
+        {
+          "text": "Szczepanki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Postacie Mityczne",
+      "question": "Jak w mitologii greckiej miała na imię jedyna śmiertelna Gorgona, której odcięta głowa (z wężami zamiast włosów) miała moc zamieniania ludzi w kamień?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Meduza",
+          "is_correct": true
+        },
+        {
+          "text": "Syrena",
+          "is_correct": false
+        },
+        {
+          "text": "Charybda",
+          "is_correct": false
+        },
+        {
+          "text": "Scylla",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Chrześcijaństwo",
+      "question": "Który sobór powszechny w 325 roku n.e. uchwalił Credo Nicejskie i potępił arianizm jako herezję, potwierdzając boskość Jezusa Chrystusa?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Sobór Nicejski I",
+          "is_correct": true
+        },
+        {
+          "text": "Sobór Chalcedoński",
+          "is_correct": false
+        },
+        {
+          "text": "Sobór Efeski",
+          "is_correct": false
+        },
+        {
+          "text": "Sobór Konstantynopolitański I",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Islam",
+      "question": "Jak w islamie nazywa się miesięczny post przypadający na dziewiąty miesiąc kalendarza muzułmańskiego, podczas którego wierni wstrzymują się od jedzenia i picia od świtu do zachodu słońca?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Ramadan",
+          "is_correct": true
+        },
+        {
+          "text": "Muharram",
+          "is_correct": false
+        },
+        {
+          "text": "Dhul Hidżdża",
+          "is_correct": false
+        },
+        {
+          "text": "Radżab",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Judaizm",
+      "question": "Jak w judaizmie nazywa się uroczyste świętowanie szabatu kończącego tydzień, podczas którego zapalane są dwie świece i odmawiana jest modlitwa Kidusz nad kielichem wina?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Kabalat Szabat",
+          "is_correct": true
+        },
+        {
+          "text": "Hawdala",
+          "is_correct": false
+        },
+        {
+          "text": "Mincha",
+          "is_correct": false
+        },
+        {
+          "text": "Maariv",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkanoc w Polsce",
+      "question": "Jak nazywa się tradycyjny wielkanocny placek z Mazowsza i wschodniej Polski, pieczony z drożdżowego ciasta w okrągłej formie, posypywany cukrem pudrem?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Babka wielkanocna",
+          "is_correct": true
+        },
+        {
+          "text": "Mazurek",
+          "is_correct": false
+        },
+        {
+          "text": "Sernik",
+          "is_correct": false
+        },
+        {
+          "text": "Paska",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia Słowian",
+      "question": "Jak w mitologii słowiańskiej nazywała się bogini zimy, mroku i śmierci, której imię jest etymologicznie spokrewnione ze słowem oznaczającym moc lub potęgę?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Morena",
+          "is_correct": true
+        },
+        {
+          "text": "Mokosz",
+          "is_correct": false
+        },
+        {
+          "text": "Żywa",
+          "is_correct": false
+        },
+        {
+          "text": "Łada",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia i Zabobony",
+      "question": "Według polskiego (i szerzej europejskiego) przesądu, ile lat złego losu grozi osobie, która przypadkowo rozbije lustro?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Siedem lat",
+          "is_correct": true
+        },
+        {
+          "text": "Trzy lata",
+          "is_correct": false
+        },
+        {
+          "text": "Dziesięć lat",
+          "is_correct": false
+        },
+        {
+          "text": "Rok i jeden dzień",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta Bożego Narodzenia",
+      "question": "Jak w tradycji kościelnej nazywa się okres czterech tygodni poprzedzający Boże Narodzenie, będący czasem oczekiwania i przygotowania do przyjścia Chrystusa?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Adwent",
+          "is_correct": true
+        },
+        {
+          "text": "Epifania",
+          "is_correct": false
+        },
+        {
+          "text": "Oktawa",
+          "is_correct": false
+        },
+        {
+          "text": "Nowenna",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta w innych kulturach",
+      "question": "Jak nazywa się japońskie święto obserwowania kwitnących wiśni, podczas którego rodziny i przyjaciele gromadzą się w parkach na piknikach, podziwiając krótkotrwałe kwitnienie sakury?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Hanami",
+          "is_correct": true
+        },
+        {
+          "text": "Matsuri",
+          "is_correct": false
+        },
+        {
+          "text": "Obon",
+          "is_correct": false
+        },
+        {
+          "text": "Setsubun",
           "is_correct": false
         }
       ]
