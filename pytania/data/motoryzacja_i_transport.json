@@ -1795,6 +1795,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Budowa Samochodu",
+      "question": "Jak nazywa się precyzyjne urządzenie w układzie paliwowym nowoczesnych silników benzynowych, które zastąpiło gaźnik i dozuje paliwo bezpośrednio do cylindrów lub kolektora ssącego pod wysokim ciśnieniem?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wtryskiwacz (Injector)",
+          "is_correct": true
+        },
+        {
+          "text": "Dysza Laval",
+          "is_correct": false
+        },
+        {
+          "text": "Zawór EGR",
+          "is_correct": false
+        },
+        {
+          "text": "Przepustnica powietrza",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ekologia w Motoryzacji",
+      "question": "Ile gramów CO₂ na kilometr wynosiło docelowe ograniczenie emisji dla nowych samochodów osobowych w Unii Europejskiej, obowiązujące producentów od 2021 roku (średnia wartość floty)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "95 g/km",
+          "is_correct": true
+        },
+        {
+          "text": "120 g/km",
+          "is_correct": false
+        },
+        {
+          "text": "75 g/km",
+          "is_correct": false
+        },
+        {
+          "text": "130 g/km",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Formuła 1 i Motorsport",
+      "question": "Który kierowca Formuły 1 jako pierwszy w historii mistrzostw świata zdobył łącznie 100 zwycięstw wyścigowych?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Lewis Hamilton",
+          "is_correct": true
+        },
+        {
+          "text": "Michael Schumacher",
+          "is_correct": false
+        },
+        {
+          "text": "Ayrton Senna",
+          "is_correct": false
+        },
+        {
+          "text": "Sebastian Vettel",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Motoryzacji",
+      "question": "W którym roku Henry Ford oficjalnie wprowadził do seryjnej produkcji model Ford T, jeden z pierwszych masowo wytwarzanych samochodów na świecie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1908",
+          "is_correct": true
+        },
+        {
+          "text": "1895",
+          "is_correct": false
+        },
+        {
+          "text": "1913",
+          "is_correct": false
+        },
+        {
+          "text": "1920",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Infrastruktura Drogowa",
+      "question": "Jaką literą oznaczane są numery dróg ekspresowych w Polsce, widoczną na zielonych tablicach kierunkowych (np. trasa łącząca Łódź z Warszawą)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "S",
+          "is_correct": true
+        },
+        {
+          "text": "E",
+          "is_correct": false
+        },
+        {
+          "text": "A",
+          "is_correct": false
+        },
+        {
+          "text": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kolejnictwo i Pociągi",
+      "question": "Jak nazywa się europejski system sterowania ruchem kolejowym, który ma zapewnić interoperacyjność pociągów między różnymi krajami UE i jest wdrażany w ramach Transeuropejskiej Sieci Transportowej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "ETCS (European Train Control System)",
+          "is_correct": true
+        },
+        {
+          "text": "GPS Rail Control (GRC)",
+          "is_correct": false
+        },
+        {
+          "text": "Advanced Track Signal System (ATSS)",
+          "is_correct": false
+        },
+        {
+          "text": "Centralized Rail Management (CRM)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Auta PRL",
+      "question": "Jaka była pojemność skokowa silnika oryginalnego Fiata 126p (zwanego potocznie Maluchem), produkowanego w Bielsku-Białej od 1973 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "652 cm³",
+          "is_correct": true
+        },
+        {
+          "text": "850 cm³",
+          "is_correct": false
+        },
+        {
+          "text": "499 cm³",
+          "is_correct": false
+        },
+        {
+          "text": "1000 cm³",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Lotnictwo i Samoloty",
+      "question": "Ile silników turboodrzutowych posiada największy seryjny pasażerski samolot świata – Airbus A380?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "4",
+          "is_correct": true
+        },
+        {
+          "text": "2",
+          "is_correct": false
+        },
+        {
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "text": "3",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Marki Samochodów",
+      "question": "Która grupa motoryzacyjna (koncern) jest właścicielem marek Volkswagen, Audi, Porsche, Lamborghini, Bentley, SEAT i Škoda jednocześnie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Volkswagen AG (Grupa VAG)",
+          "is_correct": true
+        },
+        {
+          "text": "Stellantis",
+          "is_correct": false
+        },
+        {
+          "text": "Toyota Group",
+          "is_correct": false
+        },
+        {
+          "text": "BMW Group",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Pojazdy Dwukołowe",
+      "question": "Jak nazywał się pierwszy seryjny pojazd z silnikiem benzynowym na dwóch kołach, skonstruowany przez Gottlieba Daimlera w 1885 roku, powszechnie uznawany za protoplastę motocykla?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Reitwagen",
+          "is_correct": true
+        },
+        {
+          "text": "Motorrad",
+          "is_correct": false
+        },
+        {
+          "text": "Velocipede",
+          "is_correct": false
+        },
+        {
+          "text": "Benz Velo",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Przepisy Drogowe",
+      "question": "Jaka jest maksymalna dopuszczalna prędkość dla samochodu osobowego na autostradzie w Polsce, zgodnie z obowiązującymi przepisami Kodeksu drogowego?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "140 km/h",
+          "is_correct": true
+        },
+        {
+          "text": "120 km/h",
+          "is_correct": false
+        },
+        {
+          "text": "130 km/h",
+          "is_correct": false
+        },
+        {
+          "text": "150 km/h",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Statki i Transport Wodny",
+      "question": "Jak nazywa się największy wycieczkowiec świata, zwodowany w 2023 roku przez linię Royal Caribbean, który pobił rekordy pojemności i liczby pasażerów?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Icon of the Seas",
+          "is_correct": true
+        },
+        {
+          "text": "Wonder of the Seas",
+          "is_correct": false
+        },
+        {
+          "text": "Symphony of the Seas",
+          "is_correct": false
+        },
+        {
+          "text": "Harmony of the Seas",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Trasy i Mosty",
+      "question": "Jak nazywa się most wiszący w Japonii, łączący wyspy Honshū i Awaji przez Cieśninę Akashi, posiadający jeden z najdłuższych przęseł środkowych spośród wszystkich mostów wiszących na świecie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Most Akashi Kaikyō",
+          "is_correct": true
+        },
+        {
+          "text": "Most Hardanger",
+          "is_correct": false
+        },
+        {
+          "text": "Most Runyang",
+          "is_correct": false
+        },
+        {
+          "text": "Most Xihoumen",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Transport Miejski",
+      "question": "W którym mieście uruchomiono pierwsze na świecie metro podziemne, otwarte dla pasażerów w 1863 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Londyn",
+          "is_correct": true
+        },
+        {
+          "text": "Paryż",
+          "is_correct": false
+        },
+        {
+          "text": "Nowy Jork",
+          "is_correct": false
+        },
+        {
+          "text": "Berlin",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wynalazki Transportowe",
+      "question": "Kto jest powszechnie uznawany za twórcę ulepszenia silnika parowego w XVIII wieku, co umożliwiło rewolucję przemysłową i narodziny nowoczesnego transportu szynowego?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "James Watt",
+          "is_correct": true
+        },
+        {
+          "text": "Thomas Newcomen",
+          "is_correct": false
+        },
+        {
+          "text": "George Stephenson",
+          "is_correct": false
+        },
+        {
+          "text": "Richard Trevithick",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wyposażenie Samochodu",
+      "question": "Jak nazywa się zaawansowany system w nowoczesnych samochodach, który za pomocą kamer i czujników automatycznie utrzymuje pojazd na środku pasa ruchu, korygując układ kierowniczy bez interwencji kierowcy?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "System utrzymania pasa ruchu (Lane Keeping Assist)",
+          "is_correct": true
+        },
+        {
+          "text": "Tempomat adaptacyjny (ACC)",
+          "is_correct": false
+        },
+        {
+          "text": "Asystent martwego pola (BSM)",
+          "is_correct": false
+        },
+        {
+          "text": "Asystent parkowania (PAS)",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
