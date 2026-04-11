@@ -691,6 +691,144 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Ochrona Gatunkowa",
+      "question": "Jak nazywa się umowa międzynarodowa z 1973 roku (tzw. konwencja waszyngtońska) regulująca globalny obrót dzikimi gatunkami fauny i flory?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "CITES",
+          "is_correct": true
+        },
+        {
+          "text": "Konwencja Berneńska",
+          "is_correct": false
+        },
+        {
+          "text": "Konwencja Ramsarska",
+          "is_correct": false
+        },
+        {
+          "text": "Protokół z Nagoi",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zjawiska Atmosferyczne",
+      "question": "Jaka skala meteorologiczna, opracowana w 1805 roku przez brytyjskiego admirała, służy do opisu siły wiatru w 13 stopniach (od 0 do 12)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Skala Beauforta",
+          "is_correct": true
+        },
+        {
+          "text": "Skala Fujity",
+          "is_correct": false
+        },
+        {
+          "text": "Skala Saffira-Simpsona",
+          "is_correct": false
+        },
+        {
+          "text": "Skala Richtera",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Leśnictwo i Łowiectwo",
+      "question": "Jak fachowo określa się zabieg pielęgnacyjny lasu polegający na usuwaniu drzew wadliwych i słabszych w celu poprawy jakości i struktury pozostałego drzewostanu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Trzebież",
+          "is_correct": true
+        },
+        {
+          "text": "Zrąb zupełny",
+          "is_correct": false
+        },
+        {
+          "text": "Przerąb",
+          "is_correct": false
+        },
+        {
+          "text": "Odnowienie naturalne",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Biologia Komórki",
+      "question": "Jak nazywa się zjawisko, w którym komórka roślinna traci wodę po umieszczeniu w roztworze hipertonicznym, a jej protoplast odrywa się od ściany komórkowej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Plazmoliza",
+          "is_correct": true
+        },
+        {
+          "text": "Turgescencja",
+          "is_correct": false
+        },
+        {
+          "text": "Dyfuzja",
+          "is_correct": false
+        },
+        {
+          "text": "Endocytoza",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Genetyka",
+      "question": "Jak nazywa się technika laboratoryjna umożliwiająca powielenie wybranego fragmentu DNA w milionach kopii w krótkim czasie, stosowana m.in. w diagnostyce chorób zakaźnych?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "PCR (reakcja łańcuchowa polimerazy)",
+          "is_correct": true
+        },
+        {
+          "text": "Elektroforeza żelowa",
+          "is_correct": false
+        },
+        {
+          "text": "Hybrydyzacja DNA",
+          "is_correct": false
+        },
+        {
+          "text": "Sekwencjonowanie Sangera",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Mikrobów",
+      "question": "Jak nazywa się proces, w którym dwie bakterie wymieniają materiał genetyczny przez bezpośredni kontakt za pośrednictwem mostka cytoplazmatycznego zwanego pilusem?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Koniugacja",
+          "is_correct": true
+        },
+        {
+          "text": "Transformacja",
+          "is_correct": false
+        },
+        {
+          "text": "Transdukcja",
+          "is_correct": false
+        },
+        {
+          "text": "Transkrypcja",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
