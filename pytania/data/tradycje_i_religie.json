@@ -1841,6 +1841,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Biblia i Postacie Biblijne",
+      "question": "Jak nazywa się brat Mojżesza, który stał się pierwszym arcykapłanem Izraela i którego laska zakwitła jako znak Bożego wybraństwa?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Aaron",
+          "is_correct": true
+        },
+        {
+          "text": "Jozue",
+          "is_correct": false
+        },
+        {
+          "text": "Kaleb",
+          "is_correct": false
+        },
+        {
+          "text": "Eliasz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Bogowie Starożytnego Egiptu",
+      "question": "Który starożytny egipski bóg, wyobrażany z głową szakala, był opiekunem mumifikacji i strażnikiem przejścia do krainy umarłych?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Anubis",
+          "is_correct": true
+        },
+        {
+          "text": "Thoth",
+          "is_correct": false
+        },
+        {
+          "text": "Set",
+          "is_correct": false
+        },
+        {
+          "text": "Horus",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Buddyzm i Hinduizm",
+      "question": "Jak w hinduizmie nazywa się zbiór najstarszych świętych tekstów religijnych podzielony na cztery części, z których najstarsza i najważniejsza nosi nazwę Rygweda?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wedy",
+          "is_correct": true
+        },
+        {
+          "text": "Upaniszady",
+          "is_correct": false
+        },
+        {
+          "text": "Purany",
+          "is_correct": false
+        },
+        {
+          "text": "Bhagawadgita",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Grecka i Rzymska",
+      "question": "Jak miał na imię mityczny król Frygii, który za swoją chciwość otrzymał od boga Dionizosa dar zamieniania wszystkiego, czego dotknie, w złoto?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Midas",
+          "is_correct": true
+        },
+        {
+          "text": "Tantalos",
+          "is_correct": false
+        },
+        {
+          "text": "Syzyf",
+          "is_correct": false
+        },
+        {
+          "text": "Prometeusz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Nordycka",
+      "question": "Jak w mitologii nordyckiej nazywa się tęczowy most zbudowany przez bogów, łączący Midgard (świat ludzi) z Asgardem (siedzibą bogów)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Bifröst",
+          "is_correct": true
+        },
+        {
+          "text": "Yggdrasil",
+          "is_correct": false
+        },
+        {
+          "text": "Valhalla",
+          "is_correct": false
+        },
+        {
+          "text": "Gjallarbru",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Obrzędy Przejścia",
+      "question": "Jak nazywa się żydowski rytuał inicjacji religijnej chłopca, odbywający się po ukończeniu przez niego 13. roku życia, po którym staje się on pełnoprawnym członkiem wspólnoty?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Bar Micwa",
+          "is_correct": true
+        },
+        {
+          "text": "Brit Mila",
+          "is_correct": false
+        },
+        {
+          "text": "Bat Micwa",
+          "is_correct": false
+        },
+        {
+          "text": "Simchat Torah",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polskie Zwyczaje Ludowe",
+      "question": "Jak w polskich tradycjach ludowych nazywa się słomiana kukła wynoszona poza wieś i topiona lub palona w obrzędzie pożegnania zimy, zazwyczaj w czwartą niedzielę Wielkiego Postu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Marzanna",
+          "is_correct": true
+        },
+        {
+          "text": "Gaik",
+          "is_correct": false
+        },
+        {
+          "text": "Zielony Jurek",
+          "is_correct": false
+        },
+        {
+          "text": "Sobótka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Postacie Mityczne",
+      "question": "Jak w mitologii greckiej nazywa się potwór o ciele lwa, głowie kozy i ogonie węża, zioniący ogniem, którego zabił heros Bellerofont dosiadający skrzydlatego konia Pegaza?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Chimera",
+          "is_correct": true
+        },
+        {
+          "text": "Bazyliszek",
+          "is_correct": false
+        },
+        {
+          "text": "Gryf",
+          "is_correct": false
+        },
+        {
+          "text": "Mantykor",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Chrześcijaństwo",
+      "question": "W którym roku doszło do Wielkiej Schizmy Wschodniej, w wyniku której chrześcijaństwo podzieliło się na Kościół katolicki (zachodni) i prawosławny (wschodni)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1054",
+          "is_correct": true
+        },
+        {
+          "text": "1517",
+          "is_correct": false
+        },
+        {
+          "text": "1378",
+          "is_correct": false
+        },
+        {
+          "text": "637",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Islam",
+      "question": "Jak nazywa się islamskie prawo religijne oparte na Koranie i Sunnie, regulujące wszystkie aspekty życia muzułmanina zarówno w sferze prywatnej, jak i publicznej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Szariat",
+          "is_correct": true
+        },
+        {
+          "text": "Dżihad",
+          "is_correct": false
+        },
+        {
+          "text": "Fatwa",
+          "is_correct": false
+        },
+        {
+          "text": "Hadis",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Judaizm",
+      "question": "Jak nazywa się szabasowy świecznik o siedmiu ramionach, będący jednym z najważniejszych symboli judaizmu i umieszczony w herbie państwa Izrael?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Menora",
+          "is_correct": true
+        },
+        {
+          "text": "Chanukija",
+          "is_correct": false
+        },
+        {
+          "text": "Mezuza",
+          "is_correct": false
+        },
+        {
+          "text": "Magen David",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkanoc w Polsce",
+      "question": "Jak w tradycji Kościoła katolickiego w Polsce nazywa się liturgia sprawowana w nocy z Wielkiej Soboty na Niedzielę Wielkanocną, określana dawniej jako matka wszystkich wigilii?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wigilia Paschalna",
+          "is_correct": true
+        },
+        {
+          "text": "Pasterka",
+          "is_correct": false
+        },
+        {
+          "text": "Jutrznia Rezurekcyjna",
+          "is_correct": false
+        },
+        {
+          "text": "Gorzkie Żale",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia Słowian",
+      "question": "Jak w wierzeniach słowiańskich nazywa się duch domowy – opiekun domostwa i jego mieszkańców, zamieszkujący zazwyczaj za piecem lub pod progiem chaty?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Domowik",
+          "is_correct": true
+        },
+        {
+          "text": "Leszy",
+          "is_correct": false
+        },
+        {
+          "text": "Rusałka",
+          "is_correct": false
+        },
+        {
+          "text": "Południca",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia i Zabobony",
+      "question": "Jak w polskich wierzeniach ludowych nazywa się demon nocny, siadający na piersi śpiącej osoby i wywołujący koszmary oraz uczucie duszenia, odpowiadający angielskiemu pojęciu nightmare?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Zmora",
+          "is_correct": true
+        },
+        {
+          "text": "Strzyga",
+          "is_correct": false
+        },
+        {
+          "text": "Południca",
+          "is_correct": false
+        },
+        {
+          "text": "Wiły",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta Bożego Narodzenia",
+      "question": "Jak w folklorze alpejskim (głównie austriackim i bawarskim) nazywa się złowrogi, rogaty towarzysz świętego Mikołaja, który karze niegrzeczne dzieci?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Krampus",
+          "is_correct": true
+        },
+        {
+          "text": "Belznickel",
+          "is_correct": false
+        },
+        {
+          "text": "Knecht Ruprecht",
+          "is_correct": false
+        },
+        {
+          "text": "Zwarte Piet",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta w innych kulturach",
+      "question": "Jak nazywa się hinduskie Święto Świateł obchodzone jesienią, podczas którego zapalane są tysiące lampek olejnych (diyas) na pamiątkę powrotu boga Ramy do Ajodji po pokonaniu demona Rawany?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Diwali",
+          "is_correct": true
+        },
+        {
+          "text": "Holi",
+          "is_correct": false
+        },
+        {
+          "text": "Navaratri",
+          "is_correct": false
+        },
+        {
+          "text": "Ugadi",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
