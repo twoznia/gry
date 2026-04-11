@@ -1841,6 +1841,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Dokumenty Osobiste",
+      "question": "Na jaki okres ważności wydawany jest paszport pełnoletniemu obywatelowi Rzeczypospolitej Polskiej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "10 lat",
+          "is_correct": true
+        },
+        {
+          "text": "5 lat",
+          "is_correct": false
+        },
+        {
+          "text": "15 lat",
+          "is_correct": false
+        },
+        {
+          "text": "8 lat",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Edukacja i Szkolnictwo",
+      "question": "Który artykuł Konstytucji RP gwarantuje każdemu prawo do nauki oraz stanowi o bezpłatności nauki w szkołach publicznych?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Artykuł 70",
+          "is_correct": true
+        },
+        {
+          "text": "Artykuł 65",
+          "is_correct": false
+        },
+        {
+          "text": "Artykuł 48",
+          "is_correct": false
+        },
+        {
+          "text": "Artykuł 72",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Instytucje Państwowe",
+      "question": "Jaka jest długość kadencji Prezesa Najwyższej Izby Kontroli (NIK)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "6 lat",
+          "is_correct": true
+        },
+        {
+          "text": "4 lata",
+          "is_correct": false
+        },
+        {
+          "text": "5 lat",
+          "is_correct": false
+        },
+        {
+          "text": "8 lat",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Konstytucja RP",
+      "question": "Jaką większością głosów Sejm uchwala zmianę Konstytucji Rzeczypospolitej Polskiej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Co najmniej 2/3 głosów w obecności co najmniej połowy ustawowej liczby posłów",
+          "is_correct": true
+        },
+        {
+          "text": "Bezwzględną większością głosów w obecności co najmniej połowy ustawowej liczby posłów",
+          "is_correct": false
+        },
+        {
+          "text": "Co najmniej 3/4 głosów w obecności co najmniej dwóch trzecich ustawowej liczby posłów",
+          "is_correct": false
+        },
+        {
+          "text": "Zwykłą większością głosów przy obecności dowolnej liczby posłów",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Media i Dziennikarstwo",
+      "question": "Który organ państwowy w Polsce jest uprawniony do przyznawania koncesji na nadawanie programów radiowych i telewizyjnych?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Krajowa Rada Radiofonii i Telewizji",
+          "is_correct": true
+        },
+        {
+          "text": "Urząd Komunikacji Elektronicznej",
+          "is_correct": false
+        },
+        {
+          "text": "Ministerstwo Kultury i Dziedzictwa Narodowego",
+          "is_correct": false
+        },
+        {
+          "text": "Urząd Ochrony Konkurencji i Konsumentów",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Organizacje Międzynarodowe",
+      "question": "Ile państw założycielskich podpisało Kartę Narodów Zjednoczonych w San Francisco w 1945 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "51",
+          "is_correct": true
+        },
+        {
+          "text": "44",
+          "is_correct": false
+        },
+        {
+          "text": "49",
+          "is_correct": false
+        },
+        {
+          "text": "57",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Podatki i Finanse",
+      "question": "Jaka jest podstawowa (standardowa) stawka podatku od towarów i usług (VAT) obowiązująca w Polsce?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "23%",
+          "is_correct": true
+        },
+        {
+          "text": "20%",
+          "is_correct": false
+        },
+        {
+          "text": "22%",
+          "is_correct": false
+        },
+        {
+          "text": "25%",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Prawa Człowieka",
+      "question": "W którym roku Zgromadzenie Ogólne ONZ przyjęło Powszechną Deklarację Praw Człowieka?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1948",
+          "is_correct": true
+        },
+        {
+          "text": "1945",
+          "is_correct": false
+        },
+        {
+          "text": "1950",
+          "is_correct": false
+        },
+        {
+          "text": "1966",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Prawo Karne i Sądowe",
+      "question": "Co oznacza łacińska zasada nullum crimen sine lege stosowana w prawie karnym?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Nie ma przestępstwa bez ustawy",
+          "is_correct": true
+        },
+        {
+          "text": "Nie ma kary bez winy",
+          "is_correct": false
+        },
+        {
+          "text": "Nikt nie jest winny, dopóki nie udowodniono mu winy",
+          "is_correct": false
+        },
+        {
+          "text": "Prawo nie działa wstecz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Rynek Pracy",
+      "question": "Ile dni urlopu wypoczynkowego przysługuje rocznie pracownikowi posiadającemu co najmniej 10-letni staż pracy?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "26 dni",
+          "is_correct": true
+        },
+        {
+          "text": "20 dni",
+          "is_correct": false
+        },
+        {
+          "text": "24 dni",
+          "is_correct": false
+        },
+        {
+          "text": "30 dni",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Systemy Polityczne",
+      "question": "Jak nazywa się system polityczny, w którym głowa państwa pełni jednocześnie funkcję szefa rządu i dysponuje szeroką władzą wykonawczą niezależną od parlamentu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Republika prezydencka",
+          "is_correct": true
+        },
+        {
+          "text": "Republika parlamentarna",
+          "is_correct": false
+        },
+        {
+          "text": "Monarchia konstytucyjna",
+          "is_correct": false
+        },
+        {
+          "text": "Republika półprezydencka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Służby Mundurowe",
+      "question": "Która polska służba mundurowa podlega ministrowi właściwemu do spraw wewnętrznych i jest odpowiedzialna za ochronę granicy państwowej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Straż Graniczna",
+          "is_correct": true
+        },
+        {
+          "text": "Żandarmeria Wojskowa",
+          "is_correct": false
+        },
+        {
+          "text": "Agencja Bezpieczeństwa Wewnętrznego",
+          "is_correct": false
+        },
+        {
+          "text": "Służba Ochrony Państwa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Unia Europejska",
+      "question": "Ile państw wchodziło w skład Unii Europejskiej bezpośrednio przed wielkim rozszerzeniem w 2004 roku (tzw. UE-15)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "15",
+          "is_correct": true
+        },
+        {
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "text": "14",
+          "is_correct": false
+        },
+        {
+          "text": "18",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ustrój Samorządowy",
+      "question": "Na jakie trzy szczeble podzielony jest samorząd terytorialny w Polsce zgodnie z Konstytucją RP?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Gmina, powiat i województwo",
+          "is_correct": true
+        },
+        {
+          "text": "Gmina, dzielnica i województwo",
+          "is_correct": false
+        },
+        {
+          "text": "Sołectwo, gmina i powiat",
+          "is_correct": false
+        },
+        {
+          "text": "Gmina, powiat i region",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wybory i Głosowanie",
+      "question": "Jaki minimalny próg wyborczy musi przekroczyć samodzielny komitet wyborczy partii politycznej (nie koalicja), aby uzyskać mandaty w wyborach do Sejmu RP?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "5%",
+          "is_correct": true
+        },
+        {
+          "text": "3%",
+          "is_correct": false
+        },
+        {
+          "text": "7%",
+          "is_correct": false
+        },
+        {
+          "text": "8%",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Władza w Polsce",
+      "question": "Ile senatorów wchodzi w skład Senatu Rzeczypospolitej Polskiej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "100",
+          "is_correct": true
+        },
+        {
+          "text": "90",
+          "is_correct": false
+        },
+        {
+          "text": "110",
+          "is_correct": false
+        },
+        {
+          "text": "120",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
