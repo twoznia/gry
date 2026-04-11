@@ -1818,6 +1818,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Disco Polo i Biesiada",
+      "question": "Z jakiego miasta pochodzi kultowy zespół disco polo Boys?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Z Torunia",
+          "is_correct": true
+        },
+        {
+          "text": "Z Białegostoku",
+          "is_correct": false
+        },
+        {
+          "text": "Z Rzeszowa",
+          "is_correct": false
+        },
+        {
+          "text": "Z Częstochowy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwal w Opolu i Sopocie",
+      "question": "W którym roku odbył się po raz pierwszy Krajowy Festiwal Piosenki Polskiej w Opolu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "W 1963 roku",
+          "is_correct": true
+        },
+        {
+          "text": "W 1960 roku",
+          "is_correct": false
+        },
+        {
+          "text": "W 1965 roku",
+          "is_correct": false
+        },
+        {
+          "text": "W 1970 roku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Fryderyk Chopin i Klasyka",
+      "question": "W którym paryskim kościele w 1849 roku odbyły się uroczystości pogrzebowe Fryderyka Chopina?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "W kościele Madeleine",
+          "is_correct": true
+        },
+        {
+          "text": "W katedrze Notre-Dame de Paris",
+          "is_correct": false
+        },
+        {
+          "text": "W bazylice Sacré-Cœur",
+          "is_correct": false
+        },
+        {
+          "text": "W kościele Saint-Sulpice",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Hip-hop i Rap (Polska)",
+      "question": "Jak brzmi prawdziwe imię i nazwisko rapera Pezeta?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Piotr Siejka",
+          "is_correct": true
+        },
+        {
+          "text": "Piotr Wiśniewski",
+          "is_correct": false
+        },
+        {
+          "text": "Paweł Grzesik",
+          "is_correct": false
+        },
+        {
+          "text": "Przemysław Nowak",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Hymny i Pieśni Patriotyczne",
+      "question": "W którym włoskim mieście Józef Wybicki napisał w 1797 roku słowa Mazurka Dąbrowskiego?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "W Reggio Emilia",
+          "is_correct": true
+        },
+        {
+          "text": "W Mediolanie",
+          "is_correct": false
+        },
+        {
+          "text": "W Turynie",
+          "is_correct": false
+        },
+        {
+          "text": "W Wenecji",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Instrumenty Muzyczne",
+      "question": "Ile klawiszy (białych i czarnych łącznie) posiada standardowy fortepian koncertowy?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "88",
+          "is_correct": true
+        },
+        {
+          "text": "76",
+          "is_correct": false
+        },
+        {
+          "text": "92",
+          "is_correct": false
+        },
+        {
+          "text": "84",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Jazz i Blues",
+      "question": "Jak brzmi prawdziwe imię i nazwisko bluesowego muzyka scenicznie zwanego Muddy Waters?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "McKinley Morganfield",
+          "is_correct": true
+        },
+        {
+          "text": "Robert Johnson",
+          "is_correct": false
+        },
+        {
+          "text": "Charles Berry",
+          "is_correct": false
+        },
+        {
+          "text": "Willie Dixon",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Konkurs Eurowizji",
+      "question": "Na którym miejscu w finale Konkursu Piosenki Eurowizji 1994 w Dublinie zajęła Edyta Górniak?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Na 2. miejscu",
+          "is_correct": true
+        },
+        {
+          "text": "Na 1. miejscu",
+          "is_correct": false
+        },
+        {
+          "text": "Na 3. miejscu",
+          "is_correct": false
+        },
+        {
+          "text": "Na 5. miejscu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Legendarne Zespoły",
+      "question": "Ile albumów studyjnych nagrali The Beatles w latach 1963–1970?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "13",
+          "is_correct": true
+        },
+        {
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "text": "12",
+          "is_correct": false
+        },
+        {
+          "text": "15",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzyka Elektroniczna",
+      "question": "Jak nazywa się album Daft Punk z 2001 roku, który zawiera przebój 'One More Time'?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Discovery",
+          "is_correct": true
+        },
+        {
+          "text": "Homework",
+          "is_correct": false
+        },
+        {
+          "text": "Human After All",
+          "is_correct": false
+        },
+        {
+          "text": "Random Access Memories",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polska Muzyka Alternatywna",
+      "question": "W którym roku zespół Kult wydał swój debiutancki album?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "W 1986 roku",
+          "is_correct": true
+        },
+        {
+          "text": "W 1983 roku",
+          "is_correct": false
+        },
+        {
+          "text": "W 1989 roku",
+          "is_correct": false
+        },
+        {
+          "text": "W 1991 roku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polski Rock",
+      "question": "W którym roku założono kultową polską grupę rockową Breakout?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "W 1968 roku",
+          "is_correct": true
+        },
+        {
+          "text": "W 1965 roku",
+          "is_correct": false
+        },
+        {
+          "text": "W 1971 roku",
+          "is_correct": false
+        },
+        {
+          "text": "W 1973 roku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teksty Piosenek",
+      "question": "Jakie słowa kończą refren piosenki Marka Grechuty 'Tańcz, głuptasie'?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "póki możesz tańczyć",
+          "is_correct": true
+        },
+        {
+          "text": "i śpiewaj razem z nami",
+          "is_correct": false
+        },
+        {
+          "text": "bo życie jest krótkie jak sen",
+          "is_correct": false
+        },
+        {
+          "text": "nim skończy się ta noc",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teledyski i MTV",
+      "question": "Jaki był pierwszy teledysk wyemitowany przez stację MTV w dniu jej premiery, 1 sierpnia 1981 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "\"Video Killed the Radio Star\" The Buggles",
+          "is_correct": true
+        },
+        {
+          "text": "\"Thriller\" Michaela Jacksona",
+          "is_correct": false
+        },
+        {
+          "text": "\"Like a Virgin\" Madonny",
+          "is_correct": false
+        },
+        {
+          "text": "\"Bohemian Rhapsody\" Queen",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkie Gwiazdy Estrady",
+      "question": "Jak brzmi prawdziwe imię i nazwisko piosenkarki Tiny Turner?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Anna Mae Bullock",
+          "is_correct": true
+        },
+        {
+          "text": "Tina Annette Brown",
+          "is_correct": false
+        },
+        {
+          "text": "Annie Mae Johnson",
+          "is_correct": false
+        },
+        {
+          "text": "Tina Louise Turner",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Światowy Pop",
+      "question": "Jak brzmi pełne prawdziwe imię i nazwisko artystki scenicznej Lady Gaga?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Stefani Joanne Angelina Germanotta",
+          "is_correct": true
+        },
+        {
+          "text": "Stephanie Marie Germanotti",
+          "is_correct": false
+        },
+        {
+          "text": "Stefania Gaga Romano",
+          "is_correct": false
+        },
+        {
+          "text": "Joanna Stefani Germanotta",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
