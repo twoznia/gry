@@ -5,6 +5,7 @@
     {
       "subcategory": "Stolice Świata",
       "question": "Jakie miasto jest oficjalną stolicą Australii?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Canberra",
@@ -27,6 +28,7 @@
     {
       "subcategory": "Stolice Świata",
       "question": "W jakiej europejskiej stolicy znajduje się słynny Akropol?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Atenach",
@@ -49,6 +51,7 @@
     {
       "subcategory": "Stolice Świata",
       "question": "Jakie państwo z Ameryki Północnej ma swoją stolicę w Ottawie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kanada",
@@ -71,6 +74,7 @@
     {
       "subcategory": "Stolice Świata",
       "question": "Stolicą jakiego południowoamerykańskiego kraju jest Buenos Aires?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Argentyny",
@@ -93,6 +97,7 @@
     {
       "subcategory": "Stolice Świata",
       "question": "W jakim azjatyckim mieście mieści się Pałac Cesarski i dzielnica Shibuya?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Tokio",
@@ -115,6 +120,7 @@
     {
       "subcategory": "Tatry i Podhale",
       "question": "Jaki jest najwyższy szczyt znajdujący się całkowicie w polskich Tatrach?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kozi Wierch",
@@ -137,6 +143,7 @@
     {
       "subcategory": "Tatry i Podhale",
       "question": "Jak nazywa się największe jezioro w Tatrach?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Morskie Oko",
@@ -159,6 +166,7 @@
     {
       "subcategory": "Tatry i Podhale",
       "question": "Jak zwie się tradycyjny wędzony ser z owczego mleka wyrabiany na Podhalu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Oscypek",
@@ -181,6 +189,7 @@
     {
       "subcategory": "Tatry i Podhale",
       "question": "Jak ma na imię słynny śpiący rycerz, którego kształt przypomina znany tatrzański szczyt?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Giewont",
@@ -203,6 +212,7 @@
     {
       "subcategory": "Tatry i Podhale",
       "question": "Która dolina jest najdłuższą doliną w polskich Tatrach?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Dolina Chochołowska",
@@ -225,6 +235,7 @@
     {
       "subcategory": "Rzeki i Jeziora Polski",
       "question": "Jaka jest najdłuższa rzeka przepływająca w całości przez Polskę?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wisła",
@@ -247,6 +258,7 @@
     {
       "subcategory": "Rzeki i Jeziora Polski",
       "question": "Które polskie jezioro szczyci się mianem najgłębszego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Hańcza",
@@ -269,6 +281,7 @@
     {
       "subcategory": "Rzeki i Jeziora Polski",
       "question": "Przez które z podanych miast NIE przepływa rzeka Wisła?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Poznań",
@@ -291,6 +304,7 @@
     {
       "subcategory": "Rzeki i Jeziora Polski",
       "question": "W jakim województwie leży największe jezioro w Polsce - Śniardwy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Warmińsko-mazurskim",
@@ -313,6 +327,7 @@
     {
       "subcategory": "Rzeki i Jeziora Polski",
       "question": "Do jakiego akwenu uchodzi rzeka Odra?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Do Zalewu Szczecińskiego",
@@ -335,6 +350,7 @@
     {
       "subcategory": "Flagi i Hymny",
       "question": "Jakie dwa kolory tworzą flagę Ukrainy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Niebieski i żółty",
@@ -357,6 +373,7 @@
     {
       "subcategory": "Flagi i Hymny",
       "question": "Jak brzmi pełny, oficjalny tytuł polskiego hymnu narodowego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Mazurek Dąbrowskiego",
@@ -379,6 +396,7 @@
     {
       "subcategory": "Flagi i Hymny",
       "question": "Które państwo ma na swojej fladze czerwone koło na białym tle, symbolizujące słońce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Japonia",
@@ -401,6 +419,7 @@
     {
       "subcategory": "Flagi i Hymny",
       "question": "Flaga jakiego państwa wygląda identycznie jak polska, ale jest odwrócona do góry nogami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Monako",
@@ -423,6 +442,7 @@
     {
       "subcategory": "Flagi i Hymny",
       "question": "Który ptak z głową zwróconą w prawo jest oficjalnym godłem Rzeczypospolitej Polskiej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Orzeł biały",
@@ -445,6 +465,7 @@
     {
       "subcategory": "Polskie Wybrzeże",
       "question": "Nad jakim morzem leży północna granica Polski?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Nad Morzem Bałtyckim",
@@ -467,6 +488,7 @@
     {
       "subcategory": "Polskie Wybrzeże",
       "question": "W którym mieście znajduje się słynny, historyczny Żuraw portowy nad rzeką Motławą?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Gdańsku",
@@ -489,6 +511,7 @@
     {
       "subcategory": "Polskie Wybrzeże",
       "question": "Gdzie znajduje się najdłuższe drewniane molo w Polsce i Europie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Sopocie",
@@ -511,6 +534,7 @@
     {
       "subcategory": "Polskie Wybrzeże",
       "question": "Jak nazywa się długi, piaszczysty półwysep, na którego końcu leży miasto Hel?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Półwysep Helski",
@@ -533,6 +557,7 @@
     {
       "subcategory": "Polskie Wybrzeże",
       "question": "Z czego słynie Słowiński Park Narodowy położony nad polskim morzem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z ruchomych wydm",
@@ -555,6 +580,7 @@
     {
       "subcategory": "Cuda Świata UNESCO",
       "question": "Który zamek z cegły w Polsce jest na liście UNESCO?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Zamek w Malborku",
@@ -577,6 +603,7 @@
     {
       "subcategory": "Cuda Świata UNESCO",
       "question": "Jak nazywa się prehistoryczna kopalnia krzemienia pasiastego w Polsce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Krzemionki Opatowskie",
@@ -599,6 +626,7 @@
     {
       "subcategory": "Cuda Świata UNESCO",
       "question": "Jaki słynny indyjski grobowiec z białego marmuru jest na liście UNESCO?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tadż Mahal",
@@ -621,6 +649,7 @@
     {
       "subcategory": "Cuda Świata UNESCO",
       "question": "Który las na granicy polsko-białoruskiej jest dziedzictwem UNESCO?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Puszcza Białowieska",
@@ -643,6 +672,7 @@
     {
       "subcategory": "Cuda Świata UNESCO",
       "question": "W jakim kraju znajduje się starożytne miasto Inków, Machu Picchu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Peru",
@@ -665,6 +695,7 @@
     {
       "subcategory": "Parki Narodowe w Polsce",
       "question": "Który park narodowy chroni największy obszar wydm ruchomych w Polsce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Słowiński PN",
@@ -687,6 +718,7 @@
     {
       "subcategory": "Parki Narodowe w Polsce",
       "question": "Symbol jakiego parku narodowego przedstawia żubra?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Białowieskiego PN",
@@ -709,6 +741,7 @@
     {
       "subcategory": "Parki Narodowe w Polsce",
       "question": "Jakie góry obejmuje park narodowy z symbolem rysia w herbie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bieszczady",
@@ -731,6 +764,7 @@
     {
       "subcategory": "Parki Narodowe w Polsce",
       "question": "Gdzie w Polsce znajdziesz Maczugę Herkulesa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Ojcowskim PN",
@@ -753,6 +787,7 @@
     {
       "subcategory": "Parki Narodowe w Polsce",
       "question": "Jaki park narodowy znany jest z pięknych, jeziornych krajobrazów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wigierski PN",
@@ -775,6 +810,7 @@
     {
       "subcategory": "Kontynenty i Oceany",
       "question": "Który kontynent jest największy pod względem powierzchni i ludności?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Azja",
@@ -797,6 +833,7 @@
     {
       "subcategory": "Kontynenty i Oceany",
       "question": "Jaki ocean oblewający Europę od zachodu jest drugim co do wielkości?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ocean Atlantycki",
@@ -819,6 +856,7 @@
     {
       "subcategory": "Kontynenty i Oceany",
       "question": "Który kontynent jest w całości pokryty lodem i nie ma stałych mieszkańców?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Antarktyda",
@@ -841,6 +879,7 @@
     {
       "subcategory": "Kontynenty i Oceany",
       "question": "Jaki ocean jest największy i najgłębszy na naszej planecie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ocean Spokojny",
@@ -863,6 +902,7 @@
     {
       "subcategory": "Kontynenty i Oceany",
       "question": "Gdzie leży pustynia Sahara?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Afryce Północnej",
@@ -885,6 +925,7 @@
     {
       "subcategory": "Województwa i Miasta Polski",
       "question": "W jakim województwie znajduje się Wrocław?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Dolnośląskim",
@@ -907,6 +948,7 @@
     {
       "subcategory": "Województwa i Miasta Polski",
       "question": "Jakie miasto jest stolicą województwa podkarpackiego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Rzeszów",
@@ -929,6 +971,7 @@
     {
       "subcategory": "Województwa i Miasta Polski",
       "question": "Które województwo słynie z jezior i jest nazywane 'Krainą Tysiąca Jezior'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Warmińsko-mazurskie",
@@ -951,6 +994,7 @@
     {
       "subcategory": "Województwa i Miasta Polski",
       "question": "Gdzie znajduje się słynna ulica Piotrkowska?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Łodzi",
@@ -973,6 +1017,7 @@
     {
       "subcategory": "Województwa i Miasta Polski",
       "question": "W którym mieście zjesz tradycyjne rogale świętomarcińskie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Poznaniu",
@@ -995,6 +1040,7 @@
     {
       "subcategory": "Góry Świata",
       "question": "Jaki jest najwyższy szczyt Ziemi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Mount Everest",
@@ -1017,6 +1063,7 @@
     {
       "subcategory": "Góry Świata",
       "question": "W jakim paśmie górskim leży Mount Everest?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Himalajach",
@@ -1039,6 +1086,7 @@
     {
       "subcategory": "Góry Świata",
       "question": "Jaki jest najwyższy szczyt Afryki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kilimandżaro",
@@ -1061,6 +1109,7 @@
     {
       "subcategory": "Góry Świata",
       "question": "Jakie góry oddzielają Europę od Azji na wschodzie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ural",
@@ -1083,6 +1132,7 @@
     {
       "subcategory": "Góry Świata",
       "question": "W jakim kraju znajduje się wulkan Fudżi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Japonii",
@@ -1105,6 +1155,7 @@
     {
       "subcategory": "Pustynie i Dżungle",
       "question": "Jaka jest największa gorąca pustynia na świecie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Sahara",
@@ -1127,6 +1178,7 @@
     {
       "subcategory": "Pustynie i Dżungle",
       "question": "Jak potocznie nazywa się największy las deszczowy na Ziemi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Amazonia",
@@ -1149,6 +1201,7 @@
     {
       "subcategory": "Pustynie i Dżungle",
       "question": "Która pustynia uznawana jest za jedno z najsuchszych miejsc na świecie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Atakama",
@@ -1171,6 +1224,7 @@
     {
       "subcategory": "Pustynie i Dżungle",
       "question": "Na jakim kontynencie znajduje się rozległa pustynia Gobi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Azji",
@@ -1193,6 +1247,7 @@
     {
       "subcategory": "Pustynie i Dżungle",
       "question": "Jakie ssaki hoduje się tradycyjnie do podróżowania przez afrykańskie pustynie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wielbłądy",
@@ -1215,6 +1270,7 @@
     {
       "subcategory": "Słynne Wyspy",
       "question": "Jaka jest największa wyspa na świecie pod względem powierzchni?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Grenlandia",
@@ -1237,6 +1293,7 @@
     {
       "subcategory": "Słynne Wyspy",
       "question": "Do jakiego kraju należy popularna turystyczna wyspa Bali?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Do Indonezji",
@@ -1259,6 +1316,7 @@
     {
       "subcategory": "Słynne Wyspy",
       "question": "Na jakiej włoskiej wyspie wznosi się czynny wulkan Etna?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Na Sycylii",
@@ -1281,6 +1339,7 @@
     {
       "subcategory": "Słynne Wyspy",
       "question": "Jak nazywa się największa polska wyspa leżąca w całości w Polsce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wolin",
@@ -1303,6 +1362,7 @@
     {
       "subcategory": "Słynne Wyspy",
       "question": "Który archipelag wysp słynie z żółwi olbrzymich i teorii Karola Darwina?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Galapagos",
@@ -1325,6 +1385,7 @@
     {
       "subcategory": "Atrakcje Turystyczne Europy",
       "question": "W jakiej europejskiej stolicy można wejść na Wieżę Eiffla?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Paryżu",
@@ -1347,6 +1408,7 @@
     {
       "subcategory": "Atrakcje Turystyczne Europy",
       "question": "Gdzie turyści udają się, aby podziwiać ruiny starożytnego Koloseum?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Do Rzymu",
@@ -1369,6 +1431,7 @@
     {
       "subcategory": "Atrakcje Turystyczne Europy",
       "question": "Jak potocznie nazywa się wielki dzwon na wieży Pałacu Westminsterskiego w Londynie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Big Ben",
@@ -1391,6 +1454,7 @@
     {
       "subcategory": "Atrakcje Turystyczne Europy",
       "question": "W jakim mieście głównym środkiem transportu turystów po kanałach są gondole?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Wenecji",
@@ -1413,6 +1477,7 @@
     {
       "subcategory": "Atrakcje Turystyczne Europy",
       "question": "W jakim państwie położony jest słynny 'Zamek Draculi' (Zamek w Bran)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Rumunii",
@@ -1435,6 +1500,7 @@
     {
       "subcategory": "Mapy i Współrzędne",
       "question": "Jaka równoleżnikowa linia dzieli Ziemię na półkulę północną i południową?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Równik",
@@ -1457,6 +1523,7 @@
     {
       "subcategory": "Mapy i Współrzędne",
       "question": "Jak nazywa się południk zerowy, od którego liczy się długość geograficzną?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Południk Greenwich",
@@ -1479,6 +1546,7 @@
     {
       "subcategory": "Mapy i Współrzędne",
       "question": "Co na mapie fizycznej oznaczają poziomice (izohipsy)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Punkty o tej samej wysokości",
@@ -1501,6 +1569,7 @@
     {
       "subcategory": "Mapy i Współrzędne",
       "question": "Jeśli skala mapy wynosi 1:100 000, to 1 cm na mapie odpowiada w terenie:",
+      "level": "łatwe",
       "answers": [
         {
           "text": "1 kilometrowi",
@@ -1523,6 +1592,7 @@
     {
       "subcategory": "Mapy i Współrzędne",
       "question": "Jak nazywa się nauka zajmująca się tworzeniem map?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kartografia",
@@ -1545,6 +1615,7 @@
     {
       "subcategory": "Geologia i Wulkany",
       "question": "Jaki wulkan spowodował zagładę starożytnych Pompejów w 79 roku n.e.?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wezuwiusz",
@@ -1567,6 +1638,7 @@
     {
       "subcategory": "Geologia i Wulkany",
       "question": "Jak nazywa się gorąca, stopiona skała wydobywająca się z wulkanu na powierzchnię?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Lawa",
@@ -1589,6 +1661,7 @@
     {
       "subcategory": "Geologia i Wulkany",
       "question": "Przy pomocy jakiej skali najczęściej określa się siłę trzęsień ziemi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Skali Richtera",
@@ -1611,6 +1684,7 @@
     {
       "subcategory": "Geologia i Wulkany",
       "question": "Co jest najtwardszym minerałem występującym naturalnie w przyrodzie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Diament",
@@ -1633,6 +1707,7 @@
     {
       "subcategory": "Geologia i Wulkany",
       "question": "Jakie góry na południu Polski mają budowę wapienną z licznymi jaskiniami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tatry Zachodnie i Pieniny",
@@ -1655,6 +1730,7 @@
     {
       "subcategory": "Orientacja w terenie",
       "question": "Na jaki kierunek świata zawsze wskazuje namagnesowana igła kompasu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Północ",
@@ -1677,6 +1753,7 @@
     {
       "subcategory": "Orientacja w terenie",
       "question": "Z której strony pnia drzewa najczęściej w polskich lasach narasta mech?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Od północy",
@@ -1699,6 +1776,7 @@
     {
       "subcategory": "Orientacja w terenie",
       "question": "Która gwiazda na nocnym niebie w naszej szerokości geograficznej wskazuje północ?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Gwiazda Polarna",
@@ -1721,6 +1799,7 @@
     {
       "subcategory": "Orientacja w terenie",
       "question": "Rozwinięciem skrótu GPS oznaczającego nawigację satelitarną jest:",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Global Positioning System",
@@ -1743,6 +1822,7 @@
     {
       "subcategory": "Orientacja w terenie",
       "question": "Jakie cialo niebieskie wschodzi dokładnie na wschodzie podczas równonocy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Słońce",

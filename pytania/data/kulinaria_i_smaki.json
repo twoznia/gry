@@ -5,6 +5,7 @@
     {
       "subcategory": "Tradycyjne Zupy Polskie",
       "question": "Jaka kwaśna zupa, podawana z jajkiem i białą kiełbasą, króluje w Polsce na wielkanocnym stole?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Żurek",
@@ -27,6 +28,7 @@
     {
       "subcategory": "Tradycyjne Zupy Polskie",
       "question": "Z jakich tartych i fermentowanych warzyw przygotowuje się najpopularniejszy polski barszcz?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z buraków",
@@ -49,6 +51,7 @@
     {
       "subcategory": "Tradycyjne Zupy Polskie",
       "question": "Na jakim drobiowym wywarze zazwyczaj przygotowuje się klasyczny, niedzielny, polski rosół?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Na kurze (lub kaczce) i wołowinie",
@@ -71,6 +74,7 @@
     {
       "subcategory": "Tradycyjne Zupy Polskie",
       "question": "Jaka zupa jest przyrządzana z podrobów, krwi wieprzowej (lub drobiowej) i ma bardzo ciemny kolor?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Czernina (Czarna polewka)",
@@ -93,6 +97,7 @@
     {
       "subcategory": "Pierogi i Dania Mączne",
       "question": "Jakie to bardzo znane pierogi, które w farszu oprócz cebulki i pieprzu łączą twaróg i ziemniaki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pierogi ruskie",
@@ -115,6 +120,7 @@
     {
       "subcategory": "Pierogi i Dania Mączne",
       "question": "Jak nazywają się śląskie kluski robione z gotowanych ziemniaków i skrobi, z dziurką w środku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kluski śląskie",
@@ -137,6 +143,7 @@
     {
       "subcategory": "Pierogi i Dania Mączne",
       "question": "Z czym tradycyjnie, na słodko, Polacy latem jedzą mączne dania i pierogi oprócz śmietany i cukru?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z jagodami lub truskawkami",
@@ -159,6 +166,7 @@
     {
       "subcategory": "Pierogi i Dania Mączne",
       "question": "Jakie małe, bardzo drobne 'uszka' najczęściej wrzuca się do czystego, wigilijnego barszczu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Uszka z grzybami",
@@ -181,6 +189,7 @@
     {
       "subcategory": "Pierogi i Dania Mączne",
       "question": "Z czego robione są kopytka, tradycyjnie podawane jako dodatek do sosów lub mięs obiadowych?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z ziemniaków, mąki i jajka",
@@ -203,6 +212,7 @@
     {
       "subcategory": "Kuchnia Włoska",
       "question": "Jaka klasyczna, bardzo cienka pizza z Neapolu posiada pomidory, mozzarellę i świeżą bazylię?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Margherita",
@@ -225,6 +235,7 @@
     {
       "subcategory": "Kuchnia Włoska",
       "question": "Co jest absolutną bazą prawdziwego włoskiego sosu carbonara przygotowywanego w rejonie Rzymu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Żółtka jaj, ser pecorino i guanciale",
@@ -247,6 +258,7 @@
     {
       "subcategory": "Kuchnia Włoska",
       "question": "Jak nazywa się podłużny makaron w formie cieniutkich nitek, z którego robi się Spaghetti Bolognese?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Spaghetti",
@@ -269,6 +281,7 @@
     {
       "subcategory": "Kuchnia Włoska",
       "question": "Jaki puszysty, włoski deser oparty na serku mascarpone jest nasączany aromatyczną kawą espresso?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tiramisu",
@@ -291,6 +304,7 @@
     {
       "subcategory": "Kuchnia Włoska",
       "question": "Co charakteryzuje popularne, małe pierożki o nazwie ravioli, typowe dla kuchni północnych Włoch?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Mają kwadratowy kształt i farsz w środku",
@@ -313,6 +327,7 @@
     {
       "subcategory": "Kuchnia Azjatycka",
       "question": "Z jakiego kraju pochodzi oryginalnie sushi, w którym surową rybę i warzywa zawija się w ryż i glony?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Japonii",
@@ -335,6 +350,7 @@
     {
       "subcategory": "Kuchnia Azjatycka",
       "question": "Co to jest kimchi, bardzo popularny, narodowy wręcz i ostry dodatek prosto z kuchni koreańskiej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Fermentowana kapusta na ostro",
@@ -357,6 +373,7 @@
     {
       "subcategory": "Kuchnia Azjatycka",
       "question": "W jakiej znanej i rozgrzewającej japońskiej zupie znajdziesz bulion, makaron, jajko i mięso lub tofu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W ramenie",
@@ -379,6 +396,7 @@
     {
       "subcategory": "Kuchnia Azjatycka",
       "question": "Jakim naturalnym, ciemnym i wyrazistym, słonawym sosem często doprawia się azjatyckie dania wok?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Sosem sojowym",
@@ -401,6 +419,7 @@
     {
       "subcategory": "Kuchnia Azjatycka",
       "question": "Czym jedzą Azjaci tradycyjny ryż, makaron czy sushi, używając do tego wyłącznie jednej dłoni?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Drewnianymi pałeczkami",
@@ -423,6 +442,7 @@
     {
       "subcategory": "Desery i Wypieki",
       "question": "Jaki puszysty i uwielbiany deser powstaje poprzez dokładne upieczenie utartego sera twarogowego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Sernik",
@@ -445,6 +465,7 @@
     {
       "subcategory": "Desery i Wypieki",
       "question": "W jaki czwartek w Polsce tradycyjnie i bez umiaru obżeramy się słodkimi pączkami oraz faworkami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Tłusty Czwartek",
@@ -467,6 +488,7 @@
     {
       "subcategory": "Desery i Wypieki",
       "question": "Jaki flagowy, francuski maślany wypiek w kształcie półksiężyca spożywa się zwykle na śniadanie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Croissant (Rogalik)",
@@ -489,6 +511,7 @@
     {
       "subcategory": "Desery i Wypieki",
       "question": "Głównym owocem w nadzieniu bardzo tradycyjnej, domowej polskiej szarlotki zawsze muszą być...",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jabłka (z cynamonem)",
@@ -511,6 +534,7 @@
     {
       "subcategory": "Desery i Wypieki",
       "question": "Jaki znany, czekoladowy deser o płynnym, gorącym środku i zapiekanej otoczce podaje się w formie ciastka?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Fondant czekoladowy (Lava Cake)",
@@ -533,6 +557,7 @@
     {
       "subcategory": "Owoce i Warzywa",
       "question": "Jak nazywa się niezwykle kwaśny, żółty cytrus, którego sok chętnie wyciskamy rano do herbaty?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Cytryna",
@@ -555,6 +580,7 @@
     {
       "subcategory": "Owoce i Warzywa",
       "question": "Z jakiego czerwonego warzywa bogatego w likopen można przygotować pyszny ketchup i pastę neapolitańską?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z pomidora",
@@ -577,6 +603,7 @@
     {
       "subcategory": "Owoce i Warzywa",
       "question": "Jakie warzywo cebulowe ma mocny aromat i ząbki, a w bajkach wiesza się je na odgonienie wampirów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Czosnek",
@@ -599,6 +626,7 @@
     {
       "subcategory": "Owoce i Warzywa",
       "question": "Który jesienny owoc, twardy i o wydłużonym kształcie, występuje w odmianie popularnie zwanej 'Konferencja'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Gruszka",
@@ -621,6 +649,7 @@
     {
       "subcategory": "Owoce i Warzywa",
       "question": "W przypadku jakiego znanego warzywa o długim, pomarańczowym korzeniu króliki jedzą go ze smakiem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Marchew",
@@ -643,6 +672,7 @@
     {
       "subcategory": "Przyprawy Świata",
       "question": "Która przyprawa o żółto-złotym zabarwieniu bywa bardzo droga i pochodzi z kwiatowych znamion krokusa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Szafran",
@@ -665,6 +695,7 @@
     {
       "subcategory": "Przyprawy Świata",
       "question": "Jaki słodki, brązowy proszek robiony jest ze startej kory i idealnie pasuje do szarlotki z jabłkami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Cynamon",
@@ -687,6 +718,7 @@
     {
       "subcategory": "Przyprawy Świata",
       "question": "Czego w kuchni włoskiej głównie używa się do przyprawiania świeżych pomidorów obok oliwy i czosnku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bazylii i oregano",
@@ -709,6 +741,7 @@
     {
       "subcategory": "Przyprawy Świata",
       "question": "Jaka wyrazista, azjatycka przyprawa posiada charakterystyczny, 'palący' korzeń, świetny na jesień?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Imbir",
@@ -731,6 +764,7 @@
     {
       "subcategory": "Sery i Nabiał",
       "question": "Jak brzmi nazwa tego szwajcarskiego żółtego sera z wielkimi, charakterystycznymi 'dziurami'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ementaler",
@@ -753,6 +787,7 @@
     {
       "subcategory": "Sery i Nabiał",
       "question": "Który włoski, twardy i bardzo aromatyczny ser ścierany jest bardzo drobno jako posypka na makaron?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Parmezan (Parmigiano)",
@@ -775,6 +810,7 @@
     {
       "subcategory": "Sery i Nabiał",
       "question": "Jaki tradycyjny na Podhalu serek wędzony produkowany jest z mleka owczego w charakterystycznych wrzecionach?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Oscypek",
@@ -797,6 +833,7 @@
     {
       "subcategory": "Sery i Nabiał",
       "question": "Co znajduje się wewnątrz prawdziwej i dobrej, włoskiej pizzy neapolitańskiej o nazwie Margherita?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Roztopiona, świeża mozzarella",
@@ -819,6 +856,7 @@
     {
       "subcategory": "Sery i Nabiał",
       "question": "Jak nazywa się bardzo miękki i delikatny ser pleśniowy, najczęściej pochodzący prosto z Francji?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Camembert lub Brie",
@@ -841,6 +879,7 @@
     {
       "subcategory": "Street Food i Fast Food",
       "question": "Z parówki, podłużnej bułki pszennej i wielu sosów składa się na ulicznych stoiskach popularny...",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Hot dog",
@@ -863,6 +902,7 @@
     {
       "subcategory": "Street Food i Fast Food",
       "question": "Jaki popularny turecki przysmak w bułce lub cieście składa się ze ścinanego, opiekanego mięsa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kebab (Doner/Durum)",
@@ -885,6 +925,7 @@
     {
       "subcategory": "Street Food i Fast Food",
       "question": "Co charakterystycznego Polacy lubią chrupać na dworcach PKP, na połówce bagietki z serem i pieczarkami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Zapiekankę z pieca",
@@ -907,6 +948,7 @@
     {
       "subcategory": "Street Food i Fast Food",
       "question": "Z czego tradycyjnie wyrabiane są złociste frytki kupowane tonami we wszystkich fast foodach świata?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ze smażonych w głębokim tłuszczu ziemniaków",
@@ -929,6 +971,7 @@
     {
       "subcategory": "Street Food i Fast Food",
       "question": "Z czym tradycyjnie zjemy cienką, meksykańską tortillę w potrawie zwanej Taco lub Burrito?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z farszem (np. mięso, fasola, kukurydza, ryż)",
@@ -951,6 +994,7 @@
     {
       "subcategory": "Napoje i Alkohole",
       "question": "Jaki pobudzający i popularny czarny napar powstaje w ekspresie przez zalanie palonych ziaren?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kawa",
@@ -973,6 +1017,7 @@
     {
       "subcategory": "Napoje i Alkohole",
       "question": "Który złocisty trunek z charakterystyczną pianką od wieków dominuje na stadionach i grillach w Polsce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Piwo",
@@ -995,6 +1040,7 @@
     {
       "subcategory": "Napoje i Alkohole",
       "question": "Jak nazywa się słodki, gęsty syrop lub sok, produkowany na jesień i zimę m.in. z czarnego bzu i malin?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Sok malinowy (Syrop do herbaty)",
@@ -1017,6 +1063,7 @@
     {
       "subcategory": "Napoje i Alkohole",
       "question": "Z czego tradycyjnie powstaje francuski szampan i większość klasycznych, gronowych win europejskich?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z fermentowanych winogron",
@@ -1039,6 +1086,7 @@
     {
       "subcategory": "Napoje i Alkohole",
       "question": "Jak z hiszpańskiego nazywa się bardzo znany na Kubie napój alkoholowy z mięty, limonki, cukru i rumu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Mojito",
@@ -1061,6 +1109,7 @@
     {
       "subcategory": "Mięsa i Wędliny",
       "question": "Z jakiego mięsa tradycyjnie powinno się przygotowywać w Polsce niedzielnego kotleta schabowego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z wieprzowiny (schabu)",
@@ -1083,6 +1132,7 @@
     {
       "subcategory": "Mięsa i Wędliny",
       "question": "Jak nazywają się cienkie, bardzo mocno uwędzone i wysuszone polskie kiełbaski (często wieprzowe)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kabanosy",
@@ -1105,6 +1155,7 @@
     {
       "subcategory": "Mięsa i Wędliny",
       "question": "Z jakiego surowego, bardzo drobno siekanego mięsa z żółtkiem i cebulą przygotowuje się tatar?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z polędwicy wołowej",
@@ -1127,6 +1178,7 @@
     {
       "subcategory": "Mięsa i Wędliny",
       "question": "Jak nazywa się włoska, długo dojrzewająca wędlina o cienkich plastrach, często jedzona z melonem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Szynka parmeńska",
@@ -1149,6 +1201,7 @@
     {
       "subcategory": "Mięsa i Wędliny",
       "question": "Czym w tradycyjnej polskiej kaszance (krupnioku) łączy się kaszę (np. gryczaną) z podrobami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kwią wieprzową",
@@ -1171,6 +1224,7 @@
     {
       "subcategory": "Ryby i Owoce Morza",
       "question": "Jaka słodkowodna ryba tradycyjnie, często smażona w dzwonkach, pojawia się na wigilijnym stole w Polsce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Karp",
@@ -1193,6 +1247,7 @@
     {
       "subcategory": "Ryby i Owoce Morza",
       "question": "Z jakiego mięsa pochodzi bardzo drogi, ekskluzywny czarny kawior?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z ikry jesiotra",
@@ -1215,6 +1270,7 @@
     {
       "subcategory": "Ryby i Owoce Morza",
       "question": "Które owoce morza, podawane często z czosnkiem i masłem, w surowej formie mają szary kolor a po ugotowaniu różowy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Krewetki",
@@ -1237,6 +1293,7 @@
     {
       "subcategory": "Ryby i Owoce Morza",
       "question": "Jaka ryba o charakterystycznym różowo-pomarańczowym mięsie często wykorzystywana jest do japońskiego sushi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Łosoś",
@@ -1259,6 +1316,7 @@
     {
       "subcategory": "Ryby i Owoce Morza",
       "question": "Które słone, drobne rybki, serwowane z olejem i często cebulą, to popularna polska zakąska śledziowa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Matiasy",
@@ -1281,6 +1339,7 @@
     {
       "subcategory": "Kuchnia Polska Dawniej",
       "question": "Jak nazywa się staropolskie danie jednogarnkowe robione z kiszonej kapusty, mięs, kiełbas i grzybów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bigos",
@@ -1303,6 +1362,7 @@
     {
       "subcategory": "Kuchnia Polska Dawniej",
       "question": "Z czego przyrządzano w dawnej Polsce podpłomyki, jedne z najstarszych form pieczywa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z mąki, wody i soli pieczonych na blasze",
@@ -1325,6 +1385,7 @@
     {
       "subcategory": "Kuchnia Polska Dawniej",
       "question": "Jaki owadzi produkt fermentowano z wodą w dawnej Polsce, tworząc szlachetny alkohol (np. trójniak)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Miód (Miód pitny)",
@@ -1347,6 +1408,7 @@
     {
       "subcategory": "Kuchnia Polska Dawniej",
       "question": "Jakie skorupiaki, dziś bardzo rzadkie, dawniej w polskiej kuchni szlacheckiej łowiono i jedzono garściami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Raki rzeczne",
@@ -1369,6 +1431,7 @@
     {
       "subcategory": "Kuchnia Polska Dawniej",
       "question": "Czym w tradycji szlacheckiej częstowano niechcianego zalotnika, na znak odmowy ręki panny?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Czarną polewką (Czerniną)",
@@ -1391,6 +1454,7 @@
     {
       "subcategory": "Kuchnia Amerykańska",
       "question": "Co to jest tradycyjny amerykański 'Mac and Cheese', często jedzony z pudełka?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Makaron z sosem serowym",
@@ -1413,6 +1477,7 @@
     {
       "subcategory": "Kuchnia Amerykańska",
       "question": "Jakim słodkim i gęstym syropem Amerykanie najczęściej polewają swoje grube śniadaniowe pancakes (naleśniki)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Syropem klonowym",
@@ -1435,6 +1500,7 @@
     {
       "subcategory": "Kuchnia Amerykańska",
       "question": "Z jakiego mięsa robi się klasyczny, gruby i soczysty stek z rusztu w USA?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z wołowiny",
@@ -1457,6 +1523,7 @@
     {
       "subcategory": "Kuchnia Amerykańska",
       "question": "Czym w amerykańskim cukiernictwie jest słodki 'Donut' spopularyzowany przez policjantów na filmach?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pączkiem z dziurką w środku (oponką)",
@@ -1479,6 +1546,7 @@
     {
       "subcategory": "Kuchnia Amerykańska",
       "question": "Jaki skrót opisuje metodę powolnego pieczenia i wędzenia mięsa nad ogniem lub w dymie (np. żeberek)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "BBQ (Barbecue)",
@@ -1501,6 +1569,7 @@
     {
       "subcategory": "Słodycze i Przekąski",
       "question": "Jak nazywają się tradycyjne polskie, bardzo słodkie cukierki z masy kajmakowej (krówki), które z czasem kruszeją?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Krówki",
@@ -1523,6 +1592,7 @@
     {
       "subcategory": "Słodycze i Przekąski",
       "question": "Jaki delikatny deser to lekka, mleczno-waniliowa pianka oblana cienką warstwą kruchej czekolady?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ptasie Mleczko",
@@ -1545,6 +1615,7 @@
     {
       "subcategory": "Słodycze i Przekąski",
       "question": "Z jakiego kruszonego surowca i karmelu robiona jest zazwyczaj krucha i tłusta, wschodnia chałwa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z ziaren sezamu",
@@ -1567,6 +1638,7 @@
     {
       "subcategory": "Słodycze i Przekąski",
       "question": "Czym przeważnie posypane są na zewnątrz chrupiące, wypiekane, tradycyjne polskie paluszki (np. Beskidzkie)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Grubą solą",
@@ -1589,6 +1661,7 @@
     {
       "subcategory": "Słodycze i Przekąski",
       "question": "Z jakiego składnika odzwierzęcego produkuje się popularne kolorowe, miękkie żelki (np. Misie Haribo)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z żelatyny (kolagenu)",
@@ -1611,6 +1684,7 @@
     {
       "subcategory": "Słynni Szefowie Kuchni",
       "question": "Która bardzo charyzmatyczna restauratorka od lat prowadzi program 'Kuchenne rewolucje' w Polsce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Magda Gessler",
@@ -1633,6 +1707,7 @@
     {
       "subcategory": "Słynni Szefowie Kuchni",
       "question": "Jak nazywa się wybuchowy, szkocki szef kuchni, znany z ostrych przekleństw w programie 'Hell's Kitchen'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Gordon Ramsay",
@@ -1655,6 +1730,7 @@
     {
       "subcategory": "Słynni Szefowie Kuchni",
       "question": "Który znany, polski krytyk kulinarny i podróżnik zasłynął powiedzonkiem 'Eeeeee' i śmiechem przy jedzeniu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Robert Makłowicz",
@@ -1677,6 +1753,7 @@
     {
       "subcategory": "Słynni Szefowie Kuchni",
       "question": "Jak ma na imię brytyjski kucharz, który poprowadził kampanię o zdrowe żywienie w szkołach (Nagi Szef)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jamie Oliver",
@@ -1699,6 +1776,7 @@
     {
       "subcategory": "Słynni Szefowie Kuchni",
       "question": "Który polski szef kuchni jako pierwszy w historii Polski zdobył w 2013 roku prestiżową Gwiazdkę Michelin?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wojciech Modest Amaro",

@@ -5,6 +5,7 @@
     {
       "subcategory": "Konstytucja RP",
       "question": "W którym roku uchwalono obowiązującą obecnie Konstytucję Rzeczypospolitej Polskiej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W 1997 roku",
@@ -27,6 +28,7 @@
     {
       "subcategory": "Konstytucja RP",
       "question": "Jak określa się uroczysty, poetycki i ważny wstęp do Konstytucji, wyjaśniający jej powody powstania?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Preambuła",
@@ -49,6 +51,7 @@
     {
       "subcategory": "Konstytucja RP",
       "question": "Na jakim fundamentalnym podziale opiera się ustrój państwa polskiego według Konstytucji?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Na trójpodziale władzy",
@@ -71,6 +74,7 @@
     {
       "subcategory": "Konstytucja RP",
       "question": "Jak nazywa się najwyższy akt prawny w państwie, nazywany 'ustawą zasadniczą'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Konstytucja",
@@ -93,6 +97,7 @@
     {
       "subcategory": "Konstytucja RP",
       "question": "Ilu dokładnie posłów zgodnie z Konstytucją zasiada zawsze w polskim Sejmie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "460 posłów",
@@ -115,6 +120,7 @@
     {
       "subcategory": "Unia Europejska",
       "question": "W którym roku Polska formalnie i oficjalnie stała się pełnoprawnym państwem członkowskim Unii Europejskiej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W 2004 roku",
@@ -137,6 +143,7 @@
     {
       "subcategory": "Unia Europejska",
       "question": "Które belgijskie miasto bywa powszechnie i potocznie nazywane nieformalną 'stolicą' Unii Europejskiej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bruksela",
@@ -159,6 +166,7 @@
     {
       "subcategory": "Unia Europejska",
       "question": "Jakie porozumienie z 1985 roku znosi na co dzień fizyczne kontrole graniczne w większości Europy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Układ z Schengen",
@@ -181,6 +189,7 @@
     {
       "subcategory": "Unia Europejska",
       "question": "Jaka wspólna waluta europejska obowiązuje dziś w większości państw członkowskich Unii (Strefa...)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Euro",
@@ -203,6 +212,7 @@
     {
       "subcategory": "Unia Europejska",
       "question": "Jakie ciało ustawodawcze Unii wybierane jest w bezpośrednich wyborach co 5 lat przez obywateli państw?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Parlament Europejski",
@@ -225,6 +235,7 @@
     {
       "subcategory": "Systemy Polityczne",
       "question": "W jakim współczesnym systemie politycznym to obywatele mają realny i największy wpływ na władzę w państwie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W demokracji",
@@ -247,6 +258,7 @@
     {
       "subcategory": "Systemy Polityczne",
       "question": "Jak nazywa się państwo, w którym głową państwa jest dożywotni, zazwyczaj dziedziczny król lub cesarz?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Monarchia",
@@ -269,6 +281,7 @@
     {
       "subcategory": "Systemy Polityczne",
       "question": "Z greckiego, jak dosłownie tłumaczy się słowo 'demokracja'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Władza ludu",
@@ -291,6 +304,7 @@
     {
       "subcategory": "Systemy Polityczne",
       "question": "Jak nazywamy skrajnie opresyjny ustrój (jak u Stalina), w którym państwo kontroluje całkowicie życie obywateli?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Totalitaryzm",
@@ -313,6 +327,7 @@
     {
       "subcategory": "Systemy Polityczne",
       "question": "Jaki ustrój religijny panuje np. w Watykanie, gdzie najwyższą władzę pełni przywódca duchowy/religijny?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Teokracja",
@@ -335,6 +350,7 @@
     {
       "subcategory": "Władza w Polsce",
       "question": "Kto w Polsce stanowi Władzę Ustawodawczą i podejmuje decyzje o nowych prawach w kraju?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Sejm i Senat",
@@ -357,6 +373,7 @@
     {
       "subcategory": "Władza w Polsce",
       "question": "Jakie weto wobec przegłosowanej przez sejm ustawy posiada z ramienia konstytucji Prezydent RP?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Weto prezydenckie (ustawodawcze)",
@@ -379,6 +396,7 @@
     {
       "subcategory": "Władza w Polsce",
       "question": "Kto kieruje na co dzień pracami całej polskiej Rady Ministrów (Rządu) i koordynuje prace poszczególnych ministrów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Prezes Rady Ministrów (Premier)",
@@ -401,6 +419,7 @@
     {
       "subcategory": "Władza w Polsce",
       "question": "Kto zgodnie z konstytucją zastępuje Prezydenta RP w razie jego śmierci lub niezdolności do pełnienia urzędu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Marszałek Sejmu",
@@ -423,6 +442,7 @@
     {
       "subcategory": "Władza w Polsce",
       "question": "Ilu dokładnie senatorów liczy wyższa izba polskiego parlamentu - Senat?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "100 senatorów",
@@ -445,6 +465,7 @@
     {
       "subcategory": "Prawa Człowieka",
       "question": "Jaki przełomowy dokument przyjęło Zgromadzenie Ogólne ONZ w 1948 r. w Paryżu w odpowiedzi na II Wojnę?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Powszechną Deklarację Praw Człowieka",
@@ -467,6 +488,7 @@
     {
       "subcategory": "Prawa Człowieka",
       "question": "Skrót z jakiej nazwy organu działającego w Polsce, broniącego wolności obywatela przed państwem, to RPO?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Rzecznik Praw Obywatelskich",
@@ -489,6 +511,7 @@
     {
       "subcategory": "Prawa Człowieka",
       "question": "Jak nazywa się wielka międzynarodowa organizacja pozarządowa, słynąca z obrony więźniów sumienia?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Amnesty International",
@@ -511,6 +534,7 @@
     {
       "subcategory": "Prawa Człowieka",
       "question": "W jakim znanym francuskim mieście we wschodniej części kraju mieści się Europejski Trybunał Praw Człowieka?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Strasburgu",
@@ -533,6 +557,7 @@
     {
       "subcategory": "Prawa Człowieka",
       "question": "Jakie fundamentalne prawo każdego z nas widnieje na samym szczycie we wszystkich umowach międzynarodowych?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Prawo do życia",
@@ -555,6 +580,7 @@
     {
       "subcategory": "Podatki i Finanse",
       "question": "Co oznacza w Polsce powszechny skrót PIT w odniesieniu do corocznego rozliczania się z urzędem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Podatek dochodowy od osób fizycznych",
@@ -577,6 +603,7 @@
     {
       "subcategory": "Podatki i Finanse",
       "question": "Jak nazywa się pośredni podatek nałożony w sklepie na każdy produkt i usługę w Polsce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Podatek VAT",
@@ -599,6 +626,7 @@
     {
       "subcategory": "Podatki i Finanse",
       "question": "Która państwowa instytucja w Polsce odpowiada za emisję naszych banknotów oraz bilonu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Narodowy Bank Polski (NBP)",
@@ -621,6 +649,7 @@
     {
       "subcategory": "Podatki i Finanse",
       "question": "Jakim terminem makroekonomicznym w gospodarce nazywamy ogólny, stały wzrost cen towarów na rynku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Inflacją",
@@ -643,6 +672,7 @@
     {
       "subcategory": "Podatki i Finanse",
       "question": "Na jakie szkodliwe lub luksusowe towary nałożony jest w Polsce wysoki, specjalny podatek zwany akcyzą?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Na alkohol, papierosy i paliwa",
@@ -665,6 +695,7 @@
     {
       "subcategory": "Instytucje Państwowe",
       "question": "Jaka publiczna instytucja pobiera w Polsce z Twojej pensji ogromne składki m.in na twoją emeryturę?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "ZUS (Zakład Ubezpieczeń Społecznych)",
@@ -687,6 +718,7 @@
     {
       "subcategory": "Instytucje Państwowe",
       "question": "Z kim placówki medyczne podpisują kontrakty, by polscy pacjenci mogli leczyć się państwowo i bez opłat?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Narodowym Funduszem Zdrowia (NFZ)",
@@ -709,6 +741,7 @@
     {
       "subcategory": "Instytucje Państwowe",
       "question": "Jaka państwowa organizacja zajmuje się zbieraniem ankiet i prowadzeniem spisów (np. spisu powszechnego)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "GUS (Główny Urząd Statystyczny)",
@@ -731,6 +764,7 @@
     {
       "subcategory": "Instytucje Państwowe",
       "question": "Która instytucja to naczelny organ kontroli państwowej w Polsce, dbający m.in o przejrzystość finansów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Najwyższa Izba Kontroli (NIK)",
@@ -753,6 +787,7 @@
     {
       "subcategory": "Instytucje Państwowe",
       "question": "Co bada powołany w Polsce IPN, zajmujący się w głównej mierze archiwami komunistycznymi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Instytut Pamięci Narodowej bada zbrodnie nazistowskie i komunistyczne",
@@ -775,6 +810,7 @@
     {
       "subcategory": "Wybory i Głosowanie",
       "question": "Jakie fundamentalne prawo obywatela określa minimalny wiek potrzebny do czynnego udziału w wyborach?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Czynne prawo wyborcze (18 lat)",
@@ -797,6 +833,7 @@
     {
       "subcategory": "Wybory i Głosowanie",
       "question": "Jak nazywa się okres przeddzień wyborów, w którym kategorycznie zakazane jest agitowanie na rzecz kandydatów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Cisza wyborcza",
@@ -819,6 +856,7 @@
     {
       "subcategory": "Wybory i Głosowanie",
       "question": "Przez ile lat z rzędu w polskim państwie trwa pojedyncza, standardowa kadencja urzędu Prezydenta RP?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "5 lat",
@@ -841,6 +879,7 @@
     {
       "subcategory": "Wybory i Głosowanie",
       "question": "Jak określa się procentowy stosunek obywateli biorących realny udział w głosowaniu do wszystkich uprawnionych?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Frekwencja wyborcza",
@@ -863,6 +902,7 @@
     {
       "subcategory": "Wybory i Głosowanie",
       "question": "W jaki sposób wybierany jest Prezydent RP, jeśli wszyscy uprawnieni Polacy oddają bezpośrednio na niego głos?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W wyborach powszechnych i bezpośrednich",
@@ -885,6 +925,7 @@
     {
       "subcategory": "Prawo Karne i Sądowe",
       "question": "Jaka naczelna, złota zasada w prawie każe nam uważać oskarżonego za niewinnego, zanim zapadnie prawomocny wyrok?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Domniemanie niewinności",
@@ -907,6 +948,7 @@
     {
       "subcategory": "Prawo Karne i Sądowe",
       "question": "Który z podanych organów jest naczelnym i najważniejszym organem instancji sądowej w całej Rzeczypospolitej Polskiej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Sąd Najwyższy",
@@ -929,6 +971,7 @@
     {
       "subcategory": "Prawo Karne i Sądowe",
       "question": "Jak określa się przedstawiciela państwa (zawsze prawnika), który wnosi akt oskarżenia w procesie karnym przed sądem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Prokurator",
@@ -951,6 +994,7 @@
     {
       "subcategory": "Prawo Karne i Sądowe",
       "question": "Czym w śledztwach policyjnych jest tzw. alibi, przedstawiane przez oskarżonego lub podejrzanego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Dowodem przebywania w innym miejscu",
@@ -973,6 +1017,7 @@
     {
       "subcategory": "Prawo Karne i Sądowe",
       "question": "W jakim obszernym zbiorze przepisów znajdziemy dokładną listę przestępstw obowiązujących w Polsce oraz kar?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Kodeksie Karnym",
@@ -995,6 +1040,7 @@
     {
       "subcategory": "Edukacja i Szkolnictwo",
       "question": "Jaki tradycyjnie i ogólnopolski egzamin, nazywany 'egzaminem dojrzałości', otwiera w Polsce drogę na studia?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Matura",
@@ -1017,6 +1063,7 @@
     {
       "subcategory": "Edukacja i Szkolnictwo",
       "question": "Jak brzmi skrót nazwy ministerstwa w Polsce, które opiekuje się szkołami od przedszkola po licea?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "MEN (Ministerstwo Edukacji Narodowej)",
@@ -1039,6 +1086,7 @@
     {
       "subcategory": "Edukacja i Szkolnictwo",
       "question": "Do którego roku życia na terenie państwa polskiego każde dziecko, ze względu na wiek, jest objęte powszechnym obowiązkiem nauki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Do 18. roku życia",
@@ -1061,6 +1109,7 @@
     {
       "subcategory": "Edukacja i Szkolnictwo",
       "question": "Jaką potoczną i tradycyjną nazwę nosi książeczka studenta, będąca przed laty dowodem wpisu do sesji i zdania egzaminów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Indeks",
@@ -1083,6 +1132,7 @@
     {
       "subcategory": "Edukacja i Szkolnictwo",
       "question": "Jak tytułowany jest uroczyście najważniejszy urzędnik, najwyższy przełożony pracowników i studentów danej wyższej uczelni?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jego Magnificencja Rektor",
@@ -1105,6 +1155,7 @@
     {
       "subcategory": "Służby Mundurowe",
       "question": "Jaki jednolity, darmowy i ogólnoeuropejski numer alarmowy obowiązuje w całej Polsce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "112",
@@ -1127,6 +1178,7 @@
     {
       "subcategory": "Służby Mundurowe",
       "question": "Jaka formacja mundurowa odpowiada w Polsce za codzienne bezpieczeństwo na drogach i łapanie przestępców?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Policja",
@@ -1149,6 +1201,7 @@
     {
       "subcategory": "Służby Mundurowe",
       "question": "Jak nazywa się elitarna, polska wojskowa jednostka specjalna, znana na całym świecie z trudnych misji?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "GROM",
@@ -1171,6 +1224,7 @@
     {
       "subcategory": "Służby Mundurowe",
       "question": "W jakim charakterystycznym, jaskrawym kolorze tradycyjnie maluje się wozy Państwowej Straży Pożarnej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W kolorze czerwonym",
@@ -1193,6 +1247,7 @@
     {
       "subcategory": "Służby Mundurowe",
       "question": "Kto dba o nienaruszalność terytorium RP, kontrolując osoby i towary przejeżdżające z państw trzecich?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Straż Graniczna",
@@ -1215,6 +1270,7 @@
     {
       "subcategory": "Dokumenty Osobiste",
       "question": "Od którego roku życia obywatel Polski może całkowicie samodzielnie wyrobić pełnoprawny dowód osobisty?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Od 18. roku życia",
@@ -1237,6 +1293,7 @@
     {
       "subcategory": "Dokumenty Osobiste",
       "question": "Jaki dokument książeczkowy jest bezwzględnie wymagany, by wyjechać z Polski np. do USA czy Australii?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Paszport",
@@ -1259,6 +1316,7 @@
     {
       "subcategory": "Dokumenty Osobiste",
       "question": "Co upoważnia i certyfikuje dorosłego Polaka do legalnego prowadzenia samochodu po drogach publicznych?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Prawo jazdy",
@@ -1281,6 +1339,7 @@
     {
       "subcategory": "Dokumenty Osobiste",
       "question": "Jaki polski dokument urzędowy uczeń polskiej szkoły pokazuje w PKP, by otrzymać zniżkę na pociąg?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Legitymację szkolną",
@@ -1303,6 +1362,7 @@
     {
       "subcategory": "Dokumenty Osobiste",
       "question": "Co oznacza w całej Unii Europejskiej dokument EKUZ, przydatny podczas wakacyjnych urazów i chorób?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Europejska Karta Ubezpieczenia Zdrowotnego",
@@ -1325,6 +1385,7 @@
     {
       "subcategory": "Rynek Pracy",
       "question": "Jaki typ umowy daje polskiemu pracownikowi największą ochronę praw i pełne świadczenia urlopowe?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Umowa o pracę",
@@ -1347,6 +1408,7 @@
     {
       "subcategory": "Rynek Pracy",
       "question": "Która instytucja państwowa czuwa nad przestrzeganiem praw zatrudnionych w zakładach pracy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Państwowa Inspekcja Pracy (PIP)",
@@ -1369,6 +1431,7 @@
     {
       "subcategory": "Rynek Pracy",
       "question": "Jak w ekonomii nazywa się powszechne, negatywne zjawisko braku pracy dla osób mogących ją podjąć?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bezrobocie",
@@ -1391,6 +1454,7 @@
     {
       "subcategory": "Rynek Pracy",
       "question": "Ile minimalnie dni bezpłatnego lub płatnego urlopu należy się w Polsce każdemu pracownikowi z rocznym stażem na UoP?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "20 lub 26 dni (zależnie od lat pracy/nauki)",
@@ -1413,6 +1477,7 @@
     {
       "subcategory": "Rynek Pracy",
       "question": "Czym w Polsce i Europie są tzw. 'związki zawodowe' w dużych korporacjach i kopalniach?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Organizacjami zrzeszającymi i broniącymi pracowników",
@@ -1435,6 +1500,7 @@
     {
       "subcategory": "Media i Dziennikarstwo",
       "question": "Jaką 'władzą' powszechnie i nieformalnie nazywa się opiniotwórcze media w każdym demokratycznym państwie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Czwartą władzą",
@@ -1457,6 +1523,7 @@
     {
       "subcategory": "Media i Dziennikarstwo",
       "question": "Jak z języka angielskiego nazywa się fabrykowane, kłamliwe wiadomości w internecie, mające siać zamęt?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Fake news",
@@ -1479,6 +1546,7 @@
     {
       "subcategory": "Media i Dziennikarstwo",
       "question": "Rozwinięciem jakiej znanej nazwy informacyjnej jest polski skrót PAP?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Polska Agencja Prasowa",
@@ -1501,6 +1569,7 @@
     {
       "subcategory": "Media i Dziennikarstwo",
       "question": "Czym w prasie i portalach internetowych jest tzw. 'clickbait'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Sensacyjnym nagłówkiem zmuszającym do kliknięcia",
@@ -1523,6 +1592,7 @@
     {
       "subcategory": "Media i Dziennikarstwo",
       "question": "Jaka krajowa rada w Polsce dba od lat o ład, wolność słowa i etykę w telewizji oraz radiu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Krajowa Rada Radiofonii i Telewizji (KRRiT)",
@@ -1545,6 +1615,7 @@
     {
       "subcategory": "Organizacje Międzynarodowe",
       "question": "Jaki główny cel na świecie posiada Organizacja Narodów Zjednoczonych (ONZ)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Utrzymanie pokoju i bezpieczeństwa",
@@ -1567,6 +1638,7 @@
     {
       "subcategory": "Organizacje Międzynarodowe",
       "question": "Który sojusz militarny i polityczny powołano na podstawie Paktu Północnoatlantyckiego, do którego należy Polska?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "NATO",
@@ -1589,6 +1661,7 @@
     {
       "subcategory": "Organizacje Międzynarodowe",
       "question": "O co na poziomie globalnym i światowym dba znana wszystkim powszechnie organizacja WHO?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "O zdrowie publiczne i walkę z pandemiami",
@@ -1611,6 +1684,7 @@
     {
       "subcategory": "Organizacje Międzynarodowe",
       "question": "Co jest nadrzędnym celem Funduszu Narodów Zjednoczonych na rzecz Dzieci (UNICEF)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pomoc i ochrona dzieci (m.in po wojnach i klęskach)",
@@ -1633,6 +1707,7 @@
     {
       "subcategory": "Organizacje Międzynarodowe",
       "question": "Która agenda ONZ zajmuje się wspieraniem nauki oraz dodawaniem cudów świata na słynną listę dziedzictwa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "UNESCO",
@@ -1655,6 +1730,7 @@
     {
       "subcategory": "Ustrój Samorządowy",
       "question": "Jaka terytorialna jednostka podziału administracyjnego jest w państwie polskim najniższym i podstawowym szczeblem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Gmina",
@@ -1677,6 +1753,7 @@
     {
       "subcategory": "Ustrój Samorządowy",
       "question": "Kto sprawuje najwyższą władzę wykonawczą, pełniąc rolę bezpośredniego 'szefa' w typowej gminie wiejskiej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wójt",
@@ -1699,6 +1776,7 @@
     {
       "subcategory": "Ustrój Samorządowy",
       "question": "Kto stoi na samym czele i kieruje miastem powyżej 100 tysięcy mieszkańców (np. Krakowem czy Warszawą)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Prezydent miasta",
@@ -1721,6 +1799,7 @@
     {
       "subcategory": "Ustrój Samorządowy",
       "question": "Jaki państwowy urzędnik, będący przedstawicielem Rządu (Rady Ministrów) w terenie, sprawuje władzę w województwie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wojewoda",
@@ -1743,6 +1822,7 @@
     {
       "subcategory": "Ustrój Samorządowy",
       "question": "W jakiej instytucji zasiadają radni wybierani przez lokalną społeczność, aby tworzyć lokalne prawo miejskie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Radzie Miasta (Radzie Gminy)",

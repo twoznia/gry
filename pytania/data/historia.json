@@ -5,6 +5,7 @@
     {
       "subcategory": "Królowie i Książęta Polski",
       "question": "Kto był pierwszym koronowanym królem Polski?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bolesław Chrobry",
@@ -27,6 +28,7 @@
     {
       "subcategory": "Królowie i Książęta Polski",
       "question": "Który król 'zastał Polskę drewnianą, a zostawił murowaną'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kazimierz Wielki",
@@ -49,6 +51,7 @@
     {
       "subcategory": "Królowie i Książęta Polski",
       "question": "W którym roku odbył się chrzest Polski?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "966 r.",
@@ -71,6 +74,7 @@
     {
       "subcategory": "Królowie i Książęta Polski",
       "question": "Kto dowodził wojskami polskimi pod Grunwaldem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Władysław Jagiełło",
@@ -93,6 +97,7 @@
     {
       "subcategory": "Królowie i Książęta Polski",
       "question": "Jak miał na imię ostatni król z dynastii Jagiellonów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Zygmunt II August",
@@ -115,6 +120,7 @@
     {
       "subcategory": "II Wojna Światowa",
       "question": "Kiedy wybuchła II wojna światowa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "1 września 1939 r.",
@@ -137,6 +143,7 @@
     {
       "subcategory": "II Wojna Światowa",
       "question": "Jak nazywał się główny polski ruch oporu podczas wojny?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Armia Krajowa",
@@ -159,6 +166,7 @@
     {
       "subcategory": "II Wojna Światowa",
       "question": "Kto dowodził obroną Westerplatte w pierwszych dniach wojny?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Henryk Sucharski",
@@ -181,6 +189,7 @@
     {
       "subcategory": "II Wojna Światowa",
       "question": "W którym roku wybuchło Powstanie Warszawskie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "1944 r.",
@@ -203,6 +212,7 @@
     {
       "subcategory": "II Wojna Światowa",
       "question": "Jakie polskie miasto zostało zbombardowane jako pierwsze?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wieluń",
@@ -225,6 +235,7 @@
     {
       "subcategory": "Polska w czasach PRL",
       "question": "W którym roku wprowadzono stan wojenny w Polsce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "1981 r.",
@@ -247,6 +258,7 @@
     {
       "subcategory": "Polska w czasach PRL",
       "question": "Kto stał na czele NSZZ 'Solidarność'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Lech Wałęsa",
@@ -269,6 +281,7 @@
     {
       "subcategory": "Polska w czasach PRL",
       "question": "Jak nazywał się popularny polski samochód produkowany w FSO?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Polonez",
@@ -291,6 +304,7 @@
     {
       "subcategory": "Polska w czasach PRL",
       "question": "Który papież odwiedził Polskę podczas pierwszej pielgrzymki w 1979 r.?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jan Paweł II",
@@ -313,6 +327,7 @@
     {
       "subcategory": "Polska w czasach PRL",
       "question": "Czym płacono za zachodnie towary w sklepach Pewex?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bonami towarowymi",
@@ -335,6 +350,7 @@
     {
       "subcategory": "Powstania Narodowe",
       "question": "W którym roku wybuchło powstanie listopadowe?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "1830 r.",
@@ -357,6 +373,7 @@
     {
       "subcategory": "Powstania Narodowe",
       "question": "Kto był Najwyższym Naczelnikiem powstania w 1794 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tadeusz Kościuszko",
@@ -379,6 +396,7 @@
     {
       "subcategory": "Powstania Narodowe",
       "question": "Które polskie powstanie zakończyło się pełnym zwycięstwem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Powstanie wielkopolskie",
@@ -401,6 +419,7 @@
     {
       "subcategory": "Powstania Narodowe",
       "question": "Przeciwko jakiemu państwu wybuchło powstanie styczniowe?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Imperium Rosyjskiemu",
@@ -423,6 +442,7 @@
     {
       "subcategory": "Powstania Narodowe",
       "question": "Kto był ostatnim dyktatorem powstania styczniowego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Romuald Traugutt",
@@ -445,6 +465,7 @@
     {
       "subcategory": "Starożytność i Egipt",
       "question": "Jak nazywano absolutnych władców starożytnego Egiptu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Faraon",
@@ -467,6 +488,7 @@
     {
       "subcategory": "Starożytność i Egipt",
       "question": "Jaka rzeka była kluczowa dla rozwoju rolnictwa w starożytnym Egipcie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Nil",
@@ -489,6 +511,7 @@
     {
       "subcategory": "Starożytność i Egipt",
       "question": "Gdzie znajdują się najsłynniejsze i największe piramidy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Gizie",
@@ -511,6 +534,7 @@
     {
       "subcategory": "Starożytność i Egipt",
       "question": "Który młody faraon słynie ze słynnej złotej maski grobowej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tutanchamon",
@@ -533,6 +557,7 @@
     {
       "subcategory": "Starożytność i Egipt",
       "question": "Jaki innowacyjny materiał pisarski wynaleźli starożytni Egipcjanie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Papirus",
@@ -555,6 +580,7 @@
     {
       "subcategory": "Średniowiecze Europy",
       "question": "Kto został koronowany na cesarza rzymskiego w 800 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Karol Wielki",
@@ -577,6 +603,7 @@
     {
       "subcategory": "Średniowiecze Europy",
       "question": "Jak nazywały się wyprawy zbrojne organizowane do Ziemi Świętej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Krucjaty",
@@ -599,6 +626,7 @@
     {
       "subcategory": "Średniowiecze Europy",
       "question": "Jaka niszczycielska epidemia zdziesiątkowała Europę w XIV wieku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Czarna śmierć (dżuma)",
@@ -621,6 +649,7 @@
     {
       "subcategory": "Średniowiecze Europy",
       "question": "W jakim stylu architektonicznym budowano strzeliste katedry z witrażami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Gotyckim",
@@ -643,6 +672,7 @@
     {
       "subcategory": "Średniowiecze Europy",
       "question": "Kto założył znany zakon żebraczy w Asyżu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Św. Franciszek",
@@ -665,6 +695,7 @@
     {
       "subcategory": "Wielkie Odkrycia Geograficzne",
       "question": "Kto oficjalnie odkrył Amerykę w 1492 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Krzysztof Kolumb",
@@ -687,6 +718,7 @@
     {
       "subcategory": "Wielkie Odkrycia Geograficzne",
       "question": "Który żeglarz jako pierwszy dopłynął drogą morską z Europy do Indii?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Vasco da Gama",
@@ -709,6 +741,7 @@
     {
       "subcategory": "Wielkie Odkrycia Geograficzne",
       "question": "Czyja ekspedycja jako pierwsza opłynęła Ziemię dookoła?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ferdynanda Magellana",
@@ -731,6 +764,7 @@
     {
       "subcategory": "Wielkie Odkrycia Geograficzne",
       "question": "Jaki kraj europejski jako pierwszy zainicjował erę wielkich odkryć?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Portugalia",
@@ -753,6 +787,7 @@
     {
       "subcategory": "Wielkie Odkrycia Geograficzne",
       "question": "Jaki kontynent został odkryty i zbadany przez Jamesa Cooka?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Australia",
@@ -775,6 +810,7 @@
     {
       "subcategory": "Zimna Wojna",
       "question": "Jak nazywał się fizyczny mur dzielący byłą stolicę Niemiec?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Mur Berliński",
@@ -797,6 +833,7 @@
     {
       "subcategory": "Zimna Wojna",
       "question": "Jaki sojusz wojskowy założyły państwa zachodnie w 1949 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "NATO",
@@ -819,6 +856,7 @@
     {
       "subcategory": "Zimna Wojna",
       "question": "Kto był przywódcą ZSRR w czasie groźnego kryzysu kubańskiego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Nikita Chruszczow",
@@ -841,6 +879,7 @@
     {
       "subcategory": "Zimna Wojna",
       "question": "Jaka wojna zastępcza toczyła się w Azji w latach 1950-1953?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wojna koreańska",
@@ -863,6 +902,7 @@
     {
       "subcategory": "Zimna Wojna",
       "question": "Kto ogłosił politykę 'pierestrojki' i 'głasnosti' w ZSRR?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Michaił Gorbaczow",
@@ -885,6 +925,7 @@
     {
       "subcategory": "Słynni Dowódcy i Wodzowie",
       "question": "Który słynny cesarz francuski zmarł na wygnaniu na Wyspie Świętej Heleny?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Napoleon Bonaparte",
@@ -907,6 +948,7 @@
     {
       "subcategory": "Słynni Dowódcy i Wodzowie",
       "question": "Kto ostatecznie pokonał potężne wojska perskie pod Gaugamelą?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Aleksander Macedoński",
@@ -929,6 +971,7 @@
     {
       "subcategory": "Słynni Dowódcy i Wodzowie",
       "question": "Jaki polski król i wódz obronił Wiedeń przed najazdem tureckim?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jan III Sobieski",
@@ -951,6 +994,7 @@
     {
       "subcategory": "Słynni Dowódcy i Wodzowie",
       "question": "Kto dowodził zwycięskimi rzymskimi legionami podczas podboju Galii?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Juliusz Cezar",
@@ -973,6 +1017,7 @@
     {
       "subcategory": "Słynni Dowódcy i Wodzowie",
       "question": "Jak nazywał się wódz Kartaginy, który przeprawił się przez Alpy ze słoniami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Hannibal",
@@ -995,6 +1040,7 @@
     {
       "subcategory": "Rzeczpospolita Szlachecka",
       "question": "Jak oficjalnie nazywał się dwuizbowy parlament w Rzeczpospolitej Szlacheckiej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Sejm Walny",
@@ -1017,6 +1063,7 @@
     {
       "subcategory": "Rzeczpospolita Szlachecka",
       "question": "Jakie nieszczęsne prawo pozwalało pojedynczemu posłowi zerwać obrady sejmu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Liberum veto",
@@ -1039,6 +1086,7 @@
     {
       "subcategory": "Rzeczpospolita Szlachecka",
       "question": "Który polski hetman wygrał bitwę pod Kłuszynem w 1610 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Stanisław Żółkiewski",
@@ -1061,6 +1109,7 @@
     {
       "subcategory": "Rzeczpospolita Szlachecka",
       "question": "Z jakim agresywnym sąsiadem Rzeczpospolita toczyła tzw. Potop (1655-1660)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ze Szwecją",
@@ -1083,6 +1132,7 @@
     {
       "subcategory": "Rzeczpospolita Szlachecka",
       "question": "Jak potocznie nazywano biedną, nieposiadającą ziemi szlachtę?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Gołota",
@@ -1105,6 +1155,7 @@
     {
       "subcategory": "Chrzest Polski i Piastowie",
       "question": "Jaka rzeka jest historycznie uznawana za najbardziej prawdopodobne miejsce chrztu Mieszka I?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Warta",
@@ -1127,6 +1178,7 @@
     {
       "subcategory": "Chrzest Polski i Piastowie",
       "question": "Z jakiego kraju pochodziła księżniczka Dobrawa, żona Mieszka I?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Czech",
@@ -1149,6 +1201,7 @@
     {
       "subcategory": "Chrzest Polski i Piastowie",
       "question": "Który polski książę podjął brzemienną w skutkach decyzję o sprowadzeniu Krzyżaków?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Konrad Mazowiecki",
@@ -1171,6 +1224,7 @@
     {
       "subcategory": "Chrzest Polski i Piastowie",
       "question": "Gdzie znajdowała się pierwsza, historyczna stolica państwa Polan?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Gnieźnie",
@@ -1193,6 +1247,7 @@
     {
       "subcategory": "Chrzest Polski i Piastowie",
       "question": "Z jakiego zachodniosłowiańskiego plemienia wywodziła się dynastia Piastów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Polan",
@@ -1215,6 +1270,7 @@
     {
       "subcategory": "Historia USA",
       "question": "Kto został wybrany na pierwszego w historii prezydenta Stanów Zjednoczonych?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "George Washington",
@@ -1237,6 +1293,7 @@
     {
       "subcategory": "Historia USA",
       "question": "Kiedy Ojcowie Założyciele uchwalili słynną Deklarację Niepodległości USA?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "4 lipca 1776 r.",
@@ -1259,6 +1316,7 @@
     {
       "subcategory": "Historia USA",
       "question": "Jak nazywała się krwawa wojna domowa toczona w USA w latach 1861-1865?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wojna secesyjna",
@@ -1281,6 +1339,7 @@
     {
       "subcategory": "Historia USA",
       "question": "Który amerykański prezydent podpisał proklamację znoszącą niewolnictwo?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Abraham Lincoln",
@@ -1303,6 +1362,7 @@
     {
       "subcategory": "Historia USA",
       "question": "Ile pięcioramiennych gwiazdek znajduje się na obecnej fladze USA?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "50",
@@ -1325,6 +1385,7 @@
     {
       "subcategory": "Rewolucja Francuska",
       "question": "Zdobycie jakiej paryskiej twierdzy i więzienia rozpoczęło Rewolucję Francuską?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bastylii",
@@ -1347,6 +1408,7 @@
     {
       "subcategory": "Rewolucja Francuska",
       "question": "Który król Francji z dynastii Burbonów został zgilotynowany przez rewolucjonistów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ludwik XVI",
@@ -1369,6 +1431,7 @@
     {
       "subcategory": "Rewolucja Francuska",
       "question": "Jak nazywało się radykalne stronnictwo polityczne pod wodzą Robespierre'a?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jakobini",
@@ -1391,6 +1454,7 @@
     {
       "subcategory": "Rewolucja Francuska",
       "question": "Jaki autorytarny system rządów został obalony we Francji w 1789 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Monarchia absolutna",
@@ -1413,6 +1477,7 @@
     {
       "subcategory": "Rewolucja Francuska",
       "question": "Jakie makabryczne urządzenie stało się symbolem rewolucyjnego terroru?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Gilotyna",
@@ -1435,6 +1500,7 @@
     {
       "subcategory": "Zamki i Twierdze",
       "question": "Który potężny zamek w Polsce był siedzibą Wielkich Mistrzów Zakonu Krzyżackiego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Zamek w Malborku",
@@ -1457,6 +1523,7 @@
     {
       "subcategory": "Zamki i Twierdze",
       "question": "W jakim historycznym miejscu w Krakowie rezydowali przez wieki polscy królowie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Na Wawelu",
@@ -1479,6 +1546,7 @@
     {
       "subcategory": "Zamki i Twierdze",
       "question": "Jak nazywa się malowniczy zamek z maczugą Herkulesa na Szlaku Orlich Gniazd?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pieskowa Skała",
@@ -1501,6 +1569,7 @@
     {
       "subcategory": "Zamki i Twierdze",
       "question": "Który władca przeniósł dwór i nakazał rozbudowę Zamku Królewskiego w Warszawie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Zygmunt III Waza",
@@ -1523,6 +1592,7 @@
     {
       "subcategory": "Zamki i Twierdze",
       "question": "Jak nazywają się imponujące ruiny ogromnego zamku w województwie świętokrzyskim?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Krzyżtopór",
@@ -1545,6 +1615,7 @@
     {
       "subcategory": "Historia Sportu",
       "question": "W jakim mieście odbyły się pierwsze nowożytne Igrzyska Olimpijskie w 1896 r.?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Atenach",
@@ -1567,6 +1638,7 @@
     {
       "subcategory": "Historia Sportu",
       "question": "Kto zdobył pierwszy w historii złoty medal olimpijski dla reprezentacji Polski?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Halina Konopacka",
@@ -1589,6 +1661,7 @@
     {
       "subcategory": "Historia Sportu",
       "question": "W którym roku odbyły się letnie Igrzyska w Monachium, podczas których doszło do zamachu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "1972 r.",
@@ -1611,6 +1684,7 @@
     {
       "subcategory": "Historia Sportu",
       "question": "Jaka wszechstronna dyscyplina sportowa była punktem kulminacyjnym antycznych igrzysk?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pięciobój",
@@ -1633,6 +1707,7 @@
     {
       "subcategory": "Historia Sportu",
       "question": "Który polski zawodnik został królem strzelców na Mistrzostwach Świata w 1974 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Grzegorz Lato",
@@ -1655,6 +1730,7 @@
     {
       "subcategory": "Współczesna Polska (po 1989)",
       "question": "Kto był pierwszym, historycznym niekomunistycznym premierem RP po 1989 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tadeusz Mazowiecki",
@@ -1677,6 +1753,7 @@
     {
       "subcategory": "Współczesna Polska (po 1989)",
       "question": "W którym roku Rzeczpospolita Polska oficjalnie wstąpiła do Unii Europejskiej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "2004 r.",
@@ -1699,6 +1776,7 @@
     {
       "subcategory": "Współczesna Polska (po 1989)",
       "question": "W którym roku Polska dołączyła do Paktu Północnoatlantyckiego (NATO)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "1999 r.",
@@ -1721,6 +1799,7 @@
     {
       "subcategory": "Współczesna Polska (po 1989)",
       "question": "Jaki nadrzędny dokument prawny, uchwalony w 1997 roku, obowiązuje w Polsce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Konstytucja RP",
@@ -1743,6 +1822,7 @@
     {
       "subcategory": "Współczesna Polska (po 1989)",
       "question": "Kto wygrał pierwsze w pełni wolne i powszechne wybory prezydenckie w Polsce w 1990 r.?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Lech Wałęsa",
