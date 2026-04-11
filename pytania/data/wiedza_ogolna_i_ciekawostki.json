@@ -1611,6 +1611,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Ciało Człowieka",
+      "question": "Która z wymienionych kości jest najdłuższą kością w ludzkim ciele?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Kość udowa (femur)",
+          "is_correct": true
+        },
+        {
+          "text": "Kość piszczelowa (tibia)",
+          "is_correct": false
+        },
+        {
+          "text": "Kość ramienna (humerus)",
+          "is_correct": false
+        },
+        {
+          "text": "Kość promieniowa (radius)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Cuda Świata",
+      "question": "Który z Siedmiu Nowych Cudów Świata (wybranych w 2007 roku) jest położony w Jordanii?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Petra",
+          "is_correct": true
+        },
+        {
+          "text": "Machu Picchu",
+          "is_correct": false
+        },
+        {
+          "text": "Tadż Mahal",
+          "is_correct": false
+        },
+        {
+          "text": "Wielka Ściana Chińska",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Jednostki Miar i Wag",
+      "question": "Ile paskali wynosi ciśnienie atmosferyczne na poziomie morza w przybliżeniu (wartość standardowa)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "101 325 Pa",
+          "is_correct": true
+        },
+        {
+          "text": "100 000 Pa",
+          "is_correct": false
+        },
+        {
+          "text": "98 066 Pa",
+          "is_correct": false
+        },
+        {
+          "text": "103 000 Pa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kosmos i Eksploracja",
+      "question": "Jak nazywa się zjawisko, w którym prędkość ucieczki z danego ciała niebieskiego przekracza prędkość światła, przez co nic – nawet światło – nie może go opuścić?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Czarna dziura",
+          "is_correct": true
+        },
+        {
+          "text": "Pulsar",
+          "is_correct": false
+        },
+        {
+          "text": "Kwasar",
+          "is_correct": false
+        },
+        {
+          "text": "Gwiazda neutronowa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mity i Fakty",
+      "question": "Czy człowiek używa jedynie 10% swojego mózgu, jak głosi popularne powiedzenie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "To mit – badania obrazowe pokazują, że przez całą dobę aktywne są praktycznie wszystkie obszary mózgu",
+          "is_correct": true
+        },
+        {
+          "text": "To fakt – większość neuronów pozostaje uśpiona i można je aktywować treningiem",
+          "is_correct": false
+        },
+        {
+          "text": "To fakt – odkrył to neurolog Karl Lashley w badaniach z lat 30. XX wieku",
+          "is_correct": false
+        },
+        {
+          "text": "To częściowy fakt – w spoczynku aktywne jest ok. 10%, reszta włącza się dopiero przy wysiłku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody Nobla",
+      "question": "Który Polak jako jedyna osoba w historii otrzymał Nagrodę Nobla dwukrotnie w dziedzinie nauk przyrodniczych (w różnych dziedzinach: fizyce i chemii)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Maria Skłodowska-Curie",
+          "is_correct": true
+        },
+        {
+          "text": "Lech Wałęsa",
+          "is_correct": false
+        },
+        {
+          "text": "Wisława Szymborska",
+          "is_correct": false
+        },
+        {
+          "text": "Henryk Sienkiewicz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Pierwiastki i Chemia",
+      "question": "Jaki symbol chemiczny nosi pierwiastek o liczbie atomowej 79, znany ze swej wyjątkowej szlachetności i użycia w jubilerstwie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Au",
+          "is_correct": true
+        },
+        {
+          "text": "Ag",
+          "is_correct": false
+        },
+        {
+          "text": "Pt",
+          "is_correct": false
+        },
+        {
+          "text": "Cu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Przysłowia i Powiedzenia",
+      "question": "Skąd wywodzi się powiedzenie 'Przeciąć gordyjski węzeł', oznaczające śmiałe rozwiązanie trudnego problemu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Z legendy o Aleksandrze Wielkim, który mieczem przeciął skomplikowany węzeł we frygijskiej Gordion",
+          "is_correct": true
+        },
+        {
+          "text": "Z mitologii greckiej, gdzie Herakles rozwiązał splątane sieci Arachne",
+          "is_correct": false
+        },
+        {
+          "text": "Z historii rzymskiej, gdzie Juliusz Cezar przeciął sieć szpiegów w Galii",
+          "is_correct": false
+        },
+        {
+          "text": "Z baśni perskich, gdzie bohater rozplątał magiczny sznur strzegący skarbu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Rekordy Guinnessa",
+      "question": "Jakie drzewo jest uznawane za najstarszy żywy organizm na Ziemi, którego wiek szacuje się na ponad 5 000 lat?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Sosna oścista (Pinus longaeva) o nazwie Metuzalem rosnąca w Górach Białych w Kalifornii",
+          "is_correct": true
+        },
+        {
+          "text": "Sekwoja olbrzymia (Sequoiadendron giganteum) znana jako General Sherman w Parku Sekwoi",
+          "is_correct": false
+        },
+        {
+          "text": "Dąb Stelmużański na Litwie, mający ponad 1 500 lat",
+          "is_correct": false
+        },
+        {
+          "text": "Oliwka w Vouves na Krecie, której wiek wynosi ok. 3 000 lat",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Stolice Świata",
+      "question": "Jakie miasto jest stolicą Kazachstanu od 2019 roku, nosząc imię byłego prezydenta kraju?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Nur-Sułtan (Astana)",
+          "is_correct": true
+        },
+        {
+          "text": "Ałmaty",
+          "is_correct": false
+        },
+        {
+          "text": "Szymkent",
+          "is_correct": false
+        },
+        {
+          "text": "Karaganda",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Cytaty",
+      "question": "Komu przypisuje się słynny cytat: 'Cogito, ergo sum' ('Myślę, więc jestem'), będący fundamentem nowożytnej filozofii?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "René Descartesowi (Kartezjuszowi)",
+          "is_correct": true
+        },
+        {
+          "text": "Baruchowi Spinozie",
+          "is_correct": false
+        },
+        {
+          "text": "Gottfriedowi Wilhelmowi Leibnizowi",
+          "is_correct": false
+        },
+        {
+          "text": "Johnowi Locke'owi",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynni Odkrywcy",
+      "question": "Który europejski odkrywca jako pierwszy przepłynął Przylądek Dobrej Nadziei i dotarł do wybrzeży Indii drogą morską w 1498 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Vasco da Gama",
+          "is_correct": true
+        },
+        {
+          "text": "Bartolomeu Dias",
+          "is_correct": false
+        },
+        {
+          "text": "Fernando Magellan",
+          "is_correct": false
+        },
+        {
+          "text": "Pedro Álvares Cabral",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Tajemnice Świata",
+      "question": "Na czym polega hipoteza 'Efektu Mandera', polegająca na powszechnym błędnym pamiętaniu faktów historycznych lub popkultury?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Na zjawisku, w którym duże grupy ludzi dzielą fałszywe wspomnienia dotyczące faktów, których nigdy nie było",
+          "is_correct": true
+        },
+        {
+          "text": "Na teorii, że nasza rzeczywistość jest symulacją komputerową generowaną przez zaawansowaną cywilizację",
+          "is_correct": false
+        },
+        {
+          "text": "Na badaniach nad tajemniczymi miejscami na Ziemi, gdzie kompasy wskazują inny kierunek niż biegun",
+          "is_correct": false
+        },
+        {
+          "text": "Na hipotezie, że w każdej populacji 10% ludzi posiada zdolności telepatyczne, lecz ich nie świadomi",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wynalazki Codziennego Użytku",
+      "question": "Kto wynalazł i opatentował pierwsze praktyczne ogniwo elektryczne (baterię) w 1800 roku, dając podwaliny pod całą elektrochemię?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Alessandro Volta",
+          "is_correct": true
+        },
+        {
+          "text": "Luigi Galvani",
+          "is_correct": false
+        },
+        {
+          "text": "Michael Faraday",
+          "is_correct": false
+        },
+        {
+          "text": "Benjamin Franklin",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zjawiska Pogodowe",
+      "question": "Jak nazywa się zjawisko atmosferyczne, w którym ciepłe powietrze z górnych warstw atmosfery powoduje ugięcie promieni świetlnych i tworzenie na horyzoncie złudnych obrazów wody lub odległych obiektów?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Fatamorgana (miraż)",
+          "is_correct": true
+        },
+        {
+          "text": "Halo słoneczne",
+          "is_correct": false
+        },
+        {
+          "text": "Parhelion (słońce paraneliczne)",
+          "is_correct": false
+        },
+        {
+          "text": "Zorza polarna",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Finansów",
+      "question": "Jak nazywa się strategia inwestycyjna polegająca na jednoczesnym zakupie i sprzedaży tego samego aktywa na różnych rynkach w celu zysku z różnicy cen?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Arbitraż",
+          "is_correct": true
+        },
+        {
+          "text": "Hedging",
+          "is_correct": false
+        },
+        {
+          "text": "Spekulacja krótka (short selling)",
+          "is_correct": false
+        },
+        {
+          "text": "Lewarowanie (leverage)",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
