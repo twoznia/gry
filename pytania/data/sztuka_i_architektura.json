@@ -1703,6 +1703,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Słynni Malarze",
+      "question": "Który holenderski malarz złotego wieku XVII w. jest autorem obrazu 'Dziewczyna z perłą'?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Jan Vermeer",
+          "is_correct": true
+        },
+        {
+          "text": "Rembrandt van Rijn",
+          "is_correct": false
+        },
+        {
+          "text": "Frans Hals",
+          "is_correct": false
+        },
+        {
+          "text": "Pieter de Hooch",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Impresjonizm",
+      "question": "Który impresjonista namalował serię obrazów przedstawiających katedrę w Rouen o różnych porach dnia?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Claude Monet",
+          "is_correct": true
+        },
+        {
+          "text": "Edgar Degas",
+          "is_correct": false
+        },
+        {
+          "text": "Pierre-Auguste Renoir",
+          "is_correct": false
+        },
+        {
+          "text": "Camille Pissarro",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Style Architektoniczne",
+      "question": "Który styl architektoniczny charakteryzuje się łukiem ostrym, żebrowym sklepieniem krzyżowo-żebrowym oraz szkarpami i przyporami?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Gotyk",
+          "is_correct": true
+        },
+        {
+          "text": "Romanizm",
+          "is_correct": false
+        },
+        {
+          "text": "Barok",
+          "is_correct": false
+        },
+        {
+          "text": "Renesans",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Budowle Świata",
+      "question": "Jak nazywa się architekt, który zaprojektował operę w Sydney (Australii)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Jørn Utzon",
+          "is_correct": true
+        },
+        {
+          "text": "Frank Lloyd Wright",
+          "is_correct": false
+        },
+        {
+          "text": "Le Corbusier",
+          "is_correct": false
+        },
+        {
+          "text": "Oscar Niemeyer",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Architektura Sakralna",
+      "question": "Który architekt zaprojektował kościół Sagrada Família w Barcelonie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Antoni Gaudí",
+          "is_correct": true
+        },
+        {
+          "text": "Santiago Calatrava",
+          "is_correct": false
+        },
+        {
+          "text": "Lluís Domènech i Montaner",
+          "is_correct": false
+        },
+        {
+          "text": "Josep Puig i Cadafalch",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Rzeźby i Pomniki",
+      "question": "W którym roku odsłonięto Statuę Wolności w Nowym Jorku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1886",
+          "is_correct": true
+        },
+        {
+          "text": "1876",
+          "is_correct": false
+        },
+        {
+          "text": "1900",
+          "is_correct": false
+        },
+        {
+          "text": "1865",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzea i Galerie Sztuki",
+      "question": "W którym mieście znajduje się muzeum Prado, jedno z największych na świecie muzeów sztuki?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Madryt",
+          "is_correct": true
+        },
+        {
+          "text": "Barcelona",
+          "is_correct": false
+        },
+        {
+          "text": "Lizbona",
+          "is_correct": false
+        },
+        {
+          "text": "Sewilla",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Najdroższe Obrazy Świata",
+      "question": "Który obraz Leonarda da Vinci sprzedano w 2017 roku za rekordową kwotę ponad 450 milionów dolarów?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Salvator Mundi",
+          "is_correct": true
+        },
+        {
+          "text": "Dama z gronostajem",
+          "is_correct": false
+        },
+        {
+          "text": "Piękna Ferronnière",
+          "is_correct": false
+        },
+        {
+          "text": "Zwiastowanie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polscy Malarze",
+      "question": "Który polski malarz stworzył monumentalny obraz 'Bitwa pod Grunwaldem' (1878), jeden z największych historycznych obrazów w malarstwie polskim?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Jan Matejko",
+          "is_correct": true
+        },
+        {
+          "text": "Józef Brandt",
+          "is_correct": false
+        },
+        {
+          "text": "Wojciech Kossak",
+          "is_correct": false
+        },
+        {
+          "text": "Aleksander Gierymski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polska Sztuka Ludowa",
+      "question": "Z którym regionem Polski tradycyjnie kojarzona jest wycinanka łowicka?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Mazowsze",
+          "is_correct": true
+        },
+        {
+          "text": "Podhale",
+          "is_correct": false
+        },
+        {
+          "text": "Kaszuby",
+          "is_correct": false
+        },
+        {
+          "text": "Kurpie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Starożytność i Antyk",
+      "question": "Jak nazywa się technika malarstwa ściennego stosowana w starożytności, polegająca na malowaniu na świeżym, wilgotnym tynku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Fresk (al fresco)",
+          "is_correct": true
+        },
+        {
+          "text": "Enkaustyka",
+          "is_correct": false
+        },
+        {
+          "text": "Tempera",
+          "is_correct": false
+        },
+        {
+          "text": "Mozaika",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Sztuka Orientu",
+      "question": "Jak nazywa się japońska technika układania kwiatów, uznawana za formę sztuki i filozofii?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Ikebana",
+          "is_correct": true
+        },
+        {
+          "text": "Origami",
+          "is_correct": false
+        },
+        {
+          "text": "Bonsai",
+          "is_correct": false
+        },
+        {
+          "text": "Sumi-e",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Sztuka Współczesna i Street Art",
+      "question": "Który anonimowy brytyjski artysta street artu jest autorem słynnych prac takich jak 'Balloon Girl' czy 'Napalm'?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Banksy",
+          "is_correct": true
+        },
+        {
+          "text": "Shepard Fairey",
+          "is_correct": false
+        },
+        {
+          "text": "Jean-Michel Basquiat",
+          "is_correct": false
+        },
+        {
+          "text": "Keith Haring",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zamki i Pałace Polski",
+      "question": "Który polski zamek, zwany 'Perłą Renesansu', wzniesiony nad Wisłą w Baranowie Sandomierskim, uchodzi za jeden z najpiękniejszych zamków renesansowych w Polsce?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Zamek w Baranowie Sandomierskim",
+          "is_correct": true
+        },
+        {
+          "text": "Zamek Królewski w Warszawie",
+          "is_correct": false
+        },
+        {
+          "text": "Zamek w Łańcucie",
+          "is_correct": false
+        },
+        {
+          "text": "Zamek w Niedzicy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Fotografia i Sztuka Cyfrowa",
+      "question": "Który wynalazca i artysta jest uznawany za twórcę dagerotypii - jednego z pierwszych praktycznych procesów fotograficznych?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Louis Daguerre",
+          "is_correct": true
+        },
+        {
+          "text": "William Henry Fox Talbot",
+          "is_correct": false
+        },
+        {
+          "text": "Nicéphore Niépce",
+          "is_correct": false
+        },
+        {
+          "text": "George Eastman",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Teatr i Opera",
+      "question": "Który kompozytor napisał operę 'Tristan i Izolda' (Tristan und Isolde), uważaną za przełomową w historii muzyki europejskiej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Richard Wagner",
+          "is_correct": true
+        },
+        {
+          "text": "Giuseppe Verdi",
+          "is_correct": false
+        },
+        {
+          "text": "Giacomo Puccini",
+          "is_correct": false
+        },
+        {
+          "text": "Wolfgang Amadeus Mozart",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
