@@ -1795,6 +1795,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Tradycyjne Zupy Polskie",
+      "question": "Jaki składnik kiszonkowy, będący sokiem z kapusty kiszonej, stanowi bazę zakwasową dla tradycyjnej góralskiej zupy kwaśnicy z Podhala?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Sok z kapusty kiszonej",
+          "is_correct": true
+        },
+        {
+          "text": "Zakwas żytni",
+          "is_correct": false
+        },
+        {
+          "text": "Ocet jabłkowy",
+          "is_correct": false
+        },
+        {
+          "text": "Kwas chlebowy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Desery i Wypieki",
+      "question": "Jak nazywa się słynny wiedeński tort czekoladowy z warstwą marmolady morelowej, stworzony przez Franza Sachera w 1832 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Sachertorte",
+          "is_correct": true
+        },
+        {
+          "text": "Dobostorte",
+          "is_correct": false
+        },
+        {
+          "text": "Schwarzwälder Kirschtorte",
+          "is_correct": false
+        },
+        {
+          "text": "Linzer Torte",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kuchnia Amerykańska",
+      "question": "Jak nazywa się tradycyjna gęsta zupa ze świeżych małży, śmietany i ziemniaków, będąca klasycznym przysmakiem Nowej Anglii i stanu Massachusetts?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "New England Clam Chowder",
+          "is_correct": true
+        },
+        {
+          "text": "Manhattan Clam Chowder",
+          "is_correct": false
+        },
+        {
+          "text": "Bisque z homara",
+          "is_correct": false
+        },
+        {
+          "text": "Gumbo",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kuchnia Azjatycka",
+      "question": "Jak nazywa się japońska technika marynowania mięsa lub ryb w sosie sojowym, mirinie i sake, a następnie grillowania do uzyskania błyszczącej glazury?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Teriyaki",
+          "is_correct": true
+        },
+        {
+          "text": "Yakitori",
+          "is_correct": false
+        },
+        {
+          "text": "Tempura",
+          "is_correct": false
+        },
+        {
+          "text": "Sukiyaki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kuchnia Polska Dawniej",
+      "question": "Jak nazywa się tradycyjny polski gorący napitek alkoholowy na bazie miodu, wody i przypraw korzennych (cynamon, goździki, pieprz), podawany jako rozgrzewacz w zimie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Krupnik",
+          "is_correct": true
+        },
+        {
+          "text": "Grzaniec",
+          "is_correct": false
+        },
+        {
+          "text": "Nalewka",
+          "is_correct": false
+        },
+        {
+          "text": "Kompot z suszu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kuchnia Włoska",
+      "question": "Jak nazywa się tradycyjny sycylijski deser złożony z tuby ze smażonego ciasta, nadziewanej kremem z ricotty, kandyzowanymi owocami i kawałkami czekolady?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Cannolo",
+          "is_correct": true
+        },
+        {
+          "text": "Cassata",
+          "is_correct": false
+        },
+        {
+          "text": "Sfogliatella",
+          "is_correct": false
+        },
+        {
+          "text": "Zeppola",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mięsa i Wędliny",
+      "question": "Jak nazywa się wyjątkowo marmurkowata wołowina z Japonii, pozyskiwana ze specjalnie hodowanej rasy bydła i uznawana za jeden z najdroższych produktów mięsnych na świecie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wagyu",
+          "is_correct": true
+        },
+        {
+          "text": "Angus",
+          "is_correct": false
+        },
+        {
+          "text": "Charolais",
+          "is_correct": false
+        },
+        {
+          "text": "Limousin",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Napoje i Alkohole",
+      "question": "Jak nazywa się meksykański destylat produkowany wyłącznie z niebieskiej agawy (Agave tequilana), w odróżnieniu od mezcalu, który może być wytwarzany z różnych gatunków agawy?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Tequila",
+          "is_correct": true
+        },
+        {
+          "text": "Mezcal",
+          "is_correct": false
+        },
+        {
+          "text": "Pulque",
+          "is_correct": false
+        },
+        {
+          "text": "Sotol",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Owoce i Warzywa",
+      "question": "Jak nazywa się azjatycki owoc o kolczastej skorupce i kremowym miąższu, zwany 'królem owoców', którego intensywny zapach powoduje zakaz wnoszenia go do hoteli i na lotniska w wielu krajach?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Durian",
+          "is_correct": true
+        },
+        {
+          "text": "Jackfruit",
+          "is_correct": false
+        },
+        {
+          "text": "Rambutan",
+          "is_correct": false
+        },
+        {
+          "text": "Longan",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Pierogi i Dania Mączne",
+      "question": "Jak nazywają się tradycyjne wschodnioeuropejskie pierogi z ciasta pszennego, nadziewane twarogiem i ziemniakami, będące narodowym daniem Ukrainy?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wareniki",
+          "is_correct": true
+        },
+        {
+          "text": "Pelmeni",
+          "is_correct": false
+        },
+        {
+          "text": "Manty",
+          "is_correct": false
+        },
+        {
+          "text": "Uszka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Przyprawy Świata",
+      "question": "Jak nazywa się japoński drobno mielony proszek z zielonej herbaty, stosowany do aromatyzowania napojów i deserów, którego intensywny zielony kolor wynika ze specjalnej uprawy herbaty w cieniu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Matcha",
+          "is_correct": true
+        },
+        {
+          "text": "Sencha",
+          "is_correct": false
+        },
+        {
+          "text": "Gyokuro",
+          "is_correct": false
+        },
+        {
+          "text": "Hojicha",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ryby i Owoce Morza",
+      "question": "Jak nazywa się japońska potrawa z bardzo cienko pokrojonych plastrów surowej ryby lub owoców morza, podawanych bez ryżu, w odróżnieniu od sushi?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Sashimi",
+          "is_correct": true
+        },
+        {
+          "text": "Nigiri",
+          "is_correct": false
+        },
+        {
+          "text": "Temaki",
+          "is_correct": false
+        },
+        {
+          "text": "Chirashi",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Sery i Nabiał",
+      "question": "Który tradycyjny angielski ser z niebieską pleśnią, produkowany wyłącznie w trzech hrabstwach Anglii (Leicestershire, Nottinghamshire i Derbyshire), objęty jest europejskim certyfikatem chronionej nazwy pochodzenia (PDO)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Stilton",
+          "is_correct": true
+        },
+        {
+          "text": "Cheddar",
+          "is_correct": false
+        },
+        {
+          "text": "Red Leicester",
+          "is_correct": false
+        },
+        {
+          "text": "Wensleydale",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Street Food i Fast Food",
+      "question": "W którym kraju azjatyckim w latach 80. XX wieku powstał oryginalny napój bubble tea (herbata z kulkami tapioki), dziś popularny na całym świecie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Tajwan",
+          "is_correct": true
+        },
+        {
+          "text": "Japonia",
+          "is_correct": false
+        },
+        {
+          "text": "Chiny",
+          "is_correct": false
+        },
+        {
+          "text": "Korea Południowa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słodycze i Przekąski",
+      "question": "Z jakiego kraju pochodzi krem czekoladowo-orzechowy Nutella, opracowany w 1946 roku przez Pietra Ferrero jako tańsza alternatywa dla czekolady po II wojnie światowej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Włochy",
+          "is_correct": true
+        },
+        {
+          "text": "Belgia",
+          "is_correct": false
+        },
+        {
+          "text": "Francja",
+          "is_correct": false
+        },
+        {
+          "text": "Szwajcaria",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynni Szefowie Kuchni",
+      "question": "Który francuski szef kuchni, nazywany 'królem kucharzy i kucharzem królów', napisał encyklopedyczne dzieło 'Le Guide Culinaire' i zrewolucjonizował klasyczną kuchnię francuską na przełomie XIX i XX wieku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Auguste Escoffier",
+          "is_correct": true
+        },
+        {
+          "text": "Marie-Antoine Carême",
+          "is_correct": false
+        },
+        {
+          "text": "Paul Bocuse",
+          "is_correct": false
+        },
+        {
+          "text": "Joël Robuchon",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
