@@ -1795,6 +1795,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Boks i MMA (KSW)",
+      "question": "W którym roku odbyła się pierwsza gala KSW (Konfrontacja Sztuk Walki) w Polsce, zapoczątkowując erę profesjonalnego MMA w kraju?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "2004",
+          "is_correct": true
+        },
+        {
+          "text": "2002",
+          "is_correct": false
+        },
+        {
+          "text": "2006",
+          "is_correct": false
+        },
+        {
+          "text": "2008",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Formuła 1 i Robert Kubica",
+      "question": "Podczas którego Grand Prix w 2008 roku Robert Kubica odniósł swoje jedyne i historyczne zwycięstwo w Formule 1?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Grand Prix Kanady",
+          "is_correct": true
+        },
+        {
+          "text": "Grand Prix Niemiec",
+          "is_correct": false
+        },
+        {
+          "text": "Grand Prix Australii",
+          "is_correct": false
+        },
+        {
+          "text": "Grand Prix Japonii",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Igrzyska Olimpijskie",
+      "question": "W którym roku polska reprezentacja piłki nożnej mężczyzn zdobyła złoty medal olimpijski na Igrzyskach w Monachium?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1972",
+          "is_correct": true
+        },
+        {
+          "text": "1976",
+          "is_correct": false
+        },
+        {
+          "text": "1968",
+          "is_correct": false
+        },
+        {
+          "text": "1980",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kolarstwo i Tour de Pologne",
+      "question": "W którym roku odbył się pierwszy w historii Tour de Pologne, wówczas jeszcze jako zawody amatorskie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1928",
+          "is_correct": true
+        },
+        {
+          "text": "1920",
+          "is_correct": false
+        },
+        {
+          "text": "1936",
+          "is_correct": false
+        },
+        {
+          "text": "1948",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Koszykówka i NBA",
+      "question": "Który zespół NBA wygrał w 2024 roku swój rekordowy 18. tytuł mistrzowski w historii ligi?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Boston Celtics",
+          "is_correct": true
+        },
+        {
+          "text": "Los Angeles Lakers",
+          "is_correct": false
+        },
+        {
+          "text": "Golden State Warriors",
+          "is_correct": false
+        },
+        {
+          "text": "Chicago Bulls",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Legendarni Sportowcy",
+      "question": "Ile złotych medali olimpijskich zdobył pływak Michael Phelps w ciągu całej swojej niezrównanej kariery olimpijskiej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "23",
+          "is_correct": true
+        },
+        {
+          "text": "18",
+          "is_correct": false
+        },
+        {
+          "text": "20",
+          "is_correct": false
+        },
+        {
+          "text": "28",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Lekkoatletyka",
+      "question": "Kto ustanowił aktualny rekord świata w biegu na 100 metrów, uzyskując rewelacyjny wynik 9,58 sekundy?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Usain Bolt",
+          "is_correct": true
+        },
+        {
+          "text": "Asafa Powell",
+          "is_correct": false
+        },
+        {
+          "text": "Yohan Blake",
+          "is_correct": false
+        },
+        {
+          "text": "Tyson Gay",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Piłka Nożna - Ekstraklasa",
+      "question": "Który klub wywalczył pierwszy w historii tytuł Mistrza Polski w piłce nożnej, sięgając po ten laur w 1921 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Cracovia",
+          "is_correct": true
+        },
+        {
+          "text": "Wisła Kraków",
+          "is_correct": false
+        },
+        {
+          "text": "Ruch Chorzów",
+          "is_correct": false
+        },
+        {
+          "text": "Legia Warszawa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Reprezentacja Polski",
+      "question": "Który polski piłkarz strzelił historycznego hat-tricka w meczu z Belgią na Mistrzostwach Świata 1982 roku w Hiszpanii?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Zbigniew Boniek",
+          "is_correct": true
+        },
+        {
+          "text": "Andrzej Szarmach",
+          "is_correct": false
+        },
+        {
+          "text": "Włodzimierz Lubański",
+          "is_correct": false
+        },
+        {
+          "text": "Grzegorz Lato",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Siatkówka - Sukcesy Polaków",
+      "question": "W którym roku Polska zdobyła swój pierwszy w historii złoty medal Mistrzostw Świata w siatkówce mężczyzn?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1974",
+          "is_correct": true
+        },
+        {
+          "text": "1976",
+          "is_correct": false
+        },
+        {
+          "text": "1968",
+          "is_correct": false
+        },
+        {
+          "text": "1982",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Skoki Narciarskie",
+      "question": "Ile razy Adam Małysz triumfował w klasyfikacji generalnej Pucharu Świata w skokach narciarskich?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "4 razy",
+          "is_correct": true
+        },
+        {
+          "text": "3 razy",
+          "is_correct": false
+        },
+        {
+          "text": "5 razy",
+          "is_correct": false
+        },
+        {
+          "text": "2 razy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Sporty Motorowe",
+      "question": "Ile razy legendarny Sébastien Loeb zdobył tytuł Mistrza Świata Rajdów Samochodowych (WRC) z rzędu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "9 razy",
+          "is_correct": true
+        },
+        {
+          "text": "7 razy",
+          "is_correct": false
+        },
+        {
+          "text": "8 razy",
+          "is_correct": false
+        },
+        {
+          "text": "6 razy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Sporty Zimowe",
+      "question": "Który kraj zdobył łącznie najwięcej medali w historii Zimowych Igrzysk Olimpijskich, nieprzerwanie dominując w tej klasyfikacji?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Norwegia",
+          "is_correct": true
+        },
+        {
+          "text": "Stany Zjednoczone",
+          "is_correct": false
+        },
+        {
+          "text": "Austria",
+          "is_correct": false
+        },
+        {
+          "text": "Niemcy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Stadiony i Obiekty",
+      "question": "W którym roku oddano do użytku Stadion Narodowy w Warszawie, który stał się gospodarzem EURO 2012?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "2012",
+          "is_correct": true
+        },
+        {
+          "text": "2010",
+          "is_correct": false
+        },
+        {
+          "text": "2011",
+          "is_correct": false
+        },
+        {
+          "text": "2013",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Tenis i Iga Świątek",
+      "question": "Ile tytułów Wielkiego Szlema zdobyła Iga Świątek do końca 2024 roku, wliczając sukcesy na kortach mączki i twardych?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "text": "6",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zasady i Przepisy Gier",
+      "question": "Ile punktów wart jest przyłożenie (try) w rugby union, będące podstawowym sposobem zdobywania punktów w tej dyscyplinie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "text": "6",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
