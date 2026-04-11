@@ -1128,6 +1128,236 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Maria Skłodowska-Curie",
+      "question": "W którym roku Maria Skłodowska-Curie otrzymała drugą Nagrodę Nobla — tym razem z chemii?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1911",
+          "is_correct": true
+        },
+        {
+          "text": "1903",
+          "is_correct": false
+        },
+        {
+          "text": "1921",
+          "is_correct": false
+        },
+        {
+          "text": "1934",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mikołaj Kopernik i Kosmos",
+      "question": "W którym roku Mikołaj Kopernik opublikował swoje przełomowe dzieło 'De revolutionibus orbium coelestium'?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1543",
+          "is_correct": true
+        },
+        {
+          "text": "1512",
+          "is_correct": false
+        },
+        {
+          "text": "1573",
+          "is_correct": false
+        },
+        {
+          "text": "1609",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Układ Słoneczny",
+      "question": "Ile w przybliżeniu wynosi czas jednego obiegu Neptuna wokół Słońca?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Około 165 lat",
+          "is_correct": true
+        },
+        {
+          "text": "Około 84 lata",
+          "is_correct": false
+        },
+        {
+          "text": "Około 248 lat",
+          "is_correct": false
+        },
+        {
+          "text": "Około 29 lat",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Anatomia Człowieka",
+      "question": "Jak nazywa się najdłuższa kość w ludzkim ciele?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Kość udowa",
+          "is_correct": true
+        },
+        {
+          "text": "Piszczel",
+          "is_correct": false
+        },
+        {
+          "text": "Kość ramienna",
+          "is_correct": false
+        },
+        {
+          "text": "Kość promieniowa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Tablica Mendelejewa",
+      "question": "Jaka jest liczba atomowa złota (Au) w układzie okresowym pierwiastków?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "79",
+          "is_correct": true
+        },
+        {
+          "text": "47",
+          "is_correct": false
+        },
+        {
+          "text": "78",
+          "is_correct": false
+        },
+        {
+          "text": "82",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Fizyka w Codzienności",
+      "question": "Jak nazywa się zjawisko polegające na unoszeniu się cieczy w wąskiej rurce powyżej poziomu cieczy w zbiorniku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Kapilarność",
+          "is_correct": true
+        },
+        {
+          "text": "Osmoza",
+          "is_correct": false
+        },
+        {
+          "text": "Dyfuzja",
+          "is_correct": false
+        },
+        {
+          "text": "Efekt Bernoulliego",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wynalazki, które zmieniły świat",
+      "question": "Kto wynalazł telegraf elektryczny i opracował alfabet noszący jego imię?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Samuel Morse",
+          "is_correct": true
+        },
+        {
+          "text": "Alexander Graham Bell",
+          "is_correct": false
+        },
+        {
+          "text": "Thomas Edison",
+          "is_correct": false
+        },
+        {
+          "text": "Guglielmo Marconi",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polscy Wynalazcy",
+      "question": "Który polski aptekarz i wynalazca jest uznawany za twórcę lampy naftowej oraz pioniera przemysłu naftowego?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Ignacy Łukasiewicz",
+          "is_correct": true
+        },
+        {
+          "text": "Zygmunt Wróblewski",
+          "is_correct": false
+        },
+        {
+          "text": "Karol Olszewski",
+          "is_correct": false
+        },
+        {
+          "text": "Jan Czochralski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Matematyka i Logika",
+      "question": "Ile stopni wynosi suma kątów wewnętrznych pięciokąta foremnego?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "540°",
+          "is_correct": true
+        },
+        {
+          "text": "360°",
+          "is_correct": false
+        },
+        {
+          "text": "720°",
+          "is_correct": false
+        },
+        {
+          "text": "450°",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Medycyna i Zdrowie",
+      "question": "Jak określa się grupę chorób, w których układ odpornościowy atakuje własne tkanki organizmu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Choroby autoimmunologiczne",
+          "is_correct": true
+        },
+        {
+          "text": "Alergie",
+          "is_correct": false
+        },
+        {
+          "text": "Choroby zakaźne",
+          "is_correct": false
+        },
+        {
+          "text": "Anafilaksja",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
