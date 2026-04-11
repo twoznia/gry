@@ -1611,6 +1611,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Ciało Człowieka",
+      "question": "Który gruczoł dokrewny w ludzkim mózgu wydziela hormon melatoninę odpowiedzialny za regulację rytmu dobowego?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Szyszynka (epifiza)",
+          "is_correct": true
+        },
+        {
+          "text": "Przysadka mózgowa",
+          "is_correct": false
+        },
+        {
+          "text": "Tarczyca",
+          "is_correct": false
+        },
+        {
+          "text": "Nadnercza",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Cuda Świata",
+      "question": "Który z Siedmiu Cudów Starożytnego Świata jako jedyny zachował się do naszych czasów?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wielka Piramida w Gizie",
+          "is_correct": true
+        },
+        {
+          "text": "Latarnia Morska na Faros",
+          "is_correct": false
+        },
+        {
+          "text": "Kolos Rodyjski",
+          "is_correct": false
+        },
+        {
+          "text": "Wiszące Ogrody Babilonu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Jednostki Miar i Wag",
+      "question": "Ile paskali wynosi standardowe ciśnienie atmosferyczne na poziomie morza (1 atm)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "101 325 Pa",
+          "is_correct": true
+        },
+        {
+          "text": "100 000 Pa",
+          "is_correct": false
+        },
+        {
+          "text": "103 250 Pa",
+          "is_correct": false
+        },
+        {
+          "text": "98 765 Pa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kosmos i Eksploracja",
+      "question": "Jak długo trwa jedna doba gwiazdowa, czyli jeden pełny obrót Ziemi względem odległych gwiazd?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Około 23 godziny i 56 minut",
+          "is_correct": true
+        },
+        {
+          "text": "Dokładnie 24 godziny",
+          "is_correct": false
+        },
+        {
+          "text": "24 godziny i 4 minuty",
+          "is_correct": false
+        },
+        {
+          "text": "23 godziny i 48 minut",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mity i Fakty",
+      "question": "Czy prawdą jest, że człowiek używa zaledwie 10% możliwości swojego mózgu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "To mit – badania obrazowania mózgu pokazują, że w ciągu doby aktywna jest praktycznie cała kora mózgowa",
+          "is_correct": true
+        },
+        {
+          "text": "To prawda – reszta mózgu służy wyłącznie automatycznym funkcjom życiowym",
+          "is_correct": false
+        },
+        {
+          "text": "To prawda – tylko 10% neuronów jest zdolnych do uczenia się",
+          "is_correct": false
+        },
+        {
+          "text": "To mit, ale faktycznie używamy maksymalnie 30% mózgu w ciągu życia",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody Nobla",
+      "question": "W którym roku po raz pierwszy uroczyście przyznano Nagrody Nobla zgodnie z testamentem Alfreda Nobla?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1901",
+          "is_correct": true
+        },
+        {
+          "text": "1895",
+          "is_correct": false
+        },
+        {
+          "text": "1900",
+          "is_correct": false
+        },
+        {
+          "text": "1905",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Pierwiastki i Chemia",
+      "question": "Który pierwiastek chemiczny ma najwyższą temperaturę topnienia spośród wszystkich znanych pierwiastków układu okresowego?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wolfram (W) – topi się w ok. 3422°C",
+          "is_correct": true
+        },
+        {
+          "text": "Platyna (Pt) – topi się w ok. 1768°C",
+          "is_correct": false
+        },
+        {
+          "text": "Ren (Re) – topi się w ok. 3186°C",
+          "is_correct": false
+        },
+        {
+          "text": "Osm (Os) – topi się w ok. 3033°C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Przysłowia i Powiedzenia",
+      "question": "Z którego starożytnego dzieła literackiego pochodzi łacińska sentencja Carpe diem (chwytaj dzień)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Z Ód Horacego (Quintus Horatius Flaccus, I w. p.n.e.)",
+          "is_correct": true
+        },
+        {
+          "text": "Z Eneidy Wergiliusza",
+          "is_correct": false
+        },
+        {
+          "text": "Z pism Cycerona",
+          "is_correct": false
+        },
+        {
+          "text": "Z Iliady Homera",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Rekordy Guinnessa",
+      "question": "Ile łącznie trwał najdłuższy mecz tenisowy w historii Wimbledonu, rozegrany w 2010 roku między Johnem Isnerem a Nicolasem Mahut?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "11 godzin i 5 minut",
+          "is_correct": true
+        },
+        {
+          "text": "6 godzin i 33 minuty",
+          "is_correct": false
+        },
+        {
+          "text": "8 godzin i 52 minuty",
+          "is_correct": false
+        },
+        {
+          "text": "9 godzin i 17 minut",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Stolice Świata",
+      "question": "Które miasto pełni funkcję stolicy administracyjnej (siedziby rządu) Republiki Południowej Afryki?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Pretoria",
+          "is_correct": true
+        },
+        {
+          "text": "Kapsztad",
+          "is_correct": false
+        },
+        {
+          "text": "Johannesburg",
+          "is_correct": false
+        },
+        {
+          "text": "Durban",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Cytaty",
+      "question": "W jakim kontekście Albert Einstein wypowiedział słynny cytat: Bóg nie gra w kości?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wyrażając sprzeciw wobec probabilistycznej interpretacji mechaniki kwantowej",
+          "is_correct": true
+        },
+        {
+          "text": "Komentując swoje odkrycia dotyczące struktury Wszechświata",
+          "is_correct": false
+        },
+        {
+          "text": "Tłumacząc podstawy szczególnej teorii względności",
+          "is_correct": false
+        },
+        {
+          "text": "Opisując swoje poglądy religijne na stworzenie świata",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynni Odkrywcy",
+      "question": "Który polski alpinista jako drugi człowiek na świecie zdobył wszystkie 14 ośmiotysięczników (tzw. Koronę Himalajów), dokonując tego w 1987 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Jerzy Kukuczka",
+          "is_correct": true
+        },
+        {
+          "text": "Krzysztof Wielicki",
+          "is_correct": false
+        },
+        {
+          "text": "Wanda Rutkiewicz",
+          "is_correct": false
+        },
+        {
+          "text": "Leszek Cichy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Tajemnice Świata",
+      "question": "W którym roku odkryto słynne prehistoryczne malowidła naskalne w jaskini Lascaux w południowej Francji?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1940",
+          "is_correct": true
+        },
+        {
+          "text": "1879",
+          "is_correct": false
+        },
+        {
+          "text": "1920",
+          "is_correct": false
+        },
+        {
+          "text": "1955",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wynalazki Codziennego Użytku",
+      "question": "Kto wynalazł i opatentował dynamit, rejestrując go w 1867 roku w Szwecji?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Alfred Nobel",
+          "is_correct": true
+        },
+        {
+          "text": "Thomas Edison",
+          "is_correct": false
+        },
+        {
+          "text": "Nikola Tesla",
+          "is_correct": false
+        },
+        {
+          "text": "Hiram Maxim",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zjawiska Pogodowe",
+      "question": "Według jakiej skali mierzy się intensywność tornad w Stanach Zjednoczonych (od 2007 roku obowiązuje jej rozszerzona wersja)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Skali Fujity (rozszerzona skala Fujity, EF0–EF5)",
+          "is_correct": true
+        },
+        {
+          "text": "Skali Beauforta",
+          "is_correct": false
+        },
+        {
+          "text": "Skali Saffira-Simpsona",
+          "is_correct": false
+        },
+        {
+          "text": "Skali Richtera",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Finansów",
+      "question": "Która instytucja Unii Europejskiej jest wyłącznie odpowiedzialna za emisję banknotów euro i nadzorowanie polityki pieniężnej strefy euro?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Europejski Bank Centralny (EBC)",
+          "is_correct": true
+        },
+        {
+          "text": "Europejski Bank Inwestycyjny (EBI)",
+          "is_correct": false
+        },
+        {
+          "text": "Europejski Mechanizm Stabilności (EMS)",
+          "is_correct": false
+        },
+        {
+          "text": "Komisja Europejska",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
