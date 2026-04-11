@@ -2209,6 +2209,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Atrakcje Turystyczne Europy",
+      "question": "Jak nazywa się słynna galeria sztuki we Florencji, w której przechowywany jest m.in. obraz 'Narodziny Wenus' Sandro Botticellego?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Galeria Uffizi",
+          "is_correct": true
+        },
+        {
+          "text": "Galeria Borghese",
+          "is_correct": false
+        },
+        {
+          "text": "Muzeum Watykańskie",
+          "is_correct": false
+        },
+        {
+          "text": "Luwr",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Cuda Świata UNESCO",
+      "question": "Jak nazywa się starożytne miasto wykute w różowej skale, wpisane na Listę Dziedzictwa UNESCO, będące ongiś stolicą państwa Nabatejczyków, a dziś główną atrakcją turystyczną Jordanii?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Petra",
+          "is_correct": true
+        },
+        {
+          "text": "Jerash",
+          "is_correct": false
+        },
+        {
+          "text": "Palmyra",
+          "is_correct": false
+        },
+        {
+          "text": "Wadi Rum",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Flagi i Hymny",
+      "question": "Flaga jakiego państwa jest jedyną na świecie, która nie ma kształtu prostokąta ani kwadratu, lecz składa się z dwóch trójkątów tworzących nieregularny czworobok?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Nepalu",
+          "is_correct": true
+        },
+        {
+          "text": "Szwajcarii",
+          "is_correct": false
+        },
+        {
+          "text": "Watykanu",
+          "is_correct": false
+        },
+        {
+          "text": "Bangladeszu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Geologia i Wulkany",
+      "question": "Jak nazywa się największy czynny wulkan tarczowy na Ziemi, leżący na wyspie Hawai'i w archipelagu hawajskim?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Mauna Loa",
+          "is_correct": true
+        },
+        {
+          "text": "Kilauea",
+          "is_correct": false
+        },
+        {
+          "text": "Mauna Kea",
+          "is_correct": false
+        },
+        {
+          "text": "Mount St. Helens",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Góry Świata",
+      "question": "Jak nazywa się trzeci co do wysokości szczyt świata, leżący na granicy Indii i Nepalu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Kangczendzenga",
+          "is_correct": true
+        },
+        {
+          "text": "Lhotse",
+          "is_correct": false
+        },
+        {
+          "text": "Makalu",
+          "is_correct": false
+        },
+        {
+          "text": "Cho Oyu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kontynenty i Oceany",
+      "question": "Jak nazywa się najgłębsze znane miejsce na Ziemi, położone w Rowie Mariańskim na Oceanie Spokojnym?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Głębina Challengera",
+          "is_correct": true
+        },
+        {
+          "text": "Głębina Vitjaź",
+          "is_correct": false
+        },
+        {
+          "text": "Rów Puerto Rico",
+          "is_correct": false
+        },
+        {
+          "text": "Rów Sundajski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mapy i Współrzędne",
+      "question": "Która projekcja kartograficzna, powszechnie stosowana w nawigacji morskiej, zachowuje kąty i kształty obszarów, lecz zniekształca powierzchnie rejonów polarnych?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Projekcja Merkatora",
+          "is_correct": true
+        },
+        {
+          "text": "Projekcja Robinsona",
+          "is_correct": false
+        },
+        {
+          "text": "Projekcja Mollweidego",
+          "is_correct": false
+        },
+        {
+          "text": "Projekcja Azimutalna",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Orientacja w terenie",
+      "question": "Jak nazywa się technika nawigacyjna polegająca na wyznaczaniu własnej pozycji poprzez pomiar kątów w stosunku do co najmniej trzech znanych punktów w terenie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Triangulacja",
+          "is_correct": true
+        },
+        {
+          "text": "Trilateration",
+          "is_correct": false
+        },
+        {
+          "text": "Azymutering",
+          "is_correct": false
+        },
+        {
+          "text": "Biangulacja",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Parki Narodowe w Polsce",
+      "question": "Ile parków narodowych liczy Polska łącznie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "23",
+          "is_correct": true
+        },
+        {
+          "text": "18",
+          "is_correct": false
+        },
+        {
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "text": "25",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polskie Wybrzeże",
+      "question": "Jak nazywa się rzeka przepływająca przez Kołobrzeg i uchodząca do Morza Bałtyckiego?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Parsęta",
+          "is_correct": true
+        },
+        {
+          "text": "Rega",
+          "is_correct": false
+        },
+        {
+          "text": "Słupia",
+          "is_correct": false
+        },
+        {
+          "text": "Łeba",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Pustynie i Dżungle",
+      "question": "Jak nazywa się rozległy las deszczowy w Afryce Środkowej, rosnący w dorzeczu rzeki Kongo, będący drugim co do wielkości lasem deszczowym na świecie po Amazonii?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Las deszczowy Konga",
+          "is_correct": true
+        },
+        {
+          "text": "Las Gwinei Równikowej",
+          "is_correct": false
+        },
+        {
+          "text": "Puszcza Gabońska",
+          "is_correct": false
+        },
+        {
+          "text": "Dżungla Nigru",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Rzeki i Jeziora Polski",
+      "question": "Ile kilometrów wynosi długość Wisły, najdłuższej rzeki Polski?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1047 km",
+          "is_correct": true
+        },
+        {
+          "text": "854 km",
+          "is_correct": false
+        },
+        {
+          "text": "1192 km",
+          "is_correct": false
+        },
+        {
+          "text": "979 km",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Stolice Świata",
+      "question": "Jakie miasto jest stolicą Mjanmy (Birmy), zbudowane od podstaw i oficjalnie ogłoszone nową stolicą kraju w 2006 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Naypyidaw",
+          "is_correct": true
+        },
+        {
+          "text": "Rangun",
+          "is_correct": false
+        },
+        {
+          "text": "Mandalaj",
+          "is_correct": false
+        },
+        {
+          "text": "Mawlamyine",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Wyspy",
+      "question": "Jak nazywa się odległa wyspa na Oceanie Spokojnym, słynąca z kamiennych posągów zwanych moai, należąca administracyjnie do Chile?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wyspa Wielkanocna",
+          "is_correct": true
+        },
+        {
+          "text": "Wyspa Pitcairn",
+          "is_correct": false
+        },
+        {
+          "text": "Wyspa Galapagos",
+          "is_correct": false
+        },
+        {
+          "text": "Tahiti",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Tatry i Podhale",
+      "question": "Ile metrów nad poziomem morza wynosi wysokość Rysów – najwyższego szczytu w Polsce?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "2499 m n.p.m.",
+          "is_correct": true
+        },
+        {
+          "text": "2655 m n.p.m.",
+          "is_correct": false
+        },
+        {
+          "text": "2301 m n.p.m.",
+          "is_correct": false
+        },
+        {
+          "text": "2178 m n.p.m.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Województwa i Miasta Polski",
+      "question": "W którym polskim mieście, będącym stolicą województwa lubelskiego, znajduje się zamek z kaplicą zawierającą unikatowe średniowieczne freski rusko-bizantyjskie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Lublin",
+          "is_correct": true
+        },
+        {
+          "text": "Zamość",
+          "is_correct": false
+        },
+        {
+          "text": "Chełm",
+          "is_correct": false
+        },
+        {
+          "text": "Sandomierz",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
