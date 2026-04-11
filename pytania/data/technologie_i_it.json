@@ -1795,6 +1795,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Cyberbezpieczeństwo",
+      "question": "Który protokół kryptograficzny zastąpił SSL i jest obecnie standardem zabezpieczania połączeń w warstwie transportowej internetu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "TLS (Transport Layer Security)",
+          "is_correct": true
+        },
+        {
+          "text": "IPSec",
+          "is_correct": false
+        },
+        {
+          "text": "SSH",
+          "is_correct": false
+        },
+        {
+          "text": "HTTPS",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Ewolucja Nośników Danych",
+      "question": "Jaką pojemność miał pierwszy komercyjny dysk twardy – IBM 350 (RAMAC) wprowadzony w 1956 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Ok. 5 MB",
+          "is_correct": true
+        },
+        {
+          "text": "Ok. 50 MB",
+          "is_correct": false
+        },
+        {
+          "text": "Ok. 500 KB",
+          "is_correct": false
+        },
+        {
+          "text": "Ok. 1 GB",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Giganci Technologiczni",
+      "question": "W którym roku firma Apple jako pierwsza spółka notowana na giełdzie w USA przekroczyła wartość rynkową 1 biliona dolarów?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "2018",
+          "is_correct": true
+        },
+        {
+          "text": "2016",
+          "is_correct": false
+        },
+        {
+          "text": "2020",
+          "is_correct": false
+        },
+        {
+          "text": "2015",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gry Wideo i Konsole",
+      "question": "Która konsola firmy Sega jako pierwsza na świecie zaoferowała wbudowany modem umożliwiający grę online (premiera w Japonii w 1998 roku)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Sega Dreamcast",
+          "is_correct": true
+        },
+        {
+          "text": "Sega Saturn",
+          "is_correct": false
+        },
+        {
+          "text": "Sega Mega Drive",
+          "is_correct": false
+        },
+        {
+          "text": "Sega Game Gear",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Komputerów",
+      "question": "Który uczony jest uważany za twórcę pierwszego mechanicznego kalkulatora zdolnego do wykonywania wszystkich czterech podstawowych działań arytmetycznych (tzw. „koło Leibniza”, ok. 1673 r.)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Gottfried Wilhelm Leibniz",
+          "is_correct": true
+        },
+        {
+          "text": "Blaise Pascal",
+          "is_correct": false
+        },
+        {
+          "text": "Charles Babbage",
+          "is_correct": false
+        },
+        {
+          "text": "Ada Lovelace",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Internet i WWW",
+      "question": "Który numer RFC definiuje specyfikację protokółu HTTP/1.1, obowiązującą przez ponad dekadę jako dominujący standard przesyłania danych w sieci WWW?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "RFC 2616",
+          "is_correct": true
+        },
+        {
+          "text": "RFC 1945",
+          "is_correct": false
+        },
+        {
+          "text": "RFC 7230",
+          "is_correct": false
+        },
+        {
+          "text": "RFC 793",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Języki Programowania",
+      "question": "Który paradygmat programowania leży u podstaw języka Haskell, w którym funkcje są wartościami pierwszej klasy, a efekty uboczne są kontrolowane przez monady?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Programowanie funkcyjne",
+          "is_correct": true
+        },
+        {
+          "text": "Programowanie obiektowe",
+          "is_correct": false
+        },
+        {
+          "text": "Programowanie proceduralne",
+          "is_correct": false
+        },
+        {
+          "text": "Programowanie logiczne",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kryptowaluty i Blockchain",
+      "question": "Jaki mechanizm konsensusu stosuje sieć Bitcoin do zatwierdzania transakcji i tworzenia nowych bloków w łańcuchu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Proof of Work (PoW)",
+          "is_correct": true
+        },
+        {
+          "text": "Proof of Stake (PoS)",
+          "is_correct": false
+        },
+        {
+          "text": "Delegated Proof of Stake (DPoS)",
+          "is_correct": false
+        },
+        {
+          "text": "Proof of Authority (PoA)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Media Społecznościowe",
+      "question": "Jak nazywał się oryginalny algorytm rankingowy Facebooka, decydujący o widoczności postów w kanale aktualności użytkowników?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "EdgeRank",
+          "is_correct": true
+        },
+        {
+          "text": "PageRank",
+          "is_correct": false
+        },
+        {
+          "text": "FeedRank",
+          "is_correct": false
+        },
+        {
+          "text": "SocialScore",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Rozwój Robotyki i AI",
+      "question": "W którym roku superkomputer IBM Deep Blue pokonał w meczu rewanżowym mistrza świata w szachach Garriego Kasparowa?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1997",
+          "is_correct": true
+        },
+        {
+          "text": "1995",
+          "is_correct": false
+        },
+        {
+          "text": "1999",
+          "is_correct": false
+        },
+        {
+          "text": "2001",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Smartfony i Urządzenia Mobilne",
+      "question": "W którym roku Apple zaprezentowało technologię Face ID w modelu iPhone X, zastępując nią czytnik linii papilarnych Touch ID?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "2017",
+          "is_correct": true
+        },
+        {
+          "text": "2016",
+          "is_correct": false
+        },
+        {
+          "text": "2018",
+          "is_correct": false
+        },
+        {
+          "text": "2019",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Sprzęt Komputerowy (Hardware)",
+      "question": "Ile tranzystorów zawierał pierwszy komercyjny mikroprocesor Intel 4004, wprowadzony na rynek w 1971 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "2300",
+          "is_correct": true
+        },
+        {
+          "text": "29 000",
+          "is_correct": false
+        },
+        {
+          "text": "134 miliony",
+          "is_correct": false
+        },
+        {
+          "text": "4,5 miliona",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Streaming i VOD",
+      "question": "W którym roku platforma Netflix po raz pierwszy uruchomiła usługę strumieniowania wideo przez Internet, odchodząc od modelu wysyłki płyt DVD?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "2007",
+          "is_correct": true
+        },
+        {
+          "text": "2005",
+          "is_correct": false
+        },
+        {
+          "text": "2010",
+          "is_correct": false
+        },
+        {
+          "text": "2003",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Systemy Operacyjne",
+      "question": "Który system plików, będący następcą ext2 i ext3, jest domyślnie stosowany w większości współczesnych dystrybucji Linuksa?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "ext4",
+          "is_correct": true
+        },
+        {
+          "text": "NTFS",
+          "is_correct": false
+        },
+        {
+          "text": "FAT32",
+          "is_correct": false
+        },
+        {
+          "text": "ZFS",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Wirusy i Ataki Hakerskie",
+      "question": "Który robók komputerowy, odkryty w 2010 roku i wymierzony w irański program nuklearny, był pierwszym złośliwym oprogramowaniem celowo atakującym przemysłowe systemy sterowania SCADA?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Stuxnet",
+          "is_correct": true
+        },
+        {
+          "text": "WannaCry",
+          "is_correct": false
+        },
+        {
+          "text": "Conficker",
+          "is_correct": false
+        },
+        {
+          "text": "Flame",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Technologie Przyszłości",
+      "question": "Jak określa się zjawisko, w którym komputer kwantowy rozwiązuje określone zadanie obliczeniowe szybciej niż jakikolwiek znany klasyczny superkomputer?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Supremacja kwantowa (ang. quantum supremacy)",
+          "is_correct": true
+        },
+        {
+          "text": "Splątanie kwantowe",
+          "is_correct": false
+        },
+        {
+          "text": "Tunelowanie kwantowe",
+          "is_correct": false
+        },
+        {
+          "text": "Superpozycja kwantowa",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
