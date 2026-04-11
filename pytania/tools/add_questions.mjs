@@ -51,9 +51,15 @@ function parseArgs() {
 
   for (let i = 0; i < args.length; i++) {
     switch (args[i]) {
-      case '--file':    opts.file   = args[++i]; break;
-      case '--level':   opts.level  = args[++i]; break;
-      case '--topic':   opts.topic  = args[++i]; break;
+      case '--file':
+        if (i + 1 >= args.length) { console.error('Błąd: --file wymaga wartości'); process.exit(1); }
+        opts.file   = args[++i]; break;
+      case '--level':
+        if (i + 1 >= args.length) { console.error('Błąd: --level wymaga wartości'); process.exit(1); }
+        opts.level  = args[++i]; break;
+      case '--topic':
+        if (i + 1 >= args.length) { console.error('Błąd: --topic wymaga wartości'); process.exit(1); }
+        opts.topic  = args[++i]; break;
       case '--dry-run': opts.dryRun = true;       break;
       case '--help':
       case '-h':        showHelp(); process.exit(0);
@@ -92,6 +98,24 @@ Odpowiedz WYŁĄCZNIE w formacie JSON (bez żadnego dodatkowego tekstu ani blok�
     {"text": "...", "is_correct": false}
   ]
 }`;
+}
+
+// ── JSON extraction (balanced braces) ────────────────────────────────────────
+
+/**
+ * Extract the first top-level JSON object from a string by counting balanced
+ * braces.  This avoids greedy-regex pitfalls when the model appends extra text
+ * or trailing `{}` after the intended JSON payload.
+ */
+function extractJSON(text) {
+  const start = text.indexOf('{');
+  if (start === -1) return null;
+  let depth = 0;
+  for (let i = start; i < text.length; i++) {
+    if (text[i] === '{')      depth++;
+    else if (text[i] === '}') { depth--; if (depth === 0) return text.slice(start, i + 1); }
+  }
+  return null;
 }
 
 // ── OpenAI API call ───────────────────────────────────────────────────────────
@@ -163,9 +187,9 @@ async function generateQuestion(category, subcategory, level, topic, apiKey, mod
     // Extract JSON block from response
     let parsed;
     try {
-      const match = raw.match(/\{[\s\S]*\}/);
-      if (!match) throw new Error('Brak bloku JSON w odpowiedzi');
-      parsed = JSON.parse(match[0]);
+      const jsonStr = extractJSON(raw);
+      if (!jsonStr) throw new Error('Brak bloku JSON w odpowiedzi');
+      parsed = JSON.parse(jsonStr);
     } catch (e) {
       if (attempt === MAX_ATTEMPTS) throw new Error(`Nieprawidłowy JSON: ${e.message}`);
       continue;

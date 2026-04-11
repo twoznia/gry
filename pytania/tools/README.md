@@ -8,7 +8,7 @@ Narzędzie CLI do dodawania pytań generowanych przez AI do plików `pytania/dat
 
 | Wymaganie | Wersja |
 |-----------|--------|
-| Node.js | 18 lub nowszy (wbudowany `fetch`) |
+| Node.js | **18 LTS lub nowszy** (wbudowany `fetch`) |
 | Klucz API OpenAI | `OPENAI_API_KEY` w zmiennej środowiskowej |
 
 ---
