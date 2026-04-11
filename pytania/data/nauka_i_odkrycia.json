@@ -5,6 +5,7 @@
     {
       "subcategory": "Maria Skłodowska-Curie",
       "question": "Jakie dwa niebezpieczne, świecące pierwiastki odkryła polska noblistka Maria Skłodowska-Curie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Polon i rad",
@@ -27,6 +28,7 @@
     {
       "subcategory": "Maria Skłodowska-Curie",
       "question": "Z jakim zdolnym francuskim fizykiem wzięła ślub, by wspólnie w biedzie prowadzić badania?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Piotrem Curie",
@@ -49,6 +51,7 @@
     {
       "subcategory": "Maria Skłodowska-Curie",
       "question": "Z jakim prestiżowym, paryskim uniwersytetem Skłodowska związała całą swą naukową karierę?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Sorboną",
@@ -71,6 +74,7 @@
     {
       "subcategory": "Maria Skłodowska-Curie",
       "question": "Na cześć jakiego kraju noblistka dumnie nadała nazwę pierwszemu ze swoich wielkich odkryć?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Na cześć Polski",
@@ -93,6 +97,7 @@
     {
       "subcategory": "Mikołaj Kopernik i Kosmos",
       "question": "Opracowanie jakiej odważnej i przewrotowej teorii przypisuje się Mikołajowi Kopernikowi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Teorii heliocentrycznej",
@@ -115,6 +120,7 @@
     {
       "subcategory": "Mikołaj Kopernik i Kosmos",
       "question": "Jak zatytułowano jego wiekopomne, epokowe dzieło, wydrukowane niedługo przed jego śmiercią?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "O obrotach sfer niebieskich",
@@ -137,6 +143,7 @@
     {
       "subcategory": "Mikołaj Kopernik i Kosmos",
       "question": "W jakiej polskiej miejscowości Kopernik prowadził latami żmudne obserwacje na swojej wieży?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "We Fromborku",
@@ -159,6 +166,7 @@
     {
       "subcategory": "Mikołaj Kopernik i Kosmos",
       "question": "Które kujawsko-pomorskie miasto znane z pierników szczyci się tym, że urodził się tam Kopernik?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Toruń",
@@ -181,6 +189,7 @@
     {
       "subcategory": "Mikołaj Kopernik i Kosmos",
       "question": "Jaką niespodziewaną i trudną profesją, obok samej astronomii, zajmował się zawodowo Kopernik?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Był lekarzem i ekonomistą",
@@ -203,6 +212,7 @@
     {
       "subcategory": "Układ Słoneczny",
       "question": "Która niewielka, skalista planeta krąży bezpośrednio, jako pierwsza, wokół centralnej gwiazdy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Merkury",
@@ -225,6 +235,7 @@
     {
       "subcategory": "Układ Słoneczny",
       "question": "Jaka gigantyczna, ciężka i burzliwa planeta gazowa jest największa w naszym sąsiedztwie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jowisz",
@@ -247,6 +258,7 @@
     {
       "subcategory": "Układ Słoneczny",
       "question": "Którą planetę w kosmosie nazywa się 'czerwoną', ze względu na zalegający, rdzawy tlenek żelaza?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Marsa",
@@ -269,6 +281,7 @@
     {
       "subcategory": "Układ Słoneczny",
       "question": "Czym na pierwszy rzut oka wyróżnia się olbrzymi Saturn spośród pozostałych znanych planet?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Rozbudowanym systemem pierścieni",
@@ -291,6 +304,7 @@
     {
       "subcategory": "Układ Słoneczny",
       "question": "Który dawniej pełnoprawny obiekt w 2006 roku stracił miano planety, stając się planetą karłowatą?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pluton",
@@ -313,6 +327,7 @@
     {
       "subcategory": "Anatomia Człowieka",
       "question": "Co stanowi najtwardszą, elastyczną strukturę wsporczą ciała, w której ukryty jest rdzeń kręgowy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kręgosłup",
@@ -335,6 +350,7 @@
     {
       "subcategory": "Anatomia Człowieka",
       "question": "Jaki specjalny narząd w ciele potrafi stale, miarowo, pompować utlenowaną krew do aorty?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Serce",
@@ -357,6 +373,7 @@
     {
       "subcategory": "Anatomia Człowieka",
       "question": "W jakiej solidnej, kostnej puszce skrywa się przed obrażeniami delikatna struktura ludzkiego mózgu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W mózgoczaszce",
@@ -379,6 +396,7 @@
     {
       "subcategory": "Anatomia Człowieka",
       "question": "Jaki silny mięsień w postaci kopuły bezpośrednio oddziela nasze płuca od jamy brzusznej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Przepona",
@@ -401,6 +419,7 @@
     {
       "subcategory": "Anatomia Człowieka",
       "question": "Gdzie zlokalizowana jest najgrubsza, najbardziej masywna i najdłuższa kość u dorosłego człowieka?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W udzie (kość udowa)",
@@ -423,6 +442,7 @@
     {
       "subcategory": "Tablica Mendelejewa",
       "question": "Jaki lekki i wszechobecny we wszechświecie gaz szczyci się numerem pierwszym na tablicy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wodór",
@@ -445,6 +465,7 @@
     {
       "subcategory": "Tablica Mendelejewa",
       "question": "Który wyjątkowy, błyszczący na srebrno metal w temperaturze pokojowej zawsze pozostaje w płynie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Rtęć",
@@ -467,6 +488,7 @@
     {
       "subcategory": "Tablica Mendelejewa",
       "question": "Pod jaką pojedynczą, wymowną literą kryje się chemiczny znak cennego i życiodajnego tlenu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "O",
@@ -489,6 +511,7 @@
     {
       "subcategory": "Tablica Mendelejewa",
       "question": "Kto w drugiej połowie XIX wieku jako pierwszy sensownie i metodycznie uporządkował pierwiastki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Dmitrij Mendelejew",
@@ -511,6 +534,7 @@
     {
       "subcategory": "Tablica Mendelejewa",
       "question": "Co symbolizuje w tablicy powszechnie uznany i pożądany, krótki, dwuliterowy skrót 'Au'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Złoto",
@@ -533,6 +557,7 @@
     {
       "subcategory": "Fizyka w Codzienności",
       "question": "Jaka niewidzialna, powszechna i niezwykle użyteczna siła sprawia, że rzucone jabłko spada na ziemię?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Grawitacja",
@@ -555,6 +580,7 @@
     {
       "subcategory": "Fizyka w Codzienności",
       "question": "W jakich popularnych i domowych jednostkach pomiarowych wyraża się ogólne napięcie w gniazdkach?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W woltach",
@@ -577,6 +603,7 @@
     {
       "subcategory": "Fizyka w Codzienności",
       "question": "Co powstaje w procesie mocnego, fizycznego pocierania o siebie własnych dłoni podczas mrozu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ciepło (wynikające z tarcia)",
@@ -599,6 +626,7 @@
     {
       "subcategory": "Fizyka w Codzienności",
       "question": "Jaką wadę wzroku skutecznie koryguje na nosie soczewka nosząca fizyczną nazwę 'skupiająca'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Dalekowzroczność",
@@ -621,6 +649,7 @@
     {
       "subcategory": "Fizyka w Codzienności",
       "question": "Czego jednostką fizyczną w akustyce, oznaczaną powszechnie na sprzęcie znakiem dB, jest decybel?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Poziomu głośności dźwięku",
@@ -643,6 +672,7 @@
     {
       "subcategory": "Wynalazki, które zmieniły świat",
       "question": "Kto historycznie najczęściej podawany jest za twórcę i wynalazcę wydajnej i silnej maszyny parowej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "James Watt",
@@ -665,6 +695,7 @@
     {
       "subcategory": "Wynalazki, które zmieniły świat",
       "question": "Co wymyślił, doprowadził do produkcji i opatentował znany Amerykanin, Aleksander Graham Bell?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Telefon do rozmów",
@@ -687,6 +718,7 @@
     {
       "subcategory": "Wynalazki, które zmieniły świat",
       "question": "Którzy zapaleńcy lotnictwa i bracia, po raz pierwszy pofrunęli swoją ciężką maszyną w 1903 r.?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bracia Wright",
@@ -709,6 +741,7 @@
     {
       "subcategory": "Wynalazki, które zmieniły świat",
       "question": "Jak nazywał się europejski ojciec nowożytnej poligrafii, stwórca genialnej, ruchomej czcionki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Johannes Gutenberg",
@@ -731,6 +764,7 @@
     {
       "subcategory": "Wynalazki, które zmieniły świat",
       "question": "Z wyprodukowania jakiego święcącego gadżetu zasłynął i dorobił się fortuny Thomas Alva Edison?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z żarówki elektrycznej",
@@ -753,6 +787,7 @@
     {
       "subcategory": "Polscy Wynalazcy",
       "question": "Co skonstruował, stosując innowacyjne, jak na tamte czasy zasady, aptekarz Ignacy Łukasiewicz?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Lampę naftową",
@@ -775,6 +810,7 @@
     {
       "subcategory": "Polscy Wynalazcy",
       "question": "Jaki specjalistyczny ekwipunek, pomagający rozbrajać miny dla aliantów, stworzył Józef Kosacki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wykrywacz min",
@@ -797,6 +833,7 @@
     {
       "subcategory": "Polscy Wynalazcy",
       "question": "Co nowatorskiego dla informatyki wymyślił inżynier Jacek Karpiński, tworząc legendarny model K-202?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pionierski minikomputer",
@@ -819,6 +856,7 @@
     {
       "subcategory": "Polscy Wynalazcy",
       "question": "Jaką niezwykłą, światową metodę pozyskiwania monokryształów opracował Polak, Jan Czochralski?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Metodę Czochralskiego",
@@ -841,6 +879,7 @@
     {
       "subcategory": "Polscy Wynalazcy",
       "question": "Kto jeszcze w dalekim XIX wieku budował dla zaborcy działające i skuteczne okręty podwodne?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Stefan Drzewiecki",
@@ -863,6 +902,7 @@
     {
       "subcategory": "Matematyka i Logika",
       "question": "Ile dokładnie wynosi suma kątów w każdym płaskim i zwykłym, nieodkształconym trójkącie matematycznym?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "180 stopni",
@@ -885,6 +925,7 @@
     {
       "subcategory": "Matematyka i Logika",
       "question": "Jak w potocznej nauce nazywamy tę nieskończoną stałą wyrażającą stosunek obwodu koła do średnicy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Liczbą Pi",
@@ -907,6 +948,7 @@
     {
       "subcategory": "Matematyka i Logika",
       "question": "Według klasycznego twierdzenia Pitagorasa: kwadrat przeciwprostokątnej jest równy sumie kwadratów...",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Przyprostokątnych",
@@ -929,6 +971,7 @@
     {
       "subcategory": "Matematyka i Logika",
       "question": "Jakiego powszechnego symbolu używa się, aby pokazać jedną setną części całości (ułamek o mianowniku 100)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "% (Procent)",
@@ -951,6 +994,7 @@
     {
       "subcategory": "Matematyka i Logika",
       "question": "Jak fachowo i poprawnie nazywa się wynik dodawania do siebie dokładnie dwóch lub więcej składników?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Suma",
@@ -973,6 +1017,7 @@
     {
       "subcategory": "Medycyna i Zdrowie",
       "question": "Kto z dumą dokonał wielkiego i przełomowego dla ludzkości odkrycia działania penicyliny?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Alexander Fleming",
@@ -995,6 +1040,7 @@
     {
       "subcategory": "Medycyna i Zdrowie",
       "question": "Przed zakażeniem jaką bardzo groźną chorobą ratowała popularna i wczesna szczepionka Pasteura?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Przed wścieklizną",
@@ -1017,6 +1063,7 @@
     {
       "subcategory": "Medycyna i Zdrowie",
       "question": "Jak prawidłowo nazywa się ten specjalny, żółtawy płyn tkankowy, silnie związany z naszą odpornością?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Limfa (Chłonka)",
@@ -1039,6 +1086,7 @@
     {
       "subcategory": "Medycyna i Zdrowie",
       "question": "Z jakiego specjalnego, szkodliwego w nadmiarze sprzętu diagności korzystają, by prześwietlić kości?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z aparatu RTG",
@@ -1061,6 +1109,7 @@
     {
       "subcategory": "Medycyna i Zdrowie",
       "question": "Kto, w charakterystycznych okolicznościach, jako pierwszy w Polsce z powodzeniem przeszczepił serce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Zbigniew Religa",

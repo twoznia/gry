@@ -5,6 +5,7 @@
     {
       "subcategory": "Lektury Szkolne",
       "question": "Kto jest autorem epopei narodowej 'Pan Tadeusz'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Adam Mickiewicz",
@@ -27,6 +28,7 @@
     {
       "subcategory": "Lektury Szkolne",
       "question": "Jak miał na imię kupiec, główny bohater 'Lalki' Bolesława Prusa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Stanisław Wokulski",
@@ -49,6 +51,7 @@
     {
       "subcategory": "Lektury Szkolne",
       "question": "O kim opowiada książka 'Kamienie na szaniec' Aleksandra Kamińskiego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "O członkach Szarych Szeregów",
@@ -71,6 +74,7 @@
     {
       "subcategory": "Lektury Szkolne",
       "question": "Z jakiego utworu Juliusza Słowackiego pochodzi bezwzględna królowa Balladyna?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z dramatu 'Balladyna'",
@@ -93,6 +97,7 @@
     {
       "subcategory": "Lektury Szkolne",
       "question": "Z jakim zwierzęciem zaprzyjaźnił się Mały Książę z powieści Exupéry'ego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z lisem",
@@ -115,6 +120,7 @@
     {
       "subcategory": "Polscy Nobliści",
       "question": "Kto otrzymał Literacką Nagrodę Nobla za epicką powieść 'Chłopi'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Władysław Reymont",
@@ -137,6 +143,7 @@
     {
       "subcategory": "Polscy Nobliści",
       "question": "Która polska pisarka zdobyła literackiego Nobla za rok 2018?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Olga Tokarczuk",
@@ -159,6 +166,7 @@
     {
       "subcategory": "Polscy Nobliści",
       "question": "Za jakie wielkie dzieło Henryk Sienkiewicz otrzymał Nagrodę Nobla w 1905 r.?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Za całokształt (głównie Quo Vadis)",
@@ -181,6 +189,7 @@
     {
       "subcategory": "Polscy Nobliści",
       "question": "W którym roku poetka Wisława Szymborska odebrała Nagrodę Nobla?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W 1996 r.",
@@ -203,6 +212,7 @@
     {
       "subcategory": "Polscy Nobliści",
       "question": "Kto jest autorem 'Zniewolonego umysłu' uhonorowanym Noblem w 1980 r.?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Czesław Miłosz",
@@ -225,6 +235,7 @@
     {
       "subcategory": "Poezja Polska",
       "question": "Kogo uznaje się za najwybitniejszego polskiego poetę renesansu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jana Kochanowskiego",
@@ -247,6 +258,7 @@
     {
       "subcategory": "Poezja Polska",
       "question": "Kto napisał słynny wiersz dla dzieci 'Lokomotywa'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Julian Tuwim",
@@ -269,6 +281,7 @@
     {
       "subcategory": "Poezja Polska",
       "question": "Do jakiej epoki literackiej zaliczany jest twórczość Adama Mickiewicza?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Do Romantyzmu",
@@ -291,6 +304,7 @@
     {
       "subcategory": "Poezja Polska",
       "question": "Który tragicznie zmarły w powstaniu poeta należał do Pokolenia Kolumbów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Krzysztof Kamil Baczyński",
@@ -313,6 +327,7 @@
     {
       "subcategory": "Poezja Polska",
       "question": "Jak rozpoczyna się Inwokacja w 'Panu Tadeuszu'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Litwo! Ojczyzno moja!",
@@ -335,6 +350,7 @@
     {
       "subcategory": "Gramatyka i Ortografia",
       "question": "Która część mowy odmienia się przez przypadki i odpowiada na pytania: kto? co?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Rzeczownik",
@@ -357,6 +373,7 @@
     {
       "subcategory": "Gramatyka i Ortografia",
       "question": "Jak nazywają się wyrazy o znaczeniu przeciwstawnym (np. biały - czarny)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Antonimy",
@@ -379,6 +396,7 @@
     {
       "subcategory": "Gramatyka i Ortografia",
       "question": "Na jakie pytania odpowiada przypadek zwany Dopełniaczem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "kogo? czego? (nie ma)",
@@ -401,6 +419,7 @@
     {
       "subcategory": "Gramatyka i Ortografia",
       "question": "Które z poniższych słów jest poprawnie zapisane ortograficznie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Rzeżucha",
@@ -423,6 +442,7 @@
     {
       "subcategory": "Gramatyka i Ortografia",
       "question": "Kto, co, jaki, który, gdzie, kiedy – to zaimki...",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pytające",
@@ -445,6 +465,7 @@
     {
       "subcategory": "Kryminały i Thrillery",
       "question": "Jak nazywa się genialny detektyw stworzony przez Arthura Conana Doyle'a?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Sherlock Holmes",
@@ -467,6 +488,7 @@
     {
       "subcategory": "Kryminały i Thrillery",
       "question": "Jaka brytyjska pisarka zyskała tytuł 'Królowej Kryminału'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Agatha Christie",
@@ -489,6 +511,7 @@
     {
       "subcategory": "Kryminały i Thrillery",
       "question": "Kto z polskich autorów stworzył popularną serię o komisarzu Forście?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Remigiusz Mróz",
@@ -511,6 +534,7 @@
     {
       "subcategory": "Kryminały i Thrillery",
       "question": "Jak nazywa się szwedzki dziennikarz, autor trylogii 'Millennium'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Stieg Larsson",
@@ -533,6 +557,7 @@
     {
       "subcategory": "Kryminały i Thrillery",
       "question": "Jaki owalny, łysy detektyw Belg rozwiązywał zagadki u Agathy Christie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Herkules Poirot",
@@ -555,6 +580,7 @@
     {
       "subcategory": "Fantasy i Sci-Fi",
       "question": "Który polski autor napisał kultową sagę o Wiedźminie Geralcie z Rivii?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Andrzej Sapkowski",
@@ -577,6 +603,7 @@
     {
       "subcategory": "Fantasy i Sci-Fi",
       "question": "Jak nazywał się magiczny świat stworzony w książkach J.R.R. Tolkiena?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Śródziemie",
@@ -599,6 +626,7 @@
     {
       "subcategory": "Fantasy i Sci-Fi",
       "question": "Kto napisał przełomową powieść science fiction 'Diuna' z 1965 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Frank Herbert",
@@ -621,6 +649,7 @@
     {
       "subcategory": "Fantasy i Sci-Fi",
       "question": "Jak ma na imię bohater, który uczył się w szkole magii i czarodziejstwa Hogwart?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Harry Potter",
@@ -643,6 +672,7 @@
     {
       "subcategory": "Fantasy i Sci-Fi",
       "question": "Kto jest autorem 'Dzienników gwiazdowych' i stwórcą postaci Ijona Tichego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Stanisław Lem",
@@ -665,6 +695,7 @@
     {
       "subcategory": "Słynne Cytaty Literackie",
       "question": "Z jakiego dramatu Williama Szekspira pochodzą słowa 'Być albo nie być'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Hamleta",
@@ -687,6 +718,7 @@
     {
       "subcategory": "Słynne Cytaty Literackie",
       "question": "Kto nawoływał słowami: 'Miej serce i patrzaj w serce!' w balladzie Romantyczność?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Adam Mickiewicz",
@@ -709,6 +741,7 @@
     {
       "subcategory": "Słynne Cytaty Literackie",
       "question": "W jakiej bajce znajdziemy cytat: 'Dobrze widzi się tylko sercem'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Małym Księciu",
@@ -731,6 +764,7 @@
     {
       "subcategory": "Słynne Cytaty Literackie",
       "question": "Jakiej starożytnej postaci przypisuje się słowa: 'Wiem, że nic nie wiem'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Sokratesowi",
@@ -753,6 +787,7 @@
     {
       "subcategory": "Słynne Cytaty Literackie",
       "question": "Z jakiej pieśni pochodzą słowa 'Nie rzucim ziemi skąd nasz ród'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Roty (M. Konopnicka)",
@@ -775,6 +810,7 @@
     {
       "subcategory": "Literatura Dziecięca",
       "question": "Kto napisał urocze opowieści o misiu zwanym Kubusiem Puchatkiem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "A.A. Milne",
@@ -797,6 +833,7 @@
     {
       "subcategory": "Literatura Dziecięca",
       "question": "Jak nazywał się drewniany pajacyk, któremu po kłamstwie rósł nos?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pinokio",
@@ -819,6 +856,7 @@
     {
       "subcategory": "Literatura Dziecięca",
       "question": "W jakim niezwykłym domu mieszkała ruda Pippi Pończoszanka?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Willi Śmiesznotce",
@@ -841,6 +879,7 @@
     {
       "subcategory": "Literatura Dziecięca",
       "question": "Z kim przy herbatce siedziała Alicja w Krainie Czarów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Szalonym Kapelusznikiem",
@@ -863,6 +902,7 @@
     {
       "subcategory": "Literatura Dziecięca",
       "question": "Kto jest twórcą postaci ekscentrycznego czarodzieja, Ambrożego Kleksa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jan Brzechwa",
@@ -885,6 +925,7 @@
     {
       "subcategory": "Klasyka Światowa",
       "question": "Kto napisał najsłynniejszy tragiczny romans świata 'Romeo i Julia'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "William Shakespeare",
@@ -907,6 +948,7 @@
     {
       "subcategory": "Klasyka Światowa",
       "question": "Jak miał na imię hiszpański szlachcic, który walczył z wiatrakami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Don Kichot",
@@ -929,6 +971,7 @@
     {
       "subcategory": "Klasyka Światowa",
       "question": "Kto jest autorem mrocznej, psychologicznej powieści 'Zbrodnia i kara'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Fiodor Dostojewski",
@@ -951,6 +994,7 @@
     {
       "subcategory": "Klasyka Światowa",
       "question": "W jakiej epickiej powieści występuje postać zbiegłego galernika Jeana Valjeana?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Nędznikach",
@@ -973,6 +1017,7 @@
     {
       "subcategory": "Klasyka Światowa",
       "question": "Kto jest autorem znanej antyutopii o totalitarnym ustroju pt. 'Rok 1984'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "George Orwell",
@@ -995,6 +1040,7 @@
     {
       "subcategory": "Komiksy i Powieści Graficzne",
       "question": "Z jakiego mrocznego, fikcyjnego miasta pochodzi komiksowy Batman?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Gotham City",
@@ -1017,6 +1063,7 @@
     {
       "subcategory": "Komiksy i Powieści Graficzne",
       "question": "Który scenarzysta stworzył większość najpopularniejszych postaci komiksów Marvela?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Stan Lee",
@@ -1039,6 +1086,7 @@
     {
       "subcategory": "Komiksy i Powieści Graficzne",
       "question": "Jakim zwierzęciem jest kultowy polski bohater komiksowy, Tytus de Zoo?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Szympansem",
@@ -1061,6 +1109,7 @@
     {
       "subcategory": "Komiksy i Powieści Graficzne",
       "question": "Jak ma na imię mały Gal, który walczy z Rzymianami po wypiciu magicznego napoju?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Asteriks",
@@ -1083,6 +1132,7 @@
     {
       "subcategory": "Komiksy i Powieści Graficzne",
       "question": "Z jakiej odległej i zniszczonej planety przybył na Ziemię Superman?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Kryptona",
@@ -1105,6 +1155,7 @@
     {
       "subcategory": "Przysłowia i Powiedzenia",
       "question": "Jak kończy się polskie przysłowie: 'Gdzie kucharek sześć...'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "...tam nie ma co jeść.",
@@ -1127,6 +1178,7 @@
     {
       "subcategory": "Przysłowia i Powiedzenia",
       "question": "Co oznacza potoczny związek frazeologiczny 'niedźwiedzia przysługa'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Przysługę, która przyniosła więcej szkody niż pożytku",
@@ -1149,6 +1201,7 @@
     {
       "subcategory": "Przysłowia i Powiedzenia",
       "question": "W jakie miejsce nie zagląda się darowanemu koniowi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W zęby",
@@ -1171,6 +1224,7 @@
     {
       "subcategory": "Przysłowia i Powiedzenia",
       "question": "Kto rano wstaje, temu...?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pan Bóg daje.",
@@ -1193,6 +1247,7 @@
     {
       "subcategory": "Mitologia w Literaturze",
       "question": "Kto jest autorem najpopularniejszego w Polsce, szkolnego zbioru 'Mitologia'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jan Parandowski",
@@ -1215,6 +1270,7 @@
     {
       "subcategory": "Mitologia w Literaturze",
       "question": "Jak nazywał się trzygłowy pies, który strzegł wejścia do greckich zaświatów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Cerber",
@@ -1237,6 +1293,7 @@
     {
       "subcategory": "Mitologia w Literaturze",
       "question": "Ile morderczych prac musiał wykonać mityczny heros Herakles (Herkules)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Dwanaście",
@@ -1259,6 +1316,7 @@
     {
       "subcategory": "Mitologia w Literaturze",
       "question": "Który z mitologicznych ptaków potrafił co jakiś czas spłonąć, by odrodzić się z popiołów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Feniks",
@@ -1281,6 +1339,7 @@
     {
       "subcategory": "Współcześni Pisarze Polscy",
       "question": "Kto napisał bestsellerową, mroczną powieść o Warszawie pt. 'Ślepnąc od świateł'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jakub Żulczyk",
@@ -1303,6 +1362,7 @@
     {
       "subcategory": "Współcześni Pisarze Polscy",
       "question": "Który współczesny polski pisarz zasłynął powieściami osadzonymi w dwudziestoleciu (np. 'Król')?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Szczepan Twardoch",
@@ -1325,6 +1385,7 @@
     {
       "subcategory": "Współcześni Pisarze Polscy",
       "question": "Jak nazywa się niezwykle płodny polski autor thrillerów prawniczych, m.in. o Joannie Chyłce?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Remigiusz Mróz",
@@ -1347,6 +1408,7 @@
     {
       "subcategory": "Współcześni Pisarze Polscy",
       "question": "Który znany polski reportażysta jest autorem książki 'Zrób sobie raj' o Czechach?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Mariusz Szczygieł",
@@ -1369,6 +1431,7 @@
     {
       "subcategory": "Współcześni Pisarze Polscy",
       "question": "Kto powołał do życia kultową, humorystyczną postać egzorcysty-bimbrownika Jakuba Wędrowycza?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Andrzej Pilipiuk",
@@ -1391,6 +1454,7 @@
     {
       "subcategory": "Języki Obce",
       "question": "Jaki język na świecie ma największą liczbę osób, dla których jest to język ojczysty?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Chiński mandaryński",
@@ -1413,6 +1477,7 @@
     {
       "subcategory": "Języki Obce",
       "question": "Z jakiego języka oryginalnie wywodzi się słowo 'karaoke'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z japońskiego",
@@ -1435,6 +1500,7 @@
     {
       "subcategory": "Języki Obce",
       "question": "Jaki romański język jest oficjalnym językiem urzędowym w Brazylii?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Portugalski",
@@ -1457,6 +1523,7 @@
     {
       "subcategory": "Języki Obce",
       "question": "W jakim współczesnym państwie językiem urzędowym jest język farsi (perski)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Iranie",
@@ -1479,6 +1546,7 @@
     {
       "subcategory": "Języki Obce",
       "question": "Z jakiego języka pochodzą słowa takie jak 'balkon', 'szampan' czy 'makijaż'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z francuskiego",
@@ -1501,6 +1569,7 @@
     {
       "subcategory": "Gwara i Dialekty",
       "question": "W jakim rejonie Polski tradycyjnie używa się słowa 'pyry' na określenie ziemniaków?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Wielkopolsce",
@@ -1523,6 +1592,7 @@
     {
       "subcategory": "Gwara i Dialekty",
       "question": "Jak w Małopolsce (szczególnie w Krakowie) mówi się na wychodzenie z domu na zewnątrz?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wychodzić na pole",
@@ -1545,6 +1615,7 @@
     {
       "subcategory": "Gwara i Dialekty",
       "question": "Co na Górnym Śląsku oznacza charakterystyczne słowo 'bana'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pociąg lub tramwaj",
@@ -1567,6 +1638,7 @@
     {
       "subcategory": "Gwara i Dialekty",
       "question": "Jak w gwarze podhalańskiej nazywa się turystę, osobę niepochodzącą z gór?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ceper",
@@ -1589,6 +1661,7 @@
     {
       "subcategory": "Gwara i Dialekty",
       "question": "Co w dawnej gwarze warszawskiej, a dziś w slangu młodzieżowym, oznacza 'hajs'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pieniądze",
@@ -1611,6 +1684,7 @@
     {
       "subcategory": "Eposy i Dramaty",
       "question": "Kto z antycznych twórców jest uważany za autora wielkiego eposu pt. 'Iliada'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Homer",
@@ -1633,6 +1707,7 @@
     {
       "subcategory": "Eposy i Dramaty",
       "question": "Z ilu głównych części (aktów literackich) składają się mickiewiczowskie 'Dziady'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z czterech (II, III, IV i fragmenty I)",
@@ -1655,6 +1730,7 @@
     {
       "subcategory": "Eposy i Dramaty",
       "question": "W jakim dramacie Stanisława Wyspiańskiego akcja toczy się podczas chłopskiego wesela?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W 'Weselu'",
@@ -1677,6 +1753,7 @@
     {
       "subcategory": "Eposy i Dramaty",
       "question": "Która znana tragedia romantyczna Juliusza Słowackiego opowiada o spisku na życie cara?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kordian",
@@ -1699,6 +1776,7 @@
     {
       "subcategory": "Eposy i Dramaty",
       "question": "Jak nazywa się największy rzymski epos, którego autorem jest Wergiliusz?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Eneida",

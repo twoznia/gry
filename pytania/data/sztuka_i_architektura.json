@@ -5,6 +5,7 @@
     {
       "subcategory": "Słynni Malarze",
       "question": "Kto bardzo starannie namalował we Włoszech jeden z absolutnie najbardziej znanych i tajemniczych portretów na świecie - \"Mona Lisę\"?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Leonardo da Vinci",
@@ -27,6 +28,7 @@
     {
       "subcategory": "Słynni Malarze",
       "question": "Jaki borykający się z problemami psychicznymi holenderski postimpresjonista stworzył oszałamiające i wirujące barwami dzieło \"Gwiaździsta noc\"?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Vincent van Gogh",
@@ -49,6 +51,7 @@
     {
       "subcategory": "Słynni Malarze",
       "question": "Kto osobiście, po długich latach na rusztowaniach u boku papieża, jest autorem wielkich, potężnych fresków w Kaplicy Sykstyńskiej w Watykanie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Michał Anioł (Michelangelo)",
@@ -71,6 +74,7 @@
     {
       "subcategory": "Słynni Malarze",
       "question": "Z którym charakterystycznym, bardzo kontrowersyjnym malarzem z Hiszpanii, namiętnie układającym zakręcone wąsy, najmocniej łączy się surrealizm?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Salvadorem Dalí",
@@ -93,6 +97,7 @@
     {
       "subcategory": "Słynni Malarze",
       "question": "Który nowatorski twórca XX wieku na zawsze zasłynął z dziwnych, kubistycznych form oraz wielkiego antywojennego, czarno-białego płótna \"Guernica\"?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pablo Picasso",
@@ -115,6 +120,7 @@
     {
       "subcategory": "Najdroższe Obrazy Świata",
       "question": "Jaki niesamowicie upiorny, niezwykle mroczny i popularny norweski obraz namalowany przez Edvarda Muncha bywa notorycznie celem muzealnych kradzieży?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Krzyk",
@@ -137,6 +143,7 @@
     {
       "subcategory": "Najdroższe Obrazy Świata",
       "question": "Pędzla jakiego wybitnego włoskiego artysty renesansu jest zjawiskowa i zagadkowa \"Mona Lisa\", chroniona grubą szybą kulooporną w paryskim Luwrze?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Leonarda da Vinci",
@@ -159,6 +166,7 @@
     {
       "subcategory": "Najdroższe Obrazy Świata",
       "question": "Jak nazywa się w świecie popkultury tajemniczy artysta z ulicy, którego poszatkowany w niszczarce obraz \"Dziewczynka z balonikiem\" zdobył wielką cenę?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Banksy",
@@ -181,6 +189,7 @@
     {
       "subcategory": "Najdroższe Obrazy Świata",
       "question": "Kto niesamowicie subtelnie i z wyczuciem bieli namalował słynną \"Dziewczynę z perłą\", określaną często jako urocza Holenderska Mona Lisa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jan Vermeer",
@@ -203,6 +212,7 @@
     {
       "subcategory": "Najdroższe Obrazy Świata",
       "question": "Jakie wielkie nazwisko dumnie nosi austriacki malarz z czasów secesji, niezwykły autor ogromnego i bogato pokrytego cienkim złotem obrazu \"Pocałunek\"?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Gustav Klimt",
@@ -225,6 +235,7 @@
     {
       "subcategory": "Style Architektoniczne",
       "question": "Jaki wysoki i mistyczny styl z wieków średnich w budownictwie charakteryzował się bardzo smukłymi wieżami, strzelistymi łukami oraz pięknymi oknami z witrażami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Gotyk",
@@ -247,6 +258,7 @@
     {
       "subcategory": "Style Architektoniczne",
       "question": "Który z europejskich wielkich stylów, bogaty i przepełniony potężnym wręcz przepychem, rzeźbami oraz złoceńmi, zachwycał kościoły od XVI wieku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Barok",
@@ -269,6 +281,7 @@
     {
       "subcategory": "Style Architektoniczne",
       "question": "Jaki bardzo wczesnośredniowieczny, zwalisty kierunek sztuki wyróżniał się ciężkimi, wręcz obronnymi grubymi murami oraz nad wyraz małymi oknami (w obawie przed najazdem)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Styl romański",
@@ -291,6 +304,7 @@
     {
       "subcategory": "Style Architektoniczne",
       "question": "Jaki całkowicie nowoczesny, wręcz oszczędny do bólu styl architektoniczny XX wieku po odrzuceniu wszelkich ornamentów postawił nade wszystko na samą funkcję w betonowym i szklanym bloku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Modernizm",
@@ -313,6 +327,7 @@
     {
       "subcategory": "Polscy Malarze",
       "question": "Który wybitny, krakowski, XIX-wieczny malarz specjalizujący się w ogromnych polach bitewnych polskiej historii narysował z wielkim pietyzmem ogromne płótno \"Bitwa pod Grunwaldem\"?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jan Matejko",
@@ -335,6 +350,7 @@
     {
       "subcategory": "Polscy Malarze",
       "question": "Kto z polskich realistycznych twórców jest znakomitym autorem pięknego, bardzo znanego i chwytającego za sielskie serce obrazu \"Bociany\" - ukazującego polskiego chłopa na zoranej roli?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Józef Chełmoński",
@@ -357,6 +373,7 @@
     {
       "subcategory": "Polscy Malarze",
       "question": "Jaki krakowski malarz bezapelacyjnie i zawsze powszechnie uważany jest za głównego, najwybitniejszego przedstawiciela i geniusza symbolizmu (na jego obrazach mieszają się zwykli ludzie z faunami, i upadłymi zjawami)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jacek Malczewski",
@@ -379,6 +396,7 @@
     {
       "subcategory": "Polscy Malarze",
       "question": "Z jakiego konkretnego, powtarzanego i ulubionego bardzo przez malarzy motywu pejzażowego, ruszającego mocno w bój i galopującego często z ułanami po stepach, zasłynął szerzej znany jako artystyczny rod Kossaków (m.in. Wojciech czy Juliusz)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z pięknych scen ze spłoszonymi, galopującymi końmi (i batalistyką)",
@@ -401,6 +419,7 @@
     {
       "subcategory": "Polscy Malarze",
       "question": "Jaka niezwykle ekstrawagancka, brylująca na salonach dwudziestowieczna, światowa, polska malarka zasłynęła mocno w USA i Paryżu eleganckimi portretami sławnych i bogatych i odważnymi kobiecymi aktami w nowym stylu - Art Deco?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tamara Łempicka",
@@ -423,6 +442,7 @@
     {
       "subcategory": "Słynne Rzeźby i Pomniki",
       "question": "Który tytan i niewyobrażalny renesansowy mistrz w młodości z powodzeniem wydobył na zawsze z jednej, kłopotliwej, ogromnej bryły twardego, białego marmuru niesamowitą sylwetkę, wielkiego posągu biblijnego \"Dawida\"?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Michał Anioł (Michelangelo Buonarroti)",
@@ -445,6 +465,7 @@
     {
       "subcategory": "Słynne Rzeźby i Pomniki",
       "question": "Jaki wspaniały, francuski tytan rzeźbiarstwa zaprojektował potężną, dumaną, niezwykle umięśnioną, nagą postać mocno siedzącego do zadumy mężczyzny z ciężką głową podpartą na dłoni, zwaną wszędzie dzisiaj \"Myślicielem\"?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Auguste Rodin",
@@ -467,6 +488,7 @@
     {
       "subcategory": "Słynne Rzeźby i Pomniki",
       "question": "Który gigantyczny, zjawiskowo pokryty zielonkawą powłoką patyny i oficjalnie kiedyś podarowany narodowi i rządowi z dumnej Francji wielki posąg, z wyciągniętą dłonią wita wędrowców, emigrantów i statki dopływające do Nowego Jorku z Europy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Statua Wolności (Lady Liberty)",
@@ -489,6 +511,7 @@
     {
       "subcategory": "Słynne Rzeźby i Pomniki",
       "question": "Z jakiej szczególnej, otwartej formy i wyjątkowego gestu na świecie zasłynął wielki, podziwiany powszechnie brazylijski ogromny pomnik Chrystusa Odkupiciela, umiejscowiony na pięknym i urwistym szczycie góry Corcovado w zatłoczonym na dole Rio de Janeiro?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z rozłożonych i szeroko, przyjaźnie otwartych i obejmujących rąk",
@@ -511,6 +534,7 @@
     {
       "subcategory": "Słynne Rzeźby i Pomniki",
       "question": "Czego fizycznie bardzo dotkliwie, lecz przy zachowaniu wielkiego antycznego artyzmu w proporcjach, brakuje w wyeksponowanym dumnie we francuskim Muzeum Luwrze, starożytnym greckim posągu na poły rozebranej bogini pieszczotliwie zwanej powszechnie \"Wenus z Milo\"?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Obu przednich i długich ułamanych niestety rąk posągu",
@@ -533,6 +557,7 @@
     {
       "subcategory": "Architektura Sakralna",
       "question": "W jakim hiszpańskim, niesamowicie zakręconym, i gorącym wakacyjnym mieście Katalonii, do dzisiaj pod ciężkimi żurawiami, mozolnie, ciągle budowana od ponad bardzo długiego wieku z projektu Antonio Gaudiego wyrasta pod słońce bajkowa i dziwna wręcz bazylika zwaną powszechnie Sagrada Família?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Barcelonie",
@@ -555,6 +580,7 @@
     {
       "subcategory": "Architektura Sakralna",
       "question": "Jak konkretnie, z biblijnego imienia, nazywa się najważniejszy, absolutnie nadrzędny oraz potężnie wielki duszpasterski pierwszy na świecie świątynny chrześcijański kościół zlokalizowany pośrodku kurii w Watykanie, dysponujący ogromną kopułą pędzla renesansowego, wielce rzucającą się i zawsze dostrzegalną z odległych rzymskich ulic i wszystkich zakątków?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bazylika Świętego Piotra na Watykanie",
@@ -577,6 +603,7 @@
     {
       "subcategory": "Architektura Sakralna",
       "question": "Jaka ogromna gotycka perła sztuki, symbol i znana turystycznie potężna paryska wyspowa katedra, która grała rolę u samego Victora Hugo, niestety uległa niespodziewanemu przez nikogo i potwornemu, niszczycielskiemu gigantycznemu pożarowi, podczas którego całkowicie spłoną i osypał się piękny dach wiosną w 2019 roku zszokowawszy Europę?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Katedra Notre-Dame",
@@ -599,6 +626,7 @@
     {
       "subcategory": "Architektura Sakralna",
       "question": "W jakim odległym i niesamowitym kulturowo oraz historycznie wschodnim i wielkim kraju leży niezwykle zachwycający, znany na każdej karcie pocztówkowej świata biały, lśniący na słonecznym południu wielki marmurowy dawny islamski potężny grobowiec dla zmarłej kochającej żony na polecenie samego wielkiego władcy, nazywany poetycko Tadź Mahal?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W dawnych w Indiach",
@@ -621,6 +649,7 @@
     {
       "subcategory": "Architektura Sakralna",
       "question": "Co bardzo wyraziście z daleka zazwyczaj na szczycie i wysoko pod błękitem wieńczy, bogato wykańczając swym okrągłym kształtem dumnie na wysokich zwalistych wieżach, w wielu bogatych słowiańskich prawosławnych oraz klasycznie z wielkim złotym krzyżem tradycyjnych ruskich murowanych na pamiątkę cerkwiach ich najważniejszą górną część architektonicznego zewnętrznego budynku modlitewnego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pękata, najczęściej cebulasta i wielce pękata, malowana we wzory lub cała i okryta z blachy wielka miedziana i widocznie złocista i cebulowa pod spodem, szeroka ogromna obła kopuła, wraz ze strzelistym spiętym wysoko spiczastym miedzianym błyszczącym krzyżem prawosławnym.",
@@ -643,6 +672,7 @@
     {
       "subcategory": "Muzea i Galerie Sztuki",
       "question": "Jakie słynne muzeum w Paryżu zasłynęło z kontrowersyjnej szklanej piramidy ustawionej przy wejściu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Luwr",
@@ -665,6 +695,7 @@
     {
       "subcategory": "Muzea i Galerie Sztuki",
       "question": "W jakim europejskim mieście znajduje się słynne Muzeum Prado z jedną z największych kolekcji malarstwa europejskiego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Madrycie",
@@ -687,6 +718,7 @@
     {
       "subcategory": "Muzea i Galerie Sztuki",
       "question": "Które wielkie narodowe muzeum w Londynie gromadzi ponad 8 milionów eksponatów z całego świata, w tym słynny Kamień z Rosetty?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Muzeum Brytyjskie (British Museum)",
@@ -709,6 +741,7 @@
     {
       "subcategory": "Muzea i Galerie Sztuki",
       "question": "W którym krakowskim muzeum można zobaczyć słynny obraz Leonarda da Vinci 'Dama z gronostajem'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Muzeum Czartoryskich (oddział Muzeum Narodowego w Krakowie)",
@@ -731,6 +764,7 @@
     {
       "subcategory": "Muzea i Galerie Sztuki",
       "question": "Jak nazywa się największe muzeum sztuki w Nowym Jorku, znane powszechnie pod skrótem 'The Met'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Metropolitan Museum of Art",
@@ -753,6 +787,7 @@
     {
       "subcategory": "Sztuka Współczesna i Street Art",
       "question": "Pod jakim tajemniczym i znanym pseudonimem, tworzy bardzo znany, wręcz słynny z krytyki politycznej brytyjski artysta uliczny?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Banksy",
@@ -775,6 +810,7 @@
     {
       "subcategory": "Sztuka Współczesna i Street Art",
       "question": "Jaki artysta pop-art seryjnie odbijał na sitodruku puszki zupy Campbell's czy uśmiechniętą Marilyn Monroe?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Andy Warhol",
@@ -797,6 +833,7 @@
     {
       "subcategory": "Sztuka Współczesna i Street Art",
       "question": "Jaką potoczną formą farb artyści zaliczani do \"Street artu\" z racji tempa, najczęściej rysują po betonowych murach miasta?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Farbami w sprayu (w puszkach)",
@@ -819,6 +856,7 @@
     {
       "subcategory": "Sztuka Współczesna i Street Art",
       "question": "Jaka światowej sławy awangardowa malarka z Japonii fascynuje wszystkich artystycznymi wielkimi przestrzeniami usłanymi po sufit powtarzanymi barwnymi i bardzo powszechnie modnymi w ubiorze z mody na tkaninach i strojach po kropkami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Yayoi Kusama",
@@ -841,6 +879,7 @@
     {
       "subcategory": "Sztuka Współczesna i Street Art",
       "question": "Z jakiego codziennego przedmiotu Marcel Duchamp stworzył słynne dadaistyczne dzieło 'Fontanna' (1917), szokując ówczesny świat sztuki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z pisuaru",
@@ -863,6 +902,7 @@
     {
       "subcategory": "Słynne Budowle Świata",
       "question": "Jak nazywa się starożytna chińska budowla obronna ciągnąca się przez góry na długości tysięcy kilometrów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wielki Mur Chiński",
@@ -885,6 +925,7 @@
     {
       "subcategory": "Słynne Budowle Świata",
       "question": "Jaka stalowa wieża wybudowana w Paryżu na Wystawę Światową w 1889 roku jest dziś symbolem Francji?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wieża Eiffla",
@@ -907,6 +948,7 @@
     {
       "subcategory": "Słynne Budowle Świata",
       "question": "Który wieżowiec w Dubaju jest najwyższym budynkiem na świecie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Burdż Chalifa",
@@ -929,6 +971,7 @@
     {
       "subcategory": "Słynne Budowle Świata",
       "question": "Jak nazywa się słynny starożytny amfiteatr w Rzymie, gdzie odbywały się walki gladiatorów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Koloseum",
@@ -951,6 +994,7 @@
     {
       "subcategory": "Zamki i Pałace Polski",
       "question": "W jakim polskim mieście znajduje się największy na świecie gotycki zamek, dawna siedziba Wielkich Mistrzów Krzyżackich?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Malborku",
@@ -973,6 +1017,7 @@
     {
       "subcategory": "Zamki i Pałace Polski",
       "question": "Jakie legendarne zwierzę rzekomo drzemało przez stulecia w jaskini pod Wzgórzem Wawelskim w Krakowie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Smok Wawelski",
@@ -995,6 +1040,7 @@
     {
       "subcategory": "Starożytność i Antyk",
       "question": "Jak nazywa się słynna, znajdująca się na ateńskim Akropolu świątynia poświęcona bogini Atenie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Partenon",
@@ -1017,6 +1063,7 @@
     {
       "subcategory": "Starożytność i Antyk",
       "question": "Jaki antyczny, grecki rzeźbiarz jest autorem słynnego rzeźby 'Dyskobol', przedstawiającej atletę tuż przed rzutem dyskiem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Myron",
@@ -1039,6 +1086,7 @@
     {
       "subcategory": "Starożytność i Antyk",
       "question": "W jakim kraju zachowały się monumentalne grobowce w kształcie ostrosłupów, z których największy należy do Cheopsa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Egipcie",
@@ -1061,6 +1109,7 @@
     {
       "subcategory": "Starożytność i Antyk",
       "question": "Jak w starożytnej Grecji nazywano ozdobne, ceramiczne naczynie z dwoma uchwytami, służące do przechowywania wina lub oliwy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Amfora",
@@ -1083,6 +1132,7 @@
     {
       "subcategory": "Starożytność i Antyk",
       "question": "Jakie trzy klasyczne porządki architektoniczne wyróżniamy w starożytnej Grecji, patrząc na kształt kolumn?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Dorycki, joński i koryncki",
@@ -1105,6 +1155,7 @@
     {
       "subcategory": "Impresjonizm",
       "question": "Od tytułu obrazu jakiego malarza ('Impresja, wschód słońca') pochodzi nazwa całego kierunku - impresjonizmu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Claude'a Moneta",
@@ -1127,6 +1178,7 @@
     {
       "subcategory": "Impresjonizm",
       "question": "Co było głównym założeniem i celem malarzy impresjonistów wychodzących ze sztalugami w plener?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Uchwycenie ulotnej chwili i światła",
@@ -1149,6 +1201,7 @@
     {
       "subcategory": "Impresjonizm",
       "question": "Który francuski impresjonista zasłynął przede wszystkim z malowania delikatnych tancerek baletowych?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Edgar Degas",
@@ -1171,6 +1224,7 @@
     {
       "subcategory": "Impresjonizm",
       "question": "W jakim mieście impresjonizm narodził się w II połowie XIX wieku i rozwijał najprężniej, stając się centrum sztuki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Paryżu",
@@ -1193,6 +1247,7 @@
     {
       "subcategory": "Polska Sztuka Ludowa",
       "question": "Jaka polska wieś na Powiślu Dąbrowskim słynie w całej Europie z malowania domów w przepiękne, barwne kwiaty?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Zalipie",
@@ -1215,6 +1270,7 @@
     {
       "subcategory": "Polska Sztuka Ludowa",
       "question": "Z jakiego trudnego i misternego rękodzieła koronkarskiego słynie niewielka miejscowość Koniaków na Śląsku Cieszyńskim?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z koronek koniakowskich",
@@ -1237,6 +1293,7 @@
     {
       "subcategory": "Polska Sztuka Ludowa",
       "question": "Z czego wykonuje się tradycyjne, polskie wielkanocne palmy z okolic Kurpiów, sięgające nierzadko kilkunastu metrów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z bibuły, wstążek i roślin",
@@ -1259,6 +1316,7 @@
     {
       "subcategory": "Polska Sztuka Ludowa",
       "question": "Jaki wyjątkowy, drewniany styl architektoniczny w górach zapoczątkował pod koniec XIX wieku Stanisław Witkiewicz?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Styl zakopiański",
@@ -1281,6 +1339,7 @@
     {
       "subcategory": "Polska Sztuka Ludowa",
       "question": "Z jakiego kolorowego papieru z użyciem nożyc do strzyżenia owiec powstają tradycyjne, ludowe wycinanki z Łowicza?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z glansowanego (kolorowego) papieru",
@@ -1303,6 +1362,7 @@
     {
       "subcategory": "Sztuka Orientu",
       "question": "Jak w sztuce Japonii nazywa się znana na całym świecie precyzyjna i tradycyjna sztuka składania papieru bez użycia nożyczek?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Origami",
@@ -1325,6 +1385,7 @@
     {
       "subcategory": "Sztuka Orientu",
       "question": "Jak nazywa się japońska sztuka i wielka filozofia estetyczna układania ściętych kwiatów i gałęzi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ikebana",
@@ -1347,6 +1408,7 @@
     {
       "subcategory": "Sztuka Orientu",
       "question": "Jaka słynna, dynamiczna rycina przedstawiająca ogromną, morską grzywę przed górą Fudżi jest dziełem Katsushiki Hokusaia?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wielka fala w Kanagawie",
@@ -1369,6 +1431,7 @@
     {
       "subcategory": "Sztuka Orientu",
       "question": "Co jest podstawą kaligrafii, traktowanej w krajach Dalekiego Wschodu (jak Chiny) jako wyrafinowana gałąź sztuk pięknych?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Sztuka pięknego i starannego pisania znaków (pędzlem)",
@@ -1391,6 +1454,7 @@
     {
       "subcategory": "Sztuka Orientu",
       "question": "Jak nazywają się małe, formowane latami miniaturowe drzewka w doniczkach, będące japońską formą rzeźbienia natury?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bonsai",
@@ -1413,6 +1477,7 @@
     {
       "subcategory": "Fotografia i Sztuka Cyfrowa",
       "question": "Jak nazywał się najstarszy, prymitywny przyrząd optyczny w postaci ciemnej skrzynki z otworkiem, będący prototypem aparatu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Camera obscura",
@@ -1435,6 +1500,7 @@
     {
       "subcategory": "Fotografia i Sztuka Cyfrowa",
       "question": "Jaka firma na przełomie XIX i XX w. spopularyzowała pierwszą amatorską kliszę z hasłem 'Ty naciskasz guzik, my robimy resztę'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kodak",
@@ -1457,6 +1523,7 @@
     {
       "subcategory": "Fotografia i Sztuka Cyfrowa",
       "question": "Czym charakteryzuje się kultowy aparat marki Polaroid, wynaleziony w połowie ubiegłego wieku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Błyskawicznym wywoływaniem zdjęcia prosto z aparatu",
@@ -1479,6 +1546,7 @@
     {
       "subcategory": "Fotografia i Sztuka Cyfrowa",
       "question": "Jaki profesjonalny, światowy program komputerowy od firmy Adobe stał się w branży synonimem retuszu grafiki i zdjęć?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Photoshop",
@@ -1501,6 +1569,7 @@
     {
       "subcategory": "Fotografia i Sztuka Cyfrowa",
       "question": "Jak w fotografii cyfrowej nazywa się najmniejszy, pojedynczy punkt świetlny składający się na całą matrycę obrazu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Piksel",
@@ -1523,6 +1592,7 @@
     {
       "subcategory": "Teatr i Opera",
       "question": "Jakie dwa antyczne symbole, najczęściej w formie połączonych twarzy, są powszechnym logotypem sztuki teatralnej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Maska tragiczna i komiczna",
@@ -1545,6 +1615,7 @@
     {
       "subcategory": "Teatr i Opera",
       "question": "Kto napisał najsłynniejszy i najczęściej wystawiany dramat romantyczny w historii, 'Romeo i Julię'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "William Szekspir",
@@ -1567,6 +1638,7 @@
     {
       "subcategory": "Teatr i Opera",
       "question": "Jak w sztuce operowej nazywa się rozbudowana, solowa pieśń z akompaniamentem orkiestry, pokazująca kunszt wokalisty?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Aria",
@@ -1589,6 +1661,7 @@
     {
       "subcategory": "Teatr i Opera",
       "question": "W jakim włoskim mieście znajduje się prawdopodobnie najsłynniejszy i najbardziej prestiżowy gmach opery - La Scala?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Mediolanie",
@@ -1611,6 +1684,7 @@
     {
       "subcategory": "Teatr i Opera",
       "question": "Czym jest 'libretto' w kontekście spektaklu operowego lub operetki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tekstem (scenariuszem) całego utworu",

@@ -5,6 +5,7 @@
     {
       "subcategory": "Ochrona Gatunkowa",
       "question": "Jaki duży ptak drapieżny, widniejący w polskim godle, podlega u nas ścisłej ochronie gatunkowej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bielik",
@@ -27,6 +28,7 @@
     {
       "subcategory": "Ochrona Gatunkowa",
       "question": "Jaka międzynarodowa księga zawiera oficjalny i uaktualniany spis gatunków zagrożonych wyginięciem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Czerwona Księga",
@@ -49,6 +51,7 @@
     {
       "subcategory": "Ochrona Gatunkowa",
       "question": "Jaki sympatyczny azjatycki niedźwiedź stał się globalnym symbolem fundacji WWF?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Panda wielka",
@@ -71,6 +74,7 @@
     {
       "subcategory": "Ochrona Gatunkowa",
       "question": "Jak nazywa się ochrona polegająca na dbaniu o gatunki całkowicie wymarłe w naturze w ogrodach zoo?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ochrona ex situ",
@@ -93,6 +97,7 @@
     {
       "subcategory": "Ochrona Gatunkowa",
       "question": "Który duży polski ssak kopytny, zwany królem puszczy, został uratowany przed całkowitym wymarciem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Żubr",
@@ -115,6 +120,7 @@
     {
       "subcategory": "Zjawiska Atmosferyczne",
       "question": "Jak potocznie określamy gwałtowne wyładowanie elektryczne w atmosferze z efektem świetlnym i hukiem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Piorun (Błyskawica)",
@@ -137,6 +143,7 @@
     {
       "subcategory": "Zjawiska Atmosferyczne",
       "question": "Co jest główną przyczyną powstawania malowniczej, wielokolorowej tęczy na niebie po deszczu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Rozszczepienie światła w kroplach",
@@ -159,6 +166,7 @@
     {
       "subcategory": "Zjawiska Atmosferyczne",
       "question": "Jak nazywa się zjawisko świetlne występujące najczęściej w pobliżu biegunów, tworzące barwne pasy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Zorza polarna",
@@ -181,6 +189,7 @@
     {
       "subcategory": "Zjawiska Atmosferyczne",
       "question": "Jaki niebezpieczny wir powietrzny tworzy charakterystyczny lej od chmury aż do samej ziemi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Trąba powietrzna (Tornado)",
@@ -203,6 +212,7 @@
     {
       "subcategory": "Zjawiska Atmosferyczne",
       "question": "W jakiej postaci opada na ziemię woda, tworząc w chmurze lodowe, nieregularne bryłki podczas burzy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Gradu",
@@ -225,6 +235,7 @@
     {
       "subcategory": "Leśnictwo i Łowiectwo",
       "question": "Jak nazywa się specjalna wieżyczka w lesie lub na skraju pola, służąca myśliwym do polowań?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ambona",
@@ -247,6 +258,7 @@
     {
       "subcategory": "Leśnictwo i Łowiectwo",
       "question": "W jakim obiekcie, popularnym zimą w lesie, leśnicy wykładają pożywienie dla dzikich zwierząt?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W paśniku",
@@ -269,6 +281,7 @@
     {
       "subcategory": "Leśnictwo i Łowiectwo",
       "question": "Jak określa się profesjonalistę zajmującego się sadzeniem, ochroną i wycinką drzew w lasach?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Leśnik",
@@ -291,6 +304,7 @@
     {
       "subcategory": "Leśnictwo i Łowiectwo",
       "question": "Co to jest wargowy, głośny zew byków jelenia szlachetnego w okresie jesiennego godu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Rykowisko",
@@ -313,6 +327,7 @@
     {
       "subcategory": "Leśnictwo i Łowiectwo",
       "question": "Z jakich zwierząt składa się tzw. wataha w terminologii myśliwskiej i leśnej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z wilków lub dzików",
@@ -335,6 +350,7 @@
     {
       "subcategory": "Biologia Komórki",
       "question": "Jak nazywa się centralna struktura komórki eukariotycznej, która przechowuje materiał genetyczny?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jądro komórkowe",
@@ -357,6 +373,7 @@
     {
       "subcategory": "Biologia Komórki",
       "question": "Które organella potocznie nazywane są 'elektrowniami komórki', bo produkują życiodajną energię ATP?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Mitochondria",
@@ -379,6 +396,7 @@
     {
       "subcategory": "Biologia Komórki",
       "question": "Jaki ważny, skomplikowany proces odpowiada w biologii za podział zwykłej komórki na dwie potomne?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Mitoza",
@@ -401,6 +419,7 @@
     {
       "subcategory": "Biologia Komórki",
       "question": "Czego NIE posiada w swojej naturalnej strukturze ludzka komórka zwierzęca w odróżnieniu od roślin?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ściany komórkowej i chloroplastów",
@@ -423,6 +442,7 @@
     {
       "subcategory": "Biologia Komórki",
       "question": "Jak nazywają się mikroskopijne struktury w komórce, na których bezpośrednio zachodzi synteza białek?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Rybosomy",
@@ -445,6 +465,7 @@
     {
       "subcategory": "Genetyka",
       "question": "Jak brzmi pełne rozwinięcie skrótu DNA, czyli nośnika naszej informacji genetycznej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kwas deoksyrybonukleinowy",
@@ -467,6 +488,7 @@
     {
       "subcategory": "Genetyka",
       "question": "Ile par chromosomów występuje u zdrowego człowieka w każdej zwykłej, somatycznej komórce ciała?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "23 pary (łącznie 46)",
@@ -489,6 +511,7 @@
     {
       "subcategory": "Genetyka",
       "question": "Jaki zakonnik badając krzyżowanie grochu sformułował podstawowe prawa dziedziczenia i genetyki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Grzegorz Mendel",
@@ -511,6 +534,7 @@
     {
       "subcategory": "Genetyka",
       "question": "Jaki chromosom decyduje u ssaków wprost o męskiej płci potomska, będąc przekazywanym przez ojca?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Chromosom Y",
@@ -533,6 +557,7 @@
     {
       "subcategory": "Genetyka",
       "question": "Jak potocznie określa się organizmy, których DNA celowo zmieniono w laboratorium (np. kukurydza)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Organizmy modyfikowane genetycznie (GMO)",
@@ -555,6 +580,7 @@
     {
       "subcategory": "Świat Mikrobów",
       "question": "Jak nazywają się jednokomórkowe organizmy bez jądra, które mogą powodować infekcje lub np. kwaszenie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bakterie",
@@ -577,6 +603,7 @@
     {
       "subcategory": "Świat Mikrobów",
       "question": "Co powoduje groźne choroby takie jak grypa, ospa czy COVID-19 i nie jest uznawane za w pełni żywe?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wirus",
@@ -599,6 +626,7 @@
     {
       "subcategory": "Świat Mikrobów",
       "question": "Jak odkryto pierwszy na świecie antybiotyk, penicylinę, która na zawsze zmieniła walkę z mikrobami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Odkryto go z pleśni (grzyba)",
@@ -621,6 +649,7 @@
     {
       "subcategory": "Świat Mikrobów",
       "question": "Jak nazywają się pożyteczne drobnoustroje dodawane do jogurtów, które wspierają naszą florę jelit?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Probiotyki",
@@ -643,6 +672,7 @@
     {
       "subcategory": "Świat Mikrobów",
       "question": "Jaki organizm jednokomórkowy z grupy pierwotniaków porusza się majestatycznie dzięki nibynóżkom?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ameba (Pełzak)",

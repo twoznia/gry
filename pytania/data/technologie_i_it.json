@@ -5,6 +5,7 @@
     {
       "subcategory": "Historia Komputerów",
       "question": "Jak nazywał się ogromny, ważący 27 ton pierwszy uniwersalny komputer elektroniczny, stworzony w USA w 1945 r.?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "ENIAC",
@@ -27,6 +28,7 @@
     {
       "subcategory": "Historia Komputerów",
       "question": "Kto w czasie II wojny światowej złamał kod Enigmy (przy udziale Polaków) i stworzył koncepcję uniwersalnej maszyny obliczeniowej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Alan Turing",
@@ -49,6 +51,7 @@
     {
       "subcategory": "Historia Komputerów",
       "question": "Kim była żyjąca w XIX w. Ada Lovelace, uważana dzisiaj w kręgach IT za niezwykle ważną pionierkę?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pierwszą w historii programistką",
@@ -71,6 +74,7 @@
     {
       "subcategory": "Historia Komputerów",
       "question": "Na jakim nowatorskim fizycznym elemencie oparte były nowoczesne komputery i elektronika, po wyparciu starych lamp elektronowych?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Na tranzystorze",
@@ -93,6 +97,7 @@
     {
       "subcategory": "Historia Komputerów",
       "question": "Jaka firma, znana dziś głównie z oprogramowania i PC, stworzyła w 1981 r. pierwszy niezwykle popularny mikrokomputer IBM PC?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "IBM",
@@ -115,6 +120,7 @@
     {
       "subcategory": "Giganci Technologiczni",
       "question": "Kto wspólnie z Paulem Allenem założył ogromną, software'ową potęgę - firmę Microsoft?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bill Gates",
@@ -137,6 +143,7 @@
     {
       "subcategory": "Giganci Technologiczni",
       "question": "Jak nazywał się legendarny wizjoner w czarnym golfie, który odpowiadał za sukces firmy Apple (iPod, iPhone, Mac)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Steve Jobs",
@@ -159,6 +166,7 @@
     {
       "subcategory": "Giganci Technologiczni",
       "question": "Czym oryginalnie na samym początku zajmował się zaistniały w garażu portal Google?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Był wyłącznie wyszukiwarką internetową",
@@ -181,6 +189,7 @@
     {
       "subcategory": "Giganci Technologiczni",
       "question": "Jak pierwotnie, zaczynając z wielkim sukcesem od sprzedaży książek, rozwinął się dzisiejszy globalny sklep Jeffa Bezosa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Amazon",
@@ -203,6 +212,7 @@
     {
       "subcategory": "Giganci Technologiczni",
       "question": "Do którego giganta technologicznego w pełni należą platformy takie jak Instagram i WhatsApp?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Do firmy Meta (dawniej Facebook)",
@@ -225,6 +235,7 @@
     {
       "subcategory": "Internet i WWW",
       "question": "Kto w instytucie CERN w 1989 roku oficjalnie wynalazł i zdefiniował sieć WWW (World Wide Web)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tim Berners-Lee",
@@ -247,6 +258,7 @@
     {
       "subcategory": "Internet i WWW",
       "question": "Jak nazywa się unikalny adres sieciowy urządzenia lub serwera w Internecie, najczęściej w formacie np. 192.168.0.1?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Adres IP",
@@ -269,6 +281,7 @@
     {
       "subcategory": "Internet i WWW",
       "question": "W jakim uniwersalnym języku znaczników stworzona jest graficznie na ekranie każda przeciętna i standardowa strona internetowa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W języku HTML",
@@ -291,6 +304,7 @@
     {
       "subcategory": "Internet i WWW",
       "question": "Czym w budowie nazwy dowolnego serwisu internetowego jest np. końcówka '.pl' lub '.com'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Domeną najwyższego poziomu",
@@ -313,6 +327,7 @@
     {
       "subcategory": "Media Społecznościowe",
       "question": "Który portal stworzony przez Marka Zuckerberga w akademiku na Harvardzie w 2004 roku stał się globalnym gigantem społecznościowym?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Facebook",
@@ -335,6 +350,7 @@
     {
       "subcategory": "Media Społecznościowe",
       "question": "Na jakim znanym i najpopularniejszym portalu wideo dominuje ogromna rzesza twórców internetowych zwanych 'Youtuberami'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Na YouTube",
@@ -357,6 +373,7 @@
     {
       "subcategory": "Media Społecznościowe",
       "question": "Jaką literą i nazwą ochrzczono potężną platformę mikroblogową (dawniej z niebieskim ptaszkiem) po zakupie przez Elona Muska?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Platformą X",
@@ -379,6 +396,7 @@
     {
       "subcategory": "Media Społecznościowe",
       "question": "Która chińska aplikacja dla młodzieży wywołała na całym świecie absolutny szał na krótkie i chwytliwe formaty wideo (tzw. rolki)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "TikTok",
@@ -401,6 +419,7 @@
     {
       "subcategory": "Media Społecznościowe",
       "question": "Jaki specjalistyczny, niebieski portal społecznościowy służy od zawsze do nawiązywania przydatnych i karierowych kontaktów biznesowych?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "LinkedIn",
@@ -423,6 +442,7 @@
     {
       "subcategory": "Sprzęt Komputerowy (Hardware)",
       "question": "Jaki drobny podzespół zwany powszechnie krzemowym i obliczeniowym 'mózgiem', odpowiada w PC za wykonywanie głównych instrukcji?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Procesor (CPU)",
@@ -445,6 +465,7 @@
     {
       "subcategory": "Sprzęt Komputerowy (Hardware)",
       "question": "Co oznacza i reprezentuje sprzętowy skrót RAM w każdym nowoczesnym, szybkim komputerze?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pamięć operacyjną o dostępie swobodnym",
@@ -467,6 +488,7 @@
     {
       "subcategory": "Sprzęt Komputerowy (Hardware)",
       "question": "W jaką dużą 'płytę' musisz centralnie wepinać kable, dyski czy procesory przy składaniu swojego własnego PC?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W płytę główną (Motherboard)",
@@ -489,6 +511,7 @@
     {
       "subcategory": "Sprzęt Komputerowy (Hardware)",
       "question": "Jaki szybki rodzaj nowoczesnego dysku półprzewodnikowego bez ruchomych części całkowicie zastąpił stare, talerzowe dyski HDD?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Dysk SSD",
@@ -511,6 +534,7 @@
     {
       "subcategory": "Sprzęt Komputerowy (Hardware)",
       "question": "Jaką nazwę ma standardowy port, ułatwiający wpięcie w komputerze myszki, klawiatury lub małego, zewnętrznego pendrive'a?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Port USB",
@@ -533,6 +557,7 @@
     {
       "subcategory": "Języki Programowania",
       "question": "W jakim wszechobecnym dziś w przeglądarkach, skryptowym języku tworzy się niemal cały uroczy dynamizm stron w Internecie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W JavaScript",
@@ -555,6 +580,7 @@
     {
       "subcategory": "Języki Programowania",
       "question": "Czym pod względem językowym na co dzień zajmuje się programista na stanowisku zwanym powszechnie Front-end?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tworzeniem części widocznej dla zwykłego użytkownika",
@@ -577,6 +603,7 @@
     {
       "subcategory": "Języki Programowania",
       "question": "Jaki obiektowy i uniwersalny język od firmy Sun Microsystems (obecnie Oracle) ma w swym logotypie parującą, gorącą filiżankę kawy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Java",
@@ -599,6 +626,7 @@
     {
       "subcategory": "Języki Programowania",
       "question": "Jak nazywamy fundamentalny błąd w napisanym przez kogoś w pośpiechu kodzie programu, wywołujący złe działanie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bugiem",
@@ -621,6 +649,7 @@
     {
       "subcategory": "Gry Wideo i Konsole",
       "question": "Z jakiej słynnej japońskiej, i kultowej gry wywodzi się jedzący kropki i uciekający przed duszkami zółty połykacz 'Pac-Man'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z automatów typu arcade",
@@ -643,6 +672,7 @@
     {
       "subcategory": "Gry Wideo i Konsole",
       "question": "Jak nazywa się wąsaty, włoski hydraulik w czerwonej czapce, będący maskotką i flagową postacią firmy Nintendo?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Mario",
@@ -665,6 +695,7 @@
     {
       "subcategory": "Gry Wideo i Konsole",
       "question": "Na jakiej potężnej domowej konsoli Microsoftu debiutowała i działa wielka militarna seria 'Halo' z Master Chiefem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Na konsoli Xbox",
@@ -687,6 +718,7 @@
     {
       "subcategory": "Gry Wideo i Konsole",
       "question": "W co grały w latach 90-tych rzesze polskich dzieci, używając popularnej telewizyjnej konsoli 'Pegasus' z kartridżami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W klon japońskiej konsoli NES (Famicon)",
@@ -709,6 +741,7 @@
     {
       "subcategory": "Gry Wideo i Konsole",
       "question": "Jaka światowa, polska gra ze studia CD Projekt RED na zawsze zdobyła serca graczy w roku 2015 za sprawą łowcy potworów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wiedźmin 3: Dziki Gon",
@@ -731,6 +764,7 @@
     {
       "subcategory": "Cyberbezpieczeństwo",
       "question": "Jak fachowo określa się przestępcę, który na co dzień wykorzystuje swoją wiedzę o lukach IT do kradzieży w sieci?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Haker (Black hat)",
@@ -753,6 +787,7 @@
     {
       "subcategory": "Cyberbezpieczeństwo",
       "question": "Jak nazywa się groźny proces i sztuczka wyłudzania od ofiary hasła, poprzez np. podszycie się mailem pod jej zaufany bank?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Phishing",
@@ -775,6 +810,7 @@
     {
       "subcategory": "Cyberbezpieczeństwo",
       "question": "Jaki specjalistyczny złośliwy program, podszywając się pod pożyteczną aplikację, niepostrzeżenie otwiera furty dla infekcji?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Koń trojański (Trojan)",
@@ -797,6 +833,7 @@
     {
       "subcategory": "Cyberbezpieczeństwo",
       "question": "Co groźnego robi wirus typu 'ransomware' z zainfekowanymi na twoim prywatnym komputerze bezcennymi plikami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Szyfruje je i wymusza okup za hasło",
@@ -819,6 +856,7 @@
     {
       "subcategory": "Cyberbezpieczeństwo",
       "question": "Jakie nowoczesne zabezpieczenie do standardowego loginu i hasła wymusza dodanie jeszcze np. kodu otrzymanego z SMS?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Uwierzytelnianie dwuetapowe (2FA)",
@@ -841,6 +879,7 @@
     {
       "subcategory": "Smartfony i Urządzenia Mobilne",
       "question": "Jaki otwarty, powszechny na świecie system operacyjny mobilny, oparty o jądro Linuksa, rozwijany jest pod pieczą Google?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Android",
@@ -863,6 +902,7 @@
     {
       "subcategory": "Smartfony i Urządzenia Mobilne",
       "question": "Na jakim systemie wyłącznościowym zawsze i obligatoryjnie działają kultowe i bardzo popularne smartfony Apple iPhone?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "iOS",
@@ -885,6 +925,7 @@
     {
       "subcategory": "Smartfony i Urządzenia Mobilne",
       "question": "Z jakiego specjalnego, bezdotykowego modułu radiowego (w postaci małego chipu) korzystasz w sklepie by zapłacić samym smartfonem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z modułu NFC",
@@ -907,6 +948,7 @@
     {
       "subcategory": "Smartfony i Urządzenia Mobilne",
       "question": "Jak w dawnych komórkach w erze przed smartfonami, rozwijano popularny i rewolucyjny tekstowy format krótkich wiadomości do kogoś?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "SMS (Short Message Service)",
@@ -929,6 +971,7 @@
     {
       "subcategory": "Smartfony i Urządzenia Mobilne",
       "question": "Czym w standardowym wyposażeniu smarfona i zegarka sportowego jest stale śledzący pozycję przez satelity system GPS?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Systemem globalnego pozycjonowania",
@@ -951,6 +994,7 @@
     {
       "subcategory": "Technologie Przyszłości",
       "question": "Co oznacza w świecie technologii modny, anglojęzyczny skrót VR, zakładający pełne zanurzenie gracza w komputerowym obrazie 3D?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wirtualną rzeczywistość (Virtual Reality)",
@@ -973,6 +1017,7 @@
     {
       "subcategory": "Technologie Przyszłości",
       "question": "Jaka technologia nosi nazwę AR, pozwalająca m.in. użytkownikom nakładać np. filtry i postaci gier (Pokemon Go) prosto na żywy obraz z ich kamery?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Rozszerzona rzeczywistość (Augmented Reality)",
@@ -995,6 +1040,7 @@
     {
       "subcategory": "Technologie Przyszłości",
       "question": "Z pomocą jakiego urządzenia produkcyjnego powszechnie warstwami roztapia się dzisiaj tworzywa by szybko i w domu zbudować dowolny detal i przestrzenną figurkę?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z pomocą drukarki 3D",
@@ -1017,6 +1063,7 @@
     {
       "subcategory": "Technologie Przyszłości",
       "question": "Co w nowoczesnych modelach biznesowych Amazona, zastępuje czasami miejskich i pieszych kurierów z mniejszymi i lżejszymi i dostarczanymi w powietrzu do paczkami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Autonomiczne drony latające",
@@ -1039,6 +1086,7 @@
     {
       "subcategory": "Technologie Przyszłości",
       "question": "Jak nazywa się rewolucyjny koncept Internetu Rzeczy (IoT), z którym coraz śmielej zderzamy się dziś w domach?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Łączenie domowych urządzeń (np. pralki) ze sobą i siecią",
@@ -1061,6 +1109,7 @@
     {
       "subcategory": "Kryptowaluty i Blockchain",
       "question": "Jak nazywa się pierwsza, najpopularniejsza i najdroższa kryptowaluta na świecie, stworzona w 2009 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bitcoin",
@@ -1083,6 +1132,7 @@
     {
       "subcategory": "Kryptowaluty i Blockchain",
       "question": "Pod jakim tajemniczym pseudonimem ukrywa się anonimowy twórca (lub grupa twórców) systemu Bitcoin?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Satoshi Nakamoto",
@@ -1105,6 +1155,7 @@
     {
       "subcategory": "Kryptowaluty i Blockchain",
       "question": "Jak nazywa się zdecentralizowana, niemożliwa do podrobienia baza danych, na której opierają się kryptowaluty?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Blockchain (Łańcuch bloków)",
@@ -1127,6 +1178,7 @@
     {
       "subcategory": "Kryptowaluty i Blockchain",
       "question": "Jak potocznie określa się specjalistyczne, bardzo wydajne komputery, które na co dzień 'wydobywają' kryptowaluty?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Koparki kryptowalut",
@@ -1149,6 +1201,7 @@
     {
       "subcategory": "Kryptowaluty i Blockchain",
       "question": "Co oznacza w cyfrowym świecie sztuki popularny skrót NFT, będący unikalnym certyfikatem własności grafiki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Niewymienny token (Non-Fungible Token)",
@@ -1171,6 +1224,7 @@
     {
       "subcategory": "Systemy Operacyjne",
       "question": "Który darmowy, otwartoźródłowy system operacyjny, uwielbiany przez programistów, ma w logo sympatycznego pingwina?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Linux",
@@ -1193,6 +1247,7 @@
     {
       "subcategory": "Systemy Operacyjne",
       "question": "Jak nazywa się kultowy, tekstowy system operacyjny od firmy Microsoft, który całkowicie dominował na komputerach przed erą okienek?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "MS-DOS",
@@ -1215,6 +1270,7 @@
     {
       "subcategory": "Systemy Operacyjne",
       "question": "Na jakim systemie operacyjnym domyślnie działają wszystkie laptopy MacBook i komputery stacjonarne firmy Apple?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "macOS",
@@ -1237,6 +1293,7 @@
     {
       "subcategory": "Systemy Operacyjne",
       "question": "Która wersja systemu Windows, wydana w 2001 roku, z charakterystyczną zieloną łąką na tapecie, uchodzi za jedną z najpopularniejszych w historii?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Windows XP",
@@ -1259,6 +1316,7 @@
     {
       "subcategory": "Systemy Operacyjne",
       "question": "Jakiego lekkiego systemu operacyjnego, opartego głównie na przeglądarce internetowej, używają tanie laptopy zwane Chromebookami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "ChromeOS",
@@ -1281,6 +1339,7 @@
     {
       "subcategory": "Ewolucja Nośników Danych",
       "question": "Jaki płaski, kwadratowy i magnetyczny nośnik danych z lat 90. o pojemności zaledwie 1,44 MB jest dziś powszechną ikoną 'Zapisz'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Dyskietka (Floppy disk)",
@@ -1303,6 +1362,7 @@
     {
       "subcategory": "Ewolucja Nośników Danych",
       "question": "Ile standardowo danych cyfrowych (muzyki lub programów) mieściło się na klasycznej, błyszczącej płycie CD-ROM?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Około 700 MB",
@@ -1325,6 +1385,7 @@
     {
       "subcategory": "Ewolucja Nośników Danych",
       "question": "Czym fizycznie jest bardzo popularny 'pendrive', którego nosimy w kieszeni przypiętego do kluczy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pamięcią flash na złączu USB",
@@ -1347,6 +1408,7 @@
     {
       "subcategory": "Ewolucja Nośników Danych",
       "question": "Na jakim innowacyjnym i pojemnym optycznym nośniku (dającym jakość HD) wydawano filmy, by zastąpić poczciwe płyty DVD?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Na płytach Blu-ray",
@@ -1369,6 +1431,7 @@
     {
       "subcategory": "Ewolucja Nośników Danych",
       "question": "Gdzie fizycznie znajdują się Twoje zdjęcia i pliki, jeśli wysyłasz je na Dysk Google, iCloud lub Dropbox?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W 'chmurze' (na zewnętrznych serwerach firm)",
@@ -1391,6 +1454,7 @@
     {
       "subcategory": "Słynne Wirusy i Ataki Hakerskie",
       "question": "Jaki wirus z 2000 roku, rozsyłany w załączniku e-mail z wyznaniem miłosnym, wyrządził miliardowe szkody na świecie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "ILOVEYOU",
@@ -1413,6 +1477,7 @@
     {
       "subcategory": "Słynne Wirusy i Ataki Hakerskie",
       "question": "Jak nazywał się głośny i wysoce zaawansowany system szpiegowski izraelskiej firmy NSO Group, wykorzystywany do inwigilacji m.in. polityków?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Pegasus",
@@ -1435,6 +1500,7 @@
     {
       "subcategory": "Słynne Wirusy i Ataki Hakerskie",
       "question": "Jaki precyzyjny robak komputerowy został stworzony prawdopodobnie przez USA, by zniszczyć wirówki atomowe w Iranie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Stuxnet",
@@ -1457,6 +1523,7 @@
     {
       "subcategory": "Słynne Wirusy i Ataki Hakerskie",
       "question": "Jak w żargonie IT nazywa się brutalny atak polegający na zalaniu serwera ogromnym ruchem, by strona przestała działać?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Atak DDoS",
@@ -1479,6 +1546,7 @@
     {
       "subcategory": "Słynne Wirusy i Ataki Hakerskie",
       "question": "Czym zajmują się w świecie cyberbezpieczeństwa tzw. 'Białe Kapelusze' (White Hat Hackers)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Legalnym hakowaniem dla poprawy zabezpieczeń",
@@ -1501,6 +1569,7 @@
     {
       "subcategory": "Streaming i VOD",
       "question": "Która ogromna, globalna platforma VOD z wielkim, czerwonym N w logo spopularyzowała model seryjnego oglądania (binge-watching)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Netflix",
@@ -1523,6 +1592,7 @@
     {
       "subcategory": "Streaming i VOD",
       "question": "Jaka szwedzka platforma zrewolucjonizowała branżę muzyczną, dając legalny i nielimitowany dostęp do milionów piosenek za abonament?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Spotify",
@@ -1545,6 +1615,7 @@
     {
       "subcategory": "Streaming i VOD",
       "question": "Na jakim fioletowym, niezwykle popularnym serwisie streamingowym gracze na żywo pokazują, jak przechodzą gry wideo?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Na Twitchu",
@@ -1567,6 +1638,7 @@
     {
       "subcategory": "Streaming i VOD",
       "question": "Kto jest głównym właścicielem i wydawcą nowej usługi VOD zrzeszającej filmy Marvela i Gwiezdnych Wojen w jednym miejscu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Disney (Disney+)",
@@ -1589,6 +1661,7 @@
     {
       "subcategory": "Streaming i VOD",
       "question": "Co oznacza w świecie technologii telewizyjnej powszechnie stosowany skrót VOD?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wideo na życzenie (Video on Demand)",
@@ -1611,6 +1684,7 @@
     {
       "subcategory": "Rozwój Robotyki i AI",
       "question": "Jak nazywa się słynna amerykańska firma, która buduje niezwykle zwinne, zaawansowane roboty-psy (Spot) oraz humanoidalnego Atlasa?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Boston Dynamics",
@@ -1633,6 +1707,7 @@
     {
       "subcategory": "Rozwój Robotyki i AI",
       "question": "Jaki superkomputer od IBM w 1997 roku zszokował świat, wygrywając epicki, sześcierundowy pojedynek szachowy z Garrim Kasparowem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Deep Blue",
@@ -1655,6 +1730,7 @@
     {
       "subcategory": "Rozwój Robotyki i AI",
       "question": "Które z podanych to imię wysoce popularnego, głosowego asystenta (AI) wbudowanego domyślnie w urządzenia i głośniki firmy Amazon?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Alexa",
@@ -1677,6 +1753,7 @@
     {
       "subcategory": "Rozwój Robotyki i AI",
       "question": "Jaki innowacyjny program od OpenAI, oparty o modele sieci neuronowych, potrafi na zawołanie wygenerować piękny obraz z opisu tekstowego?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "DALL-E",
@@ -1699,6 +1776,7 @@
     {
       "subcategory": "Rozwój Robotyki i AI",
       "question": "Czym jest Autopilot z którym na co dzień spotykamy się w nowoczesnych, elektrycznych samochodach marki Tesla?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Zaawansowanym systemem wsparcia kierowcy (AI i kamery)",

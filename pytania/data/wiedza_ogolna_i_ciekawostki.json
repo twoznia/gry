@@ -5,6 +5,7 @@
     {
       "subcategory": "Rekordy Guinnessa",
       "question": "Jaki masywny, skalisty szczyt w pięknych Himalajach z wysokością 8848 m n.p.m dzierży miano absolutnie najwyższej góry na naszej planecie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Mount Everest",
@@ -27,6 +28,7 @@
     {
       "subcategory": "Rekordy Guinnessa",
       "question": "Które żyjące naturalnie w afrykańskich warunkach piękne i pociągłe drapieżne zwierzę lądowe dzierży bezsprzecznie rekord na świecie pod względem szybkości biegu na krótkim dystansie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Gepard",
@@ -49,6 +51,7 @@
     {
       "subcategory": "Rekordy Guinnessa",
       "question": "Jaka gigantyczna i rozbudowana rzeka płynąca dostojnie na terenie Ameryki Południowej (głównie Brazylii) w walce z Nilem od zawsze bywa najdłuższą lub na pewno najpotężniejszą i największą dorzeczem rzeką Ziemi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Amazonka",
@@ -71,6 +74,7 @@
     {
       "subcategory": "Rekordy Guinnessa",
       "question": "Jak miał na imię i nazwisko Amerykanin, który wpisał się do Wielkiej Księgi Rekordów Guinnessa jako absolutnie najwyższy (mierzący niesamowite 272 cm) zarejestrowany medycznie człowiek w historii świata?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Robert Wadlow",
@@ -93,6 +97,7 @@
     {
       "subcategory": "Rekordy Guinnessa",
       "question": "Ile zatwierdzonych i uznanych lat żyła niezwykła Francuzka Jeanne Calment, ustanawiając niepobity do dzisiejszych czasów niesamowity rekord długości ludzkiego ziemskiego życia?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Zmarła dożywając imponujących 122 lat",
@@ -115,6 +120,7 @@
     {
       "subcategory": "Kosmos i Eksploracja",
       "question": "Z jakiej naszej ludzkiej uroczej galaktyki po nocnym i pięknym niebie wywodzi się nasz potężny i ogromny Układ Słoneczny (wraz ze Słońcem i naszą Ziemią)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Drogi Mlecznej",
@@ -137,6 +143,7 @@
     {
       "subcategory": "Kosmos i Eksploracja",
       "question": "Która wspaniała i niezwykle burzliwa, gazowa, posiadająca na sobie potężną Wielką Czerwoną Plamę wielka i okrągła planeta, pozostaje zawsze największą w Układzie Słonecznym?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jowisz",
@@ -159,6 +166,7 @@
     {
       "subcategory": "Kosmos i Eksploracja",
       "question": "Jaką niezwykłą, i okrytą wielkim tlenkiem żelaza potoczną barwną i często w kinie nazywaną u nas na Ziemi nazwą, posiada bardzo w pobliżu znana nam planeta Mars?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Czerwona Planeta",
@@ -181,6 +189,7 @@
     {
       "subcategory": "Kosmos i Eksploracja",
       "question": "Kto schodząc z historycznego i amerykańskiego księżycowego piaszczystego lądownika statku Apollo 11 powiedział kultowe do dziś na cały świat i znane zdanie: 'To jest mały krok człowieka, ale wielki skok dla ludzkości'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Neil Armstrong",
@@ -203,6 +212,7 @@
     {
       "subcategory": "Mity i Fakty",
       "question": "Czy to prawda powtarzana od wieków, że bardzo zdenerwowane i dzikie byki w furię wpadają właśnie bezpośrednio pod wpływem bardzo i wyrazistego w odcieniu czerwonego koloru na noszonej przez torreadora płachcie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "To mit. Byki nie widzą kolorów, u wkurza je tylko sam szybki ruch falującej płachty",
@@ -225,6 +235,7 @@
     {
       "subcategory": "Mity i Fakty",
       "question": "Czy według współczesnej psychologii nauki zbadanej po latach ewolucji prawdą powszechną uważa się, że zwykły i pracujący na pełnych obrotach człowiek rzekomo wykorzystuje zazwyczaj tylko słynne mityczne '10% swojego mózgu'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "To wielki filmowy mit. Ludzie na co dzień wykorzystują 100% możliwości całego swojego mózgu",
@@ -247,6 +258,7 @@
     {
       "subcategory": "Mity i Fakty",
       "question": "Czy faktem z bajek znanych powszechnie do stuleci jest, że dumnie wojujący morscy wikingowie, na swych podbojach do Anglii i łupieży powszechnie i stale, w bitwach nosili w rynsztunku słynne mosiężne i z twardymi zębami zwierząt rogate na hełmy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Absolutny Mit. Rogate wymyślone hełmy dodano im po wielu latach, głównie w wielkich po XIX-wiecznych operach i komiksach",
@@ -269,6 +281,7 @@
     {
       "subcategory": "Pierwiastki i Chemia",
       "question": "Czego absolutnie wspaniałym i doskonale na stulecia od lat znanym z lekcji skrótem, pełnym z życia we wzorach we wzorem z nauki chemicznym jest wielce proste i niezbędne do całego potężnego życia powszechnie słynne H2O?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Czystej, życiodajnej po wyparciu wody",
@@ -291,6 +304,7 @@
     {
       "subcategory": "Pierwiastki i Chemia",
       "question": "Który metal jest jedynym, który pozostaje w stanie ciekłym w temperaturze pokojowej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Rtęć (Hg)",
@@ -313,6 +327,7 @@
     {
       "subcategory": "Pierwiastki i Chemia",
       "question": "Który szlachetny gaz powoduje zabawne podniesienie barwy głosu po jego wdychaniu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Hel",
@@ -335,6 +350,7 @@
     {
       "subcategory": "Jednostki Miar i Wag",
       "question": "Jak nazywa się tradycyjna morska miara odległości stosowana w nawigacji morskiej i lotniczej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Mila morska",
@@ -357,6 +373,7 @@
     {
       "subcategory": "Jednostki Miar i Wag",
       "question": "Jaką jednostką mierzy się przekątną ekranów telewizorów i monitorów w systemie anglosaskim?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Calami (np. 55 cali)",
@@ -379,6 +396,7 @@
     {
       "subcategory": "Jednostki Miar i Wag",
       "question": "Do czego służy woltomierz stosowany powszechnie przy instalacjach elektrycznych?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Służy do pomiaru napięcia elektrycznego (w woltach)",
@@ -401,6 +419,7 @@
     {
       "subcategory": "Słynne Cytaty",
       "question": "Z jakim starożytnym greckim filozofem nierozłącznie łączy się zdanie: 'Wiem, że nic nie wiem'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Sokratesem",
@@ -423,6 +442,7 @@
     {
       "subcategory": "Słynne Cytaty",
       "question": "Z jakim starożytnym rzymskim wodzem kojarzy się powszechnie słynne zdanie: 'Alea iacta est' (Kości zostały rzucone)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Z Juliuszem Cezarem",
@@ -445,6 +465,7 @@
     {
       "subcategory": "Słynne Cytaty",
       "question": "Jakie słowa, według dramatu Szekspira, wypowiedział Juliusz Cezar po zdradzie bliskiej mu osoby?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "I ty, Brutusie, przeciwko mnie?",
@@ -467,6 +488,7 @@
     {
       "subcategory": "Tajemnice Świata",
       "question": "Jak nazywa się tajemniczy obszar na Oceanie Atlantyckim, w którym rzekomo bez śladu ginęły statki i samoloty?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Trójkąt Bermudzki",
@@ -489,6 +511,7 @@
     {
       "subcategory": "Tajemnice Świata",
       "question": "W jakim szkockim jeziorze według lokalnych legend ukrywa się tajemnicze stworzenie zwane Nessie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W jeziorze Loch Ness",
@@ -511,6 +534,7 @@
     {
       "subcategory": "Tajemnice Świata",
       "question": "Jak nazywa się mityczny bogaty kontynent (lub wyspa), który według pism Platona miał zatonąć w oceanie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Atlantyda",
@@ -533,6 +557,7 @@
     {
       "subcategory": "Tajemnice Świata",
       "question": "W jakim pilnie strzeżonym wojskowym miejscu na pustyni w USA (Nevada) według teorii spiskowych ukrywa się rozbitą latający talerz?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Strefie 51 (Area 51)",
@@ -555,6 +580,7 @@
     {
       "subcategory": "Wynalazki Codziennego Użytku",
       "question": "Który słynny amerykański wynalazca przeszedł do historii jako twórca praktycznej żarówki elektrycznej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Thomas Alva Edison",
@@ -577,6 +603,7 @@
     {
       "subcategory": "Wynalazki Codziennego Użytku",
       "question": "Kto oficjalnie został uznany za wynalazcę telefonu w roku 1876?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Alexander Graham Bell",
@@ -599,6 +626,7 @@
     {
       "subcategory": "Wynalazki Codziennego Użytku",
       "question": "Jakiego rewolucyjnego odkrycia dla medycyny dokonał Alexander Fleming w 1928 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Odkrył penicylinę (pierwszy antybiotyk)",
@@ -621,6 +649,7 @@
     {
       "subcategory": "Wynalazki Codziennego Użytku",
       "question": "Jaki wynalazca dynamitu jest jednocześnie fundatorem najsłynniejszej na świecie nagrody naukowej?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Alfred Nobel",
@@ -643,6 +672,7 @@
     {
       "subcategory": "Wynalazki Codziennego Użytku",
       "question": "Jacy słynni bracia (Auguste i Louis) zapisali się na zawsze w historii jako pionierzy kina?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Bracia Lumière",
@@ -665,6 +695,7 @@
     {
       "subcategory": "Zjawiska Pogodowe",
       "question": "Jak nazywa się piękne, kolorowe zjawisko optyczne i meteorologiczne powstające gdy słońce świeci podczas deszczu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tęcza",
@@ -687,6 +718,7 @@
     {
       "subcategory": "Zjawiska Pogodowe",
       "question": "Jak nazywa się niszczycielski huragan na terenach azjatyckich, szczególnie nad Pacyfikiem?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tajfun",
@@ -709,6 +741,7 @@
     {
       "subcategory": "Zjawiska Pogodowe",
       "question": "Z jakim spektakularnym świetlnym zjawiskiem na nocnym niebie, widocznym w okolicach biegunów, kojarzy się Skandynawia?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Zorza polarna",
@@ -731,6 +764,7 @@
     {
       "subcategory": "Zjawiska Pogodowe",
       "question": "Jak nazywa się logarytmiczna skala używana przez sejsmologów do mierzenia siły trzęsień ziemi?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Skala Richtera",
@@ -753,6 +787,7 @@
     {
       "subcategory": "Zjawiska Pogodowe",
       "question": "Jak nazywa się opad atmosferyczny w postaci twardych bryłek lodu, często niszczący uprawy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Grad",
@@ -775,6 +810,7 @@
     {
       "subcategory": "Świat Finansów",
       "question": "Jaka waluta powszechnie obowiązuje w Japonii?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Jen (JPY)",
@@ -797,6 +833,7 @@
     {
       "subcategory": "Świat Finansów",
       "question": "Jak na giełdzie i rynkach finansowych nazywa się długotrwały wzrost cen akcji?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Hossa (Rynek Byka)",
@@ -819,6 +856,7 @@
     {
       "subcategory": "Świat Finansów",
       "question": "Co oznacza skrót VAT doliczany do ceny niemal wszystkich towarów i usług?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Podatek od towarów i usług",
@@ -841,6 +879,7 @@
     {
       "subcategory": "Świat Finansów",
       "question": "Jak nazywa się najsłynniejsza nowojorska ulica, tętniąca życiem finansowym i siedziba giełdy NYSE?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wall Street",
@@ -863,6 +902,7 @@
     {
       "subcategory": "Świat Finansów",
       "question": "Co oznacza skrót PKB, określający wartość wszystkich dóbr i usług wytworzonych w kraju w ciągu roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Produkt Krajowy Brutto",
@@ -885,6 +925,7 @@
     {
       "subcategory": "Nagrody Nobla",
       "question": "W jakiej dziedzinie, obok fizyki, chemii, medycyny, literatury i pokoju, przyznawana jest nagroda (od 1968 roku) ku pamięci Alfreda Nobla?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W dziedzinie ekonomii",
@@ -907,6 +948,7 @@
     {
       "subcategory": "Nagrody Nobla",
       "question": "Jaka słynna uczona jako pierwsza kobieta w historii zdobyła Nagrodę Nobla, i to aż dwukrotnie (z fizyki i chemii)?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Maria Skłodowska-Curie",
@@ -929,6 +971,7 @@
     {
       "subcategory": "Nagrody Nobla",
       "question": "W jakim mieście tradycyjnie i uroczyście wręczana jest Pokojowa Nagroda Nobla, w odróżnieniu od pozostałych, wręczanych w Sztokholmie?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Oslo (Norwegia)",
@@ -951,6 +994,7 @@
     {
       "subcategory": "Nagrody Nobla",
       "question": "Kto odebrał Literacką Nagrodę Nobla w 1905 roku za całokształt twórczości, stając się historycznie pierwszym laureatem z Polski?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Henryk Sienkiewicz",
@@ -973,6 +1017,7 @@
     {
       "subcategory": "Nagrody Nobla",
       "question": "Który wybitny mąż stanu, były prezydent RPA walczący skutecznie z apartheidem, otrzymał Pokojową Nagrodę Nobla w 1993 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Nelson Mandela",
@@ -995,6 +1040,7 @@
     {
       "subcategory": "Cuda Świata",
       "question": "Jaki jedyny starożytny cud świata, znajdujący się w Gizie, przetrwał w niemal nienaruszonym stanie do naszych czasów?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Piramida Cheopsa",
@@ -1017,6 +1063,7 @@
     {
       "subcategory": "Cuda Świata",
       "question": "W jakim współczesnym kraju leży zachowane wczesnoinkaskie miasto Machu Picchu, wpisane na listę siedmiu nowych cudów świata?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Peru",
@@ -1039,6 +1086,7 @@
     {
       "subcategory": "Cuda Świata",
       "question": "Jak nazywa się wielki, starożytny amfiteatr zlokalizowany w centrum Rzymu, będący jednym z nowych cudów świata?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Koloseum",
@@ -1061,6 +1109,7 @@
     {
       "subcategory": "Cuda Świata",
       "question": "Jaki wspaniały, majestatyczny marmurowy grobowiec w Indiach zbudował cesarz Szahdżahan dla swojej ukochanej, zmarłej żony?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Tadź Mahal",
@@ -1083,6 +1132,7 @@
     {
       "subcategory": "Cuda Świata",
       "question": "Który cud świata starożytnego, będący gigantycznym posągiem z brązu, stał dawniej dumnie u wejścia do greckiego portu?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kolos Rodyjski",
@@ -1105,6 +1155,7 @@
     {
       "subcategory": "Przysłowia i Powiedzenia",
       "question": "Jak brzmi prawidłowe dokończenie polskiego przysłowia: 'Gdzie kucharek sześć...'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "...tam nie ma co jeść.",
@@ -1127,6 +1178,7 @@
     {
       "subcategory": "Przysłowia i Powiedzenia",
       "question": "Co według powszechnie znanego, leśnego powiedzenia 'ciągnie wilka', gdy ma się na myśli jego naturalne instynkty i nawyki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Ciągnie go do lasu",
@@ -1149,6 +1201,7 @@
     {
       "subcategory": "Przysłowia i Powiedzenia",
       "question": "Jak dokończysz staropolskie przysłowie przestrzegające przed krytykowaniem wartości i wad otrzymanego podarunku: 'Darowanemu koniowi...'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "...w zęby się nie zagląda.",
@@ -1171,6 +1224,7 @@
     {
       "subcategory": "Przysłowia i Powiedzenia",
       "question": "Kiedy według znanego rzemieślniczego przysłowia z morałem, należy kategorycznie 'kuć żelazo' by odnieść życiowy sukces?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Póki gorące",
@@ -1193,6 +1247,7 @@
     {
       "subcategory": "Przysłowia i Powiedzenia",
       "question": "Jakie przysłowie stanowczo ostrzega przed przedwczesnym i optymistycznym cieszeniem się z sukcesu, zanim wszystko się nie skończy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Nie chwal dnia przed zachodem słońca",
@@ -1215,6 +1270,7 @@
     {
       "subcategory": "Słynni Odkrywcy",
       "question": "Kto w 1492 roku, naiwnie poszukując nowej i szybszej drogi do Indii, dotarł swoimi statkami do wybrzeży nieznanej wcześniej Ameryki?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Krzysztof Kolumb",
@@ -1237,6 +1293,7 @@
     {
       "subcategory": "Słynni Odkrywcy",
       "question": "Jaki wielki portugalski podróżnik i odkrywca jako absolutnie pierwszy dotarł drogą morską do upragnionych Indii, opływając Afrykę w 1498 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Vasco da Gama",
@@ -1259,6 +1316,7 @@
     {
       "subcategory": "Słynni Odkrywcy",
       "question": "Czyja hiszpańska wyprawa (choć głównodowodzący zginął tragicznie w trakcie na Filipinach) jako pierwsza na świecie całkowicie opłynęła kulę ziemską?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wyprawa Ferdynanda Magellana",
@@ -1281,6 +1339,7 @@
     {
       "subcategory": "Słynni Odkrywcy",
       "question": "Jaki bardzo słynny wenecki kupiec i podróżnik udał się w XIII wieku lądowym Jedwabnym Szlakiem daleko do Chin na dwór Kubilaj-chana?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Marco Polo",
@@ -1303,6 +1362,7 @@
     {
       "subcategory": "Słynni Odkrywcy",
       "question": "Który słynny i bardzo zdeterminowany Norweg został oficjalnie pierwszym zdobywcą mroźnego bieguna południowego, wygrywając o włos wyścig ze Scottem w 1911 roku?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Roald Amundsen",
@@ -1325,6 +1385,7 @@
     {
       "subcategory": "Ciało Człowieka",
       "question": "Jaki potężny, wewnętrzny i niezwykle ważny organ ludzkiego ciała w głównej mierze odpowiada za magazynowanie energii, produkcję żółci oraz detoksykację z alkoholu i trucizn?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Wątroba",
@@ -1347,6 +1408,7 @@
     {
       "subcategory": "Ciało Człowieka",
       "question": "Jaka kostna struktura jest oficjalnie największą, a zarazem najcięższą i najsilniejszą kością w całym układzie szkieletowym dorosłego człowieka?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Kość udowa",
@@ -1369,6 +1431,7 @@
     {
       "subcategory": "Ciało Człowieka",
       "question": "Jak fachowo nazywa się czerwony barwnik ukryty we krwi, który jest bezpośrednio i fizycznie odpowiedzialny za niezbędne transportowanie tlenu z naszych płuc do wszystkich komórek?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Hemoglobina",
@@ -1391,6 +1454,7 @@
     {
       "subcategory": "Ciało Człowieka",
       "question": "Jaka mocna, wypukła i twarda kostna struktura ochronna bezpośrednio zabezpiecza nasz bardzo miękki i delikatny mózg przed wszelkimi uderzeniami i wstrząsami z otoczenia?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Czaszka",
@@ -1413,6 +1477,7 @@
     {
       "subcategory": "Ciało Człowieka",
       "question": "Co paradoksalnie według twardej medycyny stanowi absolutnie największy powierzchniowo organ całego naszego ludzkiego organizmu, pełniący kluczowe funkcje obronne i chłodzące ciało?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Skóra",
@@ -1435,6 +1500,7 @@
     {
       "subcategory": "Stolice Świata",
       "question": "W jakiej niezwykle popularnej, zatłoczonej latem stolicy na zachodzie Europy, przez sam środek historycznej i miejskiej zabudowy przepływa zjawiskowa i majestatyczna rzeka Sekwana?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Paryżu",
@@ -1457,6 +1523,7 @@
     {
       "subcategory": "Stolice Świata",
       "question": "Które bardzo turystyczne miasto z ogromną antyczną przeszłością, zlokalizowane pośrodku Półwyspu Apenińskiego, potocznie i pieszczotliwie nazywa się 'Wiecznym Miastem'?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Rzym",
@@ -1479,6 +1546,7 @@
     {
       "subcategory": "Stolice Świata",
       "question": "Do jakiej deszczowej, brytyjskiej stolicy powinieneś się bezwzględnie udać, aby móc zobaczyć pałac królewski Buckingham i pospacerować brzegiem rzeki Tamizy?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Do Londynu",
@@ -1501,6 +1569,7 @@
     {
       "subcategory": "Stolice Świata",
       "question": "Jakie znane europejskie i olbrzymie historycznie miasto, po wielu ciężkich latach podzielenia betonowym murem, ponownie zostało ustanowione oficjalną stolicą zjednoczonych Niemiec?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "Berlin",
@@ -1523,6 +1592,7 @@
     {
       "subcategory": "Stolice Świata",
       "question": "W jakim potężnym i niesamowicie neonowym mieście, będącym dumną, dalekowschodnią stolicą Japonii odnajdziesz m.in. zjawiskowe świątynie sąsiadujące bezpośrednio ze szklanymi wieżowcami?",
+      "level": "łatwe",
       "answers": [
         {
           "text": "W Tokio",
