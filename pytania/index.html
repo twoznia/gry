@@ -237,6 +237,12 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="sel-level">Poziom trudności</label>
+            <select id="sel-level">
+                <option value="__all__">Wszystkie</option>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="sel-questions">Liczba pytań</label>
             <select id="sel-questions">
                 <option value="5">5</option>
@@ -319,6 +325,18 @@ function populateCategorySelect() {
         opt.textContent = (d.icon || '❓') + ' ' + d.category;
         sel.appendChild(opt);
     });
+    populateLevelSelect();
+}
+
+function populateLevelSelect() {
+    const sel = document.getElementById('sel-level');
+    const levels = [...new Set(allData.flatMap(d => d.questions.map(q => q.level)).filter(Boolean))].sort();
+    levels.forEach(level => {
+        const opt = document.createElement('option');
+        opt.value = level;
+        opt.textContent = level.charAt(0).toUpperCase() + level.slice(1);
+        sel.appendChild(opt);
+    });
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -331,7 +349,7 @@ function shuffle(arr) {
     return a;
 }
 
-function getQuestions(categoryName, numQ) {
+function getQuestions(categoryName, numQ, levelFilter) {
     let pool;
     if (categoryName === '__random__') {
         pool = allData.flatMap(d => d.questions.map(q => ({ ...q, _category: d.category })));
@@ -339,6 +357,9 @@ function getQuestions(categoryName, numQ) {
         const catData = allData.find(d => d.category === categoryName);
         if (!catData) return [];
         pool = catData.questions.map(q => ({ ...q, _category: catData.category }));
+    }
+    if (levelFilter && levelFilter !== '__all__') {
+        pool = pool.filter(q => q.level === levelFilter);
     }
     return shuffle(pool).slice(0, numQ);
 }
@@ -361,7 +382,8 @@ let state = {};
 function startGame() {
     const categoryName = document.getElementById('sel-category').value;
     const numQ = parseInt(document.getElementById('sel-questions').value, 10);
-    const questions = getQuestions(categoryName, numQ);
+    const levelFilter = document.getElementById('sel-level').value;
+    const questions = getQuestions(categoryName, numQ, levelFilter);
 
     if (!questions.length) {
         document.getElementById('setup-error').textContent = 'Brak pytań dla wybranej kategorii.';
