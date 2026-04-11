@@ -1841,6 +1841,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Chrzest Polski i Piastowie",
+      "question": "W którym roku odbył się zjazd gnieźnieński, podczas którego cesarz Otton III spotkał się z Bolesławem Chrobrym?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1000 r.",
+          "is_correct": true
+        },
+        {
+          "text": "966 r.",
+          "is_correct": false
+        },
+        {
+          "text": "1025 r.",
+          "is_correct": false
+        },
+        {
+          "text": "997 r.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Sportu",
+      "question": "Który zawodnik zdobył złoty medal w biegu na 100 metrów podczas Igrzysk Olimpijskich w Berlinie w 1936 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Jesse Owens",
+          "is_correct": true
+        },
+        {
+          "text": "Luz Long",
+          "is_correct": false
+        },
+        {
+          "text": "Ralph Metcalfe",
+          "is_correct": false
+        },
+        {
+          "text": "Mack Robinson",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia USA",
+      "question": "Który z prezydentów USA jako pierwszy zginął z ręki zamachowca, podczas przedstawienia w teatrze w 1865 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Abraham Lincoln",
+          "is_correct": true
+        },
+        {
+          "text": "James Garfield",
+          "is_correct": false
+        },
+        {
+          "text": "William McKinley",
+          "is_correct": false
+        },
+        {
+          "text": "John F. Kennedy",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "II Wojna Światowa",
+      "question": "Jak nazywała się operacja lądowania aliantów w Normandii przeprowadzona 6 czerwca 1944 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Operacja Overlord",
+          "is_correct": true
+        },
+        {
+          "text": "Operacja Barbarossa",
+          "is_correct": false
+        },
+        {
+          "text": "Operacja Market Garden",
+          "is_correct": false
+        },
+        {
+          "text": "Operacja Torch",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Królowie i Książęta Polski",
+      "question": "Który król Polski zawarł w 1683 roku sojusz z cesarzem Leopoldem I i poprowadził odsiecz wiedeńską przeciw Turkom?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Jan III Sobieski",
+          "is_correct": true
+        },
+        {
+          "text": "Władysław IV Waza",
+          "is_correct": false
+        },
+        {
+          "text": "August II Mocny",
+          "is_correct": false
+        },
+        {
+          "text": "Michał Korybut Wiśniowiecki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polska w czasach PRL",
+      "question": "Jak nazywało się porozumienie podpisane w sierpniu 1980 roku między Międzyzakładowym Komitetem Strajkowym a rządem PRL, które dało podstawy do rejestracji NSZZ Solidarność?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Porozumienia gdańskie",
+          "is_correct": true
+        },
+        {
+          "text": "Porozumienia jastrzębskie",
+          "is_correct": false
+        },
+        {
+          "text": "Porozumienia szczecińskie",
+          "is_correct": false
+        },
+        {
+          "text": "Porozumienia radomskie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Powstania Narodowe",
+      "question": "Kto był Naczelnikiem powstania kościuszkowskiego (1794) i dowódcą w bitwie pod Racławicami?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Tadeusz Kościuszko",
+          "is_correct": true
+        },
+        {
+          "text": "Jan Henryk Dąbrowski",
+          "is_correct": false
+        },
+        {
+          "text": "Józef Poniatowski",
+          "is_correct": false
+        },
+        {
+          "text": "Józef Chłopicki",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Rewolucja Francuska",
+      "question": "Który dokument uchwalony przez Zgromadzenie Narodowe we Francji w sierpniu 1789 roku proklamował wolność, równość i prawo do oporu wobec ucisku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Deklaracja Praw Człowieka i Obywatela",
+          "is_correct": true
+        },
+        {
+          "text": "Konstytucja 3 maja",
+          "is_correct": false
+        },
+        {
+          "text": "Wielka Karta Swobód",
+          "is_correct": false
+        },
+        {
+          "text": "Deklaracja Niepodległości USA",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Rzeczpospolita Szlachecka",
+      "question": "Co oznaczała zasada liberum veto w Sejmie Rzeczypospolitej Szlacheckiej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Jeden poseł mógł zerwać obrady i unieważnić wszystkie uchwały sejmu",
+          "is_correct": true
+        },
+        {
+          "text": "Król miał prawo weta wobec każdej uchwały sejmowej",
+          "is_correct": false
+        },
+        {
+          "text": "Senat mógł odrzucić uchwałę przyjętą przez izbę poselską",
+          "is_correct": false
+        },
+        {
+          "text": "Szlachta mogła zbojkotować elekcję królewską",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Starożytność i Egipt",
+      "question": "Która bitwa z 480 roku p.n.e. jest znana z heroicznej obrony 300 Spartan pod wodzą Leonidasa przed wojskami perskimi?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Bitwa pod Termopilami",
+          "is_correct": true
+        },
+        {
+          "text": "Bitwa pod Maratonem",
+          "is_correct": false
+        },
+        {
+          "text": "Bitwa pod Salaminą",
+          "is_correct": false
+        },
+        {
+          "text": "Bitwa pod Platejami",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynni Dowódcy i Wodzowie",
+      "question": "Pod jaką miejscowością Napoleon Bonaparte poniósł ostateczną klęskę w 1815 roku, co zakończyło epokę napoleońską?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Waterloo",
+          "is_correct": true
+        },
+        {
+          "text": "Austerlitz",
+          "is_correct": false
+        },
+        {
+          "text": "Lipsk",
+          "is_correct": false
+        },
+        {
+          "text": "Borodino",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkie Odkrycia Geograficzne",
+      "question": "Który żeglarz jako pierwszy przepłynął dookoła Ziemi (choć sam zginął w drodze), a jego wyprawa zakończyła się w 1522 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Ferdynand Magellan",
+          "is_correct": true
+        },
+        {
+          "text": "Vasco da Gama",
+          "is_correct": false
+        },
+        {
+          "text": "Amerigo Vespucci",
+          "is_correct": false
+        },
+        {
+          "text": "Bartolomeu Dias",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Współczesna Polska (po 1989)",
+      "question": "W którym roku Polska wstąpiła do Sojuszu Północnoatlantyckiego (NATO)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1999",
+          "is_correct": true
+        },
+        {
+          "text": "1991",
+          "is_correct": false
+        },
+        {
+          "text": "2004",
+          "is_correct": false
+        },
+        {
+          "text": "1997",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zamki i Twierdze",
+      "question": "Który zamek krzyżacki, zbudowany w XIV wieku nad Wisłą, jest uważany za jeden z największych gotyckich zamków na świecie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Zamek w Malborku",
+          "is_correct": true
+        },
+        {
+          "text": "Zamek na Wawelu",
+          "is_correct": false
+        },
+        {
+          "text": "Zamek w Chęcinach",
+          "is_correct": false
+        },
+        {
+          "text": "Zamek w Golubiu-Dobrzyniu",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zimna Wojna",
+      "question": "Jak nazywał się plan pomocy gospodarczej USA dla krajów Europy Zachodniej ogłoszony w 1947 roku, który miał przeciwdziałać ekspansji komunizmu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Plan Marshalla",
+          "is_correct": true
+        },
+        {
+          "text": "Doktryna Trumana",
+          "is_correct": false
+        },
+        {
+          "text": "Plan Schumana",
+          "is_correct": false
+        },
+        {
+          "text": "Plan Dawesa",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Średniowiecze Europy",
+      "question": "W którym roku Wilhelm Zdobywca pokonał króla Harolda II w bitwie pod Hastings i podbił Anglię?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1066",
+          "is_correct": true
+        },
+        {
+          "text": "1054",
+          "is_correct": false
+        },
+        {
+          "text": "1095",
+          "is_correct": false
+        },
+        {
+          "text": "1099",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
