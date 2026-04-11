@@ -1818,6 +1818,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Komedie Stanisława Barei",
+      "question": "W którym roku odbyła się kinowa premiera filmu 'Miś' i kto był współautorem scenariusza razem ze Stanisławem Bareją?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1981; Stanisław Tym",
+          "is_correct": true
+        },
+        {
+          "text": "1980; Marek Piwowski",
+          "is_correct": false
+        },
+        {
+          "text": "1983; Krzysztof Gradowski",
+          "is_correct": false
+        },
+        {
+          "text": "1979; Janusz Kondratiuk",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody Oscar",
+      "question": "Który film jako pierwszy nieanglojęzyczny w historii zdobył Oscara w kategorii Najlepszy Film?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Parasite (Parazyt) – Bong Joon-ho, 2020",
+          "is_correct": true
+        },
+        {
+          "text": "Amour (Miłość) – Michael Haneke, 2013",
+          "is_correct": false
+        },
+        {
+          "text": "Roma – Alfonso Cuarón, 2019",
+          "is_correct": false
+        },
+        {
+          "text": "Życie jest piękne – Roberto Benigni, 1999",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Polskie Seriale",
+      "question": "Ile odcinków liczy oryginalny serial 'Czterdziestolatek' z lat 1974–1977, bez uwzględnienia późniejszej kontynuacji?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "21",
+          "is_correct": true
+        },
+        {
+          "text": "18",
+          "is_correct": false
+        },
+        {
+          "text": "24",
+          "is_correct": false
+        },
+        {
+          "text": "13",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kino Marvela i DC",
+      "question": "Który aktor wcielił się w postać Jokera w filmie 'Mroczny Rycerz' (2008) i pośmiertnie otrzymał za tę rolę Oscara?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Heath Ledger",
+          "is_correct": true
+        },
+        {
+          "text": "Joaquin Phoenix",
+          "is_correct": false
+        },
+        {
+          "text": "Jack Nicholson",
+          "is_correct": false
+        },
+        {
+          "text": "Jared Leto",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Hollywood",
+      "question": "Kto jest najmłodszą aktorką w historii, która zdobyła Oscara za główną rolę kobiecą, mając zaledwie 21 lat w chwili ogłoszenia nominacji?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Marlee Matlin",
+          "is_correct": true
+        },
+        {
+          "text": "Jennifer Lawrence",
+          "is_correct": false
+        },
+        {
+          "text": "Audrey Hepburn",
+          "is_correct": false
+        },
+        {
+          "text": "Natalie Portman",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polscy Reżyserzy",
+      "question": "Który film Andrzeja Wajdy zdobył Złotą Palmę na festiwalu w Cannes w 1981 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Człowiek z żelaza",
+          "is_correct": true
+        },
+        {
+          "text": "Człowiek z marmuru",
+          "is_correct": false
+        },
+        {
+          "text": "Ziemia obiecana",
+          "is_correct": false
+        },
+        {
+          "text": "Wesele",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Filmy Animowane",
+      "question": "Który reżyser stworzył 'Toy Story' (1995) – pierwszy w pełni komputerowo animowany film fabularny w historii kina?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "John Lasseter",
+          "is_correct": true
+        },
+        {
+          "text": "Pete Docter",
+          "is_correct": false
+        },
+        {
+          "text": "Andrew Stanton",
+          "is_correct": false
+        },
+        {
+          "text": "Brad Bird",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Seriale Netflix i HBO",
+      "question": "Z jaką dokładnością procentową (czystością) Walter White warzy metamfetaminę w serialu 'Breaking Bad', co staje się jego znakiem rozpoznawczym?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "99,1%",
+          "is_correct": true
+        },
+        {
+          "text": "96,8%",
+          "is_correct": false
+        },
+        {
+          "text": "98,5%",
+          "is_correct": false
+        },
+        {
+          "text": "100%",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kino Akcji",
+      "question": "W którym filmie po raz pierwszy John McClane wypowiada słynny cytat 'Yippee-ki-yay' i kto go gra?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Szklana pułapka (1988); Bruce Willis",
+          "is_correct": true
+        },
+        {
+          "text": "Szklana pułapka 2 (1990); Bruce Willis",
+          "is_correct": false
+        },
+        {
+          "text": "Commando (1985); Arnold Schwarzenegger",
+          "is_correct": false
+        },
+        {
+          "text": "Predator (1987); Arnold Schwarzenegger",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Historia Kina",
+      "question": "W którym roku bracia Auguste i Louis Lumière po raz pierwszy publicznie wyświetlili film dla płatnej publiczności, co uznaje się za narodziny kina?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1895",
+          "is_correct": true
+        },
+        {
+          "text": "1888",
+          "is_correct": false
+        },
+        {
+          "text": "1900",
+          "is_correct": false
+        },
+        {
+          "text": "1905",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Horrory i Thrillery",
+      "question": "Jaki numer ma przeklęty pokój hotelowy w filmie 'Lśnienie' (The Shining, 1980) Stanleya Kubricka?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "237",
+          "is_correct": true
+        },
+        {
+          "text": "666",
+          "is_correct": false
+        },
+        {
+          "text": "101",
+          "is_correct": false
+        },
+        {
+          "text": "314",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Muzyka Filmowa",
+      "question": "Ennio Morricone zdobył swojego pierwszego 'zwykłego' (konkursowego) Oscara za muzykę w 2016 roku – za ścieżkę dźwiękową do jakiego filmu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Nienawistna ósemka (The Hateful Eight)",
+          "is_correct": true
+        },
+        {
+          "text": "Dobry, zły i brzydki (The Good, the Bad and the Ugly)",
+          "is_correct": false
+        },
+        {
+          "text": "Cinema Paradiso",
+          "is_correct": false
+        },
+        {
+          "text": "Za garść dolarów (A Fistful of Dollars)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Aktorzy Starszego Pokolenia",
+      "question": "Zbigniew Cybulski, zwany 'polskim Jamesem Deanem', zginął tragicznie w wypadku kolejowym w 1967 roku na dworcu w którym mieście?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wrocław",
+          "is_correct": true
+        },
+        {
+          "text": "Warszawa",
+          "is_correct": false
+        },
+        {
+          "text": "Kraków",
+          "is_correct": false
+        },
+        {
+          "text": "Łódź",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwal w Gdyni",
+      "question": "Który film Krzysztofa Kieślowskiego zdobył Złote Lwy na Festiwalu Polskich Filmów Fabularnych w Gdyni w 1988 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Krótki film o zabijaniu",
+          "is_correct": true
+        },
+        {
+          "text": "Dekalog",
+          "is_correct": false
+        },
+        {
+          "text": "Podwójne życie Weroniki",
+          "is_correct": false
+        },
+        {
+          "text": "Przypadek",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Programy Rozrywkowe (Show)",
+      "question": "Teleturniej 'Jeden z dziesięciu', emitowany w TVP2 od 1994 roku i prowadzony przez Tadeusza Sznuka, jest polską adaptacją którego brytyjskiego formatu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Fifteen to One",
+          "is_correct": true
+        },
+        {
+          "text": "Who Wants to Be a Millionaire?",
+          "is_correct": false
+        },
+        {
+          "text": "The Weakest Link",
+          "is_correct": false
+        },
+        {
+          "text": "Mastermind",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Złote Myśli z Ekranu",
+      "question": "Słynny cytat 'E.T. zadzwoń do domu' pochodzi z jakiego roku (premiera kinowa) i kto był reżyserem tego filmu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1982; Steven Spielberg",
+          "is_correct": true
+        },
+        {
+          "text": "1980; George Lucas",
+          "is_correct": false
+        },
+        {
+          "text": "1984; John Carpenter",
+          "is_correct": false
+        },
+        {
+          "text": "1979; Ridley Scott",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
