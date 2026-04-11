@@ -1841,6 +1841,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Biblia i Postacie Biblijne",
+      "question": "Jak miał na imię pierwszy arcykapłan starożytnego Izraela, brat Mojżesza, który według Księgi Wyjścia sporządził złotego cielca podczas pobytu ludu u stóp góry Synaj?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Aaron",
+          "is_correct": true
+        },
+        {
+          "text": "Lewi",
+          "is_correct": false
+        },
+        {
+          "text": "Eleazar",
+          "is_correct": false
+        },
+        {
+          "text": "Jozue",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Bogowie Starożytnego Egiptu",
+      "question": "Jak nazywało się egipskie pojęcie kosmicznego ładu, sprawiedliwości i prawdy, personifikowane przez boginię z piórem strusim na głowie, ważonym na szali podczas sądu nad duszą?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Ma'at",
+          "is_correct": true
+        },
+        {
+          "text": "Nefertari",
+          "is_correct": false
+        },
+        {
+          "text": "Neftyda",
+          "is_correct": false
+        },
+        {
+          "text": "Mut",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Buddyzm i Hinduizm",
+      "question": "Jak nazywa się najważniejszy tekst filozofii hinduskiej, będący częścią eposu Mahabharata, w którym bóg Kryszna objaśnia wojownikowi Ardżunie sens obowiązku, duszy i drogi do wyzwolenia?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Bhagawadgita",
+          "is_correct": true
+        },
+        {
+          "text": "Ramajana",
+          "is_correct": false
+        },
+        {
+          "text": "Upaniszady",
+          "is_correct": false
+        },
+        {
+          "text": "Rigweda",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Grecka i Rzymska",
+      "question": "Jak miał na imię król Troi, ojciec Hektora i Parysa, który panował w mieście podczas słynnej dziesięcioletniej wojny z Grekami opisanej w Iliadzie Homera?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Priam",
+          "is_correct": true
+        },
+        {
+          "text": "Agamemnon",
+          "is_correct": false
+        },
+        {
+          "text": "Menelaos",
+          "is_correct": false
+        },
+        {
+          "text": "Odyseusz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mitologia Nordycka",
+      "question": "Jak w mitologii nordyckiej nazywały się dwa kruki Odyna – symbolizujące Myśl i Pamięć – które każdego dnia oblatywały cały świat i przynosiły bogu wieści o wszystkim, co się dzieje?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Huginn i Muninn",
+          "is_correct": true
+        },
+        {
+          "text": "Mimir i Baldur",
+          "is_correct": false
+        },
+        {
+          "text": "Fenrir i Jörmungandr",
+          "is_correct": false
+        },
+        {
+          "text": "Freyr i Freja",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Obrzędy Przejścia",
+      "question": "Jak w tradycji japońskiej nazywa się oficjalne święto państwowe celebrujące wejście 20-latków w dorosłość, obchodzone corocznie w drugi poniedziałek stycznia?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Seijin no Hi",
+          "is_correct": true
+        },
+        {
+          "text": "Tanabata",
+          "is_correct": false
+        },
+        {
+          "text": "Shichi-go-san",
+          "is_correct": false
+        },
+        {
+          "text": "Obon",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Polskie Zwyczaje Ludowe",
+      "question": "Jak w polskim folklorze Kurpiów i Łowicza nazywa się kolorowa, symetryczna ozdoba wycinana z papieru, niegdyś wieszana na ścianach wiejskich chat jako barwna dekoracja?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wycinanka",
+          "is_correct": true
+        },
+        {
+          "text": "Pisanka",
+          "is_correct": false
+        },
+        {
+          "text": "Pająk",
+          "is_correct": false
+        },
+        {
+          "text": "Palma",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Postacie Mityczne",
+      "question": "Jak w mitologii greckiej nazywało się ogniem ziejące monstrum z głową lwa, tułowiem kozy i ogonem w postaci węża, pokonane przez herosa Bellerofonta dosiadającego Pegaza?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Chimera",
+          "is_correct": true
+        },
+        {
+          "text": "Harpia",
+          "is_correct": false
+        },
+        {
+          "text": "Sfinks",
+          "is_correct": false
+        },
+        {
+          "text": "Hydra",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Chrześcijaństwo",
+      "question": "Jak w teologii katolickiej nazywa się dogmat ogłoszony przez papieża Piusa IX w 1854 roku, głoszący że Maryja, Matka Boża, została poczęta bez zmazy grzechu pierworodnego?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Niepokalane Poczęcie",
+          "is_correct": true
+        },
+        {
+          "text": "Wniebowzięcie Maryi",
+          "is_correct": false
+        },
+        {
+          "text": "Boskie Macierzyństwo",
+          "is_correct": false
+        },
+        {
+          "text": "Theotokos",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Islam",
+      "question": "Jak w islamie nazywa się zapis wypowiedzi, czynów i milczącej zgody proroka Mahometa, stanowiący obok Koranu drugie główne źródło prawa islamskiego (szariatu)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Hadis",
+          "is_correct": true
+        },
+        {
+          "text": "Fatwa",
+          "is_correct": false
+        },
+        {
+          "text": "Sura",
+          "is_correct": false
+        },
+        {
+          "text": "Hidżra",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Religie Świata: Judaizm",
+      "question": "Jak nazywa się kodeks prawa żydowskiego zredagowany przez Józefa Karo w XVI wieku, będący do dziś podstawowym podręcznikiem religijno-prawnym dla ortodoksyjnych Żydów?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Szulchan Aruch",
+          "is_correct": true
+        },
+        {
+          "text": "Miszna",
+          "is_correct": false
+        },
+        {
+          "text": "Zohar",
+          "is_correct": false
+        },
+        {
+          "text": "Talmud Jerozolimski",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wielkanoc w Polsce",
+      "question": "W której małopolskiej miejscowości odbywa się coroczna procesja z najwyższymi w Polsce palmami wielkanocnymi, a tradycja ta została wpisana na listę dziedzictwa niematerialnego UNESCO?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Lipnica Murowana",
+          "is_correct": true
+        },
+        {
+          "text": "Łowicz",
+          "is_correct": false
+        },
+        {
+          "text": "Tokarnia",
+          "is_correct": false
+        },
+        {
+          "text": "Kalwaria Zebrzydowska",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia Słowian",
+      "question": "Jak w mitologii słowiańskiej nazywał się leśny demon wyobrażany jako wysoki, brodaty mężczyzna z odwróconymi stopami, który lubił mylić i gubić podróżnych w gęstwinie leśnej?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Leszy",
+          "is_correct": true
+        },
+        {
+          "text": "Południca",
+          "is_correct": false
+        },
+        {
+          "text": "Kikimora",
+          "is_correct": false
+        },
+        {
+          "text": "Strzyga",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wierzenia i Zabobony",
+      "question": "Jak w tradycji europejskiej nazywa się noc z 30 kwietnia na 1 maja, kiedy według dawnych wierzeń wiedźmy i demony zbierały się na sabat na górskich szczytach, witając nadejście wiosny?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Noc Walpurgii",
+          "is_correct": true
+        },
+        {
+          "text": "Halloween",
+          "is_correct": false
+        },
+        {
+          "text": "Noc Świętojańska",
+          "is_correct": false
+        },
+        {
+          "text": "Noc Kupały",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta Bożego Narodzenia",
+      "question": "Jak w tradycji polskich Kresów Wschodnich i Ukrainy nazywa się wigilijna potrawa przyrządzana z gotowanej pszenicy, miodu, maku i bakalii, obowiązkowo spożywana podczas Wigilii?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Kutia",
+          "is_correct": true
+        },
+        {
+          "text": "Siemieniotka",
+          "is_correct": false
+        },
+        {
+          "text": "Kasza z makiem",
+          "is_correct": false
+        },
+        {
+          "text": "Uzwar",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Święta w innych kulturach",
+      "question": "Jak nazywa się irańskie i perskie Nowe Roku, obchodzone podczas astronomicznej równonocy wiosennej, będące najważniejszym świętem w Iranie i wśród diaspory perskiej na całym świecie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Nouruz",
+          "is_correct": true
+        },
+        {
+          "text": "Eid al-Fitr",
+          "is_correct": false
+        },
+        {
+          "text": "Diwali",
+          "is_correct": false
+        },
+        {
+          "text": "Holi",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
