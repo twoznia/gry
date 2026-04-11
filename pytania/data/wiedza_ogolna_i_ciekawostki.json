@@ -1979,6 +1979,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Ciało Człowieka",
+      "question": "Jak nazywa się najmniejsza kość w ludzkim ciele, znajdująca się w uchu środkowym?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Strzemiączko (stapes)",
+          "is_correct": true
+        },
+        {
+          "text": "Młoteczek (malleus)",
+          "is_correct": false
+        },
+        {
+          "text": "Kowadełko (incus)",
+          "is_correct": false
+        },
+        {
+          "text": "Kość łódkowata (scaphoid)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Cuda Świata",
+      "question": "W którym mieście starożytnym znajdowały się Wiszące Ogrody, uważane za jeden z siedmiu cudów starożytnego świata?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Babilon",
+          "is_correct": true
+        },
+        {
+          "text": "Niniwa",
+          "is_correct": false
+        },
+        {
+          "text": "Persepolis",
+          "is_correct": false
+        },
+        {
+          "text": "Ur",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Jednostki Miar i Wag",
+      "question": "Ile watów odpowiada jednej koniskiej sile (KM/HP) w systemie SI?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Około 735,5 W",
+          "is_correct": true
+        },
+        {
+          "text": "Około 746 W (tylko metryczny hp)",
+          "is_correct": false
+        },
+        {
+          "text": "Dokładnie 1000 W",
+          "is_correct": false
+        },
+        {
+          "text": "Około 550 W",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kosmos i Eksploracja",
+      "question": "Jaką nazwę nosi granica atmosfery Ziemi i przestrzeni kosmicznej, leżąca na wysokości 100 km n.p.m.?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Linia Kármána",
+          "is_correct": true
+        },
+        {
+          "text": "Termopauza",
+          "is_correct": false
+        },
+        {
+          "text": "Mezopauza",
+          "is_correct": false
+        },
+        {
+          "text": "Tropopauza",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Mity i Fakty",
+      "question": "Czy Wielki Mur Chiński jest widoczny gołym okiem z orbity Ziemi (na wysokości ok. 400 km)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "To mit – mur jest zbyt wąski, by dostrzec go z takiej odległości bez pomocy optycznej",
+          "is_correct": true
+        },
+        {
+          "text": "To fakt – potwierdzili to astronauci na pokładzie ISS przy dobrej widoczności",
+          "is_correct": false
+        },
+        {
+          "text": "To fakt – jest widoczny, ale tylko w specyficznych warunkach oświetlenia",
+          "is_correct": false
+        },
+        {
+          "text": "To fakt, ale tylko z niskiej orbity (do 200 km)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody Nobla",
+      "question": "Kto jako pierwszy laureat Nagrody Nobla z fizyki otrzymał ją w 1901 roku za odkrycie promieniowania X?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wilhelm Conrad Röntgen",
+          "is_correct": true
+        },
+        {
+          "text": "Henri Becquerel",
+          "is_correct": false
+        },
+        {
+          "text": "Pieter Zeeman",
+          "is_correct": false
+        },
+        {
+          "text": "Hendrik Lorentz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Pierwiastki i Chemia",
+      "question": "Który pierwiastek, odkryty w 1898 roku przez Marię Skłodowską-Curie i Pierre'a Curie, nosi nazwę na cześć jej ojczyzny?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Polon (Po, Z=84)",
+          "is_correct": true
+        },
+        {
+          "text": "Rad (Ra, Z=88)",
+          "is_correct": false
+        },
+        {
+          "text": "Uran (U, Z=92)",
+          "is_correct": false
+        },
+        {
+          "text": "Tor (Th, Z=90)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Przysłowia i Powiedzenia",
+      "question": "Co oznacza łacińska sentencja 'Alea iacta est' ('Kości zostały rzucone'), przypisywana Juliuszowi Cezarowi?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Decyzja została podjęta i nie ma odwrotu; wypowiedziana przy przekraczaniu Rubikonu w 49 r. p.n.e.",
+          "is_correct": true
+        },
+        {
+          "text": "Zwycięstwo zależy od losu, więc należy czekać na sprzyjające wiatry",
+          "is_correct": false
+        },
+        {
+          "text": "Grać z los – każdy generał musi liczyć się z nieprzewidzianymi zwrotami akcji",
+          "is_correct": false
+        },
+        {
+          "text": "Nieodwracalny błąd został popełniony; Cezar tak skomentował klęskę pod Farsalos",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Rekordy Guinnessa",
+      "question": "Jakie zwierzę lądowe jest uznawane za najszybsze na świecie, osiągając prędkość do 120 km/h w krótkich zrywach?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Gepard (Acinonyx jubatus)",
+          "is_correct": true
+        },
+        {
+          "text": "Widłoróg (Antilocapra americana)",
+          "is_correct": false
+        },
+        {
+          "text": "Lew (Panthera leo)",
+          "is_correct": false
+        },
+        {
+          "text": "Koń wyścigowy (Thoroughbred)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Stolice Świata",
+      "question": "Jaką nazwę nosi stolica Australii, zbudowana specjalnie jako miasto stołeczne i oficjalnie otwarta w 1927 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Canberra",
+          "is_correct": true
+        },
+        {
+          "text": "Sydney",
+          "is_correct": false
+        },
+        {
+          "text": "Melbourne",
+          "is_correct": false
+        },
+        {
+          "text": "Brisbane",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Cytaty",
+      "question": "Komu przypisuje się słynne zdanie: 'Raport o mojej śmierci był nieco przesadzony', będące odpowiedzią na przedwczesny nekrolog?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Markowi Twainowi (Samuelowi Clemensowi)",
+          "is_correct": true
+        },
+        {
+          "text": "Oscarowi Wilde'owi",
+          "is_correct": false
+        },
+        {
+          "text": "Winstonowi Churchillowi",
+          "is_correct": false
+        },
+        {
+          "text": "George'owi Bernardowi Shawowi",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynni Odkrywcy",
+      "question": "Który podróżnik i odkrywca jako pierwszy opłynął Ziemię dookoła (choć zginął w trakcie wyprawy), realizując ekspedycję w latach 1519–1522?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Ferdynand Magellan",
+          "is_correct": true
+        },
+        {
+          "text": "Vasco da Gama",
+          "is_correct": false
+        },
+        {
+          "text": "Krzysztof Kolumb",
+          "is_correct": false
+        },
+        {
+          "text": "James Cook",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Tajemnice Świata",
+      "question": "Jak nazywa się tajemnicze zatopione miasto na dnie jeziora Titicaca, odkryte przez archeologów boliwijskich i belgijskich w 2000 roku?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wanaku (Wankani) – prekolumbijskie ruiny kultury Tiwanaku",
+          "is_correct": true
+        },
+        {
+          "text": "El Dorado – legendarne złote miasto",
+          "is_correct": false
+        },
+        {
+          "text": "Caral – jedno z najstarszych miast obu Ameryk",
+          "is_correct": false
+        },
+        {
+          "text": "Paititi – legendarne inkaskie miasto skarbów",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Wynalazki Codziennego Użytku",
+      "question": "Kto wynalazł telefon i w którym roku opatentował to przełomowe urządzenie?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Alexander Graham Bell w 1876 roku",
+          "is_correct": true
+        },
+        {
+          "text": "Thomas Edison w 1877 roku",
+          "is_correct": false
+        },
+        {
+          "text": "Elisha Gray w 1876 roku (patent złożony tego samego dnia, ale po Bellu)",
+          "is_correct": false
+        },
+        {
+          "text": "Nikola Tesla w 1891 roku",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Zjawiska Pogodowe",
+      "question": "Jak nazywa się zjawisko meteorologiczne, w którym piorun uderza w ziemię z chmury burzowej bez uprzednich opadów deszczu?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Suchy piorun (dry lightning)",
+          "is_correct": true
+        },
+        {
+          "text": "Kulowy piorun (ball lightning)",
+          "is_correct": false
+        },
+        {
+          "text": "Piorun wsteczny (upward lightning)",
+          "is_correct": false
+        },
+        {
+          "text": "Elfy (ELVES) – błyski w górnych warstwach atmosfery",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Finansów",
+      "question": "Jak nazywa się efekt ekonomiczny, w którym jednorazowy wzrost wydatków rządowych generuje wielokrotnie większy wzrost PKB poprzez kolejne rundy wydatków?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Mnożnik fiskalny (Keynesowski mnożnik wydatków)",
+          "is_correct": true
+        },
+        {
+          "text": "Akcelerator inwestycyjny",
+          "is_correct": false
+        },
+        {
+          "text": "Efekt wypychania (crowding-out effect)",
+          "is_correct": false
+        },
+        {
+          "text": "Efekt bogactwa (wealth effect)",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
