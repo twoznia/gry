@@ -1841,6 +1841,374 @@
           "is_correct": false
         }
       ]
+    },
+    {
+      "subcategory": "Anime i Manga",
+      "question": "W którym roku Osamu Tezuka opublikował pierwszy rozdział mangi 'Tetsuwan Atom' (Astro Boy) na łamach japońskiego pisma Shōnen?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1952",
+          "is_correct": true
+        },
+        {
+          "text": "1948",
+          "is_correct": false
+        },
+        {
+          "text": "1960",
+          "is_correct": false
+        },
+        {
+          "text": "1955",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Festiwale Muzyczne",
+      "question": "W którym angielskim hrabstwie (county) odbywa się coroczny festiwal Glastonbury?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Somerset",
+          "is_correct": true
+        },
+        {
+          "text": "Devon",
+          "is_correct": false
+        },
+        {
+          "text": "Wiltshire",
+          "is_correct": false
+        },
+        {
+          "text": "Dorset",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gry Planszowe i Karciane",
+      "question": "W którym roku po raz pierwszy wydano grę planszową 'Osadnicy z Catanu' (Die Siedler von Catan) autorstwa Klausa Teubera?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1995",
+          "is_correct": true
+        },
+        {
+          "text": "1990",
+          "is_correct": false
+        },
+        {
+          "text": "2000",
+          "is_correct": false
+        },
+        {
+          "text": "1998",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiazdy Muzyki Pop",
+      "question": "Jak brzmi pełne, oficjalne imię i nazwisko wokalistki znanej scenicznie jako Shakira?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Shakira Isabel Mebarak Ripoll",
+          "is_correct": true
+        },
+        {
+          "text": "María Isabel Díaz Gutiérrez",
+          "is_correct": false
+        },
+        {
+          "text": "Shakira Giovanna Figueiredo Lima",
+          "is_correct": false
+        },
+        {
+          "text": "Rosalía Vila Tobella",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Gwiezdne Wojny",
+      "question": "Na której bagnistej planecie mistrz Yoda ukrywał się przez lata i szkolił Luke'a Skywalkera w filmie 'Imperium kontratakuje'?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Dagobah",
+          "is_correct": true
+        },
+        {
+          "text": "Hoth",
+          "is_correct": false
+        },
+        {
+          "text": "Endor",
+          "is_correct": false
+        },
+        {
+          "text": "Mustafar",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Klasyka Kina",
+      "question": "W którym roku miała miejsce premiera filmu 'Obywatel Kane' w reżyserii Orsona Wellesa, uznawanego przez krytyków za jedno z największych arcydzieł kina?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1941",
+          "is_correct": true
+        },
+        {
+          "text": "1935",
+          "is_correct": false
+        },
+        {
+          "text": "1948",
+          "is_correct": false
+        },
+        {
+          "text": "1952",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Komiksy Marvela",
+      "question": "Jak brzmi pełne, kanoniczne imię i nazwisko alter ego Wolverine'a w komiksach Marvela?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "James 'Logan' Howlett",
+          "is_correct": true
+        },
+        {
+          "text": "Victor Creed",
+          "is_correct": false
+        },
+        {
+          "text": "Wade Wilson",
+          "is_correct": false
+        },
+        {
+          "text": "Scott Summers",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kreskówki z Dzieciństwa",
+      "question": "W którym roku wyemitowano po raz pierwszy serial animowany 'Flintstonowie' (The Flintstones) w amerykańskiej telewizji ABC?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1960",
+          "is_correct": true
+        },
+        {
+          "text": "1955",
+          "is_correct": false
+        },
+        {
+          "text": "1965",
+          "is_correct": false
+        },
+        {
+          "text": "1970",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Książki i Literatura Bestsellerowa",
+      "question": "W której powieści Dana Browna symbolog Robert Langdon pojawia się po raz pierwszy jako główny bohater?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Anioły i demony",
+          "is_correct": true
+        },
+        {
+          "text": "Kod Leonarda da Vinci",
+          "is_correct": false
+        },
+        {
+          "text": "Inferno",
+          "is_correct": false
+        },
+        {
+          "text": "Zaginiony symbol",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Kultowe Seriale TV",
+      "question": "Jak nazywał się statek kosmiczny załogi kapitana Malcolma Reynoldsa w serialu science-fiction 'Firefly' Josse Whedona?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Serenity",
+          "is_correct": true
+        },
+        {
+          "text": "Normandy",
+          "is_correct": false
+        },
+        {
+          "text": "Nostromo",
+          "is_correct": false
+        },
+        {
+          "text": "Discovery",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Nagrody i Gale",
+      "question": "Który film zdobył Oscara dla najlepszego filmu podczas ceremonii rozdania nagród w roku 1995 (za filmy z roku 1994)?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Forrest Gump",
+          "is_correct": true
+        },
+        {
+          "text": "Pulp Fiction",
+          "is_correct": false
+        },
+        {
+          "text": "Skazani na Shawshank",
+          "is_correct": false
+        },
+        {
+          "text": "Quiz Show",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynne Memy i Internet",
+      "question": "Jak brzmiło prawdziwe imię i nazwisko autora oryginalnego rysunku 'Trollface', który stał się jednym z pierwszych wirusowych memów internetowych?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Carlos Ramirez (pseud. Whynne)",
+          "is_correct": true
+        },
+        {
+          "text": "Matt Furie",
+          "is_correct": false
+        },
+        {
+          "text": "Christopher Poole",
+          "is_correct": false
+        },
+        {
+          "text": "Ben Lashes",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Słynni Reżyserzy",
+      "question": "W którym roku Stanley Kubrick nakręcił przełomowy film science-fiction '2001: Odyseja kosmiczna'?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "1968",
+          "is_correct": true
+        },
+        {
+          "text": "1972",
+          "is_correct": false
+        },
+        {
+          "text": "1965",
+          "is_correct": false
+        },
+        {
+          "text": "1971",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Uniwersum DC",
+      "question": "W którym numerze komiksu DC po raz pierwszy pojawił się Joker jako antagonista Batmana?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Batman #1 (1940)",
+          "is_correct": true
+        },
+        {
+          "text": "Detective Comics #27 (1939)",
+          "is_correct": false
+        },
+        {
+          "text": "Batman #11 (1942)",
+          "is_correct": false
+        },
+        {
+          "text": "Action Comics #1 (1938)",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Władca Pierścieni",
+      "question": "Jak nazywa się elfickie królestwo w 'Władcy Pierścieni', rządzone przez Celeborna i Galadriellę, przez które przechodzi Drużyna Pierścienia?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Lothlórien",
+          "is_correct": true
+        },
+        {
+          "text": "Rivendell",
+          "is_correct": false
+        },
+        {
+          "text": "Mirkwood",
+          "is_correct": false
+        },
+        {
+          "text": "Lindon",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "subcategory": "Świat Harry'ego Pottera",
+      "question": "Jakie zwierzę jest Patronusem Hermiony Granger w magicznym świecie Harry'ego Pottera?",
+      "level": "trudne",
+      "answers": [
+        {
+          "text": "Wydra",
+          "is_correct": true
+        },
+        {
+          "text": "Łasica",
+          "is_correct": false
+        },
+        {
+          "text": "Kot",
+          "is_correct": false
+        },
+        {
+          "text": "Zając",
+          "is_correct": false
+        }
+      ]
     }
   ]
 }
