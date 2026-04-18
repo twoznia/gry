@@ -301,13 +301,57 @@
 let allData = [];      // [{category, icon, questions:[{subcategory,question,answers}]}]
 let loadError = false;
 
+const CATEGORY_ICONS = {
+    'Film i Telewizja':            '🎬',
+    'Geografia i Turystyka':       '🗺️',
+    'Historia':                    '📜',
+    'Kulinaria i Smaki':           '🍽️',
+    'Literatura i Język':          '📚',
+    'Motoryzacja i Transport':     '🚗',
+    'Muzyka':                      '🎵',
+    'Nauka i Odkrycia':            '🔬',
+    'Przyroda i Biologia':         '🌿',
+    'Rozrywka i Popkultura':       '🎭',
+    'Sport':                       '⚽',
+    'Społeczeństwo i Prawo':       '⚖️',
+    'Sztuka i Architektura':       '🎨',
+    'Technologie i IT':            '💻',
+    'Tradycje i Religie':          '⛪',
+    'Wiedza Ogólna i Ciekawostki': '🧠',
+};
+
 async function loadAllData() {
     try {
-        const manifest = await fetch('./data/manifest.json').then(r => r.json());
-        const results = await Promise.all(
-            manifest.map(m => fetch('./data/' + m.file).then(r => r.json()).catch(() => null))
-        );
-        allData = results.filter(Boolean);
+        const text = await fetch('./data/all_questions_sorted.csv').then(r => r.text());
+        const lines = text.split('\n');
+        const categoryMap = new Map(); // category -> {category, icon, questions:[]}
+        for (let i = 1; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (!line) continue;
+            const cols = line.split(';');
+            if (cols.length < 8) continue;
+            const [category, subcategory, level, question, correct, wrong1, wrong2, wrong3] = cols;
+            if (!category || !question || !correct) continue;
+            if (!categoryMap.has(category)) {
+                categoryMap.set(category, {
+                    category,
+                    icon: CATEGORY_ICONS[category] || '❓',
+                    questions: [],
+                });
+            }
+            categoryMap.get(category).questions.push({
+                subcategory,
+                level,
+                question,
+                answers: shuffle([
+                    { text: correct, is_correct: true },
+                    { text: wrong1,  is_correct: false },
+                    { text: wrong2,  is_correct: false },
+                    { text: wrong3,  is_correct: false },
+                ]),
+            });
+        }
+        allData = Array.from(categoryMap.values());
         document.getElementById('btn-start').disabled = false;
         document.getElementById('btn-start').textContent = 'Rozpocznij Quiz →';
         populateCategorySelect();
