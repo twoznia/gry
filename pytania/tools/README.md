@@ -1,6 +1,10 @@
 # add_questions — instrukcja użycia
 
-Narzędzie CLI do dodawania pytań generowanych przez AI do plików `pytania/data/*.json`.
+Narzędzie CLI do dodawania pytań generowanych przez AI do plików JSON w `pytania/data/`.
+
+> ⚠️ **Uwaga dot. formatu danych:** Gra aktualnie wczytuje pytania z pliku CSV:
+> `pytania/dane/all_questions_sorted.csv`
+> Narzędzie `add_questions.mjs` operuje na plikach JSON w `pytania/data/` — te pliki należy po wygenerowaniu ręcznie scalić z plikiem CSV (lub docelowo przepisać loader gry na JSON).
 
 ---
 
@@ -31,7 +35,7 @@ Skrypt automatycznie znajdzie wszystkie unikalne `subcategory` w pliku i doda **
 
 | Parametr | Opis | Domyślnie |
 |----------|------|-----------|
-| `--file <name>` | Nazwa pliku w `pytania/data` (np. `muzyka.json`) | *wymagany* |
+| `--file <name>` | Nazwa pliku w `pytania/data/` (np. `muzyka.json`) | *wymagany* |
 | `--level <value>` | Poziom trudności (patrz tabela poniżej) | `trudne` |
 | `--topic <text>` | Dodatkowy kontekst/temat dla generatora | *(brak)* |
 | `--dry-run` | Wyświetl zmiany bez zapisywania pliku | *(brak)* |
