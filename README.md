@@ -15,32 +15,19 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 
 ---
 
-## Uruchamianie lokalnie
 
-Wystarczy serwer statyczny w katalogu głównym repozytorium. Przykład z Node.js:
-
-```bash
-npx serve .
-```
-
-Następnie otwórz `http://localhost:3000` w przeglądarce.
-
----
 
 ## Dodawanie pytań do quizu
 
 Pytania są przechowywane w pliku CSV:
 
 ```
-pytania/dane/all_questions_sorted.csv
+pytania/dane/pytania.csv
 ```
 
 Format wiersza: `category;subcategory;level;question;correct;wrong1;wrong2;wrong3`
 
 Dostępne poziomy trudności: `łatwe`, `średnie`, `trudne`, `bardzo trudne`.
-
-Do generowania nowych pytań przy pomocy AI służy narzędzie CLI:
-→ [`pytania/tools/README.md`](pytania/tools/README.md)
 
 ---
 

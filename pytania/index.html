@@ -209,7 +209,7 @@ const CATEGORY_ICONS = {
 
 async function loadAllData() {
     try {
-        const text = await fetch('./dane/all_questions_sorted.csv').then(r => r.text());
+        const text = await fetch('./dane/pytania.csv').then(r => r.text());
         const lines = text.split('\n');
         const categoryMap = new Map(); // category -> {category, icon, questions:[]}
         for (let i = 1; i < lines.length; i++) {
