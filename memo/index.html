@@ -492,6 +492,7 @@ let matchedPairs    = 0;
 let totalPairs      = 0;
 let moveCount       = 0;
 let isLocked        = false;
+let pendingClose    = null;
 
 /* ═══════════════════════════════════════
    HELPERS
@@ -562,6 +563,7 @@ function startGame() {
     const size  = getSize();
     totalPairs  = size.pairs;
     matchedPairs = 0;
+    cancelPendingClose();
     flippedCards = [];
     moveCount    = 0;
     isLocked     = false;
@@ -662,10 +664,26 @@ function updatePairsCounter() {
     if (mv) mv.textContent = `${moveCount} ${T[lang].moves}`;
 }
 
+function cancelPendingClose() {
+    if (pendingClose !== null) {
+        clearTimeout(pendingClose);
+        pendingClose = null;
+        const [a, b] = flippedCards;
+        a.classList.remove('flipped');
+        b.classList.remove('flipped');
+        flippedCards = [];
+        isLocked = false;
+    }
+}
+
 function flipCard(card) {
-    if (isLocked) return;
     if (card.classList.contains('flipped'))  return;
     if (card.classList.contains('matched'))  return;
+
+    // If a non-matched pair is waiting to close, cancel and close it immediately
+    cancelPendingClose();
+
+    if (isLocked) return;
 
     card.classList.add('flipped');
     flippedCards.push(card);
@@ -691,11 +709,12 @@ function checkMatch() {
             if (matchedPairs === totalPairs) endGame();
         }, 500);
     } else {
-        setTimeout(() => {
+        pendingClose = setTimeout(() => {
             a.classList.remove('flipped');
             b.classList.remove('flipped');
             flippedCards = [];
             isLocked = false;
+            pendingClose = null;
         }, 900);
     }
 }
