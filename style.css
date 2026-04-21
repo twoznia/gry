@@ -1,0 +1,133 @@
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --accent-color: #38bdf8;
+            --hover-shadow: rgba(56, 189, 248, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+        }
+
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: 1.5rem;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 20px;
+            padding: 2.1rem 3rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px var(--hover-shadow);
+        }
+
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+        }
+
+        h2 {
+            margin: 0.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        .play-btn {
+            margin-top: 1.5rem;
+            padding: 0.5rem 1.5rem;
+            background: var(--accent-color);
+            color: #000;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .game-card:hover .play-btn {
+            opacity: 0.9;
+        }
+
+        footer {
+            margin-top: 4rem;
+            font-size: 0.8rem;
+            color: #475569;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                justify-content: flex-start;
+                padding: 2rem 0 2rem;
+            }
+
+            header {
+                margin-bottom: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .game-container {
+                gap: 1rem;
+                width: 92%;
+            }
+
+            .game-card {
+                padding: 1.05rem 1rem;
+                border-radius: 14px;
+            }
+
+            .icon {
+                font-size: 2.8rem;
+                margin-bottom: 1rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            footer {
+                margin-top: 2rem;
+            }
+        }
+    

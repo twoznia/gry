@@ -1,0 +1,135 @@
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(160deg, #a855f7 0%, #6366f1 50%, #3b82f6 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px 12px 28px;
+      touch-action: manipulation;
+      user-select: none;
+    }
+    #top-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    #back-btn {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 10px;
+      padding: 7px 13px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    #top-bar h1 {
+      color: white;
+      font-size: 1.4rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      flex: 1;
+    }
+    #top-bar select, #top-bar button {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 10px;
+      padding: 6px 11px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    #top-bar select option { background: #6366f1; }
+    #progress {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    #board-wrap {
+      background: #0f172a;
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+      margin-bottom: 18px;
+    }
+    #board { display: block; border-radius: 8px; }
+    #tray-label {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    #tray {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      align-items: center;
+      background: rgba(5,5,30,0.55);
+      border: 2px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 14px 24px;
+      min-height: 100px;
+      width: 100%;
+      max-width: 480px;
+    }
+    .tray-slot { cursor: grab; display: flex; align-items: center; justify-content: center; }
+    .tray-slot:active { cursor: grabbing; }
+    .tray-slot canvas { display: block; }
+    .tray-slot-new canvas {
+      animation: popIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.4); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    #drag-piece {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1000;
+      display: none;
+    }
+    #win-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    #win-overlay.show { display: flex; }
+    #win-box {
+      background: white;
+      border-radius: 24px;
+      padding: 44px 52px;
+      text-align: center;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    }
+    #win-box h2 { font-size: 2.2rem; color: #7c3aed; margin-bottom: 10px; }
+    #win-box p  { color: #555; margin-bottom: 22px; font-size: 1rem; }
+    #win-new-btn {
+      padding: 11px 28px;
+      background: #7c3aed;
+      color: white;
+      border: none;
+      border-radius: 22px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #win-new-btn:hover { background: #6d28d9; }
+  
