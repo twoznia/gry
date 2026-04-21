@@ -1,0 +1,154 @@
+        :root { 
+            --bg-lcd: #8b956d; 
+            --segment-on: rgba(0, 0, 0, 0.85); 
+            --case: #d1d1d1; 
+            --hit-color: #a00; 
+        }
+        body { 
+            background: #1a1a1a; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            font-family: 'Courier New', Courier, monospace; 
+            overflow: hidden; 
+            user-select: none; 
+            touch-action: none; /* Blokuje przybliżanie i przesuwanie strony */
+        }
+        
+        #console { 
+            background: var(--case); 
+            width: 90vw; 
+            max-width: 400px; 
+            height: 90vh; 
+            max-height: 800px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px; 
+            border-radius: 40px; 
+            box-shadow: inset -5px -5px 15px #888, 0 20px 50px #000; 
+            border: 4px solid #bbb; 
+        }
+
+        #screen-border { 
+            background: #333; 
+            padding: 10px; 
+            border-radius: 15px; 
+            flex-grow: 1;
+            display: flex;
+        }
+
+        #screen { 
+            width: 100%; 
+            background: var(--bg-lcd); 
+            position: relative; 
+            overflow: hidden; 
+            border: 3px solid #555;
+            border-radius: 5px;
+        }
+        
+        .car-shape { 
+            position: absolute; 
+            width: 54px; 
+            height: 35px; 
+            transition: left 0.08s ease-out; 
+        }
+        .car-body { 
+            position: absolute; 
+            width: 32px; 
+            height: 35px; 
+            background: var(--segment-on); 
+            left: 11px; 
+            border-radius: 4px; 
+        }
+        .car-body::before { 
+            content: ''; 
+            position: absolute; 
+            width: 24px; 
+            height: 10px; 
+            background: var(--bg-lcd); 
+            left: 4px; 
+            top: 6px; 
+            border-radius: 2px; 
+        }
+        .wheel { 
+            position: absolute; 
+            width: 8px; 
+            height: 10px; 
+            background: var(--segment-on); 
+            border-radius: 2px; 
+        }
+        .w1 { top: 4px; left: 0; } .w2 { top: 4px; right: 0; }
+        .w3 { bottom: 4px; left: 0; } .w4 { bottom: 4px; right: 0; }
+
+        #ui { 
+            position: absolute; 
+            top: 10px; 
+            right: 15px; 
+            text-align: right; 
+            color: var(--segment-on); 
+            z-index: 5; 
+        }
+        #score { font-size: 32px; font-weight: bold; }
+        #hi-score { font-size: 14px; opacity: 0.8; }
+
+        .controls { 
+            margin-top: 10px;
+            padding-bottom: 10px;
+        }
+        .btn { 
+            display: none;
+        }
+        .btn-reset { 
+            width: 100%;
+            padding: 8px; 
+            background: #555; 
+            border: 1px solid #000; 
+            font-size: 11px; 
+            color: #fff; 
+            border-radius: 8px;
+            margin-top: 5px;
+        }
+        
+        #overlay { 
+            position: absolute; 
+            inset: 0; 
+            background: var(--bg-lcd); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 10; 
+            text-align: center; 
+            padding: 20px;
+        }
+        .menu-btn { 
+            padding: 20px 30px; 
+            font-size: 22px;
+            cursor: pointer; 
+            background: #333; 
+            color: white; 
+            border: none; 
+            font-weight: bold; 
+            margin-top: 20px; 
+            border-radius: 10px; 
+            width: 85%;
+        }
+
+        .blink { animation: blink-animation 0.1s steps(2, start) infinite; }
+        @keyframes blink-animation { to { visibility: hidden; } }
+        .hit-style .car-body, .hit-style .wheel { background: var(--hit-color) !important; }
+
+        .heart-shape {
+            position: absolute;
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 44px;
+            color: #cc0000;
+            line-height: 1;
+        }
+    
