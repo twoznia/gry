@@ -8,6 +8,8 @@ const CATEGORY_ICONS = {
     'Historia':                    '📜',
     'Kulinaria i Smaki':           '🍽️',
     'Literatura i Język':          '📚',
+    'Matura Geografia':            '🌍',
+    'Matura Język Polski':         '🖋️',
     'Motoryzacja i Transport':     '🚗',
     'Muzyka':                      '🎵',
     'Nauka i Odkrycia':            '🔬',
