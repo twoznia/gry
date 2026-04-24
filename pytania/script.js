@@ -96,10 +96,35 @@ function shuffle(arr) {
     return a;
 }
 
+function getRandomCategoryQuestions(numQ, levelFilter) {
+    const categoryPools = shuffle(allData.map(d => ({
+        category: d.category,
+        questions: shuffle(
+            d.questions
+                .filter(q => !levelFilter || levelFilter === '__all__' || q.level === levelFilter)
+                .map(q => ({ ...q, _category: d.category }))
+        ),
+    }))).filter(d => d.questions.length > 0);
+
+    const selected = [];
+
+    while (selected.length < numQ) {
+        const availablePools = shuffle(categoryPools.filter(d => d.questions.length > 0));
+        if (!availablePools.length) break;
+
+        availablePools.forEach(pool => {
+            if (selected.length >= numQ || !pool.questions.length) return;
+            selected.push(pool.questions.pop());
+        });
+    }
+
+    return selected;
+}
+
 function getQuestions(categoryName, numQ, levelFilter) {
     let pool;
     if (categoryName === '__random__') {
-        pool = allData.flatMap(d => d.questions.map(q => ({ ...q, _category: d.category })));
+        return getRandomCategoryQuestions(numQ, levelFilter);
     } else {
         const catData = allData.find(d => d.category === categoryName);
         if (!catData) return [];
