@@ -111,13 +111,15 @@ function getRandomCategoryQuestions(numQ, levelFilter) {
 
     const selected = [];
 
-    while (selected.length < numQ) {
-        const availablePools = categoryPools.filter(d => d.questions.length > 0);
-        if (!availablePools.length) break;
+    let availablePools = categoryPools.length;
+    while (selected.length < numQ && availablePools > 0) {
+        availablePools = 0;
 
-        availablePools.forEach(pool => {
-            if (selected.length >= numQ) return;
+        categoryPools.forEach(pool => {
+            if (selected.length >= numQ || !pool.questions.length) return;
+
             selected.push(pool.questions.pop());
+            if (pool.questions.length) availablePools++;
         });
     }
 
