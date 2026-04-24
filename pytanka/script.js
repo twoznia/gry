@@ -1,4 +1,4 @@
-// ── Data loading ─────────────────────────────────────────────────────────────
+// ── Data loading ───────────────────────────────────────────────────────────
 let allData = [];      // [{category, icon, questions:[{subcategory,question,answers}]}]
 let loadError = false;
 
@@ -22,9 +22,13 @@ async function loadAllData() {
             const line = lines[i].trim();
             if (!line) continue;
             const cols = line.split(';');
-            if (cols.length < 8) continue;
-            const [category, subcategory, level, question, correct, wrong1, wrong2, wrong3] = cols;
+            if (cols.length < 7) continue;
+
+            // CSV columns:
+            // category; subcategory; level; question; correct; wrong1; wrong2; (optional wrong3)
+            const [category, subcategory, level, question, correct, wrong1, wrong2] = cols;
             if (!category || !question || !correct) continue;
+
             if (!categoryMap.has(category)) {
                 categoryMap.set(category, {
                     category,
@@ -32,6 +36,8 @@ async function loadAllData() {
                     questions: [],
                 });
             }
+
+            // Use exactly 3 options: correct + wrong1 + wrong2
             categoryMap.get(category).questions.push({
                 subcategory,
                 level,
@@ -40,8 +46,7 @@ async function loadAllData() {
                     { text: correct, is_correct: true },
                     { text: wrong1,  is_correct: false },
                     { text: wrong2,  is_correct: false },
-                    { text: wrong3,  is_correct: false },
-                ]),
+                ].filter(a => a.text && a.text.trim() !== '')),
             });
         }
         allData = Array.from(categoryMap.values());
@@ -76,7 +81,7 @@ function populateLevelSelect() {
     });
 }
 
-// ── Helpers ──────────────────────────────────────────────────────────────────
+// ── Helpers ───────────────────────────────────────────────────────────────
 function shuffle(arr) {
     const a = arr.slice();
     for (let i = a.length - 1; i > 0; i--) {
@@ -101,7 +106,7 @@ function getQuestions(categoryName, numQ, levelFilter) {
     return shuffle(pool).slice(0, numQ);
 }
 
-// ── Screens ──────────────────────────────────────────────────────────────────
+// ── Screens ───────────────────────────────────────────────────────────────
 const screens = {
     setup:   document.getElementById('screen-setup'),
     game:    document.getElementById('screen-game'),
@@ -113,7 +118,7 @@ function showScreen(name) {
     screens[name].classList.add('active');
 }
 
-// ── State ────────────────────────────────────────────────────────────────────
+// ── State ────────────────────────────────────────────────────────────────
 let state = {};
 
 function startGame() {
@@ -140,7 +145,7 @@ function startGame() {
     showScreen('game');
 }
 
-// ── Progress bar ─────────────────────────────────────────────────────────────
+// ── Progress bar ─────────────────────────────────────────────────────────
 function buildProgressBar(n) {
     const bar = document.getElementById('progress-bar');
     bar.innerHTML = '';
@@ -166,7 +171,7 @@ function initProgressBar(idx) {
     if (dots[idx]) dots[idx].classList.add('current');
 }
 
-// ── Render question ───────────────────────────────────────────────────────────
+// ── Render question ───────────────────────────────────────────────────────
 function renderQuestion() {
     const { currentQ, questions } = state;
     const q = questions[currentQ];
@@ -183,11 +188,13 @@ function renderQuestion() {
     initProgressBar(currentQ);
 
     const correctAnswer = q.answers.find(a => a.is_correct);
-    const shuffledAnswers = shuffle(q.answers);
+
+    // Ensure we show only 3 options
+    const shownAnswers = shuffle(q.answers).slice(0, 3);
 
     const grid = document.getElementById('answers-grid');
     grid.innerHTML = '';
-    shuffledAnswers.forEach(ans => {
+    shownAnswers.forEach(ans => {
         const btn = document.createElement('button');
         btn.className = 'answer-btn';
         btn.textContent = ans.text;
@@ -198,7 +205,7 @@ function renderQuestion() {
     state.answered = false;
 }
 
-// ── Handle answer ─────────────────────────────────────────────────────────────
+// ── Handle answer ─────────────────────────────────────────────────────────
 function handleAnswer(chosen, correct) {
     if (state.answered) return;
     state.answered = true;
@@ -240,7 +247,7 @@ function handleAnswer(chosen, correct) {
     document.getElementById('btn-next').style.display = 'inline-block';
 }
 
-// ── Next question / finish ────────────────────────────────────────────────────
+// ── Next question / finish ─────────────────────────────────────────────────
 document.getElementById('btn-next').addEventListener('click', () => {
     state.currentQ++;
     if (state.currentQ >= state.questions.length) {
@@ -250,7 +257,7 @@ document.getElementById('btn-next').addEventListener('click', () => {
     }
 });
 
-// ── Results ───────────────────────────────────────────────────────────────────
+// ── Results ───────────────────────────────────────────────────────────────
 function showResults() {
     const { score, questions, results } = state;
     const n = questions.length;
@@ -291,16 +298,16 @@ function showResults() {
     showScreen('results');
 }
 
-// ── Replay ────────────────────────────────────────────────────────────────────
+// ── Replay ───────────────────────────────────────────────────────────────
 document.getElementById('btn-replay').addEventListener('click', () => {
     showScreen('setup');
 });
 
-// ── Start button ──────────────────────────────────────────────────────────────
+// ── Start button ──────────────────────────────────────────────────────────
 document.getElementById('btn-start').addEventListener('click', () => {
     document.getElementById('setup-error').textContent = '';
     startGame();
 });
 
-// ── Init ──────────────────────────────────────────────────────────────────────
+// ── Init ────────────────────────────────────────────────────────────────
 loadAllData();
