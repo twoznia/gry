@@ -11,6 +11,7 @@ const CATEGORY_ICONS = {
     'Bezpieczeństwo':              '🚗',
     'Sport':                       '⚽',
     'Zawody':                      '🎭',
+    'Język Angielski':             '💂',
 };
 
 function normalizeAnswers(correct, wrong1, wrong2) {
