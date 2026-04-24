@@ -3,24 +3,14 @@ let allData = [];      // [{category, icon, questions:[{subcategory,question,ans
 let loadError = false;
 
 const CATEGORY_ICONS = {
-    'Film i Telewizja':            '🎬',
-    'Geografia i Turystyka':       '🗺️',
-    'Historia':                    '📜',
-    'Kulinaria i Smaki':           '🍽️',
-    'Literatura i Język':          '📚',
-    'Matura Geografia':            '🌍',
-    'Matura Język Polski':         '🖋️',
-    'Motoryzacja i Transport':     '🚗',
-    'Muzyka':                      '🎵',
-    'Nauka i Odkrycia':            '🔬',
-    'Przyroda i Biologia':         '🌿',
-    'Rozrywka i Popkultura':       '🎭',
+    'Przyroda':                    '🌿',
+    'Bajki i Legendy':             '🎭',
+    'Polska i Świat':              '🌍',
+    'Codzienne Odkrycia':          '🔬',
+    'Kulinaria':                   '🍽️',
+    'Bezpieczeństwo':              '🚗',
     'Sport':                       '⚽',
-    'Społeczeństwo i Prawo':       '⚖️',
-    'Sztuka i Architektura':       '🎨',
-    'Technologie i IT':            '💻',
-    'Tradycje i Religie':          '⛪',
-    'Wiedza Ogólna i Ciekawostki': '🧠',
+    'Zawody':                      '🎭',
 };
 
 async function loadAllData() {
