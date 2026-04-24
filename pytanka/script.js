@@ -13,6 +13,16 @@ const CATEGORY_ICONS = {
     'Zawody':                      '🎭',
 };
 
+function normalizeAnswers(correct, wrong1, wrong2) {
+    const answers = [
+        { text: correct, is_correct: true },
+        { text: wrong1,  is_correct: false },
+        { text: wrong2,  is_correct: false },
+    ].filter(answer => answer.text && answer.text.trim() !== '');
+
+    return answers.length === 3 ? shuffle(answers) : null;
+}
+
 async function loadAllData() {
     try {
         const text = await fetch('./dane/pytania.csv').then(r => r.text());
@@ -24,10 +34,11 @@ async function loadAllData() {
             const cols = line.split(';');
             if (cols.length < 7) continue;
 
-            // CSV columns:
-            // category; subcategory; level; question; correct; wrong1; wrong2; (optional wrong3)
             const [category, subcategory, level, question, correct, wrong1, wrong2] = cols;
             if (!category || !question || !correct) continue;
+
+            const answers = normalizeAnswers(correct, wrong1, wrong2);
+            if (!answers) continue;
 
             if (!categoryMap.has(category)) {
                 categoryMap.set(category, {
@@ -42,11 +53,7 @@ async function loadAllData() {
                 subcategory,
                 level,
                 question,
-                answers: shuffle([
-                    { text: correct, is_correct: true },
-                    { text: wrong1,  is_correct: false },
-                    { text: wrong2,  is_correct: false },
-                ].filter(a => a.text && a.text.trim() !== '')),
+                answers,
             });
         }
         allData = Array.from(categoryMap.values());
@@ -189,8 +196,7 @@ function renderQuestion() {
 
     const correctAnswer = q.answers.find(a => a.is_correct);
 
-    // Ensure we show only 3 options
-    const shownAnswers = shuffle(q.answers).slice(0, 3);
+    const shownAnswers = shuffle(q.answers);
 
     const grid = document.getElementById('answers-grid');
     grid.innerHTML = '';
