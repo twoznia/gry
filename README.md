@@ -12,7 +12,7 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 - **[Memo](./memo/)** 🃏 – Znajdź wszystkie pary ukrytych obrazków.
 - **[Puzzle](./puzzle/)** 🧩 – Składaj obrazki z puzzli, kawałek po kawałku.
 - **[Pytania](./pytania/)** 🧠 – Quiz wiedzy ogólnej – historia, nauka, kultura i wiele więcej.
-- **[Pytanka](./pytanka/)** 🧠 – Quiz dla dzieci z 3 odpowiedziami do wyboru.
+- **[Pytanka](./pytanka/)** 🐣 – Quiz dla dzieci z 3 odpowiedziami do wyboru.
 
 ---
 

@@ -20,7 +20,7 @@ function normalizeAnswers(correct, wrong1, wrong2) {
         { text: wrong2,  is_correct: false },
     ].filter(answer => answer.text && answer.text.trim() !== '');
 
-    return answers.length === 3 ? shuffle(answers) : null;
+    return answers.length === 3 ? answers : null;
 }
 
 async function loadAllData() {
