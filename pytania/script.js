@@ -113,7 +113,7 @@ function getRandomCategoryQuestions(numQ, levelFilter) {
         if (!availablePools.length) break;
 
         availablePools.forEach(pool => {
-            if (selected.length >= numQ || !pool.questions.length) return;
+            if (selected.length >= numQ) return;
             selected.push(pool.questions.pop());
         });
     }
