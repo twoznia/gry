@@ -3,32 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angielski - Auto-Sync GitHub</title>
+    <title>Angielski - Trener Słówek</title>
     <style>
         :root { --primary: #007bff; --success: #2ed573; --danger: #ff4757; --bg: #f8f9fa; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; color: #2d3436; }
         .container { background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 90%; max-width: 480px; text-align: center; }
-        
         h2 { margin-top: 0; color: #2d3436; font-size: 1.5rem; }
         .setup-group { text-align: left; margin-bottom: 20px; }
         label { font-weight: 600; display: block; margin-bottom: 8px; font-size: 0.9rem; color: #636e72; }
-        
         select, button { padding: 14px; width: 100%; border-radius: 10px; border: 2px solid #dfe6e9; font-size: 1rem; transition: all 0.2s ease; background: white; }
         select:focus { border-color: var(--primary); outline: none; }
         select:disabled { background: #f1f2f6; cursor: not-allowed; }
-        
         .card { font-size: 2rem; font-weight: 800; margin: 25px 0; padding: 50px 20px; border: 3px solid var(--primary); border-radius: 15px; background: #fff; position: relative; overflow: hidden; min-height: 100px; display: flex; align-items: center; justify-content: center; }
         .timer-bar { height: 6px; background: var(--danger); width: 100%; position: absolute; bottom: 0; left: 0; }
-        
         .hidden { display: none; }
         .btn-correct { background: var(--success); color: white; border: none; cursor: pointer; font-weight: bold; margin-bottom: 12px; }
         .btn-wrong { background: var(--danger); color: white; border: none; cursor: pointer; font-weight: bold; }
-        .btn-correct:hover, .btn-wrong:hover { opacity: 0.9; transform: translateY(-2px); }
-        
         .stats-table { width: 100%; border-collapse: collapse; margin-top: 20px; border-radius: 10px; overflow: hidden; }
-        .stats-table th { background: #dfe6e9; padding: 12px; font-size: 0.85rem; }
+        .stats-table th { background: #dfe6e9; padding: 12px; font-size: 0.85rem; text-align: left; }
         .stats-table td { border-bottom: 1px solid #dfe6e9; padding: 12px; text-align: left; }
-        
         #loader { font-size: 0.85rem; color: var(--primary); margin-bottom: 15px; font-weight: bold; }
         #progress { font-weight: 600; color: #b2bec3; margin-bottom: 10px; }
     </style>
@@ -40,22 +33,22 @@
     <div id="loader">Łączenie z GitHubem...</div>
     
     <div class="setup-group">
-        <label>Temat główny (Folder):</label>
+        <label>Kategoria:</label>
         <select id="categorySelect" onchange="loadSubcategories()" disabled>
             <option value="">Wybierz kategorię...</option>
         </select>
     </div>
 
     <div class="setup-group">
-        <label>Zestaw (Plik CSV):</label>
-        <select id="subcategorySelect" disabled>
+        <label>Zestaw:</label>
+        <select id="subcategorySelect" disabled onchange="saveSelection()">
             <option value="">Najpierw wybierz kategorię</option>
         </select>
     </div>
 
     <div class="setup-group">
         <label>Kierunek nauki:</label>
-        <select id="modeSelect">
+        <select id="modeSelect" onchange="saveSelection()">
             <option value="pl_en">Polski → Angielski</option>
             <option value="en_pl">Angielski → Polski</option>
         </select>
@@ -81,11 +74,10 @@
 <div class="container hidden" id="results">
     <h2>Wyniki nauki 📈</h2>
     <div id="statsContent"></div>
-    <button onclick="location.reload()" style="margin-top: 25px; background: #2d3436; color: white; border: none; cursor: pointer;">Nowa lekcja</button>
+    <button onclick="location.reload()" style="margin-top: 25px; background: #2d3436; color: white; border: none; cursor: pointer;">Powtórz zestaw</button>
 </div>
 
 <script>
-    // Konfiguracja Twojego repozytorium
     const OWNER = 'twoznia';
     const REPO = 'gry';
     const DATA_PATH = 'słówka/data'; 
@@ -94,7 +86,7 @@
     let fails = {};
     let mode = "";
 
-    // Pobierz foldery z repozytorium
+    // 1. Inicjalizacja - pobieranie kategorii
     async function init() {
         const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${DATA_PATH}`;
         try {
@@ -103,27 +95,34 @@
             const folders = items.filter(i => i.type === 'dir');
             
             const select = document.getElementById('categorySelect');
-            folders.forEach(f => {
-                select.add(new Option(f.name, f.name));
-            });
+            folders.forEach(f => select.add(new Option(f.name, f.name)));
             
             select.disabled = false;
-            document.getElementById('loader').innerText = "Wszystkie systemy gotowe.";
+            document.getElementById('loader').innerText = "Baza gotowa.";
+
+            // Przywróć tryb i kategorię
+            const savedMode = localStorage.getItem('lastMode');
+            if (savedMode) document.getElementById('modeSelect').value = savedMode;
+
+            const savedCat = localStorage.getItem('lastCategory');
+            if (savedCat && [...select.options].some(o => o.value === savedCat)) {
+                select.value = savedCat;
+                await loadSubcategories(true); // true oznacza przywracanie z pamięci
+            }
         } catch (e) {
-            document.getElementById('loader').innerText = "Błąd API. Sprawdź strukturę folderów.";
-            document.getElementById('loader').style.color = 'red';
+            document.getElementById('loader').innerText = "Błąd połączenia.";
         }
     }
 
-    // Pobierz pliki z wybranego folderu
-    async function loadSubcategories() {
+    // 2. Pobieranie plików (zestawów)
+    async function loadSubcategories(isInitial = false) {
         const category = document.getElementById('categorySelect').value;
         if (!category) return;
+        
+        localStorage.setItem('lastCategory', category);
 
         const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${DATA_PATH}/${category}`;
         const subSelect = document.getElementById('subcategorySelect');
-        
-        subSelect.innerHTML = '<option>Pobieranie plików...</option>';
         subSelect.disabled = true;
 
         try {
@@ -140,20 +139,34 @@
             subSelect.disabled = false;
             document.getElementById('startBtn').disabled = false;
             document.getElementById('startBtn').style.opacity = "1";
+
+            // Przywróć konkretny plik
+            if (isInitial) {
+                const savedSub = localStorage.getItem('lastSubcategory');
+                if (savedSub && [...subSelect.options].some(o => o.value === savedSub)) {
+                    subSelect.value = savedSub;
+                }
+            }
+            saveSelection();
         } catch (e) {
-            alert("Błąd ładowania podkategorii.");
+            alert("Błąd ładowania zestawów.");
         }
     }
 
-    // Logika sesji
+    function saveSelection() {
+        localStorage.setItem('lastMode', document.getElementById('modeSelect').value);
+        localStorage.setItem('lastSubcategory', document.getElementById('subcategorySelect').value);
+    }
+
+    // 3. Logika Gry
     async function startGame() {
+        saveSelection();
         const csvUrl = document.getElementById('subcategorySelect').value;
         mode = document.getElementById('modeSelect').value;
 
         const response = await fetch(csvUrl);
         const text = await response.text();
         
-        // Parsowanie CSV (obsługa różnych znaków końca linii)
         sessionQueue = text.trim().split(/\r?\n/)
             .filter(line => line.includes(','))
             .map(line => {
@@ -171,12 +184,10 @@
 
     function renderCard() {
         if (sessionQueue.length === 0) return showResults();
-
         const item = sessionQueue[0];
-        document.getElementById('progress').innerText = `Do końca: ${sessionQueue.length}`;
+        document.getElementById('progress').innerText = `Pozostało: ${sessionQueue.length}`;
         document.getElementById('questionBox').innerText = mode === 'pl_en' ? item.pl : item.en;
         document.getElementById('answerBox').innerText = mode === 'pl_en' ? item.en : item.pl;
-        
         document.getElementById('answerBox').classList.add('hidden');
         document.getElementById('controls').classList.add('hidden');
 
@@ -184,13 +195,11 @@
         bar.style.transition = 'none';
         bar.style.width = '100%';
         
-        // Start animacji paska (3 sekundy)
         setTimeout(() => {
             bar.style.transition = 'width 3s linear';
             bar.style.width = '0%';
         }, 50);
 
-        // Pokazanie odpowiedzi po 3 sekundach
         setTimeout(() => {
             if (!document.getElementById('game').classList.contains('hidden')) {
                 document.getElementById('answerBox').classList.remove('hidden');
@@ -203,7 +212,7 @@
         const item = sessionQueue.shift();
         if (!isCorrect) {
             fails[item.en]++;
-            sessionQueue.push(item); // Powrót do kolejki
+            sessionQueue.push(item);
         }
         renderCard();
     }
@@ -211,22 +220,11 @@
     function showResults() {
         document.getElementById('game').classList.add('hidden');
         document.getElementById('results').classList.remove('hidden');
-        
-        const sorted = Object.entries(fails)
-            .filter(f => f[1] > 0)
-            .sort((a,b) => b[1] - a[1]);
-            
+        const sorted = Object.entries(fails).filter(f => f[1] > 0).sort((a,b) => b[1] - a[1]);
         let html = '<table class="stats-table"><thead><tr><th>Słowo</th><th>Błędy</th></tr></thead><tbody>';
-        
-        if(sorted.length === 0) {
-            html += '<tr><td colspan="2" style="text-align:center">Idealnie! Znasz wszystko.</td></tr>';
-        } else {
-            sorted.forEach(([w, c]) => {
-                html += `<tr><td>${w}</td><td>${c}</td></tr>`;
-            });
-        }
-        html += '</tbody></table>';
-        document.getElementById('statsContent').innerHTML = html;
+        if(sorted.length === 0) html += '<tr><td colspan="2" style="text-align:center">Zero błędów! Brawo.</td></tr>';
+        else sorted.forEach(([w, c]) => html += `<tr><td>${w}</td><td>${c}</td></tr>`);
+        document.getElementById('statsContent').innerHTML = html + '</tbody></table>';
     }
 
     init();
