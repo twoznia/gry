@@ -2,177 +2,234 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Angielski CSV - Gra</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angielski - Auto-Sync GitHub</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .container { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 450px; text-align: center; }
-        select, button { padding: 12px; margin: 10px 0; width: 100%; border-radius: 6px; border: 1px solid #ccc; font-size: 16px; }
-        .card { font-size: 28px; font-weight: bold; margin: 20px 0; min-height: 80px; display: flex; align-items: center; justify-content: center; border: 3px solid #007bff; border-radius: 10px; background: #fff; }
-        .timer { font-size: 20px; color: #e74c3c; font-weight: bold; margin-bottom: 10px; }
+        :root { --primary: #007bff; --success: #2ed573; --danger: #ff4757; --bg: #f8f9fa; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; color: #2d3436; }
+        .container { background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 90%; max-width: 480px; text-align: center; }
+        
+        h2 { margin-top: 0; color: #2d3436; font-size: 1.5rem; }
+        .setup-group { text-align: left; margin-bottom: 20px; }
+        label { font-weight: 600; display: block; margin-bottom: 8px; font-size: 0.9rem; color: #636e72; }
+        
+        select, button { padding: 14px; width: 100%; border-radius: 10px; border: 2px solid #dfe6e9; font-size: 1rem; transition: all 0.2s ease; background: white; }
+        select:focus { border-color: var(--primary); outline: none; }
+        select:disabled { background: #f1f2f6; cursor: not-allowed; }
+        
+        .card { font-size: 2rem; font-weight: 800; margin: 25px 0; padding: 50px 20px; border: 3px solid var(--primary); border-radius: 15px; background: #fff; position: relative; overflow: hidden; min-height: 100px; display: flex; align-items: center; justify-content: center; }
+        .timer-bar { height: 6px; background: var(--danger); width: 100%; position: absolute; bottom: 0; left: 0; }
+        
         .hidden { display: none; }
-        .stats-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        .stats-table th, .stats-table td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-        .btn-correct { background: #2ecc71; color: white; border: none; cursor: pointer; font-weight: bold; }
-        .btn-wrong { background: #e74c3c; color: white; border: none; cursor: pointer; font-weight: bold; }
-        .btn-start { background: #3498db; color: white; border: none; cursor: pointer; }
-        #answerBox { font-size: 22px; color: #2c3e50; font-weight: bold; padding: 10px; background: #ecf0f1; border-radius: 5px; }
+        .btn-correct { background: var(--success); color: white; border: none; cursor: pointer; font-weight: bold; margin-bottom: 12px; }
+        .btn-wrong { background: var(--danger); color: white; border: none; cursor: pointer; font-weight: bold; }
+        .btn-correct:hover, .btn-wrong:hover { opacity: 0.9; transform: translateY(-2px); }
+        
+        .stats-table { width: 100%; border-collapse: collapse; margin-top: 20px; border-radius: 10px; overflow: hidden; }
+        .stats-table th { background: #dfe6e9; padding: 12px; font-size: 0.85rem; }
+        .stats-table td { border-bottom: 1px solid #dfe6e9; padding: 12px; text-align: left; }
+        
+        #loader { font-size: 0.85rem; color: var(--primary); margin-bottom: 15px; font-weight: bold; }
+        #progress { font-weight: 600; color: #b2bec3; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
 <div class="container" id="setup">
-    <h2>Wybierz lekcję</h2>
-    <label>Dostępne tematy (pliki .csv):</label>
-    <select id="topicSelect">
-        <option value="Technologia">Technologia</option>
-        <option value="Dom">Dom</option>
-    </select>
+    <h2>🇬🇧 Trener Słówek</h2>
+    <div id="loader">Łączenie z GitHubem...</div>
+    
+    <div class="setup-group">
+        <label>Temat główny (Folder):</label>
+        <select id="categorySelect" onchange="loadSubcategories()" disabled>
+            <option value="">Wybierz kategorię...</option>
+        </select>
+    </div>
 
-    <label>Kierunek:</label>
-    <select id="modeSelect">
-        <option value="pl_en">Polski -> Angielski</option>
-        <option value="en_pl">Angielski -> Polski</option>
-    </select>
+    <div class="setup-group">
+        <label>Zestaw (Plik CSV):</label>
+        <select id="subcategorySelect" disabled>
+            <option value="">Najpierw wybierz kategorię</option>
+        </select>
+    </div>
 
-    <button class="btn-start" onclick="loadAndStart()">Rozpocznij</button>
+    <div class="setup-group">
+        <label>Kierunek nauki:</label>
+        <select id="modeSelect">
+            <option value="pl_en">Polski → Angielski</option>
+            <option value="en_pl">Angielski → Polski</option>
+        </select>
+    </div>
+
+    <button id="startBtn" style="background: var(--primary); color: white; opacity: 0.5;" onclick="startGame()" disabled>Rozpocznij sesję</button>
 </div>
 
 <div class="container hidden" id="game">
-    <div id="progress" style="margin-bottom: 10px; font-size: 14px; color: #7f8c8d;"></div>
-    <div class="timer" id="timer">3</div>
-    <div class="card" id="questionBox">...</div>
-    <div id="answerBox" class="hidden"></div>
+    <div id="progress"></div>
+    <div class="card">
+        <div id="questionBox"></div>
+        <div id="timerBar" class="timer-bar"></div>
+    </div>
+    <div id="answerBox" class="hidden" style="font-size: 1.4rem; color: #2d3436; font-weight: 700; margin-bottom: 25px; padding: 15px; background: #f1f2f6; border-radius: 10px;"></div>
     
     <div id="controls" class="hidden">
-        <p>Czy znałeś odpowiedź?</p>
-        <button class="btn-correct" onclick="handleAnswer(true)">TAK</button>
-        <button class="btn-wrong" onclick="handleAnswer(false)">NIE (powtórz)</button>
+        <button class="btn-correct" onclick="submitResult(true)">✓ Wiedziałem</button>
+        <button class="btn-wrong" onclick="submitResult(false)">✗ Do powtórki</button>
     </div>
 </div>
 
 <div class="container hidden" id="results">
-    <h2>Wyniki nauki</h2>
-    <table class="stats-table" id="statsTable">
-        <thead>
-            <tr><th>Słowo</th><th>Błędy</th></tr>
-        </thead>
-        <tbody id="statsBody"></tbody>
-    </table>
-    <button onclick="location.reload()">Odśwież i wybierz inny temat</button>
+    <h2>Wyniki nauki 📈</h2>
+    <div id="statsContent"></div>
+    <button onclick="location.reload()" style="margin-top: 25px; background: #2d3436; color: white; border: none; cursor: pointer;">Nowa lekcja</button>
 </div>
 
 <script>
-    let currentQueue = [];
-    let errorCount = {};
-    let mode = "";
-    let timerInterval;
+    // Konfiguracja Twojego repozytorium
+    const OWNER = 'twoznia';
+    const REPO = 'gry';
+    const DATA_PATH = 'słówka/data'; 
 
-    async function loadAndStart() {
-        const topic = document.getElementById('topicSelect').value;
-        mode = document.getElementById('modeSelect').value;
+    let sessionQueue = [];
+    let fails = {};
+    let mode = "";
+
+    // Pobierz foldery z repozytorium
+    async function init() {
+        const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${DATA_PATH}`;
+        try {
+            const response = await fetch(url);
+            const items = await response.json();
+            const folders = items.filter(i => i.type === 'dir');
+            
+            const select = document.getElementById('categorySelect');
+            folders.forEach(f => {
+                select.add(new Option(f.name, f.name));
+            });
+            
+            select.disabled = false;
+            document.getElementById('loader').innerText = "Wszystkie systemy gotowe.";
+        } catch (e) {
+            document.getElementById('loader').innerText = "Błąd API. Sprawdź strukturę folderów.";
+            document.getElementById('loader').style.color = 'red';
+        }
+    }
+
+    // Pobierz pliki z wybranego folderu
+    async function loadSubcategories() {
+        const category = document.getElementById('categorySelect').value;
+        if (!category) return;
+
+        const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${DATA_PATH}/${category}`;
+        const subSelect = document.getElementById('subcategorySelect');
+        
+        subSelect.innerHTML = '<option>Pobieranie plików...</option>';
+        subSelect.disabled = true;
 
         try {
-            const response = await fetch(`${topic}.csv`);
-            if (!response.ok) throw new Error("Nie znaleziono pliku CSV");
+            const response = await fetch(url);
+            const items = await response.json();
+            const files = items.filter(i => i.name.endsWith('.csv'));
             
-            const data = await response.text();
-            parseCSV(data);
+            subSelect.innerHTML = '';
+            files.forEach(f => {
+                const nameDisplay = f.name.replace('.csv', '').replaceAll('_', ' ');
+                subSelect.add(new Option(nameDisplay, f.download_url));
+            });
             
-            document.getElementById('setup').classList.add('hidden');
-            document.getElementById('game').classList.remove('hidden');
-            nextQuestion();
-        } catch (err) {
-            alert("Błąd ładowania pliku: " + err.message);
+            subSelect.disabled = false;
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('startBtn').style.opacity = "1";
+        } catch (e) {
+            alert("Błąd ładowania podkategorii.");
         }
     }
 
-    function parseCSV(text) {
-        currentQueue = [];
-        const lines = text.split('\n');
-        lines.forEach(line => {
-            const parts = line.split(',');
-            if (parts.length >= 2) {
-                const item = { en: parts[0].trim(), pl: parts[1].trim() };
-                currentQueue.push(item);
-                errorCount[item.en] = 0;
-            }
-        });
-        // Losowa kolejność na start
-        currentQueue.sort(() => Math.random() - 0.5);
+    // Logika sesji
+    async function startGame() {
+        const csvUrl = document.getElementById('subcategorySelect').value;
+        mode = document.getElementById('modeSelect').value;
+
+        const response = await fetch(csvUrl);
+        const text = await response.text();
+        
+        // Parsowanie CSV (obsługa różnych znaków końca linii)
+        sessionQueue = text.trim().split(/\r?\n/)
+            .filter(line => line.includes(','))
+            .map(line => {
+                const [en, pl] = line.split(',');
+                return { en: en.trim(), pl: pl.trim() };
+            });
+
+        sessionQueue.forEach(item => fails[item.en] = 0);
+        sessionQueue.sort(() => Math.random() - 0.5);
+
+        document.getElementById('setup').classList.add('hidden');
+        document.getElementById('game').classList.remove('hidden');
+        renderCard();
     }
 
-    function nextQuestion() {
-        if (currentQueue.length === 0) {
-            showResults();
-            return;
-        }
+    function renderCard() {
+        if (sessionQueue.length === 0) return showResults();
 
-        document.getElementById('progress').innerText = `Pozostało słów: ${currentQueue.length}`;
-        const item = currentQueue[0];
-        const displayWord = (mode === "pl_en") ? item.pl : item.en;
-        const answerWord = (mode === "pl_en") ? item.en : item.pl;
-
-        document.getElementById('questionBox').innerText = displayWord;
-        document.getElementById('answerBox').innerText = answerWord;
+        const item = sessionQueue[0];
+        document.getElementById('progress').innerText = `Do końca: ${sessionQueue.length}`;
+        document.getElementById('questionBox').innerText = mode === 'pl_en' ? item.pl : item.en;
+        document.getElementById('answerBox').innerText = mode === 'pl_en' ? item.en : item.pl;
+        
         document.getElementById('answerBox').classList.add('hidden');
         document.getElementById('controls').classList.add('hidden');
-        
-        startTimer(3);
-    }
 
-    function startTimer(seconds) {
-        let timeLeft = seconds;
-        const timerEl = document.getElementById('timer');
-        timerEl.innerText = timeLeft;
+        const bar = document.getElementById('timerBar');
+        bar.style.transition = 'none';
+        bar.style.width = '100%';
         
-        clearInterval(timerInterval);
-        timerInterval = setInterval(() => {
-            timeLeft--;
-            timerEl.innerText = timeLeft;
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                revealAnswer();
+        // Start animacji paska (3 sekundy)
+        setTimeout(() => {
+            bar.style.transition = 'width 3s linear';
+            bar.style.width = '0%';
+        }, 50);
+
+        // Pokazanie odpowiedzi po 3 sekundach
+        setTimeout(() => {
+            if (!document.getElementById('game').classList.contains('hidden')) {
+                document.getElementById('answerBox').classList.remove('hidden');
+                document.getElementById('controls').classList.remove('hidden');
             }
-        }, 1000);
+        }, 3050);
     }
 
-    function revealAnswer() {
-        document.getElementById('answerBox').classList.remove('hidden');
-        document.getElementById('controls').classList.remove('hidden');
-    }
-
-    function handleAnswer(isCorrect) {
-        const item = currentQueue.shift();
-
-        if (isCorrect) {
-            // Słowo znane - usuwamy z kolejki
-        } else {
-            errorCount[item.en]++;
-            currentQueue.push(item); // Wraca na koniec
+    function submitResult(isCorrect) {
+        const item = sessionQueue.shift();
+        if (!isCorrect) {
+            fails[item.en]++;
+            sessionQueue.push(item); // Powrót do kolejki
         }
-
-        nextQuestion();
+        renderCard();
     }
 
     function showResults() {
         document.getElementById('game').classList.add('hidden');
         document.getElementById('results').classList.remove('hidden');
         
-        const statsBody = document.getElementById('statsBody');
-        const sorted = Object.entries(errorCount)
-            .filter(e => e[1] > 0)
-            .sort((a, b) => b[1] - a[1]);
-
-        if (sorted.length === 0) {
-            statsBody.innerHTML = "<tr><td colspan='2'>Idealnie! Zero błędów.</td></tr>";
+        const sorted = Object.entries(fails)
+            .filter(f => f[1] > 0)
+            .sort((a,b) => b[1] - a[1]);
+            
+        let html = '<table class="stats-table"><thead><tr><th>Słowo</th><th>Błędy</th></tr></thead><tbody>';
+        
+        if(sorted.length === 0) {
+            html += '<tr><td colspan="2" style="text-align:center">Idealnie! Znasz wszystko.</td></tr>';
         } else {
-            sorted.forEach(([word, count]) => {
-                const row = `<tr><td>${word}</td><td>${count}</td></tr>`;
-                statsBody.innerHTML += row;
+            sorted.forEach(([w, c]) => {
+                html += `<tr><td>${w}</td><td>${c}</td></tr>`;
             });
         }
+        html += '</tbody></table>';
+        document.getElementById('statsContent').innerHTML = html;
     }
-</script>
 
+    init();
+</script>
 </body>
 </html>
