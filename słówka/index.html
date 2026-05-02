@@ -260,10 +260,11 @@
 
         const timerBar = document.getElementById('timerBar');
         const countdownStatus = document.getElementById('countdownStatus');
+        const seconds = Math.round(answerDelayMs / 1000);
         timerBar.style.transition = 'none';
         timerBar.style.width = '100%';
         timerBar.setAttribute('aria-valuenow', '100');
-        countdownStatus.textContent = `Odpowiedź pojawi się za ${Math.round(answerDelayMs / 1000)} ${formatSecondsLabel(answerDelayMs)}.`;
+        countdownStatus.textContent = `Odpowiedź pojawi się za ${seconds} ${formatSecondsLabel(seconds)}.`;
 
         requestAnimationFrame(() => {
             const startTime = Date.now();
@@ -287,8 +288,7 @@
         }, answerDelayMs);
     }
 
-    function formatSecondsLabel(delayMs) {
-        const seconds = Math.round(delayMs / 1000);
+    function formatSecondsLabel(seconds) {
         if (seconds === 1) return 'sekundę';
         if (seconds >= 2 && seconds <= 4) return 'sekundy';
         return 'sekund';
