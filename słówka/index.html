@@ -3,177 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angielski - Trener Słówek</title>
+    <title>Trener Słówek - Hybryda</title>
     <style>
-        :root { --primary: #007bff; --success: #2ed573; --danger: #ff4757; --bg: #f8f9fa; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; color: #2d3436; }
-        .container { background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 90%; max-width: 480px; text-align: center; }
-        h2 { margin-top: 0; color: #2d3436; font-size: 1.5rem; }
-        .setup-group { text-align: left; margin-bottom: 20px; }
-        label { font-weight: 600; display: block; margin-bottom: 8px; font-size: 0.9rem; color: #636e72; }
-        select, button { padding: 14px; width: 100%; border-radius: 10px; border: 2px solid #dfe6e9; font-size: 1rem; transition: all 0.2s ease; background: white; }
-        select:focus { border-color: var(--primary); outline: none; }
-        select:disabled { background: #f1f2f6; cursor: not-allowed; }
-        .card { font-size: 2rem; font-weight: 800; margin: 25px 0; padding: 50px 20px; border: 3px solid var(--primary); border-radius: 15px; background: #fff; position: relative; overflow: hidden; min-height: 100px; display: flex; align-items: center; justify-content: center; }
-        .timer-bar { height: 6px; background: var(--danger); width: 100%; position: absolute; bottom: 0; left: 0; }
-        .hidden { display: none; }
-        .btn-correct { background: var(--success); color: white; border: none; cursor: pointer; font-weight: bold; margin-bottom: 12px; }
+        :root { --primary: #6c5ce7; --success: #00b894; --danger: #d63031; --bg: #f0f2f5; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .container { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; max-width: 480px; text-align: center; }
+        h2 { margin-top: 0; color: #2d3436; }
+        .setup-group { text-align: left; margin-bottom: 15px; }
+        label { font-weight: 600; display: block; margin-bottom: 5px; font-size: 0.85rem; color: #636e72; }
+        select, input, button { padding: 12px; width: 100%; border-radius: 10px; border: 2px solid #dfe6e9; font-size: 1rem; box-sizing: border-box; }
+        .card { font-size: 2rem; font-weight: 800; margin: 25px 0; padding: 50px 20px; border: 3px solid var(--primary); border-radius: 15px; background: #fff; min-height: 120px; display: flex; align-items: center; justify-content: center; }
+        .btn-main { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        .btn-correct { background: var(--success); color: white; border: none; cursor: pointer; margin-bottom: 10px; font-weight: bold; }
         .btn-wrong { background: var(--danger); color: white; border: none; cursor: pointer; font-weight: bold; }
-        .stats-table { width: 100%; border-collapse: collapse; margin-top: 20px; border-radius: 10px; overflow: hidden; }
-        .stats-table th { background: #dfe6e9; padding: 12px; font-size: 0.85rem; text-align: left; }
-        .stats-table td { border-bottom: 1px solid #dfe6e9; padding: 12px; text-align: left; }
-        #loader { font-size: 0.85rem; color: var(--primary); margin-bottom: 15px; font-weight: bold; }
-        #progress { font-weight: 600; color: #b2bec3; margin-bottom: 10px; }
+        .hidden { display: none; }
+        .stats-table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left; }
+        .stats-table th, .stats-table td { padding: 12px; border-bottom: 1px solid #dfe6e9; }
+        .history-item { font-size: 0.8rem; padding: 8px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
+        #loader { font-size: 0.8rem; color: var(--primary); margin-bottom: 10px; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="container" id="setup">
     <h2>🇬🇧 Trener Słówek</h2>
-    <div id="loader">Łączenie z GitHubem...</div>
-    
+    <div id="loader">Inicjalizacja...</div>
+
     <div class="setup-group">
-        <label>Kategoria:</label>
-        <select id="categorySelect" onchange="loadSubcategories()" disabled>
-            <option value="">Wybierz kategorię...</option>
+        <label>Źródło słówek:</label>
+        <select id="sourceSelect" onchange="toggleSource()">
+            <option value="github">Repozytorium GitHub</option>
+            <option value="local">Plik lokalny z PC</option>
         </select>
     </div>
 
-    <div class="setup-group">
-        <label>Zestaw:</label>
-        <select id="subcategorySelect" disabled onchange="saveSelection()">
-            <option value="">Najpierw wybierz kategorię</option>
-        </select>
+    <!-- Sekcja GitHub -->
+    <div id="githubSection">
+        <div class="setup-group">
+            <label>Kategoria:</label>
+            <select id="categorySelect" onchange="loadSubcategories()" disabled>
+                <option value="">Wybierz kategorię...</option>
+            </select>
+        </div>
+        <div class="setup-group">
+            <label>Zestaw:</label>
+            <select id="subcategorySelect" disabled>
+                <option value="">Najpierw wybierz kategorię</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Sekcja Lokalna -->
+    <div id="localSection" class="hidden">
+        <div class="setup-group">
+            <label>Wybierz plik CSV (format: en,pl):</label>
+            <input type="file" id="fileInput" accept=".csv">
+        </div>
     </div>
 
     <div class="setup-group">
         <label>Kierunek nauki:</label>
-        <select id="modeSelect" onchange="saveSelection()">
+        <select id="modeSelect">
             <option value="pl_en">Polski → Angielski</option>
             <option value="en_pl">Angielski → Polski</option>
         </select>
     </div>
 
-    <button id="startBtn" style="background: var(--primary); color: white; opacity: 0.5;" onclick="startGame()" disabled>Rozpocznij sesję</button>
+    <button class="btn-main" id="startBtn" onclick="startGame()">Rozpocznij sesję</button>
+
+    <div id="historyContainer" class="setup-group hidden" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+        <label>Ostatnie sesje:</label>
+        <div id="historyList"></div>
+    </div>
 </div>
 
 <div class="container hidden" id="game">
-    <div id="progress"></div>
-    <div class="card">
-        <div id="questionBox"></div>
-        <div id="timerBar" class="timer-bar"></div>
-    </div>
-    <div id="answerBox" class="hidden" style="font-size: 1.4rem; color: #2d3436; font-weight: 700; margin-bottom: 25px; padding: 15px; background: #f1f2f6; border-radius: 10px;"></div>
+    <div id="progress" style="color: #b2bec3; font-weight: bold;"></div>
+    <div class="card" id="questionBox"></div>
+    <div id="answerBox" class="hidden" style="font-size: 1.4rem; font-weight: bold; background: #f1f2f6; padding: 15px; border-radius: 10px; margin-bottom: 20px;"></div>
     
     <div id="controls" class="hidden">
         <button class="btn-correct" onclick="submitResult(true)">✓ Wiedziałem</button>
         <button class="btn-wrong" onclick="submitResult(false)">✗ Do powtórki</button>
     </div>
+    <button id="showBtn" class="btn-main" onclick="reveal()">Pokaż odpowiedź</button>
 </div>
 
 <div class="container hidden" id="results">
     <h2>Wyniki nauki 📈</h2>
     <div id="statsContent"></div>
-    <button onclick="location.reload()" style="margin-top: 25px; background: #2d3436; color: white; border: none; cursor: pointer;">Powtórz zestaw</button>
+    <button class="btn-main" onclick="location.reload()">Nowa sesja</button>
 </div>
 
 <script>
-    const OWNER = 'twoznia';
+    const OWNER = 'twoznia'; // Dane z Twojego oryginalnego kodu
     const REPO = 'gry';
-    const DATA_PATH = 'słówka/data'; 
+    const DATA_PATH = 'słówka/data';
 
     let sessionQueue = [];
     let fails = {};
     let mode = "";
+    let totalInitialWords = 0;
+    let completedCount = 0;
 
-    // 1. Inicjalizacja - pobieranie kategorii
+    // 1. Inicjalizacja i obsługa źródeł
     async function init() {
-        const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${DATA_PATH}`;
+        displayHistory();
         try {
-            const response = await fetch(url);
+            const response = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${DATA_PATH}`);
             const items = await response.json();
             const folders = items.filter(i => i.type === 'dir');
-            
             const select = document.getElementById('categorySelect');
             folders.forEach(f => select.add(new Option(f.name, f.name)));
-            
             select.disabled = false;
-            document.getElementById('loader').innerText = "Baza gotowa.";
-
-            // Przywróć tryb i kategorię
-            const savedMode = localStorage.getItem('lastMode');
-            if (savedMode) document.getElementById('modeSelect').value = savedMode;
-
-            const savedCat = localStorage.getItem('lastCategory');
-            if (savedCat && [...select.options].some(o => o.value === savedCat)) {
-                select.value = savedCat;
-                await loadSubcategories(true); // true oznacza przywracanie z pamięci
-            }
+            document.getElementById('loader').innerText = "GitHub połączony.";
         } catch (e) {
-            document.getElementById('loader').innerText = "Błąd połączenia.";
+            document.getElementById('loader').innerText = "GitHub niedostępny (tryb lokalny ok).";
         }
     }
 
-    // 2. Pobieranie plików (zestawów)
-    async function loadSubcategories(isInitial = false) {
-        const category = document.getElementById('categorySelect').value;
-        if (!category) return;
-        
-        localStorage.setItem('lastCategory', category);
+    function toggleSource() {
+        const source = document.getElementById('sourceSelect').value;
+        document.getElementById('githubSection').classList.toggle('hidden', source !== 'github');
+        document.getElementById('localSection').classList.toggle('hidden', source !== 'local');
+    }
 
-        const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${DATA_PATH}/${category}`;
+    async function loadSubcategories() {
+        const cat = document.getElementById('categorySelect').value;
         const subSelect = document.getElementById('subcategorySelect');
         subSelect.disabled = true;
-
         try {
-            const response = await fetch(url);
-            const items = await response.json();
-            const files = items.filter(i => i.name.endsWith('.csv'));
-            
+            const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${DATA_PATH}/${cat}`);
+            const files = (await res.json()).filter(f => f.name.endsWith('.csv'));
             subSelect.innerHTML = '';
-            files.forEach(f => {
-                const nameDisplay = f.name.replace('.csv', '').replaceAll('_', ' ');
-                subSelect.add(new Option(nameDisplay, f.download_url));
-            });
-            
+            files.forEach(f => subSelect.add(new Option(f.name.replace('.csv',''), f.download_url)));
             subSelect.disabled = false;
-            document.getElementById('startBtn').disabled = false;
-            document.getElementById('startBtn').style.opacity = "1";
-
-            // Przywróć konkretny plik
-            if (isInitial) {
-                const savedSub = localStorage.getItem('lastSubcategory');
-                if (savedSub && [...subSelect.options].some(o => o.value === savedSub)) {
-                    subSelect.value = savedSub;
-                }
-            }
-            saveSelection();
-        } catch (e) {
-            alert("Błąd ładowania zestawów.");
-        }
+        } catch (e) { alert("Błąd pobierania list."); }
     }
 
-    function saveSelection() {
-        localStorage.setItem('lastMode', document.getElementById('modeSelect').value);
-        localStorage.setItem('lastSubcategory', document.getElementById('subcategorySelect').value);
-    }
-
-    // 3. Logika Gry
+    // 2. Start Gry
     async function startGame() {
-        saveSelection();
-        const csvUrl = document.getElementById('subcategorySelect').value;
+        const source = document.getElementById('sourceSelect').value;
         mode = document.getElementById('modeSelect').value;
+        let csvText = "";
 
-        const response = await fetch(csvUrl);
-        const text = await response.text();
-        
-        sessionQueue = text.trim().split(/\r?\n/)
-            .filter(line => line.includes(','))
-            .map(line => {
-                const [en, pl] = line.split(',');
+        if (source === 'local') {
+            const file = document.getElementById('fileInput').files[0];
+            if (!file) return alert("Wybierz plik!");
+            csvText = await file.text();
+        } else {
+            const url = document.getElementById('subcategorySelect').value;
+            if (!url) return alert("Wybierz zestaw!");
+            const res = await fetch(url);
+            csvText = await res.text();
+        }
+
+        sessionQueue = csvText.trim().split(/\r?\n/)
+            .filter(l => l.includes(','))
+            .map(l => {
+                const [en, pl] = l.split(',');
                 return { en: en.trim(), pl: pl.trim() };
             });
 
+        if (sessionQueue.length === 0) return;
+
+        totalInitialWords = sessionQueue.length;
+        completedCount = 0;
         sessionQueue.forEach(item => fails[item.en] = 0);
         sessionQueue.sort(() => Math.random() - 0.5);
 
@@ -182,49 +177,62 @@
         renderCard();
     }
 
+    // 3. Logika Rozgrywki (z cechami wersji lokalnej)
     function renderCard() {
         if (sessionQueue.length === 0) return showResults();
         const item = sessionQueue[0];
-        document.getElementById('progress').innerText = `Pozostało: ${sessionQueue.length}`;
+        document.getElementById('progress').innerText = `Postęp: ${completedCount} / ${totalInitialWords}`;
         document.getElementById('questionBox').innerText = mode === 'pl_en' ? item.pl : item.en;
         document.getElementById('answerBox').innerText = mode === 'pl_en' ? item.en : item.pl;
+        
         document.getElementById('answerBox').classList.add('hidden');
         document.getElementById('controls').classList.add('hidden');
+        document.getElementById('showBtn').classList.remove('hidden');
+    }
 
-        const bar = document.getElementById('timerBar');
-        bar.style.transition = 'none';
-        bar.style.width = '100%';
-        
-        setTimeout(() => {
-            bar.style.transition = 'width 3s linear';
-            bar.style.width = '0%';
-        }, 50);
-
-        setTimeout(() => {
-            if (!document.getElementById('game').classList.contains('hidden')) {
-                document.getElementById('answerBox').classList.remove('hidden');
-                document.getElementById('controls').classList.remove('hidden');
-            }
-        }, 3050);
+    function reveal() {
+        document.getElementById('answerBox').classList.remove('hidden');
+        document.getElementById('controls').classList.remove('hidden');
+        document.getElementById('showBtn').classList.add('hidden');
     }
 
     function submitResult(isCorrect) {
         const item = sessionQueue.shift();
-        if (!isCorrect) {
-            fails[item.en]++;
+        if (isCorrect) {
+            completedCount++;
+        } else {
+            fails[item.en]++; // Zliczanie błędów
             sessionQueue.push(item);
         }
         renderCard();
     }
 
+    // 4. Wyniki i Historia
     function showResults() {
         document.getElementById('game').classList.add('hidden');
         document.getElementById('results').classList.remove('hidden');
+
+        // Zapis do historii lokalnej
+        let history = JSON.parse(localStorage.getItem('studyHistory') || "[]");
+        history.unshift({ date: new Date().toLocaleDateString(), count: totalInitialWords });
+        localStorage.setItem('studyHistory', JSON.stringify(history.slice(0, 5)));
+
+        // Tabela błędów (jak w oryginale)[cite: 1]
         const sorted = Object.entries(fails).filter(f => f[1] > 0).sort((a,b) => b[1] - a[1]);
-        let html = '<table class="stats-table"><thead><tr><th>Słowo</th><th>Błędy</th></tr></thead><tbody>';
-        if(sorted.length === 0) html += '<tr><td colspan="2" style="text-align:center">Zero błędów! Brawo.</td></tr>';
+        let html = `<h3>Podsumowanie</h3><table class="stats-table"><tr><th>Słowo</th><th>Błędy</th></tr>`;
+        if (sorted.length === 0) html += `<tr><td colspan="2">Bez błędów! Brawo!</td></tr>`;
         else sorted.forEach(([w, c]) => html += `<tr><td>${w}</td><td>${c}</td></tr>`);
-        document.getElementById('statsContent').innerHTML = html + '</tbody></table>';
+        document.getElementById('statsContent').innerHTML = html + `</table>`;
+    }
+
+    function displayHistory() {
+        const history = JSON.parse(localStorage.getItem('studyHistory') || "[]");
+        if (history.length > 0) {
+            document.getElementById('historyContainer').classList.remove('hidden');
+            document.getElementById('historyList').innerHTML = history.map(h => `
+                <div class="history-item"><span>${h.date}</span><b>${h.count} słówek</b></div>
+            `).join('');
+        }
     }
 
     init();
