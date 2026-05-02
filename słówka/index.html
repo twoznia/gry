@@ -19,6 +19,7 @@
         .btn-correct { background: var(--success); color: white; border: none; cursor: pointer; margin-bottom: 10px; font-weight: bold; }
         .btn-wrong { background: var(--danger); color: white; border: none; cursor: pointer; font-weight: bold; }
         .hidden { display: none; }
+        .countdown-text { margin-top: 8px; font-size: 0.95rem; font-weight: 700; color: var(--danger); min-height: 1.2em; }
         .stats-table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left; }
         .stats-table th, .stats-table td { padding: 12px; border-bottom: 1px solid #dfe6e9; }
         .history-item { font-size: 0.8rem; padding: 8px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
@@ -99,6 +100,7 @@
 
 <div class="container hidden" id="game">
     <div id="progress" style="color: #b2bec3; font-weight: bold;"></div>
+    <div id="countdownText" class="countdown-text" aria-hidden="true"></div>
     <div id="countdownStatus" class="sr-only" aria-live="polite"></div>
     <div class="card">
         <div id="questionBox"></div>
@@ -261,6 +263,7 @@
         clearInterval(revealIntervalId);
         document.getElementById('game').classList.add('hidden');
         document.getElementById('results').classList.remove('hidden');
+        document.getElementById('countdownText').textContent = '';
 
         // Zapis do historii lokalnej
         let history = JSON.parse(localStorage.getItem('studyHistory') || "[]");
@@ -290,11 +293,13 @@
         clearInterval(revealIntervalId);
 
         const timerBar = document.getElementById('timerBar');
+        const countdownText = document.getElementById('countdownText');
         const countdownStatus = document.getElementById('countdownStatus');
         const seconds = Math.round(answerDelayMs / 1000);
         timerBar.style.transition = 'none';
         timerBar.style.width = '100%';
         timerBar.setAttribute('aria-valuenow', '100');
+        countdownText.textContent = `Odpowiedź za ${seconds} s`;
         countdownStatus.textContent = `Odpowiedź pojawi się za ${seconds} ${formatSecondsLabel(seconds)}.`;
 
         requestAnimationFrame(() => {
@@ -307,6 +312,7 @@
                 const remainingPercent = Math.max(0, 100 - Math.round((elapsed / answerDelayMs) * 100));
                 const remainingSeconds = Math.max(0, Math.ceil((answerDelayMs - elapsed) / 1000));
                 timerBar.setAttribute('aria-valuenow', String(remainingPercent));
+                countdownText.textContent = `Odpowiedź za ${remainingSeconds} s`;
                 countdownStatus.textContent = `Odpowiedź pojawi się za ${remainingSeconds} ${formatSecondsLabel(remainingSeconds)}.`;
             }, 1000);
         });
@@ -314,6 +320,7 @@
         revealTimeoutId = setTimeout(() => {
             clearInterval(revealIntervalId);
             timerBar.setAttribute('aria-valuenow', '0');
+            countdownText.textContent = 'Czas minął';
             document.getElementById('answerBox').classList.remove('hidden');
             document.getElementById('controls').classList.remove('hidden');
             document.getElementById('answerBox').focus();
@@ -370,6 +377,7 @@
         document.getElementById('game').classList.add('hidden');
         document.getElementById('setup').classList.remove('hidden');
         document.getElementById('statsContent').innerHTML = '';
+        document.getElementById('countdownText').textContent = '';
         document.getElementById('fileInput').value = '';
         document.getElementById('sourceSelect').value = currentSource;
 
