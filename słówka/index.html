@@ -119,7 +119,7 @@
 </div>
 
 <div class="container hidden" id="game">
-    <button type="button" class="btn-secondary" onclick="returnToMenu()">← Powrót do menu</button>
+    <button type="button" class="btn-secondary" onclick="backToSetup()">← Powrót do menu</button>
     <div id="progress" style="color: #b2bec3; font-weight: bold;"></div>
     <div id="countdownText" class="countdown-text" aria-hidden="true"></div>
     <div id="countdownStatus" class="sr-only" aria-live="polite"></div>
@@ -141,7 +141,7 @@
 <div class="container hidden" id="results">
     <h2>Wyniki nauki 📈</h2>
     <div id="statsContent"></div>
-    <button class="btn-main" onclick="returnToMenu()">Nowa sesja</button>
+    <button class="btn-main" onclick="backToSetup()">Nowa sesja</button>
 </div>
 
 <script>
@@ -615,7 +615,7 @@
             .replaceAll("'", '&#39;');
     }
 
-    function returnToMenu() {
+    function backToSetup() {
         clearTimeout(revealTimeoutId);
         clearInterval(revealIntervalId);
         sessionQueue = [];
@@ -633,7 +633,7 @@
         document.getElementById('countdownStatus').textContent = '';
         document.getElementById('answerBox').classList.add('hidden');
         document.getElementById('controls').classList.add('hidden');
-        document.getElementById('quickActions').classList.remove('hidden');
+        document.getElementById('quickActions').classList.add('hidden');
         document.getElementById('timerBar').style.transition = 'none';
         document.getElementById('timerBar').style.width = '100%';
         document.getElementById('timerBar').setAttribute('aria-valuenow', '100');
