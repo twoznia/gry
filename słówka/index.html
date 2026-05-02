@@ -246,6 +246,10 @@
 
         if (!levels) {
             const response = await fetch(csvPath);
+            if (!response.ok) {
+                resetLevelFilter();
+                return;
+            }
             const csvText = await response.text();
             levels = getAvailableLevels(parseCsvText(csvText));
             levelOptionsCache.set(csvPath, levels);
@@ -367,7 +371,7 @@
 
         // Tabela błędów (jak w oryginale)[cite: 1]
         const sorted = Object.entries(fails).filter(f => f[1] > 0).sort((a,b) => b[1] - a[1]);
-        let html = `<h3>Podsumowanie</h3><p>Statystyka dla pliku: <b>${currentSessionFileName || 'Nieznany plik'}</b></p><table class="stats-table"><tr><th>Słowo</th><th>Błędy</th></tr>`;
+        let html = `<h3>Podsumowanie</h3><p>Statystyka dla pliku: <b>${escapeHtml(currentSessionFileName || 'Nieznany plik')}</b></p><table class="stats-table"><tr><th>Słowo</th><th>Błędy</th></tr>`;
         if (sorted.length === 0) html += `<tr><td colspan="2">Bez błędów! Brawo!</td></tr>`;
         else sorted.forEach(([id, count]) => {
             const item = sessionItemsById[id];
