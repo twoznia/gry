@@ -3,6 +3,7 @@
             easyMode: 'TRYB SPOKOJNY\nHave Fun!!!',
             crash: 'KRAKSA!',
             yourScore: 'TWÓJ WYNIK:',
+            record: 'REKORD:',
             playAgain: 'ZAGRAJ PONOWNIE',
             resetRecord: 'RESETUJ REKORD',
             confirmReset: 'Wyzerować rekord?'
@@ -11,6 +12,7 @@
             easyMode: 'EASY MODE\nHave Fun!!!',
             crash: 'CRASH!',
             yourScore: 'YOUR SCORE:',
+            record: 'RECORD:',
             playAgain: 'PLAY AGAIN',
             resetRecord: 'RESET RECORD',
             confirmReset: 'Reset high score?'
@@ -20,10 +22,7 @@
 
     function applyLang() {
         const t = TRANSLATIONS[lang];
-        const finalInfoEl = document.getElementById('final-info');
-        if (finalInfoEl.dataset.state !== 'end') {
-            finalInfoEl.innerHTML = t.easyMode.replace('\n', '<br>');
-        }
+        updateOverlayInfo();
         document.getElementById('btn-reset-hi').innerText = t.resetRecord;
         document.getElementById('btn-pl').style.borderColor = lang === 'pl' ? '#fff' : '#888';
         document.getElementById('btn-en').style.borderColor = lang === 'en' ? '#fff' : '#888';
@@ -34,7 +33,6 @@
         location.reload();
     }
 
-    applyLang();
     const screen = document.getElementById('screen');
     const player = document.getElementById('player');
     const scoreEl = document.getElementById('score');
@@ -44,9 +42,10 @@
     const statusTitle = document.getElementById('status-title');
     const finalInfo = document.getElementById('final-info');
     const actionBtn = document.getElementById('action-btn');
+    applyLang();
 
     let score = 0;
-    let hiScore = localStorage.getItem('autoslalom_hi') || 0;
+    let hiScore = Number.parseInt(localStorage.getItem('autoslalom_hi') || '0', 10);
     let lives = 3;
     let playerLane = 1;
     let gameActive = false;
@@ -58,6 +57,8 @@
     let lastHeartScore = 0;
     let lastHeartTime = 0;
     const HEART_INTERVAL = 15;
+    let freePasses = 0;
+    let recordBrokenThisRun = false;
     
     const baseSpeed = 4.8; 
     const initialDifficultyOffset = 0;
@@ -84,23 +85,33 @@
     function updateHiScoreDisplay() {
         hiScoreEl.innerText = `HI: ${hiScore.toString().padStart(4, '0')}`;
     }
+
+    function updateOverlayInfo() {
+        if (finalInfo.dataset.state === 'end') return;
+        const t = TRANSLATIONS[lang];
+        finalInfo.innerHTML = `${t.easyMode.replace('\n', '<br>')}<br>${t.record} ${hiScore.toString().padStart(4, '0')}`;
+    }
+
+    function setRecordTheme(isActive) {
+        document.body.classList.toggle('record-beaten', isActive);
+    }
+
     updateHiScoreDisplay();
+    updateOverlayInfo();
 
     function resetHiScore() {
         if (confirm(TRANSLATIONS[lang].confirmReset)) {
             hiScore = 0;
             localStorage.setItem('autoslalom_hi', 0);
             updateHiScoreDisplay();
+            updateOverlayInfo();
         }
     }
 
-    // Nowa funkcja obsługi ruchu, która zapobiega podwójnemu wywołaniu
-    let lastSwipeTime = 0;
     function handleMove(dir) {
         if (!gameActive) return;
         if (dir === 'L' && playerLane > 0) playerLane--;
         if (dir === 'P' && playerLane < 3) playerLane++;
-        lastSwipeTime = Date.now();
         updatePlayerPos();
     }
 
@@ -152,6 +163,27 @@
         obstacles.push({ el: container, lane: laneIdx, y: -50, isHeart: true });
     }
 
+    function isCollidingWithPlayer(obstacle) {
+        const playerRect = player.getBoundingClientRect();
+        const obstacleRect = obstacle.el.getBoundingClientRect();
+        const horizontalInset = 10;
+        const verticalInset = 6;
+
+        return (
+            playerRect.left + horizontalInset < obstacleRect.right - horizontalInset &&
+            playerRect.right - horizontalInset > obstacleRect.left + horizontalInset &&
+            playerRect.top + verticalInset < obstacleRect.bottom - verticalInset &&
+            playerRect.bottom - verticalInset > obstacleRect.top + verticalInset
+        );
+    }
+
+    function consumeObstacle(index) {
+        const [removedObstacle] = obstacles.splice(index, 1);
+        if (removedObstacle) {
+            removedObstacle.el.remove();
+        }
+    }
+
     function gameLoop() {
         if(!gameActive) return;
 
@@ -190,12 +222,14 @@
             o.y += currentSpeed;
             o.el.style.top = o.y + 'px';
 
-            // Hitbox z zapasem
-            if(o.y > screenH - 92 && o.y < screenH - 48 && o.lane === playerLane) {
+            if (isCollidingWithPlayer(o)) {
                 if (o.isHeart) {
                     handleHeartCollect(o, i);
                     continue;
-                } else if (Date.now() - lastSwipeTime > 250) {
+                } else if (freePasses > 0) {
+                    handleFreePass(i);
+                    continue;
+                } else {
                     handleHit(o, i);
                     continue;
                 }
@@ -204,6 +238,10 @@
             if(o.y > screenH) {
                 if (!o.isHeart) {
                     score++;
+                    if (!recordBrokenThisRun && score > hiScore) {
+                        recordBrokenThisRun = true;
+                        setRecordTheme(true);
+                    }
                     if(score % 10 === 0) currentSpeed += (baseSpeed * 0.04);
                     scoreEl.innerText = score.toString().padStart(4, '0');
 
@@ -236,13 +274,24 @@
             obstacles.splice(index, 1);
             player.classList.remove('blink', 'hit-style');
             if(lives <= 0) endGame();
-            else { gameActive = true; framesOnSameLane = 0; gameLoop(); }
+            else {
+                freePasses = 1;
+                gameActive = true;
+                framesOnSameLane = 0;
+                gameLoop();
+            }
         }, 800);
     }
 
+    function handleFreePass(index) {
+        freePasses--;
+        player.classList.add('blink');
+        consumeObstacle(index);
+        setTimeout(() => player.classList.remove('blink'), 250);
+    }
+
     function handleHeartCollect(heart, index) {
-        heart.el.remove();
-        obstacles.splice(index, 1);
+        consumeObstacle(index);
         if (lives < 3) {
             lives++;
             livesEl.innerText = '♥♥♥'.substring(0, lives);
@@ -254,13 +303,17 @@
         document.querySelectorAll('.car-shape:not(#player), .heart-shape').forEach(o => o.remove());
         obstacles = [];
         score = 0; lives = 3; patternStep = 0; framesOnSameLane = 0; lastHeartScore = 0; lastHeartTime = 0;
+        freePasses = 0;
+        recordBrokenThisRun = false;
         currentSpeed = baseSpeed + (4 * (baseSpeed * 0.05));
         playerLane = 1;
         gameActive = true;
+        finalInfo.dataset.state = 'start';
         scoreEl.innerText = '0000';
         livesEl.innerText = '♥♥♥';
         overlay.style.display = 'none';
         player.style.display = 'block';
+        setRecordTheme(false);
         updatePlayerPos();
         gameLoop();
     }
@@ -271,6 +324,7 @@
             hiScore = score;
             localStorage.setItem('autoslalom_hi', hiScore);
             updateHiScoreDisplay();
+            updateOverlayInfo();
         }
         statusTitle.innerText = TRANSLATIONS[lang].crash;
         finalInfo.dataset.state = 'end';
