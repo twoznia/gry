@@ -15,6 +15,7 @@
         .card { font-size: 2rem; font-weight: 800; margin: 25px 0; padding: 50px 20px; border: 3px solid var(--primary); border-radius: 15px; background: #fff; min-height: 120px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
         .timer-bar { height: 6px; background: var(--danger); width: 100%; position: absolute; bottom: 0; left: 0; }
         .btn-main { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        .btn-secondary { background: white; color: var(--primary); border: 2px solid var(--primary); cursor: pointer; font-weight: bold; margin-top: 10px; }
         .btn-correct { background: var(--success); color: white; border: none; cursor: pointer; margin-bottom: 10px; font-weight: bold; }
         .btn-wrong { background: var(--danger); color: white; border: none; cursor: pointer; font-weight: bold; }
         .hidden { display: none; }
@@ -22,6 +23,7 @@
         .stats-table th, .stats-table td { padding: 12px; border-bottom: 1px solid #dfe6e9; }
         .history-item { font-size: 0.8rem; padding: 8px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
         #loader { font-size: 0.8rem; color: var(--primary); margin-bottom: 10px; font-weight: bold; }
+        .local-reuse-box { margin-bottom: 12px; padding: 12px; border: 1px solid #dfe6e9; border-radius: 12px; background: #f8f9fb; }
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
         @media (prefers-reduced-motion: reduce) {
             .timer-bar { transition: none !important; }
@@ -37,7 +39,7 @@
     <div class="setup-group">
         <label>Źródło słówek:</label>
         <select id="sourceSelect" onchange="toggleSource()">
-            <option value="github">Repozytorium GitHub</option>
+            <option value="github">Gra</option>
             <option value="local">Plik lokalny z PC</option>
         </select>
     </div>
@@ -60,9 +62,13 @@
 
     <!-- Sekcja Lokalna -->
     <div id="localSection" class="hidden">
+        <div id="localReuseBox" class="local-reuse-box hidden">
+            <div id="localReuseText" style="font-size: 0.9rem; color: #2d3436;"></div>
+            <button type="button" class="btn-secondary" onclick="reuseLastLocalFile()">Użyj ostatniego pliku</button>
+        </div>
         <div class="setup-group">
             <label>Wybierz plik CSV (format: en,pl):</label>
-            <input type="file" id="fileInput" accept=".csv">
+            <input type="file" id="fileInput" accept=".csv" onchange="selectNewLocalFile()">
         </div>
     </div>
 
@@ -109,7 +115,7 @@
 <div class="container hidden" id="results">
     <h2>Wyniki nauki 📈</h2>
     <div id="statsContent"></div>
-    <button class="btn-main" onclick="location.reload()">Nowa sesja</button>
+    <button class="btn-main" onclick="startNewSession()">Nowa sesja</button>
 </div>
 
 <script>
@@ -125,6 +131,11 @@
     let answerDelayMs = 3000;
     let revealTimeoutId = null;
     let revealIntervalId = null;
+    let currentSource = 'github';
+    let currentSessionFileName = '';
+    let lastLocalCsvText = '';
+    let lastLocalFileName = '';
+    let reuseLastLocalSelection = false;
 
     // 1. Inicjalizacja i obsługa źródeł
     async function init() {
@@ -136,7 +147,8 @@
             const select = document.getElementById('categorySelect');
             folders.forEach(f => select.add(new Option(f.name, f.name)));
             select.disabled = false;
-            document.getElementById('loader').innerText = "GitHub połączony.";
+            document.getElementById('loader').innerText = "";
+            document.getElementById('loader').classList.add('hidden');
         } catch (e) {
             document.getElementById('loader').innerText = "GitHub niedostępny (tryb lokalny ok).";
         }
@@ -146,6 +158,7 @@
         const source = document.getElementById('sourceSelect').value;
         document.getElementById('githubSection').classList.toggle('hidden', source !== 'github');
         document.getElementById('localSection').classList.toggle('hidden', source !== 'local');
+        if (source === 'local') updateLocalReuseBox();
     }
 
     async function loadSubcategories() {
@@ -156,7 +169,11 @@
             const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${DATA_PATH}/${cat}`);
             const files = (await res.json()).filter(f => f.name.endsWith('.csv'));
             subSelect.innerHTML = '';
-            files.forEach(f => subSelect.add(new Option(f.name.replace('.csv',''), f.download_url)));
+            files.forEach(f => {
+                const option = new Option(f.name.replace('.csv',''), f.download_url);
+                option.dataset.filename = f.name;
+                subSelect.add(option);
+            });
             subSelect.disabled = false;
         } catch (e) { alert("Błąd pobierania list."); }
     }
@@ -166,17 +183,30 @@
         const source = document.getElementById('sourceSelect').value;
         mode = document.getElementById('modeSelect').value;
         answerDelayMs = Number(document.getElementById('delaySelect').value) || 3000;
+        currentSource = source;
         let csvText = "";
 
         if (source === 'local') {
             const file = document.getElementById('fileInput').files[0];
-            if (!file) return alert("Wybierz plik!");
-            csvText = await file.text();
+            if (file) {
+                csvText = await file.text();
+                lastLocalCsvText = csvText;
+                lastLocalFileName = file.name;
+                reuseLastLocalSelection = false;
+                currentSessionFileName = file.name;
+            } else if (reuseLastLocalSelection && lastLocalCsvText) {
+                csvText = lastLocalCsvText;
+                currentSessionFileName = lastLocalFileName;
+            } else {
+                return alert("Wybierz plik lub użyj ostatnio załadowanego.");
+            }
         } else {
             const url = document.getElementById('subcategorySelect').value;
             if (!url) return alert("Wybierz zestaw!");
             const res = await fetch(url);
             csvText = await res.text();
+            const selectedOption = document.getElementById('subcategorySelect').selectedOptions[0];
+            currentSessionFileName = selectedOption?.dataset.filename || selectedOption?.textContent || '';
         }
 
         sessionQueue = csvText.trim().split(/\r?\n/)
@@ -188,6 +218,7 @@
 
         if (sessionQueue.length === 0) return;
 
+        fails = {};
         totalInitialWords = sessionQueue.length;
         completedCount = 0;
         sessionQueue.forEach(item => fails[item.en] = 0);
@@ -202,7 +233,7 @@
     function renderCard() {
         if (sessionQueue.length === 0) return showResults();
         const item = sessionQueue[0];
-        document.getElementById('progress').innerText = `Postęp: ${completedCount} / ${totalInitialWords}`;
+        document.getElementById('progress').innerText = `Postęp: ${completedCount} / ${totalInitialWords} • Błędy: ${getErrorCount()}`;
         document.getElementById('questionBox').innerText = mode === 'pl_en' ? item.pl : item.en;
         document.getElementById('answerBox').innerText = mode === 'pl_en' ? item.en : item.pl;
         
@@ -238,7 +269,7 @@
 
         // Tabela błędów (jak w oryginale)[cite: 1]
         const sorted = Object.entries(fails).filter(f => f[1] > 0).sort((a,b) => b[1] - a[1]);
-        let html = `<h3>Podsumowanie</h3><table class="stats-table"><tr><th>Słowo</th><th>Błędy</th></tr>`;
+        let html = `<h3>Podsumowanie</h3><p>Statystyka dla pliku: <b>${currentSessionFileName || 'Nieznany plik'}</b></p><table class="stats-table"><tr><th>Słowo</th><th>Błędy</th></tr>`;
         if (sorted.length === 0) html += `<tr><td colspan="2">Bez błędów! Brawo!</td></tr>`;
         else sorted.forEach(([w, c]) => html += `<tr><td>${w}</td><td>${c}</td></tr>`);
         document.getElementById('statsContent').innerHTML = html + `</table>`;
@@ -294,6 +325,59 @@
         if (seconds === 1) return 'sekundę';
         if (seconds >= 2 && seconds <= 4) return 'sekundy';
         return 'sekund';
+    }
+
+    function getErrorCount() {
+        return Object.values(fails).reduce((sum, count) => sum + count, 0);
+    }
+
+    function updateLocalReuseBox() {
+        const reuseBox = document.getElementById('localReuseBox');
+        const reuseText = document.getElementById('localReuseText');
+        if (!lastLocalCsvText || !lastLocalFileName) {
+            reuseBox.classList.add('hidden');
+            return;
+        }
+
+        reuseText.innerText = reuseLastLocalSelection
+            ? `Wybrano ponowne użycie pliku ${lastLocalFileName}. Możesz też wskazać inny plik poniżej.`
+            : `Ostatni plik: ${lastLocalFileName}. Możesz użyć go ponownie albo wybrać inny plik poniżej.`;
+        reuseBox.classList.remove('hidden');
+    }
+
+    function reuseLastLocalFile() {
+        if (!lastLocalCsvText) return;
+        reuseLastLocalSelection = true;
+        document.getElementById('fileInput').value = '';
+        updateLocalReuseBox();
+    }
+
+    function selectNewLocalFile() {
+        reuseLastLocalSelection = false;
+        updateLocalReuseBox();
+    }
+
+    function startNewSession() {
+        clearTimeout(revealTimeoutId);
+        clearInterval(revealIntervalId);
+        sessionQueue = [];
+        fails = {};
+        totalInitialWords = 0;
+        completedCount = 0;
+        currentSessionFileName = '';
+
+        document.getElementById('results').classList.add('hidden');
+        document.getElementById('game').classList.add('hidden');
+        document.getElementById('setup').classList.remove('hidden');
+        document.getElementById('statsContent').innerHTML = '';
+        document.getElementById('fileInput').value = '';
+        document.getElementById('sourceSelect').value = currentSource;
+
+        if (currentSource === 'local') {
+            reuseLastLocalSelection = Boolean(lastLocalCsvText);
+        }
+
+        toggleSource();
     }
 
     init();
