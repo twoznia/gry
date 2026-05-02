@@ -58,8 +58,8 @@
     const HEART_INTERVAL = 15;
     const HIT_RECOVERY_MS = 800;
     const FREE_PASS_BLINK_MS = 250;
-    const COLLISION_HORIZONTAL_INSET = 10;
-    const COLLISION_VERTICAL_INSET = 6;
+    const COLLISION_HORIZONTAL_INSET_PX = 10;
+    const COLLISION_VERTICAL_INSET_PX = 6;
     let freePasses = 0;
     let recordBrokenThisRun = false;
     
@@ -166,14 +166,14 @@
         obstacles.push({ el: container, lane: laneIdx, y: -50, isHeart: true });
     }
 
-    function isCollidingWithPlayer(obstacle, playerRect = player.getBoundingClientRect()) {
+    function isCollidingWithPlayer(obstacle, playerRect) {
         const obstacleRect = obstacle.el.getBoundingClientRect();
 
         return (
-            playerRect.left + COLLISION_HORIZONTAL_INSET < obstacleRect.right - COLLISION_HORIZONTAL_INSET &&
-            playerRect.right - COLLISION_HORIZONTAL_INSET > obstacleRect.left + COLLISION_HORIZONTAL_INSET &&
-            playerRect.top + COLLISION_VERTICAL_INSET < obstacleRect.bottom - COLLISION_VERTICAL_INSET &&
-            playerRect.bottom - COLLISION_VERTICAL_INSET > obstacleRect.top + COLLISION_VERTICAL_INSET
+            playerRect.left + COLLISION_HORIZONTAL_INSET_PX < obstacleRect.right - COLLISION_HORIZONTAL_INSET_PX &&
+            playerRect.right - COLLISION_HORIZONTAL_INSET_PX > obstacleRect.left + COLLISION_HORIZONTAL_INSET_PX &&
+            playerRect.top + COLLISION_VERTICAL_INSET_PX < obstacleRect.bottom - COLLISION_VERTICAL_INSET_PX &&
+            playerRect.bottom - COLLISION_VERTICAL_INSET_PX > obstacleRect.top + COLLISION_VERTICAL_INSET_PX
         );
     }
 
