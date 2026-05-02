@@ -90,10 +90,21 @@
         hiScoreEl.innerText = `HI: ${hiScore.toString().padStart(4, '0')}`;
     }
 
+    function setFinalInfoLines(lines) {
+        finalInfo.replaceChildren();
+        lines.forEach((line, index) => {
+            if (index > 0) finalInfo.appendChild(document.createElement('br'));
+            finalInfo.appendChild(document.createTextNode(line));
+        });
+    }
+
     function updateOverlayInfo() {
         if (finalInfo.dataset.state === 'end') return;
         const t = TRANSLATIONS[lang];
-        finalInfo.innerHTML = `${t.easyMode.replace(/\n/g, '<br>')}<br>${t.record} ${hiScore.toString().padStart(4, '0')}`;
+        setFinalInfoLines([
+            ...t.easyMode.split('\n'),
+            `${t.record} ${hiScore.toString().padStart(4, '0')}`
+        ]);
     }
 
     function setRecordTheme(isActive) {
@@ -330,7 +341,7 @@
         }
         statusTitle.innerText = TRANSLATIONS[lang].crash;
         finalInfo.dataset.state = 'end';
-        finalInfo.innerHTML = `${TRANSLATIONS[lang].yourScore} ${score.toString().padStart(4, '0')}`;
+        finalInfo.textContent = `${TRANSLATIONS[lang].yourScore} ${score.toString().padStart(4, '0')}`;
         actionBtn.innerText = TRANSLATIONS[lang].playAgain;
         overlay.style.display = 'flex';
     }
