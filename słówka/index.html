@@ -130,7 +130,7 @@
     <div id="answerBox" class="hidden" tabindex="0" style="font-size: 1.4rem; font-weight: bold; background: #f1f2f6; padding: 15px; border-radius: 10px; margin-bottom: 20px;"></div>
 
     <div id="quickActions">
-        <button type="button" class="btn-correct" onclick="revealAnswer(false)" aria-label="Odsłoń odpowiedź - wiem">✓ Wiem</button>
+        <button type="button" class="btn-correct" onclick="revealAnswer(false)" aria-label="Wiem, odsłoń odpowiedź">✓ Wiem</button>
     </div>
     <div id="controls" class="hidden">
         <button class="btn-correct" onclick="submitResult(true)">✓ Wiedziałem</button>
@@ -497,7 +497,7 @@
         return shuffledWords;
     }
 
-    function revealAnswer(focusAnswer = false) {
+    function revealAnswer(shouldFocusAnswer = false) {
         clearTimeout(revealTimeoutId);
         clearInterval(revealIntervalId);
 
@@ -511,7 +511,7 @@
         document.getElementById('answerBox').classList.remove('hidden');
         document.getElementById('controls').classList.remove('hidden');
         document.getElementById('quickActions').classList.add('hidden');
-        if (focusAnswer) {
+        if (shouldFocusAnswer) {
             document.getElementById('answerBox').focus();
         }
         countdownStatus.textContent = 'Poprawna odpowiedź została pokazana.';
