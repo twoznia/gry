@@ -63,7 +63,7 @@
         </div>
         <div class="setup-group hidden" id="levelFilterGroup">
             <label for="levelSelect">Poziom:</label>
-            <select id="levelSelect" disabled>
+            <select id="levelSelect" onchange="handleLevelChange()" disabled>
                 <option value="__all__">Wszystkie poziomy</option>
             </select>
         </div>
@@ -161,6 +161,7 @@
     let reuseLastLocalSelection = false;
     let wordsManifest = null;
     let sessionItemsById = {};
+    let selectedOxfordLevel = ALL_WORDS_VALUE;
     const levelOptionsCache = new Map();
 
     // 1. Inicjalizacja i obsługa źródeł
@@ -257,7 +258,6 @@
     async function populateLevelFilter(csvPath) {
         const levelGroup = document.getElementById('levelFilterGroup');
         const levelSelect = document.getElementById('levelSelect');
-        const previousValue = levelSelect.value || ALL_WORDS_VALUE;
         let levels = levelOptionsCache.get(csvPath);
 
         if (!levels) {
@@ -273,9 +273,10 @@
 
         levelSelect.innerHTML = `<option value="${ALL_WORDS_VALUE}">Wszystkie poziomy</option>`;
         levels.forEach(level => levelSelect.add(new Option(level, level)));
-        levelSelect.value = previousValue === ALL_WORDS_VALUE || levels.includes(previousValue)
-            ? previousValue
+        levelSelect.value = selectedOxfordLevel === ALL_WORDS_VALUE || levels.includes(selectedOxfordLevel)
+            ? selectedOxfordLevel
             : ALL_WORDS_VALUE;
+        selectedOxfordLevel = levelSelect.value;
         levelSelect.disabled = false;
         levelGroup.classList.remove('hidden');
     }
@@ -287,6 +288,10 @@
         levelSelect.value = ALL_WORDS_VALUE;
         levelSelect.disabled = true;
         levelGroup.classList.add('hidden');
+    }
+
+    function handleLevelChange() {
+        selectedOxfordLevel = document.getElementById('levelSelect').value || ALL_WORDS_VALUE;
     }
 
     function showWordCountFilter() {
