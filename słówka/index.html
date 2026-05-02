@@ -119,7 +119,7 @@
 </div>
 
 <div class="container hidden" id="game">
-    <button type="button" class="btn-secondary" onclick="returnToMenu()">← Menu</button>
+    <button type="button" class="btn-secondary" onclick="returnToMenu()" aria-label="Powrót do menu">← Menu</button>
     <div id="progress" style="color: #b2bec3; font-weight: bold;"></div>
     <div id="countdownText" class="countdown-text" aria-hidden="true"></div>
     <div id="countdownStatus" class="sr-only" aria-live="polite"></div>
@@ -489,7 +489,12 @@
     }
 
     function shuffleWords(words) {
-        return [...words].sort(() => Math.random() - 0.5);
+        const shuffledWords = [...words];
+        for (let index = shuffledWords.length - 1; index > 0; index--) {
+            const randomIndex = Math.floor(Math.random() * (index + 1));
+            [shuffledWords[index], shuffledWords[randomIndex]] = [shuffledWords[randomIndex], shuffledWords[index]];
+        }
+        return shuffledWords;
     }
 
     function revealAnswer(focusAnswer = false) {
@@ -612,8 +617,6 @@
 
     function startNewSession() {
         returnToMenu();
-        currentSessionFileName = '';
-        document.getElementById('statsContent').innerHTML = '';
     }
 
     function returnToMenu() {
@@ -629,6 +632,7 @@
         document.getElementById('results').classList.add('hidden');
         document.getElementById('game').classList.add('hidden');
         document.getElementById('setup').classList.remove('hidden');
+        document.getElementById('statsContent').innerHTML = '';
         document.getElementById('countdownText').textContent = '';
         document.getElementById('countdownStatus').textContent = '';
         document.getElementById('answerBox').classList.add('hidden');
