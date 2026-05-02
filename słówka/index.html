@@ -257,7 +257,7 @@
     async function populateLevelFilter(csvPath) {
         const levelGroup = document.getElementById('levelFilterGroup');
         const levelSelect = document.getElementById('levelSelect');
-        const previousValue = levelSelect?.value || ALL_WORDS_VALUE;
+        const previousValue = levelSelect.value || ALL_WORDS_VALUE;
         let levels = levelOptionsCache.get(csvPath);
 
         if (!levels) {
@@ -273,7 +273,9 @@
 
         levelSelect.innerHTML = `<option value="${ALL_WORDS_VALUE}">Wszystkie poziomy</option>`;
         levels.forEach(level => levelSelect.add(new Option(level, level)));
-        levelSelect.value = previousValue && levels.includes(previousValue) ? previousValue : ALL_WORDS_VALUE;
+        levelSelect.value = previousValue === ALL_WORDS_VALUE || levels.includes(previousValue)
+            ? previousValue
+            : ALL_WORDS_VALUE;
         levelSelect.disabled = false;
         levelGroup.classList.remove('hidden');
     }
