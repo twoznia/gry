@@ -130,7 +130,7 @@
     <div id="answerBox" class="hidden" tabindex="0" style="font-size: 1.4rem; font-weight: bold; background: #f1f2f6; padding: 15px; border-radius: 10px; margin-bottom: 20px;"></div>
 
     <div id="quickActions">
-        <button type="button" class="btn-correct" onclick="revealAnswer()">✓ Wiem</button>
+        <button type="button" class="btn-correct" onclick="revealAnswer(false)">✓ Wiem</button>
     </div>
     <div id="controls" class="hidden">
         <button class="btn-correct" onclick="submitResult(true)">✓ Wiedziałem</button>
@@ -141,7 +141,7 @@
 <div class="container hidden" id="results">
     <h2>Wyniki nauki 📈</h2>
     <div id="statsContent"></div>
-    <button class="btn-main" onclick="startNewSession()">Nowa sesja</button>
+    <button class="btn-main" onclick="returnToMenu()">Nowa sesja</button>
 </div>
 
 <script>
@@ -613,10 +613,6 @@
             .replaceAll('>', '&gt;')
             .replaceAll('"', '&quot;')
             .replaceAll("'", '&#39;');
-    }
-
-    function startNewSession() {
-        returnToMenu();
     }
 
     function returnToMenu() {
