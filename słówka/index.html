@@ -75,7 +75,7 @@
     </div>
 
     <div class="setup-group">
-        <label>Czas przed pokazaniem odpowiedzi:</label>
+        <label for="delaySelect">Czas przed pokazaniem odpowiedzi:</label>
         <select id="delaySelect">
             <option value="3000">3 sekundy</option>
             <option value="5000">5 sekund</option>
@@ -96,7 +96,7 @@
     <div id="countdownStatus" class="sr-only" aria-live="polite"></div>
     <div class="card">
         <div id="questionBox"></div>
-        <div id="timerBar" class="timer-bar" role="progressbar" aria-live="polite" aria-label="Odliczanie do pokazania odpowiedzi" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"></div>
+        <div id="timerBar" class="timer-bar" role="progressbar" aria-label="Odliczanie do pokazania odpowiedzi" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"></div>
     </div>
     <div id="answerBox" class="hidden" tabindex="0" style="font-size: 1.4rem; font-weight: bold; background: #f1f2f6; padding: 15px; border-radius: 10px; margin-bottom: 20px;"></div>
     
@@ -274,7 +274,7 @@
             revealIntervalId = setInterval(() => {
                 const elapsed = Date.now() - startTime;
                 const remainingPercent = Math.max(0, 100 - Math.round((elapsed / answerDelayMs) * 100));
-                const remainingSeconds = Math.max(1, Math.ceil((answerDelayMs - elapsed) / 1000));
+                const remainingSeconds = Math.max(0, Math.ceil((answerDelayMs - elapsed) / 1000));
                 timerBar.setAttribute('aria-valuenow', String(remainingPercent));
                 countdownStatus.textContent = `Odpowiedź pojawi się za ${remainingSeconds} ${formatSecondsLabel(remainingSeconds)}.`;
             }, 1000);
