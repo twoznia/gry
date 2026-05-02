@@ -8,6 +8,7 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 - **[Mat-Jaja](./mat-jaja/)** 🥚 – Matematyczna zabawa z jajkami w roli głównej.
 - **[Rybak](./rybak/)** 🚣 – Spokojna gra wędkarska na jeziorze.
 - **[Pisanie](./pisanie/)** 🖊️ – Nauka pisania polskich słów, literka po literce.
+- **[Słówka](./słówka/)** 🇬🇧 – Trener słówek do nauki polskiego i angielskiego.
 - **[Kraje](./kraje/)** 🌍 – Sprawdź swoją wiedzę o krajach, stolicach i flagach.
 - **[Memo](./memo/)** 🃏 – Znajdź wszystkie pary ukrytych obrazków.
 - **[Puzzle](./puzzle/)** 🧩 – Składaj obrazki z puzzli, kawałek po kawałku.
