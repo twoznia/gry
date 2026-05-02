@@ -44,7 +44,7 @@
     const actionBtn = document.getElementById('action-btn');
 
     let score = 0;
-    let hiScore = Number.parseInt(localStorage.getItem('autoslalom_hi') || '0', 10);
+    let hiScore = parseInt(localStorage.getItem('autoslalom_hi') || '0', 10);
     let lives = 3;
     let playerLane = 1;
     let gameActive = false;
@@ -56,6 +56,10 @@
     let lastHeartScore = 0;
     let lastHeartTime = 0;
     const HEART_INTERVAL = 15;
+    const HIT_RECOVERY_MS = 800;
+    const FREE_PASS_BLINK_MS = 250;
+    const COLLISION_HORIZONTAL_INSET = 10;
+    const COLLISION_VERTICAL_INSET = 6;
     let freePasses = 0;
     let recordBrokenThisRun = false;
     
@@ -88,7 +92,7 @@
     function updateOverlayInfo() {
         if (finalInfo.dataset.state === 'end') return;
         const t = TRANSLATIONS[lang];
-        finalInfo.innerHTML = `${t.easyMode.replace('\n', '<br>')}<br>${t.record} ${hiScore.toString().padStart(4, '0')}`;
+        finalInfo.innerHTML = `${t.easyMode.replace(/\n/g, '<br>')}<br>${t.record} ${hiScore.toString().padStart(4, '0')}`;
     }
 
     function setRecordTheme(isActive) {
@@ -162,17 +166,14 @@
         obstacles.push({ el: container, lane: laneIdx, y: -50, isHeart: true });
     }
 
-    function isCollidingWithPlayer(obstacle) {
-        const playerRect = player.getBoundingClientRect();
+    function isCollidingWithPlayer(obstacle, playerRect = player.getBoundingClientRect()) {
         const obstacleRect = obstacle.el.getBoundingClientRect();
-        const horizontalInset = 10;
-        const verticalInset = 6;
 
         return (
-            playerRect.left + horizontalInset < obstacleRect.right - horizontalInset &&
-            playerRect.right - horizontalInset > obstacleRect.left + horizontalInset &&
-            playerRect.top + verticalInset < obstacleRect.bottom - verticalInset &&
-            playerRect.bottom - verticalInset > obstacleRect.top + verticalInset
+            playerRect.left + COLLISION_HORIZONTAL_INSET < obstacleRect.right - COLLISION_HORIZONTAL_INSET &&
+            playerRect.right - COLLISION_HORIZONTAL_INSET > obstacleRect.left + COLLISION_HORIZONTAL_INSET &&
+            playerRect.top + COLLISION_VERTICAL_INSET < obstacleRect.bottom - COLLISION_VERTICAL_INSET &&
+            playerRect.bottom - COLLISION_VERTICAL_INSET > obstacleRect.top + COLLISION_VERTICAL_INSET
         );
     }
 
@@ -215,13 +216,14 @@
         }
 
         const screenH = screen.clientHeight;
+        const playerRect = player.getBoundingClientRect();
 
         for(let i = obstacles.length - 1; i >= 0; i--) {
             let o = obstacles[i];
             o.y += currentSpeed;
             o.el.style.top = o.y + 'px';
 
-            if (isCollidingWithPlayer(o)) {
+            if (isCollidingWithPlayer(o, playerRect)) {
                 if (o.isHeart) {
                     handleHeartCollect(o, i);
                     continue;
@@ -279,14 +281,14 @@
                 framesOnSameLane = 0;
                 gameLoop();
             }
-        }, 800);
+        }, HIT_RECOVERY_MS);
     }
 
     function handleFreePass(index) {
         freePasses--;
         player.classList.add('blink');
         consumeObstacle(index);
-        setTimeout(() => player.classList.remove('blink'), 250);
+        setTimeout(() => player.classList.remove('blink'), FREE_PASS_BLINK_MS);
     }
 
     function handleHeartCollect(heart, index) {
