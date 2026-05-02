@@ -63,7 +63,7 @@
         </div>
         <div class="setup-group hidden" id="levelFilterGroup">
             <label for="levelSelect">Poziom:</label>
-            <select id="levelSelect" onchange="handleLevelChange()" disabled>
+            <select id="levelSelect" onchange="handleLevelChange()" onblur="handleLevelChange()" disabled>
                 <option value="__all__">Wszystkie poziomy</option>
             </select>
         </div>
@@ -273,9 +273,7 @@
 
         levelSelect.innerHTML = `<option value="${ALL_WORDS_VALUE}">Wszystkie poziomy</option>`;
         levels.forEach(level => levelSelect.add(new Option(level, level)));
-        selectedOxfordLevel = selectedOxfordLevel === ALL_WORDS_VALUE || levels.includes(selectedOxfordLevel)
-            ? selectedOxfordLevel
-            : ALL_WORDS_VALUE;
+        selectedOxfordLevel = getValidSelectedOxfordLevel(levels);
         levelSelect.value = selectedOxfordLevel;
         levelSelect.disabled = false;
         levelGroup.classList.remove('hidden');
@@ -292,6 +290,14 @@
 
     function handleLevelChange() {
         selectedOxfordLevel = document.getElementById('levelSelect').value || ALL_WORDS_VALUE;
+    }
+
+    function getValidSelectedOxfordLevel(levels) {
+        if (selectedOxfordLevel === ALL_WORDS_VALUE || levels.includes(selectedOxfordLevel)) {
+            return selectedOxfordLevel;
+        }
+
+        return ALL_WORDS_VALUE;
     }
 
     function showWordCountFilter() {
