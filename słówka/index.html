@@ -273,10 +273,10 @@
 
         levelSelect.innerHTML = `<option value="${ALL_WORDS_VALUE}">Wszystkie poziomy</option>`;
         levels.forEach(level => levelSelect.add(new Option(level, level)));
-        levelSelect.value = selectedOxfordLevel === ALL_WORDS_VALUE || levels.includes(selectedOxfordLevel)
+        selectedOxfordLevel = selectedOxfordLevel === ALL_WORDS_VALUE || levels.includes(selectedOxfordLevel)
             ? selectedOxfordLevel
             : ALL_WORDS_VALUE;
-        selectedOxfordLevel = levelSelect.value;
+        levelSelect.value = selectedOxfordLevel;
         levelSelect.disabled = false;
         levelGroup.classList.remove('hidden');
     }
