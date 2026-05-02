@@ -105,7 +105,7 @@
     function resetHiScore() {
         if (confirm(TRANSLATIONS[lang].confirmReset)) {
             hiScore = 0;
-            localStorage.setItem('autoslalom_hi', 0);
+            localStorage.setItem('autoslalom_hi', '0');
             updateHiScoreDisplay();
             updateOverlayInfo();
         }
@@ -323,7 +323,7 @@
         gameActive = false;
         if(score > hiScore) {
             hiScore = score;
-            localStorage.setItem('autoslalom_hi', hiScore);
+            localStorage.setItem('autoslalom_hi', hiScore.toString());
             updateHiScoreDisplay();
             updateOverlayInfo();
         }
