@@ -22,6 +22,9 @@
         .stats-table th, .stats-table td { padding: 12px; border-bottom: 1px solid #dfe6e9; }
         .history-item { font-size: 0.8rem; padding: 8px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
         #loader { font-size: 0.8rem; color: var(--primary); margin-bottom: 10px; font-weight: bold; }
+        @media (prefers-reduced-motion: reduce) {
+            .timer-bar { transition: none !important; }
+        }
     </style>
 </head>
 <body>
@@ -70,6 +73,15 @@
         </select>
     </div>
 
+    <div class="setup-group">
+        <label>Czas przed pokazaniem odpowiedzi:</label>
+        <select id="delaySelect">
+            <option value="3000">3 sekundy</option>
+            <option value="5000">5 sekund</option>
+            <option value="8000">8 sekund</option>
+        </select>
+    </div>
+
     <button class="btn-main" id="startBtn" onclick="startGame()">Rozpocznij sesję</button>
 
     <div id="historyContainer" class="setup-group hidden" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
@@ -82,7 +94,7 @@
     <div id="progress" style="color: #b2bec3; font-weight: bold;"></div>
     <div class="card">
         <div id="questionBox"></div>
-        <div id="timerBar" class="timer-bar"></div>
+        <div id="timerBar" class="timer-bar" role="progressbar" aria-label="Odliczanie do pokazania odpowiedzi" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"></div>
     </div>
     <div id="answerBox" class="hidden" style="font-size: 1.4rem; font-weight: bold; background: #f1f2f6; padding: 15px; border-radius: 10px; margin-bottom: 20px;"></div>
     
@@ -108,7 +120,7 @@
     let mode = "";
     let totalInitialWords = 0;
     let completedCount = 0;
-    const ANSWER_DELAY_MS = 3000;
+    let answerDelayMs = 3000;
     let revealTimeoutId = null;
 
     // 1. Inicjalizacja i obsługa źródeł
@@ -150,6 +162,7 @@
     async function startGame() {
         const source = document.getElementById('sourceSelect').value;
         mode = document.getElementById('modeSelect').value;
+        answerDelayMs = Number(document.getElementById('delaySelect').value) || 3000;
         let csvText = "";
 
         if (source === 'local') {
@@ -242,16 +255,18 @@
         const timerBar = document.getElementById('timerBar');
         timerBar.style.transition = 'none';
         timerBar.style.width = '100%';
+        timerBar.setAttribute('aria-valuenow', '100');
 
         requestAnimationFrame(() => {
-            timerBar.style.transition = `width ${ANSWER_DELAY_MS}ms linear`;
+            timerBar.style.transition = `width ${answerDelayMs}ms linear`;
             timerBar.style.width = '0%';
+            timerBar.setAttribute('aria-valuenow', '0');
         });
 
         revealTimeoutId = setTimeout(() => {
             document.getElementById('answerBox').classList.remove('hidden');
             document.getElementById('controls').classList.remove('hidden');
-        }, ANSWER_DELAY_MS);
+        }, answerDelayMs);
     }
 
     init();
