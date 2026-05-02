@@ -42,7 +42,6 @@
     const statusTitle = document.getElementById('status-title');
     const finalInfo = document.getElementById('final-info');
     const actionBtn = document.getElementById('action-btn');
-    applyLang();
 
     let score = 0;
     let hiScore = Number.parseInt(localStorage.getItem('autoslalom_hi') || '0', 10);
@@ -97,7 +96,7 @@
     }
 
     updateHiScoreDisplay();
-    updateOverlayInfo();
+    applyLang();
 
     function resetHiScore() {
         if (confirm(TRANSLATIONS[lang].confirmReset)) {
