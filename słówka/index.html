@@ -184,7 +184,6 @@
         mode = document.getElementById('modeSelect').value;
         answerDelayMs = Number(document.getElementById('delaySelect').value) || 3000;
         currentSource = source;
-        fails = {};
         let csvText = "";
 
         if (source === 'local') {
@@ -219,6 +218,7 @@
 
         if (sessionQueue.length === 0) return;
 
+        fails = {};
         totalInitialWords = sessionQueue.length;
         completedCount = 0;
         sessionQueue.forEach(item => fails[item.en] = 0);
