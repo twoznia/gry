@@ -119,7 +119,7 @@
 </div>
 
 <div class="container hidden" id="game">
-    <button type="button" class="btn-secondary" onclick="returnToMenu()" aria-label="Powrót do menu">← Menu</button>
+    <button type="button" class="btn-secondary" onclick="returnToMenu()" aria-label="Powrót do menu">← Powrót do menu</button>
     <div id="progress" style="color: #b2bec3; font-weight: bold;"></div>
     <div id="countdownText" class="countdown-text" aria-hidden="true"></div>
     <div id="countdownStatus" class="sr-only" aria-live="polite"></div>
@@ -490,9 +490,9 @@
 
     function shuffleWords(words) {
         const shuffledWords = [...words];
-        for (let index = shuffledWords.length - 1; index > 0; index--) {
-            const randomIndex = Math.floor(Math.random() * (index + 1));
-            [shuffledWords[index], shuffledWords[randomIndex]] = [shuffledWords[randomIndex], shuffledWords[index]];
+        for (let currentIndex = shuffledWords.length - 1; currentIndex > 0; currentIndex--) {
+            const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
+            [shuffledWords[currentIndex], shuffledWords[randomIndex]] = [shuffledWords[randomIndex], shuffledWords[currentIndex]];
         }
         return shuffledWords;
     }
