@@ -68,6 +68,17 @@
                 <option value="__all__">Wszystkie poziomy</option>
             </select>
         </div>
+        <div class="setup-group hidden" id="wordCountGroup">
+            <label for="wordCountSelect">Ilość słówek:</label>
+            <select id="wordCountSelect" disabled>
+                <option value="10">10</option>
+                <option value="20" selected>20</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="__all__">Wszystkie</option>
+            </select>
+        </div>
     </div>
 
     <!-- Sekcja Lokalna -->
@@ -108,6 +119,7 @@
 </div>
 
 <div class="container hidden" id="game">
+    <button type="button" class="btn-secondary" onclick="returnToMenu()">← Menu</button>
     <div id="progress" style="color: #b2bec3; font-weight: bold;"></div>
     <div id="countdownText" class="countdown-text" aria-hidden="true"></div>
     <div id="countdownStatus" class="sr-only" aria-live="polite"></div>
@@ -116,7 +128,10 @@
         <div id="timerBar" class="timer-bar" role="progressbar" aria-label="Odliczanie do pokazania odpowiedzi" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"></div>
     </div>
     <div id="answerBox" class="hidden" tabindex="0" style="font-size: 1.4rem; font-weight: bold; background: #f1f2f6; padding: 15px; border-radius: 10px; margin-bottom: 20px;"></div>
-    
+
+    <div id="quickActions">
+        <button type="button" class="btn-correct" onclick="revealAnswer()">✓ Wiem</button>
+    </div>
     <div id="controls" class="hidden">
         <button class="btn-correct" onclick="submitResult(true)">✓ Wiedziałem</button>
         <button class="btn-wrong" onclick="submitResult(false)">✗ Do powtórki</button>
@@ -134,6 +149,7 @@
     const OXFORD_CATEGORY_NAME = 'Oxford3000';
     const HEADER_WITH_METADATA = 'english,polish,type,level';
     const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+    const ALL_WORDS_VALUE = '__all__';
 
     let sessionQueue = [];
     let fails = {};
@@ -185,6 +201,7 @@
         subSelect.innerHTML = '<option value="">Manifest niedostępny</option>';
         subSelect.disabled = true;
         resetLevelFilter();
+        resetWordCountFilter();
     }
 
     function toggleSource() {
@@ -193,6 +210,7 @@
         document.getElementById('localSection').classList.toggle('hidden', source !== 'local');
         if (source !== 'github') {
             resetLevelFilter();
+            resetWordCountFilter();
         } else if (document.getElementById('categorySelect').value === OXFORD_CATEGORY_NAME) {
             handleSubcategoryChange();
         }
@@ -215,6 +233,7 @@
         if (sets.length === 0) {
             subSelect.add(new Option('Brak zestawów w tej kategorii', ''));
             resetLevelFilter();
+            resetWordCountFilter();
             return;
         }
 
@@ -233,9 +252,11 @@
         const selectedPath = document.getElementById('subcategorySelect').value;
         if (source !== 'github' || category !== OXFORD_CATEGORY_NAME || !selectedPath) {
             resetLevelFilter();
+            resetWordCountFilter();
             return;
         }
 
+        showWordCountFilter();
         await populateLevelFilter(selectedPath);
     }
 
@@ -255,7 +276,7 @@
             levelOptionsCache.set(csvPath, levels);
         }
 
-        levelSelect.innerHTML = '<option value="__all__">Wszystkie poziomy</option>';
+        levelSelect.innerHTML = `<option value="${ALL_WORDS_VALUE}">Wszystkie poziomy</option>`;
         levels.forEach(level => levelSelect.add(new Option(level, level)));
         levelSelect.disabled = false;
         levelGroup.classList.remove('hidden');
@@ -264,10 +285,25 @@
     function resetLevelFilter() {
         const levelGroup = document.getElementById('levelFilterGroup');
         const levelSelect = document.getElementById('levelSelect');
-        levelSelect.innerHTML = '<option value="__all__">Wszystkie poziomy</option>';
-        levelSelect.value = '__all__';
+        levelSelect.innerHTML = `<option value="${ALL_WORDS_VALUE}">Wszystkie poziomy</option>`;
+        levelSelect.value = ALL_WORDS_VALUE;
         levelSelect.disabled = true;
         levelGroup.classList.add('hidden');
+    }
+
+    function showWordCountFilter() {
+        const wordCountGroup = document.getElementById('wordCountGroup');
+        const wordCountSelect = document.getElementById('wordCountSelect');
+        wordCountSelect.disabled = false;
+        wordCountGroup.classList.remove('hidden');
+    }
+
+    function resetWordCountFilter() {
+        const wordCountGroup = document.getElementById('wordCountGroup');
+        const wordCountSelect = document.getElementById('wordCountSelect');
+        wordCountSelect.value = '20';
+        wordCountSelect.disabled = true;
+        wordCountGroup.classList.add('hidden');
     }
 
     // 2. Start Gry
@@ -304,16 +340,17 @@
 
         sessionQueue = parseCsvText(csvText);
 
-        let selectedLevel = '__all__';
+        let selectedLevel = ALL_WORDS_VALUE;
         if (source === 'github' && document.getElementById('categorySelect').value === OXFORD_CATEGORY_NAME) {
             selectedLevel = document.getElementById('levelSelect').value;
-            if (selectedLevel && selectedLevel !== '__all__') {
+            if (selectedLevel && selectedLevel !== ALL_WORDS_VALUE) {
                 sessionQueue = sessionQueue.filter(item => item.level === selectedLevel);
             }
+            sessionQueue = applyOxfordWordLimit(sessionQueue);
         }
 
         if (sessionQueue.length === 0) {
-            const message = selectedLevel && selectedLevel !== '__all__'
+            const message = selectedLevel && selectedLevel !== ALL_WORDS_VALUE
                 ? `Brak słówek dla poziomu ${selectedLevel}.`
                 : 'Wybrany zestaw nie zawiera słówek.';
             return alert(message);
@@ -344,6 +381,7 @@
         
         document.getElementById('answerBox').classList.add('hidden');
         document.getElementById('controls').classList.add('hidden');
+        document.getElementById('quickActions').classList.remove('hidden');
         startRevealCountdown();
     }
 
@@ -423,15 +461,7 @@
             }, 1000);
         });
 
-        revealTimeoutId = setTimeout(() => {
-            clearInterval(revealIntervalId);
-            timerBar.setAttribute('aria-valuenow', '0');
-            countdownText.textContent = 'Czas minął';
-            document.getElementById('answerBox').classList.remove('hidden');
-            document.getElementById('controls').classList.remove('hidden');
-            document.getElementById('answerBox').focus();
-            countdownStatus.textContent = 'Poprawna odpowiedź została pokazana.';
-        }, answerDelayMs);
+        revealTimeoutId = setTimeout(() => revealAnswer(true), answerDelayMs);
     }
 
     function formatSecondsLabel(seconds) {
@@ -442,6 +472,44 @@
 
     function getErrorCount() {
         return Object.values(fails).reduce((sum, count) => sum + count, 0);
+    }
+
+    function getSelectedWordLimit() {
+        const selectedValue = document.getElementById('wordCountSelect').value;
+        if (selectedValue === ALL_WORDS_VALUE) return null;
+
+        const parsedValue = Number(selectedValue);
+        return Number.isFinite(parsedValue) && parsedValue > 0 ? parsedValue : 20;
+    }
+
+    function applyOxfordWordLimit(words) {
+        const wordLimit = getSelectedWordLimit();
+        if (!wordLimit || words.length <= wordLimit) return shuffleWords(words);
+        return shuffleWords(words).slice(0, wordLimit);
+    }
+
+    function shuffleWords(words) {
+        return [...words].sort(() => Math.random() - 0.5);
+    }
+
+    function revealAnswer(focusAnswer = false) {
+        clearTimeout(revealTimeoutId);
+        clearInterval(revealIntervalId);
+
+        const timerBar = document.getElementById('timerBar');
+        const countdownText = document.getElementById('countdownText');
+        const countdownStatus = document.getElementById('countdownStatus');
+        timerBar.style.transition = 'none';
+        timerBar.style.width = '0%';
+        timerBar.setAttribute('aria-valuenow', '0');
+        countdownText.textContent = 'Odpowiedź pokazana';
+        document.getElementById('answerBox').classList.remove('hidden');
+        document.getElementById('controls').classList.remove('hidden');
+        document.getElementById('quickActions').classList.add('hidden');
+        if (focusAnswer) {
+            document.getElementById('answerBox').focus();
+        }
+        countdownStatus.textContent = 'Poprawna odpowiedź została pokazana.';
     }
 
     function updateLocalReuseBox() {
@@ -543,6 +611,12 @@
     }
 
     function startNewSession() {
+        returnToMenu();
+        currentSessionFileName = '';
+        document.getElementById('statsContent').innerHTML = '';
+    }
+
+    function returnToMenu() {
         clearTimeout(revealTimeoutId);
         clearInterval(revealIntervalId);
         sessionQueue = [];
@@ -555,14 +629,14 @@
         document.getElementById('results').classList.add('hidden');
         document.getElementById('game').classList.add('hidden');
         document.getElementById('setup').classList.remove('hidden');
-        document.getElementById('statsContent').innerHTML = '';
         document.getElementById('countdownText').textContent = '';
-        document.getElementById('fileInput').value = '';
-        document.getElementById('sourceSelect').value = currentSource;
-
-        if (currentSource === 'local') {
-            reuseLastLocalSelection = Boolean(lastLocalCsvText);
-        }
+        document.getElementById('countdownStatus').textContent = '';
+        document.getElementById('answerBox').classList.add('hidden');
+        document.getElementById('controls').classList.add('hidden');
+        document.getElementById('quickActions').classList.remove('hidden');
+        document.getElementById('timerBar').style.transition = 'none';
+        document.getElementById('timerBar').style.width = '100%';
+        document.getElementById('timerBar').setAttribute('aria-valuenow', '100');
 
         toggleSource();
     }
