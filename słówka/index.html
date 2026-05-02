@@ -12,7 +12,8 @@
         .setup-group { text-align: left; margin-bottom: 15px; }
         label { font-weight: 600; display: block; margin-bottom: 5px; font-size: 0.85rem; color: #636e72; }
         select, input, button { padding: 12px; width: 100%; border-radius: 10px; border: 2px solid #dfe6e9; font-size: 1rem; box-sizing: border-box; }
-        .card { font-size: 2rem; font-weight: 800; margin: 25px 0; padding: 50px 20px; border: 3px solid var(--primary); border-radius: 15px; background: #fff; min-height: 120px; display: flex; align-items: center; justify-content: center; }
+        .card { font-size: 2rem; font-weight: 800; margin: 25px 0; padding: 50px 20px; border: 3px solid var(--primary); border-radius: 15px; background: #fff; min-height: 120px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .timer-bar { height: 6px; background: var(--danger); width: 100%; position: absolute; bottom: 0; left: 0; }
         .btn-main { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
         .btn-correct { background: var(--success); color: white; border: none; cursor: pointer; margin-bottom: 10px; font-weight: bold; }
         .btn-wrong { background: var(--danger); color: white; border: none; cursor: pointer; font-weight: bold; }
@@ -79,14 +80,16 @@
 
 <div class="container hidden" id="game">
     <div id="progress" style="color: #b2bec3; font-weight: bold;"></div>
-    <div class="card" id="questionBox"></div>
+    <div class="card">
+        <div id="questionBox"></div>
+        <div id="timerBar" class="timer-bar"></div>
+    </div>
     <div id="answerBox" class="hidden" style="font-size: 1.4rem; font-weight: bold; background: #f1f2f6; padding: 15px; border-radius: 10px; margin-bottom: 20px;"></div>
     
     <div id="controls" class="hidden">
         <button class="btn-correct" onclick="submitResult(true)">✓ Wiedziałem</button>
         <button class="btn-wrong" onclick="submitResult(false)">✗ Do powtórki</button>
     </div>
-    <button id="showBtn" class="btn-main" onclick="reveal()">Pokaż odpowiedź</button>
 </div>
 
 <div class="container hidden" id="results">
@@ -105,6 +108,8 @@
     let mode = "";
     let totalInitialWords = 0;
     let completedCount = 0;
+    const ANSWER_DELAY_MS = 3000;
+    let revealTimeoutId = null;
 
     // 1. Inicjalizacja i obsługa źródeł
     async function init() {
@@ -187,16 +192,11 @@
         
         document.getElementById('answerBox').classList.add('hidden');
         document.getElementById('controls').classList.add('hidden');
-        document.getElementById('showBtn').classList.remove('hidden');
-    }
-
-    function reveal() {
-        document.getElementById('answerBox').classList.remove('hidden');
-        document.getElementById('controls').classList.remove('hidden');
-        document.getElementById('showBtn').classList.add('hidden');
+        startRevealCountdown();
     }
 
     function submitResult(isCorrect) {
+        clearTimeout(revealTimeoutId);
         const item = sessionQueue.shift();
         if (isCorrect) {
             completedCount++;
@@ -209,6 +209,7 @@
 
     // 4. Wyniki i Historia
     function showResults() {
+        clearTimeout(revealTimeoutId);
         document.getElementById('game').classList.add('hidden');
         document.getElementById('results').classList.remove('hidden');
 
@@ -233,6 +234,24 @@
                 <div class="history-item"><span>${h.date}</span><b>${h.count} słówek</b></div>
             `).join('');
         }
+    }
+
+    function startRevealCountdown() {
+        clearTimeout(revealTimeoutId);
+
+        const timerBar = document.getElementById('timerBar');
+        timerBar.style.transition = 'none';
+        timerBar.style.width = '100%';
+
+        requestAnimationFrame(() => {
+            timerBar.style.transition = `width ${ANSWER_DELAY_MS}ms linear`;
+            timerBar.style.width = '0%';
+        });
+
+        revealTimeoutId = setTimeout(() => {
+            document.getElementById('answerBox').classList.remove('hidden');
+            document.getElementById('controls').classList.remove('hidden');
+        }, ANSWER_DELAY_MS);
     }
 
     init();
