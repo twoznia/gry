@@ -17,6 +17,17 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 
 ---
 
+## Słówka
+
+Gra `Słówka` korzysta z manifestu `/home/runner/work/gry/gry/słówka/data/manifest.json`, który opisuje dostępne kategorie i zestawy CSV.
+
+- źródłem danych pozostają katalogi i pliki CSV w `/home/runner/work/gry/gry/słówka/data/`,
+- manifest jest plikiem pochodnym używanym przez grę,
+- manifest aktualizuje skrypt `/home/runner/work/gry/gry/słówka/tools/generate_manifest.mjs`,
+- przy zmianach w danych `Słówka` manifest odświeża workflow `.github/workflows/update-slowka-manifest.yml`.
+
+---
+
 
 
 ## Dodawanie pytań do quizu

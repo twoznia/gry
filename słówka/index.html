@@ -121,9 +121,7 @@
 </div>
 
 <script>
-    const OWNER = 'twoznia'; // Dane z Twojego oryginalnego kodu
-    const REPO = 'gry';
-    const DATA_PATH = 'słówka/data';
+    const MANIFEST_PATH = 'data/manifest.json';
 
     let sessionQueue = [];
     let fails = {};
@@ -138,22 +136,40 @@
     let lastLocalCsvText = '';
     let lastLocalFileName = '';
     let reuseLastLocalSelection = false;
+    let wordsManifest = null;
 
     // 1. Inicjalizacja i obsługa źródeł
     async function init() {
         displayHistory();
         try {
-            const response = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${DATA_PATH}`);
-            const items = await response.json();
-            const folders = items.filter(i => i.type === 'dir');
+            const response = await fetch(MANIFEST_PATH, { cache: 'no-store' });
+            if (!response.ok) throw new Error(`Manifest unavailable: ${response.status}`);
+
+            const manifest = await response.json();
+            if (!Array.isArray(manifest.categories) || manifest.categories.length === 0) {
+                throw new Error('Manifest does not contain categories.');
+            }
+
+            wordsManifest = manifest;
             const select = document.getElementById('categorySelect');
-            folders.forEach(f => select.add(new Option(f.name, f.name)));
+            select.innerHTML = '<option value="">Wybierz kategorię...</option>';
+            wordsManifest.categories.forEach(category => select.add(new Option(category.name, category.name)));
             select.disabled = false;
             document.getElementById('loader').innerText = "";
             document.getElementById('loader').classList.add('hidden');
         } catch (e) {
-            document.getElementById('loader').innerText = "GitHub niedostępny (tryb lokalny ok).";
+            handleManifestError();
         }
+    }
+
+    function handleManifestError() {
+        wordsManifest = null;
+        document.getElementById('loader').innerText = "Nie udało się wczytać listy słówek. Wybierz plik lokalny albo spróbuj później.";
+        document.getElementById('loader').classList.remove('hidden');
+        document.getElementById('categorySelect').innerHTML = '<option value="">Manifest niedostępny</option>';
+        const subSelect = document.getElementById('subcategorySelect');
+        subSelect.innerHTML = '<option value="">Manifest niedostępny</option>';
+        subSelect.disabled = true;
     }
 
     function toggleSource() {
@@ -167,17 +183,26 @@
         const cat = document.getElementById('categorySelect').value;
         const subSelect = document.getElementById('subcategorySelect');
         subSelect.disabled = true;
-        try {
-            const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${DATA_PATH}/${cat}`);
-            const files = (await res.json()).filter(f => f.name.endsWith('.csv'));
-            subSelect.innerHTML = '';
-            files.forEach(f => {
-                const option = new Option(f.name.replace('.csv',''), f.download_url);
-                option.dataset.filename = f.name;
-                subSelect.add(option);
-            });
-            subSelect.disabled = false;
-        } catch (e) { alert("Błąd pobierania list."); }
+        if (!wordsManifest) {
+            handleManifestError();
+            return;
+        }
+
+        const category = wordsManifest.categories.find(item => item.name === cat);
+        const sets = Array.isArray(category?.sets) ? category.sets : [];
+        subSelect.innerHTML = '';
+
+        if (sets.length === 0) {
+            subSelect.add(new Option('Brak zestawów w tej kategorii', ''));
+            return;
+        }
+
+        sets.forEach(set => {
+            const option = new Option(set.name, encodeURI(set.path));
+            option.dataset.filename = set.fileName;
+            subSelect.add(option);
+        });
+        subSelect.disabled = false;
     }
 
     // 2. Start Gry
@@ -203,6 +228,7 @@
                 return alert("Wybierz plik lub użyj ostatnio załadowanego.");
             }
         } else {
+            if (!wordsManifest) return alert("Manifest słówek jest niedostępny. Wybierz plik lokalny albo spróbuj później.");
             const url = document.getElementById('subcategorySelect').value;
             if (!url) return alert("Wybierz zestaw!");
             const res = await fetch(url);
