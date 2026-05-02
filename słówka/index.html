@@ -22,7 +22,6 @@
         .countdown-text { margin-top: 8px; font-size: 0.95rem; font-weight: 700; color: var(--danger); min-height: 1.2em; }
         .stats-table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left; }
         .stats-table th, .stats-table td { padding: 12px; border-bottom: 1px solid #dfe6e9; }
-        .history-item { font-size: 0.8rem; padding: 8px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
         #loader { font-size: 0.8rem; color: var(--primary); margin-bottom: 10px; font-weight: bold; }
         .local-reuse-box { margin-bottom: 12px; padding: 12px; border: 1px solid #dfe6e9; border-radius: 12px; background: #f8f9fb; }
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
@@ -112,10 +111,6 @@
 
     <button class="btn-main" id="startBtn" onclick="startGame()">Rozpocznij sesję</button>
 
-    <div id="historyContainer" class="setup-group hidden" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
-        <label>Ostatnie sesje:</label>
-        <div id="historyList"></div>
-    </div>
 </div>
 
 <div class="container hidden" id="game">
@@ -170,7 +165,6 @@
 
     // 1. Inicjalizacja i obsługa źródeł
     async function init() {
-        displayHistory();
         try {
             const response = await fetch(MANIFEST_PATH, { cache: 'no-store' });
             if (!response.ok) throw new Error(`Manifest unavailable: ${response.status}`);
@@ -263,6 +257,7 @@
     async function populateLevelFilter(csvPath) {
         const levelGroup = document.getElementById('levelFilterGroup');
         const levelSelect = document.getElementById('levelSelect');
+        const previousValue = levelSelect.value;
         let levels = levelOptionsCache.get(csvPath);
 
         if (!levels) {
@@ -278,6 +273,7 @@
 
         levelSelect.innerHTML = `<option value="${ALL_WORDS_VALUE}">Wszystkie poziomy</option>`;
         levels.forEach(level => levelSelect.add(new Option(level, level)));
+        levelSelect.value = levels.includes(previousValue) ? previousValue : ALL_WORDS_VALUE;
         levelSelect.disabled = false;
         levelGroup.classList.remove('hidden');
     }
@@ -406,11 +402,6 @@
         document.getElementById('results').classList.remove('hidden');
         document.getElementById('countdownText').textContent = '';
 
-        // Zapis do historii lokalnej
-        let history = JSON.parse(localStorage.getItem('studyHistory') || "[]");
-        history.unshift({ date: new Date().toLocaleDateString(), count: totalInitialWords });
-        localStorage.setItem('studyHistory', JSON.stringify(history.slice(0, 5)));
-
         // Tabela błędów (jak w oryginale)[cite: 1]
         const sorted = Object.entries(fails).filter(f => f[1] > 0).sort((a,b) => b[1] - a[1]);
         let html = `<h3>Podsumowanie</h3><p>Statystyka dla pliku: <b>${escapeHtml(currentSessionFileName || 'Nieznany plik')}</b></p><table class="stats-table"><tr><th>Słowo</th><th>Błędy</th></tr>`;
@@ -420,16 +411,6 @@
             html += `<tr><td>${escapeHtml(formatWordSummary(item))}</td><td>${count}</td></tr>`;
         });
         document.getElementById('statsContent').innerHTML = html + `</table>`;
-    }
-
-    function displayHistory() {
-        const history = JSON.parse(localStorage.getItem('studyHistory') || "[]");
-        if (history.length > 0) {
-            document.getElementById('historyContainer').classList.remove('hidden');
-            document.getElementById('historyList').innerHTML = history.map(h => `
-                <div class="history-item"><span>${h.date}</span><b>${h.count} słówek</b></div>
-            `).join('');
-        }
     }
 
     function startRevealCountdown() {
