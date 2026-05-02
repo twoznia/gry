@@ -1,0 +1,36 @@
+{
+  "categories": [
+    {
+      "name": "Dom",
+      "path": "data/Dom",
+      "sets": [
+        {
+          "name": "Dom",
+          "fileName": "Dom.csv",
+          "path": "data/Dom/Dom.csv"
+        },
+        {
+          "name": "Dom2",
+          "fileName": "Dom2.csv",
+          "path": "data/Dom/Dom2.csv"
+        }
+      ]
+    },
+    {
+      "name": "Technologia",
+      "path": "data/Technologia",
+      "sets": [
+        {
+          "name": "Technologia",
+          "fileName": "Technologia.csv",
+          "path": "data/Technologia/Technologia.csv"
+        },
+        {
+          "name": "Technologia2",
+          "fileName": "Technologia2.csv",
+          "path": "data/Technologia/Technologia2.csv"
+        }
+      ]
+    }
+  ]
+}
