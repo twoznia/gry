@@ -45,6 +45,7 @@
 
     let score = 0;
     let hiScore = parseInt(localStorage.getItem('autoslalom_hi') || '0', 10);
+    if (Number.isNaN(hiScore)) hiScore = 0;
     let lives = 3;
     let playerLane = 1;
     let gameActive = false;
