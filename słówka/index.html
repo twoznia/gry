@@ -12,7 +12,8 @@
         .setup-group { text-align: left; margin-bottom: 15px; }
         label { font-weight: 600; display: block; margin-bottom: 5px; font-size: 0.85rem; color: #636e72; }
         select, input, button { padding: 12px; width: 100%; border-radius: 10px; border: 2px solid #dfe6e9; font-size: 1rem; box-sizing: border-box; }
-        .card { font-size: 2rem; font-weight: 800; margin: 25px 0; padding: 50px 20px; border: 3px solid var(--primary); border-radius: 15px; background: #fff; min-height: 120px; display: flex; align-items: center; justify-content: center; }
+        .card { font-size: 2rem; font-weight: 800; margin: 25px 0; padding: 50px 20px; border: 3px solid var(--primary); border-radius: 15px; background: #fff; min-height: 120px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .timer-bar { height: 6px; background: var(--danger); width: 100%; position: absolute; bottom: 0; left: 0; }
         .btn-main { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
         .btn-correct { background: var(--success); color: white; border: none; cursor: pointer; margin-bottom: 10px; font-weight: bold; }
         .btn-wrong { background: var(--danger); color: white; border: none; cursor: pointer; font-weight: bold; }
@@ -21,12 +22,16 @@
         .stats-table th, .stats-table td { padding: 12px; border-bottom: 1px solid #dfe6e9; }
         .history-item { font-size: 0.8rem; padding: 8px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
         #loader { font-size: 0.8rem; color: var(--primary); margin-bottom: 10px; font-weight: bold; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+        @media (prefers-reduced-motion: reduce) {
+            .timer-bar { transition: none !important; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container" id="setup">
-    <h2>🇬🇧 Trener Słówek</h2>
+    <h2><img src="https://flagcdn.com/24x18/gb.png" width="24" height="18" alt="" aria-hidden="true" style="display:inline-block;vertical-align:middle;border-radius:3px;margin-right:8px;">Trener Słówek</h2>
     <div id="loader">Inicjalizacja...</div>
 
     <div class="setup-group">
@@ -69,6 +74,15 @@
         </select>
     </div>
 
+    <div class="setup-group">
+        <label for="delaySelect">Czas przed pokazaniem odpowiedzi:</label>
+        <select id="delaySelect">
+            <option value="3000">3 sekundy</option>
+            <option value="5000">5 sekund</option>
+            <option value="8000">8 sekund</option>
+        </select>
+    </div>
+
     <button class="btn-main" id="startBtn" onclick="startGame()">Rozpocznij sesję</button>
 
     <div id="historyContainer" class="setup-group hidden" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
@@ -79,14 +93,17 @@
 
 <div class="container hidden" id="game">
     <div id="progress" style="color: #b2bec3; font-weight: bold;"></div>
-    <div class="card" id="questionBox"></div>
-    <div id="answerBox" class="hidden" style="font-size: 1.4rem; font-weight: bold; background: #f1f2f6; padding: 15px; border-radius: 10px; margin-bottom: 20px;"></div>
+    <div id="countdownStatus" class="sr-only" aria-live="polite"></div>
+    <div class="card">
+        <div id="questionBox"></div>
+        <div id="timerBar" class="timer-bar" role="progressbar" aria-label="Odliczanie do pokazania odpowiedzi" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"></div>
+    </div>
+    <div id="answerBox" class="hidden" tabindex="0" style="font-size: 1.4rem; font-weight: bold; background: #f1f2f6; padding: 15px; border-radius: 10px; margin-bottom: 20px;"></div>
     
     <div id="controls" class="hidden">
         <button class="btn-correct" onclick="submitResult(true)">✓ Wiedziałem</button>
         <button class="btn-wrong" onclick="submitResult(false)">✗ Do powtórki</button>
     </div>
-    <button id="showBtn" class="btn-main" onclick="reveal()">Pokaż odpowiedź</button>
 </div>
 
 <div class="container hidden" id="results">
@@ -105,6 +122,9 @@
     let mode = "";
     let totalInitialWords = 0;
     let completedCount = 0;
+    let answerDelayMs = 3000;
+    let revealTimeoutId = null;
+    let revealIntervalId = null;
 
     // 1. Inicjalizacja i obsługa źródeł
     async function init() {
@@ -145,6 +165,7 @@
     async function startGame() {
         const source = document.getElementById('sourceSelect').value;
         mode = document.getElementById('modeSelect').value;
+        answerDelayMs = Number(document.getElementById('delaySelect').value) || 3000;
         let csvText = "";
 
         if (source === 'local') {
@@ -187,16 +208,12 @@
         
         document.getElementById('answerBox').classList.add('hidden');
         document.getElementById('controls').classList.add('hidden');
-        document.getElementById('showBtn').classList.remove('hidden');
-    }
-
-    function reveal() {
-        document.getElementById('answerBox').classList.remove('hidden');
-        document.getElementById('controls').classList.remove('hidden');
-        document.getElementById('showBtn').classList.add('hidden');
+        startRevealCountdown();
     }
 
     function submitResult(isCorrect) {
+        clearTimeout(revealTimeoutId);
+        clearInterval(revealIntervalId);
         const item = sessionQueue.shift();
         if (isCorrect) {
             completedCount++;
@@ -209,6 +226,8 @@
 
     // 4. Wyniki i Historia
     function showResults() {
+        clearTimeout(revealTimeoutId);
+        clearInterval(revealIntervalId);
         document.getElementById('game').classList.add('hidden');
         document.getElementById('results').classList.remove('hidden');
 
@@ -233,6 +252,48 @@
                 <div class="history-item"><span>${h.date}</span><b>${h.count} słówek</b></div>
             `).join('');
         }
+    }
+
+    function startRevealCountdown() {
+        clearTimeout(revealTimeoutId);
+        clearInterval(revealIntervalId);
+
+        const timerBar = document.getElementById('timerBar');
+        const countdownStatus = document.getElementById('countdownStatus');
+        const seconds = Math.round(answerDelayMs / 1000);
+        timerBar.style.transition = 'none';
+        timerBar.style.width = '100%';
+        timerBar.setAttribute('aria-valuenow', '100');
+        countdownStatus.textContent = `Odpowiedź pojawi się za ${seconds} ${formatSecondsLabel(seconds)}.`;
+
+        requestAnimationFrame(() => {
+            const startTime = Date.now();
+            timerBar.style.transition = `width ${answerDelayMs}ms linear`;
+            timerBar.style.width = '0%';
+
+            revealIntervalId = setInterval(() => {
+                const elapsed = Date.now() - startTime;
+                const remainingPercent = Math.max(0, 100 - Math.round((elapsed / answerDelayMs) * 100));
+                const remainingSeconds = Math.max(0, Math.ceil((answerDelayMs - elapsed) / 1000));
+                timerBar.setAttribute('aria-valuenow', String(remainingPercent));
+                countdownStatus.textContent = `Odpowiedź pojawi się za ${remainingSeconds} ${formatSecondsLabel(remainingSeconds)}.`;
+            }, 1000);
+        });
+
+        revealTimeoutId = setTimeout(() => {
+            clearInterval(revealIntervalId);
+            timerBar.setAttribute('aria-valuenow', '0');
+            document.getElementById('answerBox').classList.remove('hidden');
+            document.getElementById('controls').classList.remove('hidden');
+            document.getElementById('answerBox').focus();
+            countdownStatus.textContent = 'Poprawna odpowiedź została pokazana.';
+        }, answerDelayMs);
+    }
+
+    function formatSecondsLabel(seconds) {
+        if (seconds === 1) return 'sekundę';
+        if (seconds >= 2 && seconds <= 4) return 'sekundy';
+        return 'sekund';
     }
 
     init();
