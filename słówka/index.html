@@ -304,15 +304,19 @@
 
         sessionQueue = parseCsvText(csvText);
 
+        let selectedLevel = '__all__';
         if (source === 'github' && document.getElementById('categorySelect').value === OXFORD_CATEGORY_NAME) {
-            const selectedLevel = document.getElementById('levelSelect').value;
+            selectedLevel = document.getElementById('levelSelect').value;
             if (selectedLevel && selectedLevel !== '__all__') {
                 sessionQueue = sessionQueue.filter(item => item.level === selectedLevel);
             }
         }
 
         if (sessionQueue.length === 0) {
-            return alert('Brak słówek dla wybranego zestawu lub poziomu.');
+            const message = selectedLevel && selectedLevel !== '__all__'
+                ? `Brak słówek dla poziomu ${selectedLevel}.`
+                : 'Wybrany zestaw nie zawiera słówek.';
+            return alert(message);
         }
 
         fails = {};
