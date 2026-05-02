@@ -17,6 +17,17 @@
       ]
     },
     {
+      "name": "Przyroda",
+      "path": "data/Przyroda",
+      "sets": [
+        {
+          "name": "przyroda",
+          "fileName": "przyroda.csv",
+          "path": "data/Przyroda/przyroda.csv"
+        }
+      ]
+    },
+    {
       "name": "Technologia",
       "path": "data/Technologia",
       "sets": [
