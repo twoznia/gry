@@ -85,7 +85,7 @@ let combo = 1;
 let comboTimer = 0;
 let invincibilityTimer = 0; 
 
-// NOWE: Zmienne dla power-upów
+// Zmienne dla power-upów
 let playerShielded = false;
 let spreadShotTimer = 0;
 
@@ -132,7 +132,6 @@ function drawPlayer() {
         ctx.globalAlpha = Math.floor(frame / 5) % 2 === 0 ? 0.3 : 0.8;
     }
 
-    // NOWE: Rysowanie aktywnej tarczy
     if (playerShielded) {
         ctx.strokeStyle = "rgba(0, 255, 255, 0.8)";
         ctx.lineWidth = 3;
@@ -150,7 +149,6 @@ function drawPlayer() {
         ctx.fillStyle = "#fa0"; ctx.fillRect(player.x + 10, player.y + 30, 6, 8);
     }
 
-    // Efekt silnika przy Spread Shot
     if (spreadShotTimer > 0 && frame % 4 < 2) {
         ctx.fillStyle = "#0ff"; ctx.fillRect(player.x + 4, player.y + 18, 4, 6); ctx.fillRect(player.x + 18, player.y + 18, 4, 6);
     }
@@ -181,14 +179,10 @@ function drawEntity(en) {
     } else if (en.type === 'bridge') {
         ctx.fillStyle = "#555"; ctx.fillRect(0, en.y, canvas.width, 24); ctx.fillStyle = "#333"; ctx.fillRect(0, en.y + 6, canvas.width, 12);
         ctx.fillStyle = "#fff"; ctx.font = "bold 14px Arial"; ctx.textAlign = "center"; ctx.fillText("FLY OVER TO REFUEL", en.bridgeCenter || canvas.width/2, en.y + 17); ctx.textAlign = "left";
-    
-    // NOWE ENTITY: Mina morska
     } else if (en.type === 'mine') {
         ctx.fillStyle = "#111"; ctx.beginPath(); ctx.arc(en.x + 12, en.y + 12, 10, 0, Math.PI*2); ctx.fill();
-        ctx.fillStyle = "#222"; ctx.fillRect(en.x + 10, en.y - 2, 4, 28); ctx.fillRect(en.x - 2, en.y + 10, 28, 4); // Kolce
-        if (frame % 30 < 15) { ctx.fillStyle = "#f00"; ctx.fillRect(en.x + 10, en.y + 10, 4, 4); } // Migająca lampka
-
-    // NOWE ENTITY: Power-upy
+        ctx.fillStyle = "#222"; ctx.fillRect(en.x + 10, en.y - 2, 4, 28); ctx.fillRect(en.x - 2, en.y + 10, 28, 4); 
+        if (frame % 30 < 15) { ctx.fillStyle = "#f00"; ctx.fillRect(en.x + 10, en.y + 10, 4, 4); }
     } else if (en.type === 'power_spread') {
         ctx.fillStyle = "#0af"; ctx.fillRect(en.x, en.y, 24, 24);
         ctx.fillStyle = "#fff"; ctx.font = "bold 16px Arial"; ctx.fillText("S", en.x + 6, en.y + 18);
@@ -208,7 +202,7 @@ function resetGame() {
     score = 0; lives = 3; level = 1; baseSpeed = initialBaseSpeed; combo = 1; comboTimer = 0; currentTheme = 0;
     livesEl.innerText = lives; levelEl.innerText = level; comboEl.innerText = "COMBO: x1";
     isNewRecord = false; spawnDistance = 0; bridgeTimer = 0; invincibilityTimer = 0;
-    playerShielded = false; spreadShotTimer = 0; // Reset powerupów
+    playerShielded = false; spreadShotTimer = 0; 
     entities = []; particles = []; floatingTexts = [];
     initRiver(); respawnPlayer(); state = 'PLAYING';
     floatingTexts.push({ x: canvas.width/2, y: canvas.height/2 + 40, text: themes[currentTheme].name, life: 100, maxLife: 100, color: "#fff", size: "24px" });
@@ -225,14 +219,13 @@ function checkHighScore() {
     if (score > highScore) { highScore = score; localStorage.setItem('riverRaidHighScore', highScore); hiScoreEl.innerText = highScore.toString().padStart(5, '0'); isNewRecord = true; }
 }
 
-// NOWA FUNKCJA: Przyjmowanie obrażeń (uwzględnia Tarczę!)
 function takeDamage(color) {
     if (state === 'RESPAWNING' || state === 'GAMEOVER' || invincibilityTimer > 0) return;
     
     if (playerShielded) {
         playerShielded = false;
-        invincibilityTimer = 60; // 1 sekunda i-frames po stracie tarczy
-        createExplosion(player.x, player.y, "#0ff"); // Błękitny wybuch tarczy
+        invincibilityTimer = 60; 
+        createExplosion(player.x, player.y, "#0ff"); 
         floatingTexts.push({ x: canvas.width / 2, y: player.y - 20, text: "SHIELD LOST!", life: 60, maxLife: 60, color: "#0ff", size: "18px" });
         return;
     }
@@ -244,19 +237,16 @@ function takeDamage(color) {
     }, 1500); 
 }
 
-function die(color) { takeDamage(color); } // Podpinamy starą funkcję do nowej logiki
+function die(color) { takeDamage(color); }
 
-// NOWA FUNKCJA: Obsługa mechaniki Graze
 function checkGraze(obj, isBullet) {
     if (obj.grazed || invincibilityTimer > 0) return;
 
-    let margin = 14; // Odległość w pikselach, w której uznajemy muśnięcie
+    let margin = 14; 
     let pBox = { left: player.x, right: player.x + player.w, top: player.y, bottom: player.y + player.h };
     let grazeBox = { left: pBox.left - margin, right: pBox.right + margin, top: pBox.top - margin, bottom: pBox.bottom + margin };
 
-    // Jeśli obiekt wchodzi w powiększone pole, ale nie jest to bezpośrednia kolizja
     if (obj.x < grazeBox.right && obj.x + obj.w > grazeBox.left && obj.y < grazeBox.bottom && obj.y + obj.h > grazeBox.top) {
-        // Upewniamy się, że to nie jest faktyczna kolizja (ta obsłużona jest gdzie indziej)
         let isColliding = (obj.x < pBox.right && obj.x + obj.w > pBox.left && obj.y < pBox.bottom && obj.y + obj.h > pBox.top);
         
         if (!isColliding) {
@@ -283,7 +273,7 @@ function update() {
     if (state === 'PLAYING') {
         bridgeTimer++;
         if (invincibilityTimer > 0) invincibilityTimer--;
-        if (spreadShotTimer > 0) spreadShotTimer--; // Tykanie powerupa
+        if (spreadShotTimer > 0) spreadShotTimer--;
     }
 
     if (comboTimer > 0 && state === 'PLAYING') {
@@ -343,12 +333,11 @@ function update() {
         if (keys['ArrowLeft'] && player.x > 0) player.x -= 5;
         if (keys['ArrowRight'] && player.x < canvas.width - player.w) player.x += 5;
         
-        // NOWE: Logika strzelania Spread Shot
         if (frame % 12 === 0) {
             if (spreadShotTimer > 0) {
-                bullets.push({ x: player.x + 11, y: player.y, w: 4, h: 14, vx: 0, vy: -14 }); // Środek
-                bullets.push({ x: player.x + 11, y: player.y, w: 4, h: 14, vx: -3, vy: -13 }); // Lewo
-                bullets.push({ x: player.x + 11, y: player.y, w: 4, h: 14, vx: 3, vy: -13 }); // Prawo
+                bullets.push({ x: player.x + 11, y: player.y, w: 4, h: 14, vx: 0, vy: -14 });
+                bullets.push({ x: player.x + 11, y: player.y, w: 4, h: 14, vx: -3, vy: -13 });
+                bullets.push({ x: player.x + 11, y: player.y, w: 4, h: 14, vx: 3, vy: -13 });
             } else {
                 bullets.push({ x: player.x + 11, y: player.y, w: 4, h: 14, vx: 0, vy: -14 });
             }
@@ -361,10 +350,10 @@ function update() {
         }
 
         fuel -= 0.08 * (currentSpeed / baseSpeed);
-        if (fuel <= 0) die("#f00"); // Brak paliwa ignoruje tarczę - to błąd pilota!
+        if (fuel <= 0) die("#f00"); 
     }
 
-    // 3. Spawnowanie (Dodano Miny i Power-upy)
+    // 3. Spawnowanie
     if (bridgeTimer >= 2400) {
         bridgeTimer = 0; spawnDistance = 0; 
         entities.push({ x: 0, y: -60, type: 'bridge', w: canvas.width, h: 24, passed: false, bridgeCenter: currentRiverCenter });
@@ -375,7 +364,6 @@ function update() {
         if (spawnDistance > targetSpawnDist && !isBridgeSoon) {
             spawnDistance = 0; let rp = riverPoints[0]; let rand = Math.random(); let eType = 'ship'; let eW = 40, eH = 40;
             
-            // SYSTEM LOSOWANIA SPAWNÓW
             if (rand < 0.15) eType = 'fuel';
             else if (rand < 0.23 && level >= 2) { eType = 'mine'; eW = 24; eH = 24; }
             else if (rand < 0.28) { eType = (Math.random() > 0.5) ? 'power_spread' : 'power_shield'; eW = 24; eH = 24; }
@@ -410,7 +398,7 @@ function update() {
         let en = entities[i];
         
         if (en.type === 'jet') en.y += currentSpeed * 2.5; 
-        else if (en.type === 'mine') en.y += currentSpeed * 0.8; // Miny płyną trochę wolniej
+        else if (en.type === 'mine') en.y += currentSpeed * 0.8; 
         else en.y += currentSpeed;
 
         if (en.type === 'heli') {
@@ -451,7 +439,6 @@ function update() {
             en.passed = true; score += 500; levelUp(); floatingTexts.push({ x: canvas.width / 2, y: player.y - 20, text: "+500", life: 60, maxLife: 60, color: "#ff0", size: "24px" });
         }
 
-        // Check Graze on enemies/mines
         if (state === 'PLAYING' && (en.type === 'ship' || en.type === 'heli' || en.type === 'jet' || en.type === 'mine')) {
             checkGraze(en, false);
         }
@@ -460,7 +447,7 @@ function update() {
             if (player.x < en.x + en.w && player.x + player.w > en.x && player.y < en.y + en.h && player.y + player.h > en.y) {
                 if (en.type === 'fuel') { fuel = Math.min(100, fuel + 2.0); } 
                 else if (en.type === 'power_spread') {
-                    spreadShotTimer = 600; // 10 sekund (przy 60fps)
+                    spreadShotTimer = 240; // Zmiana z 600 na 240 klatek (4 sekundy)
                     floatingTexts.push({ x: player.x, y: player.y - 10, text: "SPREAD SHOT!", life: 60, maxLife: 60, color: "#0ff", size: "16px" });
                     entities.splice(i, 1);
                 }
@@ -477,10 +464,10 @@ function update() {
         if (en.y > canvas.height) entities.splice(i, 1);
     }
 
-    // 5. Pociski gracza (zmodyfikowane by używały vx do skosów)
+    // 5. Pociski gracza
     for (let bi = bullets.length - 1; bi >= 0; bi--) {
         let b = bullets[bi]; 
-        b.x += b.vx; // Dodano wsparcie dla ruchu w X (Spread Shot)
+        b.x += b.vx; 
         b.y += b.vy; 
         
         let hit = false;
@@ -488,7 +475,6 @@ function update() {
         for (let ei = entities.length - 1; ei >= 0; ei--) {
             let en = entities[ei];
             if (b.x < en.x + en.w && b.x + b.w > en.x && b.y < en.y + en.h && b.y + b.h > en.y) {
-                // Pociski ignorują paliwo, powerupy i MINY
                 if (en.type === 'fuel' || en.type === 'power_spread' || en.type === 'power_shield' || en.type === 'mine') continue; 
                 
                 if (en.type === 'bridge') {
@@ -507,12 +493,12 @@ function update() {
                 createExplosion(en.x, en.y, '#fa0'); entities.splice(ei, 1); bullets.splice(bi, 1); hit = true; break; 
             }
         }
-        if (!hit && (b.y < 0 || b.x < 0 || b.x > canvas.width)) { // Usunięcie kul poza ekranem
+        if (!hit && (b.y < 0 || b.x < 0 || b.x > canvas.width)) { 
             bullets.splice(bi, 1); combo = 1; comboTimer = 0; comboEl.innerText = "COMBO: x1"; comboEl.style.color = "#aaa";
         }
     }
 
-    // 6. Wrogie pociski i Graze
+    // 6. Wrogie pociski
     for (let ebi = enemyBullets.length - 1; ebi >= 0; ebi--) {
         let eb = enemyBullets[ebi]; eb.x += eb.vx; eb.y += eb.vy; 
         
@@ -521,7 +507,7 @@ function update() {
             
             if (player.x + 4 < eb.x + eb.w && player.x + player.w - 4 > eb.x && player.y + 4 < eb.y + eb.h && player.y + player.h - 4 > eb.y) {
                 if (invincibilityTimer <= 0) takeDamage('#ff0');
-                enemyBullets.splice(ebi, 1); // Usuń pocisk po trafieniu w gracza (lub tarczę)
+                enemyBullets.splice(ebi, 1); 
                 continue;
             }
         }
