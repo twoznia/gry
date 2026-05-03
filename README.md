@@ -5,6 +5,7 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 ## Zawartość
 
 - **[Wyścigi Aut](./auta/)** 🏎️ – Gra wyścigowa, w której omijasz przeszkody i jedziesz jak najszybciej.
+- **[River Raid](./riverraid/)** ✈️ – Arcadowy lot bojowy nad rzeką z paliwem, mostami i wrogami.
 - **[Mat-Jaja](./mat-jaja/)** 🥚 – Matematyczna zabawa z jajkami w roli głównej.
 - **[Rybak](./rybak/)** 🚣 – Spokojna gra wędkarska na jeziorze.
 - **[Pisanie](./pisanie/)** 🖊️ – Nauka pisania polskich słów, literka po literce.
