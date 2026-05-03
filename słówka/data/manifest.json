@@ -21,6 +21,11 @@
       "path": "data/Oxford3000",
       "sets": [
         {
+          "name": "Oxford3000_pl",
+          "fileName": "Oxford3000_pl.csv",
+          "path": "data/Oxford3000/Oxford3000_pl.csv"
+        },
+        {
           "name": "Oxford3000",
           "fileName": "Oxford3000.csv",
           "path": "data/Oxford3000/Oxford3000.csv"
