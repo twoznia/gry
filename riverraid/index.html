@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>River Raid</title>
     <style>
         body { 
@@ -28,6 +29,23 @@
         span.hl { color: #fff; }
         
         #comboDisplay { color: #fa0; font-weight: bold; font-size: 18px; transition: transform 0.1s; }
+
+        /* --- Mobile / Responsive --- */
+        @media (max-width: 820px) {
+            body { justify-content: flex-start; padding-top: 8px; overflow: hidden; }
+            #ui { width: 100vw; box-sizing: border-box; padding: 0 8px; font-size: 13px; }
+            .ui-row { width: 100vw; box-sizing: border-box; padding: 0 8px; font-size: 12px; }
+            canvas { width: 100vw !important; height: calc(100vw * 600 / 800) !important; border-width: 2px; }
+            #controls-desktop { display: none !important; }
+            #controls-mobile { display: block !important; }
+        }
+        #controls-mobile { display: none; }
+        #gyroIndicator {
+            display: none; position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%);
+            width: 120px; height: 10px; background: #222; border: 1px solid #555; border-radius: 5px; overflow: hidden;
+        }
+        #gyroBar { height: 100%; width: 6px; background: #0f0; position: absolute; top: 0; left: 50%; transform: translateX(-50%); border-radius: 3px; transition: left 0.05s; }
+        @media (max-width: 820px) { #gyroIndicator { display: block; } }
     </style>
 </head>
 <body>
@@ -45,10 +63,15 @@
 
     <canvas id="gameCanvas" width="800" height="600"></canvas>
     
-    <div class="controls">
+    <div class="controls" id="controls-desktop">
         <span class="hl">RUCH:</span> Strzałki Lewo/Prawo | <span class="hl">PRĘDKOŚĆ:</span> Strzałki Góra/Dół<br>
         <span class="hl">STRZAŁ:</span> Automatyczny | <span class="hl">START:</span> Spacja
     </div>
+    <div class="controls" id="controls-mobile">
+        <span class="hl">STEROWANIE:</span> Przechyl telefon lewo/prawo | <span class="hl">PRĘDKOŚĆ:</span> Przechyl w przód/tył<br>
+        <span class="hl">STRZAŁ:</span> Automatyczny | <span class="hl">START:</span> Dotknij ekranu
+    </div>
+    <div id="gyroIndicator"><div id="gyroBar"></div></div>
 
 <script>
 const canvas = document.getElementById('gameCanvas');
@@ -121,6 +144,66 @@ window.addEventListener('keydown', (e) => {
     keys[e.code] = true;
 });
 window.addEventListener('keyup', (e) => keys[e.code] = false);
+
+// --- Mobile / Gyroscope ---
+const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.matchMedia('(max-width: 820px)').matches;
+let gyroGamma = 0;   // left/right tilt (-90 to +90)
+let gyroBeta  = 0;   // forward/back tilt (-180 to +180)
+let gyroActive = false;
+let gyroPermissionRequested = false;
+const gyroBarEl = document.getElementById('gyroBar');
+// Steering constants (phone held vertically: beta ≈ 70-90°)
+const GYRO_DEADZONE = 7;    // degrees of tilt before steering begins
+const GYRO_MAX_TILT = 38;   // degrees at which maximum speed is reached
+const GYRO_BETA_FAST = 55;  // tilt phone forward past this beta → speed up
+const GYRO_BETA_SLOW = 82;  // tilt phone back past this beta → slow down
+
+function handleOrientation(e) {
+    if (e.gamma !== null && e.beta !== null) {
+        gyroGamma = e.gamma;
+        gyroBeta  = e.beta;
+        gyroActive = true;
+        // Update tilt indicator: gyroGamma range -40..+40 → 0%..100% position
+        const pct = Math.min(Math.max((gyroGamma + 40) / 80, 0), 1) * 100;
+        gyroBarEl.style.left = pct + '%';
+        gyroBarEl.style.background = Math.abs(gyroGamma) > 7 ? '#fa0' : '#0f0';
+    }
+}
+
+function setupGyro() {
+    if (typeof DeviceOrientationEvent !== 'undefined' &&
+        typeof DeviceOrientationEvent.requestPermission === 'function') {
+        // iOS 13+ requires explicit permission
+        DeviceOrientationEvent.requestPermission()
+            .then(response => {
+                if (response === 'granted') {
+                    window.addEventListener('deviceorientation', handleOrientation);
+                } else {
+                    showGyroFallbackHint();
+                }
+            })
+            .catch(() => { showGyroFallbackHint(); });
+    } else if (typeof DeviceOrientationEvent !== 'undefined') {
+        window.addEventListener('deviceorientation', handleOrientation);
+    }
+}
+
+function showGyroFallbackHint() {
+    // Show a brief on-canvas hint that gyroscope is unavailable
+    floatingTexts.push({ x: canvas.width / 2, y: canvas.height / 2 + 80, text: "Użyj klawiatury", life: 180, maxLife: 180, color: "#fa0", size: "16px" });
+}
+
+// Touch: request gyro permission (iOS) + tap-to-start
+window.addEventListener('touchstart', (e) => {
+    if (!gyroPermissionRequested) {
+        gyroPermissionRequested = true;
+        setupGyro();
+    }
+    if (state === 'START' || state === 'GAMEOVER') {
+        keys['Space'] = true;
+        setTimeout(() => { keys['Space'] = false; }, 100);
+    }
+}, { passive: true });
 
 function drawPlayer() {
     let hullColor = "#fff"; 
@@ -284,6 +367,13 @@ function update() {
     for (let i = floatingTexts.length - 1; i >= 0; i--) { let ft = floatingTexts[i]; ft.y -= 1; ft.life--; if (ft.life <= 0) floatingTexts.splice(i, 1); }
 
     if (state === 'PLAYING') {
+        // Gyroscope controls: set virtual keys each frame
+        if (gyroActive) {
+            // beta ~70-90 when phone held upright; tilt forward (< GYRO_BETA_FAST) = speed up, backward (> GYRO_BETA_SLOW) = slow down
+            keys['ArrowUp']   = gyroBeta < GYRO_BETA_FAST;
+            keys['ArrowDown'] = gyroBeta > GYRO_BETA_SLOW;
+        }
+
         if (keys['ArrowUp']) { currentSpeed = baseSpeed + 3; if (player.y > 150) player.y -= 2; } 
         else if (keys['ArrowDown']) { currentSpeed = Math.max(1, baseSpeed - 2); if (player.y < 520) player.y += 2; } 
         else { currentSpeed = baseSpeed; if (player.y < 520) player.y += 1.5; }
@@ -330,8 +420,18 @@ function update() {
 
     // 2. Gracz
     if (state === 'PLAYING') {
-        if (keys['ArrowLeft'] && player.x > 0) player.x -= 5;
-        if (keys['ArrowRight'] && player.x < canvas.width - player.w) player.x += 5;
+        // Left/right movement: proportional gyro OR keyboard
+        if (gyroActive) {
+            const tilt = gyroGamma;
+            if (Math.abs(tilt) > GYRO_DEADZONE) {
+                const speed = ((Math.abs(tilt) - GYRO_DEADZONE) / (GYRO_MAX_TILT - GYRO_DEADZONE)) * 8;
+                if (tilt < 0) player.x = Math.max(0, player.x - speed);
+                else          player.x = Math.min(canvas.width - player.w, player.x + speed);
+            }
+        } else {
+            if (keys['ArrowLeft']  && player.x > 0)                    player.x -= 5;
+            if (keys['ArrowRight'] && player.x < canvas.width - player.w) player.x += 5;
+        }
         
         if (frame % 12 === 0) {
             if (spreadShotTimer > 0) {
@@ -551,12 +651,15 @@ function draw() {
 
     if (state === 'START') {
         ctx.fillStyle = "rgba(0,0,0,0.7)"; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.fillStyle = "#fff"; ctx.textAlign = "center";
-        ctx.font = "bold 34px 'Courier New'"; ctx.fillText("RIVER RAID", canvas.width/2, 280); ctx.font = "16px 'Courier New'"; ctx.fillText("PRESS SPACE TO START", canvas.width/2, 330);
+        ctx.font = "bold 34px 'Courier New'"; ctx.fillText("RIVER RAID", canvas.width/2, 280); ctx.font = "16px 'Courier New'";
+        ctx.fillText(isMobile ? "DOTKNIJ EKRANU, ABY STARTOWAĆ" : "PRESS SPACE TO START", canvas.width/2, 330);
+        if (isMobile) { ctx.fillStyle = "#888"; ctx.font = "13px 'Courier New'"; ctx.fillText("Przechyl telefon, aby sterować", canvas.width/2, 365); }
     } else if (state === 'GAMEOVER') {
         ctx.fillStyle = "rgba(0,0,0,0.85)"; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.textAlign = "center"; ctx.font = "bold 34px 'Courier New'"; ctx.fillStyle = "#f00"; ctx.fillText("GAME OVER", canvas.width/2, 220);
         ctx.fillStyle = "#fff"; ctx.font = "20px 'Courier New'"; ctx.fillText("SCORE: " + score, canvas.width/2, 280);
         if(isNewRecord) { ctx.fillStyle = "#ff0"; ctx.fillText("NEW HIGH SCORE!", canvas.width/2, 320); } else { ctx.fillStyle = "#aaa"; ctx.fillText("HI-SCORE: " + highScore, canvas.width/2, 320); }
-        ctx.fillStyle = "#fff"; ctx.font = "16px 'Courier New'"; if (Math.floor(Date.now() / 500) % 2 === 0) ctx.fillText("PRESS SPACE TO RESTART", canvas.width/2, 400);
+        ctx.fillStyle = "#fff"; ctx.font = "16px 'Courier New'";
+        if (Math.floor(Date.now() / 500) % 2 === 0) ctx.fillText(isMobile ? "DOTKNIJ EKRANU" : "PRESS SPACE TO RESTART", canvas.width/2, 400);
     }
 
     update(); requestAnimationFrame(draw);
