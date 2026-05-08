@@ -42,6 +42,7 @@
 
     <div class="error-msg" id="setup-error"></div>
     <button class="btn btn-primary" id="btn-start" disabled>Ładowanie…</button>
+    <button class="btn btn-secondary btn-report-tech" id="btn-report-tech">Zgłoś problem techniczny</button>
 </section>
 
 <!-- ========== GAME SCREEN ========== -->
@@ -64,6 +65,7 @@
     <div class="answers-grid" id="answers-grid"></div>
 
     <div class="feedback" id="feedback"></div>
+    <button class="btn btn-secondary btn-report-inline" id="btn-report-question" type="button">Zgłoś błąd w pytaniu</button>
 
     <button class="btn btn-primary" id="btn-next" style="display:none;">Następne pytanie →</button>
 </section>
@@ -82,6 +84,59 @@
 </section>
 
 <footer>@twoznia | 2026</footer>
+
+<div class="report-modal" id="report-modal" aria-hidden="true">
+    <div class="report-modal__backdrop" id="report-modal-close"></div>
+    <div class="card report-modal__content" role="dialog" aria-modal="true" aria-labelledby="report-title">
+        <div class="report-modal__header">
+            <h2 id="report-title">Zgłoś błąd</h2>
+            <button class="report-modal__x" id="btn-report-cancel" type="button" aria-label="Zamknij formularz">×</button>
+        </div>
+
+        <form id="report-form" class="report-form">
+            <div class="form-group">
+                <label for="report-type">Typ problemu</label>
+                <select id="report-type" required>
+                    <option value="">Wybierz</option>
+                    <option value="Zła odpowiedź">Zła odpowiedź</option>
+                    <option value="Literówka lub język">Literówka lub język</option>
+                    <option value="Niejasne pytanie">Niejasne pytanie</option>
+                    <option value="Problem techniczny">Problem techniczny</option>
+                    <option value="Inne">Inne</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="report-description">Opis problemu</label>
+                <textarea id="report-description" rows="5" maxlength="500" placeholder="Krótko opisz, co jest nie tak." required></textarea>
+                <div class="field-hint"><span id="report-description-count">0</span>/500 znaków</div>
+            </div>
+
+            <div class="form-group">
+                <label for="report-contact">Kontakt (opcjonalnie)</label>
+                <input id="report-contact" type="text" maxlength="120" placeholder="np. adres e-mail lub nick">
+            </div>
+
+            <div class="report-honeypot" aria-hidden="true">
+                <label for="report-website">Pozostaw to pole puste</label>
+                <input id="report-website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="report-context">Kontekst zgłoszenia</label>
+                <textarea id="report-context" rows="10" readonly></textarea>
+            </div>
+
+            <div class="error-msg" id="report-error"></div>
+            <div class="report-success" id="report-success"></div>
+
+            <div class="report-actions">
+                <button class="btn btn-secondary" id="btn-report-close" type="button">Anuluj</button>
+                <button class="btn btn-primary" type="submit">Otwórz zgłoszenie na GitHub</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <script src="script.js"></script>
 </body>

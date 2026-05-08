@@ -1,6 +1,10 @@
 // ── Data loading ─────────────────────────────────────────────────────────────
 let allData = [];      // [{category, icon, questions:[{subcategory,question,answers}]}]
 let loadError = false;
+const ISSUE_TEMPLATE_NAME = 'zgloszenie-bledu-pytania.md';
+const ISSUE_URL = 'https://github.com/twoznia/gry/issues/new';
+const REPORT_DESCRIPTION_MAX = 500;
+const REPORT_CONTACT_MAX = 120;
 
 const CATEGORY_ICONS = {
     'Film i Telewizja':            '🎬',
@@ -22,6 +26,17 @@ const CATEGORY_ICONS = {
     'Tradycje i Religie':          '⛪',
     'Wiedza Ogólna i Ciekawostki': '🧠',
 };
+
+const reportModal = document.getElementById('report-modal');
+const reportForm = document.getElementById('report-form');
+const reportError = document.getElementById('report-error');
+const reportSuccess = document.getElementById('report-success');
+const reportType = document.getElementById('report-type');
+const reportDescription = document.getElementById('report-description');
+const reportDescriptionCount = document.getElementById('report-description-count');
+const reportContact = document.getElementById('report-contact');
+const reportWebsite = document.getElementById('report-website');
+const reportContext = document.getElementById('report-context');
 
 async function loadAllData() {
     try {
@@ -96,6 +111,141 @@ function shuffle(arr) {
     return a;
 }
 
+function escapeHtml(str) {
+    return String(str ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+function escapeIssueValue(str) {
+    return String(str ?? '').replace(/\r/g, '').trim();
+}
+
+function getDeviceContext() {
+    return [
+        `Czas zgłoszenia: ${new Date().toISOString()}`,
+        `Adres gry: ${window.location.href}`,
+        `Język przeglądarki: ${navigator.language || 'brak danych'}`,
+        `User agent: ${navigator.userAgent || 'brak danych'}`,
+    ].join('\n');
+}
+
+function getQuestionContext(question, extra = {}) {
+    if (!question) {
+        return [
+            'Kategoria: problem techniczny / brak konkretnego pytania',
+            getDeviceContext(),
+        ].join('\n');
+    }
+
+    const correctAnswer = question.answers.find(answer => answer.is_correct)?.text || 'brak danych';
+    const visibleAnswers = (extra.visibleAnswers || question.answers.map(answer => answer.text))
+        .map((answer, index) => `${index + 1}. ${answer}`)
+        .join('\n');
+
+    return [
+        `Kategoria: ${question._category || 'brak danych'}`,
+        `Podkategoria: ${question.subcategory || 'brak danych'}`,
+        `Poziom: ${question.level || 'brak danych'}`,
+        `Pytanie: ${question.question || 'brak danych'}`,
+        'Widoczne odpowiedzi:',
+        visibleAnswers || 'brak danych',
+        `Poprawna odpowiedź: ${correctAnswer}`,
+        `Odpowiedź użytkownika: ${extra.chosenText || 'brak / nie udzielono'}`,
+        getDeviceContext(),
+    ].join('\n');
+}
+
+function getIssueTitle(type, question) {
+    if (!question) {
+        return `[Pytania] ${type || 'Problem techniczny'}`;
+    }
+
+    const snippet = String(question.question || 'Bez treści pytania').slice(0, 80);
+    return `[Pytania] ${type || 'Błąd w pytaniu'}: ${snippet}`;
+}
+
+function getIssueBody({ type, description, contact, context }) {
+    return [
+        '## Typ problemu',
+        '',
+        escapeIssueValue(type),
+        '',
+        '## Opis',
+        '',
+        escapeIssueValue(description),
+        '',
+        '## Kontakt',
+        '',
+        escapeIssueValue(contact) || 'Nie podano',
+        '',
+        '## Kontekst pytania',
+        '',
+        '```text',
+        context,
+        '```',
+    ].join('\n');
+}
+
+function openGitHubIssue(payload) {
+    const url = new URL(ISSUE_URL);
+    url.searchParams.set('template', ISSUE_TEMPLATE_NAME);
+    url.searchParams.set('title', getIssueTitle(payload.type, payload.question));
+    url.searchParams.set('body', getIssueBody(payload));
+    window.open(url.toString(), '_blank', 'noopener');
+}
+
+function resetReportForm() {
+    reportForm.reset();
+    reportError.textContent = '';
+    reportSuccess.textContent = '';
+    reportDescriptionCount.textContent = '0';
+    reportContext.value = '';
+}
+
+function openReportModal(context = {}) {
+    resetReportForm();
+    state.reportContext = context;
+    reportType.value = context.defaultType || '';
+    reportContext.value = getQuestionContext(context.question, {
+        chosenText: context.chosenText,
+        visibleAnswers: context.visibleAnswers,
+    });
+    reportDescription.focus();
+    reportModal.classList.add('open');
+    reportModal.setAttribute('aria-hidden', 'false');
+}
+
+function closeReportModal() {
+    reportModal.classList.remove('open');
+    reportModal.setAttribute('aria-hidden', 'true');
+}
+
+function validateReportForm() {
+    const description = reportDescription.value.trim();
+    const contact = reportContact.value.trim();
+
+    if (!reportType.value) {
+        return 'Wybierz typ problemu.';
+    }
+    if (!description) {
+        return 'Dodaj krótki opis problemu.';
+    }
+    if (description.length > REPORT_DESCRIPTION_MAX) {
+        return `Opis może mieć maksymalnie ${REPORT_DESCRIPTION_MAX} znaków.`;
+    }
+    if (contact.length > REPORT_CONTACT_MAX) {
+        return `Kontakt może mieć maksymalnie ${REPORT_CONTACT_MAX} znaków.`;
+    }
+    if (reportWebsite.value.trim()) {
+        return 'Nie udało się wysłać zgłoszenia.';
+    }
+
+    return '';
+}
+
 function getRandomCategoryQuestions(numQ, levelFilter) {
     const categoryPools = shuffle(allData.map(d => ({
         category: d.category,
@@ -168,6 +318,7 @@ function startGame() {
     state = {
         questions,
         currentQ: 0,
+        currentVisibleAnswers: [],
         score: 0,
         answered: false,
         results: [],
@@ -222,6 +373,7 @@ function renderQuestion() {
 
     const correctAnswer = q.answers.find(a => a.is_correct);
     const shuffledAnswers = shuffle(q.answers);
+    state.currentVisibleAnswers = shuffledAnswers.map(answer => answer.text);
 
     const grid = document.getElementById('answers-grid');
     grid.innerHTML = '';
@@ -273,6 +425,7 @@ function handleAnswer(chosen, correct) {
         question: state.questions[state.currentQ],
         chosenText: chosen.text,
         isCorrect,
+        visibleAnswers: state.currentVisibleAnswers.slice(),
     });
 
     document.getElementById('btn-next').style.display = 'inline-block';
@@ -322,7 +475,15 @@ function showResults() {
                         : `Twoja: ${r.chosenText} → <span class="correct-ans">${correctText}</span>`
                     }
                 </div>
-            </div>`;
+            </div>
+            <button class="result-report-btn" type="button">Zgłoś</button>`;
+        row.querySelector('.result-report-btn').addEventListener('click', () => {
+            openReportModal({
+                question: r.question,
+                chosenText: r.chosenText,
+                visibleAnswers: r.visibleAnswers,
+            });
+        });
         list.appendChild(row);
     });
 
@@ -338,6 +499,60 @@ document.getElementById('btn-replay').addEventListener('click', () => {
 document.getElementById('btn-start').addEventListener('click', () => {
     document.getElementById('setup-error').textContent = '';
     startGame();
+});
+
+document.getElementById('btn-report-question').addEventListener('click', () => {
+    if (!state.questions?.length) return;
+    openReportModal({
+        question: state.questions[state.currentQ],
+        visibleAnswers: state.currentVisibleAnswers,
+        chosenText: state.results[state.currentQ]?.chosenText,
+    });
+});
+
+document.getElementById('btn-report-tech').addEventListener('click', () => {
+    openReportModal({
+        defaultType: 'Problem techniczny',
+    });
+});
+
+document.getElementById('btn-report-close').addEventListener('click', closeReportModal);
+document.getElementById('btn-report-cancel').addEventListener('click', closeReportModal);
+document.getElementById('report-modal-close').addEventListener('click', closeReportModal);
+
+reportDescription.addEventListener('input', () => {
+    reportDescriptionCount.textContent = String(reportDescription.value.length);
+});
+
+reportForm.addEventListener('submit', event => {
+    event.preventDefault();
+
+    reportError.textContent = '';
+    reportSuccess.textContent = '';
+
+    const validationError = validateReportForm();
+    if (validationError) {
+        reportError.textContent = validationError;
+        return;
+    }
+
+    const payload = {
+        type: reportType.value,
+        description: reportDescription.value.trim(),
+        contact: reportContact.value.trim(),
+        context: reportContext.value,
+        question: state.reportContext?.question || null,
+    };
+
+    openGitHubIssue(payload);
+    reportSuccess.textContent = 'Otwarto nowe zgłoszenie na GitHub w osobnej karcie.';
+    closeReportModal();
+});
+
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && reportModal.classList.contains('open')) {
+        closeReportModal();
+    }
 });
 
 // ── Init ──────────────────────────────────────────────────────────────────────
