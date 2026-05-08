@@ -194,8 +194,9 @@ const gyroBarEl = document.getElementById('gyroBar');
 // Steering constants (phone held vertically: beta ≈ 70-90°)
 const GYRO_DEADZONE = 7;    // degrees of tilt before steering begins
 const GYRO_MAX_TILT = 38;   // degrees at which maximum speed is reached
-const GYRO_BETA_FAST = 55;  // tilt phone forward past this beta → speed up
-const GYRO_BETA_SLOW = 82;  // tilt phone back past this beta → slow down
+const GYRO_BETA_SLOW_MAX   = 25;  // 0–25° tilt → slow
+const GYRO_BETA_NORMAL_MAX = 65;  // 25–65° tilt → normal; >65° → fast
+const GYRO_BETA_MAX        = 90;  // clamp tilt to 0–90°
 
 function handleOrientation(e) {
     if (e.gamma !== null && e.beta !== null) {
@@ -438,16 +439,24 @@ function update() {
     for (let i = floatingTexts.length - 1; i >= 0; i--) { let ft = floatingTexts[i]; ft.y -= 1; ft.life--; if (ft.life <= 0) floatingTexts.splice(i, 1); }
 
     if (state === 'PLAYING') {
-        // Gyroscope controls: set virtual keys each frame
+        // Gyroscope controls: 3 speed zones based on tilt angle
         if (gyroActive) {
-            // beta ~70-90 when phone held upright; tilt forward (< GYRO_BETA_FAST) = speed up, backward (> GYRO_BETA_SLOW) = slow down
-            keys['ArrowUp']   = gyroBeta < GYRO_BETA_FAST;
-            keys['ArrowDown'] = gyroBeta > GYRO_BETA_SLOW;
+            const tilt = Math.max(0, Math.min(GYRO_BETA_MAX, gyroBeta));
+            if (tilt <= GYRO_BETA_SLOW_MAX) {
+                currentSpeed = Math.max(1, baseSpeed - 2);
+                if (player.y < 520) player.y += 2;
+            } else if (tilt <= GYRO_BETA_NORMAL_MAX) {
+                currentSpeed = baseSpeed;
+                if (player.y < 520) player.y += 1.5;
+            } else {
+                currentSpeed = baseSpeed + 3;
+                if (player.y > 150) player.y -= 2;
+            }
+        } else {
+            if (keys['ArrowUp']) { currentSpeed = baseSpeed + 3; if (player.y > 150) player.y -= 2; } 
+            else if (keys['ArrowDown']) { currentSpeed = Math.max(1, baseSpeed - 2); if (player.y < 520) player.y += 2; } 
+            else { currentSpeed = baseSpeed; if (player.y < 520) player.y += 1.5; }
         }
-
-        if (keys['ArrowUp']) { currentSpeed = baseSpeed + 3; if (player.y > 150) player.y -= 2; } 
-        else if (keys['ArrowDown']) { currentSpeed = Math.max(1, baseSpeed - 2); if (player.y < 520) player.y += 2; } 
-        else { currentSpeed = baseSpeed; if (player.y < 520) player.y += 1.5; }
     }
 
     // 1. MEANDRUJĄCA RZEKA
