@@ -186,7 +186,7 @@ function openGitHubIssue(payload) {
     url.searchParams.set('template', ISSUE_TEMPLATE_NAME);
     url.searchParams.set('title', getIssueTitle(payload.type, payload.question));
     url.searchParams.set('body', getIssueBody(payload));
-    const issueWindow = window.open(url.toString(), '_blank', 'noopener');
+    const issueWindow = window.open(url.toString(), '_blank', 'noopener,noreferrer');
     return Boolean(issueWindow);
 }
 
@@ -311,7 +311,7 @@ function startGame() {
     state = {
         questions,
         currentQ: 0,
-        currentVisibleAnswers: [],
+        currentAnswerOrder: [],
         score: 0,
         answered: false,
         results: [],
@@ -366,7 +366,7 @@ function renderQuestion() {
 
     const correctAnswer = q.answers.find(a => a.is_correct);
     const shuffledAnswers = shuffle(q.answers);
-    state.currentVisibleAnswers = shuffledAnswers.map(answer => answer.text);
+    state.currentAnswerOrder = shuffledAnswers.map(answer => answer.text);
 
     const grid = document.getElementById('answers-grid');
     grid.innerHTML = '';
@@ -418,7 +418,7 @@ function handleAnswer(chosen, correct) {
         question: state.questions[state.currentQ],
         chosenText: chosen.text,
         isCorrect,
-        visibleAnswers: state.currentVisibleAnswers.slice(),
+        visibleAnswers: state.currentAnswerOrder.slice(),
     });
 
     document.getElementById('btn-next').style.display = 'inline-block';
@@ -498,7 +498,7 @@ document.getElementById('btn-report-question').addEventListener('click', () => {
     if (!state.questions?.length) return;
     openReportModal({
         question: state.questions[state.currentQ],
-        visibleAnswers: state.currentVisibleAnswers,
+        visibleAnswers: state.currentAnswerOrder,
         chosenText: state.results[state.currentQ]?.chosenText,
     });
 });
