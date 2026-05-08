@@ -111,14 +111,6 @@ function shuffle(arr) {
     return a;
 }
 
-function escapeHtml(str) {
-    return String(str ?? '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
-}
-
 function escapeIssueValue(str) {
     return String(str ?? '').replace(/\r/g, '').trim();
 }
@@ -194,7 +186,8 @@ function openGitHubIssue(payload) {
     url.searchParams.set('template', ISSUE_TEMPLATE_NAME);
     url.searchParams.set('title', getIssueTitle(payload.type, payload.question));
     url.searchParams.set('body', getIssueBody(payload));
-    window.open(url.toString(), '_blank', 'noopener');
+    const issueWindow = window.open(url.toString(), '_blank', 'noopener');
+    return Boolean(issueWindow);
 }
 
 function resetReportForm() {
@@ -209,13 +202,13 @@ function openReportModal(context = {}) {
     resetReportForm();
     state.reportContext = context;
     reportType.value = context.defaultType || '';
+    reportModal.classList.add('open');
+    reportModal.setAttribute('aria-hidden', 'false');
     reportContext.value = getQuestionContext(context.question, {
         chosenText: context.chosenText,
         visibleAnswers: context.visibleAnswers,
     });
     reportDescription.focus();
-    reportModal.classList.add('open');
-    reportModal.setAttribute('aria-hidden', 'false');
 }
 
 function closeReportModal() {
@@ -544,9 +537,13 @@ reportForm.addEventListener('submit', event => {
         question: state.reportContext?.question || null,
     };
 
-    openGitHubIssue(payload);
-    reportSuccess.textContent = 'Otwarto nowe zgłoszenie na GitHub w osobnej karcie.';
-    closeReportModal();
+    const opened = openGitHubIssue(payload);
+    if (!opened) {
+        reportError.textContent = 'Przeglądarka zablokowała nowe okno. Zezwól na popup i spróbuj ponownie.';
+        return;
+    }
+
+    reportSuccess.textContent = 'Otwarto nowe zgłoszenie na GitHub w osobnej karcie. Sprawdź je i wyślij.';
 });
 
 document.addEventListener('keydown', event => {
