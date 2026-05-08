@@ -65,7 +65,7 @@
     <div class="answers-grid" id="answers-grid"></div>
 
     <div class="feedback" id="feedback"></div>
-    <button class="btn btn-secondary btn-report-inline" id="btn-report-question" type="button">Zgłoś błąd w pytaniu</button>
+    <button class="btn btn-secondary btn-report-inline" id="btn-report-question" type="button" style="display:none;">Zgłoś błąd w pytaniu</button>
 
     <button class="btn btn-primary" id="btn-next" style="display:none;">Następne pytanie →</button>
 </section>
@@ -95,26 +95,23 @@
 
         <form id="report-form" class="report-form">
             <div class="form-group">
-                <label for="report-type">Typ problemu</label>
-                <select id="report-type" required>
-                    <option value="">Wybierz</option>
-                    <option value="Zła odpowiedź">Zła odpowiedź</option>
-                    <option value="Literówka lub język">Literówka lub język</option>
-                    <option value="Niejasne pytanie">Niejasne pytanie</option>
-                    <option value="Problem techniczny">Problem techniczny</option>
-                    <option value="Inne">Inne</option>
-                </select>
+                <label for="report-category">Kategoria</label>
+                <input id="report-category" type="text" readonly>
             </div>
 
             <div class="form-group">
-                <label for="report-description">Opis problemu</label>
-                <textarea id="report-description" rows="5" maxlength="500" placeholder="Krótko opisz, co jest nie tak." required></textarea>
-                <div class="field-hint"><span id="report-description-count">0</span>/500 znaków</div>
+                <label for="report-subcategory">Subkategoria</label>
+                <input id="report-subcategory" type="text" readonly>
             </div>
 
             <div class="form-group">
-                <label for="report-contact">Kontakt (opcjonalnie)</label>
-                <input id="report-contact" type="text" maxlength="120" placeholder="np. adres e-mail lub nick">
+                <label for="report-question">Pytanie</label>
+                <textarea id="report-question" rows="3" readonly></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="report-correct">Poprawna odpowiedź</label>
+                <input id="report-correct" type="text" readonly>
             </div>
 
             <div class="report-honeypot" aria-hidden="true">
@@ -123,8 +120,9 @@
             </div>
 
             <div class="form-group">
-                <label for="report-context">Kontekst zgłoszenia</label>
-                <textarea id="report-context" rows="10" readonly></textarea>
+                <label for="report-comment">Komentarz (opcjonalnie)</label>
+                <textarea id="report-comment" rows="4" maxlength="500" placeholder="Dodaj komentarz lub opis błędu (opcjonalne)."></textarea>
+                <div class="field-hint"><span id="report-comment-count">0</span>/500 znaków</div>
             </div>
 
             <div class="error-msg" id="report-error"></div>

@@ -3,8 +3,6 @@ let allData = [];      // [{category, icon, questions:[{subcategory,question,ans
 let loadError = false;
 const ISSUE_TEMPLATE_NAME = 'zgloszenie-bledu-pytania.md';
 const ISSUE_URL = 'https://github.com/twoznia/gry/issues/new';
-const REPORT_DESCRIPTION_MAX = 500;
-const REPORT_CONTACT_MAX = 120;
 
 const CATEGORY_ICONS = {
     'Film i Telewizja':            '🎬',
@@ -31,12 +29,13 @@ const reportModal = document.getElementById('report-modal');
 const reportForm = document.getElementById('report-form');
 const reportError = document.getElementById('report-error');
 const reportSuccess = document.getElementById('report-success');
-const reportType = document.getElementById('report-type');
-const reportDescription = document.getElementById('report-description');
-const reportDescriptionCount = document.getElementById('report-description-count');
-const reportContact = document.getElementById('report-contact');
+const reportCategory = document.getElementById('report-category');
+const reportSubcategory = document.getElementById('report-subcategory');
+const reportQuestion = document.getElementById('report-question');
+const reportCorrect = document.getElementById('report-correct');
 const reportWebsite = document.getElementById('report-website');
-const reportContext = document.getElementById('report-context');
+const reportComment = document.getElementById('report-comment');
+const reportCommentCount = document.getElementById('report-comment-count');
 
 async function loadAllData() {
     try {
@@ -124,67 +123,31 @@ function getDeviceContext() {
     ].join('\n');
 }
 
-function getQuestionContext(question, extra = {}) {
-    if (!question) {
-        return [
-            'Kategoria: problem techniczny / brak konkretnego pytania',
-            getDeviceContext(),
-        ].join('\n');
-    }
-
-    const correctAnswer = question.answers.find(answer => answer.is_correct)?.text || 'brak danych';
-    const visibleAnswers = (extra.visibleAnswers || question.answers.map(answer => answer.text))
-        .map((answer, index) => `${index + 1}. ${answer}`)
-        .join('\n');
-
-    return [
-        `Kategoria: ${question._category || 'brak danych'}`,
-        `Podkategoria: ${question.subcategory || 'brak danych'}`,
-        `Poziom: ${question.level || 'brak danych'}`,
-        `Pytanie: ${question.question || 'brak danych'}`,
-        'Widoczne odpowiedzi:',
-        visibleAnswers || 'brak danych',
-        `Poprawna odpowiedź: ${correctAnswer}`,
-        `Odpowiedź użytkownika: ${extra.chosenText || 'brak / nie udzielono'}`,
-        getDeviceContext(),
-    ].join('\n');
+function getIssueTitle(questionText) {
+    const snippet = String(questionText || 'Bez treści pytania').slice(0, 80);
+    return `[Pytania] Błąd w pytaniu: ${snippet}`;
 }
 
-function getIssueTitle(type, question) {
-    if (!question) {
-        return `[Pytania] ${type || 'Problem techniczny'}`;
+function getIssueBody({ category, subcategory, question, correctAnswer, comment }) {
+    const lines = [
+        '## Dane pytania',
+        '',
+        `**Kategoria:** ${escapeIssueValue(category)}`,
+        `**Subkategoria:** ${escapeIssueValue(subcategory)}`,
+        `**Pytanie:** ${escapeIssueValue(question)}`,
+        `**Poprawna odpowiedź:** ${escapeIssueValue(correctAnswer)}`,
+    ];
+    if (comment) {
+        lines.push('', '## Komentarz', '', escapeIssueValue(comment));
     }
-
-    const snippet = String(question.question || 'Bez treści pytania').slice(0, 80);
-    return `[Pytania] ${type || 'Błąd w pytaniu'}: ${snippet}`;
-}
-
-function getIssueBody({ type, description, contact, context }) {
-    return [
-        '## Typ problemu',
-        '',
-        escapeIssueValue(type),
-        '',
-        '## Opis',
-        '',
-        escapeIssueValue(description),
-        '',
-        '## Kontakt',
-        '',
-        escapeIssueValue(contact) || 'Nie podano',
-        '',
-        '## Kontekst pytania',
-        '',
-        '```text',
-        context,
-        '```',
-    ].join('\n');
+    lines.push('', '## Kontekst techniczny', '', '```text', getDeviceContext(), '```');
+    return lines.join('\n');
 }
 
 function openGitHubIssue(payload) {
     const url = new URL(ISSUE_URL);
     url.searchParams.set('template', ISSUE_TEMPLATE_NAME);
-    url.searchParams.set('title', getIssueTitle(payload.type, payload.question));
+    url.searchParams.set('title', getIssueTitle(payload.question));
     url.searchParams.set('body', getIssueBody(payload));
     const issueWindow = window.open(url.toString(), '_blank', 'noopener,noreferrer');
     return Boolean(issueWindow);
@@ -194,21 +157,27 @@ function resetReportForm() {
     reportForm.reset();
     reportError.textContent = '';
     reportSuccess.textContent = '';
-    reportDescriptionCount.textContent = '0';
-    reportContext.value = '';
+    reportCommentCount.textContent = '0';
+    reportCategory.value = '';
+    reportSubcategory.value = '';
+    reportQuestion.value = '';
+    reportCorrect.value = '';
 }
 
 function openReportModal(context = {}) {
     resetReportForm();
     state.reportContext = context;
-    reportType.value = context.defaultType || '';
+    if (context.question) {
+        const q = context.question;
+        const correctAnswer = q.answers.find(a => a.is_correct)?.text || 'brak danych';
+        reportCategory.value = q._category || 'brak danych';
+        reportSubcategory.value = q.subcategory || 'brak danych';
+        reportQuestion.value = q.question || 'brak danych';
+        reportCorrect.value = correctAnswer;
+    }
     reportModal.classList.add('open');
     reportModal.setAttribute('aria-hidden', 'false');
-    reportContext.value = getQuestionContext(context.question, {
-        chosenText: context.chosenText,
-        visibleAnswers: context.visibleAnswers,
-    });
-    reportDescription.focus();
+    reportComment.focus();
 }
 
 function closeReportModal() {
@@ -217,25 +186,9 @@ function closeReportModal() {
 }
 
 function validateReportForm() {
-    const description = reportDescription.value.trim();
-    const contact = reportContact.value.trim();
-
-    if (!reportType.value) {
-        return 'Wybierz typ problemu.';
-    }
-    if (!description) {
-        return 'Dodaj krótki opis problemu.';
-    }
-    if (description.length > REPORT_DESCRIPTION_MAX) {
-        return `Opis może mieć maksymalnie ${REPORT_DESCRIPTION_MAX} znaków.`;
-    }
-    if (contact.length > REPORT_CONTACT_MAX) {
-        return `Kontakt może mieć maksymalnie ${REPORT_CONTACT_MAX} znaków.`;
-    }
     if (reportWebsite.value.trim()) {
         return 'Nie udało się wysłać zgłoszenia.';
     }
-
     return '';
 }
 
@@ -361,6 +314,7 @@ function renderQuestion() {
     document.getElementById('feedback').textContent = '';
     document.getElementById('feedback').className = 'feedback';
     document.getElementById('btn-next').style.display = 'none';
+    document.getElementById('btn-report-question').style.display = 'none';
 
     initProgressBar(currentQ);
 
@@ -422,6 +376,7 @@ function handleAnswer(chosen, correct) {
     });
 
     document.getElementById('btn-next').style.display = 'inline-block';
+    document.getElementById('btn-report-question').style.display = 'inline-block';
 }
 
 // ── Next question / finish ────────────────────────────────────────────────────
@@ -498,23 +453,33 @@ document.getElementById('btn-report-question').addEventListener('click', () => {
     if (!state.questions?.length) return;
     openReportModal({
         question: state.questions[state.currentQ],
-        visibleAnswers: state.currentAnswerOrder,
-        chosenText: state.results[state.currentQ]?.chosenText,
     });
 });
 
 document.getElementById('btn-report-tech').addEventListener('click', () => {
-    openReportModal({
-        defaultType: 'Problem techniczny',
-    });
+    const url = new URL(ISSUE_URL);
+    url.searchParams.set('template', ISSUE_TEMPLATE_NAME);
+    url.searchParams.set('title', '[Pytania] Problem techniczny');
+    url.searchParams.set('body', [
+        '## Opis problemu',
+        '',
+        '',
+        '',
+        '## Kontekst techniczny',
+        '',
+        '```text',
+        getDeviceContext(),
+        '```',
+    ].join('\n'));
+    window.open(url.toString(), '_blank', 'noopener,noreferrer');
 });
 
 document.getElementById('btn-report-close').addEventListener('click', closeReportModal);
 document.getElementById('btn-report-cancel').addEventListener('click', closeReportModal);
 document.getElementById('report-modal-close').addEventListener('click', closeReportModal);
 
-reportDescription.addEventListener('input', () => {
-    reportDescriptionCount.textContent = String(reportDescription.value.length);
+reportComment.addEventListener('input', () => {
+    reportCommentCount.textContent = String(reportComment.value.length);
 });
 
 reportForm.addEventListener('submit', event => {
@@ -530,11 +495,11 @@ reportForm.addEventListener('submit', event => {
     }
 
     const payload = {
-        type: reportType.value,
-        description: reportDescription.value.trim(),
-        contact: reportContact.value.trim(),
-        context: reportContext.value,
-        question: state.reportContext?.question || null,
+        category: reportCategory.value,
+        subcategory: reportSubcategory.value,
+        question: reportQuestion.value,
+        correctAnswer: reportCorrect.value,
+        comment: reportComment.value.trim(),
     };
 
     const opened = openGitHubIssue(payload);
