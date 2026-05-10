@@ -412,6 +412,19 @@ function checkGraze(obj, isBullet) {
     }
 }
 
+function projectileHitsBridge(projectile, prevX, prevY, bridge) {
+    const previousBridgeY = bridge.y - currentSpeed;
+    const sweptLeft = Math.min(prevX, projectile.x);
+    const sweptRight = Math.max(prevX + projectile.w, projectile.x + projectile.w);
+    const sweptTop = Math.min(prevY, projectile.y);
+    const sweptBottom = Math.max(prevY + projectile.h, projectile.y + projectile.h);
+
+    return sweptLeft < bridge.x + bridge.w &&
+           sweptRight > bridge.x &&
+           sweptTop < bridge.y + bridge.h &&
+           sweptBottom > previousBridgeY;
+}
+
 function levelUp() {
     level++; levelEl.innerText = level; baseSpeed += 0.4;
     floatingTexts.push({ x: canvas.width/2, y: canvas.height/2, text: "LEVEL " + level, life: 80, maxLife: 80, color: "#0f0", size: "30px" });
@@ -627,7 +640,7 @@ function update() {
             if (player.x < en.x + en.w && player.x + player.w > en.x && player.y < en.y + en.h && player.y + player.h > en.y) {
                 if (en.type === 'fuel') { fuel = Math.min(100, fuel + 2.0); } 
                 else if (en.type === 'power_spread') {
-                    spreadShotTimer = 240; // Zmiana z 600 na 240 klatek (4 sekundy)
+                    spreadShotTimer = 360; // 6 sekund przy 60 FPS
                     floatingTexts.push({ x: player.x, y: player.y - 10, text: "SPREAD SHOT!", life: 60, maxLife: 60, color: "#0ff", size: "16px" });
                     entities.splice(i, 1);
                 }
@@ -647,6 +660,8 @@ function update() {
     // 5. Pociski gracza
     for (let bi = bullets.length - 1; bi >= 0; bi--) {
         let b = bullets[bi]; 
+        let prevBulletX = b.x;
+        let prevBulletY = b.y;
         b.x += b.vx; 
         b.y += b.vy; 
         
@@ -654,7 +669,9 @@ function update() {
         
         for (let ei = entities.length - 1; ei >= 0; ei--) {
             let en = entities[ei];
-            if (b.x < en.x + en.w && b.x + b.w > en.x && b.y < en.y + en.h && b.y + b.h > en.y) {
+            let intersects = (b.x < en.x + en.w && b.x + b.w > en.x && b.y < en.y + en.h && b.y + b.h > en.y);
+            if (en.type === 'bridge') intersects = projectileHitsBridge(b, prevBulletX, prevBulletY, en);
+            if (intersects) {
                 if (en.type === 'fuel' || en.type === 'power_spread' || en.type === 'power_shield' || en.type === 'mine') continue; 
                 
                 if (en.type === 'bridge') {
@@ -680,7 +697,18 @@ function update() {
 
     // 6. Wrogie pociski
     for (let ebi = enemyBullets.length - 1; ebi >= 0; ebi--) {
-        let eb = enemyBullets[ebi]; eb.x += eb.vx; eb.y += eb.vy; 
+        let eb = enemyBullets[ebi];
+        let prevEnemyBulletX = eb.x;
+        let prevEnemyBulletY = eb.y;
+        eb.x += eb.vx;
+        eb.y += eb.vy;
+
+        let bridgeHit = entities.some(en => en.type === 'bridge' && projectileHitsBridge(eb, prevEnemyBulletX, prevEnemyBulletY, en));
+        if (bridgeHit) {
+            createExplosion(eb.x, eb.y, '#fff');
+            enemyBullets.splice(ebi, 1);
+            continue;
+        }
         
         if (state === 'PLAYING') {
             checkGraze(eb, true);
