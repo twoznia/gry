@@ -259,14 +259,21 @@
         }
 
         async function loadHighscore() {
+            // Ładuj z localStorage jako fallback
+            const lsScore = parseInt(localStorage.getItem('obronaHighScore')) || 0;
+            const lsWave = parseInt(localStorage.getItem('obronaHighWave')) || 0;
+            if (lsScore > highScore) highScore = lsScore;
+            if (lsWave > highWave) highWave = lsWave;
+            if (highScore > 0 || highWave > 0) updateUI();
+
             if (!currentUser || !db) return;
             try {
                 const docRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'records', 'highscore');
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     const data = docSnap.data();
-                    highScore = data.score || 0;
-                    highWave = data.wave || 0;
+                    if ((data.score || 0) > highScore) highScore = data.score || 0;
+                    if ((data.wave || 0) > highWave) highWave = data.wave || 0;
                     updateUI();
                 }
             } catch (error) {
@@ -275,18 +282,22 @@
         }
 
         async function saveHighscore() {
-            if (!currentUser || !db) return;
-            
             let shouldSave = false;
             if (score > highScore) { highScore = score; shouldSave = true; }
             if (wave > highWave) { highWave = wave; shouldSave = true; }
 
             if (shouldSave) {
-                try {
-                    const docRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'records', 'highscore');
-                    await setDoc(docRef, { score: highScore, wave: highWave });
-                } catch (error) {
-                    console.error("Błąd podczas zapisywania rekordów:", error);
+                // Zapisz do localStorage jako fallback
+                localStorage.setItem('obronaHighScore', String(highScore));
+                localStorage.setItem('obronaHighWave', String(highWave));
+
+                if (currentUser && db) {
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'records', 'highscore');
+                        await setDoc(docRef, { score: highScore, wave: highWave });
+                    } catch (error) {
+                        console.error("Błąd podczas zapisywania rekordów:", error);
+                    }
                 }
             }
         }
@@ -577,6 +588,7 @@
         // --- FUNKCJE GŁÓWNE ---
 
         function init() {
+            loadHighscore();
             updateUI();
             requestAnimationFrame(gameLoop);
         }
