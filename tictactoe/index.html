@@ -418,6 +418,18 @@
             messageOverlay.classList.remove('active');
         }
 
+        // Returns a move where `player` wins immediately, or null
+        function getImmediateMove(player) {
+            const empty = getEmptyCells();
+            for (const move of empty) {
+                board[move.r][move.c] = player;
+                const wins = checkWin(board, player);
+                board[move.r][move.c] = '';
+                if (wins) return move;
+            }
+            return null;
+        }
+
         function makeAIMove() {
             if (!gameActive) return;
 
@@ -427,15 +439,19 @@
             if (difficulty === 'easy') {
                 move = getRandomMove();
             } else if (difficulty === 'medium') {
-                // 50% chance for random, 50% for smart move
-                if (Math.random() > 0.5) {
-                    move = getSmartMove();
-                } else {
-                    move = getRandomMove();
+                // Always react to game-ending situations first
+                move = getImmediateMove(AI) || getImmediateMove(PLAYER);
+                if (!move) {
+                    // 50% chance for random, 50% for smart move
+                    if (Math.random() > 0.5) {
+                        move = getSmartMove();
+                    } else {
+                        move = getRandomMove();
+                    }
                 }
             } else {
-                // Hard
-                move = getSmartMove();
+                // Hard: explicit win/block + minimax (minimax also covers these, but explicit is safer for depth-limited boards)
+                move = getImmediateMove(AI) || getImmediateMove(PLAYER) || getSmartMove();
             }
 
             // Fallback if smart move fails
@@ -482,7 +498,7 @@
 
             let bestScore = -Infinity;
             let bestMove = null;
-            let maxDepth = size === 3 ? Infinity : (size === 4 ? 4 : 2); // Limit depth for large boards
+            let maxDepth = size === 3 ? Infinity : (size === 4 ? 6 : (size === 5 ? 4 : 3)); // Limit depth for large boards
 
             // Optimization for large boards: only consider cells adjacent to occupied ones
             let candidateCells = size > 3 ? getCandidateCells(board) : emptyCells;
@@ -601,8 +617,8 @@
         }
 
         function evaluateLines(b, p) {
-            let lines = 0;
-            // Check horizontal potentials
+            let score = 0;
+            // Horizontal
             for(let r=0; r<size; r++) {
                 for(let c=0; c<=size-winCondition; c++) {
                     let count = 0;
@@ -611,10 +627,10 @@
                         if(b[r][c+i] === p) count++;
                         else if(b[r][c+i] === '') empty++;
                     }
-                    if(count > 0 && count + empty === winCondition) lines += Math.pow(10, count);
+                    if(count > 0 && count + empty === winCondition) score += Math.pow(10, count);
                 }
             }
-            // Vertical potentials
+            // Vertical
             for(let c=0; c<size; c++) {
                 for(let r=0; r<=size-winCondition; r++) {
                     let count = 0;
@@ -623,10 +639,34 @@
                         if(b[r+i][c] === p) count++;
                         else if(b[r+i][c] === '') empty++;
                     }
-                    if(count > 0 && count + empty === winCondition) lines += Math.pow(10, count);
+                    if(count > 0 && count + empty === winCondition) score += Math.pow(10, count);
                 }
             }
-            return lines;
+            // Diagonal top-left to bottom-right
+            for(let r=0; r<=size-winCondition; r++) {
+                for(let c=0; c<=size-winCondition; c++) {
+                    let count = 0;
+                    let empty = 0;
+                    for(let i=0; i<winCondition; i++) {
+                        if(b[r+i][c+i] === p) count++;
+                        else if(b[r+i][c+i] === '') empty++;
+                    }
+                    if(count > 0 && count + empty === winCondition) score += Math.pow(10, count);
+                }
+            }
+            // Diagonal bottom-left to top-right
+            for(let r=winCondition-1; r<size; r++) {
+                for(let c=0; c<=size-winCondition; c++) {
+                    let count = 0;
+                    let empty = 0;
+                    for(let i=0; i<winCondition; i++) {
+                        if(b[r-i][c+i] === p) count++;
+                        else if(b[r-i][c+i] === '') empty++;
+                    }
+                    if(count > 0 && count + empty === winCondition) score += Math.pow(10, count);
+                }
+            }
+            return score;
         }
 
         resetBtn.addEventListener('click', initGame);
