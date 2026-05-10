@@ -13,6 +13,7 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 - **[Kraje](./kraje/)** 🌍 – Sprawdź swoją wiedzę o krajach, stolicach i flagach.
 - **[Memo](./memo/)** 🃏 – Znajdź wszystkie pary ukrytych obrazków.
 - **[Puzzle](./puzzle/)** 🧩 – Składaj obrazki z puzzli, kawałek po kawałku.
+- **[Tetris](./tetris/)** 🟦 – Klasyczny Tetris z neonową grafiką, SRS, systemem hold i podglądem następnych klocków.
 - **[Pytania](./pytania/)** 🧠 – Quiz wiedzy ogólnej – historia, nauka, kultura i wiele więcej.
 - **[Pytanka](./pytanka/)** 🐣 – Quiz dla dzieci z 3 odpowiedziami do wyboru.
 
