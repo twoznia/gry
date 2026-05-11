@@ -439,16 +439,42 @@
             update() {
                 if (this.cooldownTimer > 0) this.cooldownTimer--;
 
-                // Znajdź najbliższego wroga w zasięgu
+                // Znajdź cel w zasięgu
                 let target = null;
-                let minDst = this.range;
 
-                for (let i = 0; i < enemies.length; i++) {
-                    const e = enemies[i];
-                    const dst = Math.hypot(this.x - e.x, this.y - e.y);
-                    if (dst <= minDst) {
-                        minDst = dst;
-                        target = e;
+                if (this.type === 'sniper') {
+                    // Snajper celuje najpierw w wroga najdalej wzdłuż ścieżki
+                    // (najwyższy pathIndex, a przy równym — najbliżej kolejnego węzła)
+                    let bestIndex = -1;
+                    let bestProgress = -1; // postęp w obrębie segmentu ścieżki
+
+                    for (let i = 0; i < enemies.length; i++) {
+                        const e = enemies[i];
+                        const dst = Math.hypot(this.x - e.x, this.y - e.y);
+                        if (dst > this.range) continue;
+
+                        // Oblicz postęp jako pathIndex + ułamek przejścia do następnego węzła
+                        const nextWp = pathPixels[e.pathIndex];
+                        const progress = nextWp
+                            ? e.pathIndex - Math.hypot(nextWp.x - e.x, nextWp.y - e.y) / (CELL_SIZE * 4)
+                            : e.pathIndex;
+
+                        if (progress > bestProgress) {
+                            bestProgress = progress;
+                            bestIndex = i;
+                            target = e;
+                        }
+                    }
+                } else {
+                    // Pozostałe wieże strzelają do najbliższego wroga
+                    let minDst = this.range;
+                    for (let i = 0; i < enemies.length; i++) {
+                        const e = enemies[i];
+                        const dst = Math.hypot(this.x - e.x, this.y - e.y);
+                        if (dst <= minDst) {
+                            minDst = dst;
+                            target = e;
+                        }
                     }
                 }
 
