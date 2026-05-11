@@ -445,7 +445,6 @@
                 if (this.type === 'sniper') {
                     // Snajper celuje najpierw w wroga najdalej wzdłuż ścieżki
                     // (najwyższy pathIndex, a przy równym — najbliżej kolejnego węzła)
-                    let bestIndex = -1;
                     let bestProgress = -1; // postęp w obrębie segmentu ścieżki
 
                     for (let i = 0; i < enemies.length; i++) {
@@ -453,7 +452,10 @@
                         const dst = Math.hypot(this.x - e.x, this.y - e.y);
                         if (dst > this.range) continue;
 
-                        // Oblicz postęp jako pathIndex + ułamek przejścia do następnego węzła
+                        // Oblicz postęp jako pathIndex + ułamek przejścia do następnego węzła.
+                        // Dzielnik (CELL_SIZE * 4) normalizuje odległość do węzła do przedziału ~[0,1]
+                        // (segmenty ścieżki mają typową długość 4–11 CELL_SIZE, ale ułamek służy
+                        // wyłącznie do rozróżnienia wrogów na tym samym segmencie).
                         const nextWp = pathPixels[e.pathIndex];
                         const progress = nextWp
                             ? e.pathIndex - Math.hypot(nextWp.x - e.x, nextWp.y - e.y) / (CELL_SIZE * 4)
@@ -461,7 +463,6 @@
 
                         if (progress > bestProgress) {
                             bestProgress = progress;
-                            bestIndex = i;
                             target = e;
                         }
                     }
