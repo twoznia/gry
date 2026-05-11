@@ -345,7 +345,7 @@
         const ENEMY_TYPES = {
             normal: { hp: 100, speed: 1.5, reward: 10, color: '#f87171', radius: 12 }, // Czerwony
             fast: { hp: 60, speed: 2.8, reward: 12, color: '#fbbf24', radius: 8 },   // Żółty
-            tank: { hp: 400, speed: 0.8, reward: 30, color: '#94a3b8', radius: 16 }   // Szary
+            tank: { hp: 400, speed: 0.8, reward: 60, color: '#94a3b8', radius: 16 }   // Szary
         };
 
         // Zmienne do fali
@@ -442,7 +442,33 @@
                 // Znajdź cel w zasięgu
                 let target = null;
 
-                if (this.type === 'sniper') {
+                // Pomocnicza funkcja: postęp wroga wzdłuż ścieżki (wyższy = bliżej końca)
+                const getProgress = (e) => {
+                    const nextWp = pathPixels[e.pathIndex];
+                    return nextWp
+                        ? e.pathIndex - Math.hypot(nextWp.x - e.x, nextWp.y - e.y) / (CELL_SIZE * 4)
+                        : e.pathIndex;
+                };
+
+                // Priorytet: wróg w zasięgu, którego można zabić jednym strzałem
+                // i który jest najdalej wzdłuż ścieżki (najblizej końca drogi)
+                let killTarget = null;
+                let killProgress = -1;
+                for (let i = 0; i < enemies.length; i++) {
+                    const e = enemies[i];
+                    const dst = Math.hypot(this.x - e.x, this.y - e.y);
+                    if (dst > this.range) continue;
+                    if (e.hp <= this.damage) {
+                        const prog = getProgress(e);
+                        if (prog > killProgress) {
+                            killProgress = prog;
+                            killTarget = e;
+                        }
+                    }
+                }
+                if (killTarget) {
+                    target = killTarget;
+                } else if (this.type === 'sniper') {
                     // Snajper celuje najpierw w wroga najdalej wzdłuż ścieżki
                     // (najwyższy pathIndex, a przy równym — najbliżej kolejnego węzła)
                     let bestProgress = -1; // postęp w obrębie segmentu ścieżki
@@ -452,14 +478,7 @@
                         const dst = Math.hypot(this.x - e.x, this.y - e.y);
                         if (dst > this.range) continue;
 
-                        // Oblicz postęp jako pathIndex + ułamek przejścia do następnego węzła.
-                        // Dzielnik (CELL_SIZE * 4) normalizuje odległość do węzła do przedziału ~[0,1]
-                        // (segmenty ścieżki mają typową długość 4–11 CELL_SIZE, ale ułamek służy
-                        // wyłącznie do rozróżnienia wrogów na tym samym segmencie).
-                        const nextWp = pathPixels[e.pathIndex];
-                        const progress = nextWp
-                            ? e.pathIndex - Math.hypot(nextWp.x - e.x, nextWp.y - e.y) / (CELL_SIZE * 4)
-                            : e.pathIndex;
+                        const progress = getProgress(e);
 
                         if (progress > bestProgress) {
                             bestProgress = progress;
@@ -683,7 +702,7 @@
                 // Mały bonus za przejście fali
                 money += 50 + (wave * 10);
                 score += 100 * wave; // Bonusowe punkty za falę
-                lives += 1; // +1 życie co falę
+                lives += wave; // +1 więcej życia za każdy kolejny poziom
                 
                 saveHighscore();
                 updateUI();
