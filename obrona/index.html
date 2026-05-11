@@ -702,7 +702,7 @@
                 // Mały bonus za przejście fali
                 money += 50 + (wave * 10);
                 score += 100 * wave; // Bonusowe punkty za falę
-                lives += wave; // +1 więcej życia za każdy kolejny poziom
+                lives += wave; // Fala N daje N żyć (rośnie o 1 więcej z każdą kolejną falą)
                 
                 saveHighscore();
                 updateUI();
