@@ -203,7 +203,52 @@
         let db, auth, currentUser, appId;
         let highScore = 0;
 
+        const LS_KEY = 'neonJumperHighscore';
+
+        function loadHighscoreLocal() {
+            const saved = parseInt(localStorage.getItem(LS_KEY)) || 0;
+            if (saved > highScore) {
+                highScore = saved;
+                document.getElementById('highscore-display').innerText = highScore;
+            }
+        }
+
+        function saveHighscoreLocal() {
+            if (score > highScore) {
+                highScore = score;
+                document.getElementById('highscore-display').innerText = highScore;
+                localStorage.setItem(LS_KEY, highScore);
+            }
+        }
+
+        async function loadHighscore() {
+            loadHighscoreLocal();
+            if (!currentUser || !db) return;
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'records', 'neon_highscore');
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const cloudScore = docSnap.data().score || 0;
+                    if (cloudScore > highScore) {
+                        highScore = cloudScore;
+                        document.getElementById('highscore-display').innerText = highScore;
+                        localStorage.setItem(LS_KEY, highScore);
+                    }
+                }
+            } catch (e) {}
+        }
+
+        async function saveHighscore() {
+            saveHighscoreLocal();
+            if (!currentUser || !db) return;
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'records', 'neon_highscore');
+                await setDoc(docRef, { score: highScore });
+            } catch (e) {}
+        }
+
         // Firebase Setup
+        loadHighscoreLocal();
         try {
             const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
             if (Object.keys(firebaseConfig).length > 0) {
@@ -227,28 +272,6 @@
                 });
             }
         } catch (e) { console.warn("Firebase Init Error"); }
-
-        async function loadHighscore() {
-            if (!currentUser || !db) return;
-            try {
-                const docRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'records', 'neon_highscore');
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    highScore = docSnap.data().score || 0;
-                    document.getElementById('highscore-display').innerText = highScore;
-                }
-            } catch (e) {}
-        }
-
-        async function saveHighscore() {
-            if (!currentUser || !db || score <= highScore) return;
-            highScore = score;
-            document.getElementById('highscore-display').innerText = highScore;
-            try {
-                const docRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'records', 'neon_highscore');
-                await setDoc(docRef, { score: highScore });
-            } catch (e) {}
-        }
 
         let score = 0;
         let level = 1;
@@ -286,11 +309,12 @@
             ]
         ];
 
-        const keys = { left: false, right: false, up: false };
+        const keys = { left: false, right: false, up: false, down: false };
 
         window.addEventListener('keydown', (e) => {
             if(e.code === 'ArrowLeft') keys.left = true;
             if(e.code === 'ArrowRight') keys.right = true;
+            if(e.code === 'ArrowDown') { keys.down = true; e.preventDefault(); }
             if(e.code === 'ArrowUp' || e.code === 'Space') {
                 keys.up = true;
                 if(gameState === 'START' || gameState === 'GAMEOVER') startGame();
@@ -301,6 +325,7 @@
         window.addEventListener('keyup', (e) => {
             if(e.code === 'ArrowLeft') keys.left = false;
             if(e.code === 'ArrowRight') keys.right = false;
+            if(e.code === 'ArrowDown') keys.down = false;
             if(e.code === 'ArrowUp' || e.code === 'Space') keys.up = false;
         });
 
@@ -361,6 +386,11 @@
                 // Szybowanie: jeśli opada i trzyma UP, spada wolniej
                 if (this.vy > 0 && keys.up) {
                     currentGravity = 0.1; 
+                }
+
+                // Szybkie opadanie: strzałka w dół
+                if (!this.isGrounded && keys.down) {
+                    currentGravity = this.gravity * 4;
                 }
 
                 this.vy += currentGravity;
