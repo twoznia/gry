@@ -6,7 +6,8 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 
 - **[Pytania](./pytania/)** 🧠 – Quiz wiedzy ogólnej – historia, nauka, kultura i wiele więcej.
 - **[Pytanka](./pytanka/)** 💡 – Quiz dla dzieci z 3 odpowiedziami do wyboru.
-- **[Soltaire](./soltaire/)** ♠️ – Klasyczny pasjans w stylu Piatnik.
+- **[Kulki](./kulki/)** 🔵 – Układaj linie kolorowych kulek w stylu klasycznego Color Lines.
+- **[Soltaire](./soltaire/)** ♥️ – Klasyczny pasjans w stylu Piatnik.
 - **[Wyścigi Aut](./auta/)** 🏎️ – Szybka jazda i omijanie przeszkód.
 - **[River Raid](./riverraid/)** ✈️ – Arcadowy lot bojowy nad rzeką z paliwem, mostami i wrogami.
 - **[Mat-Jaja](./mat-jaja/)** 🥚 – Matematyczna zabawa z jajkami w roli głównej.
