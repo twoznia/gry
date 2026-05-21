@@ -21,7 +21,8 @@
 
         /* Precyzyjne proporcje pasjansowe z zachowaniem zasady 12% widoczności */
         :root {
-            --card-width: clamp(55px, min(8.2vw, 11.2vh), 115px);
+            --card-scale: 1.2;
+            --card-width: calc(clamp(55px, min(8.2vw, 11.2vh), 115px) * var(--card-scale));
             --card-height: calc(var(--card-width) * 1.45);
             /* Odstęp między kartami na stole wynosi dokładnie 12% szerokości karty */
             --card-gap: calc(var(--card-width) * 0.12);
@@ -275,6 +276,9 @@
                     ✨ Autouzupełnij
                 </button>
                 
+                <button id="zoom-out-btn" class="bg-slate-800 hover:bg-slate-700 active:scale-95 transition-all text-white px-3 py-2 rounded-xl text-sm font-bold flex items-center border border-white/5 disabled:opacity-40 disabled:pointer-events-none" title="Pomniejsz karty">🔍−</button>
+                <button id="zoom-in-btn" class="bg-slate-800 hover:bg-slate-700 active:scale-95 transition-all text-white px-3 py-2 rounded-xl text-sm font-bold flex items-center border border-white/5 disabled:opacity-40 disabled:pointer-events-none" title="Powiększ karty">🔍+</button>
+
                 <button id="hint-btn" class="bg-slate-800 hover:bg-slate-700 active:scale-95 transition-all text-white px-3.5 py-2 rounded-xl text-sm font-bold flex items-center gap-1.5 border border-white/5">
                     💡 Podpowiedź
                 </button>
@@ -1543,8 +1547,38 @@
             }
         });
 
+        // Zoom kart
+        const CARD_SCALE_MIN = 0.8;
+        const CARD_SCALE_MAX = 1.6;
+        const CARD_SCALE_STEP = 0.1;
+        const CARD_SCALE_DEFAULT = 1.2;
+        const CARD_SCALE_STORAGE_KEY = 'soltaire_card_scale';
+
+        function applyCardScale(scale) {
+            scale = Math.round(scale * 10) / 10;
+            scale = Math.min(CARD_SCALE_MAX, Math.max(CARD_SCALE_MIN, scale));
+            document.documentElement.style.setProperty('--card-scale', scale);
+            localStorage.setItem(CARD_SCALE_STORAGE_KEY, scale);
+            document.getElementById('zoom-in-btn').disabled = scale >= CARD_SCALE_MAX;
+            document.getElementById('zoom-out-btn').disabled = scale <= CARD_SCALE_MIN;
+        }
+
+        function getCurrentCardScale() {
+            return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--card-scale')) || CARD_SCALE_DEFAULT;
+        }
+
+        document.getElementById('zoom-in-btn').addEventListener('click', () => {
+            applyCardScale(getCurrentCardScale() + CARD_SCALE_STEP);
+        });
+
+        document.getElementById('zoom-out-btn').addEventListener('click', () => {
+            applyCardScale(getCurrentCardScale() - CARD_SCALE_STEP);
+        });
+
         // Automatyczny start przy załadowaniu okna
         window.onload = function() {
+            const savedScale = parseFloat(localStorage.getItem(CARD_SCALE_STORAGE_KEY));
+            applyCardScale(isNaN(savedScale) ? CARD_SCALE_DEFAULT : savedScale);
             dealGame();
         };
     </script>
