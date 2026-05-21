@@ -23,7 +23,8 @@
         :root {
             --card-width: clamp(55px, min(8.2vw, 11.2vh), 115px);
             --card-height: calc(var(--card-width) * 1.45);
-            --card-gap: clamp(6px, 1.2vw, 16px);
+            /* Odstęp między kartami na stole wynosi dokładnie 12% szerokości karty */
+            --card-gap: calc(var(--card-width) * 0.12);
             /* Odstęp kaskady wynosi dokładnie 12% wysokości karty (kolejna karta zakrywa 88% poprzedniej) */
             --tableau-offset-y: calc(var(--card-height) * 0.12);
         }
@@ -102,13 +103,19 @@
             font-weight: bold;
         }
 
-        /* Klasyczny zielony stół pasjansowy */
+        /* Klasyczny zielony stół pasjansowy - zoptymalizowany pod kątem wyrównania do prawej strony */
         .table-grid {
-            display: grid;
-            grid-template-rows: auto 1fr;
+            display: flex;
+            flex-direction: column;
             flex-grow: 1;
             gap: 1.2rem;
             padding-top: 0.5rem;
+            /* Dokładna szerokość 7 kolumn wraz z odstępami 12% szerokości karty */
+            width: calc(7 * var(--card-width) + 6 * var(--card-gap));
+            /* Wyrównanie całego stołu gry od prawej strony ekranu */
+            margin-left: auto;
+            margin-right: 0;
+            max-width: 100%;
         }
 
         /* Pozycjonowanie kart w kolumnach */
@@ -309,7 +316,7 @@
             </div>
 
             <!-- Dolny rząd gniazd (Kolumny Robocze - Tableau: od 1 do 7 kart od lewej do prawej) -->
-            <div id="tableau-container" class="grid grid-cols-7 gap-[var(--card-gap)] justify-items-center px-2">
+            <div id="tableau-container" class="flex gap-[var(--card-gap)] justify-end px-2">
                 <div id="tableau-0" class="tableau-column"></div>
                 <div id="tableau-1" class="tableau-column"></div>
                 <div id="tableau-2" class="tableau-column"></div>
@@ -816,15 +823,11 @@
                 const colCards = tableau[colIdx];
                 colCards.forEach((card, cardIdx) => {
                     const cardEl = document.createElement('div');
-                    // Ponieważ poprawiliśmy style klasy .card.back, ta karta zachowa prawidłowy position: absolute!
                     cardEl.className = `card ${!card.faceUp ? 'back' : ''}`;
                     cardEl.id = card.id;
                     cardEl.innerHTML = createCardSVG(card);
 
                     // PRECYZYJNA KASKADA W DÓŁ (ZAKRYWAJĄCA DOKŁADNIE 88% poprzedniej karty)
-                    // Każda kolejna karta (zarówno zakryta, jak i odkryta) leży poniżej poprzedniej,
-                    // przesunięta o dokładnie 12% wysokości karty (odstęp kaskady).
-                    // Dzięki temu karty zakryte i odkryte są idealnie uporządkowane od góry do dołu.
                     cardEl.style.top = 'calc(' + cardIdx + ' * var(--tableau-offset-y))';
                     cardEl.style.left = '0px';
                     cardEl.style.zIndex = cardIdx;
@@ -976,7 +979,7 @@
             for (let i = 0; i < 7; i++) {
                 const el = document.getElementById(`tableau-${i}`);
                 const rect = el.getBoundingClientRect();
-                if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+                if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom + 350) {
                     return { type: 'tableau', index: i };
                 }
             }
