@@ -4,18 +4,24 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 
 ## Zawartość
 
-- **[Wyścigi Aut](./auta/)** 🏎️ – Gra wyścigowa, w której omijasz przeszkody i jedziesz jak najszybciej.
+- **[Pytania](./pytania/)** 🧠 – Quiz wiedzy ogólnej – historia, nauka, kultura i wiele więcej.
+- **[Pytanka](./pytanka/)** 💡 – Quiz dla dzieci z 3 odpowiedziami do wyboru.
+- **[Wyścigi Aut](./auta/)** 🏎️ – Szybka jazda i omijanie przeszkód.
 - **[River Raid](./riverraid/)** ✈️ – Arcadowy lot bojowy nad rzeką z paliwem, mostami i wrogami.
 - **[Mat-Jaja](./mat-jaja/)** 🥚 – Matematyczna zabawa z jajkami w roli głównej.
-- **[Rybak](./rybak/)** 🚣 – Spokojna gra wędkarska na jeziorze.
-- **[Pisanie](./pisanie/)** 🖊️ – Nauka pisania polskich słów, literka po literce.
-- **[Słówka](./słówka/)** 🇬🇧 – Trener słówek do nauki polskiego i angielskiego.
-- **[Kraje](./kraje/)** 🌍 – Sprawdź swoją wiedzę o krajach, stolicach i flagach.
-- **[Memo](./memo/)** 🃏 – Znajdź wszystkie pary ukrytych obrazków.
+- **[Rybak](./rybak/)** 🚣‍♂️ – Spokojny połów na pełnym jeziorze.
+- **[Pisanie](./pisanie/)** 🖊️ – Naucz się pisać polskie słowa, literka po literce.
+- **[Słówka](./słówka/)** 🇬🇧 – Trener słówek z nauką polski ↔ angielski.
+- **[Kraje](./kraje/)** 🌍 – Sprawdź swoją wiedzę o krajach, stolicach i flagach!
+- **[Memo](./memo/)** 🃏 – Znajdź wszystkie pary ukrytych obrazków!
 - **[Puzzle](./puzzle/)** 🧩 – Składaj obrazki z puzzli, kawałek po kawałku.
-- **[Tetris](./tetris/)** 🟦 – Klasyczny Tetris z neonową grafiką, SRS, systemem hold i podglądem następnych klocków.
-- **[Pytania](./pytania/)** 🧠 – Quiz wiedzy ogólnej – historia, nauka, kultura i wiele więcej.
-- **[Pytanka](./pytanka/)** 🐣 – Quiz dla dzieci z 3 odpowiedziami do wyboru.
+- **[Tetris](./tetris/)** 🟦 – Klasyczny Tetris z neonową grafiką, systemem hold i podglądem następnych klocków.
+- **[Kółko i Krzyżyk](./tictactoe/)** ⭕ – Klasyczna gra kółko i krzyżyk z AI na trzech poziomach trudności i różnych rozmiarach planszy.
+- **[Tower Defense](./obrona/)** 🏰 – Broń swojej bazy przed falami wrogów – stawiaj wieże i przetrwaj jak najdłużej!
+- **[Ptak](./ptak/)** 🐦 – Leć i omijaj przeszkody – klasyczna zabawa w stylu Flappy Bird!
+- **[Saper](./saper/)** 💣 – Odkryj wszystkie pola nie trafiając na minę – klasyczny Saper.
+- **[Skoczek](./jumper/)** 🦘 – Skacz po platformach i zbieraj punkty – neonowy platformer!
+- **[Neonowy Wąż](./snake/)** 🐍 – Klasyczny Snake w neonowym stylu – rośnij i unikaj zderzeń.
 
 ---
 
