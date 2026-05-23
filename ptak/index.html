@@ -179,10 +179,21 @@
         const scoreDisplay = document.getElementById('current-score');
         const levelDisplay = document.getElementById('current-level');
         const highScoreDisplay = document.getElementById('high-score');
+        const LOCAL_HIGHSCORE_KEY = 'ptak_highscore';
 
         // Baza Danych Firebase
         let db, auth, currentUser, appId;
         let highScore = 0;
+
+        function loadLocalHighscore() {
+            const stored = localStorage.getItem(LOCAL_HIGHSCORE_KEY);
+            const parsed = stored !== null ? parseInt(stored, 10) : 0;
+            return Number.isFinite(parsed) ? parsed : 0;
+        }
+
+        function syncHighscoreDisplay() {
+            highScoreDisplay.innerText = highScore;
+        }
 
         try {
             const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
@@ -213,13 +224,17 @@
         }
 
         async function loadHighscore() {
+            highScore = loadLocalHighscore();
+            syncHighscoreDisplay();
+
             if (!currentUser || !db) return;
             try {
                 const docRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'records', 'flappy_highscore');
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
-                    highScore = docSnap.data().score || 0;
-                    highScoreDisplay.innerText = highScore;
+                    highScore = Math.max(highScore, docSnap.data().score || 0);
+                    localStorage.setItem(LOCAL_HIGHSCORE_KEY, String(highScore));
+                    syncHighscoreDisplay();
                 }
             } catch (error) {
                 console.error("Błąd ładowania rekordu:", error);
@@ -227,16 +242,19 @@
         }
 
         async function saveHighscore() {
+            if (score <= highScore) return;
+
+            highScore = score;
+            localStorage.setItem(LOCAL_HIGHSCORE_KEY, String(highScore));
+            syncHighscoreDisplay();
+
             if (!currentUser || !db) return;
-            if (score > highScore) {
-                highScore = score;
-                highScoreDisplay.innerText = highScore;
-                try {
-                    const docRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'records', 'flappy_highscore');
-                    await setDoc(docRef, { score: highScore });
-                } catch (error) {
-                    console.error("Błąd zapisu rekordu:", error);
-                }
+
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'users', currentUser.uid, 'records', 'flappy_highscore');
+                await setDoc(docRef, { score: highScore });
+            } catch (error) {
+                console.error("Błąd zapisu rekordu:", error);
             }
         }
 
