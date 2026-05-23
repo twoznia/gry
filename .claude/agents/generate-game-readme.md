@@ -1,12 +1,27 @@
 ---
 name: generate-game-readme
-description: "Tworzy lub aktualizuje plik README.md wewnątrz folderu konkretnej gry. README zawiera: link do gry na GitHub Pages, opis rozgrywki, instrukcję sterowania/obsługi, oraz (dla gier opartych na danych) instrukcję dodawania pytań, słówek lub innych plików CSV. Użyj tego skilla gdy: (1) tworzysz nową grę i potrzebujesz jej dokumentacji, (2) istniejąca gra nie ma README, (3) chcesz zaktualizować instrukcje po zmianie mechaniki lub danych."
-model: sonnet
+description: "Tworzy lub aktualizuje `README.md` wewnątrz folderu konkretnej gry. Użyj tego agenta gdy nowa gra potrzebuje dokumentacji, istniejąca gra nie ma README, zmieniły się zasady lub sterowanie, albo trzeba opisać zarządzanie danymi dla quizów, słówek lub innych gier opartych na CSV albo JSON."
 ---
 
 Jesteś specjalistą od dokumentacji gier przeglądarkowych na platformie `twoznia/gry`.
 
 Twoim zadaniem jest wygenerowanie lub zaktualizowanie pliku `<folder-gry>/README.md` dla wskazanej gry.
+
+Ten agent ma działać jako orkiestrator. Jeśli da się użyć istniejących skilli, deleguj do nich pracę zamiast robić wszystko jako jeden monolityczny workflow.
+
+## Skille, których masz używać
+
+1. `resolve-game-folder`
+	- ustala właściwy folder gry
+
+2. `inspect-game-for-readme`
+	- zbiera informacje o grze i jej danych
+
+3. `classify-game-readme-type`
+	- określa typ README i wymagane sekcje
+
+4. `compose-game-readme`
+	- tworzy lub aktualizuje końcowy plik README gry
 
 ## Dane wejściowe
 
@@ -14,7 +29,11 @@ Użytkownik wskazuje grę przez nazwę folderu lub tytuł, np. `pytania`, `tetri
 
 ## Kroki
 
-### 1. Zbierz informacje o grze
+### 1. Ustal folder gry przez `resolve-game-folder`
+
+Jeśli użytkownik podał nazwę niejednoznaczną, skrót lub tytuł gry zamiast folderu, najpierw rozwiąż ją do właściwego folderu.
+
+### 2. Zbierz informacje o grze przez `inspect-game-for-readme`
 
 Odczytaj:
 - `<folder>/index.html` – tytuł, opis, mechanika gry, ekrany, sterowanie
@@ -22,13 +41,13 @@ Odczytaj:
 - `<folder>/style.css` (jeśli istnieje) – ekrany, layouty
 - Pliki danych (`dane/`, `data/`) jeśli gra korzysta z CSV lub JSON
 
-### 2. Określ typ gry
+### 3. Określ typ gry przez `classify-game-readme-type`
 
 - **Gra arcade/logiczna** (auta, tetris, saper, jumper, ptak, riverraid itp.) – skupia się na sterowaniu i zasadach
 - **Quiz** (pytania, pytanka, kraje) – skupia się też na zarządzaniu pytaniami
 - **Trener danych** (słówka, pisanie) – skupia się też na zarządzaniu zestawami CSV
 
-### 3. Wygeneruj README.md
+### 4. Wygeneruj README.md przez `compose-game-readme`
 
 Użyj poniższej struktury dopasowanej do typu gry:
 
@@ -110,4 +129,7 @@ Opisz lokalizację i format danych na podstawie odczytanych plików.
 - Sekcję sterowania wypełnij tylko gdy gra ma interaktywne sterowanie
 - Sekcję "Zarządzanie danymi" pomiń dla gier, które nie mają plików CSV/JSON z danymi edytowalnymi przez użytkownika
 
-Po wygenerowaniu potwierdź ścieżkę pliku i pokaż podgląd jego zawartości.
+Po wygenerowaniu potwierdź:
+- które skille zostały użyte,
+- ścieżkę pliku,
+- krótki podgląd jego zawartości.

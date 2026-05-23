@@ -31,9 +31,13 @@
         @media (prefers-reduced-motion: reduce) {
             .timer-bar { transition: none !important; }
         }
+        .back-link { position: fixed; top: 10px; left: 10px; z-index: 100; background: #334155; color: #fff; border: 1px solid #475569; border-radius: 8px; padding: 8px 14px; text-decoration: none; font-size: 13px; }
+        .back-link:hover { background: #475569; }
     </style>
 </head>
 <body>
+    <a class="back-link" href="../">← Wróć</a>
+
 
 <div class="container" id="setup">
     <h2><img src="https://flagcdn.com/24x18/gb.png" width="24" height="18" alt="" aria-hidden="true" style="display:inline-block;vertical-align:middle;border-radius:3px;margin-right:8px;">Trener Słówek</h2>

@@ -10,9 +10,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <style>
+        .back-link {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+            background: #334155;
+            color: #fff;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            padding: 8px 14px;
+            text-decoration: none;
+            font-size: 13px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .back-link:hover { background: #475569; }
+    </style>
         body {
             font-family: 'Rajdhani', sans-serif;
+    <a class="back-link" href="../">← Wróć</a>
+
             background-color: #030712;
             touch-action: none; /* Zapobiega domyślnym gestom przeglądarki, np. zoom, swipe down to refresh */
             user-select: none;

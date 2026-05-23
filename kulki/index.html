@@ -8,9 +8,26 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Czcionka stylizowana na retro systemowe fonty -->
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+    .back-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 100;
+      background: #334155;
+      color: #fff;
+      border: 1px solid #475569;
+      border-radius: 8px;
+      padding: 8px 14px;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .back-link:hover { background: #475569; }
+  </style>
     :root {
       --win-bg: #c0c0c0;
+  <a class="back-link" href="../">← Wróć</a>
+
       --win-blue: #000080;
       --win-blue-light: #1084d0;
       --win-dark-shadow: #404040;

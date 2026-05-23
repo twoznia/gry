@@ -158,11 +158,27 @@
         #message-overlay.active .message-box {
             transform: scale(1);
         }
+        .back-link {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+            background: #334155;
+            color: #fff;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            padding: 8px 14px;
+            text-decoration: none;
+            font-size: 13px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .back-link:hover { background: #475569; }
     </style>
 </head>
 <body>
 
-    <a href="../" style="position:fixed;top:10px;left:10px;z-index:100;background:rgba(0,0,0,0.55);color:#fff;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13px;font-family:'Segoe UI',sans-serif;backdrop-filter:blur(4px);">← Menu</a>
+    <a class="back-link" href="../">← Wróć</a>
 
     <div class="glass-panel p-6 sm:p-10 w-full max-w-2xl flex flex-col items-center">
         <h1 class="text-4xl sm:text-5xl font-extrabold mb-6 text-center tracking-tight">

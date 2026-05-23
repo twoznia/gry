@@ -19,7 +19,7 @@
       margin-bottom: 10px;
       flex-wrap: wrap;
     }
-    #back-btn {
+    a.back-link {
       background: rgba(255,255,255,0.2);
       color: white;
       border: 2px solid rgba(255,255,255,0.4);

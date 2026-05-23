@@ -17,6 +17,23 @@
             touch-action: none; /* Blokuje przybliżanie i przesuwanie strony */
         }
 
+        a.back-link {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+            background: #334155;
+            color: #fff;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            padding: 8px 14px;
+            text-decoration: none;
+            font-size: 13px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        a.back-link:hover { background: #475569; }
+
         body.record-beaten {
             --bg-lcd: #f3ee9b;
         }

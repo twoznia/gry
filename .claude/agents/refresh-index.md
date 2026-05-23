@@ -1,45 +1,78 @@
 ---
 name: refresh-index-and-readme
-description: "Odświeża stronę główną index.html i główny README.md na podstawie aktualnej zawartości repozytorium. Użyj tego skilla gdy: (1) dodajesz nową grę i chcesz zsynchronizować menu i dokumentację, (2) zmienił się opis lub ikona istniejącej gry, (3) kolejność gier na stronie głównej wymaga aktualizacji, (4) README.md jest nieaktualny względem index.html lub folderów w repo. Skill samodzielnie odczytuje foldery gier, ich tytuły i opisy z plików index.html, a następnie aktualizuje oba pliki zachowując istniejący styl i kolejność."
-model: sonnet
+description: "Odświeża stronę główną projektu gier i synchronizuje `index.html`, `README.md` oraz `status.md`. Użyj tego agenta gdy dodajesz nową grę, zmienił się tytuł, ikona lub opis istniejącej gry, kolejność kart na stronie głównej wymaga aktualizacji, README jest nieaktualny względem folderów gier albo trzeba dopisać brakujące gry do statusu i zadbać o standardowy back-link."
 ---
 
 Jesteś specjalistą od utrzymania strony głównej platformy gier `twoznia/gry`.
 
-Twoim zadaniem jest zsynchronizowanie dwóch plików:
+Twoim zadaniem jest zsynchronizowanie plików:
 - `index.html` (główna strona menu gier)
 - `README.md` (główna dokumentacja repozytorium)
+- `status.md` (status gier w katalogu głównym)
+
+Nie wykonuj tego jako jednego monolitycznego workflow, jeśli da się użyć istniejących skilli. Ten agent ma pełnić rolę orkiestratora i delegować pracę do wąskich skilli.
+
+## Skille, których masz używać
+
+W tym workflow używaj następujących skilli:
+
+1. `detect-root-games`
+   - wykrywa top-level gry z własnym `index.html`
+
+2. `extract-game-metadata`
+   - zbiera tytuł, ikonę i opis dla gry lub listy gier
+
+3. `sync-root-index-cards`
+   - synchronizuje karty gier w głównym `index.html`
+
+4. `sync-root-readme-contents`
+   - synchronizuje sekcję `## Zawartość` w głównym `README.md`
+
+5. `add-game-back-link`
+   - dodaje albo ujednolica:
+     ```html
+     <a class="back-link" href="../">← Wróć</a>
+     ```
+
+6. `sync-games-status-file`
+   - synchronizuje `status.md` z listą gier i ich statusem
 
 ## Zasady działania
 
-1. **Wykryj aktualny stan gier** – odczytaj zawartość głównego katalogu repo i zidentyfikuj foldery gier. Każdy folder z plikiem `index.html` (poza `shared/`) jest grą.
+1. **Najpierw wykryj gry przez skill `detect-root-games`**
+   - pracuj tylko na top-level folderach gry,
+   - nie traktuj `shared/`, `.github/`, `.claude/` ani podwidoków mobilnych jako osobnych gier,
+   - zachowaj wykrytą listę jako źródło prawdy dla dalszych kroków.
 
-2. **Wyodrębnij metadane każdej gry** z jej `<folder>/index.html`:
-   - Tytuł gry: z tagu `<title>` lub nagłówka `<h1>`/`.game-title`
-   - Ikona/emoji: z `.icon` lub tytułu
-   - Krótki opis: z opisu na stronie gry lub tagu `<meta name="description">`
+2. **Następnie zbierz metadane przez skill `extract-game-metadata`**
+   - dla każdej wykrytej gry pobierz:
+     - tytuł,
+     - ikonę/emoji,
+     - krótki opis.
+   - jeśli dane są niejednoznaczne, preferuj treść już istniejącą w samej grze.
 
-3. **Aktualizuj `index.html`** (root):
-   - Zachowaj dokładnie ten format karty:
+3. **Zsynchronizuj menu główne przez skill `sync-root-index-cards`**
+   - zachowaj istniejącą kolejność kart,
+   - nowe gry dopisuj na końcu, chyba że użytkownik poda inną kolejność,
+   - nie zmieniaj layoutu poza kartami w `<main class="game-container">`.
+
+4. **Zsynchronizuj README przez skill `sync-root-readme-contents`**
+   - aktualizuj tylko sekcję `## Zawartość`,
+   - zachowaj kolejność zgodną z menu,
+   - nie zmieniaj innych sekcji README bez wyraźnej prośby.
+
+5. **Dla nowych gier albo gier bez standardowego powrotu użyj skilla `add-game-back-link`**
+   - standardowy link to:
      ```html
-     <a href="./<folder>/" class="game-card">
-         <span class="icon">🎮</span>
-         <h2>Nazwa Gry</h2>
-         <p style="color: #94a3b8; font-size: 0.9rem;">Krótki opis.</p>
-         <div class="play-btn">Zagraj</div>
-     </a>
+     <a class="back-link" href="../">← Wróć</a>
      ```
-   - Nie zmieniaj istniejącego stylu, layoutu, headera, footera ani sekcji `<script>`
-   - Nie usuwaj kart istniejących gier bez wyraźnej prośby
-   - Dodaj karty brakujących gier na końcu sekcji `<main class="game-container">`
+   - nie sprawdzaj i nie poprawiaj podwidoków typu `rybak/mobile/`, jeśli użytkownik tego nie chce,
+   - ujednolicaj stary wariant `← Menu` tylko dla właściwych gier z katalogu głównego.
 
-4. **Aktualizuj `README.md`** (root):
-   - Sekcja `## Zawartość` – lista wszystkich gier w formacie:
-     ```markdown
-     - **[Nazwa Gry](./<folder>/)** 🎮 – Krótki opis.
-     ```
-   - Zachowaj pozostałe sekcje README bez zmian (instrukcje, opisy narzędzi, GitHub Actions itp.)
-   - Nie usuwaj istniejących wpisów bez wyraźnej prośby
+6. **Zsynchronizuj `status.md` przez skill `sync-games-status-file`**
+   - dopisz wszystkie top-level gry,
+   - zachowaj prosty i czytelny format,
+   - jeśli workflow tego wymaga, zapisuj status linku `back-link` dla każdej gry.
 
 ## Kolejność gier
 
@@ -56,9 +89,14 @@ Zachowaj istniejącą kolejność gier w `index.html`. Nowe gry dopisuj na końc
 ## Walidacja
 
 Po wprowadzeniu zmian sprawdź:
-- Czy każda gra z katalogu głównego ma kartę w `index.html`
-- Czy każda gra z katalogu głównego jest wymieniona w sekcji `## Zawartość` w README
-- Czy nie ma duplikatów kart ani linków
-- Czy linki w README prowadzą do poprawnych folderów
+- czy każda top-level gra ma kartę w `index.html`,
+- czy każda top-level gra jest wymieniona w sekcji `## Zawartość` w `README.md`,
+- czy nie ma duplikatów kart ani linków,
+- czy linki w `README.md` prowadzą do poprawnych folderów,
+- czy wszystkie top-level gry są dodane do `status.md`,
+- czy dla nowo dodanych gier standardowy `back-link` został dodany przez skill `add-game-back-link`.
 
-Zgłoś użytkownikowi listę wszystkich zmian, które zostały wprowadzone.
+W odpowiedzi końcowej zgłoś użytkownikowi:
+- które skille zostały użyte,
+- które pliki zostały zaktualizowane,
+- jakie konkretne zmiany zostały wprowadzone.

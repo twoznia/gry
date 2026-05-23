@@ -14,7 +14,7 @@
         }
 
         /* ── Back button ── */
-        #back-btn {
+        a.back-link {
             position: fixed;
             top: 10px;
             left: 10px;
@@ -31,7 +31,7 @@
             backdrop-filter: blur(4px);
             -webkit-tap-highlight-color: transparent;
         }
-        #back-btn:hover { background: rgba(255,255,255,0.25); }
+        a.back-link:hover { background: rgba(255,255,255,0.25); }
 
         /* ── Language switcher ── */
         #lang-switcher {

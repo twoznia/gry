@@ -9,9 +9,27 @@
     <!-- Import czcionki Inter dla nowoczesnego interfejsu -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
-    <style>
+        .back-link {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+            background: #334155;
+            color: #fff;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            padding: 8px 14px;
+            text-decoration: none;
+            font-size: 13px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .back-link:hover { background: #475569; }
+    </style>
         body {
             font-family: 'Inter', sans-serif;
+    <a class="back-link" href="../">← Wróć</a>
+
             overflow: hidden;
             user-select: none;
             background: radial-gradient(circle, #0f4024 0%, #061f10 100%);
