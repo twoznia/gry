@@ -464,19 +464,25 @@
         const VISUAL_LAYER_SHIFT_X = 12;
         const VISUAL_LAYER_SHIFT_Y = 12;
         const BOARD_VISUAL_PADDING_X = 8;
-        const SCORE_PER_PAIR = 10;
+        const TIME_SCORE_PER_SECOND = 1;
+        const SHOW_MOVE_PENALTY = 5;
+        const UNDO_PENALTY = 5;
+        const SHUFFLE_PENALTY = 30;
+        const HINTS_FIRST_USE_PENALTY = 15;
         const MAX_LAYER_Z = LAYOUT_MAP.reduce((max, layer) => Math.max(max, layer.z), 0);
 
         let tilesOnBoard = [];
         let selectedTileRef = null;
         let deckBase = [];
         let selectedStyleId = null;
-        let hintsEnabled = true;
+        let hintsEnabled = false;
         let zoomLevel = DEFAULT_ZOOM_LEVEL;
         let hintedTiles = [];
         let timerIntervalId = null;
         let elapsedSeconds = 0;
         let currentScore = 0;
+        let penaltyScore = 0;
+        let hintsPenaltyApplied = false;
         let gameCompleted = false;
         let pendingLeaderboardEntry = null;
         let undoState = null;
@@ -518,6 +524,10 @@
         }
 
         function toggleHints() {
+            if (!hintsEnabled && !hintsPenaltyApplied) {
+                hintsPenaltyApplied = true;
+                addPenalty(HINTS_FIRST_USE_PENALTY);
+            }
             hintsEnabled = !hintsEnabled;
             applyHintState();
         }
@@ -557,8 +567,18 @@
             return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
         }
 
+        function recalculateScore() {
+            currentScore = penaltyScore + (elapsedSeconds * TIME_SCORE_PER_SECOND);
+        }
+
         function updateScoreDisplay() {
+            recalculateScore();
             scoreDisplayEl.textContent = String(currentScore);
+        }
+
+        function addPenalty(points) {
+            penaltyScore += points;
+            updateScoreDisplay();
         }
 
         function updateUndoButton() {
@@ -581,6 +601,7 @@
             timerIntervalId = setInterval(() => {
                 elapsedSeconds += 1;
                 updateTimerDisplay();
+                updateScoreDisplay();
             }, 1000);
         }
 
@@ -614,7 +635,7 @@
         function getSortedLeaderboard(entries) {
             return [...entries]
                 .sort((left, right) => {
-                    if (right.score !== left.score) return right.score - left.score;
+                    if (left.score !== right.score) return left.score - right.score;
                     if (left.elapsedSeconds !== right.elapsedSeconds) return left.elapsedSeconds - right.elapsedSeconds;
                     return left.name.localeCompare(right.name, 'pl');
                 })
@@ -649,11 +670,11 @@
             });
         }
 
-        function showLeaderboardModal(title = 'Najlepsze wyniki', message = 'Top 10 wyników', entries = loadLeaderboard()) {
+        function showLeaderboardModal(title = 'Najlepsze wyniki', message = 'Top 10 wyników, mniej punktów = lepiej.', entries = getSortedLeaderboard(loadLeaderboard())) {
             stopTimer();
             leaderboardTitleEl.textContent = title;
             leaderboardMessageEl.textContent = message;
-            renderLeaderboard(entries);
+            renderLeaderboard(getSortedLeaderboard(entries));
             leaderboardModalEl.classList.remove('hidden', 'opacity-0');
         }
 
@@ -661,7 +682,9 @@
             undoState = {
                 kind,
                 score: currentScore,
+                penaltyScore,
                 elapsedSeconds,
+                hintsPenaltyApplied,
                 tiles: tilesOnBoard.map(tile => ({
                     id: tile.id,
                     styleId: tile.styleId,
@@ -716,7 +739,10 @@
             });
 
             currentScore = undoState.score;
+            penaltyScore = undoState.penaltyScore;
             elapsedSeconds = undoState.elapsedSeconds;
+            hintsPenaltyApplied = undoState.hintsPenaltyApplied;
+            addPenalty(UNDO_PENALTY);
             updateScoreDisplay();
             updateTimerDisplay();
             selectedTileRef = null;
@@ -749,7 +775,7 @@
             const leaderboard = saveCurrentResult(nameEntryInputEl.value);
             pendingLeaderboardEntry = null;
             closeNameEntryModal();
-            showLeaderboardModal('Zwycięstwo!', `Twój wynik: ${currentScore} pkt, ${formatElapsedTime(elapsedSeconds)}`, leaderboard);
+            showLeaderboardModal('Zwycięstwo!', `Twój wynik: ${currentScore} pkt, ${formatElapsedTime(elapsedSeconds)}. Mniej punktów = lepiej.`, leaderboard);
         }
 
         function handleVictory() {
@@ -890,6 +916,8 @@
             const move = findAvailableMove();
             if (!move) return;
 
+            addPenalty(SHOW_MOVE_PENALTY);
+
             hintedTiles = move;
             hintedTiles.forEach(tile => {
                 tile.isHinted = true;
@@ -946,6 +974,10 @@
             deckBase = generateBaseDeck();
             gameCompleted = false;
             currentScore = 0;
+            penaltyScore = 0;
+            hintsPenaltyApplied = false;
+            hintsEnabled = false;
+            applyHintState();
             pendingLeaderboardEntry = null;
             undoState = null;
             updateScoreDisplay();
@@ -1074,7 +1106,6 @@
             t1.isSelected = false;
             t2.isSelected = false;
             t1.removed = true; t2.removed = true;
-            currentScore += SCORE_PER_PAIR;
             updateScoreDisplay();
             syncTileClassName(t1);
             syncTileClassName(t2);
@@ -1097,6 +1128,7 @@
             clearHintedTiles();
             deselectCurrent();
             captureUndoState('shuffle');
+            addPenalty(SHUFFLE_PENALTY);
             const remaining = tilesOnBoard.filter(t => !t.removed);
             let activeIdentities = remaining.map(t => ({
                 styleId: t.styleId,
