@@ -11,6 +11,7 @@
   <style>
     .back-link {
       position: fixed;
+
       top: 10px;
       left: 10px;
       z-index: 100;
@@ -39,7 +40,6 @@
     body {
       background-color: var(--desktop-bg);
       font-family: 'Tahoma', 'Arial', sans-serif;
-  <a class="back-link" href="../">← Wróć</a>
 
       image-rendering: pixelated;
       user-select: none;
@@ -342,6 +342,7 @@
   </style>
 </head>
 <body class="flex flex-col items-center justify-start min-h-screen pb-14 pt-4 md:pt-10 px-2">
+  <a class="back-link" href="../">← Wróć</a>
 
   <!-- Główny Kontener Okna Gry -->
   <div class="w-full max-w-lg outset-border-double bg-[#c0c0c0] p-[2px] shadow-2xl">
@@ -377,7 +378,7 @@
         <div class="menu-dropdown-item" onclick="changeDifficulty('hard')">Poziom: Trudny</div>
         <div class="menu-dropdown-item" onclick="changeDifficulty('extreme')">Poziom: Extreme</div>
         <hr class="border-[#808080] my-1">
-        <div class="menu-dropdown-item" onclick="toggleSound()">Dźwięk: <span id="sound-status">Włączony</span></div>
+        <div class="menu-dropdown-item" onclick="toggleSound()">Dźwięk: <span id="sound-status">Wyłączony</span></div>
       </div>
     </div>
 
@@ -407,6 +408,10 @@
             <div id="next-2" class="next-preview-ball"></div>
             <div id="next-3" class="next-preview-ball hidden"></div>
           </div>
+        </div>
+
+        <div class="flex items-end self-end pb-0.5">
+          <button id="hud-sound-btn" type="button" class="w-7 h-7 flex items-center justify-center text-sm text-[#404040] inset-border bg-[#c0c0c0] hover:bg-[#d4d0c8] active:translate-y-[1px]" onclick="toggleSound()" title="Dźwięk wyłączony" aria-label="Dźwięk wyłączony">🔇</button>
         </div>
 
         <!-- Wynik -->
@@ -514,7 +519,6 @@
       <div class="text-xs font-semibold px-2 text-[#404040]">Active Task: Kulki</div>
     </div>
     <div class="inset-border bg-[#c0c0c0] h-[30px] flex items-center px-3 gap-2 text-xs font-bold text-[#404040]">
-      <span id="taskbar-sound-btn" class="cursor-pointer" onclick="toggleSound()">🔊</span>
       <span id="win-clock">17:00</span>
     </div>
   </div>
@@ -526,7 +530,7 @@
     let score = 0;
     let isAnimating = false;
     let difficulty = 'medium';
-    let soundEnabled = true;
+    let soundEnabled = false;
     let audioCtx = null;
     
     // Definicje poziomów trudności
@@ -647,6 +651,7 @@
     window.onload = function() {
       setupClock();
       loadHighScore();
+      updateSoundUI();
       resetGame();
 
       // Zamykanie menu po kliknięciu poza obszar gry
@@ -680,10 +685,23 @@
       document.querySelectorAll('.menu-dropdown').forEach(m => m.style.display = 'none');
     }
 
+    function updateSoundUI() {
+      const soundStatus = document.getElementById('sound-status');
+      const hudSoundBtn = document.getElementById('hud-sound-btn');
+      const icon = soundEnabled ? '🔊' : '🔇';
+      const label = soundEnabled ? 'Dźwięk włączony' : 'Dźwięk wyłączony';
+
+      if (soundStatus) soundStatus.innerText = soundEnabled ? 'Włączony' : 'Wyłączony';
+      if (hudSoundBtn) {
+        hudSoundBtn.innerText = icon;
+        hudSoundBtn.title = label;
+        hudSoundBtn.setAttribute('aria-label', label);
+      }
+    }
+
     function toggleSound() {
       soundEnabled = !soundEnabled;
-      document.getElementById('sound-status').innerText = soundEnabled ? 'Włączony' : 'Wyłączony';
-      document.getElementById('taskbar-sound-btn').innerText = soundEnabled ? '🔊' : '🔇';
+      updateSoundUI();
       playSound('select');
     }
 
