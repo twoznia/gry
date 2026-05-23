@@ -1,0 +1,342 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Noto+Sans:wght@400;700&display=swap');
+
+        :root {
+            --tile-w-unit: 22px;
+            --tile-h-unit: 30px;
+            --tile-width: calc(var(--tile-w-unit) * 2);
+            --tile-height: calc(var(--tile-h-unit) * 2);
+            --board-width: 828px;
+            --board-height: 568px;
+        }
+
+        body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+            font-family: 'Noto Sans', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            user-select: none;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 100;
+            background: #334155;
+            color: #fff;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            padding: 8px 14px;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .back-link:hover { background: #475569; }
+
+        .medieval-font { font-family: 'Cinzel', serif; }
+
+        #game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #2d3748 0%, #1a202c 100%);
+            padding: 0.75rem 1rem 1rem;
+        }
+
+        #board-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 18px 40px 110px;
+            perspective: 1900px;
+            perspective-origin: 56% 78%;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #board {
+            position: relative;
+            width: var(--board-width);
+            height: var(--board-height);
+            transform-origin: center top;
+            transition: transform 0.3s ease;
+        }
+
+        .mahjong-tile {
+            position: absolute;
+            width: var(--tile-width);
+            height: var(--tile-height);
+            background-color: #cbd5e1;
+            border-radius: 6px;
+            border: 1px solid #475569;
+            box-shadow: 2px 5px 10px rgba(15,23,42,0.34), inset -2px -2px 5px rgba(15,23,42,0.18), inset 2px 2px 5px rgba(255,255,255,0.38);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.1s ease, filter 0.2s, box-shadow 0.2s, opacity 0.3s ease-out;
+            transform-style: preserve-3d;
+            overflow: visible;
+            pointer-events: none;
+        }
+
+        .mahjong-tile::before {
+            content: '';
+            position: absolute;
+            top: calc(100% - 1px);
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+            border-radius: 0 0 3px 3px;
+            pointer-events: none;
+            transform-origin: top;
+            transform: skewX(-45deg);
+            z-index: 0;
+        }
+
+        .mahjong-tile::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: calc(100% - 1px);
+            width: 12px;
+            height: 100%;
+            background: linear-gradient(180deg, #334155 0%, #0f172a 100%);
+            box-shadow: inset -1px 0 0 rgba(255,255,255,0.08);
+            pointer-events: none;
+            transform-origin: right;
+            transform: skewY(-45deg);
+            z-index: 0;
+        }
+
+        .mahjong-tile.hide-bottom-wall::before,
+        .mahjong-tile.hide-left-wall::after {
+            opacity: 0;
+        }
+
+        .tile-hitbox {
+            position: absolute;
+            inset: 0;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background: transparent;
+            border-radius: 6px;
+            z-index: 3;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .mahjong-tile.blocked { filter: brightness(0.65) contrast(0.9); cursor: not-allowed; z-index: 10; }
+        .mahjong-tile.free { filter: brightness(1); }
+        .mahjong-tile.free:hover,
+        .mahjong-tile.free:has(.tile-hitbox:hover) { filter: brightness(1.1); }
+        body.hints-disabled .mahjong-tile.blocked,
+        body.hints-disabled .mahjong-tile.free,
+        body.hints-disabled .mahjong-tile.free:hover {
+            filter: brightness(1);
+        }
+        .mahjong-tile.selected {
+            filter: brightness(1.2) sepia(0.3) hue-rotate(-20deg) saturate(1.5);
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px 5px rgba(234, 179, 8, 0.6), 2px 7px 5px rgba(0,0,0,0.3);
+            border-color: #eab308;
+            z-index: calc(var(--tile-z-index, 0) + 1000) !important;
+        }
+        .mahjong-tile.removed { opacity: 0; pointer-events: none; transform: scale(1.5) translateZ(50px); }
+
+        .tile-image-frame {
+            position: absolute;
+            inset: 4px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.65);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.65), inset 0 0 12px rgba(15, 23, 42, 0.15);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .tile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+
+        .style-select {
+            min-width: 180px;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.75rem;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: #f8fafc;
+            font-weight: 700;
+        }
+
+        .menu-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .menu-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .control-label {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            text-align: left;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #cbd5e1;
+        }
+
+        .panel-toggle {
+            min-width: 180px;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.75rem;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: #f8fafc;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .style-select,
+        .panel-toggle,
+        .zoom-controls,
+        .hint-action-btn,
+        .menu-action-btn {
+            min-height: 44px;
+            box-sizing: border-box;
+        }
+
+        .panel-toggle .state-on { color: #86efac; }
+        .panel-toggle .state-off { color: #fca5a5; }
+
+        .hint-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: stretch;
+            flex-wrap: wrap;
+        }
+
+        .hint-action-btn {
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.75rem;
+            border: 1px solid #475569;
+            background: #1e293b;
+            color: #f8fafc;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .hint-action-btn:disabled,
+        .menu-action-btn:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        .menu-action-btn {
+            padding: 0.5rem 0.9rem;
+            border-radius: 0.75rem;
+            border: 1px solid transparent;
+            color: #fff;
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.2);
+            transition: transform 0.15s ease, filter 0.15s ease;
+            font-size: 0.875rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .results-list {
+            display: grid;
+            gap: 0.6rem;
+            margin: 1rem 0 0;
+            text-align: left;
+            max-height: 360px;
+            overflow: auto;
+        }
+
+        .results-row {
+            display: grid;
+            grid-template-columns: 2.2rem 1fr auto auto;
+            gap: 0.75rem;
+            align-items: center;
+            padding: 0.7rem 0.85rem;
+            border-radius: 0.9rem;
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(71, 85, 105, 0.55);
+            color: #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .results-row strong {
+            color: #f8fafc;
+        }
+
+        .results-rank {
+            color: #fbbf24;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .results-empty {
+            margin-top: 1rem;
+            color: #94a3b8;
+        }
+
+        .zoom-controls {
+            min-width: 180px;
+            padding: 0.35rem 0.45rem;
+            border-radius: 0.75rem;
+            border: 1px solid #475569;
+            background: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.45rem;
+        }
+
+        .zoom-btn {
+            min-width: 2rem;
+            height: 2rem;
+            border: 1px solid #475569;
+            border-radius: 0.65rem;
+            background: #1e293b;
+            color: #f8fafc;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .zoom-value {
+            min-width: 4rem;
+            text-align: center;
+            font-weight: 700;
+            color: #f8fafc;
+        }
+
+        #message-modal { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); }
