@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahjong Solitaire - Medieval</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Noto+Sans:wght@400;700&display=swap');
+
+        :root {
+            --tile-w-unit: 22px;
+            --tile-h-unit: 30px;
+            --tile-width: calc(var(--tile-w-unit) * 2);
+            --tile-height: calc(var(--tile-h-unit) * 2);
+            --board-width: 800px;
+            --board-height: 600px;
+        }
+
+        body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+            font-family: 'Noto Sans', sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            user-select: none;
+        }
+
+        .medieval-font { font-family: 'Cinzel', serif; }
+
+        #game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #2d3748 0%, #1a202c 100%);
+            padding: 0.75rem 1rem 1rem;
+        }
+
+        #board-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 16px 40px 110px;
+            perspective: 1900px;
+            perspective-origin: 56% 78%;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #board {
+            position: relative;
+            width: 760px;
+            height: 520px;
+            transform-origin: center top;
+            transition: transform 0.3s ease;
+        }
+
+        .mahjong-tile {
+            position: absolute;
+            width: var(--tile-width);
+            height: var(--tile-height);
+            background-color: #cbd5e1;
+            border-radius: 6px;
+            border: 1px solid #475569;
+            box-shadow: 2px 5px 10px rgba(15,23,42,0.34), inset -2px -2px 5px rgba(15,23,42,0.18), inset 2px 2px 5px rgba(255,255,255,0.38);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.1s ease, filter 0.2s, box-shadow 0.2s, opacity 0.3s ease-out;
+            transform-style: preserve-3d;
+            overflow: visible;
+        }
+
+        .mahjong-tile::before {
+            content: '';
+            position: absolute;
+            top: calc(100% - 1px);
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+            border-radius: 0 0 3px 3px;
+            pointer-events: none;
+            transform-origin: top;
+            transform: skewX(-45deg);
+            z-index: 0;
+        }
+
+        .mahjong-tile::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: calc(100% - 1px);
+            width: 12px;
+            height: calc(100% + 12px);
+            background: linear-gradient(180deg, #334155 0%, #0f172a 100%);
+            box-shadow: inset -1px 0 0 rgba(255,255,255,0.08);
+            border-radius: 3px 0 0 3px;
+            pointer-events: none;
+            transform-origin: right;
+            transform: skewY(-45deg);
+            z-index: 0;
+        }
+
+        .mahjong-tile.hide-bottom-wall::before,
+        .mahjong-tile.hide-left-wall::after {
+            opacity: 0;
+        }
+
+        .mahjong-tile.blocked { filter: brightness(0.65) contrast(0.9); cursor: not-allowed; z-index: 10; }
+        .mahjong-tile.free { filter: brightness(1); }
+        .mahjong-tile.free:hover { filter: brightness(1.1); }
+        body.hints-disabled .mahjong-tile.blocked,
+        body.hints-disabled .mahjong-tile.free,
+        body.hints-disabled .mahjong-tile.free:hover {
+            filter: brightness(1);
+        }
+        .mahjong-tile.selected {
+            filter: brightness(1.2) sepia(0.3) hue-rotate(-20deg) saturate(1.5);
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px 5px rgba(234, 179, 8, 0.6), 2px 7px 5px rgba(0,0,0,0.3);
+            border-color: #eab308;
+            z-index: 100 !important;
+        }
+        .mahjong-tile.removed { opacity: 0; pointer-events: none; transform: scale(1.5) translateZ(50px); }
+
+        .tile-image-frame {
+            position: absolute;
+            inset: 4px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.65);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.65), inset 0 0 12px rgba(15, 23, 42, 0.15);
+            z-index: 1;
+        }
+
+        .tile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+
+        .style-select {
+            min-width: 180px;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.75rem;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: #f8fafc;
+            font-weight: 700;
+        }
+
+        .panel-toggle {
+            min-width: 180px;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.75rem;
+            border: 1px solid #475569;
+            background: #0f172a;
+            color: #f8fafc;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .panel-toggle .state-on { color: #86efac; }
+        .panel-toggle .state-off { color: #fca5a5; }
+
+        .zoom-controls {
+            min-width: 180px;
+            padding: 0.35rem 0.45rem;
+            border-radius: 0.75rem;
+            border: 1px solid #475569;
+            background: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.45rem;
+        }
+
+        .zoom-btn {
+            min-width: 2rem;
+            height: 2rem;
+            border: 1px solid #475569;
+            border-radius: 0.65rem;
+            background: #1e293b;
+            color: #f8fafc;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .zoom-value {
+            min-width: 4rem;
+            text-align: center;
+            font-weight: 700;
+            color: #f8fafc;
+        }
+
+        #message-modal { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <header class="w-full max-w-4xl flex flex-col md:flex-row justify-between items-center bg-slate-800 px-4 py-3 rounded-xl shadow-lg border border-slate-700 mb-3 z-20 relative gap-3">
+            <div class="text-center md:text-left mb-1 md:mb-0">
+                <h1 id="style-title" class="text-3xl font-bold medieval-font tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-600">Mahjong</h1>
+                <p class="text-slate-400 text-sm" id="tiles-left-display">Klocki do usunięcia: <span id="tiles-count" class="font-bold text-white">144</span></p>
+            </div>
+            
+            <div class="flex gap-3 flex-wrap justify-center items-end">
+                <label class="flex flex-col gap-2 text-left text-sm text-slate-300 font-bold">
+                    <span class="text-xs uppercase tracking-wider text-slate-400">Styl</span>
+                    <select id="style-select" class="style-select"></select>
+                </label>
+                <label class="flex flex-col gap-2 text-left text-sm text-slate-300 font-bold">
+                    <span class="text-xs uppercase tracking-wider text-slate-400">Podpowiedzi</span>
+                    <button id="hint-toggle" type="button" class="panel-toggle">
+                        <span>Podświetlenie</span>
+                        <span id="hint-toggle-state" class="state-on">Włączone</span>
+                    </button>
+                </label>
+                <label class="flex flex-col gap-2 text-left text-sm text-slate-300 font-bold">
+                    <span class="text-xs uppercase tracking-wider text-slate-400">Rozmiar</span>
+                    <div class="zoom-controls">
+                        <button id="zoom-out" type="button" class="zoom-btn" aria-label="Pomniejsz">-</button>
+                        <button id="zoom-reset" type="button" class="zoom-value">110%</button>
+                        <button id="zoom-in" type="button" class="zoom-btn" aria-label="Powiększ">+</button>
+                    </div>
+                </label>
+                <button onclick="startGame()" class="px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-lg shadow-md transition-transform transform hover:scale-105 active:scale-95 flex items-center gap-2 text-sm">
+                    Nowa Gra
+                </button>
+                <button onclick="shuffleRemaining()" id="btn-shuffle" class="px-4 py-2 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-bold rounded-lg shadow-md transition-transform transform hover:scale-105 active:scale-95 flex items-center gap-2 text-sm">
+                    Przetasuj
+                </button>
+            </div>
+        </header>
+
+        <div id="board-wrapper">
+            <div id="board"></div>
+        </div>
+    </div>
+
+    <div id="message-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-800 border-2 border-amber-500 p-8 rounded-2xl shadow-2xl max-w-md w-full text-center transform scale-95 transition-transform duration-300" id="modal-content">
+            <h2 id="modal-title" class="text-4xl medieval-font font-bold text-yellow-400 mb-4">Koniec Gry</h2>
+            <p id="modal-message" class="text-slate-300 text-lg mb-8">Brak dostępnych ruchów.</p>
+            <div class="flex justify-center gap-4">
+                <button onclick="closeModal(); shuffleRemaining();" id="modal-btn-shuffle" class="px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl shadow transition-colors hidden">Przetasuj klocki</button>
+                <button onclick="closeModal(); startGame();" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow transition-colors">Zagraj ponownie</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="styles-manifest.js"></script>
+    <script>
+        const LAYOUT_MAP = [
+          { z: 0, tiles: [[0,4], [0,6], [0,8], [0,10], [0,12], [0,14], [0,16], [0,18], [0,20], [0,22], [0,24], [0,26], [2,8], [2,10], [2,12], [2,14], [2,16], [2,18], [2,20], [2,22], [4,6], [4,8], [4,10], [4,12], [4,14], [4,16], [4,18], [4,20], [4,22], [4,24], [6,4], [6,6], [6,8], [6,10], [6,12], [6,14], [6,16], [6,18], [6,20], [6,22], [6,24], [6,26], [7,2], [7,28], [7,30], [8,4], [8,6], [8,8], [8,10], [8,12], [8,14], [8,16], [8,18], [8,20], [8,22], [8,24], [8,26], [10,6], [10,8], [10,10], [10,12], [10,14], [10,16], [10,18], [10,20], [10,22], [10,24], [12,8], [12,10], [12,12], [12,14], [12,16], [12,18], [12,20], [12,22], [14,4], [14,6], [14,8], [14,10], [14,12], [14,14], [14,16], [14,18], [14,20], [14,22], [14,24], [14,26]] },
+          { z: 1, tiles: [[2,10], [2,12], [2,14], [2,16], [2,18], [2,20], [4,10], [4,12], [4,14], [4,16], [4,18], [4,20], [6,10], [6,12], [6,14], [6,16], [6,18], [6,20], [8,10], [8,12], [8,14], [8,16], [8,18], [8,20], [10,10], [10,12], [10,14], [10,16], [10,18], [10,20], [12,10], [12,12], [12,14], [12,16], [12,18], [12,20]] },
+          { z: 2, tiles: [[4,12], [4,14], [4,16], [4,18], [6,12], [6,14], [6,16], [6,18], [8,12], [8,14], [8,16], [8,18], [10,12], [10,14], [10,16], [10,18]] },
+          { z: 3, tiles: [[6,14], [6,16], [8,14], [8,16]] },
+          { z: 4, tiles: [[7,15]] }
+        ];
+        const LAYOUT_TILE_COUNT = LAYOUT_MAP.reduce((sum, layer) => sum + layer.tiles.length, 0);
+        const STYLE_MANIFEST = window.MAHJONG_STYLE_MANIFEST || { styles: [] };
+        const ZOOM_STORAGE_KEY = 'mahjong_zoom_level';
+        const DEFAULT_ZOOM_LEVEL = 1.1;
+        const MIN_ZOOM_LEVEL = 0.8;
+        const MAX_ZOOM_LEVEL = 1.8;
+        const ZOOM_STEP = 0.1;
+
+        let tilesOnBoard = [];
+        let selectedTileRef = null;
+        let deckBase = [];
+        let selectedStyleId = null;
+        let hintsEnabled = true;
+        let zoomLevel = DEFAULT_ZOOM_LEVEL;
+
+        const boardEl = document.getElementById('board');
+        const countEl = document.getElementById('tiles-count');
+        const modal = document.getElementById('message-modal');
+        const modalContent = document.getElementById('modal-content');
+        const styleSelectEl = document.getElementById('style-select');
+        const styleTitleEl = document.getElementById('style-title');
+        const hintToggleEl = document.getElementById('hint-toggle');
+        const hintToggleStateEl = document.getElementById('hint-toggle-state');
+        const zoomOutEl = document.getElementById('zoom-out');
+        const zoomInEl = document.getElementById('zoom-in');
+        const zoomResetEl = document.getElementById('zoom-reset');
+
+        function applyHintState() {
+            document.body.classList.toggle('hints-disabled', !hintsEnabled);
+            hintToggleStateEl.textContent = hintsEnabled ? 'Włączone' : 'Wyłączone';
+            hintToggleStateEl.className = hintsEnabled ? 'state-on' : 'state-off';
+            hintToggleEl.setAttribute('aria-pressed', hintsEnabled ? 'true' : 'false');
+        }
+
+        function toggleHints() {
+            hintsEnabled = !hintsEnabled;
+            applyHintState();
+        }
+
+        function clampZoom(level) {
+            return Math.min(MAX_ZOOM_LEVEL, Math.max(MIN_ZOOM_LEVEL, level));
+        }
+
+        function saveZoomLevel() {
+            localStorage.setItem(ZOOM_STORAGE_KEY, String(zoomLevel));
+        }
+
+        function updateZoomUI() {
+            zoomResetEl.textContent = `${Math.round(zoomLevel * 100)}%`;
+        }
+
+        function setZoomLevel(nextLevel) {
+            zoomLevel = clampZoom(Number(nextLevel) || DEFAULT_ZOOM_LEVEL);
+            saveZoomLevel();
+            updateZoomUI();
+            adjustBoardScale();
+        }
+
+        function loadZoomLevel() {
+            const stored = Number(localStorage.getItem(ZOOM_STORAGE_KEY));
+            zoomLevel = Number.isFinite(stored) && stored > 0 ? clampZoom(stored) : DEFAULT_ZOOM_LEVEL;
+            updateZoomUI();
+        }
+
+        function getStyleCatalog() {
+            return (STYLE_MANIFEST.styles || []).slice();
+        }
+
+        function getSelectedStyle() {
+            return getStyleCatalog().find(style => style.id === selectedStyleId) || null;
+        }
+
+        function updateStyleTitle() {
+            const style = getSelectedStyle();
+            const title = style ? `Mahjong ${style.name}` : 'Mahjong';
+            document.title = `${title} - obrazki`;
+            styleTitleEl.textContent = title;
+        }
+
+        function populateStyleSelector() {
+            const styles = getStyleCatalog();
+            styleSelectEl.innerHTML = '';
+
+            styles.forEach(style => {
+                const option = document.createElement('option');
+                option.value = style.id;
+                option.textContent = style.layoutCompatible ? `${style.name} (${style.tileCount})` : `${style.name} (${style.tileCount}, niezgodny)`;
+                option.disabled = !style.layoutCompatible;
+                styleSelectEl.appendChild(option);
+            });
+
+            const preferred = styles.find(style => style.id === selectedStyleId && style.layoutCompatible)
+                || styles.find(style => style.layoutCompatible)
+                || styles[0]
+                || null;
+
+            selectedStyleId = preferred ? preferred.id : null;
+            if (preferred) styleSelectEl.value = preferred.id;
+            updateStyleTitle();
+        }
+
+        function generateBaseDeck() {
+            const style = getSelectedStyle();
+            if (!style) return [];
+
+            let deck = [];
+            let idCounter = 0;
+            style.items.forEach(item => {
+                for (let i = 0; i < item.usageCount; i++) {
+                    deck.push({
+                        id: idCounter++,
+                        styleId: style.id,
+                        type: item.type,
+                        value: item.name,
+                        group: String(item.usageCount),
+                        usageCount: item.usageCount,
+                        matchKey: item.matchKey,
+                        imageSrc: item.src,
+                        label: item.label,
+                        x: 0,
+                        y: 0,
+                        z: 0,
+                        isFree: false,
+                        removed: false,
+                        element: null
+                    });
+                }
+            });
+            return deck;
+        }
+
+        function init() {
+            populateStyleSelector();
+            loadZoomLevel();
+            styleSelectEl.addEventListener('change', (event) => {
+                selectedStyleId = event.target.value;
+                updateStyleTitle();
+                startGame();
+            });
+            deckBase = generateBaseDeck();
+            adjustBoardScale();
+            window.addEventListener('resize', adjustBoardScale);
+            startGame();
+        }
+
+        function adjustBoardScale() {
+            const wrapper = document.getElementById('board-wrapper');
+            const board = document.getElementById('board');
+            const availableWidth = wrapper.clientWidth - 40;
+            const fitScale = Math.min(1, availableWidth / 760);
+            const scale = fitScale * zoomLevel;
+            board.style.transform = `scale(${scale}) rotateX(-7deg) rotateY(5deg)`;
+        }
+
+        function startGame() {
+            boardEl.innerHTML = '';
+            selectedTileRef = null;
+            closeModal();
+            updateStyleTitle();
+            deckBase = generateBaseDeck();
+
+            if (deckBase.length !== LAYOUT_TILE_COUNT) {
+                countEl.innerText = deckBase.length;
+                showModal('Styl niezgodny', `Styl wymaga ${LAYOUT_TILE_COUNT} tiles, ale znaleziono ${deckBase.length}.`, false);
+                return;
+            }
+
+            let playDeck = [...deckBase].map(t => ({...t}));
+            shuffleArray(playDeck);
+            tilesOnBoard = [];
+            let tileIndex = 0;
+            
+            LAYOUT_MAP.forEach(layer => {
+                layer.tiles.forEach(coords => {
+                    if (tileIndex < playDeck.length) {
+                        let tile = playDeck[tileIndex];
+                        tile.y = coords[0]; tile.x = coords[1]; tile.z = layer.z;
+                        tilesOnBoard.push(tile);
+                        tileIndex++;
+                    }
+                });
+            });
+
+            tilesOnBoard.forEach(tile => {
+                const el = document.createElement('div');
+                el.className = 'mahjong-tile';
+                el.dataset.id = tile.id;
+                const pxX = tile.x * 22; const pxY = tile.y * 30;
+                const offsetZ_X = tile.z * -4; const offsetZ_Y = tile.z * -6;
+                el.style.left = `${pxX + offsetZ_X}px`;
+                el.style.top = `${pxY + offsetZ_Y}px`;
+                el.style.zIndex = (tile.z * 100) + tile.x + tile.y;
+                renderTileContent(tile, el);
+                el.addEventListener('click', () => handleTileClick(tile));
+                tile.element = el;
+                boardEl.appendChild(el);
+            });
+            updateBoardState();
+        }
+
+        function renderTileContent(tile, element) {
+            element.innerHTML = `
+                <div class="tile-image-frame">
+                    <img class="tile-image" src="${tile.imageSrc}" alt="${tile.label}" loading="eager">
+                </div>
+            `;
+        }
+
+        function updateBoardState() {
+            let activeCount = 0;
+            tilesOnBoard.forEach(tile => {
+                if (tile.removed) return;
+                activeCount++;
+                const isCovered = tilesOnBoard.some(other => !other.removed && other.z === tile.z + 1 && Math.abs(other.x - tile.x) < 2 && Math.abs(other.y - tile.y) < 2);
+                let blockedLeft = false, blockedRight = false, hasBottomNeighbor = false;
+                for (let other of tilesOnBoard) {
+                    if (other.removed || other === tile || other.z !== tile.z) continue;
+                    if (Math.abs(other.y - tile.y) < 2) {
+                        if (other.x === tile.x - 2) blockedLeft = true;
+                        if (other.x === tile.x + 2) blockedRight = true;
+                    }
+                    if (other.y === tile.y + 2 && Math.abs(other.x - tile.x) < 2) hasBottomNeighbor = true;
+                }
+                tile.isFree = !isCovered && (!blockedLeft || !blockedRight);
+                if (tile.element) {
+                    tile.element.className = `mahjong-tile ${tile.isFree ? 'free' : 'blocked'}${blockedLeft ? ' hide-left-wall' : ''}${hasBottomNeighbor ? ' hide-bottom-wall' : ''}`;
+                }
+            });
+            countEl.innerText = activeCount;
+            if (activeCount === 0) showModal("Zwycięstwo!", "Ukończyłeś ułożenie, mój Panie!", false);
+            else checkAvailableMoves();
+        }
+
+        function handleTileClick(tile) {
+            if (tile.removed || !tile.isFree) return;
+            if (selectedTileRef === tile) { deselectCurrent(); return; }
+            if (selectedTileRef && (!selectedTileRef.element || !selectedTileRef.element.classList.contains('selected') || selectedTileRef.removed || !selectedTileRef.isFree)) {
+                selectedTileRef = null;
+            }
+            if (selectedTileRef) {
+                if (tilesMatch(selectedTileRef, tile)) removePair(selectedTileRef, tile);
+                else { deselectCurrent(); selectTile(tile); }
+            } else selectTile(tile);
+        }
+
+        function selectTile(tile) { selectedTileRef = tile; tile.element.classList.add('selected'); }
+        function deselectCurrent() { if (selectedTileRef) selectedTileRef.element.classList.remove('selected'); selectedTileRef = null; }
+        function tilesMatch(t1, t2) { return t1.matchKey === t2.matchKey; }
+        function removePair(t1, t2) {
+            t1.removed = true; t2.removed = true;
+            t1.element.classList.add('removed'); t2.element.classList.add('removed');
+            selectedTileRef = null;
+            setTimeout(updateBoardState, 100);
+        }
+
+        function checkAvailableMoves() {
+            const freeTiles = tilesOnBoard.filter(t => !t.removed && t.isFree);
+            let hasMove = false;
+            for (let i = 0; i < freeTiles.length; i++) {
+                for (let j = i + 1; j < freeTiles.length; j++) {
+                    if (tilesMatch(freeTiles[i], freeTiles[j])) { hasMove = true; break; }
+                }
+            }
+            if (!hasMove && freeTiles.length > 0) showModal("Brak ruchów", "Nie ma już żadnych pasujących, wolnych par.", true);
+        }
+
+        function shuffleRemaining() {
+            const remaining = tilesOnBoard.filter(t => !t.removed);
+            let activeIdentities = remaining.map(t => ({
+                styleId: t.styleId,
+                type: t.type,
+                value: t.value,
+                group: t.group,
+                usageCount: t.usageCount,
+                matchKey: t.matchKey,
+                imageSrc: t.imageSrc,
+                label: t.label
+            }));
+            shuffleArray(activeIdentities);
+            remaining.forEach((t, index) => {
+                t.styleId = activeIdentities[index].styleId;
+                t.type = activeIdentities[index].type;
+                t.value = activeIdentities[index].value;
+                t.group = activeIdentities[index].group;
+                t.usageCount = activeIdentities[index].usageCount;
+                t.matchKey = activeIdentities[index].matchKey;
+                t.imageSrc = activeIdentities[index].imageSrc;
+                t.label = activeIdentities[index].label;
+                renderTileContent(t, t.element);
+            });
+            updateBoardState();
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [array[i], array[j]] = [array[j], array[i]]; }
+        }
+
+        function showModal(title, message, showShuffle) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerText = message;
+            document.getElementById('modal-btn-shuffle').classList.toggle('hidden', !showShuffle);
+            modal.classList.remove('hidden', 'opacity-0');
+        }
+
+        function closeModal() { modal.classList.add('opacity-0'); setTimeout(() => modal.classList.add('hidden'), 300); }
+
+        hintToggleEl.addEventListener('click', toggleHints);
+        zoomOutEl.addEventListener('click', () => setZoomLevel(zoomLevel - ZOOM_STEP));
+        zoomInEl.addEventListener('click', () => setZoomLevel(zoomLevel + ZOOM_STEP));
+        zoomResetEl.addEventListener('click', () => setZoomLevel(DEFAULT_ZOOM_LEVEL));
+        applyHintState();
+        window.onload = init;
+    </script>
+</body>
+</html>
