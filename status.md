@@ -22,3 +22,4 @@ Stan na 2026-05-23.
 - soltaire - back-link: dodany
 - tetris - back-link: ujednolicony
 - tictactoe - back-link: ujednolicony
+- mahjong - back-link: dodany

@@ -24,6 +24,7 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 - **[Saper](./saper/)** 💣 – Odkryj wszystkie pola nie trafiając na minę – klasyczny Saper.
 - **[Skoczek](./jumper/)** 🦘 – Skacz po platformach i zbieraj punkty – neonowy platformer!
 - **[Neonowy Wąż](./snake/)** 🐍 – Klasyczny Snake w neonowym stylu – rośnij i unikaj zderzeń.
+- **[Mahjong](./mahjong/)** 🀄 – Mahjong Solitaire w średniowiecznym stylu z rankingiem i podpowiedziami.
 
 ---
 
