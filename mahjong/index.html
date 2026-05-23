@@ -176,6 +176,59 @@
         .panel-toggle .state-on { color: #86efac; }
         .panel-toggle .state-off { color: #fca5a5; }
 
+        .hint-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: stretch;
+        }
+
+        .hint-action-btn {
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.75rem;
+            border: 1px solid #475569;
+            background: #1e293b;
+            color: #f8fafc;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .results-list {
+            display: grid;
+            gap: 0.6rem;
+            margin: 1rem 0 0;
+            text-align: left;
+            max-height: 360px;
+            overflow: auto;
+        }
+
+        .results-row {
+            display: grid;
+            grid-template-columns: 2.2rem 1fr auto auto;
+            gap: 0.75rem;
+            align-items: center;
+            padding: 0.7rem 0.85rem;
+            border-radius: 0.9rem;
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(71, 85, 105, 0.55);
+            color: #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .results-row strong {
+            color: #f8fafc;
+        }
+
+        .results-rank {
+            color: #fbbf24;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .results-empty {
+            margin-top: 1rem;
+            color: #94a3b8;
+        }
+
         .zoom-controls {
             min-width: 180px;
             padding: 0.35rem 0.45rem;
@@ -216,6 +269,8 @@
             <div class="text-center md:text-left mb-1 md:mb-0">
                 <h1 id="style-title" class="text-3xl font-bold medieval-font tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-amber-600">Mahjong</h1>
                 <p class="text-slate-400 text-sm" id="tiles-left-display">Klocki do usunięcia: <span id="tiles-count" class="font-bold text-white">144</span></p>
+                <p class="text-slate-400 text-sm">Punkty: <span id="score-display" class="font-bold text-white">0</span></p>
+                <p class="text-slate-400 text-sm">Czas: <span id="timer-display" class="font-bold text-white">00:00</span></p>
             </div>
             
             <div class="flex gap-3 flex-wrap justify-center items-end">
@@ -225,10 +280,13 @@
                 </label>
                 <label class="flex flex-col gap-2 text-left text-sm text-slate-300 font-bold">
                     <span class="text-xs uppercase tracking-wider text-slate-400">Podpowiedzi</span>
-                    <button id="hint-toggle" type="button" class="panel-toggle">
-                        <span>Podświetlenie</span>
-                        <span id="hint-toggle-state" class="state-on">Włączone</span>
-                    </button>
+                    <div class="hint-actions">
+                        <button id="hint-toggle" type="button" class="panel-toggle">
+                            <span>Podświetlenie</span>
+                            <span id="hint-toggle-state" class="state-on">Włączone</span>
+                        </button>
+                        <button id="show-move-btn" type="button" class="hint-action-btn">Pokaż ruch</button>
+                    </div>
                 </label>
                 <label class="flex flex-col gap-2 text-left text-sm text-slate-300 font-bold">
                     <span class="text-xs uppercase tracking-wider text-slate-400">Rozmiar</span>
@@ -243,6 +301,9 @@
                 </button>
                 <button onclick="shuffleRemaining()" id="btn-shuffle" class="px-4 py-2 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-bold rounded-lg shadow-md transition-transform transform hover:scale-105 active:scale-95 flex items-center gap-2 text-sm">
                     Przetasuj
+                </button>
+                <button id="show-scores-btn" type="button" class="px-4 py-2 bg-gradient-to-r from-slate-700 to-slate-600 hover:from-slate-600 hover:to-slate-500 text-white font-bold rounded-lg shadow-md transition-transform transform hover:scale-105 active:scale-95 flex items-center gap-2 text-sm">
+                    Wyniki
                 </button>
             </div>
         </header>
@@ -263,6 +324,31 @@
         </div>
     </div>
 
+    <div id="leaderboard-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-800 border-2 border-sky-500 p-8 rounded-2xl shadow-2xl max-w-2xl w-full text-center transform scale-95 transition-transform duration-300" id="leaderboard-content">
+            <h2 id="leaderboard-title" class="text-4xl medieval-font font-bold text-sky-300 mb-3">Najlepsze wyniki</h2>
+            <p id="leaderboard-message" class="text-slate-300 text-lg">Top 10 wyników</p>
+            <div id="leaderboard-list" class="results-list"></div>
+            <p id="leaderboard-empty" class="results-empty hidden">Brak zapisanych wyników.</p>
+            <div class="flex justify-center gap-4 mt-8">
+                <button id="leaderboard-close-btn" type="button" class="px-6 py-3 bg-slate-600 hover:bg-slate-500 text-white font-bold rounded-xl shadow transition-colors">Zamknij</button>
+                <button id="leaderboard-restart-btn" type="button" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow transition-colors">Nowa gra</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="name-entry-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-800 border-2 border-emerald-500 p-8 rounded-2xl shadow-2xl max-w-md w-full text-center transform scale-95 transition-transform duration-300">
+            <h2 class="text-4xl medieval-font font-bold text-emerald-300 mb-3">Zapisz wynik</h2>
+            <p id="name-entry-message" class="text-slate-300 text-lg mb-6">Podaj imię do rankingu.</p>
+            <input id="name-entry-input" type="text" maxlength="24" class="w-full px-4 py-3 rounded-xl border border-slate-600 bg-slate-900 text-slate-100 font-bold text-center outline-none focus:border-emerald-400" placeholder="Gracz">
+            <div class="flex justify-center gap-4 mt-8">
+                <button id="name-entry-skip-btn" type="button" class="px-6 py-3 bg-slate-600 hover:bg-slate-500 text-white font-bold rounded-xl shadow transition-colors">Pomiń</button>
+                <button id="name-entry-save-btn" type="button" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow transition-colors">Zapisz</button>
+            </div>
+        </div>
+    </div>
+
     <script src="styles-manifest.js"></script>
     <script>
         const LAYOUT_MAP = [
@@ -275,6 +361,7 @@
         const LAYOUT_TILE_COUNT = LAYOUT_MAP.reduce((sum, layer) => sum + layer.tiles.length, 0);
         const STYLE_MANIFEST = window.MAHJONG_STYLE_MANIFEST || { styles: [] };
         const ZOOM_STORAGE_KEY = 'mahjong_zoom_level';
+        const LEADERBOARD_STORAGE_KEY = 'mahjong_leaderboard_v1';
         const DEFAULT_ZOOM_LEVEL = 1.1;
         const MIN_ZOOM_LEVEL = 0.8;
         const MAX_ZOOM_LEVEL = 1.8;
@@ -282,6 +369,7 @@
         const VISUAL_LAYER_SHIFT_X = 12;
         const VISUAL_LAYER_SHIFT_Y = 12;
         const BOARD_VISUAL_PADDING_X = 8;
+        const SCORE_PER_PAIR = 10;
         const MAX_LAYER_Z = LAYOUT_MAP.reduce((max, layer) => Math.max(max, layer.z), 0);
 
         let tilesOnBoard = [];
@@ -290,15 +378,37 @@
         let selectedStyleId = null;
         let hintsEnabled = true;
         let zoomLevel = DEFAULT_ZOOM_LEVEL;
+        let hintedTiles = [];
+        let timerIntervalId = null;
+        let elapsedSeconds = 0;
+        let currentScore = 0;
+        let gameCompleted = false;
+        let pendingLeaderboardEntry = null;
 
         const boardEl = document.getElementById('board');
         const countEl = document.getElementById('tiles-count');
+        const scoreDisplayEl = document.getElementById('score-display');
+        const timerDisplayEl = document.getElementById('timer-display');
         const modal = document.getElementById('message-modal');
         const modalContent = document.getElementById('modal-content');
+        const leaderboardModalEl = document.getElementById('leaderboard-modal');
+        const leaderboardTitleEl = document.getElementById('leaderboard-title');
+        const leaderboardMessageEl = document.getElementById('leaderboard-message');
+        const leaderboardListEl = document.getElementById('leaderboard-list');
+        const leaderboardEmptyEl = document.getElementById('leaderboard-empty');
+        const leaderboardCloseBtnEl = document.getElementById('leaderboard-close-btn');
+        const leaderboardRestartBtnEl = document.getElementById('leaderboard-restart-btn');
+        const nameEntryModalEl = document.getElementById('name-entry-modal');
+        const nameEntryMessageEl = document.getElementById('name-entry-message');
+        const nameEntryInputEl = document.getElementById('name-entry-input');
+        const nameEntrySkipBtnEl = document.getElementById('name-entry-skip-btn');
+        const nameEntrySaveBtnEl = document.getElementById('name-entry-save-btn');
         const styleSelectEl = document.getElementById('style-select');
         const styleTitleEl = document.getElementById('style-title');
         const hintToggleEl = document.getElementById('hint-toggle');
         const hintToggleStateEl = document.getElementById('hint-toggle-state');
+        const showMoveBtnEl = document.getElementById('show-move-btn');
+        const showScoresBtnEl = document.getElementById('show-scores-btn');
         const zoomOutEl = document.getElementById('zoom-out');
         const zoomInEl = document.getElementById('zoom-in');
         const zoomResetEl = document.getElementById('zoom-reset');
@@ -338,6 +448,149 @@
             const stored = Number(localStorage.getItem(ZOOM_STORAGE_KEY));
             zoomLevel = Number.isFinite(stored) && stored > 0 ? clampZoom(stored) : DEFAULT_ZOOM_LEVEL;
             updateZoomUI();
+        }
+
+        function formatElapsedTime(totalSeconds) {
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+            if (hours > 0) {
+                return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }
+            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        function updateScoreDisplay() {
+            scoreDisplayEl.textContent = String(currentScore);
+        }
+
+        function updateTimerDisplay() {
+            timerDisplayEl.textContent = formatElapsedTime(elapsedSeconds);
+        }
+
+        function stopTimer() {
+            if (timerIntervalId) {
+                clearInterval(timerIntervalId);
+                timerIntervalId = null;
+            }
+        }
+
+        function startTimer() {
+            stopTimer();
+            timerIntervalId = setInterval(() => {
+                elapsedSeconds += 1;
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        function resetTimer() {
+            elapsedSeconds = 0;
+            updateTimerDisplay();
+        }
+
+        function isAnyOverlayOpen() {
+            return !modal.classList.contains('hidden') || !leaderboardModalEl.classList.contains('hidden') || !nameEntryModalEl.classList.contains('hidden');
+        }
+
+        function isGameActive() {
+            return !gameCompleted && tilesOnBoard.some(tile => !tile.removed);
+        }
+
+        function loadLeaderboard() {
+            try {
+                const raw = localStorage.getItem(LEADERBOARD_STORAGE_KEY);
+                const parsed = raw ? JSON.parse(raw) : [];
+                return Array.isArray(parsed) ? parsed : [];
+            } catch {
+                return [];
+            }
+        }
+
+        function saveLeaderboard(entries) {
+            localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(entries.slice(0, 10)));
+        }
+
+        function getSortedLeaderboard(entries) {
+            return [...entries]
+                .sort((left, right) => {
+                    if (right.score !== left.score) return right.score - left.score;
+                    if (left.elapsedSeconds !== right.elapsedSeconds) return left.elapsedSeconds - right.elapsedSeconds;
+                    return left.name.localeCompare(right.name, 'pl');
+                })
+                .slice(0, 10);
+        }
+
+        function saveCurrentResult(name) {
+            const entry = {
+                name: (name || '').trim() || 'Gracz',
+                score: currentScore,
+                elapsedSeconds
+            };
+            const leaderboard = getSortedLeaderboard([...loadLeaderboard(), entry]);
+            saveLeaderboard(leaderboard);
+            return leaderboard;
+        }
+
+        function renderLeaderboard(entries) {
+            leaderboardListEl.innerHTML = '';
+            leaderboardEmptyEl.classList.toggle('hidden', entries.length > 0);
+
+            entries.forEach((entry, index) => {
+                const row = document.createElement('div');
+                row.className = 'results-row';
+                row.innerHTML = `
+                    <div class="results-rank">${index + 1}</div>
+                    <strong>${entry.name}</strong>
+                    <span>${entry.score} pkt</span>
+                    <span>${formatElapsedTime(entry.elapsedSeconds)}</span>
+                `;
+                leaderboardListEl.appendChild(row);
+            });
+        }
+
+        function showLeaderboardModal(title = 'Najlepsze wyniki', message = 'Top 10 wyników', entries = loadLeaderboard()) {
+            stopTimer();
+            leaderboardTitleEl.textContent = title;
+            leaderboardMessageEl.textContent = message;
+            renderLeaderboard(entries);
+            leaderboardModalEl.classList.remove('hidden', 'opacity-0');
+        }
+
+        function closeLeaderboardModal() {
+            leaderboardModalEl.classList.add('opacity-0');
+            setTimeout(() => leaderboardModalEl.classList.add('hidden'), 300);
+            if (isGameActive() && !isAnyOverlayOpen()) startTimer();
+        }
+
+        function showNameEntryModal() {
+            stopTimer();
+            nameEntryMessageEl.textContent = `Twój wynik: ${currentScore} pkt, ${formatElapsedTime(elapsedSeconds)}. Podaj imię do rankingu.`;
+            nameEntryInputEl.value = '';
+            nameEntryModalEl.classList.remove('hidden', 'opacity-0');
+            setTimeout(() => nameEntryInputEl.focus(), 0);
+        }
+
+        function closeNameEntryModal() {
+            nameEntryModalEl.classList.add('opacity-0');
+            setTimeout(() => nameEntryModalEl.classList.add('hidden'), 300);
+            if (isGameActive() && !isAnyOverlayOpen()) startTimer();
+        }
+
+        function submitLeaderboardEntry() {
+            const leaderboard = saveCurrentResult(nameEntryInputEl.value);
+            pendingLeaderboardEntry = null;
+            closeNameEntryModal();
+            showLeaderboardModal('Zwycięstwo!', `Twój wynik: ${currentScore} pkt, ${formatElapsedTime(elapsedSeconds)}`, leaderboard);
+        }
+
+        function handleVictory() {
+            gameCompleted = true;
+            stopTimer();
+            pendingLeaderboardEntry = {
+                score: currentScore,
+                elapsedSeconds
+            };
+            showNameEntryModal();
         }
 
         function getStyleCatalog() {
@@ -400,6 +653,9 @@
                         z: 0,
                         isFree: false,
                         isSelected: false,
+                        isHinted: false,
+                        blockedLeftVisual: false,
+                        hasBottomNeighborVisual: false,
                         removed: false,
                         element: null
                     });
@@ -408,16 +664,49 @@
             return deck;
         }
 
-        function syncTileClassName(tile, blockedLeft = false, hasBottomNeighbor = false) {
+        function syncTileClassName(tile, blockedLeft = tile.blockedLeftVisual, hasBottomNeighbor = tile.hasBottomNeighborVisual) {
             if (!tile.element) return;
 
             const classNames = ['mahjong-tile', tile.isFree ? 'free' : 'blocked'];
             if (blockedLeft) classNames.push('hide-left-wall');
             if (hasBottomNeighbor) classNames.push('hide-bottom-wall');
-            if (tile.isSelected && !tile.removed) classNames.push('selected');
+            if ((tile.isSelected || tile.isHinted) && !tile.removed) classNames.push('selected');
             if (tile.removed) classNames.push('removed');
 
             tile.element.className = classNames.join(' ');
+        }
+
+        function clearHintedTiles() {
+            hintedTiles.forEach(tile => {
+                tile.isHinted = false;
+                syncTileClassName(tile);
+            });
+            hintedTiles = [];
+        }
+
+        function findAvailableMove() {
+            const freeTiles = tilesOnBoard.filter(tile => !tile.removed && tile.isFree);
+            for (let i = 0; i < freeTiles.length; i++) {
+                for (let j = i + 1; j < freeTiles.length; j++) {
+                    if (tilesMatch(freeTiles[i], freeTiles[j])) {
+                        return [freeTiles[i], freeTiles[j]];
+                    }
+                }
+            }
+            return null;
+        }
+
+        function showAvailableMove() {
+            clearHintedTiles();
+            deselectCurrent();
+            const move = findAvailableMove();
+            if (!move) return;
+
+            hintedTiles = move;
+            hintedTiles.forEach(tile => {
+                tile.isHinted = true;
+                syncTileClassName(tile);
+            });
         }
 
         function init() {
@@ -447,12 +736,22 @@
         function startGame() {
             boardEl.innerHTML = '';
             selectedTileRef = null;
+            clearHintedTiles();
             closeModal();
+            closeLeaderboardModal();
+            closeNameEntryModal();
             updateStyleTitle();
             deckBase = generateBaseDeck();
+            gameCompleted = false;
+            currentScore = 0;
+            pendingLeaderboardEntry = null;
+            updateScoreDisplay();
+            resetTimer();
+            startTimer();
 
             if (deckBase.length !== LAYOUT_TILE_COUNT) {
                 countEl.innerText = deckBase.length;
+                stopTimer();
                 showModal('Styl niezgodny', `Styl wymaga ${LAYOUT_TILE_COUNT} tiles, ale znaleziono ${deckBase.length}.`, false);
                 return;
             }
@@ -515,6 +814,8 @@
                     if (other.y === tile.y + 2 && Math.abs(other.x - tile.x) < 2) hasBottomNeighbor = true;
                 }
                 tile.isFree = !isCovered && (!blockedLeft || !blockedRight);
+                tile.blockedLeftVisual = blockedLeft;
+                tile.hasBottomNeighborVisual = hasBottomNeighbor;
                 if (!tile.isFree && tile.isSelected) {
                     tile.isSelected = false;
                     if (selectedTileRef === tile) selectedTileRef = null;
@@ -522,12 +823,13 @@
                 syncTileClassName(tile, blockedLeft, hasBottomNeighbor);
             });
             countEl.innerText = activeCount;
-            if (activeCount === 0) showModal("Zwycięstwo!", "Ukończyłeś ułożenie, mój Panie!", false);
+            if (activeCount === 0) handleVictory();
             else checkAvailableMoves();
         }
 
         function handleTileClick(tile) {
             if (tile.removed || !tile.isFree) return;
+            clearHintedTiles();
             if (selectedTileRef === tile) { deselectCurrent(); return; }
             if (selectedTileRef && (!selectedTileRef.isSelected || !selectedTileRef.element || selectedTileRef.removed || !selectedTileRef.isFree)) {
                 selectedTileRef.isSelected = false;
@@ -555,9 +857,12 @@
         }
         function tilesMatch(t1, t2) { return t1.matchKey === t2.matchKey; }
         function removePair(t1, t2) {
+            clearHintedTiles();
             t1.isSelected = false;
             t2.isSelected = false;
             t1.removed = true; t2.removed = true;
+            currentScore += SCORE_PER_PAIR;
+            updateScoreDisplay();
             syncTileClassName(t1);
             syncTileClassName(t2);
             selectedTileRef = null;
@@ -576,6 +881,8 @@
         }
 
         function shuffleRemaining() {
+            clearHintedTiles();
+            deselectCurrent();
             const remaining = tilesOnBoard.filter(t => !t.removed);
             let activeIdentities = remaining.map(t => ({
                 styleId: t.styleId,
@@ -607,18 +914,39 @@
         }
 
         function showModal(title, message, showShuffle) {
+            stopTimer();
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-message').innerText = message;
             document.getElementById('modal-btn-shuffle').classList.toggle('hidden', !showShuffle);
             modal.classList.remove('hidden', 'opacity-0');
         }
 
-        function closeModal() { modal.classList.add('opacity-0'); setTimeout(() => modal.classList.add('hidden'), 300); }
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+            if (isGameActive() && !isAnyOverlayOpen()) startTimer();
+        }
 
         hintToggleEl.addEventListener('click', toggleHints);
+        showMoveBtnEl.addEventListener('click', showAvailableMove);
+        showScoresBtnEl.addEventListener('click', () => showLeaderboardModal());
+        leaderboardCloseBtnEl.addEventListener('click', closeLeaderboardModal);
+        leaderboardRestartBtnEl.addEventListener('click', () => {
+            closeLeaderboardModal();
+            startGame();
+        });
+        nameEntrySaveBtnEl.addEventListener('click', submitLeaderboardEntry);
+        nameEntrySkipBtnEl.addEventListener('click', () => {
+            nameEntryInputEl.value = 'Gracz';
+            submitLeaderboardEntry();
+        });
+        nameEntryInputEl.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') submitLeaderboardEntry();
+        });
         zoomOutEl.addEventListener('click', () => setZoomLevel(zoomLevel - ZOOM_STEP));
         zoomInEl.addEventListener('click', () => setZoomLevel(zoomLevel + ZOOM_STEP));
         zoomResetEl.addEventListener('click', () => setZoomLevel(DEFAULT_ZOOM_LEVEL));
+        updateScoreDisplay();
         applyHintState();
         window.onload = init;
     </script>
