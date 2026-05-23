@@ -13,8 +13,8 @@
             --tile-h-unit: 30px;
             --tile-width: calc(var(--tile-w-unit) * 2);
             --tile-height: calc(var(--tile-h-unit) * 2);
-            --board-width: 800px;
-            --board-height: 600px;
+            --board-width: 828px;
+            --board-height: 568px;
         }
 
         body {
@@ -45,7 +45,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 16px 40px 110px;
+            padding: 18px 40px 110px;
             perspective: 1900px;
             perspective-origin: 56% 78%;
             -webkit-overflow-scrolling: touch;
@@ -53,8 +53,8 @@
 
         #board {
             position: relative;
-            width: 760px;
-            height: 520px;
+            width: var(--board-width);
+            height: var(--board-height);
             transform-origin: center top;
             transition: transform 0.3s ease;
         }
@@ -99,7 +99,7 @@
             top: 0;
             right: calc(100% - 1px);
             width: 12px;
-            height: calc(100% + 12px);
+            height: 100%;
             background: linear-gradient(180deg, #334155 0%, #0f172a 100%);
             box-shadow: inset -1px 0 0 rgba(255,255,255,0.08);
             border-radius: 3px 0 0 3px;
@@ -279,6 +279,10 @@
         const MIN_ZOOM_LEVEL = 0.8;
         const MAX_ZOOM_LEVEL = 1.8;
         const ZOOM_STEP = 0.1;
+        const VISUAL_LAYER_SHIFT_X = 12;
+        const VISUAL_LAYER_SHIFT_Y = 12;
+        const BOARD_VISUAL_PADDING_X = 8;
+        const MAX_LAYER_Z = LAYOUT_MAP.reduce((max, layer) => Math.max(max, layer.z), 0);
 
         let tilesOnBoard = [];
         let selectedTileRef = null;
@@ -395,12 +399,25 @@
                         y: 0,
                         z: 0,
                         isFree: false,
+                        isSelected: false,
                         removed: false,
                         element: null
                     });
                 }
             });
             return deck;
+        }
+
+        function syncTileClassName(tile, blockedLeft = false, hasBottomNeighbor = false) {
+            if (!tile.element) return;
+
+            const classNames = ['mahjong-tile', tile.isFree ? 'free' : 'blocked'];
+            if (blockedLeft) classNames.push('hide-left-wall');
+            if (hasBottomNeighbor) classNames.push('hide-bottom-wall');
+            if (tile.isSelected && !tile.removed) classNames.push('selected');
+            if (tile.removed) classNames.push('removed');
+
+            tile.element.className = classNames.join(' ');
         }
 
         function init() {
@@ -421,7 +438,8 @@
             const wrapper = document.getElementById('board-wrapper');
             const board = document.getElementById('board');
             const availableWidth = wrapper.clientWidth - 40;
-            const fitScale = Math.min(1, availableWidth / 760);
+            const boardWidth = board.offsetWidth || 828;
+            const fitScale = Math.min(1, availableWidth / boardWidth);
             const scale = fitScale * zoomLevel;
             board.style.transform = `scale(${scale}) rotateX(-7deg) rotateY(5deg)`;
         }
@@ -460,7 +478,8 @@
                 el.className = 'mahjong-tile';
                 el.dataset.id = tile.id;
                 const pxX = tile.x * 22; const pxY = tile.y * 30;
-                const offsetZ_X = tile.z * -4; const offsetZ_Y = tile.z * -6;
+                const offsetZ_X = (tile.z * VISUAL_LAYER_SHIFT_X) + BOARD_VISUAL_PADDING_X;
+                const offsetZ_Y = (MAX_LAYER_Z * VISUAL_LAYER_SHIFT_Y) - (tile.z * VISUAL_LAYER_SHIFT_Y);
                 el.style.left = `${pxX + offsetZ_X}px`;
                 el.style.top = `${pxY + offsetZ_Y}px`;
                 el.style.zIndex = (tile.z * 100) + tile.x + tile.y;
@@ -496,9 +515,11 @@
                     if (other.y === tile.y + 2 && Math.abs(other.x - tile.x) < 2) hasBottomNeighbor = true;
                 }
                 tile.isFree = !isCovered && (!blockedLeft || !blockedRight);
-                if (tile.element) {
-                    tile.element.className = `mahjong-tile ${tile.isFree ? 'free' : 'blocked'}${blockedLeft ? ' hide-left-wall' : ''}${hasBottomNeighbor ? ' hide-bottom-wall' : ''}`;
+                if (!tile.isFree && tile.isSelected) {
+                    tile.isSelected = false;
+                    if (selectedTileRef === tile) selectedTileRef = null;
                 }
+                syncTileClassName(tile, blockedLeft, hasBottomNeighbor);
             });
             countEl.innerText = activeCount;
             if (activeCount === 0) showModal("Zwycięstwo!", "Ukończyłeś ułożenie, mój Panie!", false);
@@ -508,7 +529,9 @@
         function handleTileClick(tile) {
             if (tile.removed || !tile.isFree) return;
             if (selectedTileRef === tile) { deselectCurrent(); return; }
-            if (selectedTileRef && (!selectedTileRef.element || !selectedTileRef.element.classList.contains('selected') || selectedTileRef.removed || !selectedTileRef.isFree)) {
+            if (selectedTileRef && (!selectedTileRef.isSelected || !selectedTileRef.element || selectedTileRef.removed || !selectedTileRef.isFree)) {
+                selectedTileRef.isSelected = false;
+                syncTileClassName(selectedTileRef);
                 selectedTileRef = null;
             }
             if (selectedTileRef) {
@@ -517,12 +540,26 @@
             } else selectTile(tile);
         }
 
-        function selectTile(tile) { selectedTileRef = tile; tile.element.classList.add('selected'); }
-        function deselectCurrent() { if (selectedTileRef) selectedTileRef.element.classList.remove('selected'); selectedTileRef = null; }
+        function selectTile(tile) {
+            tile.isSelected = true;
+            selectedTileRef = tile;
+            syncTileClassName(tile);
+        }
+
+        function deselectCurrent() {
+            if (selectedTileRef) {
+                selectedTileRef.isSelected = false;
+                syncTileClassName(selectedTileRef);
+            }
+            selectedTileRef = null;
+        }
         function tilesMatch(t1, t2) { return t1.matchKey === t2.matchKey; }
         function removePair(t1, t2) {
+            t1.isSelected = false;
+            t2.isSelected = false;
             t1.removed = true; t2.removed = true;
-            t1.element.classList.add('removed'); t2.element.classList.add('removed');
+            syncTileClassName(t1);
+            syncTileClassName(t2);
             selectedTileRef = null;
             setTimeout(updateBoardState, 100);
         }
