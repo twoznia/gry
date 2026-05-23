@@ -730,12 +730,7 @@
                 tile.blockedLeftVisual = snapshot.blockedLeftVisual;
                 tile.hasBottomNeighborVisual = snapshot.hasBottomNeighborVisual;
                 renderTileContent(tile, tile.element);
-                const hitbox = tile.element.querySelector('.tile-hitbox');
-                hitbox.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    const resolvedTile = findTopClickableTileAtPoint(tile, event.clientX, event.clientY) || tile;
-                    handleTileClick(resolvedTile);
-                });
+                attachTileHitboxListener(tile);
             });
 
             currentScore = undoState.score;
@@ -1021,13 +1016,8 @@
                 el.style.setProperty('--tile-z-index', tileZIndex);
                 el.style.zIndex = tileZIndex;
                 renderTileContent(tile, el);
-                const hitbox = el.querySelector('.tile-hitbox');
-                hitbox.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    const resolvedTile = findTopClickableTileAtPoint(tile, event.clientX, event.clientY) || tile;
-                    handleTileClick(resolvedTile);
-                });
                 tile.element = el;
+                attachTileHitboxListener(tile);
                 boardEl.appendChild(el);
             });
             updateBoardState();
@@ -1040,6 +1030,17 @@
                     <img class="tile-image" src="${tile.imageSrc}" alt="${tile.label}" loading="eager">
                 </div>
             `;
+        }
+
+        function attachTileHitboxListener(tile) {
+            const hitbox = tile.element?.querySelector('.tile-hitbox');
+            if (!hitbox) return;
+
+            hitbox.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const resolvedTile = findTopClickableTileAtPoint(tile, event.clientX, event.clientY) || tile;
+                handleTileClick(resolvedTile);
+            });
         }
 
         function updateBoardState() {
@@ -1151,6 +1152,7 @@
                 t.imageSrc = activeIdentities[index].imageSrc;
                 t.label = activeIdentities[index].label;
                 renderTileContent(t, t.element);
+                attachTileHitboxListener(t);
             });
             updateBoardState();
         }
