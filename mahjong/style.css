@@ -302,6 +302,19 @@
             color: #f8fafc;
         }
 
+        .results-player {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            min-width: 0;
+        }
+
+        .results-penalties {
+            color: #94a3b8;
+            font-size: 0.74rem;
+            line-height: 1.25;
+        }
+
         .results-row-clean {
             background: linear-gradient(180deg, rgba(21, 128, 61, 0.95) 0%, rgba(22, 163, 74, 0.88) 100%);
             border-color: rgba(187, 247, 208, 0.95);
@@ -309,7 +322,8 @@
         }
 
         .results-row-clean strong,
-        .results-row-clean .results-date {
+        .results-row-clean .results-date,
+        .results-row-clean .results-penalties {
             color: #f0fdf4;
         }
 

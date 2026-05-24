@@ -24,6 +24,7 @@
         const UNDO_PENALTY = 5;
         const SHUFFLE_PENALTY = 30;
         const HINTS_FIRST_USE_PENALTY = 15;
+        const PENALTY_CATEGORIES = ['hints', 'showMove', 'undo', 'shuffle'];
         const MAX_SHUFFLE_ATTEMPTS = 200;
         const MAX_LAYER_Z = LAYOUT_MAP.reduce((max, layer) => Math.max(max, layer.z), 0);
         const BOARD_CONTENT_BOUNDS = (() => {
@@ -57,6 +58,7 @@
         let currentScore = 0;
         let penaltyScore = 0;
         let powerupsUsed = false;
+        let penaltyBreakdown = createEmptyPenaltyBreakdown();
         let hintsPenaltyApplied = false;
         let gameCompleted = false;
         let pendingLeaderboardEntry = null;
@@ -100,7 +102,7 @@
             if (!hintsEnabled && !hintsPenaltyApplied) {
                 hintsPenaltyApplied = true;
                 powerupsUsed = true;
-                addPenalty(HINTS_FIRST_USE_PENALTY);
+                addPenalty(HINTS_FIRST_USE_PENALTY, 'hints');
             }
             hintsEnabled = !hintsEnabled;
             applyHintState();
@@ -156,8 +158,36 @@
             }
         }
 
-        function addPenalty(points) {
+        function createEmptyPenaltyBreakdown() {
+            return {
+                hints: 0,
+                showMove: 0,
+                undo: 0,
+                shuffle: 0
+            };
+        }
+
+        function normalizePenaltyBreakdown(value) {
+            const normalized = createEmptyPenaltyBreakdown();
+            if (!value || typeof value !== 'object') return normalized;
+
+            PENALTY_CATEGORIES.forEach((category) => {
+                normalized[category] = Number.isFinite(value[category]) ? value[category] : 0;
+            });
+
+            return normalized;
+        }
+
+        function formatPenaltyBreakdown(penalties) {
+            const normalized = normalizePenaltyBreakdown(penalties);
+            return `Kary: podsw. ${normalized.hints}, ruch ${normalized.showMove}, cofnij ${normalized.undo}, tasuj ${normalized.shuffle}`;
+        }
+
+        function addPenalty(points, category = null) {
             penaltyScore += points;
+            if (category && Object.prototype.hasOwnProperty.call(penaltyBreakdown, category)) {
+                penaltyBreakdown[category] += points;
+            }
             updateScoreDisplay();
         }
 
@@ -217,7 +247,8 @@
                     score: Number.isFinite(entry?.score) ? entry.score : Number.MAX_SAFE_INTEGER,
                     elapsedSeconds: Number.isFinite(entry?.elapsedSeconds) ? entry.elapsedSeconds : Number.MAX_SAFE_INTEGER,
                     date: typeof entry?.date === 'string' ? entry.date : '',
-                    powerupsUsed: typeof entry?.powerupsUsed === 'boolean' ? entry.powerupsUsed : true
+                    powerupsUsed: typeof entry?.powerupsUsed === 'boolean' ? entry.powerupsUsed : true,
+                    penalties: normalizePenaltyBreakdown(entry?.penalties)
                 }));
             } catch {
                 return [];
@@ -244,7 +275,8 @@
                 score: currentScore,
                 elapsedSeconds,
                 date: getCurrentDateString(),
-                powerupsUsed
+                powerupsUsed,
+                penalties: normalizePenaltyBreakdown(penaltyBreakdown)
             };
             const leaderboard = getSortedLeaderboard([...loadLeaderboard(), entry]);
             saveLeaderboard(leaderboard);
@@ -260,7 +292,10 @@
                 row.className = `results-row${entry.powerupsUsed ? '' : ' results-row-clean'}`;
                 row.innerHTML = `
                     <div class="results-rank">${index + 1}</div>
-                    <strong>${entry.name}</strong>
+                    <div class="results-player">
+                        <strong>${entry.name}</strong>
+                        <span class="results-penalties">${formatPenaltyBreakdown(entry.penalties)}</span>
+                    </div>
                     <span>${entry.score} pkt</span>
                     <span>${formatElapsedTime(entry.elapsedSeconds)}</span>
                     <span class="results-date">${entry.date || '---- -- --'}</span>
@@ -337,7 +372,7 @@
             elapsedSeconds = undoState.elapsedSeconds;
             hintsPenaltyApplied = undoState.hintsPenaltyApplied;
             powerupsUsed = true;
-            addPenalty(UNDO_PENALTY);
+            addPenalty(UNDO_PENALTY, 'undo');
             updateScoreDisplay();
             updateTimerDisplay();
             selectedTileRef = null;
@@ -532,7 +567,7 @@
             if (!move) return;
 
             powerupsUsed = true;
-            addPenalty(SHOW_MOVE_PENALTY);
+            addPenalty(SHOW_MOVE_PENALTY, 'showMove');
 
             hintedTiles = move;
             hintedTiles.forEach(tile => {
@@ -603,6 +638,7 @@
             currentScore = 0;
             penaltyScore = 0;
             powerupsUsed = false;
+            penaltyBreakdown = createEmptyPenaltyBreakdown();
             hintsPenaltyApplied = false;
             hintsEnabled = false;
             applyHintState();
@@ -779,7 +815,7 @@
             deselectCurrent();
             captureUndoState('shuffle');
             powerupsUsed = true;
-            addPenalty(SHUFFLE_PENALTY);
+            addPenalty(SHUFFLE_PENALTY, 'shuffle');
             const remaining = tilesOnBoard.filter(t => !t.removed);
             let activeIdentities = remaining.map(t => ({
                 styleId: t.styleId,
