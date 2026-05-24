@@ -7,6 +7,7 @@
         ];
         const LAYOUT_TILE_COUNT = LAYOUT_MAP.reduce((sum, layer) => sum + layer.tiles.length, 0);
         const STYLE_MANIFEST = window.MAHJONG_STYLE_MANIFEST || { styles: [] };
+        const STYLE_STORAGE_KEY = 'mahjong_selected_style';
         const ZOOM_STORAGE_KEY = 'mahjong_zoom_level';
         const LEADERBOARD_STORAGE_KEY = 'mahjong_leaderboard_v1';
         const DEFAULT_ZOOM_LEVEL = 1.2;
@@ -54,6 +55,7 @@
         let elapsedSeconds = 0;
         let currentScore = 0;
         let penaltyScore = 0;
+        let powerupsUsed = false;
         let hintsPenaltyApplied = false;
         let gameCompleted = false;
         let pendingLeaderboardEntry = null;
@@ -96,6 +98,7 @@
         function toggleHints() {
             if (!hintsEnabled && !hintsPenaltyApplied) {
                 hintsPenaltyApplied = true;
+                powerupsUsed = true;
                 addPenalty(HINTS_FIRST_USE_PENALTY);
             }
             hintsEnabled = !hintsEnabled;
@@ -157,6 +160,14 @@
             updateScoreDisplay();
         }
 
+        function getCurrentDateString() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
         function updateUndoButton() {
             undoBtnEl.disabled = !undoState;
         }
@@ -198,7 +209,15 @@
             try {
                 const raw = localStorage.getItem(LEADERBOARD_STORAGE_KEY);
                 const parsed = raw ? JSON.parse(raw) : [];
-                return Array.isArray(parsed) ? parsed : [];
+                if (!Array.isArray(parsed)) return [];
+
+                return parsed.map((entry) => ({
+                    name: (entry?.name || '').trim() || 'Gracz',
+                    score: Number.isFinite(entry?.score) ? entry.score : Number.MAX_SAFE_INTEGER,
+                    elapsedSeconds: Number.isFinite(entry?.elapsedSeconds) ? entry.elapsedSeconds : Number.MAX_SAFE_INTEGER,
+                    date: typeof entry?.date === 'string' ? entry.date : '',
+                    powerupsUsed: typeof entry?.powerupsUsed === 'boolean' ? entry.powerupsUsed : true
+                }));
             } catch {
                 return [];
             }
@@ -222,7 +241,9 @@
             const entry = {
                 name: (name || '').trim() || 'Gracz',
                 score: currentScore,
-                elapsedSeconds
+                elapsedSeconds,
+                date: getCurrentDateString(),
+                powerupsUsed
             };
             const leaderboard = getSortedLeaderboard([...loadLeaderboard(), entry]);
             saveLeaderboard(leaderboard);
@@ -235,12 +256,13 @@
 
             entries.forEach((entry, index) => {
                 const row = document.createElement('div');
-                row.className = 'results-row';
+                row.className = `results-row${entry.powerupsUsed ? '' : ' results-row-clean'}`;
                 row.innerHTML = `
                     <div class="results-rank">${index + 1}</div>
                     <strong>${entry.name}</strong>
                     <span>${entry.score} pkt</span>
                     <span>${formatElapsedTime(entry.elapsedSeconds)}</span>
+                    <span class="results-date">${entry.date || '---- -- --'}</span>
                 `;
                 leaderboardListEl.appendChild(row);
             });
@@ -313,6 +335,7 @@
             penaltyScore = undoState.penaltyScore;
             elapsedSeconds = undoState.elapsedSeconds;
             hintsPenaltyApplied = undoState.hintsPenaltyApplied;
+            powerupsUsed = true;
             addPenalty(UNDO_PENALTY);
             updateScoreDisplay();
             updateTimerDisplay();
@@ -367,6 +390,24 @@
             return getStyleCatalog().find(style => style.id === selectedStyleId) || null;
         }
 
+        function saveSelectedStyleId() {
+            if (!selectedStyleId) return;
+            try {
+                localStorage.setItem(STYLE_STORAGE_KEY, selectedStyleId);
+            } catch {
+                // Ignore localStorage write failures.
+            }
+        }
+
+        function loadSelectedStyleId() {
+            try {
+                const storedStyleId = localStorage.getItem(STYLE_STORAGE_KEY);
+                selectedStyleId = storedStyleId || null;
+            } catch {
+                selectedStyleId = null;
+            }
+        }
+
         function updateStyleTitle() {
             const style = getSelectedStyle();
             const title = style ? `Mahjong ${style.name}` : 'Mahjong';
@@ -393,6 +434,7 @@
 
             selectedStyleId = preferred ? preferred.id : null;
             if (preferred) styleSelectEl.value = preferred.id;
+            saveSelectedStyleId();
             updateStyleTitle();
         }
 
@@ -488,6 +530,7 @@
             const move = findAvailableMove();
             if (!move) return;
 
+            powerupsUsed = true;
             addPenalty(SHOW_MOVE_PENALTY);
 
             hintedTiles = move;
@@ -498,10 +541,12 @@
         }
 
         function init() {
+            loadSelectedStyleId();
             populateStyleSelector();
             loadZoomLevel();
             styleSelectEl.addEventListener('change', (event) => {
                 selectedStyleId = event.target.value;
+                saveSelectedStyleId();
                 updateStyleTitle();
                 startGame();
             });
@@ -556,6 +601,7 @@
             gameCompleted = false;
             currentScore = 0;
             penaltyScore = 0;
+            powerupsUsed = false;
             hintsPenaltyApplied = false;
             hintsEnabled = false;
             applyHintState();
@@ -731,6 +777,7 @@
             clearHintedTiles();
             deselectCurrent();
             captureUndoState('shuffle');
+            powerupsUsed = true;
             addPenalty(SHUFFLE_PENALTY);
             const remaining = tilesOnBoard.filter(t => !t.removed);
             let activeIdentities = remaining.map(t => ({
