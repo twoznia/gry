@@ -62,6 +62,7 @@
         let hintsPenaltyApplied = false;
         let gameCompleted = false;
         let pendingLeaderboardEntry = null;
+        let highlightedLeaderboardEntryId = null;
         let undoState = null;
 
         const boardEl = document.getElementById('board');
@@ -269,8 +270,9 @@
                 .slice(0, 10);
         }
 
-        function saveCurrentResult(name) {
-            const entry = {
+        function createCurrentResultEntry(name) {
+            return {
+                id: `mahjong-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`,
                 name: (name || '').trim() || 'Gracz',
                 score: currentScore,
                 elapsedSeconds,
@@ -278,18 +280,28 @@
                 powerupsUsed,
                 penalties: normalizePenaltyBreakdown(penaltyBreakdown)
             };
-            const leaderboard = getSortedLeaderboard([...loadLeaderboard(), entry]);
-            saveLeaderboard(leaderboard);
-            return leaderboard;
         }
 
-        function renderLeaderboard(entries) {
+        function doesEntryQualifyForLeaderboard(entry, leaderboard = loadLeaderboard()) {
+            const rankedEntries = getSortedLeaderboard([...leaderboard, entry]);
+            return rankedEntries.some((candidate) => candidate.id === entry.id);
+        }
+
+        function saveCurrentResult(name) {
+            const entry = createCurrentResultEntry(name);
+            const leaderboard = getSortedLeaderboard([...loadLeaderboard(), entry]);
+            saveLeaderboard(leaderboard);
+            return { leaderboard, entry };
+        }
+
+        function renderLeaderboard(entries, highlightedEntryId = null) {
             leaderboardListEl.innerHTML = '';
             leaderboardEmptyEl.classList.toggle('hidden', entries.length > 0);
 
             entries.forEach((entry, index) => {
                 const row = document.createElement('div');
-                row.className = `results-row${entry.powerupsUsed ? '' : ' results-row-clean'}`;
+                const isHighlighted = highlightedEntryId && entry.id === highlightedEntryId;
+                row.className = `results-row${entry.powerupsUsed ? '' : ' results-row-clean'}${isHighlighted ? ' results-row-highlight' : ''}`;
                 row.innerHTML = `
                     <div class="results-rank">${index + 1}</div>
                     <div class="results-player">
@@ -304,11 +316,12 @@
             });
         }
 
-        function showLeaderboardModal(title = 'Najlepsze wyniki', message = 'Top 10 wyników, mniej punktów = lepiej.', entries = getSortedLeaderboard(loadLeaderboard())) {
+        function showLeaderboardModal(title = 'Najlepsze wyniki', message = 'Top 10 wyników, mniej punktów = lepiej.', entries = getSortedLeaderboard(loadLeaderboard()), highlightedEntryId = null) {
             stopTimer();
             leaderboardTitleEl.textContent = title;
             leaderboardMessageEl.textContent = message;
-            renderLeaderboard(getSortedLeaderboard(entries));
+            renderLeaderboard(getSortedLeaderboard(entries), highlightedEntryId);
+            highlightedLeaderboardEntryId = null;
             leaderboardModalEl.classList.remove('hidden', 'opacity-0');
         }
 
@@ -402,20 +415,30 @@
         }
 
         function submitLeaderboardEntry() {
-            const leaderboard = saveCurrentResult(nameEntryInputEl.value);
+            const { leaderboard, entry } = saveCurrentResult(nameEntryInputEl.value);
             pendingLeaderboardEntry = null;
             closeNameEntryModal();
-            showLeaderboardModal('Zwycięstwo!', `Twój wynik: ${currentScore} pkt, ${formatElapsedTime(elapsedSeconds)}. Mniej punktów = lepiej.`, leaderboard);
+            highlightedLeaderboardEntryId = entry.id;
+            showLeaderboardModal('Zwycięstwo!', `Twój wynik: ${currentScore} pkt, ${formatElapsedTime(elapsedSeconds)}. Mniej punktów = lepiej.`, leaderboard, highlightedLeaderboardEntryId);
         }
 
         function handleVictory() {
             gameCompleted = true;
             stopTimer();
-            pendingLeaderboardEntry = {
-                score: currentScore,
-                elapsedSeconds
-            };
-            showNameEntryModal();
+            const leaderboard = loadLeaderboard();
+            const candidateEntry = createCurrentResultEntry('Gracz');
+
+            if (doesEntryQualifyForLeaderboard(candidateEntry, leaderboard)) {
+                pendingLeaderboardEntry = {
+                    score: currentScore,
+                    elapsedSeconds
+                };
+                showNameEntryModal();
+                return;
+            }
+
+            pendingLeaderboardEntry = null;
+            showLeaderboardModal('Zwycięstwo!', `Twój wynik: ${currentScore} pkt, ${formatElapsedTime(elapsedSeconds)}. Nie wszedł do tabeli rekordów.`, leaderboard);
         }
 
         function getStyleCatalog() {

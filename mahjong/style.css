@@ -327,6 +327,20 @@
             color: #f0fdf4;
         }
 
+        .results-row-highlight {
+            background: linear-gradient(180deg, rgba(234, 179, 8, 0.92) 0%, rgba(202, 138, 4, 0.85) 100%);
+            border-color: rgba(254, 240, 138, 0.95);
+            box-shadow: inset 0 0 0 1px rgba(255, 251, 235, 0.28), 0 10px 24px rgba(234, 179, 8, 0.28);
+            color: #1f2937;
+        }
+
+        .results-row-highlight strong,
+        .results-row-highlight .results-date,
+        .results-row-highlight .results-penalties,
+        .results-row-highlight .results-rank {
+            color: #1f2937;
+        }
+
         .results-rank {
             color: #fbbf24;
             font-weight: 800;
