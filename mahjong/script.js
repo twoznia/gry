@@ -15,8 +15,9 @@
         const MIN_ZOOM_LEVEL = 0.5;
         const MAX_ZOOM_LEVEL = 1.8;
         const ZOOM_STEP = 0.1;
-        const VISUAL_LAYER_SHIFT_X = 12;
-        const VISUAL_LAYER_SHIFT_Y = 12;
+        const TILE_WALL_DEPTH = 8;
+        const VISUAL_LAYER_SHIFT_X = TILE_WALL_DEPTH;
+        const VISUAL_LAYER_SHIFT_Y = TILE_WALL_DEPTH;
         const BOARD_VISUAL_PADDING_X = 8;
         const TIME_SCORE_PER_SECOND = 1;
         const SHOW_MOVE_PENALTY = 5;
@@ -32,7 +33,7 @@
             LAYOUT_MAP.forEach((layer) => {
                 layer.tiles.forEach(([tileY]) => {
                     const visualTop = (tileY * 30) + ((MAX_LAYER_Z * VISUAL_LAYER_SHIFT_Y) - (layer.z * VISUAL_LAYER_SHIFT_Y));
-                    const visualBottom = visualTop + 60 + 12;
+                    const visualBottom = visualTop + 60 + TILE_WALL_DEPTH;
                     minTop = Math.min(minTop, visualTop);
                     maxBottom = Math.max(maxBottom, visualBottom);
                 });

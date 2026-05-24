@@ -5,6 +5,7 @@
             --tile-h-unit: 30px;
             --tile-width: calc(var(--tile-w-unit) * 2);
             --tile-height: calc(var(--tile-h-unit) * 2);
+            --tile-wall-depth: 8px;
             --board-width: 828px;
             --board-height: 568px;
         }
@@ -99,7 +100,7 @@
             top: calc(100% - 1px);
             left: 0;
             width: 100%;
-            height: 12px;
+            height: var(--tile-wall-depth);
             background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
             border-radius: 0 0 3px 3px;
@@ -110,8 +111,8 @@
         }
 
         .mahjong-tile.trim-bottom-wall-left::before {
-            left: 12px;
-            width: calc(100% - 12px);
+            left: var(--tile-wall-depth);
+            width: calc(100% - var(--tile-wall-depth));
         }
 
         .mahjong-tile::after {
@@ -119,7 +120,7 @@
             position: absolute;
             top: 0;
             right: calc(100% - 1px);
-            width: 12px;
+            width: var(--tile-wall-depth);
             height: 100%;
             background: linear-gradient(180deg, #334155 0%, #0f172a 100%);
             box-shadow: inset -1px 0 0 rgba(255,255,255,0.08);
