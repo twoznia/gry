@@ -9,8 +9,9 @@
         const STYLE_MANIFEST = window.MAHJONG_STYLE_MANIFEST || { styles: [] };
         const ZOOM_STORAGE_KEY = 'mahjong_zoom_level';
         const LEADERBOARD_STORAGE_KEY = 'mahjong_leaderboard_v1';
-        const DEFAULT_ZOOM_LEVEL = 1.1;
-        const MIN_ZOOM_LEVEL = 0.8;
+        const DEFAULT_ZOOM_LEVEL = 1.2;
+        const MOBILE_DEFAULT_ZOOM_LEVEL = 0.7;
+        const MIN_ZOOM_LEVEL = 0.5;
         const MAX_ZOOM_LEVEL = 1.8;
         const ZOOM_STEP = 0.1;
         const VISUAL_LAYER_SHIFT_X = 12;
@@ -21,7 +22,26 @@
         const UNDO_PENALTY = 5;
         const SHUFFLE_PENALTY = 30;
         const HINTS_FIRST_USE_PENALTY = 15;
+        const MAX_SHUFFLE_ATTEMPTS = 200;
         const MAX_LAYER_Z = LAYOUT_MAP.reduce((max, layer) => Math.max(max, layer.z), 0);
+        const BOARD_CONTENT_BOUNDS = (() => {
+            let minTop = Number.POSITIVE_INFINITY;
+            let maxBottom = Number.NEGATIVE_INFINITY;
+
+            LAYOUT_MAP.forEach((layer) => {
+                layer.tiles.forEach(([tileY]) => {
+                    const visualTop = (tileY * 30) + ((MAX_LAYER_Z * VISUAL_LAYER_SHIFT_Y) - (layer.z * VISUAL_LAYER_SHIFT_Y));
+                    const visualBottom = visualTop + 60 + 12;
+                    minTop = Math.min(minTop, visualTop);
+                    maxBottom = Math.max(maxBottom, visualBottom);
+                });
+            });
+
+            return {
+                topInset: Number.isFinite(minTop) ? minTop : 0,
+                bottomInset: Number.isFinite(maxBottom) ? Math.max(0, 568 - maxBottom) : 0
+            };
+        })();
 
         let tilesOnBoard = [];
         let selectedTileRef = null;
@@ -60,7 +80,6 @@
         const styleSelectEl = document.getElementById('style-select');
         const styleTitleEl = document.getElementById('style-title');
         const hintToggleEl = document.getElementById('hint-toggle');
-        const hintToggleStateEl = document.getElementById('hint-toggle-state');
         const showMoveBtnEl = document.getElementById('show-move-btn');
         const undoBtnEl = document.getElementById('undo-btn');
         const showScoresBtnEl = document.getElementById('show-scores-btn');
@@ -70,8 +89,7 @@
 
         function applyHintState() {
             document.body.classList.toggle('hints-disabled', !hintsEnabled);
-            hintToggleStateEl.textContent = hintsEnabled ? 'Włączone' : 'Wyłączone';
-            hintToggleStateEl.className = hintsEnabled ? 'state-on' : 'state-off';
+            hintToggleEl.classList.toggle('is-active', hintsEnabled);
             hintToggleEl.setAttribute('aria-pressed', hintsEnabled ? 'true' : 'false');
         }
 
@@ -88,6 +106,10 @@
             return Math.min(MAX_ZOOM_LEVEL, Math.max(MIN_ZOOM_LEVEL, level));
         }
 
+        function getDefaultZoomLevel() {
+            return window.matchMedia('(max-width: 768px)').matches ? MOBILE_DEFAULT_ZOOM_LEVEL : DEFAULT_ZOOM_LEVEL;
+        }
+
         function saveZoomLevel() {
             localStorage.setItem(ZOOM_STORAGE_KEY, String(zoomLevel));
         }
@@ -97,7 +119,7 @@
         }
 
         function setZoomLevel(nextLevel) {
-            zoomLevel = clampZoom(Number(nextLevel) || DEFAULT_ZOOM_LEVEL);
+            zoomLevel = clampZoom(Number(nextLevel) || getDefaultZoomLevel());
             saveZoomLevel();
             updateZoomUI();
             adjustBoardScale();
@@ -105,7 +127,7 @@
 
         function loadZoomLevel() {
             const stored = Number(localStorage.getItem(ZOOM_STORAGE_KEY));
-            zoomLevel = Number.isFinite(stored) && stored > 0 ? clampZoom(stored) : DEFAULT_ZOOM_LEVEL;
+            zoomLevel = Number.isFinite(stored) && stored > 0 ? clampZoom(stored) : getDefaultZoomLevel();
             updateZoomUI();
         }
 
@@ -125,7 +147,9 @@
 
         function updateScoreDisplay() {
             recalculateScore();
-            scoreDisplayEl.textContent = String(currentScore);
+            if (scoreDisplayEl) {
+                scoreDisplayEl.textContent = String(currentScore);
+            }
         }
 
         function addPenalty(points) {
@@ -410,6 +434,7 @@
             if (!tile.element) return;
 
             const classNames = ['mahjong-tile', tile.isFree ? 'free' : 'blocked'];
+            if (tile.trimBottomWallLeft) classNames.push('trim-bottom-wall-left');
             if (blockedLeft) classNames.push('hide-left-wall');
             if (hasBottomNeighbor) classNames.push('hide-bottom-wall');
             if ((tile.isSelected || tile.isHinted) && !tile.removed) classNames.push('selected');
@@ -495,19 +520,28 @@
             const wrapperStyle = window.getComputedStyle(wrapper);
             const paddingX = parseFloat(wrapperStyle.paddingLeft) + parseFloat(wrapperStyle.paddingRight);
             const paddingY = parseFloat(wrapperStyle.paddingTop) + parseFloat(wrapperStyle.paddingBottom);
+            const paddingTop = parseFloat(wrapperStyle.paddingTop);
             const availableWidth = Math.max(240, wrapper.clientWidth - paddingX);
             const availableHeight = Math.max(240, window.innerHeight - wrapperRect.top - 16 - paddingY);
             const fitScale = Math.min(1, availableWidth / boardWidth);
             const scale = fitScale * zoomLevel;
-            board.style.transform = `scale(${scale}) rotateX(-7deg) rotateY(5deg)`;
 
             const scaledWidth = boardWidth * scale;
             const scaledHeight = boardHeight * scale;
-            const fitsViewport = scaledWidth <= availableWidth + 1 && scaledHeight <= availableHeight + 1;
+            const overflowBottom = Math.max(0, scaledHeight - availableHeight);
+            const upwardHeadroom = Math.max(0, (BOARD_CONTENT_BOUNDS.topInset * scale) + paddingTop - 4);
+            const upwardShift = Math.min(overflowBottom, upwardHeadroom);
+            const effectiveScaledHeight = scaledHeight - upwardShift;
+            const fitsViewportWidth = scaledWidth <= availableWidth + 1;
+            const requiredWrapperHeight = Math.max(availableHeight + paddingY, effectiveScaledHeight + paddingY);
 
-            wrapper.style.maxHeight = `${Math.max(240, availableHeight + paddingY)}px`;
-            wrapper.style.overflowX = fitsViewport ? 'hidden' : 'auto';
-            wrapper.style.overflowY = fitsViewport ? 'hidden' : 'auto';
+            board.style.marginTop = `${-upwardShift}px`;
+            board.style.transform = `scale(${scale}) rotateX(-7deg) rotateY(5deg)`;
+
+            wrapper.style.minHeight = `${Math.max(240, requiredWrapperHeight)}px`;
+            wrapper.style.maxHeight = 'none';
+            wrapper.style.overflowX = fitsViewportWidth ? 'hidden' : 'auto';
+            wrapper.style.overflowY = 'visible';
         }
 
         function startGame() {
@@ -549,6 +583,7 @@
                     if (tileIndex < playDeck.length) {
                         let tile = playDeck[tileIndex];
                         tile.y = coords[0]; tile.x = coords[1]; tile.z = layer.z;
+                        tile.trimBottomWallLeft = tile.z === 0 && tile.x === 28 && tile.y === 7;
                         tilesOnBoard.push(tile);
                         tileIndex++;
                     }
@@ -595,7 +630,7 @@
             });
         }
 
-        function updateBoardState() {
+        function updateBoardState(suppressNoMovesModal = false) {
             let activeCount = 0;
             tilesOnBoard.forEach(tile => {
                 if (tile.removed) return;
@@ -621,7 +656,7 @@
             });
             countEl.innerText = activeCount;
             if (activeCount === 0) handleVictory();
-            else checkAvailableMoves();
+            else checkAvailableMoves(suppressNoMovesModal);
         }
 
         function handleTileClick(tile) {
@@ -666,7 +701,7 @@
             updateBoardState();
         }
 
-        function checkAvailableMoves() {
+        function checkAvailableMoves(suppressModal = false) {
             const freeTiles = tilesOnBoard.filter(t => !t.removed && t.isFree);
             let hasMove = false;
             for (let i = 0; i < freeTiles.length; i++) {
@@ -674,7 +709,22 @@
                     if (tilesMatch(freeTiles[i], freeTiles[j])) { hasMove = true; break; }
                 }
             }
-            if (!hasMove && freeTiles.length > 0) showModal("Brak ruchów", "Nie ma już żadnych pasujących, wolnych par.", true);
+            if (!hasMove && freeTiles.length > 0 && !suppressModal) showModal("Brak ruchów", "Nie ma już żadnych pasujących, wolnych par.", true);
+        }
+
+        function applyIdentitiesToTiles(targetTiles, identities) {
+            targetTiles.forEach((tile, index) => {
+                tile.styleId = identities[index].styleId;
+                tile.type = identities[index].type;
+                tile.value = identities[index].value;
+                tile.group = identities[index].group;
+                tile.usageCount = identities[index].usageCount;
+                tile.matchKey = identities[index].matchKey;
+                tile.imageSrc = identities[index].imageSrc;
+                tile.label = identities[index].label;
+                renderTileContent(tile, tile.element);
+                attachTileHitboxListener(tile);
+            });
         }
 
         function shuffleRemaining() {
@@ -693,19 +743,20 @@
                 imageSrc: t.imageSrc,
                 label: t.label
             }));
-            shuffleArray(activeIdentities);
-            remaining.forEach((t, index) => {
-                t.styleId = activeIdentities[index].styleId;
-                t.type = activeIdentities[index].type;
-                t.value = activeIdentities[index].value;
-                t.group = activeIdentities[index].group;
-                t.usageCount = activeIdentities[index].usageCount;
-                t.matchKey = activeIdentities[index].matchKey;
-                t.imageSrc = activeIdentities[index].imageSrc;
-                t.label = activeIdentities[index].label;
-                renderTileContent(t, t.element);
-                attachTileHitboxListener(t);
-            });
+
+            if (remaining.length < 2) {
+                updateBoardState();
+                return;
+            }
+
+            let attemptsLeft = MAX_SHUFFLE_ATTEMPTS;
+            do {
+                shuffleArray(activeIdentities);
+                applyIdentitiesToTiles(remaining, activeIdentities);
+                updateBoardState(true);
+                attemptsLeft -= 1;
+            } while (!findAvailableMove() && attemptsLeft > 0);
+
             updateBoardState();
         }
 
@@ -746,7 +797,7 @@
         });
         zoomOutEl.addEventListener('click', () => setZoomLevel(zoomLevel - ZOOM_STEP));
         zoomInEl.addEventListener('click', () => setZoomLevel(zoomLevel + ZOOM_STEP));
-        zoomResetEl.addEventListener('click', () => setZoomLevel(DEFAULT_ZOOM_LEVEL));
+        zoomResetEl.addEventListener('click', () => setZoomLevel(getDefaultZoomLevel()));
         updateScoreDisplay();
         updateUndoButton();
         applyHintState();
