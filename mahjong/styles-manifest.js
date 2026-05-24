@@ -1,7 +1,394 @@
 window.MAHJONG_STYLE_MANIFEST = {
-  "generatedAt": "2026-05-23T13:41:53.579Z",
+  "generatedAt": "2026-05-24T15:46:36.462Z",
   "layoutTileCount": 144,
   "styles": [
+    {
+      "id": "kids",
+      "name": "Kids",
+      "tileCount": 144,
+      "layoutCompatible": true,
+      "validationErrors": [],
+      "items": [
+        {
+          "styleId": "kids",
+          "usageCount": 1,
+          "type": "czarodziej",
+          "name": "cz_cz",
+          "label": "cz cz",
+          "src": "pic/kids/1/czarodziej/cz_cz.jpg",
+          "matchKey": "kids::1::czarodziej"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 1,
+          "type": "czarodziej",
+          "name": "cz_jzi",
+          "label": "cz jzi",
+          "src": "pic/kids/1/czarodziej/cz_jzi.jpg",
+          "matchKey": "kids::1::czarodziej"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 1,
+          "type": "czarodziej",
+          "name": "cz_n",
+          "label": "cz n",
+          "src": "pic/kids/1/czarodziej/cz_n.jpg",
+          "matchKey": "kids::1::czarodziej"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 1,
+          "type": "czarodziej",
+          "name": "cz_z",
+          "label": "cz z",
+          "src": "pic/kids/1/czarodziej/cz_z.jpg",
+          "matchKey": "kids::1::czarodziej"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 1,
+          "type": "skarb",
+          "name": "d_bialy",
+          "label": "d bialy",
+          "src": "pic/kids/1/skarb/d_bialy.jpg",
+          "matchKey": "kids::1::skarb"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 1,
+          "type": "skarb",
+          "name": "d_czerwony",
+          "label": "d czerwony",
+          "src": "pic/kids/1/skarb/d_czerwony.jpg",
+          "matchKey": "kids::1::skarb"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 1,
+          "type": "skarb",
+          "name": "d_zielony",
+          "label": "d zielony",
+          "src": "pic/kids/1/skarb/d_zielony.jpg",
+          "matchKey": "kids::1::skarb"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 1,
+          "type": "skarb",
+          "name": "d_zloty",
+          "label": "d zloty",
+          "src": "pic/kids/1/skarb/d_zloty.jpg",
+          "matchKey": "kids::1::skarb"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "karty",
+          "name": "kar_a",
+          "label": "kar a",
+          "src": "pic/kids/4/karty/kar_a.jpg",
+          "matchKey": "kids::4::karty::kar_a"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "karty",
+          "name": "kar_j",
+          "label": "kar j",
+          "src": "pic/kids/4/karty/kar_j.jpg",
+          "matchKey": "kids::4::karty::kar_j"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "karty",
+          "name": "kar_k",
+          "label": "kar k",
+          "src": "pic/kids/4/karty/kar_k.jpg",
+          "matchKey": "kids::4::karty::kar_k"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "karty",
+          "name": "kar_q",
+          "label": "kar q",
+          "src": "pic/kids/4/karty/kar_q.jpg",
+          "matchKey": "kids::4::karty::kar_q"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "koty",
+          "name": "k_b",
+          "label": "k b",
+          "src": "pic/kids/4/koty/k_b.jpg",
+          "matchKey": "kids::4::koty::k_b"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "koty",
+          "name": "k_baj",
+          "label": "k baj",
+          "src": "pic/kids/4/koty/k_baj.jpg",
+          "matchKey": "kids::4::koty::k_baj"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "koty",
+          "name": "k_cza",
+          "label": "k cza",
+          "src": "pic/kids/4/koty/k_cza.jpg",
+          "matchKey": "kids::4::koty::k_cza"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "koty",
+          "name": "k_f",
+          "label": "k f",
+          "src": "pic/kids/4/koty/k_f.jpg",
+          "matchKey": "kids::4::koty::k_f"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "koty",
+          "name": "k_n",
+          "label": "k n",
+          "src": "pic/kids/4/koty/k_n.jpg",
+          "matchKey": "kids::4::koty::k_n"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "koty",
+          "name": "k_r",
+          "label": "k r",
+          "src": "pic/kids/4/koty/k_r.jpg",
+          "matchKey": "kids::4::koty::k_r"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "koty",
+          "name": "k_ru",
+          "label": "k ru",
+          "src": "pic/kids/4/koty/k_ru.jpg",
+          "matchKey": "kids::4::koty::k_ru"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "koty",
+          "name": "k_sz",
+          "label": "k sz",
+          "src": "pic/kids/4/koty/k_sz.jpg",
+          "matchKey": "kids::4::koty::k_sz"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "koty",
+          "name": "k_zi",
+          "label": "k zi",
+          "src": "pic/kids/4/koty/k_zi.jpg",
+          "matchKey": "kids::4::koty::k_zi"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "psy",
+          "name": "p_b",
+          "label": "p b",
+          "src": "pic/kids/4/psy/p_b.jpg",
+          "matchKey": "kids::4::psy::p_b"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "psy",
+          "name": "p_c",
+          "label": "p c",
+          "src": "pic/kids/4/psy/p_c.jpg",
+          "matchKey": "kids::4::psy::p_c"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "psy",
+          "name": "p_jzi",
+          "label": "p jzi",
+          "src": "pic/kids/4/psy/p_jzi.jpg",
+          "matchKey": "kids::4::psy::p_jzi"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "psy",
+          "name": "p_n",
+          "label": "p n",
+          "src": "pic/kids/4/psy/p_n.jpg",
+          "matchKey": "kids::4::psy::p_n"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "psy",
+          "name": "p_p",
+          "label": "p p",
+          "src": "pic/kids/4/psy/p_p.jpg",
+          "matchKey": "kids::4::psy::p_p"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "psy",
+          "name": "p_r",
+          "label": "p r",
+          "src": "pic/kids/4/psy/p_r.jpg",
+          "matchKey": "kids::4::psy::p_r"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "psy",
+          "name": "p_s",
+          "label": "p s",
+          "src": "pic/kids/4/psy/p_s.jpg",
+          "matchKey": "kids::4::psy::p_s"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "psy",
+          "name": "p_z",
+          "label": "p z",
+          "src": "pic/kids/4/psy/p_z.jpg",
+          "matchKey": "kids::4::psy::p_z"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "psy",
+          "name": "p_zi",
+          "label": "p zi",
+          "src": "pic/kids/4/psy/p_zi.jpg",
+          "matchKey": "kids::4::psy::p_zi"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "szachy",
+          "name": "sz_kon",
+          "label": "sz kon",
+          "src": "pic/kids/4/szachy/sz_kon.jpg",
+          "matchKey": "kids::4::szachy::sz_kon"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "szachy",
+          "name": "sz_krol",
+          "label": "sz krol",
+          "src": "pic/kids/4/szachy/sz_krol.jpg",
+          "matchKey": "kids::4::szachy::sz_krol"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "szachy",
+          "name": "sz_wieza",
+          "label": "sz wieza",
+          "src": "pic/kids/4/szachy/sz_wieza.jpg",
+          "matchKey": "kids::4::szachy::sz_wieza"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "zabawki",
+          "name": "z_auto",
+          "label": "z auto",
+          "src": "pic/kids/4/zabawki/z_auto.jpg",
+          "matchKey": "kids::4::zabawki::z_auto"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "zabawki",
+          "name": "z_budz",
+          "label": "z budz",
+          "src": "pic/kids/4/zabawki/z_budz.jpg",
+          "matchKey": "kids::4::zabawki::z_budz"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "zabawki",
+          "name": "z_gwiazda",
+          "label": "z gwiazda",
+          "src": "pic/kids/4/zabawki/z_gwiazda.jpg",
+          "matchKey": "kids::4::zabawki::z_gwiazda"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "zabawki",
+          "name": "z_ksi",
+          "label": "z ksi",
+          "src": "pic/kids/4/zabawki/z_ksi.jpg",
+          "matchKey": "kids::4::zabawki::z_ksi"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "zabawki",
+          "name": "z_ksie",
+          "label": "z ksie",
+          "src": "pic/kids/4/zabawki/z_ksie.jpg",
+          "matchKey": "kids::4::zabawki::z_ksie"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "zabawki",
+          "name": "z_lalka",
+          "label": "z lalka",
+          "src": "pic/kids/4/zabawki/z_lalka.jpg",
+          "matchKey": "kids::4::zabawki::z_lalka"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "zabawki",
+          "name": "z_planety",
+          "label": "z planety",
+          "src": "pic/kids/4/zabawki/z_planety.jpg",
+          "matchKey": "kids::4::zabawki::z_planety"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "zabawki",
+          "name": "z_tort",
+          "label": "z tort",
+          "src": "pic/kids/4/zabawki/z_tort.jpg",
+          "matchKey": "kids::4::zabawki::z_tort"
+        },
+        {
+          "styleId": "kids",
+          "usageCount": 4,
+          "type": "zabawki",
+          "name": "z_tr",
+          "label": "z tr",
+          "src": "pic/kids/4/zabawki/z_tr.jpg",
+          "matchKey": "kids::4::zabawki::z_tr"
+        }
+      ]
+    },
     {
       "id": "medieval",
       "name": "Medieval",
