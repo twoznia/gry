@@ -270,15 +270,21 @@
                 .slice(0, 100);
         }
 
-        function createCurrentResultEntry(name) {
+        function createCurrentResultEntry(name, snapshot = null) {
+            const result = snapshot || {
+                score: currentScore,
+                elapsedSeconds,
+                powerupsUsed,
+                penalties: normalizePenaltyBreakdown(penaltyBreakdown)
+            };
             return {
                 id: `mahjong-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`,
                 name: (name || '').trim() || 'Gracz',
-                score: currentScore,
-                elapsedSeconds,
+                score: result.score,
+                elapsedSeconds: result.elapsedSeconds,
                 date: getCurrentDateString(),
-                powerupsUsed,
-                penalties: normalizePenaltyBreakdown(penaltyBreakdown)
+                powerupsUsed: result.powerupsUsed,
+                penalties: normalizePenaltyBreakdown(result.penalties)
             };
         }
 
@@ -287,8 +293,8 @@
             return rankedEntries.some((candidate) => candidate.id === entry.id);
         }
 
-        function saveCurrentResult(name) {
-            const entry = createCurrentResultEntry(name);
+        function saveCurrentResult(name, snapshot = null) {
+            const entry = createCurrentResultEntry(name, snapshot);
             const leaderboard = getSortedLeaderboard([...loadLeaderboard(), entry]);
             saveLeaderboard(leaderboard);
             return { leaderboard, entry };
@@ -409,7 +415,9 @@
 
         function showNameEntryModal() {
             stopTimer();
-            nameEntryMessageEl.textContent = `Twój wynik: ${currentScore} pkt, ${formatElapsedTime(elapsedSeconds)}. Podaj imię do rankingu.`;
+            const scoreToSave = pendingLeaderboardEntry?.score ?? currentScore;
+            const timeToSave = pendingLeaderboardEntry?.elapsedSeconds ?? elapsedSeconds;
+            nameEntryMessageEl.textContent = `Twój wynik: ${scoreToSave} pkt, ${formatElapsedTime(timeToSave)}. Podaj imię do rankingu.`;
             nameEntryInputEl.value = '';
             nameEntryModalEl.classList.remove('hidden', 'opacity-0');
             setTimeout(() => nameEntryInputEl.focus(), 0);
@@ -422,11 +430,16 @@
         }
 
         function submitLeaderboardEntry() {
-            const { leaderboard, entry } = saveCurrentResult(nameEntryInputEl.value);
+            const snapshot = pendingLeaderboardEntry
+                ? { ...pendingLeaderboardEntry }
+                : null;
+            const { leaderboard, entry } = saveCurrentResult(nameEntryInputEl.value, snapshot);
+            const savedScore = snapshot?.score ?? currentScore;
+            const savedTime = snapshot?.elapsedSeconds ?? elapsedSeconds;
             pendingLeaderboardEntry = null;
             closeNameEntryModal();
             highlightedLeaderboardEntryId = entry.id;
-            showLeaderboardModal('Zwycięstwo!', `Twój wynik: ${currentScore} pkt, ${formatElapsedTime(elapsedSeconds)}. Mniej punktów = lepiej.`, leaderboard, highlightedLeaderboardEntryId);
+            showLeaderboardModal('Zwycięstwo!', `Twój wynik: ${savedScore} pkt, ${formatElapsedTime(savedTime)}. Mniej punktów = lepiej.`, leaderboard, highlightedLeaderboardEntryId);
         }
 
         function handleVictory() {
@@ -438,7 +451,9 @@
             if (doesEntryQualifyForLeaderboard(candidateEntry, leaderboard)) {
                 pendingLeaderboardEntry = {
                     score: currentScore,
-                    elapsedSeconds
+                    elapsedSeconds,
+                    powerupsUsed,
+                    penalties: normalizePenaltyBreakdown(penaltyBreakdown)
                 };
                 showNameEntryModal();
                 return;
