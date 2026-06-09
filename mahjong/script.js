@@ -257,7 +257,7 @@
         }
 
         function saveLeaderboard(entries) {
-            localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(entries.slice(0, 10)));
+            localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(entries.slice(0, 100)));
         }
 
         function getSortedLeaderboard(entries) {
@@ -267,7 +267,7 @@
                     if (left.elapsedSeconds !== right.elapsedSeconds) return left.elapsedSeconds - right.elapsedSeconds;
                     return left.name.localeCompare(right.name, 'pl');
                 })
-                .slice(0, 10);
+                .slice(0, 100);
         }
 
         function createCurrentResultEntry(name) {
@@ -294,14 +294,20 @@
             return { leaderboard, entry };
         }
 
-        function renderLeaderboard(entries, highlightedEntryId = null) {
+        function renderLeaderboard(entries, highlightedEntryId = null, worstEntryId = null) {
             leaderboardListEl.innerHTML = '';
             leaderboardEmptyEl.classList.toggle('hidden', entries.length > 0);
 
             entries.forEach((entry, index) => {
                 const row = document.createElement('div');
                 const isHighlighted = highlightedEntryId && entry.id === highlightedEntryId;
-                row.className = `results-row${entry.powerupsUsed ? '' : ' results-row-clean'}${isHighlighted ? ' results-row-highlight' : ''}`;
+                const isWorst = worstEntryId && entry.id === worstEntryId;
+                if (isWorst) {
+                    const sep = document.createElement('hr');
+                    sep.className = 'results-separator';
+                    leaderboardListEl.appendChild(sep);
+                }
+                row.className = `results-row${entry.powerupsUsed ? '' : ' results-row-clean'}${isHighlighted ? ' results-row-highlight' : ''}${isWorst ? ' results-row-worst' : ''}`;
                 row.innerHTML = `
                     <div class="results-rank">${index + 1}</div>
                     <div class="results-player">
@@ -316,11 +322,12 @@
             });
         }
 
-        function showLeaderboardModal(title = 'Najlepsze wyniki', message = 'Top 10 wyników, mniej punktów = lepiej.', entries = getSortedLeaderboard(loadLeaderboard()), highlightedEntryId = null) {
+        function showLeaderboardModal(title = 'Najlepsze wyniki', message = 'Top 100 wyników, mniej punktów = lepiej.', entries = getSortedLeaderboard(loadLeaderboard()), highlightedEntryId = null, worstEntryId = null) {
             stopTimer();
             leaderboardTitleEl.textContent = title;
             leaderboardMessageEl.textContent = message;
-            renderLeaderboard(getSortedLeaderboard(entries), highlightedEntryId);
+            const sorted = getSortedLeaderboard(entries);
+            renderLeaderboard(sorted, highlightedEntryId, worstEntryId);
             highlightedLeaderboardEntryId = null;
             leaderboardModalEl.classList.remove('hidden', 'opacity-0');
         }
@@ -438,7 +445,9 @@
             }
 
             pendingLeaderboardEntry = null;
-            showLeaderboardModal('Zwycięstwo!', `Twój wynik: ${currentScore} pkt, ${formatElapsedTime(elapsedSeconds)}. Nie wszedł do tabeli rekordów.`, leaderboard);
+            const sorted = getSortedLeaderboard(leaderboard);
+            const worstEntry = sorted.length > 0 ? sorted[sorted.length - 1] : null;
+            showLeaderboardModal('Zwycięstwo!', `Twój wynik: ${currentScore} pkt, ${formatElapsedTime(elapsedSeconds)}. Nie wszedł do tabeli rekordów.`, leaderboard, null, worstEntry?.id ?? null);
         }
 
         function getStyleCatalog() {

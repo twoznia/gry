@@ -341,6 +341,17 @@
             color: #1f2937;
         }
 
+        .results-row-worst {
+            background: rgba(239, 68, 68, 0.12);
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+
+        .results-separator {
+            border: none;
+            border-top: 1px dashed rgba(100, 116, 139, 0.5);
+            margin: 0.25rem 0;
+        }
+
         .results-rank {
             color: #fbbf24;
             font-weight: 800;
