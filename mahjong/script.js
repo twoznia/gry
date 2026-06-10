@@ -8,7 +8,6 @@
         const LAYOUT_TILE_COUNT = LAYOUT_MAP.reduce((sum, layer) => sum + layer.tiles.length, 0);
         const STYLE_MANIFEST = window.MAHJONG_STYLE_MANIFEST || { styles: [] };
         const STYLE_STORAGE_KEY = 'mahjong_selected_style';
-        const LANGUAGE_STORAGE_KEY = 'mahjong_language';
         const ZOOM_STORAGE_KEY = 'mahjong_zoom_level';
         const LEADERBOARD_STORAGE_KEY = 'mahjong_leaderboard_v1';
         const DEFAULT_ZOOM_LEVEL = 1.2;
@@ -28,94 +27,6 @@
         const PENALTY_CATEGORIES = ['hints', 'showMove', 'undo', 'shuffle'];
         const MAX_SHUFFLE_ATTEMPTS = 200;
         const MAX_LAYER_Z = LAYOUT_MAP.reduce((max, layer) => Math.max(max, layer.z), 0);
-        const TRANSLATIONS = {
-            pl: {
-                pageTitle: 'Mahjong',
-                tilesLeftLabel: 'Klocki do usunięcia:',
-                timeLabel: 'Czas:',
-                styleLabel: 'Styl',
-                sizeLabel: 'Rozmiar',
-                zoomOutLabel: 'Pomniejsz',
-                zoomInLabel: 'Powiększ',
-                newGame: 'Nowa gra',
-                scores: 'Wyniki',
-                hints: 'Podświetlenie',
-                showMove: 'Pokaż ruch',
-                undo: 'Cofnij',
-                shuffle: 'Przetasuj',
-                modalGameOver: 'Koniec gry',
-                modalNoMovesTitle: 'Brak ruchów',
-                modalNoMovesMessage: 'Nie ma już żadnych pasujących, wolnych par.',
-                modalStyleMismatchTitle: 'Styl niezgodny',
-                modalStyleMismatchMessage: (expected, found) => `Styl wymaga ${expected} tiles, ale znaleziono ${found}.`,
-                modalShuffleTiles: 'Przetasuj klocki',
-                modalReplay: 'Zagraj ponownie',
-                leaderboardTitle: 'Najlepsze wyniki',
-                leaderboardMessage: 'Top 100 wyników, mniej punktów = lepiej.',
-                leaderboardTop: 'Top 100 wyników',
-                leaderboardEmpty: 'Brak zapisanych wyników.',
-                leaderboardClose: 'Zamknij',
-                leaderboardNewGame: 'Nowa gra',
-                saveResultTitle: 'Zapisz wynik',
-                saveResultPrompt: 'Podaj imię do rankingu.',
-                saveResultDetailed: (score, time) => `Twój wynik: ${score} pkt, ${time}. Podaj imię do rankingu.`,
-                skip: 'Pomiń',
-                save: 'Zapisz',
-                playerPlaceholder: 'Gracz',
-                playerDefault: 'Gracz',
-                penalties: (normalized) => `Kary: podsw. ${normalized.hints}, ruch ${normalized.showMove}, cofnij ${normalized.undo}, tasuj ${normalized.shuffle}`,
-                pointsSuffix: 'pkt',
-                datePlaceholder: '---- -- --',
-                victoryTitle: 'Zwycięstwo!',
-                victoryInTable: (score, time) => `Twój wynik: ${score} pkt, ${time}. Mniej punktów = lepiej.`,
-                victoryOutOfTable: (score, time) => `Twój wynik: ${score} pkt, ${time}. Nie wszedł do tabeli rekordów.`,
-                replayAccessible: (label) => `Wybierz klocek ${label}`,
-                styleIncompatible: (name, count) => `${name} (${count}, niezgodny)`
-            },
-            en: {
-                pageTitle: 'Mahjong',
-                tilesLeftLabel: 'Tiles left:',
-                timeLabel: 'Time:',
-                styleLabel: 'Style',
-                sizeLabel: 'Size',
-                zoomOutLabel: 'Zoom out',
-                zoomInLabel: 'Zoom in',
-                newGame: 'New game',
-                scores: 'Scores',
-                hints: 'Hints',
-                showMove: 'Show move',
-                undo: 'Undo',
-                shuffle: 'Shuffle',
-                modalGameOver: 'Game over',
-                modalNoMovesTitle: 'No moves',
-                modalNoMovesMessage: 'There are no matching free pairs left.',
-                modalStyleMismatchTitle: 'Style mismatch',
-                modalStyleMismatchMessage: (expected, found) => `Style needs ${expected} tiles, but found ${found}.`,
-                modalShuffleTiles: 'Shuffle tiles',
-                modalReplay: 'Play again',
-                leaderboardTitle: 'Best scores',
-                leaderboardMessage: 'Top 100 scores, fewer points = better.',
-                leaderboardTop: 'Top 100 scores',
-                leaderboardEmpty: 'No saved scores yet.',
-                leaderboardClose: 'Close',
-                leaderboardNewGame: 'New game',
-                saveResultTitle: 'Save score',
-                saveResultPrompt: 'Enter a name for the leaderboard.',
-                saveResultDetailed: (score, time) => `Your score: ${score} pts, ${time}. Enter a name for the leaderboard.`,
-                skip: 'Skip',
-                save: 'Save',
-                playerPlaceholder: 'Player',
-                playerDefault: 'Player',
-                penalties: (normalized) => `Penalties: hints ${normalized.hints}, move ${normalized.showMove}, undo ${normalized.undo}, shuffle ${normalized.shuffle}`,
-                pointsSuffix: 'pts',
-                datePlaceholder: '---- -- --',
-                victoryTitle: 'Victory!',
-                victoryInTable: (score, time) => `Your score: ${score} pts, ${time}. Fewer points = better.`,
-                victoryOutOfTable: (score, time) => `Your score: ${score} pts, ${time}. Not enough for the leaderboard.`,
-                replayAccessible: (label) => `Select tile ${label}`,
-                styleIncompatible: (name, count) => `${name} (${count}, incompatible)`
-            }
-        };
         const BOARD_CONTENT_BOUNDS = (() => {
             let minTop = Number.POSITIVE_INFINITY;
             let maxBottom = Number.NEGATIVE_INFINITY;
@@ -153,21 +64,13 @@
         let pendingLeaderboardEntry = null;
         let highlightedLeaderboardEntryId = null;
         let undoState = null;
-        let currentLang = 'pl';
 
         const boardEl = document.getElementById('board');
         const countEl = document.getElementById('tiles-count');
         const scoreDisplayEl = document.getElementById('score-display');
         const timerDisplayEl = document.getElementById('timer-display');
-        const tilesLeftLabelEl = document.getElementById('tiles-left-label');
-        const timeLabelEl = document.getElementById('time-label');
-        const styleLabelEl = document.getElementById('style-label');
-        const sizeLabelEl = document.getElementById('size-label');
-        const newGameBtnEl = document.getElementById('new-game-btn');
         const modal = document.getElementById('message-modal');
         const modalContent = document.getElementById('modal-content');
-        const modalBtnShuffleEl = document.getElementById('modal-btn-shuffle');
-        const modalBtnReplayEl = document.getElementById('modal-btn-replay');
         const leaderboardModalEl = document.getElementById('leaderboard-modal');
         const leaderboardTitleEl = document.getElementById('leaderboard-title');
         const leaderboardMessageEl = document.getElementById('leaderboard-message');
@@ -176,7 +79,6 @@
         const leaderboardCloseBtnEl = document.getElementById('leaderboard-close-btn');
         const leaderboardRestartBtnEl = document.getElementById('leaderboard-restart-btn');
         const nameEntryModalEl = document.getElementById('name-entry-modal');
-        const nameEntryTitleEl = document.getElementById('name-entry-title');
         const nameEntryMessageEl = document.getElementById('name-entry-message');
         const nameEntryInputEl = document.getElementById('name-entry-input');
         const nameEntrySkipBtnEl = document.getElementById('name-entry-skip-btn');
@@ -190,66 +92,6 @@
         const zoomOutEl = document.getElementById('zoom-out');
         const zoomInEl = document.getElementById('zoom-in');
         const zoomResetEl = document.getElementById('zoom-reset');
-        const langBtnPlEl = document.getElementById('btn-lang-pl');
-        const langBtnEnEl = document.getElementById('btn-lang-en');
-
-        function t() {
-            return TRANSLATIONS[currentLang] || TRANSLATIONS.pl;
-        }
-
-        function loadLanguage() {
-            const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-            currentLang = stored === 'en' ? 'en' : 'pl';
-        }
-
-        function saveLanguage() {
-            localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang);
-        }
-
-        function setLanguage(nextLang) {
-            currentLang = nextLang === 'en' ? 'en' : 'pl';
-            saveLanguage();
-            applyLanguageUI();
-            updateStyleTitle();
-            populateStyleSelector();
-            updateUndoButton();
-            if (!leaderboardModalEl.classList.contains('hidden')) {
-                showLeaderboardModal();
-            }
-        }
-
-        function applyLanguageUI() {
-            const locale = t();
-            document.documentElement.lang = currentLang;
-            tilesLeftLabelEl.textContent = locale.tilesLeftLabel;
-            timeLabelEl.textContent = locale.timeLabel;
-            styleLabelEl.textContent = locale.styleLabel;
-            sizeLabelEl.textContent = locale.sizeLabel;
-            newGameBtnEl.textContent = locale.newGame;
-            showScoresBtnEl.textContent = locale.scores;
-            hintToggleEl.textContent = locale.hints;
-            showMoveBtnEl.textContent = locale.showMove;
-            undoBtnEl.textContent = locale.undo;
-            document.getElementById('btn-shuffle').textContent = locale.shuffle;
-            document.getElementById('modal-title').textContent = locale.modalGameOver;
-            document.getElementById('modal-message').textContent = locale.modalNoMovesMessage;
-            modalBtnShuffleEl.textContent = locale.modalShuffleTiles;
-            modalBtnReplayEl.textContent = locale.modalReplay;
-            leaderboardTitleEl.textContent = locale.leaderboardTitle;
-            leaderboardMessageEl.textContent = locale.leaderboardTop;
-            leaderboardEmptyEl.textContent = locale.leaderboardEmpty;
-            leaderboardCloseBtnEl.textContent = locale.leaderboardClose;
-            leaderboardRestartBtnEl.textContent = locale.leaderboardNewGame;
-            nameEntryTitleEl.textContent = locale.saveResultTitle;
-            nameEntryMessageEl.textContent = locale.saveResultPrompt;
-            nameEntryInputEl.placeholder = locale.playerPlaceholder;
-            nameEntrySkipBtnEl.textContent = locale.skip;
-            nameEntrySaveBtnEl.textContent = locale.save;
-            zoomOutEl.setAttribute('aria-label', locale.zoomOutLabel);
-            zoomInEl.setAttribute('aria-label', locale.zoomInLabel);
-            langBtnPlEl.classList.toggle('is-active', currentLang === 'pl');
-            langBtnEnEl.classList.toggle('is-active', currentLang === 'en');
-        }
 
         function applyHintState() {
             document.body.classList.toggle('hints-disabled', !hintsEnabled);
@@ -339,7 +181,7 @@
 
         function formatPenaltyBreakdown(penalties) {
             const normalized = normalizePenaltyBreakdown(penalties);
-            return t().penalties(normalized);
+            return `Kary: podsw. ${normalized.hints}, ruch ${normalized.showMove}, cofnij ${normalized.undo}, tasuj ${normalized.shuffle}`;
         }
 
         function addPenalty(points, category = null) {
@@ -402,7 +244,7 @@
                 if (!Array.isArray(parsed)) return [];
 
                 return parsed.map((entry) => ({
-                    name: (entry?.name || '').trim() || t().playerDefault,
+                    name: (entry?.name || '').trim() || 'Gracz',
                     score: Number.isFinite(entry?.score) ? entry.score : Number.MAX_SAFE_INTEGER,
                     elapsedSeconds: Number.isFinite(entry?.elapsedSeconds) ? entry.elapsedSeconds : Number.MAX_SAFE_INTEGER,
                     date: typeof entry?.date === 'string' ? entry.date : '',
@@ -423,7 +265,7 @@
                 .sort((left, right) => {
                     if (left.score !== right.score) return left.score - right.score;
                     if (left.elapsedSeconds !== right.elapsedSeconds) return left.elapsedSeconds - right.elapsedSeconds;
-                    return left.name.localeCompare(right.name, currentLang);
+                    return left.name.localeCompare(right.name, 'pl');
                 })
                 .slice(0, 100);
         }
@@ -437,7 +279,7 @@
             };
             return {
                 id: `mahjong-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`,
-                name: (name || '').trim() || t().playerDefault,
+                name: (name || '').trim() || 'Gracz',
                 score: result.score,
                 elapsedSeconds: result.elapsedSeconds,
                 date: getCurrentDateString(),
@@ -478,15 +320,15 @@
                         <strong>${entry.name}</strong>
                         <span class="results-penalties">${formatPenaltyBreakdown(entry.penalties)}</span>
                     </div>
-                    <span>${entry.score} ${t().pointsSuffix}</span>
+                    <span>${entry.score} pkt</span>
                     <span>${formatElapsedTime(entry.elapsedSeconds)}</span>
-                    <span class="results-date">${entry.date || t().datePlaceholder}</span>
+                    <span class="results-date">${entry.date || '---- -- --'}</span>
                 `;
                 leaderboardListEl.appendChild(row);
             });
         }
 
-        function showLeaderboardModal(title = t().leaderboardTitle, message = t().leaderboardMessage, entries = getSortedLeaderboard(loadLeaderboard()), highlightedEntryId = null, worstEntryId = null) {
+        function showLeaderboardModal(title = 'Najlepsze wyniki', message = 'Top 100 wyników, mniej punktów = lepiej.', entries = getSortedLeaderboard(loadLeaderboard()), highlightedEntryId = null, worstEntryId = null) {
             stopTimer();
             leaderboardTitleEl.textContent = title;
             leaderboardMessageEl.textContent = message;
@@ -575,7 +417,7 @@
             stopTimer();
             const scoreToSave = pendingLeaderboardEntry?.score ?? currentScore;
             const timeToSave = pendingLeaderboardEntry?.elapsedSeconds ?? elapsedSeconds;
-            nameEntryMessageEl.textContent = t().saveResultDetailed(scoreToSave, formatElapsedTime(timeToSave));
+            nameEntryMessageEl.textContent = `Twój wynik: ${scoreToSave} pkt, ${formatElapsedTime(timeToSave)}. Podaj imię do rankingu.`;
             nameEntryInputEl.value = '';
             nameEntryModalEl.classList.remove('hidden', 'opacity-0');
             setTimeout(() => nameEntryInputEl.focus(), 0);
@@ -597,14 +439,14 @@
             pendingLeaderboardEntry = null;
             closeNameEntryModal();
             highlightedLeaderboardEntryId = entry.id;
-            showLeaderboardModal(t().victoryTitle, t().victoryInTable(savedScore, formatElapsedTime(savedTime)), leaderboard, highlightedLeaderboardEntryId);
+            showLeaderboardModal('Zwycięstwo!', `Twój wynik: ${savedScore} pkt, ${formatElapsedTime(savedTime)}. Mniej punktów = lepiej.`, leaderboard, highlightedLeaderboardEntryId);
         }
 
         function handleVictory() {
             gameCompleted = true;
             stopTimer();
             const leaderboard = loadLeaderboard();
-            const candidateEntry = createCurrentResultEntry(t().playerDefault);
+            const candidateEntry = createCurrentResultEntry('Gracz');
 
             if (doesEntryQualifyForLeaderboard(candidateEntry, leaderboard)) {
                 pendingLeaderboardEntry = {
@@ -620,7 +462,7 @@
             pendingLeaderboardEntry = null;
             const sorted = getSortedLeaderboard(leaderboard);
             const worstEntry = sorted.length > 0 ? sorted[sorted.length - 1] : null;
-            showLeaderboardModal(t().victoryTitle, t().victoryOutOfTable(currentScore, formatElapsedTime(elapsedSeconds)), leaderboard, null, worstEntry?.id ?? null);
+            showLeaderboardModal('Zwycięstwo!', `Twój wynik: ${currentScore} pkt, ${formatElapsedTime(elapsedSeconds)}. Nie wszedł do tabeli rekordów.`, leaderboard, null, worstEntry?.id ?? null);
         }
 
         function getStyleCatalog() {
@@ -652,7 +494,7 @@
         function updateStyleTitle() {
             const style = getSelectedStyle();
             const title = style ? `Mahjong ${style.name}` : 'Mahjong';
-            document.title = `${title} | @twoznia`;
+            document.title = `${title} - obrazki`;
             styleTitleEl.textContent = title;
         }
 
@@ -663,7 +505,7 @@
             styles.forEach(style => {
                 const option = document.createElement('option');
                 option.value = style.id;
-                option.textContent = style.layoutCompatible ? `${style.name} (${style.tileCount})` : t().styleIncompatible(style.name, style.tileCount);
+                option.textContent = style.layoutCompatible ? `${style.name} (${style.tileCount})` : `${style.name} (${style.tileCount}, niezgodny)`;
                 option.disabled = !style.layoutCompatible;
                 styleSelectEl.appendChild(option);
             });
@@ -782,8 +624,6 @@
         }
 
         function init() {
-            loadLanguage();
-            applyLanguageUI();
             loadSelectedStyleId();
             populateStyleSelector();
             loadZoomLevel();
@@ -859,7 +699,7 @@
             if (deckBase.length !== LAYOUT_TILE_COUNT) {
                 countEl.innerText = deckBase.length;
                 stopTimer();
-                showModal(t().modalStyleMismatchTitle, t().modalStyleMismatchMessage(LAYOUT_TILE_COUNT, deckBase.length), false);
+                showModal('Styl niezgodny', `Styl wymaga ${LAYOUT_TILE_COUNT} tiles, ale znaleziono ${deckBase.length}.`, false);
                 return;
             }
 
@@ -902,7 +742,7 @@
 
         function renderTileContent(tile, element) {
             element.innerHTML = `
-                <button class="tile-hitbox" type="button" aria-label="${t().replayAccessible(tile.label)}"></button>
+                <button class="tile-hitbox" type="button" aria-label="Wybierz klocek ${tile.label}"></button>
                 <div class="tile-image-frame">
                     <img class="tile-image" src="${tile.imageSrc}" alt="${tile.label}" loading="eager">
                 </div>
@@ -999,7 +839,7 @@
                     if (tilesMatch(freeTiles[i], freeTiles[j])) { hasMove = true; break; }
                 }
             }
-            if (!hasMove && freeTiles.length > 0 && !suppressModal) showModal(t().modalNoMovesTitle, t().modalNoMovesMessage, true);
+            if (!hasMove && freeTiles.length > 0 && !suppressModal) showModal("Brak ruchów", "Nie ma już żadnych pasujących, wolnych par.", true);
         }
 
         function applyIdentitiesToTiles(targetTiles, identities) {
@@ -1080,7 +920,7 @@
         });
         nameEntrySaveBtnEl.addEventListener('click', submitLeaderboardEntry);
         nameEntrySkipBtnEl.addEventListener('click', () => {
-            nameEntryInputEl.value = t().playerDefault;
+            nameEntryInputEl.value = 'Gracz';
             submitLeaderboardEntry();
         });
         nameEntryInputEl.addEventListener('keydown', (event) => {
@@ -1089,8 +929,6 @@
         zoomOutEl.addEventListener('click', () => setZoomLevel(zoomLevel - ZOOM_STEP));
         zoomInEl.addEventListener('click', () => setZoomLevel(zoomLevel + ZOOM_STEP));
         zoomResetEl.addEventListener('click', () => setZoomLevel(getDefaultZoomLevel()));
-        langBtnPlEl.addEventListener('click', () => setLanguage('pl'));
-        langBtnEnEl.addEventListener('click', () => setLanguage('en'));
         updateScoreDisplay();
         updateUndoButton();
         applyHintState();
