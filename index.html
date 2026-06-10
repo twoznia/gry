@@ -6,11 +6,16 @@
     <title>Moje Gry | @twoznia</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="layout-small">
 
-    <header>
-        <h1>🎮 Centrum Rozrywki</h1>
-        <p class="subtitle">Wybierz grę i pobij rekord!</p>
+    <header class="page-header">
+        <div>
+            <h1>🎮 Centrum Rozrywki</h1>
+            <p class="subtitle">Wybierz grę i pobij rekord!</p>
+        </div>
+        <button id="layout-toggle" class="layout-toggle" type="button" aria-pressed="true" aria-label="Przełącz na duże karty">
+            <span class="layout-toggle-label">Duże karty</span>
+        </button>
     </header>
 
     <main class="game-container">
@@ -71,7 +76,7 @@
             <div class="play-btn">Zagraj</div>
         </a>
 
-        <a href="./rybak/" class="game-card">
+        <a href="./rybak/" class="game-card" id="rybak-card">
             <span class="icon">🚣</span>
             <h2>Rybak</h2>
             <p style="color: #94a3b8; font-size: 0.9rem;">Spokojny połów na pełnym jeziorze.</p>
