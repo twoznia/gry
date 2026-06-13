@@ -9,7 +9,7 @@
         const STYLE_MANIFEST = window.MAHJONG_STYLE_MANIFEST || { styles: [] };
         const STYLE_STORAGE_KEY = 'mahjong_selected_style';
         const ZOOM_STORAGE_KEY = 'mahjong_zoom_level';
-        const LEADERBOARD_STORAGE_KEY = 'mahjong_leaderboard_v1';
+        const LEADERBOARD_STORAGE_KEY_PREFIX = 'mahjong_leaderboard_v2_';
         const DEFAULT_ZOOM_LEVEL = 1.2;
         const MOBILE_DEFAULT_ZOOM_LEVEL = 0.7;
         const MIN_ZOOM_LEVEL = 0.5;
@@ -78,6 +78,7 @@
         const leaderboardEmptyEl = document.getElementById('leaderboard-empty');
         const leaderboardCloseBtnEl = document.getElementById('leaderboard-close-btn');
         const leaderboardRestartBtnEl = document.getElementById('leaderboard-restart-btn');
+        const leaderboardResetBtnEl = document.getElementById('leaderboard-reset-btn');
         const nameEntryModalEl = document.getElementById('name-entry-modal');
         const nameEntryMessageEl = document.getElementById('name-entry-message');
         const nameEntryInputEl = document.getElementById('name-entry-input');
@@ -237,9 +238,14 @@
             return !gameCompleted && tilesOnBoard.some(tile => !tile.removed);
         }
 
-        function loadLeaderboard() {
+        function getLeaderboardStorageKey(styleId) {
+            return LEADERBOARD_STORAGE_KEY_PREFIX + (styleId || 'default');
+        }
+
+        function loadLeaderboard(styleId) {
+            const key = getLeaderboardStorageKey(styleId !== undefined ? styleId : selectedStyleId);
             try {
-                const raw = localStorage.getItem(LEADERBOARD_STORAGE_KEY);
+                const raw = localStorage.getItem(key);
                 const parsed = raw ? JSON.parse(raw) : [];
                 if (!Array.isArray(parsed)) return [];
 
@@ -256,8 +262,9 @@
             }
         }
 
-        function saveLeaderboard(entries) {
-            localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(entries.slice(0, 100)));
+        function saveLeaderboard(entries, styleId) {
+            const key = getLeaderboardStorageKey(styleId !== undefined ? styleId : selectedStyleId);
+            localStorage.setItem(key, JSON.stringify(entries.slice(0, 100)));
         }
 
         function getSortedLeaderboard(entries) {
@@ -328,11 +335,15 @@
             });
         }
 
-        function showLeaderboardModal(title = 'Najlepsze wyniki', message = 'Top 100 wyników, mniej punktów = lepiej.', entries = getSortedLeaderboard(loadLeaderboard()), highlightedEntryId = null, worstEntryId = null) {
+        function showLeaderboardModal(title, message, entries, highlightedEntryId = null, worstEntryId = null) {
+            const style = getSelectedStyle();
+            const styleName = style ? style.name : '';
+            const defaultTitle = styleName ? `Najlepsze wyniki – ${styleName}` : 'Najlepsze wyniki';
+            const defaultMessage = 'Top 100 wyników, mniej punktów = lepiej.';
             stopTimer();
-            leaderboardTitleEl.textContent = title;
-            leaderboardMessageEl.textContent = message;
-            const sorted = getSortedLeaderboard(entries);
+            leaderboardTitleEl.textContent = title !== undefined ? title : defaultTitle;
+            leaderboardMessageEl.textContent = message !== undefined ? message : defaultMessage;
+            const sorted = getSortedLeaderboard(entries !== undefined ? entries : getSortedLeaderboard(loadLeaderboard()));
             renderLeaderboard(sorted, highlightedEntryId, worstEntryId);
             highlightedLeaderboardEntryId = null;
             leaderboardModalEl.classList.remove('hidden', 'opacity-0');
@@ -409,8 +420,10 @@
 
         function closeLeaderboardModal() {
             leaderboardModalEl.classList.add('opacity-0');
-            setTimeout(() => leaderboardModalEl.classList.add('hidden'), 300);
-            if (isGameActive() && !isAnyOverlayOpen()) startTimer();
+            setTimeout(() => {
+                leaderboardModalEl.classList.add('hidden');
+                if (isGameActive() && !isAnyOverlayOpen()) startTimer();
+            }, 300);
         }
 
         function showNameEntryModal() {
@@ -425,8 +438,10 @@
 
         function closeNameEntryModal() {
             nameEntryModalEl.classList.add('opacity-0');
-            setTimeout(() => nameEntryModalEl.classList.add('hidden'), 300);
-            if (isGameActive() && !isAnyOverlayOpen()) startTimer();
+            setTimeout(() => {
+                nameEntryModalEl.classList.add('hidden');
+                if (isGameActive() && !isAnyOverlayOpen()) startTimer();
+            }, 300);
         }
 
         function submitLeaderboardEntry() {
@@ -511,6 +526,7 @@
             });
 
             const preferred = styles.find(style => style.id === selectedStyleId && style.layoutCompatible)
+                || styles.find(style => style.id === 'medieval' && style.layoutCompatible)
                 || styles.find(style => style.layoutCompatible)
                 || styles[0]
                 || null;
@@ -905,8 +921,10 @@
 
         function closeModal() {
             modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-            if (isGameActive() && !isAnyOverlayOpen()) startTimer();
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                if (isGameActive() && !isAnyOverlayOpen()) startTimer();
+            }, 300);
         }
 
         hintToggleEl.addEventListener('click', toggleHints);
@@ -917,6 +935,13 @@
         leaderboardRestartBtnEl.addEventListener('click', () => {
             closeLeaderboardModal();
             startGame();
+        });
+        leaderboardResetBtnEl.addEventListener('click', () => {
+            if (!confirm('Wyczyścić wszystkie wyniki dla tego stylu?')) return;
+            const key = getLeaderboardStorageKey(selectedStyleId);
+            localStorage.removeItem(key);
+            renderLeaderboard([]);
+            leaderboardMessageEl.textContent = 'Wyniki zostały wyczyszczone.';
         });
         nameEntrySaveBtnEl.addEventListener('click', submitLeaderboardEntry);
         nameEntrySkipBtnEl.addEventListener('click', () => {
