@@ -15,13 +15,24 @@ polskie,angielskie
 
 ## Dane wejściowe
 
-Oczekuj listy słówek, tabeli, par typu `pies=dog` albo podobnego surowego wejścia.
+Obsługiwane formaty wejściowe:
+
+| Format | Przykład |
+|--------|---------|
+| Pary z `=` | `pies=dog`, `kot=cat` |
+| Pary z `-` lub `–` | `pies - dog`, `kot – cat` |
+| Pary z `:` | `pies: dog` |
+| Tabela Markdown | `\| pies \| dog \|` |
+| Lista punktowana | `- pies / dog` |
+| Dwie kolumny oddzielone tabulatorem | `pies\tdog` |
+| Tekst ciągły z separatorem | `pies dog, kot cat` (pary oddzielone przecinkiem) |
 
 ## Kroki
 
-1. Rozbij wejście na pojedyncze pary.
-2. Zamień je na format `polskie,angielskie`.
-3. Oznacz rekordy niejednoznaczne zamiast zgadywać.
+1. Rozpoznaj format wejścia na podstawie separatora lub struktury.
+2. Rozbij wejście na pojedyncze pary.
+3. Zamień je na format `polskie,angielskie`.
+4. Oznacz rekordy niejednoznaczne zamiast zgadywać.
 
 ## Walidacja
 

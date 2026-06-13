@@ -21,12 +21,35 @@ Pracuj wyłącznie na:
 - Jeśli format `status.md` już istnieje, zachowaj go.
 - Jeśli plik nie istnieje, utwórz go w prostym, czytelnym formacie markdown.
 
+## Format pliku status.md
+
+```markdown
+# Status Gier
+
+Stan na RRRR-MM-DD.
+
+- <folder-gry> - back-link: <obecny|dodany|ujednolicony>
+- <folder-gry> - back-link: <obecny|dodany|ujednolicony>
+```
+
+Przykład:
+```markdown
+# Status Gier
+
+Stan na 2026-06-13.
+
+- auta - back-link: ujednolicony
+- jumper - back-link: ujednolicony
+- kulki - back-link: dodany
+- pytania - back-link: obecny
+```
+
 ## Dane wejściowe
 
-Oczekuj listy gier oraz, jeśli workflow tego wymaga, krótkiego statusu dla każdej pozycji, np.:
-- `back-link: obecny`
-- `back-link: dodany`
-- `back-link: ujednolicony`
+Oczekuj listy gier oraz, jeśli workflow tego wymaga, krótkiego statusu dla każdej pozycji:
+- `back-link: obecny` — link istniał wcześniej w poprawnej formie
+- `back-link: dodany` — link został dodany przez `add-game-back-link`
+- `back-link: ujednolicony` — link istniał, ale został ujednolicony do standardowego formatu
 
 ## Walidacja
 

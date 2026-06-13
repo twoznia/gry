@@ -18,10 +18,14 @@ Oczekuj:
 
 ## Kroki
 
-- `arcade` lub logiczna,
-- `quiz`,
-- `trener danych`,
-- `inne`.
+1. Przejrzyj pliki gry (mechanika, dane, sterowanie).
+2. Przypisz jeden z typów:
+   - `arcade` — rdzeń to sterowanie, punktacja, plansza lub akcja (np. Tetris, Snake, River Raid)
+   - `logiczna` — gra planszowa, łamigłówka bez silnej mechaniki arcade (np. Mahjong, Saper, Kółko i Krzyżyk)
+   - `quiz` — pytania i odpowiedzi jako główny mechanizm (np. Pytania, Pytanka, Kraje)
+   - `trener danych` — nauka przez zestawy CSV/JSON, fiszki, ćwiczenia (np. Słówka, Pisanie)
+   - `inne` — nie pasuje do żadnej z powyższych kategorii
+3. Zdecyduj, które sekcje README uwzględnić na podstawie wybranego typu.
 
 ## Reguły klasyfikacji
 
