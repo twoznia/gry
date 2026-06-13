@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szybka Reakcja - Poziomy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #gameCanvas { touch-action: none; background-color: #1a1a1a; border-radius: 8px; cursor: crosshair; }
+        body { background-color: #111; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body>
+
+    <div class="text-center w-full max-w-3xl px-4">
+        <h1 class="text-3xl font-bold mb-4 text-blue-400">Time Trial: Szybkość i Umysł</h1>
+        
+        <div class="flex flex-wrap justify-between w-full gap-2 md:gap-8 bg-gray-800 p-4 rounded-xl mb-4 shadow-lg border border-gray-700 text-sm md:text-xl">
+            <div>Etap: <span id="current-level-display" class="font-bold text-blue-400">1</span>/<span id="max-level-display">4</span></div>
+            <div>Pozostało: <span id="remaining" class="font-bold text-green-400">0</span></div>
+            <div id="target-box" class="hidden">Szukaj nr: <span id="target-number" class="font-bold text-purple-400">-</span></div>
+            <div>Czas: <span id="timer" class="font-bold text-yellow-400">0.0</span>s</div>
+        </div>
+        
+        <div id="game-container" class="relative">
+            <canvas id="gameCanvas" class="w-full h-[400px] shadow-2xl"></canvas>
+            
+            <div id="overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-black/85 rounded-lg p-4 z-10">
+                <div id="overlay-content" class="w-full max-w-md text-center">
+                    <h2 id="overlay-title" class="text-3xl font-bold mb-4 text-center text-white">Wybierz tryb gry!</h2>
+                    <div id="overlay-stats" class="text-left text-lg text-gray-200 mb-6 bg-gray-800 p-4 rounded-lg hidden"></div>
+                    <p id="overlay-desc" class="text-yellow-300 mb-6 font-bold text-xl min-h-[3rem]"></p>
+                    
+                    <div id="mode-selection" class="flex flex-col sm:flex-row gap-4 w-full justify-center mt-4">
+                        <button id="btn-child" class="flex-1 bg-green-600 hover:bg-green-500 p-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-green-400/30 flex flex-col items-center justify-center gap-2">
+                            <span class="text-5xl">👶</span> Dziecko
+                            <span class="text-sm font-normal text-green-100">3 poziomy</span>
+                        </button>
+                        <button id="btn-adult" class="flex-1 bg-blue-600 hover:bg-blue-500 p-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-blue-400/30 flex flex-col items-center justify-center gap-2">
+                            <span class="text-5xl">🧑</span> Dorosły
+                            <span class="text-sm font-normal text-blue-100">4 poziomy</span>
+                        </button>
+                    </div>
+
+                    <button id="main-btn" class="hidden bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-blue-400/30 w-full mt-4">
+                        Rozpocznij
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const levelDisplayEl = document.getElementById('current-level-display');
+        const maxLevelDisplayEl = document.getElementById('max-level-display');
+        const remainingEl = document.getElementById('remaining');
+        const timeEl = document.getElementById('timer');
+        const overlay = document.getElementById('overlay');
+        const overlayTitle = document.getElementById('overlay-title');
+        const overlayStats = document.getElementById('overlay-stats');
+        const overlayDesc = document.getElementById('overlay-desc');
+        const mainBtn = document.getElementById('main-btn');
+        const modeSelection = document.getElementById('mode-selection');
+        const btnChild = document.getElementById('btn-child');
+        const btnAdult = document.getElementById('btn-adult');
+        const targetBox = document.getElementById('target-box');
+        const targetNumberEl = document.getElementById('target-number');
+
+        let targets = [], startTime = 0, isRunning = false, finalTime = 0;
+        let currentLevel = 1, gameMode = 'adult';
+        let expectedGreenNumbers = [];
+        let errorsRed = 0, errorsOrder = 0;
+        let timeLvl1 = 0, timeLvl2 = 0, timeLvl3 = 0, timeLvl4 = 0;
+        let mainBtnAction = null;
+        
+        let GREEN_COUNT = 15, RED_COUNT = 5, TOTAL_TARGETS = 20;
+        const RADIUS = 22;
+
+        function updateInstructions(level) {
+            const desc = {
+                1: "Klikaj w zielone kółka jak najszybciej!",
+                2: "Klikaj w zielone kółka w kolejności od 1 do końca.",
+                3: "Ruchome cele: Klikaj tylko zielone kółka!",
+                4: "Finał: Klikaj zielone w kolejności malejącej!"
+            };
+            overlayDesc.textContent = desc[level] || "";
+        }
+
+        mainBtn.addEventListener('click', () => { if(mainBtnAction) mainBtnAction(); });
+
+        function setMode(mode) {
+            gameMode = mode;
+            if (mode === 'child') { GREEN_COUNT = 7; RED_COUNT = 3; maxLevelDisplayEl.textContent = "3"; } 
+            else { GREEN_COUNT = 15; RED_COUNT = 5; maxLevelDisplayEl.textContent = "4"; }
+            TOTAL_TARGETS = GREEN_COUNT + RED_COUNT;
+        }
+
+        btnChild.addEventListener('click', () => { setMode('child'); startCampaign(); });
+        btnAdult.addEventListener('click', () => { setMode('adult'); startCampaign(); });
+
+        function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function spawnTargets() {
+            targets = []; expectedGreenNumbers = [];
+            let numbers = Array.from({length: TOTAL_TARGETS}, (_, i) => i + 1);
+            shuffleArray(numbers);
+            const speedMult = (gameMode === 'child' && currentLevel === 3) ? 0.5 : 1.0;
+
+            for(let i=0; i<TOTAL_TARGETS; i++) {
+                let valid = false, x, y, attempts = 0;
+                while(!valid && attempts < 200) {
+                    x = RADIUS + Math.random() * (canvas.width - RADIUS * 2);
+                    y = RADIUS + Math.random() * (canvas.height - RADIUS * 2);
+                    valid = true;
+                    for(let t of targets) if(Math.hypot(x - t.x, y - t.y) < RADIUS * 2.2) { valid = false; break; }
+                    attempts++;
+                }
+                const isTargetGood = i < GREEN_COUNT;
+                const dx = (Math.random() > 0.5 ? 1 : -1) * (0.8 + Math.random() * 1.2) * speedMult;
+                const dy = (Math.random() > 0.5 ? 1 : -1) * (0.8 + Math.random() * 1.2) * speedMult;
+                if (isTargetGood) expectedGreenNumbers.push(numbers[i]);
+                targets.push({ x, y, radius: RADIUS, dx, dy, isGood: isTargetGood, color: isTargetGood ? '#22c55e' : '#ef4444', number: numbers[i] });
+            }
+            if (currentLevel === 2 || currentLevel === 3) expectedGreenNumbers.sort((a, b) => a - b);
+            else if (currentLevel === 4) expectedGreenNumbers.sort((a, b) => b - a);
+            updateRemaining();
+        }
+
+        function updateRemaining() {
+            const greenCount = targets.filter(t => t.isGood).length;
+            remainingEl.textContent = greenCount;
+            if (currentLevel >= 2) targetNumberEl.textContent = expectedGreenNumbers.length > 0 ? expectedGreenNumbers[0] : "Koniec!";
+            if (greenCount === 0 && isRunning) { finalTime = (Date.now() - startTime) / 1000; gameOver(); }
+        }
+
+        canvas.addEventListener('pointerdown', (e) => {
+            e.preventDefault();
+            if (!isRunning) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX - rect.left) * (canvas.width / rect.width);
+            const y = (e.clientY - rect.top) * (canvas.height / rect.height);
+            for (let i = targets.length - 1; i >= 0; i--) {
+                const t = targets[i];
+                if (Math.hypot(x - t.x, y - t.y) < t.radius * 2) {
+                    if (!t.isGood) { startTime -= 5000; errorsRed++; }
+                    else if (currentLevel >= 2 && t.number !== expectedGreenNumbers[0]) { startTime -= 2000; errorsOrder++; break; }
+                    else { if (currentLevel >= 2) expectedGreenNumbers.shift(); }
+                    targets.splice(i, 1); updateRemaining(); break;
+                }
+            }
+        });
+
+        function draw() {
+            if (!isRunning) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (currentLevel >= 3) {
+                targets.forEach(t => {
+                    t.x += t.dx; t.y += t.dy;
+                    if (t.x - t.radius < 0 || t.x + t.radius > canvas.width) t.dx *= -1;
+                    if (t.y - t.radius < 0 || t.y + t.radius > canvas.height) t.dy *= -1;
+                });
+            }
+            targets.forEach(t => {
+                ctx.fillStyle = t.color; ctx.beginPath(); ctx.arc(t.x, t.y, t.radius, 0, Math.PI*2); ctx.fill();
+                ctx.strokeStyle = "white"; ctx.lineWidth = 3; ctx.stroke();
+                if (currentLevel >= 2) { ctx.fillStyle = "white"; ctx.font = "bold 20px Inter"; ctx.textAlign = "center"; ctx.fillText(t.number, t.x, t.y + 6); }
+            });
+            timeEl.textContent = Math.max(0, (Date.now() - startTime) / 1000).toFixed(1);
+            requestAnimationFrame(draw);
+        }
+
+        function startGame(level) {
+            currentLevel = level; levelDisplayEl.textContent = level;
+            isRunning = true; startTime = Date.now();
+            overlay.classList.add('hidden');
+            targetBox.classList.toggle('hidden', level < 2);
+            spawnTargets(); draw();
+        }
+
+        function gameOver() {
+            isRunning = false;
+            if (currentLevel === 1) { timeLvl1 = finalTime; showLevel2Screen(); }
+            else if (currentLevel === 2) { timeLvl2 = finalTime; showLevel3Screen(); }
+            else if (currentLevel === 3 && (gameMode === 'adult' || currentLevel < 4)) {
+                timeLvl3 = finalTime; if (gameMode === 'child') showEndScreen(); else showLevel4Screen();
+            } else { timeLvl4 = finalTime; showEndScreen(); }
+        }
+
+        function hideModeSelectionAndShowMainBtn() { modeSelection.classList.add('hidden'); mainBtn.classList.remove('hidden'); }
+        function showStartScreen() { 
+            overlayTitle.innerHTML = "Wybierz tryb gry!"; overlayStats.classList.add('hidden'); 
+            updateInstructions(1); modeSelection.classList.remove('hidden'); mainBtn.classList.add('hidden'); overlay.classList.remove('hidden'); 
+        }
+        function startCampaign() { errorsRed = 0; errorsOrder = 0; timeLvl1=timeLvl2=timeLvl3=timeLvl4=0; startGame(1); }
+        function showLevel2Screen() { hideModeSelectionAndShowMainBtn(); overlayTitle.innerHTML = "Poziom 1 Ukończony!"; updateInstructions(2); mainBtn.innerHTML = "Start: Poziom 2"; mainBtnAction = () => startGame(2); overlay.classList.remove('hidden'); }
+        function showLevel3Screen() { hideModeSelectionAndShowMainBtn(); overlayTitle.innerHTML = "Poziom 2 Ukończony!"; updateInstructions(3); mainBtn.innerHTML = "Start: Poziom 3"; mainBtnAction = () => startGame(3); overlay.classList.remove('hidden'); }
+        function showLevel4Screen() { hideModeSelectionAndShowMainBtn(); overlayTitle.innerHTML = "Poziom 3 Ukończony!"; updateInstructions(4); mainBtn.innerHTML = "Start: Finał"; mainBtnAction = () => startGame(4); overlay.classList.remove('hidden'); }
+        function showEndScreen() {
+            hideModeSelectionAndShowMainBtn(); overlayTitle.innerHTML = "Wyzwanie Ukończone!";
+            overlayStats.innerHTML = `<p>Lvl 1: ${timeLvl1.toFixed(2)}s</p><p>Lvl 2: ${timeLvl2.toFixed(2)}s</p><p>Lvl 3: ${timeLvl3.toFixed(2)}s</p>${gameMode==='adult' ? `<p>Lvl 4: ${timeLvl4.toFixed(2)}s</p>` : ''}<p>Błędy: ${errorsRed + errorsOrder}</p>`;
+            overlayStats.classList.remove('hidden'); mainBtn.innerHTML = "Zagraj ponownie"; mainBtnAction = showStartScreen; overlay.classList.remove('hidden');
+        }
+
+        showStartScreen();
+    </script>
+</body>
+</html>
