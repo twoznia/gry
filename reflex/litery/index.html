@@ -72,6 +72,12 @@
                         <button class="records-mode-tab px-3 py-1 rounded-lg text-sm font-bold transition-colors bg-blue-600 text-white" data-mode="adult">Dorosły</button>
                         <button class="records-mode-tab px-3 py-1 rounded-lg text-sm font-bold transition-colors bg-gray-700 text-gray-300" data-mode="child">Dziecko</button>
                     </div>
+                    <div id="records-player-filter" class="flex items-center gap-2 justify-center mb-2 flex-wrap">
+                        <span class="text-gray-400 text-xs">Osoba:</span>
+                        <select id="records-player-select" class="bg-gray-700 text-white text-xs px-2 py-1 rounded-lg border border-gray-600 focus:outline-none focus:border-blue-400">
+                            <option value="">Wszyscy</option>
+                        </select>
+                    </div>
                     <div id="records-level-tabs" class="flex gap-2 justify-center mb-3 flex-wrap"></div>
                     <div id="records-table-wrapper" class="text-left bg-gray-800 rounded-lg p-3 overflow-y-auto" style="max-height: 50vh"></div>
                     <button id="close-records-btn" class="mt-4 bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-xl font-bold text-sm transition-colors">Zamknij</button>
@@ -124,7 +130,9 @@
         // ─── Records management ─────────────────────────────────────────────────
         const RECORDS_KEY = 'reflexLiteryRecords';
         const NAME_KEY = 'reflexLiteryLastName';
-        const MAX_RECORDS = 100;
+        const MAX_PER_PLAYER = 10;
+
+        function normalizeName(name) { return name.trim().toLowerCase(); }
 
         function loadRecords() {
             try { return JSON.parse(localStorage.getItem(RECORDS_KEY)) || {}; }
@@ -139,7 +147,13 @@
             if (!records[mode][levelKey]) records[mode][levelKey] = [];
             records[mode][levelKey].push({ name: name.trim(), time: +timeVal.toFixed(3), errors: errorsVal, date: new Date().toLocaleDateString('pl-PL') });
             records[mode][levelKey].sort((a, b) => a.time - b.time);
-            if (records[mode][levelKey].length > MAX_RECORDS) records[mode][levelKey] = records[mode][levelKey].slice(0, MAX_RECORDS);
+            // Keep best MAX_PER_PLAYER records per player (case-insensitive)
+            const seen = {};
+            records[mode][levelKey] = records[mode][levelKey].filter(r => {
+                const key = normalizeName(r.name);
+                seen[key] = (seen[key] || 0) + 1;
+                return seen[key] <= MAX_PER_PLAYER;
+            });
             saveRecordsToStorage(records);
         }
         function savePlayerRecord(name) {
@@ -155,13 +169,19 @@
         }
 
         // ─── Records view ────────────────────────────────────────────────────────
+        const recordsPlayerSelect = document.getElementById('records-player-select');
         let recordsViewMode = 'adult';
         let recordsViewLevel = 'total';
+        let recordsViewPlayer = '';
         let recordsReturnFn = null;
 
-        function renderRecordsTable(mode, levelKey) {
+        function renderRecordsTable(mode, levelKey, filterPlayer) {
             const records = loadRecords();
-            const data = (records[mode] && records[mode][levelKey]) || [];
+            let data = (records[mode] && records[mode][levelKey]) || [];
+            if (filterPlayer) {
+                const norm = normalizeName(filterPlayer);
+                data = data.filter(r => normalizeName(r.name) === norm);
+            }
             if (data.length === 0) return '<p class="text-gray-400 text-sm py-4 text-center">Brak rekordów</p>';
             const isTotal = levelKey === 'total';
             const medals = ['🥇', '🥈', '🥉'];
@@ -188,6 +208,25 @@
             return html;
         }
 
+        function getAllPlayersForMode(mode) {
+            const records = loadRecords();
+            const modeData = records[mode] || {};
+            const nameMap = new Map();
+            for (const levelData of Object.values(modeData)) {
+                for (const r of levelData) {
+                    const key = normalizeName(r.name);
+                    if (!nameMap.has(key)) nameMap.set(key, r.name);
+                }
+            }
+            return [...nameMap.values()].sort((a, b) => a.localeCompare(b, 'pl'));
+        }
+
+        function buildPlayerFilter(mode) {
+            const players = getAllPlayersForMode(mode);
+            recordsPlayerSelect.innerHTML = '<option value="">Wszyscy</option>' +
+                players.map(p => `<option value="${p}" ${normalizeName(p) === normalizeName(recordsViewPlayer) ? 'selected' : ''}>${p}</option>`).join('');
+        }
+
         function buildRecordsLevelTabs(mode) {
             const levels = mode === 'adult'
                 ? [['level1', 'Poziom 1'], ['level2', 'Poziom 2'], ['level3', 'Poziom 3'], ['level4', 'Poziom 4'], ['total', 'Łącznie']]
@@ -199,15 +238,16 @@
                 btn.addEventListener('click', () => {
                     recordsViewLevel = btn.dataset.level;
                     buildRecordsLevelTabs(recordsViewMode);
-                    recordsTableWrapper.innerHTML = renderRecordsTable(recordsViewMode, recordsViewLevel);
+                    recordsTableWrapper.innerHTML = renderRecordsTable(recordsViewMode, recordsViewLevel, recordsViewPlayer);
                 });
             });
         }
 
-        function showRecordsView(returnFn, preferMode) {
+        function showRecordsView(returnFn, preferMode, preferPlayer) {
             recordsReturnFn = returnFn;
             recordsViewMode = preferMode || gameMode || 'adult';
             recordsViewLevel = 'total';
+            recordsViewPlayer = preferPlayer || '';
             overlayContent.classList.add('hidden');
             recordsView.classList.remove('hidden');
             // Update mode tabs active state
@@ -217,15 +257,23 @@
                 btn.classList.toggle('bg-gray-700', btn.dataset.mode !== recordsViewMode);
                 btn.classList.toggle('text-gray-300', btn.dataset.mode !== recordsViewMode);
             });
+            buildPlayerFilter(recordsViewMode);
             buildRecordsLevelTabs(recordsViewMode);
-            recordsTableWrapper.innerHTML = renderRecordsTable(recordsViewMode, recordsViewLevel);
+            recordsTableWrapper.innerHTML = renderRecordsTable(recordsViewMode, recordsViewLevel, recordsViewPlayer);
         }
 
         document.querySelectorAll('.records-mode-tab').forEach(btn => {
             btn.addEventListener('click', () => {
                 recordsViewMode = btn.dataset.mode;
+                recordsViewPlayer = '';
                 showRecordsView(recordsReturnFn, recordsViewMode);
             });
+        });
+
+        recordsPlayerSelect.addEventListener('change', () => {
+            recordsViewPlayer = recordsPlayerSelect.value;
+            buildRecordsLevelTabs(recordsViewMode);
+            recordsTableWrapper.innerHTML = renderRecordsTable(recordsViewMode, recordsViewLevel, recordsViewPlayer);
         });
 
         closeRecordsBtn.addEventListener('click', () => {
@@ -244,6 +292,7 @@
             saveRecordBtn.disabled = true;
             saveRecordBtn.classList.replace('bg-green-600', 'bg-gray-600');
             saveInfo.classList.remove('hidden');
+            showRecordsView(() => {}, gameMode, name);
         });
 
         showRecordsEndBtn.addEventListener('click', () => showRecordsView(() => {
