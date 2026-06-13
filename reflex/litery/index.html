@@ -23,6 +23,7 @@
             <div>Pozostało: <span id="remaining" class="font-bold text-green-400">0</span></div>
             <div id="target-box" class="hidden">Szukaj: <span id="target-number" class="font-bold text-purple-400">-</span></div>
             <div>Czas: <span id="timer" class="font-bold text-yellow-400">0.0</span>s</div>
+            <button id="restart-level-btn" class="hidden bg-orange-600 hover:bg-orange-500 px-3 py-1 rounded-lg font-bold text-sm transition-colors">↺ Restart</button>
         </div>
         
         <div id="game-container" class="relative">
@@ -119,6 +120,7 @@
         let currentLevel = 1, gameMode = 'adult';
         let expectedGreenLetters = [];
         let errorsRed = 0, errorsOrder = 0;
+        let errorsRedAtLevelStart = 0, errorsOrderAtLevelStart = 0;
         let timeLvl1 = 0, timeLvl2 = 0, timeLvl3 = 0, timeLvl4 = 0;
         let mainBtnAction = null;
         let recordsSaved = false;
@@ -303,6 +305,15 @@
             // Return to start screen
         }));
 
+        const restartLevelBtn = document.getElementById('restart-level-btn');
+        restartLevelBtn.addEventListener('click', () => {
+            if (!isRunning) return;
+            isRunning = false;
+            errorsRed = errorsRedAtLevelStart;
+            errorsOrder = errorsOrderAtLevelStart;
+            startGame(currentLevel);
+        });
+
         // ─── Game logic ──────────────────────────────────────────────────────────
         function updateInstructions(level) {
             const desc = {
@@ -376,15 +387,24 @@
             const rect = canvas.getBoundingClientRect();
             const x = (e.clientX - rect.left) * (canvas.width / rect.width);
             const y = (e.clientY - rect.top) * (canvas.height / rect.height);
+            // Collect all circles touched by this click (reverse = topmost first)
+            const hitIdxs = [];
             for (let i = targets.length - 1; i >= 0; i--) {
-                const t = targets[i];
-                if (Math.hypot(x - t.x, y - t.y) < t.radius * 2) {
-                    if (!t.isGood) { startTime -= 5000; errorsRed++; }
-                    else if (currentLevel >= 2 && t.letter !== expectedGreenLetters[0]) { startTime -= 2000; errorsOrder++; break; }
-                    else { if (currentLevel >= 2) expectedGreenLetters.shift(); }
-                    targets.splice(i, 1); updateRemaining(); break;
-                }
+                if (Math.hypot(x - targets[i].x, y - targets[i].y) < targets[i].radius * 2) hitIdxs.push(i);
             }
+            if (hitIdxs.length === 0) return;
+            // Prioritise: correct green > wrong-order green > red
+            const correctIdx = hitIdxs.find(i => targets[i].isGood && (currentLevel < 2 || targets[i].letter === expectedGreenLetters[0]));
+            if (correctIdx !== undefined) {
+                if (currentLevel >= 2) expectedGreenLetters.shift();
+                targets.splice(correctIdx, 1); updateRemaining();
+                return;
+            }
+            const wrongOrderIdx = hitIdxs.find(i => targets[i].isGood && currentLevel >= 2);
+            if (wrongOrderIdx !== undefined) { startTime -= 2000; errorsOrder++; return; }
+            // Only red circles hit
+            startTime -= 5000; errorsRed++;
+            targets.splice(hitIdxs[0], 1); updateRemaining();
         });
 
         function drawTarget(t) {
@@ -419,14 +439,17 @@
 
         function startGame(level) {
             currentLevel = level; levelDisplayEl.textContent = level;
+            errorsRedAtLevelStart = errorsRed; errorsOrderAtLevelStart = errorsOrder;
             isRunning = true; startTime = Date.now();
             overlay.classList.add('hidden');
+            restartLevelBtn.classList.remove('hidden');
             targetBox.classList.toggle('hidden', level < 2);
             spawnTargets(); draw();
         }
 
         function gameOver() {
             isRunning = false;
+            restartLevelBtn.classList.add('hidden');
             if (currentLevel === 1) { timeLvl1 = finalTime; showLevel2Screen(); }
             else if (currentLevel === 2) { timeLvl2 = finalTime; showLevel3Screen(); }
             else if (currentLevel === 3 && (gameMode === 'adult' || currentLevel < 4)) {
