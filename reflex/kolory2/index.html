@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -120,6 +121,21 @@
     const recordsPlayerSelect = document.getElementById('records-player-select');
     const restartLevelBtn = document.getElementById('restart-level-btn');
 
+    // ─── Dynamic radius based on screen size ─────────────────────────────────────
+    function getRadius() {
+        // Mobile: bigger touch targets (min 44px per Apple HIG)
+        const isMobile = window.matchMedia('(pointer: coarse)').matches;
+        const shortSide = Math.min(window.innerWidth, window.innerHeight);
+        if (isMobile) {
+            // Scale between 38px (small phones) and 52px (tablets)
+            return Math.round(Math.min(52, Math.max(38, shortSide * 0.07)));
+        }
+        // Desktop: original 28, slightly larger for comfort
+        return Math.round(Math.min(36, Math.max(28, shortSide * 0.04)));
+    }
+
+    let RADIUS = getRadius();
+
     // ─── Colors ──────────────────────────────────────────────────────────────────
     const COLORS = [
         { name: 'Czerwony',      abbr: 'C', hex: '#ef4444', textColor: 'white'   },
@@ -136,27 +152,25 @@
 
     // Level config: number of distinct colors, moving balls, per-item countdown
     const LEVEL_CONFIG = {
-        1: { colors: 10, moving: false, timed: false },
-        2: { colors: 10, moving: false, timed: false },
-        3: { colors: 5,  moving: true,  timed: false },
-        4: { colors: 7,  moving: true,  timed: true  },
+        1: { colors: 10, moving: false, timed: false, itemTime: null },
+        2: { colors: 5,  moving: true,  timed: false, itemTime: null },
+        3: { colors: 7,  moving: true,  timed: true,  itemTime: 3   },
+        4: { colors: 10, moving: true,  timed: true,  itemTime: 1.5 },
     };
 
-    const RADIUS = 28;
-    const PENALTY_WRONG   = 3000; // ms added for wrong color click
-    const PENALTY_TIMEOUT = 5000; // ms added per missed item (level 4)
-    const ITEM_TIME_SEC   = 3;    // seconds per item in level 4
+    const PENALTY_WRONG   = 3000;
+    const PENALTY_TIMEOUT = 5000;
 
     // ─── State ────────────────────────────────────────────────────────────────────
     let balls = [], sequence = [], currentStep = 0;
     let startTime = 0, isRunning = false, finalTime = 0;
     let currentLevel = 1, gameMode = 'adult';
-    let seqLength = 20; // adults: 20, children: 10
+    let seqLength = 20;
     let errorsWrong = 0, errorsTimeout = 0;
     let errorsAtLevelStart = 0, timeoutAtLevelStart = 0;
     let timeLvl1 = 0, timeLvl2 = 0, timeLvl3 = 0, timeLvl4 = 0;
     let mainBtnAction = null, recordsSaved = false;
-    let itemCountdown = ITEM_TIME_SEC, countdownInterval = null;
+    let countdownInterval = null;
 
     // ─── Records management ──────────────────────────────────────────────────────
     const RECORDS_KEY = 'reflexKolory2Records';
@@ -326,7 +340,12 @@
     btnAdult.addEventListener('click', () => { setMode('adult'); startCampaign(); });
 
     // ─── Canvas resize ────────────────────────────────────────────────────────────
-    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+    function resize() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        // Recalculate radius on resize (orientation change, window resize)
+        RADIUS = getRadius();
+    }
     window.addEventListener('resize', () => { resize(); if (!isRunning) drawStaticBalls(); });
     resize();
 
@@ -334,7 +353,6 @@
     function generateSequence() {
         const numColors = LEVEL_CONFIG[currentLevel].colors;
         sequence = [];
-        // Ensure every color appears at least once in first numColors entries
         const firstChunk = Array.from({ length: numColors }, (_, i) => i);
         for (let i = firstChunk.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -342,7 +360,10 @@
         }
         sequence.push(...firstChunk);
         while (sequence.length < seqLength) {
-            sequence.push(Math.floor(Math.random() * numColors));
+            const last = sequence[sequence.length - 1];
+            let next;
+            do { next = Math.floor(Math.random() * numColors); } while (next === last);
+            sequence.push(next);
         }
         currentStep = 0;
     }
@@ -352,16 +373,18 @@
         balls = [];
         const numColors = LEVEL_CONFIG[currentLevel].colors;
         const isMoving = LEVEL_CONFIG[currentLevel].moving;
-        const speedBase = gameMode === 'child' ? 0.7 : 1.1;
+        const speedBase = gameMode === 'child' ? 0.7 : (currentLevel === 4 ? 2.2 : 1.1);
+        const margin = RADIUS + 10;
 
         for (let i = 0; i < numColors; i++) {
             let valid = false, x, y, attempts = 0;
             while (!valid && attempts < 300) {
-                x = RADIUS + 10 + Math.random() * (canvas.width - (RADIUS + 10) * 2);
-                y = RADIUS + 10 + Math.random() * (canvas.height - (RADIUS + 10) * 2);
+                x = margin + Math.random() * (canvas.width - margin * 2);
+                y = margin + Math.random() * (canvas.height - margin * 2);
                 valid = true;
                 for (const b of balls) {
-                    if (Math.hypot(x - b.x, y - b.y) < RADIUS * 2.5) { valid = false; break; }
+                    // Ensure balls don't overlap — use 2.4× radius spacing
+                    if (Math.hypot(x - b.x, y - b.y) < RADIUS * 2.4) { valid = false; break; }
                 }
                 attempts++;
             }
@@ -377,7 +400,6 @@
     }
 
     function updateCountdownDot() {}
-
     function renderSequenceBar() {}
 
     // ─── HUD update ───────────────────────────────────────────────────────────────
@@ -396,36 +418,30 @@
 
     // ─── Level 4 item timer ───────────────────────────────────────────────────────
     function clearItemTimer() {
-        if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
-        itemCountdown = ITEM_TIME_SEC;
+        if (countdownInterval) { clearTimeout(countdownInterval); countdownInterval = null; }
     }
 
     function startItemTimer() {
         clearItemTimer();
-        itemCountdown = ITEM_TIME_SEC;
         updateCountdownDot();
-        countdownInterval = setInterval(() => {
-            itemCountdown--;
-            updateCountdownDot();
-            if (itemCountdown <= 0) {
-                clearItemTimer();
-                // Miss – apply penalty and advance
-                startTime -= PENALTY_TIMEOUT;
-                errorsTimeout++;
-                currentStep++;
-                renderSequenceBar();
-                updateHUD();
-                if (currentStep >= sequence.length) {
-                    finalTime = Math.max(0, (Date.now() - startTime) / 1000);
-                    gameOver();
-                } else {
-                    startItemTimer();
-                }
+        const itemTime = LEVEL_CONFIG[currentLevel].itemTime * 1000;
+        countdownInterval = setTimeout(() => {
+            countdownInterval = null;
+            startTime -= PENALTY_TIMEOUT;
+            errorsTimeout++;
+            currentStep++;
+            renderSequenceBar();
+            updateHUD();
+            if (currentStep >= sequence.length) {
+                finalTime = Math.max(0, (Date.now() - startTime) / 1000);
+                gameOver();
+            } else {
+                startItemTimer();
             }
-        }, 1000);
+        }, itemTime);
     }
 
-    // ─── Click handling ───────────────────────────────────────────────────────────
+    // ─── Click / touch handling ───────────────────────────────────────────────────
     canvas.addEventListener('pointerdown', (e) => {
         e.preventDefault();
         if (!isRunning || currentStep >= sequence.length) return;
@@ -434,12 +450,10 @@
         const y = (e.clientY - rect.top) * (canvas.height / rect.height);
         const required = sequence[currentStep];
 
-        // Find topmost clicked ball
         for (let i = balls.length - 1; i >= 0; i--) {
             const b = balls[i];
             if (Math.hypot(x - b.x, y - b.y) <= RADIUS) {
                 if (b.colorIdx === required) {
-                    // Correct!
                     if (LEVEL_CONFIG[currentLevel].timed) clearItemTimer();
                     currentStep++;
                     renderSequenceBar();
@@ -451,7 +465,6 @@
                         startItemTimer();
                     }
                 } else {
-                    // Wrong color
                     startTime -= PENALTY_WRONG;
                     errorsWrong++;
                     flashPenalty();
@@ -475,22 +488,19 @@
         const color = COLORS[b.colorIdx];
         const isRequired = isRunning && currentStep < sequence.length && b.colorIdx === sequence[currentStep];
 
-        // Shadow glow for required ball
         if (isRequired) {
             ctx.shadowColor = color.hex;
-            ctx.shadowBlur = 18;
+            ctx.shadowBlur = 22;
         } else {
             ctx.shadowBlur = 0;
         }
 
-        // Fill
         ctx.fillStyle = color.hex;
         ctx.beginPath();
         ctx.arc(b.x, b.y, RADIUS, 0, Math.PI * 2);
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        // Stroke
         ctx.strokeStyle = isRequired ? 'white' : 'rgba(255,255,255,0.25)';
         ctx.lineWidth = isRequired ? 3.5 : 1.5;
         ctx.stroke();
@@ -513,7 +523,6 @@
             });
         }
 
-        // Draw required ball last (on top)
         const reqColorIdx = currentStep < sequence.length ? sequence[currentStep] : -1;
         balls.forEach(b => { if (b.colorIdx !== reqColorIdx) drawBall(b); });
         if (reqColorIdx >= 0) { const rb = balls.find(b => b.colorIdx === reqColorIdx); if (rb) drawBall(rb); }
@@ -528,6 +537,7 @@
         levelDisplayEl.textContent = level;
         errorsAtLevelStart = errorsWrong;
         timeoutAtLevelStart = errorsTimeout;
+        RADIUS = getRadius(); // Refresh radius at game start
         generateSequence();
         spawnBalls();
         renderSequenceBar();
@@ -561,9 +571,9 @@
     function updateInstructions(level) {
         const desc = {
             1: 'Klikaj kulki w kolejności kolorów! 10 kolorów do wyboru.',
-            2: 'Więcej wyzwań! 10 kolorów – uważaj na kolejność!',
-            3: 'Kulki się ruszają! 5 kolorów – śledź ruch!',
-            4: 'Finał! 7 kolorów, 3 sekundy na każdy ruch! Kara: +5s za ominięty kolor.',
+            2: 'Kulki się ruszają! 5 kolorów – śledź ruch!',
+            3: 'Kulki się ruszają i masz limit czasu! 7 kolorów, 3s na ruch. Kara: +5s za ominięty kolor.',
+            4: 'Finał! 10 kolorów, 1.5 sekundy na każdy ruch! Kara: +5s za ominięty kolor.',
         };
         overlayDesc.textContent = desc[level] || '';
     }
