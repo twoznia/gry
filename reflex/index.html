@@ -18,6 +18,12 @@
         .card-letters { background: linear-gradient(135deg, #3b1f5f 0%, #1e293b 100%); border-color: #a855f7; }
         .card-letters .variant-icon { color: #c084fc; text-shadow: 0 0 20px rgba(192,132,252,0.5); }
         .card-letters:hover { border-color: #c084fc; }
+        .card-colors { background: linear-gradient(135deg, #5f2a1f 0%, #1e293b 100%); border-color: #f97316; }
+        .card-colors .variant-icon { font-size: 2.5rem; letter-spacing: 2px; text-shadow: 0 0 20px rgba(249,115,22,0.5); }
+        .card-colors:hover { border-color: #fb923c; }
+        .card-colors2 { background: linear-gradient(135deg, #1f5f2a 0%, #1e293b 100%); border-color: #22c55e; }
+        .card-colors2 .variant-icon { font-size: 2.5rem; letter-spacing: 2px; text-shadow: 0 0 20px rgba(34,197,94,0.5); }
+        .card-colors2:hover { border-color: #4ade80; }
     </style>
 </head>
 <body>
@@ -41,6 +47,20 @@
             <h2 class="text-2xl font-bold text-white mb-1">Litery</h2>
             <p class="text-slate-400 text-sm text-center">Klikaj kółka z literami w kolejności alfabetycznej</p>
             <div class="mt-4 bg-purple-600 hover:bg-purple-500 text-white font-bold px-6 py-2 rounded-xl text-sm transition-colors">Zagraj</div>
+        </a>
+
+        <a href="./kolory/" class="variant-card card-colors flex-1">
+            <div class="variant-icon">🔴🔵🟢</div>
+            <h2 class="text-2xl font-bold text-white mb-1">Kolory</h2>
+            <p class="text-slate-400 text-sm text-center">Klikaj kółka w kolejności kolorów z listy</p>
+            <div class="mt-4 bg-orange-600 hover:bg-orange-500 text-white font-bold px-6 py-2 rounded-xl text-sm transition-colors">Zagraj</div>
+        </a>
+
+        <a href="./kolory2/" class="variant-card card-colors2 flex-1">
+            <div class="variant-icon">🟢🔴🔵</div>
+            <h2 class="text-2xl font-bold text-white mb-1">Kolory 2</h2>
+            <p class="text-slate-400 text-sm text-center">Klikaj kółka w kolejności kolorów – bez podpowiedzi!</p>
+            <div class="mt-4 bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-2 rounded-xl text-sm transition-colors">Zagraj</div>
         </a>
 
     </div>
