@@ -126,7 +126,13 @@
         let recordsSaved = false;
         
         let GREEN_COUNT = 15, RED_COUNT = 5, TOTAL_TARGETS = 20;
-        const RADIUS = 22;
+        function getRadius() {
+            const isMobile = window.matchMedia('(pointer: coarse)').matches;
+            const shortSide = Math.min(window.innerWidth, window.innerHeight);
+            if (isMobile) return Math.round(Math.min(52, Math.max(38, shortSide * 0.07)));
+            return Math.round(Math.min(36, Math.max(28, shortSide * 0.04)));
+        }
+        let RADIUS = getRadius();
 
         // ─── Records management ─────────────────────────────────────────────────
         const RECORDS_KEY = 'reflexLiczbyRecords';
