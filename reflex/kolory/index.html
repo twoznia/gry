@@ -10,7 +10,7 @@
         body { background-color: #111; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: 'Inter', sans-serif; }
         .back-link { position: fixed; top: 10px; left: 10px; z-index: 100; background: #334155; color: #fff; border: 1px solid #475569; border-radius: 8px; padding: 8px 14px; text-decoration: none; font-size: 13px; }
         .back-link:hover { background: #475569; }
-        .seq-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent; flex-shrink: 0; transition: opacity 0.15s, border-color 0.15s; }
+        .seq-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent; flex-shrink: 0; transition: opacity 0.15s, border-color 0.15s; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.9); }
         .seq-dot.done { background-color: #374151 !important; border-color: #4b5563 !important; box-shadow: none !important; opacity: 1 !important; }
         .seq-dot.current { border-color: white !important; }
         .seq-dot.future { opacity: 0.5; }
@@ -139,14 +139,17 @@
         { name: 'Fioletowy',     abbr: 'F', hex: '#a855f7', textColor: 'white'   },
         { name: 'Pomarańczowy',  abbr: 'P', hex: '#f97316', textColor: 'white'   },
         { name: 'Różowy',        abbr: 'R', hex: '#ec4899', textColor: 'white'   },
+        { name: 'Turkusowy',     abbr: 'T', hex: '#14b8a6', textColor: 'white'   },
+        { name: 'Granatowy',     abbr: 'G', hex: '#6366f1', textColor: 'white'   },
+        { name: 'Brązowy',       abbr: 'B', hex: '#b45309', textColor: 'white'   },
     ];
 
     // Level config: number of distinct colors, moving balls, per-item countdown
     const LEVEL_CONFIG = {
-        1: { colors: 3, moving: false, timed: false },
-        2: { colors: 5, moving: false, timed: false },
-        3: { colors: 5, moving: true,  timed: false },
-        4: { colors: 7, moving: true,  timed: true  },
+        1: { colors: 10, moving: false, timed: false },
+        2: { colors: 10, moving: false, timed: false },
+        3: { colors: 5,  moving: true,  timed: false },
+        4: { colors: 7,  moving: true,  timed: true  },
     };
 
     const RADIUS = 28;
@@ -384,6 +387,14 @@
     }
 
     // ─── Sequence bar rendering ───────────────────────────────────────────────────
+    function updateCountdownDot() {
+        if (currentLevel !== 4 || !isRunning) return;
+        const dots = sequenceDots.children;
+        if (currentStep < dots.length) {
+            dots[currentStep].textContent = String(Math.max(itemCountdown, 1));
+        }
+    }
+
     function renderSequenceBar() {
         sequenceDots.innerHTML = '';
         for (let i = 0; i < sequence.length; i++) {
@@ -397,6 +408,8 @@
         // Scroll current dot into view
         const currentDot = sequenceDots.children[currentStep];
         if (currentDot) currentDot.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        // Show countdown number in current dot for level 4
+        updateCountdownDot();
     }
 
     // ─── HUD update ───────────────────────────────────────────────────────────────
@@ -422,8 +435,10 @@
     function startItemTimer() {
         clearItemTimer();
         itemCountdown = ITEM_TIME_SEC;
+        updateCountdownDot();
         countdownInterval = setInterval(() => {
             itemCountdown--;
+            updateCountdownDot();
             if (itemCountdown <= 0) {
                 clearItemTimer();
                 // Miss – apply penalty and advance
@@ -511,17 +526,6 @@
         ctx.strokeStyle = isRequired ? 'white' : 'rgba(255,255,255,0.25)';
         ctx.lineWidth = isRequired ? 3.5 : 1.5;
         ctx.stroke();
-
-        // Abbreviation letter (hidden when countdown shown on required ball in level 4)
-        const showCountdown = currentLevel === 4 && isRequired;
-        const label = showCountdown ? String(Math.max(itemCountdown, 1)) : color.abbr;
-        const fontSize = showCountdown ? Math.floor(RADIUS * 1.25) : Math.floor(RADIUS * 0.85);
-        ctx.fillStyle = showCountdown ? 'white' : color.textColor;
-        ctx.font = `bold ${fontSize}px Inter, sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(label, b.x, b.y);
-        ctx.textBaseline = 'alphabetic';
     }
 
     function drawStaticBalls() {
@@ -589,8 +593,8 @@
 
     function updateInstructions(level) {
         const desc = {
-            1: 'Klikaj kulki w kolejności kolorów z listy na dole! 3 kolory do wyboru.',
-            2: 'Więcej wyzwań! 5 kolorów – uważaj na kolejność!',
+            1: 'Klikaj kulki w kolejności kolorów z listy na dole! 10 kolorów do wyboru.',
+            2: 'Więcej wyzwań! 10 kolorów – uważaj na kolejność!',
             3: 'Kulki się ruszają! 5 kolorów – śledź ruch!',
             4: 'Finał! 7 kolorów, 3 sekundy na każdy ruch! Kara: +5s za ominięty kolor.',
         };
