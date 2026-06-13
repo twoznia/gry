@@ -23,6 +23,7 @@
             <div>Pozostało: <span id="remaining" class="font-bold text-green-400">0</span></div>
             <div id="target-box" class="hidden">Szukaj nr: <span id="target-number" class="font-bold text-purple-400">-</span></div>
             <div>Czas: <span id="timer" class="font-bold text-yellow-400">0.0</span>s</div>
+            <button id="restart-level-btn" class="hidden bg-orange-600 hover:bg-orange-500 px-3 py-1 rounded-lg font-bold text-sm transition-colors">↺ Restart</button>
         </div>
         
         <div id="game-container" class="relative">
@@ -119,6 +120,7 @@
         let currentLevel = 1, gameMode = 'adult';
         let expectedGreenNumbers = [];
         let errorsRed = 0, errorsOrder = 0;
+        let errorsRedAtLevelStart = 0, errorsOrderAtLevelStart = 0;
         let timeLvl1 = 0, timeLvl2 = 0, timeLvl3 = 0, timeLvl4 = 0;
         let mainBtnAction = null;
         let recordsSaved = false;
@@ -302,6 +304,15 @@
             // Return to start screen
         }));
 
+        const restartLevelBtn = document.getElementById('restart-level-btn');
+        restartLevelBtn.addEventListener('click', () => {
+            if (!isRunning) return;
+            isRunning = false;
+            errorsRed = errorsRedAtLevelStart;
+            errorsOrder = errorsOrderAtLevelStart;
+            startGame(currentLevel);
+        });
+
         // ─── Game logic ──────────────────────────────────────────────────────────
         function updateInstructions(level) {
             const desc = {
@@ -418,14 +429,17 @@
 
         function startGame(level) {
             currentLevel = level; levelDisplayEl.textContent = level;
+            errorsRedAtLevelStart = errorsRed; errorsOrderAtLevelStart = errorsOrder;
             isRunning = true; startTime = Date.now();
             overlay.classList.add('hidden');
+            restartLevelBtn.classList.remove('hidden');
             targetBox.classList.toggle('hidden', level < 2);
             spawnTargets(); draw();
         }
 
         function gameOver() {
             isRunning = false;
+            restartLevelBtn.classList.add('hidden');
             if (currentLevel === 1) { timeLvl1 = finalTime; showLevel2Screen(); }
             else if (currentLevel === 2) { timeLvl2 = finalTime; showLevel3Screen(); }
             else if (currentLevel === 3 && (gameMode === 'adult' || currentLevel < 4)) {
