@@ -152,10 +152,14 @@
             padding: 8px 16px;
             border-radius: 6px;
             font-family: inherit;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             outline: none;
             transition: all 0.2s;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 44px;
         }
 
         select option {
@@ -191,6 +195,11 @@
             box-shadow: inset 2px 2px 4px rgba(0,0,0,0.4);
             background: #cbd5e1;
         }
+        @media (max-width: 600px) {
+            body { justify-content: flex-start; padding-top: 3.5rem; }
+            .game-container { padding: 12px; }
+        }
+
         .back-link {
             position: fixed;
             top: 10px;
