@@ -879,9 +879,8 @@
         }
 
         function setupDragAndDrop(element, source, cardIndex = -1) {
-            element.addEventListener('mousedown', (e) => {
-                if (e.button !== 0 || autoSolving) return; 
-                e.preventDefault();
+            function startDrag(clientX, clientY) {
+                if (autoSolving) return false;
                 startTimer();
 
                 dragSource = source;
@@ -897,12 +896,12 @@
                     cardsToDrag = [foundations[foundIdx][foundations[foundIdx].length - 1]];
                 }
 
-                if (cardsToDrag.length === 0) return;
+                if (cardsToDrag.length === 0) return false;
                 dragCards = cardsToDrag;
 
                 const clickedRect = element.getBoundingClientRect();
-                dragOffset.x = e.clientX - clickedRect.left;
-                dragOffset.y = e.clientY - clickedRect.top;
+                dragOffset.x = clientX - clickedRect.left;
+                dragOffset.y = clientY - clickedRect.top;
 
                 dragElements = [];
                 dragCards.forEach((card, idx) => {
@@ -915,7 +914,7 @@
                     clone.style.position = 'fixed';
                     clone.style.pointerEvents = 'none';
                     clone.style.zIndex = (1000 + idx).toString();
-                    
+
                     const relLeft = origRect.left - clickedRect.left;
                     const relTop = origRect.top - clickedRect.top;
 
@@ -923,18 +922,30 @@
                     clone.style.top = `${clickedRect.top + relTop}px`;
 
                     document.body.appendChild(clone);
-                    dragElements.push({ 
-                        el: clone, 
-                        relLeft: relLeft,
-                        relTop: relTop 
-                    });
+                    dragElements.push({ el: clone, relLeft, relTop });
                 });
 
                 toggleOriginalCardsVisibility(false);
+                return true;
+            }
 
-                window.addEventListener('mousemove', onMouseMove);
-                window.addEventListener('mouseup', onMouseUp);
+            element.addEventListener('mousedown', (e) => {
+                if (e.button !== 0) return;
+                e.preventDefault();
+                if (startDrag(e.clientX, e.clientY)) {
+                    window.addEventListener('mousemove', onMouseMove);
+                    window.addEventListener('mouseup', onMouseUp);
+                }
             });
+
+            element.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const t = e.touches[0];
+                if (startDrag(t.clientX, t.clientY)) {
+                    window.addEventListener('touchmove', onTouchMove, { passive: false });
+                    window.addEventListener('touchend', onTouchEnd);
+                }
+            }, { passive: false });
         }
 
         function toggleOriginalCardsVisibility(visible) {
@@ -944,34 +955,48 @@
             });
         }
 
-        function onMouseMove(e) {
-            mousePos.x = e.clientX;
-            mousePos.y = e.clientY;
-
+        function moveDragClones(clientX, clientY) {
+            mousePos.x = clientX;
+            mousePos.y = clientY;
             dragElements.forEach(item => {
-                item.el.style.left = `${e.clientX - dragOffset.x + item.relLeft}px`;
-                item.el.style.top = `${e.clientY - dragOffset.y + item.relTop}px`;
+                item.el.style.left = `${clientX - dragOffset.x + item.relLeft}px`;
+                item.el.style.top  = `${clientY - dragOffset.y + item.relTop}px`;
             });
         }
 
-        function onMouseUp(e) {
-            window.removeEventListener('mousemove', onMouseMove);
-            window.removeEventListener('mouseup', onMouseUp);
-
+        function finishDrop(clientX, clientY) {
             dragElements.forEach(item => item.el.remove());
-
-            const dropTarget = findDropTarget(e.clientX, e.clientY);
-
+            const dropTarget = findDropTarget(clientX, clientY);
             if (dropTarget && isValidMove(dragCards[0], dropTarget)) {
                 audio.playSlide();
                 executeMove(dragCards, dragSource, dropTarget);
             } else {
                 toggleOriginalCardsVisibility(true);
             }
-
             dragSource = null;
             dragCards = [];
             dragElements = [];
+        }
+
+        function onMouseMove(e) { moveDragClones(e.clientX, e.clientY); }
+
+        function onMouseUp(e) {
+            window.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('mouseup', onMouseUp);
+            finishDrop(e.clientX, e.clientY);
+        }
+
+        function onTouchMove(e) {
+            e.preventDefault();
+            const t = e.touches[0];
+            moveDragClones(t.clientX, t.clientY);
+        }
+
+        function onTouchEnd(e) {
+            window.removeEventListener('touchmove', onTouchMove);
+            window.removeEventListener('touchend', onTouchEnd);
+            const t = e.changedTouches[0];
+            finishDrop(t.clientX, t.clientY);
         }
 
         function isValidMove(card, target) {
