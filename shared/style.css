@@ -90,6 +90,8 @@ select:focus { outline: 2px solid var(--accent); border-color: transparent; }
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 .btn-primary { background: var(--accent); color: #000; }
 .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
