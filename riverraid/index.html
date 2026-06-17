@@ -246,9 +246,20 @@ function setupGyro() {
     }
 }
 
+let touchSteering = false;
+
+function enableTouchSteering() {
+    touchSteering = true;
+    gyroActive = true; // reuse gyro path — gyroGamma will be set from touch X
+}
+
 function showGyroFallbackHint() {
-    // Show a brief on-canvas hint that gyroscope is unavailable
-    floatingTexts.push({ x: canvas.width / 2, y: canvas.height / 2 + 80, text: "Użyj klawiatury", life: 180, maxLife: 180, color: "#fa0", size: "16px" });
+    if (isMobile) {
+        enableTouchSteering();
+        floatingTexts.push({ x: canvas.width / 2, y: canvas.height / 2 + 80, text: "Przeciągnij palcem", life: 180, maxLife: 180, color: "#fa0", size: "16px" });
+    } else {
+        floatingTexts.push({ x: canvas.width / 2, y: canvas.height / 2 + 80, text: "Użyj klawiatury", life: 180, maxLife: 180, color: "#fa0", size: "16px" });
+    }
 }
 
 // iOS 13+ requires DeviceOrientationEvent.requestPermission() called from a button click
@@ -280,6 +291,7 @@ document.getElementById('btn-ios-allow').addEventListener('click', async () => {
 document.getElementById('btn-ios-skip').addEventListener('click', () => {
     iosPermissionActive = false;
     document.getElementById('ios-permission').style.display = 'none';
+    enableTouchSteering();
 });
 
 // Touch: request gyro permission (Android / non-iOS) + tap-to-start
@@ -294,6 +306,24 @@ window.addEventListener('touchstart', (e) => {
         setTimeout(() => { keys['Space'] = false; }, 100);
     }
 }, { passive: true });
+
+// Touch steering fallback — simulates gyroGamma from horizontal finger position
+window.addEventListener('touchmove', (e) => {
+    if (!touchSteering || iosPermissionActive) return;
+    e.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const touchX = e.touches[0].clientX - rect.left;
+    const relX = (touchX / rect.width) * canvas.width;
+    // Map canvas x (0..800) → gyroGamma (-GYRO_MAX_TILT..+GYRO_MAX_TILT)
+    gyroGamma = ((relX - canvas.width / 2) / (canvas.width / 2)) * GYRO_MAX_TILT;
+    const pct = Math.min(Math.max((gyroGamma + 40) / 80, 0), 1) * 100;
+    gyroBarEl.style.left = pct + '%';
+    gyroBarEl.style.background = Math.abs(gyroGamma) > GYRO_DEADZONE ? '#fa0' : '#0f0';
+}, { passive: false });
+
+window.addEventListener('touchend', () => {
+    if (touchSteering) gyroGamma = 0;
+});
 
 function drawPlayer() {
     let hullColor = "#fff"; 
