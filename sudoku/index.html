@@ -255,6 +255,15 @@
     font-family:'Space Grotesk',sans-serif;transition:background .2s,color .2s;
   }
 
+  /* toast */
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--ink);color:var(--bg);border-radius:10px;padding:10px 18px;
+    font-size:13px;font-weight:600;opacity:0;pointer-events:none;
+    transition:opacity .2s,transform .2s;z-index:999;white-space:nowrap;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
   .hint-flash{animation:flash .9s ease;}
   @keyframes flash{0%,100%{background:var(--paper)}40%{background:var(--accent)}}
 
@@ -366,6 +375,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
       Rekordy
     </button>
+    <button class="btn ghost" id="shareBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      Udostępnij
+    </button>
     <button class="btn ghost" id="printBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
       Drukuj
@@ -395,6 +408,8 @@
     </div>
   </div>
 </div>
+
+<div class="toast" id="toast"></div>
 
 <div class="rec-panel" id="recPanel">
   <div class="rec-card">
@@ -462,6 +477,74 @@ function generate(givensTarget){
   return {puzzle,solution};
 }
 
+/* ---------- Udostępnianie ---------- */
+const LEVEL_CODES={child:'c',easy:'e',medium:'m',normal:'n',hard:'h',vhard:'v',extreme:'x'};
+const CODE_LEVELS=Object.fromEntries(Object.entries(LEVEL_CODES).map(([k,v])=>[v,k]));
+
+let origPuzzle=null; // puzzle w momencie startu (bez ruchów gracza)
+
+function encodePuzzle(){
+  if(!origPuzzle)return null;
+  const lvCode=LEVEL_CODES[levelSel.value]||'e';
+  let digits='';
+  for(let r=0;r<9;r++)for(let c=0;c<9;c++)digits+=origPuzzle[r][c];
+  return lvCode+digits;
+}
+
+function validatePuzzleCode(code){
+  if(!code||code.length!==82)return null;
+  const lvCode=code[0];
+  const level=CODE_LEVELS[lvCode];
+  if(!level)return null;
+  const digits=code.slice(1);
+  if(!/^[0-9]{81}$/.test(digits))return null;
+  const grid=[];
+  for(let r=0;r<9;r++)grid.push(digits.slice(r*9,r*9+9).split('').map(Number));
+  // sprawdź brak konfliktów
+  for(let r=0;r<9;r++)for(let c=0;c<9;c++){
+    const v=grid[r][c]; if(!v)continue;
+    for(let i=0;i<9;i++){
+      if(i!==c&&grid[r][i]===v)return null;
+      if(i!==r&&grid[i][c]===v)return null;
+    }
+    const br=r-r%3,bc=c-c%3;
+    for(let i=0;i<3;i++)for(let j=0;j<3;j++)
+      if((br+i!==r||bc+j!==c)&&grid[br+i][bc+j]===v)return null;
+  }
+  return {level,grid};
+}
+
+function loadFromCode(code){
+  const parsed=validatePuzzleCode(code);
+  if(!parsed)return false;
+  const{level,grid}=parsed;
+  // wypełnij rozwiązanie przez backtracking
+  const sol=grid.map(r=>r.slice());
+  if(!fillGrid(sol))return false;
+  levelSel.value=level;
+  solution=sol;
+  origPuzzle=grid.map(r=>r.slice());
+  puzzle=grid.map(r=>r.slice());
+  given=grid.map(r=>r.map(v=>v!==0));
+  notes=Array.from({length:9},()=>Array.from({length:9},()=>new Set()));
+  history=[];noteMode=false;finishTime=0;
+  noteBtnEl.classList.remove('note-active');
+  selected=null;mistakes=0;solved=false;
+  instantCheck=INSTANT_CHECK.has(level);
+  document.getElementById('overlay').classList.remove('show');
+  document.getElementById('printLevel').textContent='Poziom: '+levelSel.options[levelSel.selectedIndex].text;
+  render();updateStats();resetTimer();
+  return true;
+}
+
+let toastTimer=null;
+function showToast(msg,ms=2200){
+  const el=document.getElementById('toast');
+  el.textContent=msg;el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove('show'),ms);
+}
+
 /* ---------- Stan gry ---------- */
 const LEVELS={
   child:48, easy:42, medium:36, normal:32, hard:28, vhard:25, extreme:22
@@ -487,6 +570,7 @@ function newGame(){
     instantCheck=INSTANT_CHECK.has(levelSel.value);
     const {puzzle:p,solution:s}=generate(target);
     solution=s;
+    origPuzzle=p.map(r=>r.slice());
     puzzle=p.map(r=>r.slice());
     given=p.map(r=>r.map(v=>v!==0));
     notes=Array.from({length:9},()=>Array.from({length:9},()=>new Set()));
@@ -802,6 +886,15 @@ function openRecords(){
   document.getElementById('recPanel').classList.add('show');
 }
 
+document.getElementById('shareBtn').addEventListener('click',()=>{
+  const code=encodePuzzle();
+  if(!code){showToast('Brak aktywnej gry');return;}
+  const url=location.origin+location.pathname+'?p='+code;
+  navigator.clipboard.writeText(url).then(()=>showToast('✓ Link skopiowany!')).catch(()=>{
+    prompt('Skopiuj link:',url);
+  });
+});
+
 document.getElementById('recordsBtn').addEventListener('click',openRecords);
 document.getElementById('recCloseBtn').addEventListener('click',()=>document.getElementById('recPanel').classList.remove('show'));
 document.getElementById('showRecordsFromWin').addEventListener('click',openRecords);
@@ -810,6 +903,20 @@ document.getElementById('againBtn').addEventListener('click',()=>{
   document.getElementById('overlay').classList.remove('show');
   newGame();
 });
+
+// załaduj z URL jeśli podano ?p=...
+const _urlCode=new URLSearchParams(location.search).get('p');
+if(_urlCode){
+  loadingEl.classList.add('show');
+  setTimeout(()=>{
+    const ok=loadFromCode(_urlCode);
+    loadingEl.classList.remove('show');
+    if(!ok){showToast('❌ Nieprawidłowy kod układanki — generuję nową grę',3000);newGame();}
+    else{window.history.replaceState({},'',location.pathname);}
+  },30);
+}else{
+  newGame();
+}
 
 document.getElementById('saveBtn').addEventListener('click',()=>{
   if(recordSaved)return;
@@ -829,8 +936,6 @@ function showWinOverlay(){
   document.getElementById('winMistakes').textContent=mistakes;
   document.getElementById('overlay').classList.add('show');
 }
-
-newGame();
 </script>
 </body>
 </html>
