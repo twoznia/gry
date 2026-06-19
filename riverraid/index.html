@@ -45,7 +45,7 @@
             }
             canvas {
                 position: fixed; top: 0; left: 0; z-index: 10;
-                width: 100vw !important; height: 100vh !important; border-width: 0 !important;
+                border-width: 0 !important;
             }
             #controls-desktop { display: none !important; }
             #controls-mobile { display: none !important; }
@@ -118,7 +118,7 @@
         <button id="btn-ios-skip">Graj bez żyroskopu</button>
     </div>
 
-    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <canvas id="gameCanvas"></canvas>
     
     <div class="controls" id="controls-desktop">
         <span class="hl">RUCH:</span> Strzałki Lewo/Prawo | <span class="hl">PRĘDKOŚĆ:</span> Strzałki Góra/Dół<br>
@@ -133,6 +133,20 @@
 <script>
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
+
+const _isMobCheck = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.matchMedia('(max-width: 820px)').matches;
+
+function resizeCanvas() {
+    if (_isMobCheck) {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+    } else {
+        canvas.width  = 800;
+        canvas.height = 600;
+    }
+}
+resizeCanvas();
+window.addEventListener('resize', () => { resizeCanvas(); initRiver(); });
 const scoreEl = document.getElementById('score');
 const hiScoreEl = document.getElementById('hiScore');
 const livesEl = document.getElementById('lives');
@@ -179,7 +193,7 @@ let targetRiverCenter = 400;
 let currentRiverWidth = 500;
 let targetRiverWidth = 500;
 
-const player = { x: 387, y: 520, w: 26, h: 32 };
+const player = { x: 0, y: 0, w: 26, h: 32 };
 let bullets = [];
 let enemyBullets = []; 
 let entities = []; 
@@ -189,9 +203,11 @@ let floatingTexts = [];
 
 function initRiver() {
     riverPoints = []; activeIsland = null; islandTimer = 0;
-    currentRiverCenter = 400; targetRiverCenter = 400;
-    currentRiverWidth = 500; targetRiverWidth = 500;
-    for (let i = 0; i < 300; i++) riverPoints.push({ left: 150, right: 150, islandCenter: 400, islandWidth: 0 });
+    currentRiverCenter = canvas.width / 2; targetRiverCenter = canvas.width / 2;
+    currentRiverWidth = Math.round(canvas.width * 0.625); targetRiverWidth = Math.round(canvas.width * 0.625);
+    const rows = Math.ceil(canvas.height / 2);
+    const sideMargin = Math.round(canvas.width * 0.1875);
+    for (let i = 0; i < rows; i++) riverPoints.push({ left: sideMargin, right: sideMargin, islandCenter: canvas.width / 2, islandWidth: 0 });
 }
 initRiver();
 
@@ -204,6 +220,8 @@ window.addEventListener('keyup', (e) => keys[e.code] = false);
 
 // --- Mobile / Gyroscope ---
 const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.matchMedia('(max-width: 820px)').matches;
+player.x = canvas.width / 2 - player.w / 2;
+player.y = isMobile ? Math.round(canvas.height * 0.72) : Math.round(canvas.height * 0.867);
 let gyroGamma = 0;   // left/right tilt (-90 to +90)
 let gyroBeta  = 0;   // forward/back tilt (-180 to +180)
 let gyroActive = false;
@@ -381,11 +399,15 @@ function resetGame() {
     floatingTexts.push({ x: canvas.width/2, y: canvas.height/2 + 40, text: themes[currentTheme].name, life: 100, maxLife: 100, color: "#fff", size: "24px" });
 }
 
+function playerHomeY() {
+    return isMobile ? Math.round(canvas.height * 0.72) : Math.round(canvas.height * 0.867);
+}
+
 function respawnPlayer() {
     fuel = 100; combo = 1; playerShielded = false; spreadShotTimer = 0;
-    entities = entities.filter(e => e.y < 250 || e.type === 'bridge'); 
-    if (bridgeTimer > 2100) bridgeTimer = 2100; 
-    bullets = []; enemyBullets = []; player.x = canvas.width / 2 - player.w / 2; player.y = 520; invincibilityTimer = 120; 
+    entities = entities.filter(e => e.y < canvas.height * 0.42 || e.type === 'bridge');
+    if (bridgeTimer > 2100) bridgeTimer = 2100;
+    bullets = []; enemyBullets = []; player.x = canvas.width / 2 - player.w / 2; player.y = playerHomeY(); invincibilityTimer = 120;
 }
 
 function checkHighScore() {
@@ -471,22 +493,24 @@ function update() {
 
     if (state === 'PLAYING') {
         // Gyroscope controls: 3 speed zones based on tilt angle
+        const yHome = playerHomeY();
+        const yMin  = Math.round(canvas.height * 0.25);
         if (gyroActive) {
             const tilt = Math.max(0, Math.min(GYRO_BETA_MAX, gyroBeta));
             if (tilt <= GYRO_BETA_SLOW_MAX) {
                 currentSpeed = Math.max(1, baseSpeed - 2);
-                if (player.y < 520) player.y += 2;
+                if (player.y < yHome) player.y += 2;
             } else if (tilt <= GYRO_BETA_NORMAL_MAX) {
                 currentSpeed = baseSpeed;
-                if (player.y < 520) player.y += 1.5;
+                if (player.y < yHome) player.y += 1.5;
             } else {
                 currentSpeed = baseSpeed + 3;
-                if (player.y > 150) player.y -= 2;
+                if (player.y > yMin) player.y -= 2;
             }
         } else {
-            if (keys['ArrowUp']) { currentSpeed = baseSpeed + 3; if (player.y > 150) player.y -= 2; } 
-            else if (keys['ArrowDown']) { currentSpeed = Math.max(1, baseSpeed - 2); if (player.y < 520) player.y += 2; } 
-            else { currentSpeed = baseSpeed; if (player.y < 520) player.y += 1.5; }
+            if (keys['ArrowUp']) { currentSpeed = baseSpeed + 3; if (player.y > yMin) player.y -= 2; }
+            else if (keys['ArrowDown']) { currentSpeed = Math.max(1, baseSpeed - 2); if (player.y < yHome) player.y += 2; }
+            else { currentSpeed = baseSpeed; if (player.y < yHome) player.y += 1.5; }
         }
     }
 
@@ -498,12 +522,12 @@ function update() {
         if (isBridgeSoon) { targetRiverWidth = 100; activeIsland = null; } 
         else {
             if (Math.random() < 0.03) {
-                let maxShift = 250 + (level * 10); targetRiverCenter = 400 + (Math.random() - 0.5) * maxShift;
+                let maxShift = canvas.width * 0.3125 + (level * 10); targetRiverCenter = canvas.width / 2 + (Math.random() - 0.5) * maxShift;
                 targetRiverCenter = Math.max(currentRiverWidth / 2 + 20, Math.min(canvas.width - currentRiverWidth / 2 - 20, targetRiverCenter));
             }
             if (Math.random() < 0.03) {
-                targetRiverWidth = 500 - (level * 20) + (Math.random() - 0.5) * 150;
-                targetRiverWidth = Math.max(160, Math.min(600, targetRiverWidth));
+                targetRiverWidth = canvas.width * 0.625 - (level * 20) + (Math.random() - 0.5) * 150;
+                targetRiverWidth = Math.max(160, Math.min(canvas.width * 0.75, targetRiverWidth));
             }
         }
         let smoothSpeed = isBridgeSoon ? 0.15 : (0.015 + level * 0.002);
@@ -775,17 +799,18 @@ function draw() {
     });
     ctx.textAlign = "left"; 
 
+    const cy = canvas.height / 2;
     if (state === 'START') {
         ctx.fillStyle = "rgba(0,0,0,0.7)"; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.fillStyle = "#fff"; ctx.textAlign = "center";
-        ctx.font = "bold 34px 'Courier New'"; ctx.fillText("RIVER RAID", canvas.width/2, 280); ctx.font = "16px 'Courier New'";
-        ctx.fillText(isMobile ? "DOTKNIJ EKRANU, ABY STARTOWAĆ" : "PRESS SPACE TO START", canvas.width/2, 330);
-        if (isMobile) { ctx.fillStyle = "#888"; ctx.font = "13px 'Courier New'"; ctx.fillText("Przechyl telefon, aby sterować", canvas.width/2, 365); }
+        ctx.font = "bold 34px 'Courier New'"; ctx.fillText("RIVER RAID", canvas.width/2, cy - 20); ctx.font = "16px 'Courier New'";
+        ctx.fillText(isMobile ? "DOTKNIJ EKRANU, ABY STARTOWAĆ" : "PRESS SPACE TO START", canvas.width/2, cy + 30);
+        if (isMobile) { ctx.fillStyle = "#888"; ctx.font = "13px 'Courier New'"; ctx.fillText("Przechyl telefon, aby sterować", canvas.width/2, cy + 65); }
     } else if (state === 'GAMEOVER') {
-        ctx.fillStyle = "rgba(0,0,0,0.85)"; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.textAlign = "center"; ctx.font = "bold 34px 'Courier New'"; ctx.fillStyle = "#f00"; ctx.fillText("GAME OVER", canvas.width/2, 220);
-        ctx.fillStyle = "#fff"; ctx.font = "20px 'Courier New'"; ctx.fillText("SCORE: " + score, canvas.width/2, 280);
-        if(isNewRecord) { ctx.fillStyle = "#ff0"; ctx.fillText("NEW HIGH SCORE!", canvas.width/2, 320); } else { ctx.fillStyle = "#aaa"; ctx.fillText("HI-SCORE: " + highScore, canvas.width/2, 320); }
+        ctx.fillStyle = "rgba(0,0,0,0.85)"; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.textAlign = "center"; ctx.font = "bold 34px 'Courier New'"; ctx.fillStyle = "#f00"; ctx.fillText("GAME OVER", canvas.width/2, cy - 80);
+        ctx.fillStyle = "#fff"; ctx.font = "20px 'Courier New'"; ctx.fillText("SCORE: " + score, canvas.width/2, cy - 20);
+        if(isNewRecord) { ctx.fillStyle = "#ff0"; ctx.fillText("NEW HIGH SCORE!", canvas.width/2, cy + 20); } else { ctx.fillStyle = "#aaa"; ctx.fillText("HI-SCORE: " + highScore, canvas.width/2, cy + 20); }
         ctx.fillStyle = "#fff"; ctx.font = "16px 'Courier New'";
-        if (Math.floor(Date.now() / 500) % 2 === 0) ctx.fillText(isMobile ? "DOTKNIJ EKRANU" : "PRESS SPACE TO RESTART", canvas.width/2, 400);
+        if (Math.floor(Date.now() / 500) % 2 === 0) ctx.fillText(isMobile ? "DOTKNIJ EKRANU" : "PRESS SPACE TO RESTART", canvas.width/2, cy + 100);
     }
 
     update(); requestAnimationFrame(draw);
