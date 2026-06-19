@@ -374,7 +374,7 @@
     </button>
     <button class="btn ghost" id="hintBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .8 1.6V17h6.4v-.7c0-.6.3-1.2.8-1.6A7 7 0 0 0 12 2z"/></svg>
-      Podpowiedź
+      Podpowiedź <span id="hintCount">(3)</span>
     </button>
     <button class="btn ghost" id="recordsBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
@@ -532,9 +532,10 @@ function loadFromCode(code){
   puzzle=grid.map(r=>r.slice());
   given=grid.map(r=>r.map(v=>v!==0));
   notes=Array.from({length:9},()=>Array.from({length:9},()=>new Set()));
-  history=[];noteMode=false;finishTime=0;
+  history=[];noteMode=false;finishTime=0;hintsUsed=0;
   noteBtnEl.classList.remove('note-active');
   selected=null;mistakes=0;solved=false;
+  updateHintBtn();
   instantCheck=INSTANT_CHECK.has(level);
   document.getElementById('overlay').classList.remove('show');
   document.getElementById('printLevel').textContent='Poziom: '+levelSel.options[levelSel.selectedIndex].text;
@@ -558,7 +559,8 @@ const INSTANT_CHECK=new Set(['child','easy','medium','normal']);
 let instantCheck=true;
 let solution, puzzle, given, notes, selected=null, mistakes=0;
 let startTime=null, timerId=null, solved=false, finishTime=0;
-let history=[], noteMode=false, paused=false, pausedElapsed=0;
+let history=[], noteMode=false, paused=false, pausedElapsed=0, hintsUsed=0;
+const MAX_HINTS=3;
 const boardEl=document.getElementById('board');
 const padEl=document.getElementById('pad');
 const levelSel=document.getElementById('levelSel');
@@ -583,9 +585,10 @@ function newGame(){
     puzzle=p.map(r=>r.slice());
     given=p.map(r=>r.map(v=>v!==0));
     notes=Array.from({length:9},()=>Array.from({length:9},()=>new Set()));
-    history=[]; noteMode=false; finishTime=0;
+    history=[]; noteMode=false; finishTime=0; hintsUsed=0;
     noteBtnEl.classList.remove('note-active');
     selected=null; mistakes=0; solved=false;
+    updateHintBtn();
     document.getElementById('overlay').classList.remove('show');
     document.getElementById('printLevel').textContent='Poziom: '+levelSel.options[levelSel.selectedIndex].text;
     render();
@@ -770,8 +773,16 @@ function resume(){
 }
 
 /* ---------- Podpowiedź ---------- */
+function updateHintBtn(){
+  const remaining=MAX_HINTS-hintsUsed;
+  const btn=document.getElementById('hintBtn');
+  document.getElementById('hintCount').textContent=`(${remaining})`;
+  btn.disabled=remaining<=0;
+  btn.style.opacity=remaining<=0?'0.4':'';
+}
+
 function hint(){
-  if(solved)return;
+  if(solved||hintsUsed>=MAX_HINTS)return;
   const empties=[];
   for(let r=0;r<9;r++)for(let c=0;c<9;c++)
     if(!given[r][c] && puzzle[r][c]!==solution[r][c])empties.push({r,c});
@@ -780,6 +791,8 @@ function hint(){
   if(!startTime)startTimer();
   puzzle[r][c]=solution[r][c];
   given[r][c]=true;
+  hintsUsed++;
+  updateHintBtn();
   const d=cellAt(r,c);
   d.classList.add('given','hint-flash');
   setTimeout(()=>d.classList.remove('hint-flash'),900);
