@@ -25,6 +25,7 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 - **[Skoczek](./jumper/)** 🦘 – Skacz po platformach i zbieraj punkty – neonowy platformer!
 - **[Neonowy Wąż](./snake/)** 🐍 – Klasyczny Snake w neonowym stylu – rośnij i unikaj zderzeń.
 - **[Mahjong](./mahjong/)** 🀄 – Mahjong Solitaire w średniowiecznym stylu z rankingiem i podpowiedziami.
+- **[Sudoku](./sudoku/)** 🔢 – Klasyczne sudoku – wypełnij siatkę cyframi bez powtórzeń w wierszach, kolumnach i kwadratach.
 
 ---
 
