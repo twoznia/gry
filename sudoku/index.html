@@ -179,13 +179,46 @@
   .overlay.show{display:flex;}
   .card{
     background:var(--paper);border-radius:20px;padding:30px 26px;text-align:center;
-    max-width:320px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+    max-width:360px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
     animation:rise .25s ease;
   }
   @keyframes rise{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
   .card h2{font-family:"Fraunces",serif;font-weight:600;font-size:30px;margin:0 0 6px;}
-  .card p{color:var(--ink-soft);margin:0 0 20px;font-size:15px;}
+  .card p{color:var(--ink-soft);margin:0 0 16px;font-size:15px;}
   .card .v{color:var(--ink);font-weight:600;}
+  .win-stats{display:flex;gap:18px;justify-content:center;margin:0 0 18px;}
+  .win-stat{display:flex;flex-direction:column;align-items:center;gap:2px;}
+  .win-stat .ws-val{font-size:22px;font-weight:700;color:var(--ink);}
+  .win-stat .ws-lbl{font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;}
+  .name-row{display:flex;gap:8px;margin:0 0 10px;}
+  .name-row input{flex:1;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:14px;color:var(--ink);background:var(--bg);outline:none;}
+  .name-row input:focus{border-color:var(--user);}
+  .name-row button{border:none;border-radius:10px;padding:10px 16px;font-family:inherit;font-size:13px;font-weight:600;background:var(--user);color:#fff;cursor:pointer;}
+  .name-row button:disabled{background:var(--line);color:var(--ink-soft);cursor:default;}
+  .save-info{font-size:12px;color:var(--user);margin:0 0 10px;display:none;}
+  /* records panel */
+  .rec-panel{
+    position:fixed;inset:0;background:rgba(28,43,54,.55);backdrop-filter:blur(3px);
+    display:none;align-items:center;justify-content:center;padding:20px;z-index:30;
+  }
+  .rec-panel.show{display:flex;}
+  .rec-card{
+    background:var(--paper);border-radius:20px;padding:24px;width:100%;max-width:440px;
+    max-height:90vh;overflow-y:auto;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+  }
+  .rec-card h3{font-family:"Fraunces",serif;font-size:22px;font-weight:600;margin:0 0 14px;color:var(--ink);}
+  .rec-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+  .rec-tab{border:none;border-radius:8px;padding:5px 11px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;background:var(--given-bg);color:var(--ink-soft);}
+  .rec-tab.active{background:var(--user);color:#fff;}
+  .rec-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .rec-table th{color:var(--ink-soft);font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding:4px 8px;text-align:left;border-bottom:1px solid var(--line);}
+  .rec-table th:last-child,.rec-table td:last-child{text-align:right;}
+  .rec-table td{padding:6px 8px;border-bottom:1px solid var(--line);color:var(--ink);}
+  .rec-table tr:last-child td{border-bottom:none;}
+  .rec-empty{color:var(--ink-soft);font-size:13px;text-align:center;padding:20px 0;}
+  .rec-close{width:100%;margin-top:16px;border:none;border-radius:10px;padding:11px;font-family:inherit;font-size:14px;font-weight:600;background:var(--given-bg);color:var(--ink);cursor:pointer;}
+  .rec-close:hover{background:var(--line);}
+  .records-btn{background:var(--paper);color:var(--ink);box-shadow:var(--shadow);}
 
   .hint-flash{animation:flash .9s ease;}
   @keyframes flash{0%,100%{background:var(--paper)}40%{background:var(--accent)}}
@@ -277,6 +310,10 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .8 1.6V17h6.4v-.7c0-.6.3-1.2.8-1.6A7 7 0 0 0 12 2z"/></svg>
       Podpowiedź
     </button>
+    <button class="btn ghost" id="recordsBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+      Rekordy
+    </button>
     <button class="btn ghost" id="printBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
       Drukuj
@@ -290,9 +327,29 @@
 
 <div class="overlay" id="overlay">
   <div class="card">
-    <h2>Brawo!</h2>
-    <p>Rozwiązane w czasie <span class="v" id="winTime">0:00</span></p>
-    <button class="btn primary" id="againBtn" style="width:100%">Zagraj jeszcze raz</button>
+    <h2>Brawo! 🎉</h2>
+    <div class="win-stats">
+      <div class="win-stat"><div class="ws-val" id="winTime">0:00</div><div class="ws-lbl">Czas</div></div>
+      <div class="win-stat"><div class="ws-val" id="winMistakes">0</div><div class="ws-lbl">Błędy</div></div>
+    </div>
+    <div class="name-row">
+      <input type="text" id="playerName" placeholder="Twoje imię…" maxlength="20" autocomplete="off">
+      <button id="saveBtn">Zapisz</button>
+    </div>
+    <p class="save-info" id="saveInfo">✓ Wynik zapisany!</p>
+    <div style="display:flex;gap:8px;">
+      <button class="btn ghost" id="showRecordsFromWin" style="flex:1">Rekordy</button>
+      <button class="btn primary" id="againBtn" style="flex:1">Nowa gra</button>
+    </div>
+  </div>
+</div>
+
+<div class="rec-panel" id="recPanel">
+  <div class="rec-card">
+    <h3>🏆 Rekordy</h3>
+    <div class="rec-tabs" id="recTabs"></div>
+    <div id="recTable"></div>
+    <button class="rec-close" id="recCloseBtn">Zamknij</button>
   </div>
 </div>
 
@@ -509,8 +566,7 @@ function checkWin(){
     if(puzzle[r][c]!==solution[r][c])return;
   solved=true;
   stopTimer();
-  document.getElementById('winTime').textContent=fmt(elapsed());
-  setTimeout(()=>document.getElementById('overlay').classList.add('show'),250);
+  setTimeout(showWinOverlay,250);
 }
 
 /* ---------- Podpowiedź ---------- */
@@ -559,12 +615,92 @@ document.addEventListener('keydown',e=>{
 document.getElementById('eraseBtn').addEventListener('click',()=>place(0));
 document.getElementById('hintBtn').addEventListener('click',hint);
 document.getElementById('newBtn').addEventListener('click',newGame);
-document.getElementById('againBtn').addEventListener('click',newGame);
 levelSel.addEventListener('change',newGame);
 document.getElementById('printBtn').addEventListener('click',()=>{
-  selected=null; paint();   // bez podświetleń na wydruku
+  selected=null; paint();
   window.print();
 });
+
+/* ---------- Rekordy ---------- */
+const RECORDS_KEY='sudokuRecords';
+const LEVEL_LABELS={child:'Dziecko',easy:'Łatwy',medium:'Średni',normal:'Normalny',hard:'Trudny',vhard:'Bardzo trudny',extreme:'Ekstremalny'};
+let recActiveLevel='easy';
+let recordSaved=false;
+
+function loadRecords(){
+  try{return JSON.parse(localStorage.getItem(RECORDS_KEY)||'{}')}catch{return {}}
+}
+
+function saveRecord(name,level,timeSeconds,mistakeCount){
+  const data=loadRecords();
+  if(!data[level])data[level]=[];
+  data[level].push({name,time:timeSeconds,mistakes:mistakeCount,date:new Date().toLocaleDateString('pl-PL')});
+  data[level].sort((a,b)=>a.time-b.time||a.mistakes-b.mistakes);
+  data[level]=data[level].slice(0,10);
+  localStorage.setItem(RECORDS_KEY,JSON.stringify(data));
+}
+
+function renderRecTable(level){
+  const data=loadRecords();
+  const rows=data[level]||[];
+  if(!rows.length)return '<p class="rec-empty">Brak rekordów dla tego poziomu.</p>';
+  const medals=['🥇','🥈','🥉'];
+  let h='<table class="rec-table"><thead><tr><th>#</th><th>Imię</th><th>Czas</th><th>Błędy</th><th>Data</th></tr></thead><tbody>';
+  rows.forEach((r,i)=>{
+    const m=medals[i]||`${i+1}.`;
+    h+=`<tr><td>${m}</td><td>${r.name}</td><td style="color:var(--user);font-weight:600">${fmt(r.time)}</td><td>${r.mistakes}</td><td style="color:var(--ink-soft);font-size:11px">${r.date}</td></tr>`;
+  });
+  return h+'</tbody></table>';
+}
+
+function buildRecTabs(){
+  const tabs=document.getElementById('recTabs');
+  tabs.innerHTML=Object.entries(LEVEL_LABELS).map(([k,v])=>
+    `<button class="rec-tab${k===recActiveLevel?' active':''}" data-lv="${k}">${v}</button>`
+  ).join('');
+  tabs.querySelectorAll('.rec-tab').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      recActiveLevel=btn.dataset.lv;
+      buildRecTabs();
+      document.getElementById('recTable').innerHTML=renderRecTable(recActiveLevel);
+    });
+  });
+  document.getElementById('recTable').innerHTML=renderRecTable(recActiveLevel);
+}
+
+function openRecords(){
+  recActiveLevel=levelSel.value||'easy';
+  buildRecTabs();
+  document.getElementById('recPanel').classList.add('show');
+}
+
+document.getElementById('recordsBtn').addEventListener('click',openRecords);
+document.getElementById('recCloseBtn').addEventListener('click',()=>document.getElementById('recPanel').classList.remove('show'));
+document.getElementById('showRecordsFromWin').addEventListener('click',openRecords);
+
+document.getElementById('againBtn').addEventListener('click',()=>{
+  document.getElementById('overlay').classList.remove('show');
+  newGame();
+});
+
+document.getElementById('saveBtn').addEventListener('click',()=>{
+  if(recordSaved)return;
+  const name=document.getElementById('playerName').value.trim();
+  if(!name){document.getElementById('playerName').focus();return;}
+  saveRecord(name,levelSel.value,elapsed(),mistakes);
+  recordSaved=true;
+  document.getElementById('saveBtn').disabled=true;
+  document.getElementById('saveInfo').style.display='block';
+});
+
+function showWinOverlay(){
+  recordSaved=false;
+  document.getElementById('saveBtn').disabled=false;
+  document.getElementById('saveInfo').style.display='none';
+  document.getElementById('winTime').textContent=fmt(elapsed());
+  document.getElementById('winMistakes').textContent=mistakes;
+  document.getElementById('overlay').classList.add('show');
+}
 
 newGame();
 </script>
