@@ -955,9 +955,11 @@ document.getElementById('saveBtn').addEventListener('click',()=>{
 });
 
 function showWinOverlay(){
-  recordSaved=false;
-  document.getElementById('saveBtn').disabled=false;
-  document.getElementById('saveInfo').style.display='none';
+  recordSaved=hintsUsed>0;
+  const saveBtn=document.getElementById('saveBtn');
+  saveBtn.disabled=hintsUsed>0;
+  document.getElementById('saveInfo').style.display=hintsUsed>0?'block':'none';
+  document.getElementById('saveInfo').textContent=hintsUsed>0?'⚠️ Gry z podpowiedziami nie są zapisywane.':'✓ Wynik zapisany!';
   document.getElementById('winTime').textContent=fmt(finishTime);
   document.getElementById('winMistakes').textContent=mistakes;
   document.getElementById('overlay').classList.add('show');
