@@ -566,6 +566,10 @@ const loadingEl=document.getElementById('loading');
 const noteBtnEl=document.getElementById('noteBtn');
 const cells=[];
 
+// przywróć ostatni poziom (domyślnie easy)
+levelSel.value=localStorage.getItem('sudokuLevel')||'easy';
+levelSel.addEventListener('change',()=>localStorage.setItem('sudokuLevel',levelSel.value));
+
 function newGame(){
   if(paused)resume();
   loadingEl.classList.add('show');
