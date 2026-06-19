@@ -122,9 +122,9 @@
   /* thick 3x3 separators */
   .cell:nth-child(3n)::after,
   .cell.box-right::after{}
-  .cell.br{box-shadow:2px 0 0 0 var(--line-strong);}
-  .cell.bb{box-shadow:0 2px 0 0 var(--line-strong);}
-  .cell.br.bb{box-shadow:2px 0 0 0 var(--line-strong), 0 2px 0 0 var(--line-strong);}
+  .cell.br{box-shadow:inset -2px 0 0 0 var(--line-strong);}
+  .cell.bb{box-shadow:inset 0 -2px 0 0 var(--line-strong);}
+  .cell.br.bb{box-shadow:inset -2px 0 0 0 var(--line-strong), inset 0 -2px 0 0 var(--line-strong);}
 
   .cell.peer{background:var(--peer);}
   .cell.same{background:var(--same);}
