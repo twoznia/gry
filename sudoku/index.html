@@ -220,6 +220,41 @@
   .rec-close:hover{background:var(--line);}
   .records-btn{background:var(--paper);color:var(--ink);box-shadow:var(--shadow);}
 
+  /* notatki w komórkach */
+  .notes-grid{display:grid;grid-template-columns:repeat(3,1fr);width:100%;height:100%;padding:2px;pointer-events:none;}
+  .note{font-size:clamp(5px,1.7vw,9px);color:var(--ink-soft);display:flex;align-items:center;justify-content:center;line-height:1;font-weight:600;}
+  .note.off{visibility:hidden;}
+  .btn.note-active{background:var(--user);color:#fff;box-shadow:var(--shadow);}
+
+  /* pauza */
+  .pause-mask{
+    position:absolute;inset:10px;border-radius:8px;z-index:4;
+    background:var(--paper);display:none;
+    align-items:center;justify-content:center;flex-direction:column;gap:8px;
+    cursor:pointer;
+  }
+  .pause-mask.show{display:flex;}
+  .pause-mask .pm-icon{font-size:40px;}
+  .pause-mask p{color:var(--ink-soft);font-size:13px;margin:0;}
+
+  /* tryb ciemny */
+  body.dark{
+    background:radial-gradient(120% 80% at 50% -10%,#1e293b 0%,#0f172a 55%) fixed;
+    --bg:#0f172a;--paper:#1e293b;--ink:#f1f5f9;--ink-soft:#94a3b8;
+    --line:#334155;--line-strong:#475569;--user:#38bdf8;
+    --sel:#78350f;--peer:#172033;--given-bg:#263548;--same:#1a3a5c;
+    --error:#f87171;--error-bg:#3b1818;--accent:#f59e0b;--accent-ink:#1c1008;
+    --shadow:0 1px 0 rgba(0,0,0,.3),0 18px 40px -22px rgba(0,0,0,.9);
+  }
+  #backLink{transition:background .2s,color .2s,border-color .2s;}
+  body.dark #backLink{background:var(--paper)!important;color:var(--ink)!important;border-color:var(--line)!important;}
+  #themeBtn{
+    position:fixed;top:10px;right:10px;z-index:999;
+    background:var(--paper);color:var(--ink);border:1px solid var(--line);
+    border-radius:8px;padding:7px 12px;font-size:13px;cursor:pointer;
+    font-family:'Space Grotesk',sans-serif;transition:background .2s,color .2s;
+  }
+
   .hint-flash{animation:flash .9s ease;}
   @keyframes flash{0%,100%{background:var(--paper)}40%{background:var(--accent)}}
 
@@ -267,7 +302,8 @@
 </style>
 </head>
 <body>
-<a href="../" style="position:fixed;top:10px;left:10px;z-index:999;background:#1C2B36;color:#E9EDF0;border:1px solid #5A6B78;border-radius:8px;padding:7px 13px;text-decoration:none;font-size:13px;font-family:'Space Grotesk',sans-serif;">← Wróć</a>
+<a id="backLink" href="../" style="position:fixed;top:10px;left:10px;z-index:999;background:#1C2B36;color:#E9EDF0;border:1px solid #5A6B78;border-radius:8px;padding:7px 13px;text-decoration:none;font-size:13px;font-family:'Space Grotesk',sans-serif;">← Wróć</a>
+<button id="themeBtn">🌙 Ciemny</button>
 <div class="wrap">
   <header>
     <div class="title">
@@ -297,11 +333,27 @@
   <div class="board-shell">
     <div class="board" id="board" aria-label="Plansza Sudoku"></div>
     <div class="loading" id="loading"><span>Generowanie…</span></div>
+    <div class="pause-mask" id="pauseMask" onclick="resume()">
+      <div class="pm-icon">⏸</div>
+      <p>Kliknij aby wznowić</p>
+    </div>
   </div>
 
   <div class="pad" id="pad"></div>
 
   <div class="controls">
+    <button class="btn ghost" id="noteBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
+      Notatki
+    </button>
+    <button class="btn ghost" id="undoBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M3 13a9 9 0 1 0 1.598-5.172"/></svg>
+      Cofnij
+    </button>
+    <button class="btn ghost" id="pauseBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      Pauza
+    </button>
     <button class="btn ghost" id="eraseBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="m5 14 7-7 6 6-7 7H8z"/></svg>
       Wymaż
@@ -414,20 +466,22 @@ function generate(givensTarget){
 const LEVELS={
   child:48, easy:42, medium:36, normal:32, hard:28, vhard:25, extreme:22
 };
-// poziomy z natychmiastowym sprawdzaniem względem rozwiązania
 const INSTANT_CHECK=new Set(['child','easy','medium','normal']);
 let instantCheck=true;
-let solution, puzzle, given, selected=null, mistakes=0, startTime=null, timerId=null, solved=false;
+let solution, puzzle, given, notes, selected=null, mistakes=0;
+let startTime=null, timerId=null, solved=false, finishTime=0;
+let history=[], noteMode=false, paused=false, pausedElapsed=0;
 const boardEl=document.getElementById('board');
 const padEl=document.getElementById('pad');
 const levelSel=document.getElementById('levelSel');
 const loadingEl=document.getElementById('loading');
+const noteBtnEl=document.getElementById('noteBtn');
 const cells=[];
 
 function newGame(){
+  if(paused)resume();
   loadingEl.classList.add('show');
   resetTimer();
-  // ustępujemy wątek, żeby pokazać "Generowanie…" zanim ruszy backtracking
   setTimeout(()=>{
     const target=LEVELS[levelSel.value]||42;
     instantCheck=INSTANT_CHECK.has(levelSel.value);
@@ -435,6 +489,9 @@ function newGame(){
     solution=s;
     puzzle=p.map(r=>r.slice());
     given=p.map(r=>r.map(v=>v!==0));
+    notes=Array.from({length:9},()=>Array.from({length:9},()=>new Set()));
+    history=[]; noteMode=false; finishTime=0;
+    noteBtnEl.classList.remove('note-active');
     selected=null; mistakes=0; solved=false;
     document.getElementById('overlay').classList.remove('show');
     document.getElementById('printLevel').textContent='Poziom: '+levelSel.options[levelSel.selectedIndex].text;
@@ -492,14 +549,22 @@ function selectCell(r,c){
   paint();
 }
 
+function buildNotesHtml(noteSet){
+  let h='<div class="notes-grid">';
+  for(let n=1;n<=9;n++) h+=`<div class="note${noteSet.has(n)?'':' off'}">${n}</div>`;
+  return h+'</div>';
+}
+
 function paint(){
   for(let r=0;r<9;r++)for(let c=0;c<9;c++){
     const d=cellAt(r,c);
     const v=puzzle[r][c];
-    d.textContent=v||'';
+    if(v){ d.textContent=v; }
+    else if(notes[r][c].size>0){ d.innerHTML=buildNotesHtml(notes[r][c]); }
+    else { d.textContent=''; }
     d.classList.remove('sel','peer','same','bad','conflict');
-    if(hasConflict(r,c))d.classList.add('conflict'); // kolidujące pole (też startowe)
-    if(isFlagged(r,c))d.classList.add('bad');        // czerwona cyfra gracza
+    if(hasConflict(r,c))d.classList.add('conflict');
+    if(isFlagged(r,c))d.classList.add('bad');
   }
   if(selected){
     const {r,c}=selected;
@@ -517,17 +582,38 @@ function paint(){
 }
 
 function place(n){
-  if(solved||!selected)return;
+  if(solved||!selected||paused)return;
   const {r,c}=selected;
   if(given[r][c])return;
   if(!startTime)startTimer();
-  if(n!==0 && n===puzzle[r][c]){return;}
+
+  if(noteMode && n!==0){
+    history.push({r,c,oldVal:puzzle[r][c],oldNotes:new Set(notes[r][c])});
+    if(notes[r][c].has(n)) notes[r][c].delete(n); else notes[r][c].add(n);
+    paint(); return;
+  }
+
+  if(n!==0 && n===puzzle[r][c])return;
+  history.push({r,c,oldVal:puzzle[r][c],oldNotes:new Set(notes[r][c])});
   puzzle[r][c]=n;
+  if(n!==0){
+    notes[r][c].clear();
+    for(let i=0;i<9;i++){notes[r][i].delete(n);notes[i][c].delete(n);}
+    const br=r-r%3,bc=c-c%3;
+    for(let i=0;i<3;i++)for(let j=0;j<3;j++)notes[br+i][bc+j].delete(n);
+  }
   const d=cellAt(r,c);
   d.classList.remove('pop'); void d.offsetWidth; d.classList.add('pop');
-  paint();
-  updateStats();
-  checkWin();
+  paint(); updateStats(); checkWin();
+}
+
+function undo(){
+  if(!history.length||solved)return;
+  const {r,c,oldVal,oldNotes}=history.pop();
+  puzzle[r][c]=oldVal;
+  notes[r][c]=new Set(oldNotes);
+  selected={r,c};
+  paint(); updateStats();
 }
 
 function buildPad(){
@@ -565,8 +651,29 @@ function checkWin(){
   for(let r=0;r<9;r++)for(let c=0;c<9;c++)
     if(puzzle[r][c]!==solution[r][c])return;
   solved=true;
+  finishTime=elapsed();
   stopTimer();
   setTimeout(showWinOverlay,250);
+}
+
+/* ---------- Pauza ---------- */
+function pause(){
+  if(paused||solved||!startTime)return;
+  paused=true;
+  pausedElapsed=elapsed();
+  stopTimer();
+  document.getElementById('pauseMask').classList.add('show');
+  document.getElementById('pauseBtn').innerHTML=
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><polygon points="5 3 19 12 5 21 5 3"/></svg> Wznów';
+}
+function resume(){
+  if(!paused)return;
+  paused=false;
+  startTime=Date.now()-pausedElapsed*1000;
+  timerId=setInterval(()=>{document.getElementById('timer').textContent=fmt(elapsed());},1000);
+  document.getElementById('pauseMask').classList.remove('show');
+  document.getElementById('pauseBtn').innerHTML=
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Pauza';
 }
 
 /* ---------- Podpowiedź ---------- */
@@ -598,6 +705,9 @@ function fmt(s){const m=Math.floor(s/60);return m+':'+String(s%60).padStart(2,'0
 
 /* ---------- Klawiatura ---------- */
 document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key==='z'){e.preventDefault();undo();return;}
+  if(e.key==='n'||e.key==='N'){noteMode=!noteMode;noteBtnEl.classList.toggle('note-active',noteMode);return;}
+  if(e.key==='Escape'&&paused){resume();return;}
   if(!selected)return;
   if(e.key>='1'&&e.key<='9')place(+e.key);
   else if(e.key==='Backspace'||e.key==='Delete'||e.key==='0')place(0);
@@ -615,11 +725,29 @@ document.addEventListener('keydown',e=>{
 document.getElementById('eraseBtn').addEventListener('click',()=>place(0));
 document.getElementById('hintBtn').addEventListener('click',hint);
 document.getElementById('newBtn').addEventListener('click',newGame);
+document.getElementById('undoBtn').addEventListener('click',undo);
+document.getElementById('pauseBtn').addEventListener('click',()=>{if(paused)resume();else pause();});
+document.getElementById('noteBtn').addEventListener('click',()=>{
+  noteMode=!noteMode;
+  noteBtnEl.classList.toggle('note-active',noteMode);
+});
 levelSel.addEventListener('change',newGame);
 document.getElementById('printBtn').addEventListener('click',()=>{
   selected=null; paint();
   window.print();
 });
+
+/* ---------- Tryb ciemny ---------- */
+(()=>{
+  const btn=document.getElementById('themeBtn');
+  const saved=localStorage.getItem('sudokuTheme');
+  if(saved==='dark'){document.body.classList.add('dark');btn.textContent='☀️ Jasny';}
+  btn.addEventListener('click',()=>{
+    const dark=document.body.classList.toggle('dark');
+    btn.textContent=dark?'☀️ Jasny':'🌙 Ciemny';
+    localStorage.setItem('sudokuTheme',dark?'dark':'light');
+  });
+})();
 
 /* ---------- Rekordy ---------- */
 const RECORDS_KEY='sudokuRecords';
@@ -687,7 +815,7 @@ document.getElementById('saveBtn').addEventListener('click',()=>{
   if(recordSaved)return;
   const name=document.getElementById('playerName').value.trim();
   if(!name){document.getElementById('playerName').focus();return;}
-  saveRecord(name,levelSel.value,elapsed(),mistakes);
+  saveRecord(name,levelSel.value,finishTime,mistakes);
   recordSaved=true;
   document.getElementById('saveBtn').disabled=true;
   document.getElementById('saveInfo').style.display='block';
@@ -697,7 +825,7 @@ function showWinOverlay(){
   recordSaved=false;
   document.getElementById('saveBtn').disabled=false;
   document.getElementById('saveInfo').style.display='none';
-  document.getElementById('winTime').textContent=fmt(elapsed());
+  document.getElementById('winTime').textContent=fmt(finishTime);
   document.getElementById('winMistakes').textContent=mistakes;
   document.getElementById('overlay').classList.add('show');
 }
