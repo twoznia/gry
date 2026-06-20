@@ -213,45 +213,45 @@ function makeCatZones() {
     tail.bezierCurveTo(78, -72, 62, -64, 67, -50);
     tail.bezierCurveTo(82, -30, 74, 6, 50, 18);
     tail.closePath();
-    z.push({ id:'tail', path:tail, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+    z.push({ id:'tail', path:tail, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Body
     const body = new Path2D();
     body.ellipse(0, 44, 66, 53, 0, 0, Math.PI*2);
-    z.push({ id:'body', path:body, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+    z.push({ id:'body', path:body, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Left ear (outer)
     const earL = new Path2D();
     earL.moveTo(-26,-74); earL.lineTo(-50,-114); earL.lineTo(-6,-85); earL.closePath();
-    z.push({ id:'ear_l', path:earL, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+    z.push({ id:'ear_l', path:earL, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Right ear (outer)
     const earR = new Path2D();
     earR.moveTo(26,-74); earR.lineTo(50,-114); earR.lineTo(6,-85); earR.closePath();
-    z.push({ id:'ear_r', path:earR, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+    z.push({ id:'ear_r', path:earR, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Head
     const head = new Path2D();
     head.ellipse(0, -42, 46, 41, 0, 0, Math.PI*2);
-    z.push({ id:'head', path:head, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+    z.push({ id:'head', path:head, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Belly
     const belly = new Path2D();
     belly.ellipse(0, 50, 38, 31, 0, 0, Math.PI*2);
-    z.push({ id:'belly', path:belly, color:'#e8e8e8', defaultColor:'#e8e8e8' });
+    z.push({ id:'belly', path:belly, color:'#ffffff', defaultColor:'#ffffff' });
 
     return z;
 }
 
 function drawCatDecor(c) {
-    // Inner ears
-    c.fillStyle = '#ffb3c6';
+    // Inner ears — line art (white fill, dark outline)
+    c.fillStyle = '#ffffff'; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2;
     const iL = new Path2D();
     iL.moveTo(-29,-79); iL.lineTo(-45,-107); iL.lineTo(-11,-87); iL.closePath();
-    c.fill(iL);
+    c.fill(iL); c.stroke(iL);
     const iR = new Path2D();
     iR.moveTo(29,-79); iR.lineTo(45,-107); iR.lineTo(11,-87); iR.closePath();
-    c.fill(iR);
+    c.fill(iR); c.stroke(iR);
 
     // Eyes
     c.fillStyle = '#1c1c2e';
@@ -261,19 +261,20 @@ function drawCatDecor(c) {
     c.beginPath(); c.arc(-13,-55,3,0,Math.PI*2); c.fill();
     c.beginPath(); c.arc(19,-55,3,0,Math.PI*2); c.fill();
 
-    // Nose
-    c.fillStyle = '#ff9eb5';
-    c.beginPath(); c.moveTo(0,-32); c.lineTo(-6,-26); c.lineTo(6,-26); c.closePath(); c.fill();
+    // Nose — line art
+    c.fillStyle = '#ffffff'; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2;
+    c.beginPath(); c.moveTo(0,-32); c.lineTo(-6,-26); c.lineTo(6,-26); c.closePath();
+    c.fill(); c.stroke();
 
     // Mouth
-    c.strokeStyle = '#666'; c.lineWidth = 2; c.lineCap = 'round';
+    c.strokeStyle = '#555'; c.lineWidth = 2; c.lineCap = 'round';
     c.beginPath();
     c.moveTo(0,-26); c.quadraticCurveTo(-10,-20,-14,-18);
     c.moveTo(0,-26); c.quadraticCurveTo(10,-20,14,-18);
     c.stroke();
 
     // Whiskers
-    c.strokeStyle = '#bbb'; c.lineWidth = 1.5;
+    c.strokeStyle = '#888'; c.lineWidth = 1.5;
     [[-38,-34],[-40,-29],[-38,-24]].forEach(([ex,ey],i) => {
         c.beginPath(); c.moveTo(-12,-29+i*2.5); c.lineTo(ex,ey); c.stroke();
     });
@@ -281,12 +282,12 @@ function drawCatDecor(c) {
         c.beginPath(); c.moveTo(12,-29+i*2.5); c.lineTo(ex,ey); c.stroke();
     });
 
-    // Front paws
-    const bc = zones.find(z=>z.id==='body')?.color || '#c8c8c8';
-    c.fillStyle = bc; c.strokeStyle = '#444'; c.lineWidth = 2;
+    // Front paws — track body colour so they blend when coloured
+    const bc = zones.find(z=>z.id==='body')?.color || '#ffffff';
+    c.fillStyle = bc; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2.5;
     c.beginPath(); c.ellipse(-26,88,20,11,0,0,Math.PI*2); c.fill(); c.stroke();
     c.beginPath(); c.ellipse(26,88,20,11,0,0,Math.PI*2); c.fill(); c.stroke();
-    c.strokeStyle = '#666'; c.lineWidth = 1.2;
+    c.strokeStyle = '#888'; c.lineWidth = 1.2;
     [-26,26].forEach(px => {
         c.beginPath(); c.moveTo(px-7,84); c.lineTo(px-7,93); c.stroke();
         c.beginPath(); c.moveTo(px,83);   c.lineTo(px,94);   c.stroke();
@@ -305,12 +306,12 @@ function makeDogZones() {
     tail.bezierCurveTo(70,-68, 58,-60, 62,-46);
     tail.bezierCurveTo(78,-24, 68, 6, 50, 18);
     tail.closePath();
-    z.push({ id:'tail', path:tail, color:'#c8a86a', defaultColor:'#c8a86a' });
+    z.push({ id:'tail', path:tail, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Body
     const body = new Path2D();
     body.ellipse(0, 44, 68, 52, 0, 0, Math.PI*2);
-    z.push({ id:'body', path:body, color:'#c8a86a', defaultColor:'#c8a86a' });
+    z.push({ id:'body', path:body, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Left floppy ear
     const earL = new Path2D();
@@ -319,7 +320,7 @@ function makeDogZones() {
     earL.bezierCurveTo(-46, 22, -28, 20, -26, 4);
     earL.bezierCurveTo(-24,-22, -20,-54, -20,-60);
     earL.closePath();
-    z.push({ id:'ear_l', path:earL, color:'#a87840', defaultColor:'#a87840' });
+    z.push({ id:'ear_l', path:earL, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Right floppy ear
     const earR = new Path2D();
@@ -328,22 +329,22 @@ function makeDogZones() {
     earR.bezierCurveTo(46, 22, 28, 20, 26, 4);
     earR.bezierCurveTo(24,-22, 20,-54, 20,-60);
     earR.closePath();
-    z.push({ id:'ear_r', path:earR, color:'#a87840', defaultColor:'#a87840' });
+    z.push({ id:'ear_r', path:earR, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Head
     const head = new Path2D();
     head.ellipse(0,-38, 44, 38, 0, 0, Math.PI*2);
-    z.push({ id:'head', path:head, color:'#c8a86a', defaultColor:'#c8a86a' });
+    z.push({ id:'head', path:head, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Snout
     const snout = new Path2D();
     snout.ellipse(0,-22, 24, 17, 0, 0, Math.PI*2);
-    z.push({ id:'snout', path:snout, color:'#e0c090', defaultColor:'#e0c090' });
+    z.push({ id:'snout', path:snout, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Belly
     const belly = new Path2D();
     belly.ellipse(0, 52, 38, 28, 0, 0, Math.PI*2);
-    z.push({ id:'belly', path:belly, color:'#e8d4a8', defaultColor:'#e8d4a8' });
+    z.push({ id:'belly', path:belly, color:'#ffffff', defaultColor:'#ffffff' });
 
     return z;
 }
@@ -365,24 +366,23 @@ function drawDogDecor(c) {
     c.beginPath(); c.arc(4,-32,2,0,Math.PI*2);  c.fill();
 
     // Mouth
-    c.strokeStyle = '#666'; c.lineWidth = 2; c.lineCap = 'round';
+    c.strokeStyle = '#555'; c.lineWidth = 2; c.lineCap = 'round';
     c.beginPath();
     c.moveTo(0,-22); c.quadraticCurveTo(-10,-15,-14,-12);
     c.moveTo(0,-22); c.quadraticCurveTo(10,-15,14,-12);
     c.stroke();
 
-    // Tongue
-    c.fillStyle = '#ff6b8a';
-    c.beginPath(); c.ellipse(0,-8,11,14,0,0,Math.PI*2); c.fill();
-    c.fillStyle = '#e0507a';
-    c.beginPath(); c.arc(0,0,9,0,Math.PI); c.fill();
+    // Tongue — line art
+    c.fillStyle = '#ffffff'; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2;
+    c.beginPath(); c.ellipse(0,-6,9,12,0,0,Math.PI*2); c.fill(); c.stroke();
+    c.beginPath(); c.moveTo(0,-12); c.lineTo(0,2); c.stroke();
 
-    // Front paws
-    const bc = zones.find(z=>z.id==='body')?.color || '#c8a86a';
-    c.fillStyle = bc; c.strokeStyle = '#555'; c.lineWidth = 2;
+    // Front paws — track body colour so they blend when coloured
+    const bc = zones.find(z=>z.id==='body')?.color || '#ffffff';
+    c.fillStyle = bc; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2.5;
     c.beginPath(); c.ellipse(-28,89,22,12,0,0,Math.PI*2); c.fill(); c.stroke();
     c.beginPath(); c.ellipse(28,89,22,12,0,0,Math.PI*2);  c.fill(); c.stroke();
-    c.strokeStyle = '#777'; c.lineWidth = 1.2;
+    c.strokeStyle = '#888'; c.lineWidth = 1.2;
     [-28,28].forEach(px => {
         c.beginPath(); c.moveTo(px-8,85); c.lineTo(px-8,94); c.stroke();
         c.beginPath(); c.moveTo(px,84);   c.lineTo(px,95);   c.stroke();
@@ -401,7 +401,7 @@ function makeParrotZones() {
     tail.bezierCurveTo(-6,160, 6,160, 18,148);
     tail.bezierCurveTo(34,128, 24,102, 12,74);
     tail.closePath();
-    z.push({ id:'tail', path:tail, color:'#4CAF50', defaultColor:'#4CAF50' });
+    z.push({ id:'tail', path:tail, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Wing
     const wing = new Path2D();
@@ -410,62 +410,67 @@ function makeParrotZones() {
     wing.bezierCurveTo(-60,82, -28,76, -8,66);
     wing.bezierCurveTo(-4,46, -4,18, -22,8);
     wing.closePath();
-    z.push({ id:'wing', path:wing, color:'#2196F3', defaultColor:'#2196F3' });
+    z.push({ id:'wing', path:wing, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Body
     const body = new Path2D();
     body.ellipse(6, 38, 46, 54, 0, 0, Math.PI*2);
-    z.push({ id:'body', path:body, color:'#4CAF50', defaultColor:'#4CAF50' });
+    z.push({ id:'body', path:body, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Crest (three feathers as one zone)
     const crest = new Path2D();
     crest.ellipse(-14,-84, 6,18, -0.25, 0, Math.PI*2);
     crest.ellipse(0,-90,  6,20,  0,    0, Math.PI*2);
     crest.ellipse(14,-84, 6,18,  0.25, 0, Math.PI*2);
-    z.push({ id:'crest', path:crest, color:'#FFD700', defaultColor:'#FFD700' });
+    z.push({ id:'crest', path:crest, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Head
     const head = new Path2D();
     head.ellipse(0,-50, 37,34, 0, 0, Math.PI*2);
-    z.push({ id:'head', path:head, color:'#4CAF50', defaultColor:'#4CAF50' });
+    z.push({ id:'head', path:head, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Cheek patch
     const cheek = new Path2D();
     cheek.ellipse(20,-44, 16,12, 0.3, 0, Math.PI*2);
-    z.push({ id:'cheek', path:cheek, color:'#FFD700', defaultColor:'#FFD700' });
+    z.push({ id:'cheek', path:cheek, color:'#ffffff', defaultColor:'#ffffff' });
 
     return z;
 }
 
 function drawParrotDecor(c) {
-    // Beak (hooked)
-    c.fillStyle = '#8a8a5a';
+    // Beak (hooked) — line art
+    c.fillStyle = '#ffffff'; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2.5;
     c.beginPath();
     c.moveTo(4,-50);
     c.bezierCurveTo(28,-52, 34,-38, 24,-32);
     c.bezierCurveTo(18,-28, 6,-32, 4,-40);
-    c.closePath(); c.fill();
-    c.fillStyle = '#666640';
+    c.closePath(); c.fill(); c.stroke();
+    // Lower-beak crease
+    c.strokeStyle = '#888'; c.lineWidth = 1.5;
     c.beginPath();
-    c.moveTo(4,-44);
-    c.bezierCurveTo(22,-44, 28,-36, 20,-34);
-    c.bezierCurveTo(14,-32, 6,-36, 4,-40);
-    c.closePath(); c.fill();
+    c.moveTo(5,-42);
+    c.bezierCurveTo(20,-42, 25,-36, 19,-34);
+    c.stroke();
 
     // Eye ring
-    c.strokeStyle = '#1c1c2e'; c.lineWidth = 10;
-    c.beginPath(); c.arc(-10,-55,10,0,Math.PI*2); c.stroke();
+    c.strokeStyle = '#2c2c2e'; c.lineWidth = 2.5;
+    c.beginPath(); c.arc(-10,-55,11,0,Math.PI*2); c.stroke();
     c.fillStyle = '#1c1c2e';
     c.beginPath(); c.arc(-10,-55,6,0,Math.PI*2); c.fill();
     c.fillStyle = 'white';
     c.beginPath(); c.arc(-6,-59,3,0,Math.PI*2); c.fill();
 
-    // Perch
-    c.strokeStyle = '#8B6914'; c.lineWidth = 8; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(-30,96); c.lineTo(56,96); c.stroke();
-    c.strokeStyle = '#6d5010'; c.lineWidth = 3;
-    [8, 26, -8].forEach(ox => {
-        c.beginPath(); c.moveTo(ox,96); c.lineTo(ox,116); c.stroke();
+    // Perch — line art branch
+    c.fillStyle = '#ffffff'; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2.5;
+    c.beginPath(); c.moveTo(-34,90);
+    c.lineTo(60,90); c.lineTo(60,100); c.lineTo(-34,100); c.closePath();
+    c.fill(); c.stroke();
+    // Feet gripping the perch
+    c.strokeStyle = '#2c2c2c'; c.lineWidth = 3; c.lineCap = 'round';
+    [-6, 24].forEach(ox => {
+        c.beginPath(); c.moveTo(ox,90); c.lineTo(ox-6,82); c.stroke();
+        c.beginPath(); c.moveTo(ox,90); c.lineTo(ox+6,82); c.stroke();
+        c.beginPath(); c.moveTo(ox,100); c.lineTo(ox,108); c.stroke();
     });
 }
 
@@ -482,16 +487,15 @@ function renderAt(c, offX, offY, angle) {
     c.translate(CX + offX, CY + offY);
     if (angle) c.rotate(angle);
 
-    // Fill zones
+    // Fill + stroke each zone in z-order so every foreground shape cleanly
+    // covers the one behind it — no outlines bleeding through overlaps.
+    c.strokeStyle = '#2c2c2c';
+    c.lineWidth = 3;
+    c.lineJoin = 'round';
+    c.lineCap = 'round';
     for (const zone of zones) {
         c.fillStyle = zone.color;
         c.fill(zone.path);
-    }
-    // Outline zones
-    c.strokeStyle = '#2c2c2c';
-    c.lineWidth = 2.5;
-    c.lineJoin = 'round';
-    for (const zone of zones) {
         c.stroke(zone.path);
     }
 
