@@ -126,12 +126,14 @@
             1: { duration: 10, startBalls: 3,  spawnInterval: null, speed: 1.0, playerScale: 1.4 },
             2: { duration: 10, startBalls: 5,  spawnInterval: 6000, speed: 1.4, playerScale: 1.1 },
             3: { duration: 10, startBalls: 7,  spawnInterval: 4000, speed: 1.9, playerScale: 0.9 },
+            bonus: { duration: null, startBalls: 7,  spawnInterval: 1000, speed: 1.9, playerScale: 0.9 },
         },
         adult: {
             1: { duration: 15, startBalls: 3,  spawnInterval: null, speed: 1.0, playerScale: 1.4 },
             2: { duration: 15, startBalls: 5,  spawnInterval: 6000, speed: 1.5, playerScale: 1.1 },
             3: { duration: 15, startBalls: 8,  spawnInterval: 3500, speed: 2.1, playerScale: 0.9 },
             4: { duration: null, startBalls: 10, spawnInterval: 3000, speed: 2.8, playerScale: 0.7 },
+            bonus: { duration: null, startBalls: 10, spawnInterval: 1000, speed: 2.8, playerScale: 0.7 },
         },
     };
 
@@ -153,6 +155,8 @@
     let lastTime = 0;
     let results = {};
     let maxLevels = 4;
+    let isBonusLevel = false;
+    let perfectRun = true; // true when no collision has occurred this campaign
 
     // ─── Records ──────────────────────────────────────────────────────────────────
     const RECORDS_KEY = 'reflexUnikRecords';
@@ -187,6 +191,10 @@
                 addRecord(gameMode, `level${lvl}`, name, results[lvl]);
                 total += results[lvl];
             }
+        }
+        if (results['bonus'] !== undefined) {
+            addRecord(gameMode, 'levelBonus', name, results['bonus']);
+            total += results['bonus'];
         }
         addRecord(gameMode, 'total', name, total);
     }
@@ -239,8 +247,8 @@
 
     function buildRecordsLevelTabs(mode) {
         const levels = gameMode === 'child'
-            ? [['level1','Poziom 1'],['level2','Poziom 2'],['level3','Poziom 3'],['total','Łącznie']]
-            : [['level1','Poziom 1'],['level2','Poziom 2'],['level3','Poziom 3'],['level4','Poziom 4'],['total','Łącznie']];
+            ? [['level1','Poziom 1'],['level2','Poziom 2'],['level3','Poziom 3'],['levelBonus','🌟 Bonus'],['total','Łącznie']]
+            : [['level1','Poziom 1'],['level2','Poziom 2'],['level3','Poziom 3'],['level4','Poziom 4'],['levelBonus','🌟 Bonus'],['total','Łącznie']];
         recordsLevelTabs.innerHTML = levels.map(([key, label]) =>
             `<button class="records-level-tab px-3 py-1 rounded-lg text-xs font-bold transition-colors ${recordsViewLevel === key ? 'bg-green-600 text-white' : 'bg-gray-700 text-gray-300'}" data-level="${key}">${label}</button>`
         ).join('');
@@ -418,18 +426,18 @@
 
     // ─── Death ─────────────────────────────────────────────────────────────────────
     function triggerDeath() {
+        perfectRun = false;
         clearAll();
         isRunning = false;
 
-        // flash red
         ctx.fillStyle = 'rgba(239,68,68,0.35)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // precise time to centiseconds
-        results[currentLevel] = Math.round((Date.now() - levelStartTime) / 10) / 100;
+        const resultKey = isBonusLevel ? 'bonus' : currentLevel;
+        results[resultKey] = Math.round((Date.now() - levelStartTime) / 10) / 100;
         setTimeout(() => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            if (currentLevel < maxLevels) {
+            if (!isBonusLevel && currentLevel < maxLevels) {
                 showNextLevelScreen(currentLevel);
             } else {
                 showEndScreen();
@@ -447,7 +455,8 @@
     function startGame(level) {
         clearAll();
         currentLevel = level;
-        levelDisplayEl.textContent = level;
+        isBonusLevel = (level === 'bonus');
+        levelDisplayEl.textContent = isBonusLevel ? '🌟' : level;
         enemies = [];
         survived = 0;
         scoreDisplayEl.textContent = '0';
@@ -478,9 +487,10 @@
                 if (timeLeft <= 0) {
                     clearAll();
                     isRunning = false;
-                    results[level] = cfg.duration; // ukończono — pełne sekundy
+                    results[level] = cfg.duration;
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     if (level < maxLevels) showNextLevelScreen(level);
+                    else if (perfectRun) showBonusLevelScreen();
                     else showEndScreen();
                 }
             }, 1000);
@@ -497,22 +507,23 @@
         animFrameId = requestAnimationFrame(draw);
     }
 
-    function startCampaign() { results = {}; startGame(1); }
+    function startCampaign() { results = {}; perfectRun = true; startGame(1); }
 
     // ─── Overlay screens ───────────────────────────────────────────────────────────
     function updateInstructions(level) {
-        const cfg = LEVEL_CONFIG[gameMode][level];
         const descs = {
             child: {
                 1: 'Ruszaj myszką/palcem żeby unikać kulek! 3 kulki, 20 sekund.',
                 2: 'Szybciej i więcej kulek. Nowa kulka co 6 sekund!',
                 3: 'Bardzo szybko! Twoje kółko jest teraz mniejsze.',
+                bonus: 'Gra na śmierć — nowa kulka co sekundę! Ile przeżyjesz? 🌟',
             },
             adult: {
                 1: 'Unikaj kulek przez 30 sekund!',
                 2: 'Szybsze kulki, nowa co 6 sekund. Koncentracja!',
                 3: 'Bardzo szybkie kulki, nowa co 3.5s. Trudne!',
                 4: 'Gra na śmierć — ile sekund przeżyjesz?',
+                bonus: 'Gra na śmierć — nowa kulka co sekundę! Ile przeżyjesz? 🌟',
             },
         };
         overlayDesc.textContent = (descs[gameMode] && descs[gameMode][level]) || '';
@@ -531,6 +542,20 @@
         mainBtn.classList.add('hidden');
         showRecordsStartBtn.classList.remove('hidden');
         overlay.classList.remove('hidden');
+    }
+
+    function showBonusLevelScreen() {
+        hideModeAndShowMain();
+        hideSaveSection();
+        overlayTitle.innerHTML = '🌟 Poziom Bonusowy!';
+        overlayStats.innerHTML = '<p class="text-yellow-300 font-bold">Brawo! Przeszedłeś wszystkie poziomy bez zderzenia!</p>';
+        overlayStats.classList.remove('hidden');
+        updateInstructions('bonus');
+        mainBtn.innerHTML = '▶ Start Bonusu';
+        mainBtnAction = () => startGame('bonus');
+        overlay.classList.remove('hidden');
+        mainBtn.disabled = true;
+        setTimeout(() => { mainBtn.disabled = false; }, 1500);
     }
 
     function showNextLevelScreen(level) {
@@ -556,6 +581,10 @@
             if (results[lvl] !== undefined) {
                 statsHtml += `<p>Poziom ${lvl}: <span class="text-green-400">${results[lvl].toFixed(2)}s</span></p>`;
             }
+        }
+        if (results['bonus'] !== undefined) {
+            statsHtml += `<p>🌟 Bonus: <span class="text-yellow-400 font-bold">${results['bonus'].toFixed(2)}s</span></p>`;
+            total += results['bonus'];
         }
         statsHtml += `<p class="mt-2 border-t border-gray-600 pt-2">Łącznie: <span class="text-green-400 font-bold">${total.toFixed(2)}s</span></p>`;
         overlayStats.innerHTML = statsHtml;
