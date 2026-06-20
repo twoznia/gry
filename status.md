@@ -1,6 +1,6 @@
 # Status Gier
 
-Stan na 2026-05-23.
+Stan na 2026-06-20.
 
 - auta - back-link: ujednolicony
 - jumper - back-link: ujednolicony
@@ -24,3 +24,4 @@ Stan na 2026-05-23.
 - tictactoe - back-link: ujednolicony
 - mahjong - back-link: dodany
 - sudoku - back-link: dodany
+- koloruj - back-link: obecny
