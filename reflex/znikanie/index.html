@@ -149,6 +149,7 @@
     // ─── State ────────────────────────────────────────────────────────────────────
     let balls = [];          // { x, y, colorIdx, spawnedAt, id }
     let score = 0, missed = 0;
+    let lastSpawnedColor = -1;
     let isRunning = false;
     let currentLevel = 1, gameMode = 'adult';
     let gameSeconds = 30;
@@ -340,7 +341,9 @@
 
     function spawnBall() {
         const pos = randomPos();
-        const colorIdx = Math.floor(Math.random() * COLORS.length);
+        let colorIdx;
+        do { colorIdx = Math.floor(Math.random() * COLORS.length); } while (colorIdx === lastSpawnedColor);
+        lastSpawnedColor = colorIdx;
         balls.push({ x: pos.x, y: pos.y, colorIdx, spawnedAt: Date.now(), id: nextBallId++ });
     }
 
@@ -436,6 +439,7 @@
         RADIUS = getRadius();
         score = 0; missed = 0;
         balls = [];
+        lastSpawnedColor = -1;
         scoreDisplayEl.textContent = '0';
         missedDisplayEl.textContent = '0';
         timeLeft = gameSeconds;

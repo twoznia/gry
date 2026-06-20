@@ -353,7 +353,10 @@
         }
         sequence.push(...firstChunk);
         while (sequence.length < seqLength) {
-            sequence.push(Math.floor(Math.random() * numColors));
+            const last = sequence[sequence.length - 1];
+            let next;
+            do { next = Math.floor(Math.random() * numColors); } while (next === last);
+            sequence.push(next);
         }
         currentStep = 0;
     }
