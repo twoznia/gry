@@ -26,6 +26,7 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 - **[Neonowy Wąż](./snake/)** 🐍 – Klasyczny Snake w neonowym stylu – rośnij i unikaj zderzeń.
 - **[Mahjong](./mahjong/)** 🀄 – Mahjong Solitaire w średniowiecznym stylu z rankingiem i podpowiedziami.
 - **[Sudoku](./sudoku/)** 🔢 – Klasyczne sudoku – wypełnij siatkę cyframi bez powtórzeń w wierszach, kolumnach i kwadratach.
+- **[Koloruję Zwierzątka](./koloruj/)** 🎨 – Pokoloruj zwierzątko — kotka, pieska lub papugę. Po pomalowaniu ożywa i wraca na miejsce!
 
 ---
 

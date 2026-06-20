@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>🎨 Koloruję Zwierzątka</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100dvh;
+            background: linear-gradient(160deg, #fff9e6 0%, #fce8f5 50%, #e8f0ff 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+            user-select: none;
+            overflow: hidden;
+        }
+        .back-link {
+            position: fixed; top: 10px; left: 10px; z-index: 100;
+            background: #334155; color: #fff; border: 1px solid #475569;
+            border-radius: 8px; padding: 7px 12px; text-decoration: none; font-size: 13px;
+        }
+        h1 {
+            margin: 8px 0 5px;
+            font-size: clamp(18px, 5vw, 24px);
+            color: #6d28d9;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        #animal-selector {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .animal-btn {
+            background: white;
+            border: 3px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 5px 12px;
+            font-size: clamp(13px, 3.5vw, 16px);
+            cursor: pointer;
+            transition: all 0.15s;
+            font-weight: 600;
+            color: #374151;
+        }
+        .animal-btn.active {
+            border-color: #7c3aed;
+            background: #f5f3ff;
+            color: #6d28d9;
+            transform: scale(1.06);
+        }
+        #canvas-wrap {
+            width: 100%;
+            max-width: 320px;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+            touch-action: none;
+            cursor: crosshair;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+        #palette {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 7px;
+            padding: 8px 10px;
+            background: white;
+            border-radius: 16px;
+            margin: 7px 0 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 320px;
+        }
+        .swatch {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: transform 0.12s, border-color 0.12s;
+            outline: none;
+        }
+        .swatch.selected {
+            border-color: #1e1b4b;
+            transform: scale(1.25);
+        }
+        #buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .action-btn {
+            border: none;
+            border-radius: 18px;
+            padding: 10px 22px;
+            font-size: clamp(14px, 4vw, 17px);
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .action-btn:active { transform: scale(0.93); }
+        #done-btn {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            color: white;
+            box-shadow: 0 4px 14px rgba(124,58,237,0.4);
+        }
+        #clear-btn {
+            background: white;
+            color: #6b7280;
+            border: 2px solid #e2e8f0;
+        }
+        #message {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 50;
+            letter-spacing: 8px;
+        }
+        #message.show { opacity: 1; }
+    </style>
+</head>
+<body>
+
+<a class="back-link" href="../">← Wróć</a>
+
+<h1>🎨 Koloruję Zwierzątka</h1>
+
+<div id="animal-selector">
+    <button class="animal-btn active" data-animal="cat">🐱 Kotek</button>
+    <button class="animal-btn" data-animal="dog">🐶 Piesek</button>
+    <button class="animal-btn" data-animal="parrot">🦜 Papuga</button>
+</div>
+
+<div id="canvas-wrap">
+    <canvas id="gameCanvas"></canvas>
+</div>
+
+<div id="palette"></div>
+
+<div id="buttons">
+    <button class="action-btn" id="clear-btn">🗑️ Wyczyść</button>
+    <button class="action-btn" id="done-btn">🎉 Gotowe!</button>
+</div>
+
+<div id="message"></div>
+
+<script>
+// ─── Canvas setup ────────────────────────────────────────────────────────────
+const canvas = document.getElementById('gameCanvas');
+const ctx    = canvas.getContext('2d');
+const hitCanvas = document.createElement('canvas');
+const hitCtx    = hitCanvas.getContext('2d', { willReadFrequently: true });
+
+const W = 320, H = 420;
+canvas.width    = W;    canvas.height    = H;
+hitCanvas.width = W;    hitCanvas.height = H;
+
+const CX = W / 2;      // 160
+const CY = 195;        // slightly above centre
+
+// ─── Palette ─────────────────────────────────────────────────────────────────
+const COLORS = [
+    '#e74c3c','#e67e22','#f1c40f','#2ecc71',
+    '#1abc9c','#3498db','#9b59b6','#e91e96',
+    '#795548','#ff8fa3','#a8e6cf','#ffffff',
+];
+
+let selectedColor = COLORS[0];
+
+function buildPalette() {
+    const p = document.getElementById('palette');
+    p.innerHTML = '';
+    COLORS.forEach(c => {
+        const sw = document.createElement('div');
+        sw.className = 'swatch' + (c === selectedColor ? ' selected' : '');
+        sw.style.background = c;
+        if (c === '#ffffff') sw.style.border = '3px solid #d1d5db';
+        sw.addEventListener('click', () => {
+            document.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+            sw.classList.add('selected');
+            selectedColor = c;
+        });
+        p.appendChild(sw);
+    });
+}
+
+// ─── Zone structure ───────────────────────────────────────────────────────────
+// Each zone: { id, path (Path2D), color, defaultColor }
+let zones   = [];
+let decorFn = null;
+let currentAnimal = 'cat';
+
+// ─── CAT ─────────────────────────────────────────────────────────────────────
+function makeCatZones() {
+    const z = [];
+
+    // Tail (drawn behind body)
+    const tail = new Path2D();
+    tail.moveTo(52, 22);
+    tail.bezierCurveTo(95, 10, 108, -25, 86, -58);
+    tail.bezierCurveTo(78, -72, 62, -64, 67, -50);
+    tail.bezierCurveTo(82, -30, 74, 6, 50, 18);
+    tail.closePath();
+    z.push({ id:'tail', path:tail, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+
+    // Body
+    const body = new Path2D();
+    body.ellipse(0, 44, 66, 53, 0, 0, Math.PI*2);
+    z.push({ id:'body', path:body, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+
+    // Left ear (outer)
+    const earL = new Path2D();
+    earL.moveTo(-26,-74); earL.lineTo(-50,-114); earL.lineTo(-6,-85); earL.closePath();
+    z.push({ id:'ear_l', path:earL, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+
+    // Right ear (outer)
+    const earR = new Path2D();
+    earR.moveTo(26,-74); earR.lineTo(50,-114); earR.lineTo(6,-85); earR.closePath();
+    z.push({ id:'ear_r', path:earR, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+
+    // Head
+    const head = new Path2D();
+    head.ellipse(0, -42, 46, 41, 0, 0, Math.PI*2);
+    z.push({ id:'head', path:head, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+
+    // Belly
+    const belly = new Path2D();
+    belly.ellipse(0, 50, 38, 31, 0, 0, Math.PI*2);
+    z.push({ id:'belly', path:belly, color:'#e8e8e8', defaultColor:'#e8e8e8' });
+
+    return z;
+}
+
+function drawCatDecor(c) {
+    // Inner ears
+    c.fillStyle = '#ffb3c6';
+    const iL = new Path2D();
+    iL.moveTo(-29,-79); iL.lineTo(-45,-107); iL.lineTo(-11,-87); iL.closePath();
+    c.fill(iL);
+    const iR = new Path2D();
+    iR.moveTo(29,-79); iR.lineTo(45,-107); iR.lineTo(11,-87); iR.closePath();
+    c.fill(iR);
+
+    // Eyes
+    c.fillStyle = '#1c1c2e';
+    c.beginPath(); c.ellipse(-16,-50,7,9,0,0,Math.PI*2); c.fill();
+    c.beginPath(); c.ellipse(16,-50,7,9,0,0,Math.PI*2); c.fill();
+    c.fillStyle = 'white';
+    c.beginPath(); c.arc(-13,-55,3,0,Math.PI*2); c.fill();
+    c.beginPath(); c.arc(19,-55,3,0,Math.PI*2); c.fill();
+
+    // Nose
+    c.fillStyle = '#ff9eb5';
+    c.beginPath(); c.moveTo(0,-32); c.lineTo(-6,-26); c.lineTo(6,-26); c.closePath(); c.fill();
+
+    // Mouth
+    c.strokeStyle = '#666'; c.lineWidth = 2; c.lineCap = 'round';
+    c.beginPath();
+    c.moveTo(0,-26); c.quadraticCurveTo(-10,-20,-14,-18);
+    c.moveTo(0,-26); c.quadraticCurveTo(10,-20,14,-18);
+    c.stroke();
+
+    // Whiskers
+    c.strokeStyle = '#bbb'; c.lineWidth = 1.5;
+    [[-38,-34],[-40,-29],[-38,-24]].forEach(([ex,ey],i) => {
+        c.beginPath(); c.moveTo(-12,-29+i*2.5); c.lineTo(ex,ey); c.stroke();
+    });
+    [[38,-34],[40,-29],[38,-24]].forEach(([ex,ey],i) => {
+        c.beginPath(); c.moveTo(12,-29+i*2.5); c.lineTo(ex,ey); c.stroke();
+    });
+
+    // Front paws
+    const bc = zones.find(z=>z.id==='body')?.color || '#c8c8c8';
+    c.fillStyle = bc; c.strokeStyle = '#444'; c.lineWidth = 2;
+    c.beginPath(); c.ellipse(-26,88,20,11,0,0,Math.PI*2); c.fill(); c.stroke();
+    c.beginPath(); c.ellipse(26,88,20,11,0,0,Math.PI*2); c.fill(); c.stroke();
+    c.strokeStyle = '#666'; c.lineWidth = 1.2;
+    [-26,26].forEach(px => {
+        c.beginPath(); c.moveTo(px-7,84); c.lineTo(px-7,93); c.stroke();
+        c.beginPath(); c.moveTo(px,83);   c.lineTo(px,94);   c.stroke();
+        c.beginPath(); c.moveTo(px+7,84); c.lineTo(px+7,93); c.stroke();
+    });
+}
+
+// ─── DOG ─────────────────────────────────────────────────────────────────────
+function makeDogZones() {
+    const z = [];
+
+    // Tail
+    const tail = new Path2D();
+    tail.moveTo(56, 8);
+    tail.bezierCurveTo(90,-2, 100,-35, 78,-58);
+    tail.bezierCurveTo(70,-68, 58,-60, 62,-46);
+    tail.bezierCurveTo(78,-24, 68, 6, 50, 18);
+    tail.closePath();
+    z.push({ id:'tail', path:tail, color:'#c8a86a', defaultColor:'#c8a86a' });
+
+    // Body
+    const body = new Path2D();
+    body.ellipse(0, 44, 68, 52, 0, 0, Math.PI*2);
+    z.push({ id:'body', path:body, color:'#c8a86a', defaultColor:'#c8a86a' });
+
+    // Left floppy ear
+    const earL = new Path2D();
+    earL.moveTo(-28,-60);
+    earL.bezierCurveTo(-56,-58, -62,-12, -52, 8);
+    earL.bezierCurveTo(-46, 22, -28, 20, -26, 4);
+    earL.bezierCurveTo(-24,-22, -20,-54, -20,-60);
+    earL.closePath();
+    z.push({ id:'ear_l', path:earL, color:'#a87840', defaultColor:'#a87840' });
+
+    // Right floppy ear
+    const earR = new Path2D();
+    earR.moveTo(28,-60);
+    earR.bezierCurveTo(56,-58, 62,-12, 52, 8);
+    earR.bezierCurveTo(46, 22, 28, 20, 26, 4);
+    earR.bezierCurveTo(24,-22, 20,-54, 20,-60);
+    earR.closePath();
+    z.push({ id:'ear_r', path:earR, color:'#a87840', defaultColor:'#a87840' });
+
+    // Head
+    const head = new Path2D();
+    head.ellipse(0,-38, 44, 38, 0, 0, Math.PI*2);
+    z.push({ id:'head', path:head, color:'#c8a86a', defaultColor:'#c8a86a' });
+
+    // Snout
+    const snout = new Path2D();
+    snout.ellipse(0,-22, 24, 17, 0, 0, Math.PI*2);
+    z.push({ id:'snout', path:snout, color:'#e0c090', defaultColor:'#e0c090' });
+
+    // Belly
+    const belly = new Path2D();
+    belly.ellipse(0, 52, 38, 28, 0, 0, Math.PI*2);
+    z.push({ id:'belly', path:belly, color:'#e8d4a8', defaultColor:'#e8d4a8' });
+
+    return z;
+}
+
+function drawDogDecor(c) {
+    // Eyes
+    c.fillStyle = '#1c1c2e';
+    c.beginPath(); c.arc(-15,-48,8,0,Math.PI*2); c.fill();
+    c.beginPath(); c.arc(15,-48,8,0,Math.PI*2);  c.fill();
+    c.fillStyle = 'white';
+    c.beginPath(); c.arc(-11,-53,3,0,Math.PI*2); c.fill();
+    c.beginPath(); c.arc(19,-53,3,0,Math.PI*2);  c.fill();
+
+    // Nose
+    c.fillStyle = '#1c1c2e';
+    c.beginPath(); c.ellipse(0,-30,11,8,0,0,Math.PI*2); c.fill();
+    c.fillStyle = '#444';
+    c.beginPath(); c.arc(-4,-32,2,0,Math.PI*2); c.fill();
+    c.beginPath(); c.arc(4,-32,2,0,Math.PI*2);  c.fill();
+
+    // Mouth
+    c.strokeStyle = '#666'; c.lineWidth = 2; c.lineCap = 'round';
+    c.beginPath();
+    c.moveTo(0,-22); c.quadraticCurveTo(-10,-15,-14,-12);
+    c.moveTo(0,-22); c.quadraticCurveTo(10,-15,14,-12);
+    c.stroke();
+
+    // Tongue
+    c.fillStyle = '#ff6b8a';
+    c.beginPath(); c.ellipse(0,-8,11,14,0,0,Math.PI*2); c.fill();
+    c.fillStyle = '#e0507a';
+    c.beginPath(); c.arc(0,0,9,0,Math.PI); c.fill();
+
+    // Front paws
+    const bc = zones.find(z=>z.id==='body')?.color || '#c8a86a';
+    c.fillStyle = bc; c.strokeStyle = '#555'; c.lineWidth = 2;
+    c.beginPath(); c.ellipse(-28,89,22,12,0,0,Math.PI*2); c.fill(); c.stroke();
+    c.beginPath(); c.ellipse(28,89,22,12,0,0,Math.PI*2);  c.fill(); c.stroke();
+    c.strokeStyle = '#777'; c.lineWidth = 1.2;
+    [-28,28].forEach(px => {
+        c.beginPath(); c.moveTo(px-8,85); c.lineTo(px-8,94); c.stroke();
+        c.beginPath(); c.moveTo(px,84);   c.lineTo(px,95);   c.stroke();
+        c.beginPath(); c.moveTo(px+8,85); c.lineTo(px+8,94); c.stroke();
+    });
+}
+
+// ─── PARROT ──────────────────────────────────────────────────────────────────
+function makeParrotZones() {
+    const z = [];
+
+    // Tail feathers
+    const tail = new Path2D();
+    tail.moveTo(-12, 74);
+    tail.bezierCurveTo(-24,102, -34,128, -18,148);
+    tail.bezierCurveTo(-6,160, 6,160, 18,148);
+    tail.bezierCurveTo(34,128, 24,102, 12,74);
+    tail.closePath();
+    z.push({ id:'tail', path:tail, color:'#4CAF50', defaultColor:'#4CAF50' });
+
+    // Wing
+    const wing = new Path2D();
+    wing.moveTo(-22, 8);
+    wing.bezierCurveTo(-72,-2, -84,28, -72,62);
+    wing.bezierCurveTo(-60,82, -28,76, -8,66);
+    wing.bezierCurveTo(-4,46, -4,18, -22,8);
+    wing.closePath();
+    z.push({ id:'wing', path:wing, color:'#2196F3', defaultColor:'#2196F3' });
+
+    // Body
+    const body = new Path2D();
+    body.ellipse(6, 38, 46, 54, 0, 0, Math.PI*2);
+    z.push({ id:'body', path:body, color:'#4CAF50', defaultColor:'#4CAF50' });
+
+    // Crest (three feathers as one zone)
+    const crest = new Path2D();
+    crest.ellipse(-14,-84, 6,18, -0.25, 0, Math.PI*2);
+    crest.ellipse(0,-90,  6,20,  0,    0, Math.PI*2);
+    crest.ellipse(14,-84, 6,18,  0.25, 0, Math.PI*2);
+    z.push({ id:'crest', path:crest, color:'#FFD700', defaultColor:'#FFD700' });
+
+    // Head
+    const head = new Path2D();
+    head.ellipse(0,-50, 37,34, 0, 0, Math.PI*2);
+    z.push({ id:'head', path:head, color:'#4CAF50', defaultColor:'#4CAF50' });
+
+    // Cheek patch
+    const cheek = new Path2D();
+    cheek.ellipse(20,-44, 16,12, 0.3, 0, Math.PI*2);
+    z.push({ id:'cheek', path:cheek, color:'#FFD700', defaultColor:'#FFD700' });
+
+    return z;
+}
+
+function drawParrotDecor(c) {
+    // Beak (hooked)
+    c.fillStyle = '#8a8a5a';
+    c.beginPath();
+    c.moveTo(4,-50);
+    c.bezierCurveTo(28,-52, 34,-38, 24,-32);
+    c.bezierCurveTo(18,-28, 6,-32, 4,-40);
+    c.closePath(); c.fill();
+    c.fillStyle = '#666640';
+    c.beginPath();
+    c.moveTo(4,-44);
+    c.bezierCurveTo(22,-44, 28,-36, 20,-34);
+    c.bezierCurveTo(14,-32, 6,-36, 4,-40);
+    c.closePath(); c.fill();
+
+    // Eye ring
+    c.strokeStyle = '#1c1c2e'; c.lineWidth = 10;
+    c.beginPath(); c.arc(-10,-55,10,0,Math.PI*2); c.stroke();
+    c.fillStyle = '#1c1c2e';
+    c.beginPath(); c.arc(-10,-55,6,0,Math.PI*2); c.fill();
+    c.fillStyle = 'white';
+    c.beginPath(); c.arc(-6,-59,3,0,Math.PI*2); c.fill();
+
+    // Perch
+    c.strokeStyle = '#8B6914'; c.lineWidth = 8; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(-30,96); c.lineTo(56,96); c.stroke();
+    c.strokeStyle = '#6d5010'; c.lineWidth = 3;
+    [8, 26, -8].forEach(ox => {
+        c.beginPath(); c.moveTo(ox,96); c.lineTo(ox,116); c.stroke();
+    });
+}
+
+// ─── Animal registry ──────────────────────────────────────────────────────────
+const ANIMALS = {
+    cat:    { makeZones: makeCatZones,    decor: drawCatDecor    },
+    dog:    { makeZones: makeDogZones,    decor: drawDogDecor    },
+    parrot: { makeZones: makeParrotZones, decor: drawParrotDecor },
+};
+
+// ─── Draw ─────────────────────────────────────────────────────────────────────
+function renderAt(c, offX, offY, angle) {
+    c.save();
+    c.translate(CX + offX, CY + offY);
+    if (angle) c.rotate(angle);
+
+    // Fill zones
+    for (const zone of zones) {
+        c.fillStyle = zone.color;
+        c.fill(zone.path);
+    }
+    // Outline zones
+    c.strokeStyle = '#2c2c2c';
+    c.lineWidth = 2.5;
+    c.lineJoin = 'round';
+    for (const zone of zones) {
+        c.stroke(zone.path);
+    }
+
+    // Decorations (eyes, nose, etc.)
+    if (decorFn) decorFn(c);
+
+    c.restore();
+}
+
+function drawHitmap() {
+    hitCtx.clearRect(0, 0, W, H);
+    hitCtx.save();
+    hitCtx.translate(CX, CY);
+    zones.forEach((zone, idx) => {
+        hitCtx.fillStyle = `rgb(${idx + 1},0,0)`;
+        hitCtx.fill(zone.path);
+    });
+    hitCtx.restore();
+}
+
+function drawScene() {
+    ctx.clearRect(0, 0, W, H);
+    // Paper background
+    ctx.fillStyle = '#fffdf5';
+    ctx.fillRect(0, 0, W, H);
+    renderAt(ctx, animX, animY, animAngle);
+}
+
+// ─── Animation ───────────────────────────────────────────────────────────────
+let animX = 0, animY = 0, animAngle = 0;
+let isAnimating = false;
+let animState = 'idle';
+let animStart = 0;
+
+function startAnimation() {
+    if (isAnimating) return;
+    isAnimating = true;
+    document.getElementById('done-btn').disabled = true;
+    animState = 'bounce';
+    animStart = performance.now();
+    animX = 0; animY = 0; animAngle = 0;
+    requestAnimationFrame(animLoop);
+}
+
+function animLoop(now) {
+    const t = (now - animStart) / 1000;
+
+    if (animState === 'bounce') {
+        // 3 jolly bounces
+        animY = -Math.abs(Math.sin(t * Math.PI * 2.5)) * 26;
+        animAngle = Math.sin(t * Math.PI * 5) * 0.06;
+        if (t > 1.25) {
+            animY = 0; animAngle = 0;
+            animState = 'exit';
+            animStart = now;
+        }
+    } else if (animState === 'exit') {
+        // run/fly off to the right
+        const p = Math.min(t / 0.65, 1);
+        animX = p * (W + 220);
+        // parrot flies (y-oscillate), others run (y-bounce)
+        animY = currentAnimal === 'parrot'
+            ? Math.sin(t * Math.PI * 10) * 14
+            : -Math.abs(Math.sin(t * Math.PI * 7)) * 14;
+        animAngle = currentAnimal === 'parrot' ? Math.sin(t * Math.PI * 7) * 0.07 : 0;
+        if (p >= 1) {
+            animX = -(W + 220);
+            animState = 'enter';
+            animStart = now;
+        }
+    } else if (animState === 'enter') {
+        // come back from left
+        const p = Math.min(t / 0.65, 1);
+        animX = -(W + 220) + p * (W + 220);
+        animY = currentAnimal === 'parrot'
+            ? Math.sin(t * Math.PI * 10) * 14
+            : -Math.abs(Math.sin(t * Math.PI * 7)) * 14;
+        animAngle = currentAnimal === 'parrot' ? Math.sin(t * Math.PI * 7) * 0.07 : 0;
+        if (p >= 1) {
+            animX = 0;
+            animState = 'settle';
+            animStart = now;
+        }
+    } else if (animState === 'settle') {
+        // little wiggle, come to rest
+        const decay = Math.max(0, 1 - t / 0.7);
+        animY     = -Math.abs(Math.sin(t * Math.PI * 5)) * 12 * decay;
+        animAngle = Math.sin(t * Math.PI * 6) * 0.05 * decay;
+        if (t > 0.7) {
+            animX = 0; animY = 0; animAngle = 0;
+            isAnimating = false;
+            document.getElementById('done-btn').disabled = false;
+            drawScene();
+            celebrate();
+            return;
+        }
+    }
+
+    drawScene();
+    requestAnimationFrame(animLoop);
+}
+
+function celebrate() {
+    const msg = document.getElementById('message');
+    msg.textContent = '⭐ 🎉 ⭐';
+    msg.classList.add('show');
+    setTimeout(() => msg.classList.remove('show'), 2200);
+}
+
+// ─── Hit testing & painting ───────────────────────────────────────────────────
+function getXY(e) {
+    const rect = canvas.getBoundingClientRect();
+    const sx = W / rect.width, sy = H / rect.height;
+    const src = e.touches ? e.touches[0] : e;
+    return {
+        x: Math.round((src.clientX - rect.left) * sx),
+        y: Math.round((src.clientY - rect.top)  * sy),
+    };
+}
+
+function paint(e) {
+    if (isAnimating) return;
+    e.preventDefault();
+    const { x, y } = getXY(e);
+    const px = hitCtx.getImageData(x, y, 1, 1).data;
+    const r  = px[0];
+    if (r > 0 && zones[r - 1]) {
+        zones[r - 1].color = selectedColor;
+        drawScene();
+    }
+}
+
+canvas.addEventListener('click',      paint);
+canvas.addEventListener('touchstart', paint, { passive: false });
+
+// drag-to-paint
+let painting = false;
+canvas.addEventListener('mousedown',  () => { painting = true; });
+canvas.addEventListener('mouseup',    () => { painting = false; });
+canvas.addEventListener('mousemove',  e => { if (painting) paint(e); });
+canvas.addEventListener('touchmove',  e => { paint(e); }, { passive: false });
+
+// ─── Animal selection ─────────────────────────────────────────────────────────
+function selectAnimal(id) {
+    currentAnimal = id;
+    zones   = ANIMALS[id].makeZones();
+    decorFn = ANIMALS[id].decor;
+    animX = 0; animY = 0; animAngle = 0;
+    isAnimating = false;
+    drawHitmap();
+    drawScene();
+    document.querySelectorAll('.animal-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.animal === id);
+    });
+}
+
+function clearColors() {
+    zones.forEach(z => { z.color = z.defaultColor; });
+    drawScene();
+}
+
+document.querySelectorAll('.animal-btn').forEach(b => {
+    b.addEventListener('click', () => selectAnimal(b.dataset.animal));
+});
+document.getElementById('done-btn').addEventListener('click', startAnimation);
+document.getElementById('clear-btn').addEventListener('click', clearColors);
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+buildPalette();
+selectAnimal('cat');
+</script>
+</body>
+</html>
