@@ -111,6 +111,24 @@
     window.addEventListener("mousedown", (e) => { if (e.button === 0) mouseDown = true; });
     window.addEventListener("mouseup", (e) => { if (e.button === 0) mouseDown = false; });
 
+    canvas.addEventListener("touchmove", (e) => {
+        if (!gameActive) return;
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const touchX = (e.touches[0].clientX - rect.left) * scaleX;
+        player.x = Math.max(0, Math.min(720, touchX - 40));
+    }, { passive: false });
+    canvas.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        mouseDown = true;
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const touchX = (e.touches[0].clientX - rect.left) * scaleX;
+        player.x = Math.max(0, Math.min(720, touchX - 40));
+    }, { passive: false });
+    canvas.addEventListener("touchend", () => { mouseDown = false; });
+
     const timerInterval = setInterval(() => {
         if (gameActive) {
             timeLeft--;

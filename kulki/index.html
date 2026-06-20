@@ -67,6 +67,8 @@
       background-color: var(--win-bg);
       padding: 4px 12px;
       font-size: 13px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
       font-weight: bold;
       color: #000;
       display: inline-flex;
@@ -145,6 +147,8 @@
     .menu-item {
       padding: 2px 8px;
       cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .menu-item:hover {
@@ -272,6 +276,8 @@
       background-color: #7b7b7b;
       position: relative;
       cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -315,6 +321,8 @@
       font-size: 11px;
       outline: none;
       cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     /* Niestandardowy modal dialog */
@@ -338,6 +346,13 @@
       bottom: 0;
       background-color: rgba(0,0,0,0.4);
       z-index: 150;
+    }
+    @media (pointer: coarse) {
+      .win-select { font-size: 16px; }
+      .win-btn { font-size: 16px; min-height: 44px; }
+      .menu-item, .menu-dropdown-item { min-height: 36px; padding: 6px 8px; font-size: 14px; }
+      .menu-item:hover, .menu-dropdown-item:hover { background-color: inherit; color: inherit; }
+      .menu-item:active, .menu-dropdown-item:active { background-color: var(--win-blue); color: var(--win-white); }
     }
   </style>
 </head>

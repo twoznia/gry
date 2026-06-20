@@ -16,5 +16,6 @@
                         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 }
                 a.back-link:hover { background: #475569; }
+                a.back-link { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
         canvas { display: block; cursor: crosshair; }
     

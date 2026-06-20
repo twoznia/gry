@@ -115,22 +115,45 @@
         #score { font-size: 32px; font-weight: bold; }
         #hi-score { font-size: 14px; opacity: 0.8; }
 
-        .controls { 
+        .controls {
             margin-top: 10px;
             padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
-        .btn { 
-            display: none;
+        .controls-row {
+            display: flex;
+            gap: 6px;
         }
-        .btn-reset { 
+        .btn {
+            flex: 1;
+            padding: 18px 0;
+            background: #444;
+            border: 2px solid #222;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn:active {
+            background: #666;
+        }
+        .btn-reset {
             width: 100%;
-            padding: 8px; 
-            background: #555; 
-            border: 1px solid #000; 
-            font-size: 11px; 
-            color: #fff; 
+            padding: 8px;
+            background: #555;
+            border: 1px solid #000;
+            font-size: 11px;
+            color: #fff;
             border-radius: 8px;
-            margin-top: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            touch-action: manipulation;
         }
         
         #overlay { 

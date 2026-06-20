@@ -64,10 +64,13 @@
     let freePasses = 0;
     let recordBrokenThisRun = false;
     
-    const baseSpeed = 4.8; 
+    const baseSpeed = 4.8;
     const initialDifficultyOffset = 0;
     let currentSpeed = baseSpeed + (4 * (baseSpeed * 0.05));
     let lanes = [];
+    let cachedScreenH = 0;
+
+    const CAR_W = 54, CAR_H = 35, HEART_H = 54, PLAYER_BOTTOM = 30;
 
     // Zapobieganie menu kontekstowemu przy długim dotknięciu przycisku
     window.oncontextmenu = function(event) {
@@ -78,6 +81,7 @@
 
     function calculateLanes() {
         const sw = screen.clientWidth;
+        cachedScreenH = screen.clientHeight;
         const carW = 54;
         const padding = (sw - (carW * 4)) / 5;
         lanes = [padding, padding * 2 + carW, padding * 3 + carW * 2, padding * 4 + carW * 3];
@@ -178,14 +182,17 @@
         obstacles.push({ el: container, lane: laneIdx, y: -50, isHeart: true });
     }
 
-    function isCollidingWithPlayer(obstacle, playerRect) {
-        const obstacleRect = obstacle.el.getBoundingClientRect();
+    function isCollidingWithPlayer(obstacle) {
+        const playerLeft = lanes[playerLane];
+        const playerTop  = cachedScreenH - PLAYER_BOTTOM - CAR_H;
+        const obsLeft    = lanes[obstacle.lane];
+        const obsH       = obstacle.isHeart ? HEART_H : CAR_H;
 
         return (
-            playerRect.left + COLLISION_HORIZONTAL_INSET_PX < obstacleRect.right - COLLISION_HORIZONTAL_INSET_PX &&
-            playerRect.right - COLLISION_HORIZONTAL_INSET_PX > obstacleRect.left + COLLISION_HORIZONTAL_INSET_PX &&
-            playerRect.top + COLLISION_VERTICAL_INSET_PX < obstacleRect.bottom - COLLISION_VERTICAL_INSET_PX &&
-            playerRect.bottom - COLLISION_VERTICAL_INSET_PX > obstacleRect.top + COLLISION_VERTICAL_INSET_PX
+            playerLeft + COLLISION_HORIZONTAL_INSET_PX < obsLeft + CAR_W - COLLISION_HORIZONTAL_INSET_PX &&
+            playerLeft + CAR_W - COLLISION_HORIZONTAL_INSET_PX > obsLeft + COLLISION_HORIZONTAL_INSET_PX &&
+            playerTop + COLLISION_VERTICAL_INSET_PX < obstacle.y + obsH - COLLISION_VERTICAL_INSET_PX &&
+            playerTop + CAR_H - COLLISION_VERTICAL_INSET_PX > obstacle.y + COLLISION_VERTICAL_INSET_PX
         );
     }
 
@@ -227,15 +234,12 @@
             spawnTimer = 0;
         }
 
-        const screenH = screen.clientHeight;
-        const playerRect = player.getBoundingClientRect();
-
         for(let i = obstacles.length - 1; i >= 0; i--) {
             let o = obstacles[i];
             o.y += currentSpeed;
             o.el.style.top = o.y + 'px';
 
-            if (isCollidingWithPlayer(o, playerRect)) {
+            if (isCollidingWithPlayer(o)) {
                 if (o.isHeart) {
                     handleHeartCollect(o, i);
                     continue;
@@ -248,7 +252,7 @@
                 }
             }
 
-            if(o.y > screenH) {
+            if(o.y > cachedScreenH) {
                 if (!o.isHeart) {
                     score++;
                     if (!recordBrokenThisRun && score > hiScore) {
