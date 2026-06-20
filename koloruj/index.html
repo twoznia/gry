@@ -499,36 +499,46 @@ function makeParrotZones() {
     head.ellipse(0, -52, 38, 35, 0, 0, Math.PI*2);
     z.push({ id:'head', path:head, color:'#ffffff', defaultColor:'#ffffff' });
 
-    // Cheek patch
-    const cheek = new Path2D();
-    cheek.ellipse(16, -44, 14, 12, 0.2, 0, Math.PI*2);
-    z.push({ id:'cheek', path:cheek, color:'#ffffff', defaultColor:'#ffffff' });
+    // Cheek patches (one under each eye)
+    const cheekL = new Path2D();
+    cheekL.ellipse(-19, -39, 12, 10, -0.2, 0, Math.PI*2);
+    z.push({ id:'cheek_l', path:cheekL, color:'#ffffff', defaultColor:'#ffffff' });
+    const cheekR = new Path2D();
+    cheekR.ellipse(19, -39, 12, 10, 0.2, 0, Math.PI*2);
+    z.push({ id:'cheek_r', path:cheekR, color:'#ffffff', defaultColor:'#ffffff' });
 
     return z;
 }
 
 function drawParrotDecor(c) {
-    // Hooked beak — line art
+    // Two eyes (symmetric)
+    [-17, 17].forEach(ex => {
+        c.strokeStyle = '#2c2c2c'; c.lineWidth = 2;
+        c.beginPath(); c.arc(ex, -57, 9.5, 0, Math.PI*2); c.stroke();
+        c.fillStyle = '#1c1c2e';
+        c.beginPath(); c.arc(ex, -57, 5.5, 0, Math.PI*2); c.fill();
+        c.fillStyle = 'white';
+        c.beginPath(); c.arc(ex + 2.4, -60, 2.4, 0, Math.PI*2); c.fill();
+        c.beginPath(); c.arc(ex - 2.6, -54, 1.3, 0, Math.PI*2); c.fill();
+    });
+
+    // Centered hooked beak — line art
     c.fillStyle = '#ffffff'; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2.5;
     c.beginPath();
-    c.moveTo(2, -58);
-    c.bezierCurveTo(30, -58, 36, -40, 24, -30);
-    c.bezierCurveTo(16, -23, 4, -28, 2, -40);
+    c.moveTo(-11, -49);
+    c.bezierCurveTo(-13, -34, -7, -23, 0, -22);
+    c.bezierCurveTo(7, -23, 13, -34, 11, -49);
+    c.bezierCurveTo(5, -54, -5, -54, -11, -49);
     c.closePath(); c.fill(); c.stroke();
-    // Lower-beak crease
+    // Upper/lower-beak crease
     c.strokeStyle = '#9a9a9a'; c.lineWidth = 1.5;
     c.beginPath();
-    c.moveTo(3, -44);
-    c.bezierCurveTo(22, -44, 28, -36, 20, -32);
+    c.moveTo(-9, -38); c.quadraticCurveTo(0, -32, 9, -38);
     c.stroke();
-
-    // Eye
-    c.strokeStyle = '#2c2c2c'; c.lineWidth = 2;
-    c.beginPath(); c.arc(-12, -56, 11, 0, Math.PI*2); c.stroke();
-    c.fillStyle = '#1c1c2e';
-    c.beginPath(); c.arc(-12, -56, 6, 0, Math.PI*2); c.fill();
-    c.fillStyle = 'white';
-    c.beginPath(); c.arc(-9, -59, 2.6, 0, Math.PI*2); c.fill();
+    // Nostrils
+    c.fillStyle = '#9a9a9a';
+    c.beginPath(); c.arc(-3.5, -46, 1.3, 0, Math.PI*2); c.fill();
+    c.beginPath(); c.arc(3.5, -46, 1.3, 0, Math.PI*2); c.fill();
 
     // Perch — line-art branch
     c.fillStyle = '#ffffff'; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2.5;
