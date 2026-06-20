@@ -560,22 +560,28 @@ function drawParrotDecor(c) {
 }
 
 // ─── Animal registry ──────────────────────────────────────────────────────────
+// scale + cy are tuned so each animal fills (almost) the whole canvas with a
+// small margin. cy is the on-screen y of the animal's local origin.
 const ANIMALS = {
-    cat:    { makeZones: makeCatZones,    decor: drawCatDecor    },
-    dog:    { makeZones: makeDogZones,    decor: drawDogDecor    },
-    parrot: { makeZones: makeParrotZones, decor: drawParrotDecor },
+    cat:    { makeZones: makeCatZones,    decor: drawCatDecor,    scale: 1.75, cy: 217 },
+    dog:    { makeZones: makeDogZones,    decor: drawDogDecor,    scale: 2.05, cy: 172 },
+    parrot: { makeZones: makeParrotZones, decor: drawParrotDecor, scale: 1.50, cy: 185 },
 };
+
+let currentScale = 1, currentCY = CY;
 
 // ─── Draw ─────────────────────────────────────────────────────────────────────
 function renderAt(c, offX, offY, angle) {
     c.save();
-    c.translate(CX + offX, CY + offY);
+    c.translate(CX + offX, currentCY + offY);
     if (angle) c.rotate(angle);
+    c.scale(currentScale, currentScale);
 
     // Fill + stroke each zone in z-order so every foreground shape cleanly
     // covers the one behind it — no outlines bleeding through overlaps.
+    // Counter-scale the outline so it stays a constant on-screen weight.
     c.strokeStyle = '#2c2c2c';
-    c.lineWidth = 3;
+    c.lineWidth = 3 / currentScale;
     c.lineJoin = 'round';
     c.lineCap = 'round';
     for (const zone of zones) {
@@ -593,7 +599,8 @@ function renderAt(c, offX, offY, angle) {
 function drawHitmap() {
     hitCtx.clearRect(0, 0, W, H);
     hitCtx.save();
-    hitCtx.translate(CX, CY);
+    hitCtx.translate(CX, currentCY);
+    hitCtx.scale(currentScale, currentScale);
     zones.forEach((zone, idx) => {
         hitCtx.fillStyle = `rgb(${idx + 1},0,0)`;
         hitCtx.fill(zone.path);
@@ -728,6 +735,8 @@ function selectAnimal(id) {
     currentAnimal = id;
     zones   = ANIMALS[id].makeZones();
     decorFn = ANIMALS[id].decor;
+    currentScale = ANIMALS[id].scale;
+    currentCY    = ANIMALS[id].cy;
     animX = 0; animY = 0; animAngle = 0;
     isAnimating = false;
     drawHitmap();
