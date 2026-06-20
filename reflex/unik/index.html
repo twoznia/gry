@@ -575,7 +575,7 @@
     function showEndScreen() {
         hideModeAndShowMain();
         overlayTitle.innerHTML = 'Wyzwanie Ukończone! 🏆';
-        const total = Object.values(results).reduce((s, v) => s + v, 0);
+        let total = Object.values(results).reduce((s, v) => s + v, 0);
         let statsHtml = '';
         for (let lvl = 1; lvl <= maxLevels; lvl++) {
             if (results[lvl] !== undefined) {
