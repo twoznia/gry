@@ -156,7 +156,7 @@
     const RADIUS = 28;
     const PENALTY_WRONG   = 3000; // ms added for wrong color click
     const PENALTY_TIMEOUT = 5000; // ms added per missed item (level 4)
-    const ITEM_TIME_SEC   = 3;    // seconds per item in level 4
+    const ITEM_TIME_SEC   = 1;    // seconds per item in level 4
 
     // ─── State ────────────────────────────────────────────────────────────────────
     let balls = [], sequence = [], currentStep = 0;
@@ -602,7 +602,7 @@
             1: 'Klikaj kulki w kolejności kolorów z listy na dole! 10 kolorów do wyboru.',
             2: 'Więcej wyzwań! 10 kolorów – uważaj na kolejność!',
             3: 'Kulki się ruszają! 5 kolorów – śledź ruch!',
-            4: 'Finał! 7 kolorów, 3 sekundy na każdy ruch! Kara: +5s za ominięty kolor.',
+            4: 'Finał! 7 kolorów, 1 sekunda na każdy ruch! Kara: +5s za ominięty kolor.',
         };
         overlayDesc.textContent = desc[level] || '';
     }
