@@ -10,13 +10,14 @@
         body { background-color: #111; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: 'Inter', sans-serif; }
         .back-link { position: fixed; top: 10px; left: 10px; z-index: 100; background: #334155; color: #fff; border: 1px solid #475569; border-radius: 8px; padding: 8px 14px; text-decoration: none; font-size: 13px; }
         .back-link:hover { background: #475569; }
+        #main-btn:disabled { opacity: 0.5; pointer-events: none; }
     </style>
 </head>
 <body>
 <a class="back-link" href="../">← Wróć</a>
 
     <div class="text-center w-full max-w-6xl px-4">
-        <h1 class="text-3xl font-bold mb-4 text-purple-400">Time Trial: Szybkość i Litery</h1>
+        <h1 id="game-title" class="text-3xl font-bold mb-4 text-purple-400">Time Trial: Szybkość i Litery</h1>
         
         <div class="flex flex-wrap justify-between w-full gap-2 md:gap-8 bg-gray-800 p-4 rounded-xl mb-4 shadow-lg border border-gray-700 text-sm md:text-xl">
             <div>Etap: <span id="current-level-display" class="font-bold text-blue-400">1</span>/<span id="max-level-display">4</span></div>
@@ -448,6 +449,8 @@
             errorsRedAtLevelStart = errorsRed; errorsOrderAtLevelStart = errorsOrder;
             isRunning = true; startTime = Date.now();
             overlay.classList.add('hidden');
+            document.getElementById('game-title').style.display = 'none';
+            resize();
             restartLevelBtn.classList.remove('hidden');
             targetBox.classList.toggle('hidden', level < 2);
             spawnTargets(); draw();
@@ -472,6 +475,7 @@
         function hideModeSelectionAndShowMainBtn() { modeSelection.classList.add('hidden'); mainBtn.classList.remove('hidden'); }
 
         function showStartScreen() {
+            document.getElementById('game-title').style.display = '';
             overlayTitle.innerHTML = "Wybierz tryb gry!"; overlayStats.classList.add('hidden');
             hideSaveSectionAndRecordsBtn();
             updateInstructions(1); modeSelection.classList.remove('hidden'); mainBtn.classList.add('hidden');
@@ -480,9 +484,9 @@
         }
 
         function startCampaign() { errorsRed = 0; errorsOrder = 0; timeLvl1=timeLvl2=timeLvl3=timeLvl4=0; startGame(1); }
-        function showLevel2Screen() { hideModeSelectionAndShowMainBtn(); hideSaveSectionAndRecordsBtn(); overlayTitle.innerHTML = "Poziom 1 Ukończony!"; updateInstructions(2); mainBtn.innerHTML = "Start: Poziom 2"; mainBtnAction = () => startGame(2); overlay.classList.remove('hidden'); }
-        function showLevel3Screen() { hideModeSelectionAndShowMainBtn(); hideSaveSectionAndRecordsBtn(); overlayTitle.innerHTML = "Poziom 2 Ukończony!"; updateInstructions(3); mainBtn.innerHTML = "Start: Poziom 3"; mainBtnAction = () => startGame(3); overlay.classList.remove('hidden'); }
-        function showLevel4Screen() { hideModeSelectionAndShowMainBtn(); hideSaveSectionAndRecordsBtn(); overlayTitle.innerHTML = "Poziom 3 Ukończony!"; updateInstructions(4); mainBtn.innerHTML = "Start: Finał"; mainBtnAction = () => startGame(4); overlay.classList.remove('hidden'); }
+        function showLevel2Screen() { hideModeSelectionAndShowMainBtn(); hideSaveSectionAndRecordsBtn(); overlayTitle.innerHTML = "Poziom 1 Ukończony!"; updateInstructions(2); mainBtn.innerHTML = "Start: Poziom 2"; mainBtnAction = () => startGame(2); overlay.classList.remove('hidden'); mainBtn.disabled = true; setTimeout(() => { mainBtn.disabled = false; }, 1500); }
+        function showLevel3Screen() { hideModeSelectionAndShowMainBtn(); hideSaveSectionAndRecordsBtn(); overlayTitle.innerHTML = "Poziom 2 Ukończony!"; updateInstructions(3); mainBtn.innerHTML = "Start: Poziom 3"; mainBtnAction = () => startGame(3); overlay.classList.remove('hidden'); mainBtn.disabled = true; setTimeout(() => { mainBtn.disabled = false; }, 1500); }
+        function showLevel4Screen() { hideModeSelectionAndShowMainBtn(); hideSaveSectionAndRecordsBtn(); overlayTitle.innerHTML = "Poziom 3 Ukończony!"; updateInstructions(4); mainBtn.innerHTML = "Start: Finał"; mainBtnAction = () => startGame(4); overlay.classList.remove('hidden'); mainBtn.disabled = true; setTimeout(() => { mainBtn.disabled = false; }, 1500); }
 
         function showEndScreen() {
             hideModeSelectionAndShowMainBtn();

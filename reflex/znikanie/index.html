@@ -15,13 +15,14 @@
             0% { transform: scale(1); opacity: 0.8; }
             100% { transform: scale(1.6); opacity: 0; }
         }
+        #main-btn:disabled { opacity: 0.5; pointer-events: none; }
     </style>
 </head>
 <body>
 <a class="back-link" href="../">← Wróć</a>
 
 <div class="text-center w-full max-w-6xl px-4">
-    <h1 class="text-3xl font-bold mb-4 text-orange-400">Time Trial: Kulki</h1>
+    <h1 id="game-title" class="text-3xl font-bold mb-4 text-orange-400">Time Trial: Kulki</h1>
 
     <div class="flex flex-wrap justify-between items-center w-full gap-2 md:gap-6 bg-gray-800 p-3 rounded-xl mb-3 shadow-lg border border-gray-700 text-sm md:text-base">
         <div>Etap: <span id="current-level-display" class="font-bold text-blue-400">1</span>/<span id="max-level-display">4</span></div>
@@ -440,6 +441,8 @@
         timeLeft = gameSeconds;
         timeEl.textContent = timeLeft;
         overlay.classList.add('hidden');
+        document.getElementById('game-title').style.display = 'none';
+        resize();
         isRunning = true;
 
         // First ball
@@ -499,6 +502,7 @@
     function hideSaveSection() { saveSection.classList.add('hidden'); showRecordsStartBtn.classList.add('hidden'); saveInfo.classList.add('hidden'); }
 
     function showStartScreen() {
+        document.getElementById('game-title').style.display = '';
         overlayTitle.innerHTML = 'Wybierz tryb gry!';
         overlayStats.classList.add('hidden');
         hideSaveSection();
@@ -521,6 +525,8 @@
         mainBtn.innerHTML = `Start: Poziom ${level + 1}`;
         mainBtnAction = () => startGame(level + 1);
         overlay.classList.remove('hidden');
+        mainBtn.disabled = true;
+        setTimeout(() => { mainBtn.disabled = false; }, 1500);
     }
 
     function showEndScreen() {
