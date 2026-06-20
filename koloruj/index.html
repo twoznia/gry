@@ -206,91 +206,129 @@ let currentAnimal = 'cat';
 function makeCatZones() {
     const z = [];
 
-    // Tail (drawn behind body)
+    // Fluffy curled tail (behind body)
     const tail = new Path2D();
-    tail.moveTo(52, 22);
-    tail.bezierCurveTo(95, 10, 108, -25, 86, -58);
-    tail.bezierCurveTo(78, -72, 62, -64, 67, -50);
-    tail.bezierCurveTo(82, -30, 74, 6, 50, 18);
+    tail.moveTo(48, 70);
+    tail.bezierCurveTo(96, 74, 120, 38, 106, 4);
+    tail.bezierCurveTo(99, -14, 76, -16, 70, 0);
+    tail.bezierCurveTo(66, 12, 78, 19, 87, 11);
+    tail.bezierCurveTo(96, 32, 82, 52, 50, 52);
     tail.closePath();
-    z.push({ id:'tail', path:tail, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+    z.push({ id:'tail', path:tail, color:'#ffffff', defaultColor:'#ffffff' });
 
-    // Body
+    // Pear-shaped sitting body
     const body = new Path2D();
-    body.ellipse(0, 44, 66, 53, 0, 0, Math.PI*2);
-    z.push({ id:'body', path:body, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+    body.moveTo(0, -20);
+    body.bezierCurveTo(42, -20, 68, 8, 68, 42);
+    body.bezierCurveTo(68, 82, 42, 104, 0, 104);
+    body.bezierCurveTo(-42, 104, -68, 82, -68, 42);
+    body.bezierCurveTo(-68, 8, -42, -20, 0, -20);
+    body.closePath();
+    z.push({ id:'body', path:body, color:'#ffffff', defaultColor:'#ffffff' });
 
-    // Left ear (outer)
+    // Left ear (soft leaf shape)
     const earL = new Path2D();
-    earL.moveTo(-26,-74); earL.lineTo(-50,-114); earL.lineTo(-6,-85); earL.closePath();
-    z.push({ id:'ear_l', path:earL, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+    earL.moveTo(-12, -82);
+    earL.bezierCurveTo(-26, -94, -38, -106, -45, -116);
+    earL.bezierCurveTo(-51, -101, -50, -84, -44, -70);
+    earL.closePath();
+    z.push({ id:'ear_l', path:earL, color:'#ffffff', defaultColor:'#ffffff' });
 
-    // Right ear (outer)
+    // Right ear
     const earR = new Path2D();
-    earR.moveTo(26,-74); earR.lineTo(50,-114); earR.lineTo(6,-85); earR.closePath();
-    z.push({ id:'ear_r', path:earR, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+    earR.moveTo(12, -82);
+    earR.bezierCurveTo(26, -94, 38, -106, 45, -116);
+    earR.bezierCurveTo(51, -101, 50, -84, 44, -70);
+    earR.closePath();
+    z.push({ id:'ear_r', path:earR, color:'#ffffff', defaultColor:'#ffffff' });
 
-    // Head
+    // Rounded head with cheek fluff
     const head = new Path2D();
-    head.ellipse(0, -42, 46, 41, 0, 0, Math.PI*2);
-    z.push({ id:'head', path:head, color:'#c8c8c8', defaultColor:'#c8c8c8' });
+    head.moveTo(0, -92);
+    head.bezierCurveTo(33, -92, 51, -74, 51, -50);
+    head.bezierCurveTo(51, -27, 37, -11, 16, -7);
+    head.bezierCurveTo(6, -5, -6, -5, -16, -7);
+    head.bezierCurveTo(-37, -11, -51, -27, -51, -50);
+    head.bezierCurveTo(-51, -74, -33, -92, 0, -92);
+    head.closePath();
+    z.push({ id:'head', path:head, color:'#ffffff', defaultColor:'#ffffff' });
 
-    // Belly
+    // Chest / tummy patch
     const belly = new Path2D();
-    belly.ellipse(0, 50, 38, 31, 0, 0, Math.PI*2);
-    z.push({ id:'belly', path:belly, color:'#e8e8e8', defaultColor:'#e8e8e8' });
+    belly.moveTo(0, 8);
+    belly.bezierCurveTo(23, 8, 35, 30, 35, 52);
+    belly.bezierCurveTo(35, 77, 20, 93, 0, 93);
+    belly.bezierCurveTo(-20, 93, -35, 77, -35, 52);
+    belly.bezierCurveTo(-35, 30, -23, 8, 0, 8);
+    belly.closePath();
+    z.push({ id:'belly', path:belly, color:'#ffffff', defaultColor:'#ffffff' });
 
     return z;
 }
 
 function drawCatDecor(c) {
-    // Inner ears
-    c.fillStyle = '#ffb3c6';
+    // Inner ears — soft leaf shapes
+    c.fillStyle = '#ffffff'; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2;
     const iL = new Path2D();
-    iL.moveTo(-29,-79); iL.lineTo(-45,-107); iL.lineTo(-11,-87); iL.closePath();
-    c.fill(iL);
+    iL.moveTo(-18, -82);
+    iL.bezierCurveTo(-27, -91, -35, -100, -40, -108);
+    iL.bezierCurveTo(-44, -98, -43, -86, -39, -76);
+    iL.closePath();
+    c.fill(iL); c.stroke(iL);
     const iR = new Path2D();
-    iR.moveTo(29,-79); iR.lineTo(45,-107); iR.lineTo(11,-87); iR.closePath();
-    c.fill(iR);
+    iR.moveTo(18, -82);
+    iR.bezierCurveTo(27, -91, 35, -100, 40, -108);
+    iR.bezierCurveTo(44, -98, 43, -86, 39, -76);
+    iR.closePath();
+    c.fill(iR); c.stroke(iR);
 
-    // Eyes
+    // Big cute eyes
     c.fillStyle = '#1c1c2e';
-    c.beginPath(); c.ellipse(-16,-50,7,9,0,0,Math.PI*2); c.fill();
-    c.beginPath(); c.ellipse(16,-50,7,9,0,0,Math.PI*2); c.fill();
+    c.beginPath(); c.ellipse(-19, -52, 9, 12, 0, 0, Math.PI*2); c.fill();
+    c.beginPath(); c.ellipse(19, -52, 9, 12, 0, 0, Math.PI*2); c.fill();
     c.fillStyle = 'white';
-    c.beginPath(); c.arc(-13,-55,3,0,Math.PI*2); c.fill();
-    c.beginPath(); c.arc(19,-55,3,0,Math.PI*2); c.fill();
+    c.beginPath(); c.arc(-15, -57, 3.5, 0, Math.PI*2); c.fill();
+    c.beginPath(); c.arc(23, -57, 3.5, 0, Math.PI*2); c.fill();
+    c.beginPath(); c.arc(-21, -48, 1.8, 0, Math.PI*2); c.fill();
+    c.beginPath(); c.arc(17, -48, 1.8, 0, Math.PI*2); c.fill();
 
-    // Nose
-    c.fillStyle = '#ff9eb5';
-    c.beginPath(); c.moveTo(0,-32); c.lineTo(-6,-26); c.lineTo(6,-26); c.closePath(); c.fill();
-
-    // Mouth
-    c.strokeStyle = '#666'; c.lineWidth = 2; c.lineCap = 'round';
+    // Heart-shaped nose
+    c.fillStyle = '#2c2c2c';
     c.beginPath();
-    c.moveTo(0,-26); c.quadraticCurveTo(-10,-20,-14,-18);
-    c.moveTo(0,-26); c.quadraticCurveTo(10,-20,14,-18);
+    c.moveTo(0, -27);
+    c.bezierCurveTo(-7, -36, -8, -29, -3.5, -30);
+    c.bezierCurveTo(-1.5, -30, 0, -29, 0, -27);
+    c.bezierCurveTo(0, -29, 1.5, -30, 3.5, -30);
+    c.bezierCurveTo(8, -29, 7, -36, 0, -27);
+    c.closePath(); c.fill();
+
+    // Smiley mouth
+    c.strokeStyle = '#2c2c2c'; c.lineWidth = 2; c.lineCap = 'round';
+    c.beginPath();
+    c.moveTo(0, -27); c.lineTo(0, -21);
+    c.moveTo(0, -21); c.quadraticCurveTo(-8, -16, -13, -19);
+    c.moveTo(0, -21); c.quadraticCurveTo(8, -16, 13, -19);
     c.stroke();
 
     // Whiskers
-    c.strokeStyle = '#bbb'; c.lineWidth = 1.5;
-    [[-38,-34],[-40,-29],[-38,-24]].forEach(([ex,ey],i) => {
-        c.beginPath(); c.moveTo(-12,-29+i*2.5); c.lineTo(ex,ey); c.stroke();
+    c.strokeStyle = '#9a9a9a'; c.lineWidth = 1.5;
+    [[-44,-36],[-46,-29],[-44,-22]].forEach(([ex,ey],i) => {
+        c.beginPath(); c.moveTo(-14,-29+i*3); c.quadraticCurveTo((ex-14)/2-4, ey, ex, ey); c.stroke();
     });
-    [[38,-34],[40,-29],[38,-24]].forEach(([ex,ey],i) => {
-        c.beginPath(); c.moveTo(12,-29+i*2.5); c.lineTo(ex,ey); c.stroke();
+    [[44,-36],[46,-29],[44,-22]].forEach(([ex,ey],i) => {
+        c.beginPath(); c.moveTo(14,-29+i*3); c.quadraticCurveTo((ex+14)/2+4, ey, ex, ey); c.stroke();
     });
 
-    // Front paws
-    const bc = zones.find(z=>z.id==='body')?.color || '#c8c8c8';
-    c.fillStyle = bc; c.strokeStyle = '#444'; c.lineWidth = 2;
-    c.beginPath(); c.ellipse(-26,88,20,11,0,0,Math.PI*2); c.fill(); c.stroke();
-    c.beginPath(); c.ellipse(26,88,20,11,0,0,Math.PI*2); c.fill(); c.stroke();
-    c.strokeStyle = '#666'; c.lineWidth = 1.2;
-    [-26,26].forEach(px => {
-        c.beginPath(); c.moveTo(px-7,84); c.lineTo(px-7,93); c.stroke();
-        c.beginPath(); c.moveTo(px,83);   c.lineTo(px,94);   c.stroke();
-        c.beginPath(); c.moveTo(px+7,84); c.lineTo(px+7,93); c.stroke();
+    // Front paws — track body colour so they blend when coloured
+    const bc = zones.find(z=>z.id==='body')?.color || '#ffffff';
+    c.fillStyle = bc; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2.5;
+    c.beginPath(); c.ellipse(-25, 96, 20, 12, 0, 0, Math.PI*2); c.fill(); c.stroke();
+    c.beginPath(); c.ellipse(25, 96, 20, 12, 0, 0, Math.PI*2); c.fill(); c.stroke();
+    c.strokeStyle = '#9a9a9a'; c.lineWidth = 1.2;
+    [-25,25].forEach(px => {
+        c.beginPath(); c.moveTo(px-7,92); c.lineTo(px-7,101); c.stroke();
+        c.beginPath(); c.moveTo(px,91);   c.lineTo(px,102);   c.stroke();
+        c.beginPath(); c.moveTo(px+7,92); c.lineTo(px+7,101); c.stroke();
     });
 }
 
@@ -298,52 +336,68 @@ function drawCatDecor(c) {
 function makeDogZones() {
     const z = [];
 
-    // Tail
+    // Waggy tail (behind body)
     const tail = new Path2D();
-    tail.moveTo(56, 8);
-    tail.bezierCurveTo(90,-2, 100,-35, 78,-58);
-    tail.bezierCurveTo(70,-68, 58,-60, 62,-46);
-    tail.bezierCurveTo(78,-24, 68, 6, 50, 18);
+    tail.moveTo(54, 54);
+    tail.bezierCurveTo(92, 48, 112, 16, 100, -14);
+    tail.bezierCurveTo(93, -30, 73, -28, 69, -12);
+    tail.bezierCurveTo(66, 0, 77, 7, 84, 0);
+    tail.bezierCurveTo(91, 20, 77, 40, 52, 42);
     tail.closePath();
-    z.push({ id:'tail', path:tail, color:'#c8a86a', defaultColor:'#c8a86a' });
+    z.push({ id:'tail', path:tail, color:'#ffffff', defaultColor:'#ffffff' });
 
-    // Body
+    // Round body
     const body = new Path2D();
-    body.ellipse(0, 44, 68, 52, 0, 0, Math.PI*2);
-    z.push({ id:'body', path:body, color:'#c8a86a', defaultColor:'#c8a86a' });
+    body.moveTo(0, -16);
+    body.bezierCurveTo(44, -16, 70, 12, 70, 46);
+    body.bezierCurveTo(70, 84, 44, 104, 0, 104);
+    body.bezierCurveTo(-44, 104, -70, 84, -70, 46);
+    body.bezierCurveTo(-70, 12, -44, -16, 0, -16);
+    body.closePath();
+    z.push({ id:'body', path:body, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Left floppy ear
     const earL = new Path2D();
-    earL.moveTo(-28,-60);
-    earL.bezierCurveTo(-56,-58, -62,-12, -52, 8);
-    earL.bezierCurveTo(-46, 22, -28, 20, -26, 4);
-    earL.bezierCurveTo(-24,-22, -20,-54, -20,-60);
+    earL.moveTo(-30, -70);
+    earL.bezierCurveTo(-62, -74, -80, -42, -74, -6);
+    earL.bezierCurveTo(-70, 14, -48, 18, -38, 2);
+    earL.bezierCurveTo(-32, -8, -30, -40, -30, -70);
     earL.closePath();
-    z.push({ id:'ear_l', path:earL, color:'#a87840', defaultColor:'#a87840' });
+    z.push({ id:'ear_l', path:earL, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Right floppy ear
     const earR = new Path2D();
-    earR.moveTo(28,-60);
-    earR.bezierCurveTo(56,-58, 62,-12, 52, 8);
-    earR.bezierCurveTo(46, 22, 28, 20, 26, 4);
-    earR.bezierCurveTo(24,-22, 20,-54, 20,-60);
+    earR.moveTo(30, -70);
+    earR.bezierCurveTo(62, -74, 80, -42, 74, -6);
+    earR.bezierCurveTo(70, 14, 48, 18, 38, 2);
+    earR.bezierCurveTo(32, -8, 30, -40, 30, -70);
     earR.closePath();
-    z.push({ id:'ear_r', path:earR, color:'#a87840', defaultColor:'#a87840' });
+    z.push({ id:'ear_r', path:earR, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Head
     const head = new Path2D();
-    head.ellipse(0,-38, 44, 38, 0, 0, Math.PI*2);
-    z.push({ id:'head', path:head, color:'#c8a86a', defaultColor:'#c8a86a' });
+    head.ellipse(0, -46, 45, 41, 0, 0, Math.PI*2);
+    z.push({ id:'head', path:head, color:'#ffffff', defaultColor:'#ffffff' });
 
-    // Snout
+    // Rounded muzzle
     const snout = new Path2D();
-    snout.ellipse(0,-22, 24, 17, 0, 0, Math.PI*2);
-    z.push({ id:'snout', path:snout, color:'#e0c090', defaultColor:'#e0c090' });
+    snout.moveTo(0, -44);
+    snout.bezierCurveTo(23, -44, 31, -29, 28, -16);
+    snout.bezierCurveTo(25, -3, 13, 2, 0, 2);
+    snout.bezierCurveTo(-13, 2, -25, -3, -28, -16);
+    snout.bezierCurveTo(-31, -29, -23, -44, 0, -44);
+    snout.closePath();
+    z.push({ id:'snout', path:snout, color:'#ffffff', defaultColor:'#ffffff' });
 
-    // Belly
+    // Chest patch
     const belly = new Path2D();
-    belly.ellipse(0, 52, 38, 28, 0, 0, Math.PI*2);
-    z.push({ id:'belly', path:belly, color:'#e8d4a8', defaultColor:'#e8d4a8' });
+    belly.moveTo(0, 16);
+    belly.bezierCurveTo(24, 16, 36, 38, 36, 60);
+    belly.bezierCurveTo(36, 84, 20, 98, 0, 98);
+    belly.bezierCurveTo(-20, 98, -36, 84, -36, 60);
+    belly.bezierCurveTo(-36, 38, -24, 16, 0, 16);
+    belly.closePath();
+    z.push({ id:'belly', path:belly, color:'#ffffff', defaultColor:'#ffffff' });
 
     return z;
 }
@@ -351,42 +405,43 @@ function makeDogZones() {
 function drawDogDecor(c) {
     // Eyes
     c.fillStyle = '#1c1c2e';
-    c.beginPath(); c.arc(-15,-48,8,0,Math.PI*2); c.fill();
-    c.beginPath(); c.arc(15,-48,8,0,Math.PI*2);  c.fill();
+    c.beginPath(); c.ellipse(-17, -52, 8, 10, 0, 0, Math.PI*2); c.fill();
+    c.beginPath(); c.ellipse(17, -52, 8, 10, 0, 0, Math.PI*2); c.fill();
     c.fillStyle = 'white';
-    c.beginPath(); c.arc(-11,-53,3,0,Math.PI*2); c.fill();
-    c.beginPath(); c.arc(19,-53,3,0,Math.PI*2);  c.fill();
+    c.beginPath(); c.arc(-14, -56, 3, 0, Math.PI*2); c.fill();
+    c.beginPath(); c.arc(20, -56, 3, 0, Math.PI*2); c.fill();
+    c.beginPath(); c.arc(-19, -48, 1.6, 0, Math.PI*2); c.fill();
+    c.beginPath(); c.arc(15, -48, 1.6, 0, Math.PI*2); c.fill();
 
-    // Nose
-    c.fillStyle = '#1c1c2e';
-    c.beginPath(); c.ellipse(0,-30,11,8,0,0,Math.PI*2); c.fill();
-    c.fillStyle = '#444';
-    c.beginPath(); c.arc(-4,-32,2,0,Math.PI*2); c.fill();
-    c.beginPath(); c.arc(4,-32,2,0,Math.PI*2);  c.fill();
+    // Nose (dark) on the muzzle
+    c.fillStyle = '#2c2c2c';
+    c.beginPath(); c.ellipse(0, -32, 12, 9, 0, 0, Math.PI*2); c.fill();
+    c.fillStyle = 'rgba(255,255,255,0.55)';
+    c.beginPath(); c.arc(-4, -35, 2.2, 0, Math.PI*2); c.fill();
 
-    // Mouth
-    c.strokeStyle = '#666'; c.lineWidth = 2; c.lineCap = 'round';
+    // Mouth + smile
+    c.strokeStyle = '#2c2c2c'; c.lineWidth = 2; c.lineCap = 'round';
     c.beginPath();
-    c.moveTo(0,-22); c.quadraticCurveTo(-10,-15,-14,-12);
-    c.moveTo(0,-22); c.quadraticCurveTo(10,-15,14,-12);
+    c.moveTo(0, -24); c.lineTo(0, -14);
+    c.moveTo(0, -14); c.quadraticCurveTo(-12, -8, -18, -13);
+    c.moveTo(0, -14); c.quadraticCurveTo(12, -8, 18, -13);
     c.stroke();
 
-    // Tongue
-    c.fillStyle = '#ff6b8a';
-    c.beginPath(); c.ellipse(0,-8,11,14,0,0,Math.PI*2); c.fill();
-    c.fillStyle = '#e0507a';
-    c.beginPath(); c.arc(0,0,9,0,Math.PI); c.fill();
+    // Tongue — line art
+    c.fillStyle = '#ffffff'; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2;
+    c.beginPath(); c.ellipse(0, -2, 8, 11, 0, 0, Math.PI*2); c.fill(); c.stroke();
+    c.beginPath(); c.moveTo(0, -10); c.lineTo(0, 6); c.stroke();
 
-    // Front paws
-    const bc = zones.find(z=>z.id==='body')?.color || '#c8a86a';
-    c.fillStyle = bc; c.strokeStyle = '#555'; c.lineWidth = 2;
-    c.beginPath(); c.ellipse(-28,89,22,12,0,0,Math.PI*2); c.fill(); c.stroke();
-    c.beginPath(); c.ellipse(28,89,22,12,0,0,Math.PI*2);  c.fill(); c.stroke();
-    c.strokeStyle = '#777'; c.lineWidth = 1.2;
-    [-28,28].forEach(px => {
-        c.beginPath(); c.moveTo(px-8,85); c.lineTo(px-8,94); c.stroke();
-        c.beginPath(); c.moveTo(px,84);   c.lineTo(px,95);   c.stroke();
-        c.beginPath(); c.moveTo(px+8,85); c.lineTo(px+8,94); c.stroke();
+    // Front paws — track body colour so they blend when coloured
+    const bc = zones.find(z=>z.id==='body')?.color || '#ffffff';
+    c.fillStyle = bc; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2.5;
+    c.beginPath(); c.ellipse(-27, 98, 22, 13, 0, 0, Math.PI*2); c.fill(); c.stroke();
+    c.beginPath(); c.ellipse(27, 98, 22, 13, 0, 0, Math.PI*2); c.fill(); c.stroke();
+    c.strokeStyle = '#9a9a9a'; c.lineWidth = 1.2;
+    [-27,27].forEach(px => {
+        c.beginPath(); c.moveTo(px-8,94); c.lineTo(px-8,103); c.stroke();
+        c.beginPath(); c.moveTo(px,93);   c.lineTo(px,104);   c.stroke();
+        c.beginPath(); c.moveTo(px+8,94); c.lineTo(px+8,103); c.stroke();
     });
 }
 
@@ -394,78 +449,103 @@ function drawDogDecor(c) {
 function makeParrotZones() {
     const z = [];
 
-    // Tail feathers
+    // Pointed tail feathers (behind body)
     const tail = new Path2D();
-    tail.moveTo(-12, 74);
-    tail.bezierCurveTo(-24,102, -34,128, -18,148);
-    tail.bezierCurveTo(-6,160, 6,160, 18,148);
-    tail.bezierCurveTo(34,128, 24,102, 12,74);
+    tail.moveTo(-18, 84);
+    tail.bezierCurveTo(-26, 110, -30, 134, -18, 150);
+    tail.lineTo(-8, 126);
+    tail.lineTo(0, 152);
+    tail.lineTo(8, 126);
+    tail.lineTo(18, 150);
+    tail.bezierCurveTo(30, 134, 26, 110, 18, 84);
     tail.closePath();
-    z.push({ id:'tail', path:tail, color:'#4CAF50', defaultColor:'#4CAF50' });
+    z.push({ id:'tail', path:tail, color:'#ffffff', defaultColor:'#ffffff' });
 
-    // Wing
-    const wing = new Path2D();
-    wing.moveTo(-22, 8);
-    wing.bezierCurveTo(-72,-2, -84,28, -72,62);
-    wing.bezierCurveTo(-60,82, -28,76, -8,66);
-    wing.bezierCurveTo(-4,46, -4,18, -22,8);
-    wing.closePath();
-    z.push({ id:'wing', path:wing, color:'#2196F3', defaultColor:'#2196F3' });
-
-    // Body
+    // Body (egg shape)
     const body = new Path2D();
-    body.ellipse(6, 38, 46, 54, 0, 0, Math.PI*2);
-    z.push({ id:'body', path:body, color:'#4CAF50', defaultColor:'#4CAF50' });
+    body.moveTo(0, -18);
+    body.bezierCurveTo(40, -18, 54, 14, 52, 50);
+    body.bezierCurveTo(50, 86, 28, 106, 0, 106);
+    body.bezierCurveTo(-28, 106, -50, 86, -52, 50);
+    body.bezierCurveTo(-54, 14, -40, -18, 0, -18);
+    body.closePath();
+    z.push({ id:'body', path:body, color:'#ffffff', defaultColor:'#ffffff' });
 
-    // Crest (three feathers as one zone)
+    // Wing with scalloped feather edge (on the body)
+    const wing = new Path2D();
+    wing.moveTo(-28, -6);
+    wing.bezierCurveTo(-52, -2, -62, 28, -54, 58);
+    wing.bezierCurveTo(-50, 74, -34, 78, -24, 66);
+    wing.bezierCurveTo(-30, 62, -22, 58, -28, 52);
+    wing.bezierCurveTo(-21, 49, -27, 43, -31, 40);
+    wing.bezierCurveTo(-23, 38, -28, 28, -32, 25);
+    wing.bezierCurveTo(-24, 22, -28, 6, -28, -6);
+    wing.closePath();
+    z.push({ id:'wing', path:wing, color:'#ffffff', defaultColor:'#ffffff' });
+
+    // Crest feathers (behind head)
     const crest = new Path2D();
-    crest.ellipse(-14,-84, 6,18, -0.25, 0, Math.PI*2);
-    crest.ellipse(0,-90,  6,20,  0,    0, Math.PI*2);
-    crest.ellipse(14,-84, 6,18,  0.25, 0, Math.PI*2);
-    z.push({ id:'crest', path:crest, color:'#FFD700', defaultColor:'#FFD700' });
+    crest.moveTo(-18, -78);
+    crest.bezierCurveTo(-26, -98, -22, -110, -12, -106);
+    crest.bezierCurveTo(-14, -96, -8, -96, -7, -104);
+    crest.bezierCurveTo(-4, -118, 4, -118, 7, -104);
+    crest.bezierCurveTo(8, -96, 14, -96, 12, -106);
+    crest.bezierCurveTo(22, -110, 26, -98, 18, -78);
+    crest.closePath();
+    z.push({ id:'crest', path:crest, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Head
     const head = new Path2D();
-    head.ellipse(0,-50, 37,34, 0, 0, Math.PI*2);
-    z.push({ id:'head', path:head, color:'#4CAF50', defaultColor:'#4CAF50' });
+    head.ellipse(0, -52, 38, 35, 0, 0, Math.PI*2);
+    z.push({ id:'head', path:head, color:'#ffffff', defaultColor:'#ffffff' });
 
     // Cheek patch
     const cheek = new Path2D();
-    cheek.ellipse(20,-44, 16,12, 0.3, 0, Math.PI*2);
-    z.push({ id:'cheek', path:cheek, color:'#FFD700', defaultColor:'#FFD700' });
+    cheek.ellipse(16, -44, 14, 12, 0.2, 0, Math.PI*2);
+    z.push({ id:'cheek', path:cheek, color:'#ffffff', defaultColor:'#ffffff' });
 
     return z;
 }
 
 function drawParrotDecor(c) {
-    // Beak (hooked)
-    c.fillStyle = '#8a8a5a';
+    // Hooked beak — line art
+    c.fillStyle = '#ffffff'; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2.5;
     c.beginPath();
-    c.moveTo(4,-50);
-    c.bezierCurveTo(28,-52, 34,-38, 24,-32);
-    c.bezierCurveTo(18,-28, 6,-32, 4,-40);
-    c.closePath(); c.fill();
-    c.fillStyle = '#666640';
+    c.moveTo(2, -58);
+    c.bezierCurveTo(30, -58, 36, -40, 24, -30);
+    c.bezierCurveTo(16, -23, 4, -28, 2, -40);
+    c.closePath(); c.fill(); c.stroke();
+    // Lower-beak crease
+    c.strokeStyle = '#9a9a9a'; c.lineWidth = 1.5;
     c.beginPath();
-    c.moveTo(4,-44);
-    c.bezierCurveTo(22,-44, 28,-36, 20,-34);
-    c.bezierCurveTo(14,-32, 6,-36, 4,-40);
-    c.closePath(); c.fill();
+    c.moveTo(3, -44);
+    c.bezierCurveTo(22, -44, 28, -36, 20, -32);
+    c.stroke();
 
-    // Eye ring
-    c.strokeStyle = '#1c1c2e'; c.lineWidth = 10;
-    c.beginPath(); c.arc(-10,-55,10,0,Math.PI*2); c.stroke();
+    // Eye
+    c.strokeStyle = '#2c2c2c'; c.lineWidth = 2;
+    c.beginPath(); c.arc(-12, -56, 11, 0, Math.PI*2); c.stroke();
     c.fillStyle = '#1c1c2e';
-    c.beginPath(); c.arc(-10,-55,6,0,Math.PI*2); c.fill();
+    c.beginPath(); c.arc(-12, -56, 6, 0, Math.PI*2); c.fill();
     c.fillStyle = 'white';
-    c.beginPath(); c.arc(-6,-59,3,0,Math.PI*2); c.fill();
+    c.beginPath(); c.arc(-9, -59, 2.6, 0, Math.PI*2); c.fill();
 
-    // Perch
-    c.strokeStyle = '#8B6914'; c.lineWidth = 8; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(-30,96); c.lineTo(56,96); c.stroke();
-    c.strokeStyle = '#6d5010'; c.lineWidth = 3;
-    [8, 26, -8].forEach(ox => {
-        c.beginPath(); c.moveTo(ox,96); c.lineTo(ox,116); c.stroke();
+    // Perch — line-art branch
+    c.fillStyle = '#ffffff'; c.strokeStyle = '#2c2c2c'; c.lineWidth = 2.5;
+    c.beginPath();
+    c.moveTo(-44, 96); c.lineTo(58, 96); c.lineTo(58, 107); c.lineTo(-44, 107);
+    c.closePath(); c.fill(); c.stroke();
+    // Wood grain
+    c.strokeStyle = '#bdbdbd'; c.lineWidth = 1.2;
+    c.beginPath(); c.moveTo(-38, 101); c.lineTo(52, 101); c.stroke();
+
+    // Feet gripping the perch
+    c.strokeStyle = '#2c2c2c'; c.lineWidth = 3.5; c.lineCap = 'round';
+    [-10, 18].forEach(ox => {
+        c.beginPath(); c.moveTo(ox, 92); c.lineTo(ox, 96); c.stroke();
+        c.beginPath(); c.moveTo(ox, 96); c.lineTo(ox-7, 90); c.stroke();
+        c.beginPath(); c.moveTo(ox, 96); c.lineTo(ox, 90); c.stroke();
+        c.beginPath(); c.moveTo(ox, 96); c.lineTo(ox+7, 90); c.stroke();
     });
 }
 
@@ -482,16 +562,15 @@ function renderAt(c, offX, offY, angle) {
     c.translate(CX + offX, CY + offY);
     if (angle) c.rotate(angle);
 
-    // Fill zones
+    // Fill + stroke each zone in z-order so every foreground shape cleanly
+    // covers the one behind it — no outlines bleeding through overlaps.
+    c.strokeStyle = '#2c2c2c';
+    c.lineWidth = 3;
+    c.lineJoin = 'round';
+    c.lineCap = 'round';
     for (const zone of zones) {
         c.fillStyle = zone.color;
         c.fill(zone.path);
-    }
-    // Outline zones
-    c.strokeStyle = '#2c2c2c';
-    c.lineWidth = 2.5;
-    c.lineJoin = 'round';
-    for (const zone of zones) {
         c.stroke(zone.path);
     }
 
