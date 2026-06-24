@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Szybka Reakcja - Samuraj</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #gameCanvas { touch-action: none; background: radial-gradient(circle at 50% 18%, #1f2937 0%, #0b0f17 100%); border-radius: 8px; cursor: crosshair; display: block; }
+        body { background-color: #111; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: 'Inter', sans-serif; }
+        .back-link { position: fixed; top: 10px; left: 10px; z-index: 100; background: #334155; color: #fff; border: 1px solid #475569; border-radius: 8px; padding: 8px 14px; text-decoration: none; font-size: 13px; }
+        .back-link:hover { background: #475569; }
+    </style>
+</head>
+<body>
+<a class="back-link" href="../">← Wróć</a>
+
+<div class="text-center w-full max-w-6xl px-4">
+    <h1 id="game-title" class="text-3xl font-bold mb-4 text-rose-400">⚔️ Samuraj</h1>
+
+    <div class="flex flex-wrap justify-between items-center w-full gap-2 md:gap-6 bg-gray-800 p-3 rounded-xl mb-3 shadow-lg border border-gray-700 text-sm md:text-base">
+        <div>Etap: <span id="level-display" class="font-bold text-blue-400">1</span>/<span id="max-level-display">4</span></div>
+        <div>Punkty: <span id="score-display" class="font-bold text-green-400">0</span></div>
+        <div>Czas: <span id="timer-display" class="font-bold text-yellow-400">15</span>s</div>
+    </div>
+
+    <div id="game-container" class="relative">
+        <canvas id="gameCanvas" class="w-full shadow-2xl" style="height: clamp(300px, calc(100vh - 240px), 720px)"></canvas>
+
+        <div id="overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-black/85 rounded-lg p-4 z-10 overflow-y-auto">
+            <div id="overlay-content" class="w-full max-w-md text-center">
+                <h2 id="overlay-title" class="text-3xl font-bold mb-3 text-white">Wybierz tryb gry!</h2>
+                <div id="overlay-stats" class="text-left text-lg text-gray-200 mb-5 bg-gray-800 p-4 rounded-lg hidden"></div>
+                <p id="overlay-desc" class="text-yellow-300 mb-5 font-bold text-lg min-h-[2.5rem]"></p>
+
+                <div id="mode-selection" class="flex flex-col sm:flex-row gap-4 w-full justify-center mt-2">
+                    <button id="btn-child" class="flex-1 bg-green-600 hover:bg-green-500 p-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-green-400/30 flex flex-col items-center justify-center gap-2">
+                        <img src="../pic/kid.jpg" alt="Dziecko" class="w-28 h-28 rounded-full object-cover border-2 border-green-300"> Dziecko
+                        <span class="text-sm font-normal text-green-100">3 poziomy · wolniej</span>
+                    </button>
+                    <button id="btn-adult" class="flex-1 bg-blue-600 hover:bg-blue-500 p-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-blue-400/30 flex flex-col items-center justify-center gap-2">
+                        <img src="../pic/adult.jpg" alt="Dorosły" class="w-28 h-28 rounded-full object-cover border-2 border-blue-300"> Dorosły
+                        <span class="text-sm font-normal text-blue-100">4 poziomy · szybciej</span>
+                    </button>
+                </div>
+
+                <button id="main-btn" class="hidden bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-blue-400/30 w-full mt-4">
+                    Zagraj ponownie
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const levelDisplayEl = document.getElementById('level-display');
+    const maxLevelDisplayEl = document.getElementById('max-level-display');
+    const scoreDisplayEl = document.getElementById('score-display');
+    const timerEl = document.getElementById('timer-display');
+    const overlay = document.getElementById('overlay');
+    const overlayTitle = document.getElementById('overlay-title');
+    const overlayStats = document.getElementById('overlay-stats');
+    const overlayDesc = document.getElementById('overlay-desc');
+    const mainBtn = document.getElementById('main-btn');
+    const modeSelection = document.getElementById('mode-selection');
+    const btnChild = document.getElementById('btn-child');
+    const btnAdult = document.getElementById('btn-adult');
+    const titleEl = document.getElementById('game-title');
+
+    const FRUIT_COLORS = ['#ef4444','#f97316','#eab308','#22c55e','#14b8a6','#a855f7','#ec4899'];
+    const LEVEL_TIME = 15;            // seconds per level
+    const BONUS_TIME = 3;             // seconds for the bonus round
+
+    // speed is px/frame at a 600px reference height; scaled to real canvas height
+    const LEVEL_CONFIG = {
+        child: [
+            { spawnMs: 850, speed: 2.0, bombChance: 0.08 },
+            { spawnMs: 700, speed: 2.6, bombChance: 0.10 },
+            { spawnMs: 580, speed: 3.2, bombChance: 0.12 },
+        ],
+        adult: [
+            { spawnMs: 750, speed: 2.6, bombChance: 0.10 },
+            { spawnMs: 620, speed: 3.3, bombChance: 0.13 },
+            { spawnMs: 500, speed: 4.0, bombChance: 0.16 },
+            { spawnMs: 410, speed: 4.8, bombChance: 0.20 },
+        ],
+    };
+
+    // ─── State ─────────────────────────────────────────────────────────────────────
+    let gameMode = 'adult', maxLevels = 4, currentLevel = 1;
+    let score = 0, timeLeft = LEVEL_TIME;
+    let phase = 'menu';   // menu | playing | bonus | end
+    let fruits = [], particles = [], floats = [];
+    let nextId = 0;
+    let spawnTimer = 0, lastTime = 0;
+    let countdownInterval = null, animFrameId = null, phaseTimeout = null;
+
+    // bonus round
+    let bigBall = null, bonusCombo = 0, lastBonusSlice = 0;
+
+    // blade / stroke
+    let stroking = false;
+    let blade = [];                 // {x,y,t}
+    let strokeSliced = new Set();   // ids sliced in the current stroke
+    let strokeFruitCount = 0;       // fruits sliced in the current stroke
+    let flashUntil = 0;             // red flash (bomb) timestamp
+
+    // ─── Records ───────────────────────────────────────────────────────────────────
+    const BEST_KEY = 'reflexSamurajBest';
+    function loadBest() { try { return JSON.parse(localStorage.getItem(BEST_KEY)) || {}; } catch { return {}; } }
+    function bestFor(mode) { return loadBest()[mode] || 0; }
+    function saveBest(mode, val) {
+        const b = loadBest();
+        if (val > (b[mode] || 0)) { b[mode] = val; localStorage.setItem(BEST_KEY, JSON.stringify(b)); }
+    }
+
+    // ─── Canvas ──────────────────────────────────────────────────────────────────────
+    function resize() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function heightScale() { return canvas.height / 600; }
+    function fruitRadius() { return Math.max(26, Math.min(canvas.width, canvas.height) * 0.07); }
+
+    function pointerPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const src = e.touches ? e.touches[0] : e;
+        return {
+            x: (src.clientX - rect.left) * (canvas.width / rect.width),
+            y: (src.clientY - rect.top) * (canvas.height / rect.height),
+        };
+    }
+
+    // distance from point P to segment AB
+    function distToSeg(px, py, ax, ay, bx, by) {
+        const dx = bx - ax, dy = by - ay;
+        const len2 = dx*dx + dy*dy;
+        let t = len2 ? ((px-ax)*dx + (py-ay)*dy) / len2 : 0;
+        t = Math.max(0, Math.min(1, t));
+        const cx = ax + t*dx, cy = ay + t*dy;
+        return Math.hypot(px-cx, py-cy);
+    }
+
+    // ─── Spawning ──────────────────────────────────────────────────────────────────
+    function spawnFruit() {
+        const cfg = LEVEL_CONFIG[gameMode][currentLevel - 1];
+        const r = fruitRadius();
+        const x = r + Math.random() * (canvas.width - r*2);
+        const isBomb = Math.random() < cfg.bombChance;
+        const vy = cfg.speed * heightScale() * (0.85 + Math.random()*0.3);
+        fruits.push({
+            id: nextId++, x, y: -r, r, vy,
+            vx: (Math.random()-0.5) * 0.6,
+            color: FRUIT_COLORS[Math.floor(Math.random()*FRUIT_COLORS.length)],
+            bomb: isBomb,
+        });
+    }
+
+    function addFloat(x, y, text, color) {
+        floats.push({ x, y, text, color, life: 1 });
+    }
+
+    function burst(x, y, color, n) {
+        for (let i = 0; i < n; i++) {
+            const a = Math.random() * Math.PI * 2;
+            const sp = 2 + Math.random() * 5;
+            particles.push({ x, y, vx: Math.cos(a)*sp, vy: Math.sin(a)*sp - 2, r: 3 + Math.random()*4, color, life: 1 });
+        }
+    }
+
+    // ─── Slicing ───────────────────────────────────────────────────────────────────
+    function sliceCheck(ax, ay, bx, by) {
+        if (phase === 'playing') {
+            for (const f of fruits) {
+                if (strokeSliced.has(f.id)) continue;
+                if (distToSeg(f.x, f.y, ax, ay, bx, by) <= f.r) {
+                    strokeSliced.add(f.id);
+                    f.dead = true;
+                    burst(f.x, f.y, f.bomb ? '#94a3b8' : f.color, f.bomb ? 18 : 9);
+                    if (f.bomb) {
+                        timeLeft = Math.max(0, timeLeft - 3);
+                        timerEl.textContent = Math.ceil(timeLeft);
+                        flashUntil = performance.now() + 350;
+                        addFloat(f.x, f.y, '-3s 💣', '#f87171');
+                    } else {
+                        strokeFruitCount++;
+                        const pts = strokeFruitCount;      // 1, 2, 3 ... within one stroke
+                        score += pts;
+                        scoreDisplayEl.textContent = score;
+                        addFloat(f.x, f.y, '+' + pts + (strokeFruitCount >= 2 ? ' COMBO!' : ''), strokeFruitCount >= 2 ? '#fbbf24' : '#86efac');
+                    }
+                }
+            }
+            fruits = fruits.filter(f => !f.dead);
+        } else if (phase === 'bonus' && bigBall) {
+            const now = performance.now();
+            if (now - lastBonusSlice < 120) return;
+            if (distToSeg(bigBall.x, bigBall.y, ax, ay, bx, by) <= bigBall.r) {
+                lastBonusSlice = now;
+                bonusCombo++;
+                score += bonusCombo;                       // 1, 2, 3, 4 ...
+                scoreDisplayEl.textContent = score;
+                addFloat(bigBall.x + (Math.random()-0.5)*bigBall.r, bigBall.y + (Math.random()-0.5)*bigBall.r, '+' + bonusCombo, '#fbbf24');
+                burst(ax, ay, '#fbbf24', 8);
+                bigBall.pop = 1;
+            }
+        }
+    }
+
+    function onDown(e) {
+        if (phase !== 'playing' && phase !== 'bonus') return;
+        e.preventDefault();
+        stroking = true;
+        strokeSliced = new Set();
+        strokeFruitCount = 0;
+        blade = [];
+        const p = pointerPos(e);
+        blade.push({ x: p.x, y: p.y, t: performance.now() });
+    }
+    function onMove(e) {
+        if (!stroking) return;
+        e.preventDefault();
+        const p = pointerPos(e);
+        const last = blade[blade.length - 1];
+        if (last) sliceCheck(last.x, last.y, p.x, p.y);
+        blade.push({ x: p.x, y: p.y, t: performance.now() });
+        if (blade.length > 14) blade.shift();
+    }
+    function onUp() { stroking = false; }
+
+    canvas.addEventListener('pointerdown', onDown);
+    canvas.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    canvas.addEventListener('touchstart', onDown, { passive: false });
+    canvas.addEventListener('touchmove', onMove, { passive: false });
+    window.addEventListener('touchend', onUp);
+
+    // ─── Drawing ───────────────────────────────────────────────────────────────────
+    function drawFruit(f) {
+        if (f.bomb) {
+            ctx.fillStyle = '#1f2937';
+            ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI*2); ctx.fill();
+            ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3; ctx.stroke();
+            ctx.font = `${Math.round(f.r*1.2)}px serif`;
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText('💣', f.x, f.y + 1);
+            return;
+        }
+        const g = ctx.createRadialGradient(f.x - f.r*0.3, f.y - f.r*0.3, f.r*0.2, f.x, f.y, f.r);
+        g.addColorStop(0, '#ffffff');
+        g.addColorStop(0.25, f.color);
+        g.addColorStop(1, f.color);
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI*2); ctx.fill();
+        ctx.strokeStyle = 'rgba(0,0,0,0.25)'; ctx.lineWidth = 2; ctx.stroke();
+        // little leaf
+        ctx.fillStyle = '#16a34a';
+        ctx.beginPath(); ctx.ellipse(f.x + f.r*0.35, f.y - f.r*0.85, f.r*0.28, f.r*0.14, -0.6, 0, Math.PI*2); ctx.fill();
+    }
+
+    function drawBlade() {
+        if (blade.length < 2) return;
+        const now = performance.now();
+        for (let i = 1; i < blade.length; i++) {
+            const a = blade[i-1], b = blade[i];
+            const age = (now - b.t) / 160;
+            const alpha = Math.max(0, 1 - age);
+            ctx.strokeStyle = `rgba(255,255,255,${alpha*0.9})`;
+            ctx.lineWidth = (i / blade.length) * 9 + 1;
+            ctx.lineCap = 'round';
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+    }
+
+    function draw(ts) {
+        const dt = Math.min((ts - lastTime) / 16.67, 3);
+        lastTime = ts;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // red flash on bomb
+        if (performance.now() < flashUntil) {
+            ctx.fillStyle = 'rgba(239,68,68,0.18)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        if (phase === 'playing') {
+            for (const f of fruits) { f.y += f.vy * dt; f.x += f.vx * dt; }
+            fruits = fruits.filter(f => f.y - f.r < canvas.height + 40);
+            for (const f of fruits) drawFruit(f);
+        } else if (phase === 'bonus' && bigBall) {
+            if (bigBall.pop > 0) bigBall.pop = Math.max(0, bigBall.pop - 0.08*dt);
+            const scl = 1 + bigBall.pop * 0.12;
+            const g = ctx.createRadialGradient(bigBall.x - bigBall.r*0.3, bigBall.y - bigBall.r*0.3, bigBall.r*0.2, bigBall.x, bigBall.y, bigBall.r*scl);
+            g.addColorStop(0, '#fff7cc'); g.addColorStop(0.3, '#facc15'); g.addColorStop(1, '#f59e0b');
+            ctx.fillStyle = g;
+            ctx.beginPath(); ctx.arc(bigBall.x, bigBall.y, bigBall.r*scl, 0, Math.PI*2); ctx.fill();
+            ctx.strokeStyle = '#fde68a'; ctx.lineWidth = 4; ctx.stroke();
+            ctx.fillStyle = '#7c2d12'; ctx.font = `bold ${Math.round(bigBall.r*0.5)}px Inter, sans-serif`;
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText('TNIJ!', bigBall.x, bigBall.y);
+        }
+
+        // particles
+        for (const p of particles) {
+            p.x += p.vx * dt; p.y += p.vy * dt; p.vy += 0.25 * dt; p.life -= 0.03 * dt;
+        }
+        particles = particles.filter(p => p.life > 0);
+        for (const p of particles) {
+            ctx.globalAlpha = Math.max(0, p.life);
+            ctx.fillStyle = p.color;
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+
+        // floating score text
+        for (const fl of floats) { fl.y -= 0.8 * dt; fl.life -= 0.02 * dt; }
+        floats = floats.filter(fl => fl.life > 0);
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        for (const fl of floats) {
+            ctx.globalAlpha = Math.max(0, fl.life);
+            ctx.fillStyle = fl.color;
+            ctx.font = 'bold 20px Inter, sans-serif';
+            ctx.fillText(fl.text, fl.x, fl.y);
+        }
+        ctx.globalAlpha = 1;
+
+        drawBlade();
+        animFrameId = requestAnimationFrame(draw);
+    }
+
+    // ─── Flow ──────────────────────────────────────────────────────────────────────
+    function clearTimers() {
+        if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
+        if (phaseTimeout) { clearTimeout(phaseTimeout); phaseTimeout = null; }
+        if (spawnTimer) { clearInterval(spawnTimer); spawnTimer = 0; }
+    }
+
+    function setMode(mode) {
+        gameMode = mode;
+        maxLevels = LEVEL_CONFIG[mode].length;
+        maxLevelDisplayEl.textContent = maxLevels;
+    }
+
+    function startCampaign() {
+        score = 0; currentLevel = 1;
+        scoreDisplayEl.textContent = '0';
+        overlay.classList.add('hidden');
+        titleEl.style.display = 'none';
+        resize();
+        if (!animFrameId) { lastTime = performance.now(); animFrameId = requestAnimationFrame(draw); }
+        startLevel(1);
+    }
+
+    function startLevel(level) {
+        clearTimers();
+        currentLevel = level;
+        levelDisplayEl.textContent = level;
+        fruits = []; particles = []; floats = [];
+        phase = 'playing';
+        timeLeft = LEVEL_TIME;
+        timerEl.textContent = timeLeft;
+        spawnTimer = 0;
+        const cfg = LEVEL_CONFIG[gameMode][level - 1];
+
+        // spawner
+        spawnTimer = setInterval(() => { if (phase === 'playing') spawnFruit(); }, cfg.spawnMs);
+
+        // countdown
+        countdownInterval = setInterval(() => {
+            timeLeft = Math.max(0, timeLeft - 1);
+            timerEl.textContent = Math.ceil(timeLeft);
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval); countdownInterval = null;
+                clearInterval(spawnTimer);
+                startBonus();
+            }
+        }, 1000);
+    }
+
+    function startBonus() {
+        clearTimers();
+        phase = 'bonus';
+        fruits = [];
+        bonusCombo = 0; lastBonusSlice = 0;
+        bigBall = { x: canvas.width/2, y: canvas.height/2, r: Math.min(canvas.width, canvas.height)*0.2, pop: 0 };
+        // brief banner then live
+        showBanner('🎁 PREMIA! Tnij dużą kulkę ile się da!', BONUS_TIME);
+        let left = BONUS_TIME;
+        timerEl.textContent = left;
+        countdownInterval = setInterval(() => {
+            left -= 1;
+            timerEl.textContent = Math.max(0, left);
+            if (left <= 0) {
+                clearInterval(countdownInterval); countdownInterval = null;
+                bigBall = null;
+                if (currentLevel < maxLevels) {
+                    getReady(currentLevel + 1);
+                } else {
+                    endGame();
+                }
+            }
+        }, 1000);
+    }
+
+    // transient banner drawn over the canvas via a floating text
+    function showBanner(text, secs) {
+        floats.push({ x: canvas.width/2, y: 38, text, color: '#fbbf24', life: 1.6, big: true });
+    }
+
+    function getReady(level) {
+        clearTimers();
+        phase = 'ready';
+        let n = 2;
+        addFloat(canvas.width/2, canvas.height/2, 'Poziom ' + level, '#93c5fd');
+        timerEl.textContent = n;
+        phaseTimeout = setTimeout(() => startLevel(level), 1100);
+    }
+
+    function endGame() {
+        clearTimers();
+        phase = 'end';
+        fruits = []; bigBall = null;
+        saveBest(gameMode, score);
+        titleEl.style.display = '';
+        overlayTitle.textContent = 'Koniec! 🏆';
+        modeSelection.classList.add('hidden');
+        mainBtn.classList.remove('hidden');
+        mainBtn.textContent = 'Zagraj ponownie';
+        overlayDesc.textContent = '';
+        overlayStats.innerHTML =
+            `<p>Twój wynik: <span class="text-green-400 font-bold">${score}</span> pkt</p>` +
+            `<p>Najlepszy (${gameMode === 'child' ? 'Dziecko' : 'Dorosły'}): <span class="text-yellow-400 font-bold">${bestFor(gameMode)}</span> pkt</p>`;
+        overlayStats.classList.remove('hidden');
+        overlay.classList.remove('hidden');
+    }
+
+    function showStartScreen() {
+        clearTimers();
+        phase = 'menu';
+        fruits = []; particles = []; floats = []; bigBall = null;
+        titleEl.style.display = '';
+        overlayTitle.textContent = 'Wybierz tryb gry!';
+        overlayStats.classList.add('hidden');
+        overlayDesc.textContent = 'Przecinaj spadające kulki palcem lub myszką! Kilka jednym ruchem = premia. Uważaj na bomby 💣 (-3s).';
+        modeSelection.classList.remove('hidden');
+        mainBtn.classList.add('hidden');
+        overlay.classList.remove('hidden');
+    }
+
+    btnChild.addEventListener('click', () => { setMode('child'); startCampaign(); });
+    btnAdult.addEventListener('click', () => { setMode('adult'); startCampaign(); });
+    mainBtn.addEventListener('click', showStartScreen);
+
+    // init
+    setMode('adult');
+    showStartScreen();
+    lastTime = performance.now();
+    animFrameId = requestAnimationFrame(draw);
+</script>
+</body>
+</html>
