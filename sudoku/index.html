@@ -17,6 +17,7 @@
     --line-strong:#1C2B36;
     --user:#2F6FB0;
     --sel:#FFE2A0;
+    --note-sel:#FFB3D9;
     --peer:#EFF3F6;
     --given-bg:#E4E9ED;
     --same:#D7E6F4;
@@ -130,6 +131,7 @@
   .cell.same{background:var(--same);}
   .cell.conflict{background:var(--error-bg);}
   .cell.sel{background:var(--sel);}
+  body.note-mode .cell.sel{background:var(--note-sel);}
   .cell.bad{color:var(--error);}
   .cell.bad.sel,.cell.conflict.sel{background:var(--error-bg);}
   .cell.pop{animation:pop .18s ease;}
@@ -242,7 +244,7 @@
     background:radial-gradient(120% 80% at 50% -10%,#1e293b 0%,#0f172a 55%) fixed;
     --bg:#0f172a;--paper:#1e293b;--ink:#f1f5f9;--ink-soft:#94a3b8;
     --line:#334155;--line-strong:#475569;--user:#38bdf8;
-    --sel:#78350f;--peer:#172033;--given-bg:#263548;--same:#1a3a5c;
+    --sel:#78350f;--note-sel:#9d2667;--peer:#172033;--given-bg:#263548;--same:#1a3a5c;
     --error:#f87171;--error-bg:#3b1818;--accent:#f59e0b;--accent-ink:#1c1008;
     --shadow:0 1px 0 rgba(0,0,0,.3),0 18px 40px -22px rgba(0,0,0,.9);
   }
@@ -535,6 +537,7 @@ function loadFromCode(code){
   notes=Array.from({length:9},()=>Array.from({length:9},()=>new Set()));
   history=[];noteMode=false;finishTime=0;hintsUsed=0;
   noteBtnEl.classList.remove('note-active');
+  document.body.classList.remove('note-mode');
   selected=null;mistakes=0;solved=false;
   updateHintBtn();
   instantCheck=INSTANT_CHECK.has(level);
@@ -588,6 +591,7 @@ function newGame(){
     notes=Array.from({length:9},()=>Array.from({length:9},()=>new Set()));
     history=[]; noteMode=false; finishTime=0; hintsUsed=0;
     noteBtnEl.classList.remove('note-active');
+    document.body.classList.remove('note-mode');
     selected=null; mistakes=0; solved=false;
     updateHintBtn();
     document.getElementById('overlay').classList.remove('show');
@@ -813,7 +817,7 @@ function fmt(s){const m=Math.floor(s/60);return m+':'+String(s%60).padStart(2,'0
 /* ---------- Klawiatura ---------- */
 document.addEventListener('keydown',e=>{
   if((e.ctrlKey||e.metaKey)&&e.key==='z'){e.preventDefault();undo();return;}
-  if(e.key==='n'||e.key==='N'){noteMode=!noteMode;noteBtnEl.classList.toggle('note-active',noteMode);return;}
+  if(e.key==='n'||e.key==='N'){noteMode=!noteMode;noteBtnEl.classList.toggle('note-active',noteMode);document.body.classList.toggle('note-mode',noteMode);return;}
   if(e.key==='Escape'&&paused){resume();return;}
   if(!selected)return;
   if(e.key>='1'&&e.key<='9')place(+e.key);
@@ -837,6 +841,7 @@ document.getElementById('pauseBtn').addEventListener('click',()=>{if(paused)resu
 document.getElementById('noteBtn').addEventListener('click',()=>{
   noteMode=!noteMode;
   noteBtnEl.classList.toggle('note-active',noteMode);
+  document.body.classList.toggle('note-mode',noteMode);
 });
 levelSel.addEventListener('change',newGame);
 document.getElementById('printBtn').addEventListener('click',()=>{
