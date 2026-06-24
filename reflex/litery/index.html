@@ -36,6 +36,11 @@
                     <div id="overlay-stats" class="text-left text-lg text-gray-200 mb-6 bg-gray-800 p-4 rounded-lg hidden"></div>
                     <p id="overlay-desc" class="text-yellow-300 mb-6 font-bold text-xl min-h-[3rem]"></p>
                     
+                    <div id="lang-selection" class="flex gap-3 w-full justify-center mb-4">
+                        <button id="btn-lang-pl" class="lang-btn flex-1 max-w-[160px] py-2 rounded-xl text-lg font-bold transition-all border bg-blue-600 border-blue-300 text-white">🇵🇱 Polski</button>
+                        <button id="btn-lang-en" class="lang-btn flex-1 max-w-[160px] py-2 rounded-xl text-lg font-bold transition-all border bg-gray-700 border-gray-600 text-gray-200">🇬🇧 English</button>
+                    </div>
+
                     <div id="mode-selection" class="flex flex-col sm:flex-row gap-4 w-full justify-center mt-4">
                         <button id="btn-child" class="flex-1 bg-green-600 hover:bg-green-500 p-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-green-400/30 flex flex-col items-center justify-center gap-2">
                             <img src="../pic/kid.jpg" alt="Dziecko" class="w-32 h-32 rounded-full object-cover border-2 border-green-300"> Dziecko
@@ -134,7 +139,22 @@
             return Math.round(Math.min(36, Math.max(28, shortSide * 0.04)));
         }
         let RADIUS = getRadius();
-        const ALL_LETTERS = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','R','S','T','U'];
+        // Polish alphabet without diacritics (no Ą Ć Ę Ł Ń Ó Ś Ź Ż; Polish has no Q V X)
+        const ALPHABETS = {
+            pl: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','R','S','T','U','W','Y','Z'],
+            en: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
+        };
+        let currentLang = 'pl';
+        let ALL_LETTERS = ALPHABETS[currentLang];
+
+        // Pick a radius that keeps `count` circles from overcrowding the board.
+        function getRadiusForCount(count) {
+            const base = getRadius();
+            const area = canvas.width * canvas.height;
+            if (!area || count < 1) return base;
+            const fit = Math.sqrt(area / (count * 4.84 * 1.25)); // spacing ~2.2*R, 80% packing
+            return Math.max(18, Math.min(base, Math.round(fit)));
+        }
 
         // ─── Records management ─────────────────────────────────────────────────
         const RECORDS_KEY = 'reflexLiteryRecords';
@@ -336,13 +356,27 @@
 
         function setMode(mode) {
             gameMode = mode;
-            if (mode === 'child') { GREEN_COUNT = 7; RED_COUNT = 3; maxLevelDisplayEl.textContent = "3"; } 
-            else { GREEN_COUNT = 15; RED_COUNT = 5; maxLevelDisplayEl.textContent = "4"; }
+            if (mode === 'child') { GREEN_COUNT = 7; RED_COUNT = 3; maxLevelDisplayEl.textContent = "3"; }
+            else { GREEN_COUNT = ALL_LETTERS.length; RED_COUNT = 5; maxLevelDisplayEl.textContent = "4"; }
             TOTAL_TARGETS = GREEN_COUNT + RED_COUNT;
         }
 
         btnChild.addEventListener('click', () => { setMode('child'); startCampaign(); });
         btnAdult.addEventListener('click', () => { setMode('adult'); startCampaign(); });
+
+        // ─── Language selection ────────────────────────────────────────────────────
+        const langSelection = document.getElementById('lang-selection');
+        const btnLangPl = document.getElementById('btn-lang-pl');
+        const btnLangEn = document.getElementById('btn-lang-en');
+        function setLanguage(lang) {
+            currentLang = lang;
+            ALL_LETTERS = ALPHABETS[lang];
+            const active = (on) => on ? 'bg-blue-600 border-blue-300 text-white' : 'bg-gray-700 border-gray-600 text-gray-200';
+            btnLangPl.className = 'lang-btn flex-1 max-w-[160px] py-2 rounded-xl text-lg font-bold transition-all border ' + active(lang === 'pl');
+            btnLangEn.className = 'lang-btn flex-1 max-w-[160px] py-2 rounded-xl text-lg font-bold transition-all border ' + active(lang === 'en');
+        }
+        btnLangPl.addEventListener('click', () => setLanguage('pl'));
+        btnLangEn.addEventListener('click', () => setLanguage('en'));
 
         function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
         window.addEventListener('resize', resize);
@@ -357,24 +391,33 @@
 
         function spawnTargets() {
             targets = []; expectedGreenLetters = [];
-            let letters = ALL_LETTERS.slice(0, TOTAL_TARGETS);
-            shuffleArray(letters);
+            RADIUS = getRadiusForCount(TOTAL_TARGETS);
+
+            // Green letters: a shuffled subset of the alphabet (adult = the whole alphabet).
+            const greenLetters = ALL_LETTERS.slice();
+            shuffleArray(greenLetters);
+            greenLetters.length = Math.min(GREEN_COUNT, greenLetters.length);
+            // Red letters: random letters from the alphabet (may repeat green ones — just decoys).
+            const redLetters = [];
+            for (let i = 0; i < RED_COUNT; i++) redLetters.push(ALL_LETTERS[Math.floor(Math.random() * ALL_LETTERS.length)]);
+
             const speedMult = (gameMode === 'child' && currentLevel === 3) ? 0.5 : 1.0;
 
             for(let i=0; i<TOTAL_TARGETS; i++) {
                 let valid = false, x, y, attempts = 0;
-                while(!valid && attempts < 200) {
+                while(!valid && attempts < 250) {
                     x = RADIUS + Math.random() * (canvas.width - RADIUS * 2);
                     y = RADIUS + Math.random() * (canvas.height - RADIUS * 2);
                     valid = true;
-                    for(let t of targets) if(Math.hypot(x - t.x, y - t.y) < RADIUS * 2.2) { valid = false; break; }
+                    for(let t of targets) if(Math.hypot(x - t.x, y - t.y) < RADIUS * 2.1) { valid = false; break; }
                     attempts++;
                 }
                 const isTargetGood = i < GREEN_COUNT;
+                const letter = isTargetGood ? greenLetters[i] : redLetters[i - GREEN_COUNT];
                 const dx = (Math.random() > 0.5 ? 1 : -1) * (0.8 + Math.random() * 1.2) * speedMult;
                 const dy = (Math.random() > 0.5 ? 1 : -1) * (0.8 + Math.random() * 1.2) * speedMult;
-                if (isTargetGood) expectedGreenLetters.push(letters[i]);
-                targets.push({ x, y, radius: RADIUS, dx, dy, isGood: isTargetGood, color: isTargetGood ? '#22c55e' : '#ef4444', letter: letters[i] });
+                if (isTargetGood) expectedGreenLetters.push(letter);
+                targets.push({ x, y, radius: RADIUS, dx, dy, isGood: isTargetGood, color: isTargetGood ? '#22c55e' : '#ef4444', letter });
             }
             if (currentLevel === 2 || currentLevel === 3) expectedGreenLetters.sort((a, b) => ALL_LETTERS.indexOf(a) - ALL_LETTERS.indexOf(b));
             else if (currentLevel === 4) expectedGreenLetters.sort((a, b) => ALL_LETTERS.indexOf(b) - ALL_LETTERS.indexOf(a));
@@ -417,7 +460,7 @@
         function drawTarget(t) {
             ctx.fillStyle = t.color; ctx.beginPath(); ctx.arc(t.x, t.y, t.radius, 0, Math.PI*2); ctx.fill();
             ctx.strokeStyle = "white"; ctx.lineWidth = 3; ctx.stroke();
-            if (currentLevel >= 2) { ctx.fillStyle = "white"; ctx.font = "bold 20px Inter"; ctx.textAlign = "center"; ctx.fillText(t.letter, t.x, t.y + 6); }
+            if (currentLevel >= 2) { ctx.fillStyle = "white"; ctx.font = `bold ${Math.max(13, Math.round(t.radius * 0.95))}px Inter`; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(t.letter, t.x, t.y + 1); }
         }
 
         function draw() {
@@ -472,13 +515,13 @@
             saveInfo.classList.add('hidden');
         }
 
-        function hideModeSelectionAndShowMainBtn() { modeSelection.classList.add('hidden'); mainBtn.classList.remove('hidden'); }
+        function hideModeSelectionAndShowMainBtn() { modeSelection.classList.add('hidden'); langSelection.classList.add('hidden'); mainBtn.classList.remove('hidden'); }
 
         function showStartScreen() {
             document.getElementById('game-title').style.display = '';
             overlayTitle.innerHTML = "Wybierz tryb gry!"; overlayStats.classList.add('hidden');
             hideSaveSectionAndRecordsBtn();
-            updateInstructions(1); modeSelection.classList.remove('hidden'); mainBtn.classList.add('hidden');
+            updateInstructions(1); modeSelection.classList.remove('hidden'); langSelection.classList.remove('hidden'); mainBtn.classList.add('hidden');
             showRecordsStartBtn.classList.remove('hidden');
             overlay.classList.remove('hidden');
         }
