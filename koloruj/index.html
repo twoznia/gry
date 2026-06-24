@@ -151,6 +151,7 @@
     <button class="animal-btn" data-animal="sheep">🐑 Owca</button>
     <button class="animal-btn" data-animal="house">🏠 Dom</button>
     <button class="animal-btn" data-animal="tree">🎄 Choinka</button>
+    <button class="animal-btn" data-animal="flower">🌸 Kwiatek</button>
 </div>
 
 <div id="canvas-wrap">
@@ -1034,6 +1035,56 @@ function drawTreeDecor(c) {
     });
 }
 
+// ─── FLOWER ──────────────────────────────────────────────────────────────────────
+function makeFlowerZones() {
+    const z = [];
+    const FCX = 0, FCY = -36;          // flower-head centre
+
+    // Stem
+    const stem = new Path2D();
+    stem.moveTo(-5, -8);
+    stem.bezierCurveTo(-7, 40, -6, 78, -5, 112);
+    stem.lineTo(5, 112);
+    stem.bezierCurveTo(6, 78, 7, 40, 5, -8);
+    stem.closePath();
+    z.push(zone('stem', stem));
+
+    // Leaf on the stem
+    const leaf = new Path2D();
+    leaf.moveTo(-4, 62);
+    leaf.bezierCurveTo(-30, 44, -56, 50, -58, 66);
+    leaf.bezierCurveTo(-50, 80, -24, 80, -4, 64);
+    leaf.closePath();
+    z.push(zone('leaf', leaf));
+
+    // 16 petals (each its own colourable zone)
+    const N = 16, pr = 36;
+    for (let i = 0; i < N; i++) {
+        const a = (i / N) * Math.PI * 2;
+        const petal = new Path2D();
+        petal.ellipse(FCX + Math.cos(a) * pr, FCY + Math.sin(a) * pr, 16, 7.5, a, 0, Math.PI*2);
+        z.push(zone('petal_' + i, petal));
+    }
+
+    // Centre circle (on top of the petal tips)
+    z.push(ellipseZone('center', FCX, FCY, 23, 23));
+    return z;
+}
+
+function drawFlowerDecor(c) {
+    const FCX = 0, FCY = -36;
+    // Seed dots in the centre
+    c.fillStyle = '#9a9a9a';
+    for (let i = 0; i < 7; i++) {
+        const a = i / 7 * Math.PI * 2;
+        c.beginPath(); c.arc(FCX + Math.cos(a) * 9, FCY + Math.sin(a) * 9, 2, 0, Math.PI*2); c.fill();
+    }
+    c.beginPath(); c.arc(FCX, FCY, 2.4, 0, Math.PI*2); c.fill();
+    // Leaf vein
+    c.strokeStyle = '#9a9a9a'; c.lineWidth = 1.5; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(-8, 64); c.quadraticCurveTo(-32, 62, -54, 65); c.stroke();
+}
+
 // ─── Animal registry ──────────────────────────────────────────────────────────
 // scale + cy are tuned so each subject fills (almost) the whole canvas with a
 // small margin. cy is the on-screen y of the subject's local origin.
@@ -1047,6 +1098,7 @@ const ANIMALS = {
     sheep:  { makeZones: makeSheepZones,  decor: drawSheepDecor,  scale: 1.96, cy: 181 },
     house:  { makeZones: makeHouseZones,  decor: drawHouseDecor,  scale: 1.60, cy: 213 },
     tree:   { makeZones: makeTreeZones,   decor: drawTreeDecor,   scale: 2.05, cy: 186 },
+    flower: { makeZones: makeFlowerZones, decor: drawFlowerDecor,  scale: 1.95, cy: 187 },
 };
 
 let currentScale = 1, currentCY = CY;
