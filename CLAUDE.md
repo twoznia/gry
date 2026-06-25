@@ -68,25 +68,8 @@ node słówka/tools/generate_manifest.mjs
 
 `add_questions.mjs` writes to JSON files in `pytania/data/` (not directly to the CSV). After generation, questions must be merged manually into `pytania/dane/pytania.csv`.
 
-## Agents and skills
-
-This project uses a Claude Code agent + skill system in `.claude/`. Use the named agents for common workflows — do not inline their logic:
-
-| Agent | When to use |
-|-------|-------------|
-| `add-new-game` | Create a new game folder, scaffold files, sync root index/README/status |
-| `refresh-index-and-readme` | Sync root `index.html`, `README.md`, `status.md` after any game change |
-| `add-quiz-questions` | Add/search/validate questions in pytania or pytanka CSV |
-| `add-slowka-words` | Add words to existing słówka sets, create new sets, regenerate manifest |
-| `csv-duplicate-checker` | Detect exact/column/fuzzy duplicates in any CSV |
-| `generate-game-readme` | Create or update the README inside a specific game folder |
-
-After adding a new game, always run `refresh-index-and-readme` to keep `index.html`, `README.md`, and `status.md` in sync.
-
 ## Adding a new game
 
 1. Create `<game-folder>/index.html` (and optionally `style.css`, `script.js`)
 2. Add `<a class="back-link" href="../">← Wróć</a>` inside `<body>`
-3. Run the `refresh-index-and-readme` agent to update `index.html`, `README.md`, and `status.md`
-
-Or use the `add-new-game` agent which handles all steps automatically.
+3. Update `index.html`, `README.md`, and `status.md` in the repo root to include the new game
