@@ -8,9 +8,9 @@
 </head>
 <body>
     <a class="back-link" href="../">← Wróć</a>
-    <div id="lang-switcher" style="position:fixed;top:10px;right:10px;z-index:100;display:flex;gap:4px;">
-        <button id="btn-pl" onclick="setLang('pl')" style="background:rgba(0,0,0,0.55);border:1px solid #888;border-radius:20px;padding:4px 10px;line-height:0;cursor:pointer;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;touch-action:manipulation;-webkit-tap-highlight-color:transparent;"><img src="https://flagcdn.com/24x18/pl.png" width="24" height="18" alt="Polski" style="display:block;border-radius:3px;"></button>
-        <button id="btn-en" onclick="setLang('en')" style="background:rgba(0,0,0,0.55);border:1px solid #888;border-radius:20px;padding:4px 10px;line-height:0;cursor:pointer;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;touch-action:manipulation;-webkit-tap-highlight-color:transparent;"><img src="https://flagcdn.com/24x18/gb.png" width="24" height="18" alt="English" style="display:block;border-radius:3px;"></button>
+    <div id="lang-switcher">
+        <button id="btn-pl" class="lang-btn" onclick="setLang('pl')"><img src="https://flagcdn.com/24x18/pl.png" width="24" height="18" alt="Polski"></button>
+        <button id="btn-en" class="lang-btn" onclick="setLang('en')"><img src="https://flagcdn.com/24x18/gb.png" width="24" height="18" alt="English"></button>
     </div>
     <canvas id="gameCanvas"></canvas>
 
