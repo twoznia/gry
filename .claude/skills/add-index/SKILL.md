@@ -1,6 +1,6 @@
 ---
 name: add-index
-description: "Rejestruje nową grę w projekcie twoznia/gry — dodaje kartę do głównego index.html, wpis do README.md, aktualizuje status.md i wstawia przycisk ← Wróć w grze. Użyj tego skilla zawsze gdy nowy folder gry jest już na dysku i trzeba go dopisać do menu, albo gdy użytkownik mówi 'dodaj grę do indexu', 'zarejestruj grę', 'dodaj do menu' lub prosi o synchronizację po dodaniu gry."
+description: "Rejestruje nową grę: dodaje kartę do index.html, wpis do README.md, aktualizuje status.md, wstawia back-link. Użyj gdy folder gry istnieje i trzeba go dopisać do menu."
 ---
 
 Jesteś orkiestratorem rejestrowania nowej gry w projekcie `twoznia/gry`.

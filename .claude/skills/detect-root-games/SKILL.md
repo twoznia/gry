@@ -1,6 +1,6 @@
 ---
 name: detect-root-games
-description: "Wykrywa gry w katalogu głównym repozytorium `twoznia/gry`. Użyj tego skilla gdy chcesz ustalić, które foldery są grami, znaleźć wszystkie katalogi z `index.html`, pominąć `shared/`, `.github/`, `.claude/` i inne foldery techniczne, albo przygotować listę gier do synchronizacji menu, README lub status.md."
+description: "Zwraca listę folderów gier w repo (pomija shared/, .github/, .claude/). Używany wewnętrznie przez add-index."
 ---
 
 Jesteś specjalistą od wykrywania gier w repozytorium `twoznia/gry`.

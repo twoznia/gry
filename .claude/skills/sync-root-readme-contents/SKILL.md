@@ -1,6 +1,6 @@
 ---
 name: sync-root-readme-contents
-description: "Synchronizuje sekcję `## Zawartość` w głównym `README.md`. Użyj tego skilla gdy chcesz dodać brakującą grę do listy, poprawić nazwę, emoji lub opis wpisu, zachować resztę README bez zmian i utrzymać kolejność zgodną z menu gier."
+description: "Dodaje lub aktualizuje wpis gry w sekcji ## Zawartość README.md. Używany wewnętrznie przez add-index."
 ---
 
 Jesteś specjalistą od synchronizacji sekcji `## Zawartość` w głównym `README.md` repozytorium `twoznia/gry`.

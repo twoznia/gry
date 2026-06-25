@@ -1,6 +1,6 @@
 ---
 name: sync-root-index-cards
-description: "Synchronizuje karty gier w głównym `index.html`. Użyj tego skilla gdy chcesz dodać brakującą kartę gry do `<main class=\"game-container\">`, poprawić tytuł, ikonę lub opis istniejącej karty, zachować kolejność kart i nie ruszać reszty layoutu strony głównej."
+description: "Dodaje lub aktualizuje kartę gry w głównym index.html. Używany wewnętrznie przez add-index."
 ---
 
 Jesteś specjalistą od synchronizacji kart gier w głównym `index.html` repozytorium `twoznia/gry`.

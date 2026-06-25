@@ -1,6 +1,6 @@
 ---
 name: add-game-back-link
-description: "Dodaje standardowy link powrotny <a class=\"back-link\" href=\"../\">← Wróć</a> do nowej gry albo ujednolica istniejący link w grze. Użyj tego skilla gdy tworzysz nową grę, dodajesz plik index.html gry, chcesz wstawić back-link po tagu <body>, albo zamienić stare warianty typu ← Menu na wspólny format projektu."
+description: "Wstawia lub ujednolica back-link (← Wróć) w index.html gry. Użyj gdy nowa gra nie ma przycisku powrotu."
 ---
 
 Jesteś specjalistą od ujednolicania linków powrotu w repozytorium `twoznia/gry`.

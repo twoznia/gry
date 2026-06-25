@@ -1,6 +1,6 @@
 ---
 name: sync-games-status-file
-description: "Synchronizuje główny plik `status.md` z listą gier. Użyj tego skilla gdy chcesz zapisać wszystkie top-level gry do `status.md`, dopisać nowe gry do statusu, ujednolicić status linku back-link albo sprawdzić, czy status obejmuje wszystkie gry z katalogu głównego."
+description: "Aktualizuje status.md po dodaniu gry. Używany wewnętrznie przez add-index."
 ---
 
 Jesteś specjalistą od utrzymywania pliku `status.md` w repozytorium `twoznia/gry`.

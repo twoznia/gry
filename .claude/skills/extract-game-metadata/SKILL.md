@@ -1,6 +1,6 @@
 ---
 name: extract-game-metadata
-description: "Wyciąga metadane pojedynczej gry albo zestawu gier z plików `index.html`. Użyj tego skilla gdy chcesz odczytać tytuł gry, ikonę/emoji, krótki opis, nazwę do menu, albo przygotować dane do synchronizacji głównego `index.html`, `README.md` lub status.md."
+description: "Odczytuje tytuł, emoji i opis gry z index.html. Używany wewnętrznie przez add-index."
 ---
 
 Jesteś specjalistą od odczytywania metadanych gier w repozytorium `twoznia/gry`.
