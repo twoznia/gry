@@ -104,7 +104,8 @@
     let stroking = false;
     let blade = [];                 // {x,y,t}
     let strokeSliced = new Set();   // ids sliced in the current stroke
-    let strokeFruitCount = 0;       // fruits sliced in the current stroke
+    let strokeFruitCount = 0;       // combo length — resets on direction change
+    let comboDirX = 0, comboDirY = 0; // current swipe direction signs
     let flashUntil = 0;             // red flash (bomb) timestamp
 
     // ─── Records ───────────────────────────────────────────────────────────────────
@@ -176,6 +177,10 @@
     // ─── Slicing ───────────────────────────────────────────────────────────────────
     function sliceCheck(ax, ay, bx, by) {
         if (phase === 'playing') {
+            // Combo resets when the swipe reverses direction (left<->right or up<->down).
+            const sdx = bx - ax, sdy = by - ay, MIN = 4;
+            if (Math.abs(sdx) > MIN) { const s = Math.sign(sdx); if (comboDirX !== 0 && s !== comboDirX) strokeFruitCount = 0; comboDirX = s; }
+            if (Math.abs(sdy) > MIN) { const s = Math.sign(sdy); if (comboDirY !== 0 && s !== comboDirY) strokeFruitCount = 0; comboDirY = s; }
             for (const f of fruits) {
                 if (strokeSliced.has(f.id)) continue;
                 if (distToSeg(f.x, f.y, ax, ay, bx, by) <= f.r) {
@@ -189,7 +194,7 @@
                         addFloat(f.x, f.y, '-3s 💣', '#f87171');
                     } else {
                         strokeFruitCount++;
-                        const pts = strokeFruitCount;      // 1, 2, 3 ... within one stroke
+                        const pts = 5 * strokeFruitCount + 5;   // 10, 15, 20, 25 ... within one combo
                         score += pts;
                         scoreDisplayEl.textContent = score;
                         addFloat(f.x, f.y, '+' + pts + (strokeFruitCount >= 2 ? ' COMBO!' : ''), strokeFruitCount >= 2 ? '#fbbf24' : '#86efac');
@@ -218,6 +223,7 @@
         stroking = true;
         strokeSliced = new Set();
         strokeFruitCount = 0;
+        comboDirX = 0; comboDirY = 0;
         blade = [];
         const p = pointerPos(e);
         blade.push({ x: p.x, y: p.y, t: performance.now() });
