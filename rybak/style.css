@@ -1,4 +1,4 @@
-                body { margin: 0; overflow: hidden; background: #1a1a1a; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
+                body { margin: 0; overflow: hidden; background: #1a1a1a; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100dvh; }
                 a.back-link {
                         position: fixed;
                         top: 10px;

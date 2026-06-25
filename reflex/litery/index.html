@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         #gameCanvas { touch-action: none; background-color: #1a1a1a; border-radius: 8px; cursor: crosshair; }
-        body { background-color: #111; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: #111; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100dvh; margin: 0; font-family: 'Inter', sans-serif; }
         .back-link { position: fixed; top: 10px; left: 10px; z-index: 100; background: #334155; color: #fff; border: 1px solid #475569; border-radius: 8px; padding: 8px 14px; text-decoration: none; font-size: 13px; }
         .back-link:hover { background: #475569; }
         #main-btn:disabled { opacity: 0.5; pointer-events: none; }
@@ -19,7 +19,7 @@
     <div class="text-center w-full max-w-6xl px-4">
         <h1 id="game-title" class="text-3xl font-bold mb-4 text-purple-400">Time Trial: Szybkość i Litery</h1>
         
-        <div class="flex flex-wrap justify-between w-full gap-2 md:gap-8 bg-gray-800 p-4 rounded-xl mb-4 shadow-lg border border-gray-700 text-sm md:text-xl">
+        <div class="flex flex-wrap justify-between w-full gap-2 md:gap-6 bg-gray-800 p-3 rounded-xl mb-3 shadow-lg border border-gray-700 text-sm md:text-base">
             <div>Etap: <span id="current-level-display" class="font-bold text-blue-400">1</span>/<span id="max-level-display">4</span></div>
             <div>Pozostało: <span id="remaining" class="font-bold text-green-400">0</span></div>
             <div id="target-box" class="hidden">Szukaj: <span id="target-number" class="font-bold text-purple-400">-</span></div>
@@ -28,7 +28,7 @@
         </div>
         
         <div id="game-container" class="relative">
-            <canvas id="gameCanvas" class="w-full shadow-2xl" style="height: clamp(350px, calc(100vh - 180px), 800px)"></canvas>
+            <canvas id="gameCanvas" class="w-full shadow-2xl" style="height: clamp(350px, calc(100dvh - 180px), 800px)"></canvas>
             
             <div id="overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-black/85 rounded-lg p-4 z-10 overflow-y-auto">
                 <div id="overlay-content" class="w-full max-w-md text-center">

@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         #gameCanvas { touch-action: none; background-color: #1a1a1a; border-radius: 8px; cursor: none; display: block; }
-        body { background-color: #111; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: #111; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100dvh; margin: 0; font-family: 'Inter', sans-serif; }
         .back-link { position: fixed; top: 10px; left: 10px; z-index: 100; background: #334155; color: #fff; border: 1px solid #475569; border-radius: 8px; padding: 8px 14px; text-decoration: none; font-size: 13px; }
         .back-link:hover { background: #475569; }
         #main-btn:disabled { opacity: 0.5; pointer-events: none; }
@@ -26,7 +26,7 @@
     </div>
 
     <div id="game-container" class="relative">
-        <canvas id="gameCanvas" class="w-full shadow-2xl" style="height: clamp(260px, calc(100vh - 300px), 680px)"></canvas>
+        <canvas id="gameCanvas" class="w-full shadow-2xl" style="height: clamp(260px, calc(100dvh - 300px), 680px)"></canvas>
 
         <div id="overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-black/85 rounded-lg p-4 z-10 overflow-y-auto">
             <div id="overlay-content" class="w-full max-w-md text-center">
