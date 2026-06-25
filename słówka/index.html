@@ -168,30 +168,31 @@
     let selectedOxfordLevel = ALL_WORDS_VALUE;
     const levelOptionsCache = new Map();
 
-    // ─── Wymowa angielska (Web Speech API) dla kategorii Oxford3000 ─────────────
-    let audioEnabled = false;                         // true tylko dla zestawów Oxford3000
+    // ─── Wymowa (Web Speech API) — oba języki, każdy tryb i zestaw ──────────────
     const speechAvailable = 'speechSynthesis' in window;
+    let audioEnabled = speechAvailable;   // głośnik dostępny zawsze, gdy przeglądarka wspiera syntezę mowy
 
-    function speakEnglish(text) {
+    function speak(text, lang) {
         if (!speechAvailable || !text) return;
         try {
-            window.speechSynthesis.cancel();          // przerwij poprzednie czytanie
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-US';                 // wymowa angielska
+            window.speechSynthesis.cancel();                 // przerwij poprzednie czytanie
+            // "/" zwykle oddziela warianty (np. "jeden / jakiś") — czytaj je jako pauzę
+            const utterance = new SpeechSynthesisUtterance(String(text).replace(/\s*\/\s*/g, ', '));
+            utterance.lang = lang || 'en-US';
             window.speechSynthesis.speak(utterance);
         } catch (e) { /* brak syntezy mowy — ignoruj */ }
     }
 
-    // Dokleja przycisk 🔊 (wymowa angielska słowa) do podanego boksu.
-    function attachAudioButton(boxEl, englishWord) {
-        if (!audioEnabled || !speechAvailable || !boxEl || !englishWord) return;
+    // Dokleja przycisk 🔊 czytający `text` w języku `lang` do podanego boksu.
+    function attachAudioButton(boxEl, text, lang) {
+        if (!audioEnabled || !boxEl || !text) return;
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'audio-btn';
         btn.textContent = '🔊';
-        btn.setAttribute('aria-label', 'Odsłuchaj wymowę: ' + englishWord);
+        btn.setAttribute('aria-label', 'Odsłuchaj: ' + text);
         btn.style.cssText = 'margin-left:10px;border:none;background:#dfe6e9;color:#2d3436;border-radius:50%;width:42px;height:42px;font-size:1.1rem;cursor:pointer;vertical-align:middle;line-height:1;flex-shrink:0;';
-        btn.addEventListener('click', (e) => { e.stopPropagation(); speakEnglish(englishWord); });
+        btn.addEventListener('click', (e) => { e.stopPropagation(); speak(text, lang); });
         boxEl.appendChild(btn);
     }
 
@@ -380,8 +381,8 @@
 
         sessionQueue = parseCsvText(csvText);
 
-        // Wymowa angielska (Web Speech API) tylko dla zestawów Oxford3000
-        audioEnabled = (source === 'github' && document.getElementById('categorySelect').value === OXFORD_CATEGORY_NAME);
+        // Wymowa działa dla obu języków i każdego zestawu (gdy przeglądarka wspiera syntezę)
+        audioEnabled = speechAvailable;
 
         let selectedLevel = ALL_WORDS_VALUE;
         if (source === 'github' && document.getElementById('categorySelect').value === OXFORD_CATEGORY_NAME) {
@@ -422,9 +423,13 @@
         setWordContent(document.getElementById('questionBox'), mode === 'pl_en' ? item.pl : item.en, mode === 'en_pl' ? item.type : '');
         setWordContent(document.getElementById('answerBox'), mode === 'pl_en' ? item.en : item.pl, mode === 'pl_en' ? item.type : '');
 
-        // Przycisk wymowy 🔊 przy angielskim słowie (pytanie w trybie en_pl, odpowiedź w pl_en)
-        const englishBox = mode === 'pl_en' ? document.getElementById('answerBox') : document.getElementById('questionBox');
-        attachAudioButton(englishBox, item.en);
+        // Głośnik 🔊 przy obu słowach — każde czytane w swoim języku, niezależnie od trybu
+        const qLang = mode === 'pl_en' ? 'pl-PL' : 'en-US';
+        const qText = mode === 'pl_en' ? item.pl : item.en;
+        const aLang = mode === 'pl_en' ? 'en-US' : 'pl-PL';
+        const aText = mode === 'pl_en' ? item.en : item.pl;
+        attachAudioButton(document.getElementById('questionBox'), qText, qLang);
+        attachAudioButton(document.getElementById('answerBox'), aText, aLang);
 
         document.getElementById('answerBox').classList.add('hidden');
         document.getElementById('controls').classList.add('hidden');
