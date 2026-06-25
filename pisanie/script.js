@@ -24,6 +24,11 @@ function setLang(l) {
     document.getElementById('ov-title').textContent   = lang === 'en' ? 'Excellent!' : 'Świetnie!';
     document.getElementById('ov-text').textContent    = lang === 'en' ? 'Well done!' : 'Brawo!';
     document.getElementById('ov-btn').textContent     = lang === 'en' ? 'Next →' : 'Dalej →';
+    // ukryj głośnik, gdy przeglądarka nie wspiera syntezy mowy
+    if (!('speechSynthesis' in window)) {
+        const sb = document.getElementById('speak-btn');
+        if (sb) sb.style.display = 'none';
+    }
 })();
 
 /* ─────────────── Word data ─────────────── */
@@ -528,6 +533,22 @@ function loadWord() {
 
     renderAll();
     document.getElementById('check-btn').classList.remove('show');
+}
+
+/* ─────────────── Wymowa (Web Speech API) ─────────────── */
+const speechAvailable = 'speechSynthesis' in window;
+
+function speakWord() {
+    if (!speechAvailable) return;
+    const entry = currentLevelWords[wordIdx];
+    if (!entry || !entry.word) return;
+    try {
+        window.speechSynthesis.cancel();                 // przerwij poprzednie czytanie
+        // czytaj w języku interfejsu — zestaw słów jest dobrany do języka
+        const utterance = new SpeechSynthesisUtterance(String(entry.word).replace(/\s*\/\s*/g, ', '));
+        utterance.lang = lang === 'en' ? 'en-US' : 'pl-PL';
+        window.speechSynthesis.speak(utterance);
+    } catch (e) { /* brak syntezy mowy — ignoruj */ }
 }
 
 /* ─────────────── Hint ─────────────── */

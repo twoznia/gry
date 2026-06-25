@@ -23,7 +23,10 @@
 
 <div id="game-card">
     <div id="emoji-area"></div>
-    <button id="hint-btn" onclick="toggleHint()">💡 Podpowiedź</button>
+    <div id="hint-row">
+        <button id="hint-btn" onclick="toggleHint()">💡 Podpowiedź</button>
+        <button id="speak-btn" onclick="speakWord()" aria-label="Odsłuchaj słowo" title="Odsłuchaj słowo">🔊</button>
+    </div>
     <div id="word-hint" class="hint-hidden"></div>
     <div id="answer-boxes"></div>
     <button id="check-btn" onclick="checkAnswer()">Sprawdź</button>
