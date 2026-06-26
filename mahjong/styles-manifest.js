@@ -1164,52 +1164,1309 @@ window.MAHJONG_STYLE_MANIFEST = {
         ]
     },
     {
-      id: 'medieval3',
-      name: 'Medieval III',
-      tiles: [
-        { matchKey: 'medieval3::pory_jesien',   src: 'pic/medieval3/1/pory/pory_jesien.svg',   count: 1 },
-        { matchKey: 'medieval3::pory_lato',      src: 'pic/medieval3/1/pory/pory_lato.svg',      count: 1 },
-        { matchKey: 'medieval3::pory_wiosna',    src: 'pic/medieval3/1/pory/pory_wiosna.svg',    count: 1 },
-        { matchKey: 'medieval3::pory_zima',      src: 'pic/medieval3/1/pory/pory_zima.svg',      count: 1 },
-        { matchKey: 'medieval3::skarb_czerwony', src: 'pic/medieval3/1/skarb/skarb_czerwony.svg', count: 1 },
-        { matchKey: 'medieval3::skart_bialy',    src: 'pic/medieval3/1/skarb/skart_bialy.svg',   count: 1 },
-        { matchKey: 'medieval3::skart_niebieski',src: 'pic/medieval3/1/skarb/skart_niebieski.svg',count: 1 },
-        { matchKey: 'medieval3::skart_zielony',  src: 'pic/medieval3/1/skarb/skart_zielony.svg', count: 1 },
-        { matchKey: 'medieval3::b_biala',        src: 'pic/medieval3/4/bramy/b_biała.svg',       count: 4 },
-        { matchKey: 'medieval3::b_czerwona',     src: 'pic/medieval3/4/bramy/b_czerwona.svg',    count: 4 },
-        { matchKey: 'medieval3::b_jasnazielen',  src: 'pic/medieval3/4/bramy/b_jasnazielen.svg', count: 4 },
-        { matchKey: 'medieval3::b_niebieska',    src: 'pic/medieval3/4/bramy/b_niebieska.svg',   count: 4 },
-        { matchKey: 'medieval3::b_pomaranczowa', src: 'pic/medieval3/4/bramy/b_pomaranczowa.svg',count: 4 },
-        { matchKey: 'medieval3::b_rozowa',       src: 'pic/medieval3/4/bramy/b_rozowa.svg',      count: 4 },
-        { matchKey: 'medieval3::b_szara',        src: 'pic/medieval3/4/bramy/b_szara.svg',       count: 4 },
-        { matchKey: 'medieval3::b_zielona',      src: 'pic/medieval3/4/bramy/b_zielona.svg',     count: 4 },
-        { matchKey: 'medieval3::b_zolta',        src: 'pic/medieval3/4/bramy/b_zolta.svg',       count: 4 },
-        { matchKey: 'medieval3::bron_halabardy', src: 'pic/medieval3/4/bron/bron_halabardy.svg', count: 4 },
-        { matchKey: 'medieval3::bron_kusza',     src: 'pic/medieval3/4/bron/bron_kusza.svg',     count: 4 },
-        { matchKey: 'medieval3::bron_luk',       src: 'pic/medieval3/4/bron/bron_luk.svg',       count: 4 },
-        { matchKey: 'medieval3::bron_miecze',    src: 'pic/medieval3/4/bron/bron_miecze.svg',    count: 4 },
-        { matchKey: 'medieval3::bron_palka',     src: 'pic/medieval3/4/bron/bron_palka.svg',     count: 4 },
-        { matchKey: 'medieval3::bron_pochodnie', src: 'pic/medieval3/4/bron/bron_pochodnie.svg', count: 4 },
-        { matchKey: 'medieval3::bron_rycerz',    src: 'pic/medieval3/4/bron/bron_rycerz.svg',    count: 4 },
-        { matchKey: 'medieval3::bron_szpady',    src: 'pic/medieval3/4/bron/bron_szpady.svg',    count: 4 },
-        { matchKey: 'medieval3::bron_x',         src: 'pic/medieval3/4/bron/bron_x.svg',         count: 4 },
-        { matchKey: 'medieval3::strony_e',       src: 'pic/medieval3/4/strony/strony_e.svg',     count: 4 },
-        { matchKey: 'medieval3::strony_n',       src: 'pic/medieval3/4/strony/strony_n.svg',     count: 4 },
-        { matchKey: 'medieval3::strony_s',       src: 'pic/medieval3/4/strony/strony_s.svg',     count: 4 },
-        { matchKey: 'medieval3::strony_w',       src: 'pic/medieval3/4/strony/strony_w.svg',     count: 4 },
-        { matchKey: 'medieval3::szachy_bishop',  src: 'pic/medieval3/4/szachy/szachy_bishop.svg',count: 4 },
-        { matchKey: 'medieval3::szachy_kon',     src: 'pic/medieval3/4/szachy/szachy_kon.svg',   count: 4 },
-        { matchKey: 'medieval3::szachy_wieza',   src: 'pic/medieval3/4/szachy/szachy_wieza.svg', count: 4 },
-        { matchKey: 'medieval3::t_3krzyze',      src: 'pic/medieval3/4/tarcze/t_3krzyze.svg',    count: 4 },
-        { matchKey: 'medieval3::t_brazowa',      src: 'pic/medieval3/4/tarcze/t_brazowa.svg',    count: 4 },
-        { matchKey: 'medieval3::t_gryf',         src: 'pic/medieval3/4/tarcze/t_gryf.svg',       count: 4 },
-        { matchKey: 'medieval3::t_krzyz',        src: 'pic/medieval3/4/tarcze/t_krzyz.svg',      count: 4 },
-        { matchKey: 'medieval3::t_malta',        src: 'pic/medieval3/4/tarcze/t_malta.svg',      count: 4 },
-        { matchKey: 'medieval3::t_sierzant',     src: 'pic/medieval3/4/tarcze/t_sierzant.svg',   count: 4 },
-        { matchKey: 'medieval3::t_szachy',       src: 'pic/medieval3/4/tarcze/t_szachy.svg',     count: 4 },
-        { matchKey: 'medieval3::t_x',            src: 'pic/medieval3/4/tarcze/t_x.svg',          count: 4 },
-        { matchKey: 'medieval3::t_y',            src: 'pic/medieval3/4/tarcze/t_y.svg',          count: 4 },
-      ]
+        "id": "medieval3",
+        "name": "Medieval III",
+        "tileCount": 144,
+        "layoutCompatible": true,
+        "validationErrors": [],
+        "items": [
+            {
+                "styleId": "medieval3",
+                "usageCount": 1,
+                "type": "pory",
+                "name": "pory_jesien",
+                "label": "pory jesien",
+                "src": "pic/medieval3/1/pory/pory_jesien.svg",
+                "matchKey": "medieval3::1::pory"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 1,
+                "type": "pory",
+                "name": "pory_lato",
+                "label": "pory lato",
+                "src": "pic/medieval3/1/pory/pory_lato.svg",
+                "matchKey": "medieval3::1::pory"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 1,
+                "type": "pory",
+                "name": "pory_wiosna",
+                "label": "pory wiosna",
+                "src": "pic/medieval3/1/pory/pory_wiosna.svg",
+                "matchKey": "medieval3::1::pory"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 1,
+                "type": "pory",
+                "name": "pory_zima",
+                "label": "pory zima",
+                "src": "pic/medieval3/1/pory/pory_zima.svg",
+                "matchKey": "medieval3::1::pory"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 1,
+                "type": "skarb",
+                "name": "skarb_czerwony",
+                "label": "skarb czerwony",
+                "src": "pic/medieval3/1/skarb/skarb_czerwony.svg",
+                "matchKey": "medieval3::1::skarb"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 1,
+                "type": "skarb",
+                "name": "skart_bialy",
+                "label": "skart bialy",
+                "src": "pic/medieval3/1/skarb/skart_bialy.svg",
+                "matchKey": "medieval3::1::skarb"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 1,
+                "type": "skarb",
+                "name": "skart_niebieski",
+                "label": "skart niebieski",
+                "src": "pic/medieval3/1/skarb/skart_niebieski.svg",
+                "matchKey": "medieval3::1::skarb"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 1,
+                "type": "skarb",
+                "name": "skart_zielony",
+                "label": "skart zielony",
+                "src": "pic/medieval3/1/skarb/skart_zielony.svg",
+                "matchKey": "medieval3::1::skarb"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_biała",
+                "label": "b biała",
+                "src": "pic/medieval3/4/bramy/b_biała.svg",
+                "matchKey": "medieval3::4::bramy::b_biała"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_biała",
+                "label": "b biała",
+                "src": "pic/medieval3/4/bramy/b_biała.svg",
+                "matchKey": "medieval3::4::bramy::b_biała"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_biała",
+                "label": "b biała",
+                "src": "pic/medieval3/4/bramy/b_biała.svg",
+                "matchKey": "medieval3::4::bramy::b_biała"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_biała",
+                "label": "b biała",
+                "src": "pic/medieval3/4/bramy/b_biała.svg",
+                "matchKey": "medieval3::4::bramy::b_biała"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_czerwona",
+                "label": "b czerwona",
+                "src": "pic/medieval3/4/bramy/b_czerwona.svg",
+                "matchKey": "medieval3::4::bramy::b_czerwona"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_czerwona",
+                "label": "b czerwona",
+                "src": "pic/medieval3/4/bramy/b_czerwona.svg",
+                "matchKey": "medieval3::4::bramy::b_czerwona"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_czerwona",
+                "label": "b czerwona",
+                "src": "pic/medieval3/4/bramy/b_czerwona.svg",
+                "matchKey": "medieval3::4::bramy::b_czerwona"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_czerwona",
+                "label": "b czerwona",
+                "src": "pic/medieval3/4/bramy/b_czerwona.svg",
+                "matchKey": "medieval3::4::bramy::b_czerwona"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_jasnazielen",
+                "label": "b jasnazielen",
+                "src": "pic/medieval3/4/bramy/b_jasnazielen.svg",
+                "matchKey": "medieval3::4::bramy::b_jasnazielen"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_jasnazielen",
+                "label": "b jasnazielen",
+                "src": "pic/medieval3/4/bramy/b_jasnazielen.svg",
+                "matchKey": "medieval3::4::bramy::b_jasnazielen"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_jasnazielen",
+                "label": "b jasnazielen",
+                "src": "pic/medieval3/4/bramy/b_jasnazielen.svg",
+                "matchKey": "medieval3::4::bramy::b_jasnazielen"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_jasnazielen",
+                "label": "b jasnazielen",
+                "src": "pic/medieval3/4/bramy/b_jasnazielen.svg",
+                "matchKey": "medieval3::4::bramy::b_jasnazielen"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_niebieska",
+                "label": "b niebieska",
+                "src": "pic/medieval3/4/bramy/b_niebieska.svg",
+                "matchKey": "medieval3::4::bramy::b_niebieska"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_niebieska",
+                "label": "b niebieska",
+                "src": "pic/medieval3/4/bramy/b_niebieska.svg",
+                "matchKey": "medieval3::4::bramy::b_niebieska"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_niebieska",
+                "label": "b niebieska",
+                "src": "pic/medieval3/4/bramy/b_niebieska.svg",
+                "matchKey": "medieval3::4::bramy::b_niebieska"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_niebieska",
+                "label": "b niebieska",
+                "src": "pic/medieval3/4/bramy/b_niebieska.svg",
+                "matchKey": "medieval3::4::bramy::b_niebieska"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_pomaranczowa",
+                "label": "b pomaranczowa",
+                "src": "pic/medieval3/4/bramy/b_pomaranczowa.svg",
+                "matchKey": "medieval3::4::bramy::b_pomaranczowa"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_pomaranczowa",
+                "label": "b pomaranczowa",
+                "src": "pic/medieval3/4/bramy/b_pomaranczowa.svg",
+                "matchKey": "medieval3::4::bramy::b_pomaranczowa"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_pomaranczowa",
+                "label": "b pomaranczowa",
+                "src": "pic/medieval3/4/bramy/b_pomaranczowa.svg",
+                "matchKey": "medieval3::4::bramy::b_pomaranczowa"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_pomaranczowa",
+                "label": "b pomaranczowa",
+                "src": "pic/medieval3/4/bramy/b_pomaranczowa.svg",
+                "matchKey": "medieval3::4::bramy::b_pomaranczowa"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_rozowa",
+                "label": "b rozowa",
+                "src": "pic/medieval3/4/bramy/b_rozowa.svg",
+                "matchKey": "medieval3::4::bramy::b_rozowa"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_rozowa",
+                "label": "b rozowa",
+                "src": "pic/medieval3/4/bramy/b_rozowa.svg",
+                "matchKey": "medieval3::4::bramy::b_rozowa"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_rozowa",
+                "label": "b rozowa",
+                "src": "pic/medieval3/4/bramy/b_rozowa.svg",
+                "matchKey": "medieval3::4::bramy::b_rozowa"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_rozowa",
+                "label": "b rozowa",
+                "src": "pic/medieval3/4/bramy/b_rozowa.svg",
+                "matchKey": "medieval3::4::bramy::b_rozowa"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_szara",
+                "label": "b szara",
+                "src": "pic/medieval3/4/bramy/b_szara.svg",
+                "matchKey": "medieval3::4::bramy::b_szara"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_szara",
+                "label": "b szara",
+                "src": "pic/medieval3/4/bramy/b_szara.svg",
+                "matchKey": "medieval3::4::bramy::b_szara"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_szara",
+                "label": "b szara",
+                "src": "pic/medieval3/4/bramy/b_szara.svg",
+                "matchKey": "medieval3::4::bramy::b_szara"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_szara",
+                "label": "b szara",
+                "src": "pic/medieval3/4/bramy/b_szara.svg",
+                "matchKey": "medieval3::4::bramy::b_szara"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_zielona",
+                "label": "b zielona",
+                "src": "pic/medieval3/4/bramy/b_zielona.svg",
+                "matchKey": "medieval3::4::bramy::b_zielona"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_zielona",
+                "label": "b zielona",
+                "src": "pic/medieval3/4/bramy/b_zielona.svg",
+                "matchKey": "medieval3::4::bramy::b_zielona"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_zielona",
+                "label": "b zielona",
+                "src": "pic/medieval3/4/bramy/b_zielona.svg",
+                "matchKey": "medieval3::4::bramy::b_zielona"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_zielona",
+                "label": "b zielona",
+                "src": "pic/medieval3/4/bramy/b_zielona.svg",
+                "matchKey": "medieval3::4::bramy::b_zielona"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_zolta",
+                "label": "b zolta",
+                "src": "pic/medieval3/4/bramy/b_zolta.svg",
+                "matchKey": "medieval3::4::bramy::b_zolta"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_zolta",
+                "label": "b zolta",
+                "src": "pic/medieval3/4/bramy/b_zolta.svg",
+                "matchKey": "medieval3::4::bramy::b_zolta"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_zolta",
+                "label": "b zolta",
+                "src": "pic/medieval3/4/bramy/b_zolta.svg",
+                "matchKey": "medieval3::4::bramy::b_zolta"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bramy",
+                "name": "b_zolta",
+                "label": "b zolta",
+                "src": "pic/medieval3/4/bramy/b_zolta.svg",
+                "matchKey": "medieval3::4::bramy::b_zolta"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_halabardy",
+                "label": "bron halabardy",
+                "src": "pic/medieval3/4/bron/bron_halabardy.svg",
+                "matchKey": "medieval3::4::bron::bron_halabardy"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_halabardy",
+                "label": "bron halabardy",
+                "src": "pic/medieval3/4/bron/bron_halabardy.svg",
+                "matchKey": "medieval3::4::bron::bron_halabardy"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_halabardy",
+                "label": "bron halabardy",
+                "src": "pic/medieval3/4/bron/bron_halabardy.svg",
+                "matchKey": "medieval3::4::bron::bron_halabardy"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_halabardy",
+                "label": "bron halabardy",
+                "src": "pic/medieval3/4/bron/bron_halabardy.svg",
+                "matchKey": "medieval3::4::bron::bron_halabardy"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_kusza",
+                "label": "bron kusza",
+                "src": "pic/medieval3/4/bron/bron_kusza.svg",
+                "matchKey": "medieval3::4::bron::bron_kusza"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_kusza",
+                "label": "bron kusza",
+                "src": "pic/medieval3/4/bron/bron_kusza.svg",
+                "matchKey": "medieval3::4::bron::bron_kusza"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_kusza",
+                "label": "bron kusza",
+                "src": "pic/medieval3/4/bron/bron_kusza.svg",
+                "matchKey": "medieval3::4::bron::bron_kusza"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_kusza",
+                "label": "bron kusza",
+                "src": "pic/medieval3/4/bron/bron_kusza.svg",
+                "matchKey": "medieval3::4::bron::bron_kusza"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_luk",
+                "label": "bron luk",
+                "src": "pic/medieval3/4/bron/bron_luk.svg",
+                "matchKey": "medieval3::4::bron::bron_luk"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_luk",
+                "label": "bron luk",
+                "src": "pic/medieval3/4/bron/bron_luk.svg",
+                "matchKey": "medieval3::4::bron::bron_luk"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_luk",
+                "label": "bron luk",
+                "src": "pic/medieval3/4/bron/bron_luk.svg",
+                "matchKey": "medieval3::4::bron::bron_luk"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_luk",
+                "label": "bron luk",
+                "src": "pic/medieval3/4/bron/bron_luk.svg",
+                "matchKey": "medieval3::4::bron::bron_luk"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_miecze",
+                "label": "bron miecze",
+                "src": "pic/medieval3/4/bron/bron_miecze.svg",
+                "matchKey": "medieval3::4::bron::bron_miecze"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_miecze",
+                "label": "bron miecze",
+                "src": "pic/medieval3/4/bron/bron_miecze.svg",
+                "matchKey": "medieval3::4::bron::bron_miecze"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_miecze",
+                "label": "bron miecze",
+                "src": "pic/medieval3/4/bron/bron_miecze.svg",
+                "matchKey": "medieval3::4::bron::bron_miecze"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_miecze",
+                "label": "bron miecze",
+                "src": "pic/medieval3/4/bron/bron_miecze.svg",
+                "matchKey": "medieval3::4::bron::bron_miecze"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_palka",
+                "label": "bron palka",
+                "src": "pic/medieval3/4/bron/bron_palka.svg",
+                "matchKey": "medieval3::4::bron::bron_palka"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_palka",
+                "label": "bron palka",
+                "src": "pic/medieval3/4/bron/bron_palka.svg",
+                "matchKey": "medieval3::4::bron::bron_palka"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_palka",
+                "label": "bron palka",
+                "src": "pic/medieval3/4/bron/bron_palka.svg",
+                "matchKey": "medieval3::4::bron::bron_palka"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_palka",
+                "label": "bron palka",
+                "src": "pic/medieval3/4/bron/bron_palka.svg",
+                "matchKey": "medieval3::4::bron::bron_palka"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_pochodnie",
+                "label": "bron pochodnie",
+                "src": "pic/medieval3/4/bron/bron_pochodnie.svg",
+                "matchKey": "medieval3::4::bron::bron_pochodnie"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_pochodnie",
+                "label": "bron pochodnie",
+                "src": "pic/medieval3/4/bron/bron_pochodnie.svg",
+                "matchKey": "medieval3::4::bron::bron_pochodnie"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_pochodnie",
+                "label": "bron pochodnie",
+                "src": "pic/medieval3/4/bron/bron_pochodnie.svg",
+                "matchKey": "medieval3::4::bron::bron_pochodnie"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_pochodnie",
+                "label": "bron pochodnie",
+                "src": "pic/medieval3/4/bron/bron_pochodnie.svg",
+                "matchKey": "medieval3::4::bron::bron_pochodnie"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_rycerz",
+                "label": "bron rycerz",
+                "src": "pic/medieval3/4/bron/bron_rycerz.svg",
+                "matchKey": "medieval3::4::bron::bron_rycerz"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_rycerz",
+                "label": "bron rycerz",
+                "src": "pic/medieval3/4/bron/bron_rycerz.svg",
+                "matchKey": "medieval3::4::bron::bron_rycerz"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_rycerz",
+                "label": "bron rycerz",
+                "src": "pic/medieval3/4/bron/bron_rycerz.svg",
+                "matchKey": "medieval3::4::bron::bron_rycerz"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_rycerz",
+                "label": "bron rycerz",
+                "src": "pic/medieval3/4/bron/bron_rycerz.svg",
+                "matchKey": "medieval3::4::bron::bron_rycerz"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_szpady",
+                "label": "bron szpady",
+                "src": "pic/medieval3/4/bron/bron_szpady.svg",
+                "matchKey": "medieval3::4::bron::bron_szpady"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_szpady",
+                "label": "bron szpady",
+                "src": "pic/medieval3/4/bron/bron_szpady.svg",
+                "matchKey": "medieval3::4::bron::bron_szpady"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_szpady",
+                "label": "bron szpady",
+                "src": "pic/medieval3/4/bron/bron_szpady.svg",
+                "matchKey": "medieval3::4::bron::bron_szpady"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_szpady",
+                "label": "bron szpady",
+                "src": "pic/medieval3/4/bron/bron_szpady.svg",
+                "matchKey": "medieval3::4::bron::bron_szpady"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_x",
+                "label": "bron x",
+                "src": "pic/medieval3/4/bron/bron_x.svg",
+                "matchKey": "medieval3::4::bron::bron_x"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_x",
+                "label": "bron x",
+                "src": "pic/medieval3/4/bron/bron_x.svg",
+                "matchKey": "medieval3::4::bron::bron_x"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_x",
+                "label": "bron x",
+                "src": "pic/medieval3/4/bron/bron_x.svg",
+                "matchKey": "medieval3::4::bron::bron_x"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "bron",
+                "name": "bron_x",
+                "label": "bron x",
+                "src": "pic/medieval3/4/bron/bron_x.svg",
+                "matchKey": "medieval3::4::bron::bron_x"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_e",
+                "label": "strony e",
+                "src": "pic/medieval3/4/strony/strony_e.svg",
+                "matchKey": "medieval3::4::strony::strony_e"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_e",
+                "label": "strony e",
+                "src": "pic/medieval3/4/strony/strony_e.svg",
+                "matchKey": "medieval3::4::strony::strony_e"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_e",
+                "label": "strony e",
+                "src": "pic/medieval3/4/strony/strony_e.svg",
+                "matchKey": "medieval3::4::strony::strony_e"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_e",
+                "label": "strony e",
+                "src": "pic/medieval3/4/strony/strony_e.svg",
+                "matchKey": "medieval3::4::strony::strony_e"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_n",
+                "label": "strony n",
+                "src": "pic/medieval3/4/strony/strony_n.svg",
+                "matchKey": "medieval3::4::strony::strony_n"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_n",
+                "label": "strony n",
+                "src": "pic/medieval3/4/strony/strony_n.svg",
+                "matchKey": "medieval3::4::strony::strony_n"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_n",
+                "label": "strony n",
+                "src": "pic/medieval3/4/strony/strony_n.svg",
+                "matchKey": "medieval3::4::strony::strony_n"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_n",
+                "label": "strony n",
+                "src": "pic/medieval3/4/strony/strony_n.svg",
+                "matchKey": "medieval3::4::strony::strony_n"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_s",
+                "label": "strony s",
+                "src": "pic/medieval3/4/strony/strony_s.svg",
+                "matchKey": "medieval3::4::strony::strony_s"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_s",
+                "label": "strony s",
+                "src": "pic/medieval3/4/strony/strony_s.svg",
+                "matchKey": "medieval3::4::strony::strony_s"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_s",
+                "label": "strony s",
+                "src": "pic/medieval3/4/strony/strony_s.svg",
+                "matchKey": "medieval3::4::strony::strony_s"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_s",
+                "label": "strony s",
+                "src": "pic/medieval3/4/strony/strony_s.svg",
+                "matchKey": "medieval3::4::strony::strony_s"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_w",
+                "label": "strony w",
+                "src": "pic/medieval3/4/strony/strony_w.svg",
+                "matchKey": "medieval3::4::strony::strony_w"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_w",
+                "label": "strony w",
+                "src": "pic/medieval3/4/strony/strony_w.svg",
+                "matchKey": "medieval3::4::strony::strony_w"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_w",
+                "label": "strony w",
+                "src": "pic/medieval3/4/strony/strony_w.svg",
+                "matchKey": "medieval3::4::strony::strony_w"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "strony",
+                "name": "strony_w",
+                "label": "strony w",
+                "src": "pic/medieval3/4/strony/strony_w.svg",
+                "matchKey": "medieval3::4::strony::strony_w"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "szachy",
+                "name": "szachy_bishop",
+                "label": "szachy bishop",
+                "src": "pic/medieval3/4/szachy/szachy_bishop.svg",
+                "matchKey": "medieval3::4::szachy::szachy_bishop"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "szachy",
+                "name": "szachy_bishop",
+                "label": "szachy bishop",
+                "src": "pic/medieval3/4/szachy/szachy_bishop.svg",
+                "matchKey": "medieval3::4::szachy::szachy_bishop"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "szachy",
+                "name": "szachy_bishop",
+                "label": "szachy bishop",
+                "src": "pic/medieval3/4/szachy/szachy_bishop.svg",
+                "matchKey": "medieval3::4::szachy::szachy_bishop"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "szachy",
+                "name": "szachy_bishop",
+                "label": "szachy bishop",
+                "src": "pic/medieval3/4/szachy/szachy_bishop.svg",
+                "matchKey": "medieval3::4::szachy::szachy_bishop"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "szachy",
+                "name": "szachy_kon",
+                "label": "szachy kon",
+                "src": "pic/medieval3/4/szachy/szachy_kon.svg",
+                "matchKey": "medieval3::4::szachy::szachy_kon"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "szachy",
+                "name": "szachy_kon",
+                "label": "szachy kon",
+                "src": "pic/medieval3/4/szachy/szachy_kon.svg",
+                "matchKey": "medieval3::4::szachy::szachy_kon"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "szachy",
+                "name": "szachy_kon",
+                "label": "szachy kon",
+                "src": "pic/medieval3/4/szachy/szachy_kon.svg",
+                "matchKey": "medieval3::4::szachy::szachy_kon"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "szachy",
+                "name": "szachy_kon",
+                "label": "szachy kon",
+                "src": "pic/medieval3/4/szachy/szachy_kon.svg",
+                "matchKey": "medieval3::4::szachy::szachy_kon"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "szachy",
+                "name": "szachy_wieza",
+                "label": "szachy wieza",
+                "src": "pic/medieval3/4/szachy/szachy_wieza.svg",
+                "matchKey": "medieval3::4::szachy::szachy_wieza"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "szachy",
+                "name": "szachy_wieza",
+                "label": "szachy wieza",
+                "src": "pic/medieval3/4/szachy/szachy_wieza.svg",
+                "matchKey": "medieval3::4::szachy::szachy_wieza"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "szachy",
+                "name": "szachy_wieza",
+                "label": "szachy wieza",
+                "src": "pic/medieval3/4/szachy/szachy_wieza.svg",
+                "matchKey": "medieval3::4::szachy::szachy_wieza"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "szachy",
+                "name": "szachy_wieza",
+                "label": "szachy wieza",
+                "src": "pic/medieval3/4/szachy/szachy_wieza.svg",
+                "matchKey": "medieval3::4::szachy::szachy_wieza"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_3krzyze",
+                "label": "t 3krzyze",
+                "src": "pic/medieval3/4/tarcze/t_3krzyze.svg",
+                "matchKey": "medieval3::4::tarcze::t_3krzyze"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_3krzyze",
+                "label": "t 3krzyze",
+                "src": "pic/medieval3/4/tarcze/t_3krzyze.svg",
+                "matchKey": "medieval3::4::tarcze::t_3krzyze"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_3krzyze",
+                "label": "t 3krzyze",
+                "src": "pic/medieval3/4/tarcze/t_3krzyze.svg",
+                "matchKey": "medieval3::4::tarcze::t_3krzyze"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_3krzyze",
+                "label": "t 3krzyze",
+                "src": "pic/medieval3/4/tarcze/t_3krzyze.svg",
+                "matchKey": "medieval3::4::tarcze::t_3krzyze"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_brazowa",
+                "label": "t brazowa",
+                "src": "pic/medieval3/4/tarcze/t_brazowa.svg",
+                "matchKey": "medieval3::4::tarcze::t_brazowa"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_brazowa",
+                "label": "t brazowa",
+                "src": "pic/medieval3/4/tarcze/t_brazowa.svg",
+                "matchKey": "medieval3::4::tarcze::t_brazowa"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_brazowa",
+                "label": "t brazowa",
+                "src": "pic/medieval3/4/tarcze/t_brazowa.svg",
+                "matchKey": "medieval3::4::tarcze::t_brazowa"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_brazowa",
+                "label": "t brazowa",
+                "src": "pic/medieval3/4/tarcze/t_brazowa.svg",
+                "matchKey": "medieval3::4::tarcze::t_brazowa"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_gryf",
+                "label": "t gryf",
+                "src": "pic/medieval3/4/tarcze/t_gryf.svg",
+                "matchKey": "medieval3::4::tarcze::t_gryf"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_gryf",
+                "label": "t gryf",
+                "src": "pic/medieval3/4/tarcze/t_gryf.svg",
+                "matchKey": "medieval3::4::tarcze::t_gryf"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_gryf",
+                "label": "t gryf",
+                "src": "pic/medieval3/4/tarcze/t_gryf.svg",
+                "matchKey": "medieval3::4::tarcze::t_gryf"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_gryf",
+                "label": "t gryf",
+                "src": "pic/medieval3/4/tarcze/t_gryf.svg",
+                "matchKey": "medieval3::4::tarcze::t_gryf"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_krzyz",
+                "label": "t krzyz",
+                "src": "pic/medieval3/4/tarcze/t_krzyz.svg",
+                "matchKey": "medieval3::4::tarcze::t_krzyz"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_krzyz",
+                "label": "t krzyz",
+                "src": "pic/medieval3/4/tarcze/t_krzyz.svg",
+                "matchKey": "medieval3::4::tarcze::t_krzyz"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_krzyz",
+                "label": "t krzyz",
+                "src": "pic/medieval3/4/tarcze/t_krzyz.svg",
+                "matchKey": "medieval3::4::tarcze::t_krzyz"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_krzyz",
+                "label": "t krzyz",
+                "src": "pic/medieval3/4/tarcze/t_krzyz.svg",
+                "matchKey": "medieval3::4::tarcze::t_krzyz"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_malta",
+                "label": "t malta",
+                "src": "pic/medieval3/4/tarcze/t_malta.svg",
+                "matchKey": "medieval3::4::tarcze::t_malta"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_malta",
+                "label": "t malta",
+                "src": "pic/medieval3/4/tarcze/t_malta.svg",
+                "matchKey": "medieval3::4::tarcze::t_malta"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_malta",
+                "label": "t malta",
+                "src": "pic/medieval3/4/tarcze/t_malta.svg",
+                "matchKey": "medieval3::4::tarcze::t_malta"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_malta",
+                "label": "t malta",
+                "src": "pic/medieval3/4/tarcze/t_malta.svg",
+                "matchKey": "medieval3::4::tarcze::t_malta"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_sierzant",
+                "label": "t sierzant",
+                "src": "pic/medieval3/4/tarcze/t_sierzant.svg",
+                "matchKey": "medieval3::4::tarcze::t_sierzant"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_sierzant",
+                "label": "t sierzant",
+                "src": "pic/medieval3/4/tarcze/t_sierzant.svg",
+                "matchKey": "medieval3::4::tarcze::t_sierzant"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_sierzant",
+                "label": "t sierzant",
+                "src": "pic/medieval3/4/tarcze/t_sierzant.svg",
+                "matchKey": "medieval3::4::tarcze::t_sierzant"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_sierzant",
+                "label": "t sierzant",
+                "src": "pic/medieval3/4/tarcze/t_sierzant.svg",
+                "matchKey": "medieval3::4::tarcze::t_sierzant"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_szachy",
+                "label": "t szachy",
+                "src": "pic/medieval3/4/tarcze/t_szachy.svg",
+                "matchKey": "medieval3::4::tarcze::t_szachy"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_szachy",
+                "label": "t szachy",
+                "src": "pic/medieval3/4/tarcze/t_szachy.svg",
+                "matchKey": "medieval3::4::tarcze::t_szachy"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_szachy",
+                "label": "t szachy",
+                "src": "pic/medieval3/4/tarcze/t_szachy.svg",
+                "matchKey": "medieval3::4::tarcze::t_szachy"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_szachy",
+                "label": "t szachy",
+                "src": "pic/medieval3/4/tarcze/t_szachy.svg",
+                "matchKey": "medieval3::4::tarcze::t_szachy"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_x",
+                "label": "t x",
+                "src": "pic/medieval3/4/tarcze/t_x.svg",
+                "matchKey": "medieval3::4::tarcze::t_x"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_x",
+                "label": "t x",
+                "src": "pic/medieval3/4/tarcze/t_x.svg",
+                "matchKey": "medieval3::4::tarcze::t_x"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_x",
+                "label": "t x",
+                "src": "pic/medieval3/4/tarcze/t_x.svg",
+                "matchKey": "medieval3::4::tarcze::t_x"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_x",
+                "label": "t x",
+                "src": "pic/medieval3/4/tarcze/t_x.svg",
+                "matchKey": "medieval3::4::tarcze::t_x"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_y",
+                "label": "t y",
+                "src": "pic/medieval3/4/tarcze/t_y.svg",
+                "matchKey": "medieval3::4::tarcze::t_y"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_y",
+                "label": "t y",
+                "src": "pic/medieval3/4/tarcze/t_y.svg",
+                "matchKey": "medieval3::4::tarcze::t_y"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_y",
+                "label": "t y",
+                "src": "pic/medieval3/4/tarcze/t_y.svg",
+                "matchKey": "medieval3::4::tarcze::t_y"
+            },
+            {
+                "styleId": "medieval3",
+                "usageCount": 4,
+                "type": "tarcze",
+                "name": "t_y",
+                "label": "t y",
+                "src": "pic/medieval3/4/tarcze/t_y.svg",
+                "matchKey": "medieval3::4::tarcze::t_y"
+            }
+        ]
     }
 
   ]
