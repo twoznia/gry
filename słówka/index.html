@@ -3,159 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trener Słówek - Hybryda</title>
+    <title>Trener Słówek</title>
     <style>
-        :root { --primary: #6c5ce7; --success: #00b894; --danger: #d63031; --bg: #f0f2f5; }
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); display: flex; justify-content: center; align-items: center; min-height: 100dvh; margin: 0; padding: 20px; }
-        .container { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; max-width: 480px; text-align: center; }
-        h2 { margin-top: 0; color: #2d3436; }
-        .setup-group { text-align: left; margin-bottom: 15px; }
-        label { font-weight: 600; display: block; margin-bottom: 5px; font-size: 0.85rem; color: #636e72; }
-        select, input, button { padding: 12px; width: 100%; border-radius: 10px; border: 2px solid #dfe6e9; font-size: 1rem; box-sizing: border-box; }
-        .card { font-size: 2rem; font-weight: 800; margin: 25px 0; padding: 50px 20px; border: 3px solid var(--primary); border-radius: 15px; background: #fff; min-height: 120px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        .timer-bar { height: 6px; background: var(--danger); width: 100%; position: absolute; bottom: 0; left: 0; }
-        .btn-main { background: var(--primary); color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
-        .btn-secondary { background: white; color: var(--primary); border: 2px solid var(--primary); cursor: pointer; font-weight: bold; margin-top: 10px; }
-        .btn-correct { background: var(--success); color: white; border: none; cursor: pointer; margin-bottom: 10px; font-weight: bold; }
-        .btn-wrong { background: var(--danger); color: white; border: none; cursor: pointer; font-weight: bold; }
-        .hidden { display: none; }
-        .countdown-text { margin-top: 8px; font-size: 0.95rem; font-weight: 700; color: var(--danger); min-height: 1.2em; }
-        .stats-table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left; }
-        .stats-table th, .stats-table td { padding: 12px; border-bottom: 1px solid #dfe6e9; }
-        #loader { font-size: 0.8rem; color: var(--primary); margin-bottom: 10px; font-weight: bold; }
-        .local-reuse-box { margin-bottom: 12px; padding: 12px; border: 1px solid #dfe6e9; border-radius: 12px; background: #f8f9fb; }
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-        .word-stack { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-        .word-main { line-height: 1.1; }
-        .word-meta { font-size: 0.95rem; font-weight: 600; color: #636e72; }
-        @media (prefers-reduced-motion: reduce) {
-            .timer-bar { transition: none !important; }
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --card2: #253047;
+            --border: #334155;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+            --green: #22c55e;
+            --red: #ef4444;
         }
-        .back-link { position: fixed; top: 10px; left: 10px; z-index: 100; background: #334155; color: #fff; border: 1px solid #475569; border-radius: 8px; padding: 8px 14px; text-decoration: none; font-size: 13px; }
-        .back-link:hover { background: #475569; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 16px 24px;
+        }
+        .back-link {
+            position: fixed; top: 12px; left: 12px; z-index: 100;
+            background: var(--card); color: var(--text);
+            border: 1px solid var(--border); border-radius: 8px;
+            padding: 8px 14px; text-decoration: none; font-size: 13px;
+        }
+        .back-link:hover { background: var(--card2); }
+
+        .container {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            width: 100%; max-width: 500px;
+            padding: 28px 24px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+        }
+        .app-header { text-align: center; margin-bottom: 26px; }
+        .app-header h1 {
+            font-size: 1.45rem; font-weight: 700; letter-spacing: -0.5px;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        #loader {
+            color: var(--accent); font-size: 0.78rem; font-weight: 600;
+            margin-top: 6px; min-height: 1em;
+        }
+
+        .setup-section { margin-bottom: 20px; }
+        .section-label {
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.9px; color: var(--muted); margin-bottom: 9px;
+        }
+
+        /* Dataset row */
+        .select-row { display: flex; gap: 8px; }
+        .select-row select { flex: 1; }
+        select {
+            background: var(--card2); color: var(--text);
+            border: 1px solid var(--border); border-radius: 10px;
+            padding: 9px 32px 9px 12px; font-size: 0.88rem; width: 100%;
+            appearance: none; cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 11px center;
+        }
+        select:focus { outline: none; border-color: var(--accent); }
+        select:disabled { opacity: 0.45; cursor: default; }
+
+        /* Chips */
+        .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+        .chip {
+            padding: 7px 15px; border-radius: 20px;
+            border: 1px solid var(--border); background: var(--card2);
+            color: var(--muted); font-size: 0.84rem; font-weight: 600;
+            cursor: pointer; user-select: none; transition: all 0.13s;
+        }
+        .chip:hover { border-color: var(--accent); color: var(--accent); }
+        .chip.active { background: var(--accent); border-color: var(--accent); color: #0f172a; }
+
+        /* Direction toggle */
+        .direction-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .dir-btn {
+            padding: 11px 8px; border-radius: 12px;
+            border: 1px solid var(--border); background: var(--card2);
+            color: var(--muted); font-size: 0.88rem; font-weight: 600;
+            cursor: pointer; transition: all 0.13s;
+            display: flex; flex-direction: column; align-items: center; gap: 3px;
+        }
+        .dir-btn .flags { font-size: 1.2rem; }
+        .dir-btn .label { font-size: 0.68rem; opacity: 0.7; }
+        .dir-btn:hover { border-color: var(--accent); }
+        .dir-btn.active { background: rgba(56,189,248,0.12); border-color: var(--accent); color: var(--accent); }
+
+        /* Start button */
+        .btn-start {
+            width: 100%; padding: 14px; margin-top: 6px;
+            background: var(--accent); color: #0f172a;
+            border: none; border-radius: 12px;
+            font-size: 1rem; font-weight: 700; cursor: pointer;
+            transition: opacity 0.13s, transform 0.1s;
+        }
+        .btn-start:hover { opacity: 0.88; transform: translateY(-1px); }
+        .btn-start:active { transform: translateY(0); }
+
+        /* Local file section */
+        .local-toggle {
+            text-align: center; margin-top: 18px;
+            padding-top: 16px; border-top: 1px solid var(--border);
+        }
+        .local-toggle a { color: var(--muted); font-size: 0.8rem; cursor: pointer; text-decoration: none; }
+        .local-toggle a:hover { color: var(--accent); }
+        #localSection {
+            margin-top: 14px; padding: 14px;
+            background: var(--bg); border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .local-hint { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
+        input[type="file"] {
+            width: 100%; font-size: 0.82rem; color: var(--muted);
+            background: var(--card2); border: 1px dashed var(--border);
+            border-radius: 8px; padding: 9px; cursor: pointer;
+        }
+        #localReuseBox { margin-bottom: 10px; }
+        #localReuseText { font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+
+        /* ===== GAME ===== */
+        .game-header {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
+        }
+        .btn-back-game {
+            background: var(--card2); border: 1px solid var(--border);
+            border-radius: 8px; color: var(--muted);
+            padding: 7px 11px; font-size: 0.82rem; cursor: pointer; white-space: nowrap;
+        }
+        .btn-back-game:hover { color: var(--text); }
+        .progress-info { flex: 1; text-align: right; }
+        .progress-count { font-size: 0.88rem; font-weight: 700; }
+        .progress-errors { font-size: 0.73rem; color: var(--muted); }
+
+        .word-card {
+            background: var(--bg); border: 2px solid var(--border);
+            border-radius: 16px; padding: 44px 20px 52px;
+            min-height: 150px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            position: relative; overflow: hidden; margin-bottom: 10px;
+        }
+        .word-text {
+            font-size: 2.1rem; font-weight: 800; letter-spacing: -1px;
+            line-height: 1.1; text-align: center;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .word-meta { font-size: 0.88rem; color: var(--muted); margin-top: 6px; }
+
+        .timer-bar {
+            height: 3px; background: var(--accent);
+            width: 100%; position: absolute; bottom: 0; left: 0;
+        }
+        .countdown-text {
+            font-size: 0.75rem; color: var(--muted); font-weight: 600;
+            min-height: 1.2em; margin-bottom: 10px; text-align: center;
+        }
+
+        .answer-box {
+            background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.4);
+            border-radius: 12px; padding: 14px 18px;
+            font-size: 1.35rem; font-weight: 700; color: var(--green);
+            margin-bottom: 14px; display: flex; align-items: center;
+            justify-content: center; gap: 8px; text-align: center;
+        }
+
+        .btn-know {
+            width: 100%; padding: 13px;
+            background: rgba(56,189,248,0.1); border: 1px solid var(--accent);
+            border-radius: 12px; color: var(--accent);
+            font-size: 0.95rem; font-weight: 700; cursor: pointer;
+        }
+        .btn-know:hover { background: rgba(56,189,248,0.18); }
+
+        .verdict-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .btn-correct {
+            padding: 13px; background: rgba(34,197,94,0.12);
+            border: 1px solid var(--green); border-radius: 12px;
+            color: var(--green); font-size: 0.95rem; font-weight: 700; cursor: pointer;
+        }
+        .btn-correct:hover { background: rgba(34,197,94,0.22); }
+        .btn-wrong {
+            padding: 13px; background: rgba(239,68,68,0.1);
+            border: 1px solid var(--red); border-radius: 12px;
+            color: var(--red); font-size: 0.95rem; font-weight: 700; cursor: pointer;
+        }
+        .btn-wrong:hover { background: rgba(239,68,68,0.2); }
+
+        /* Audio btn — overrides JS inline styles */
+        button.audio-btn {
+            background: var(--card2) !important; border: 1px solid var(--border) !important;
+            border-radius: 50% !important; color: var(--muted) !important;
+            width: 36px !important; height: 36px !important;
+            font-size: 0.9rem !important; cursor: pointer !important;
+            flex-shrink: 0 !important; line-height: 1 !important;
+            vertical-align: middle !important; margin-left: 6px !important;
+        }
+        button.audio-btn:hover { color: var(--accent) !important; border-color: var(--accent) !important; }
+
+        /* Results */
+        .results-header { text-align: center; margin-bottom: 20px; }
+        .results-header h2 { font-size: 1.3rem; }
+        .results-file { color: var(--muted); font-size: 0.8rem; margin-top: 4px; }
+        .stats-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        .stats-table th {
+            color: var(--muted); font-size: 0.72rem; text-transform: uppercase;
+            letter-spacing: 0.5px; padding: 8px 10px; text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .stats-table td { padding: 9px 10px; border-bottom: 1px solid var(--border); }
+        .stats-table tr:last-child td { border-bottom: none; }
+        .no-errors { color: var(--green); font-size: 0.9rem; text-align: center; padding: 16px 0; }
+
+        .hidden { display: none !important; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        @media (prefers-reduced-motion: reduce) { .timer-bar { transition: none !important; } }
     </style>
 </head>
 <body>
     <a class="back-link" href="../">← Wróć</a>
 
+    <!-- ===== SETUP ===== -->
+    <div id="setup">
+        <div class="container">
+            <div class="app-header">
+                <h1>
+                    <img src="https://flagcdn.com/24x18/gb.png" width="24" height="18" alt="" aria-hidden="true" style="border-radius:3px;">
+                    Trener Słówek
+                </h1>
+                <div id="loader">Ładowanie zestawów…</div>
+            </div>
 
-<div class="container" id="setup">
-    <h2><img src="https://flagcdn.com/24x18/gb.png" width="24" height="18" alt="" aria-hidden="true" style="display:inline-block;vertical-align:middle;border-radius:3px;margin-right:8px;">Trener Słówek</h2>
-    <div id="loader">Inicjalizacja...</div>
+            <div class="setup-section" id="githubSection">
+                <div class="section-label">Zestaw</div>
+                <div class="select-row">
+                    <select id="categorySelect" onchange="loadSubcategories()" disabled>
+                        <option value="">Kategoria…</option>
+                    </select>
+                    <select id="subcategorySelect" onchange="handleSubcategoryChange()" disabled>
+                        <option value="">Zestaw…</option>
+                    </select>
+                </div>
+            </div>
 
-    <div class="setup-group">
-        <label>Źródło słówek:</label>
-        <select id="sourceSelect" onchange="toggleSource()">
-            <option value="github">Gra</option>
-            <option value="local">Plik lokalny z PC</option>
-        </select>
-    </div>
+            <div class="setup-section hidden" id="levelFilterGroup">
+                <div class="section-label">Poziom</div>
+                <div class="chips" id="levelChips"></div>
+            </div>
 
-    <!-- Sekcja GitHub -->
-    <div id="githubSection">
-        <div class="setup-group">
-            <label>Kategoria:</label>
-            <select id="categorySelect" onchange="loadSubcategories()" disabled>
-                <option value="">Wybierz kategorię...</option>
-            </select>
+            <div class="setup-section hidden" id="wordCountGroup">
+                <div class="section-label">Liczba słówek</div>
+                <div class="chips" id="wordCountChips">
+                    <span class="chip" data-count="10" onclick="setWordCount(this)">10</span>
+                    <span class="chip active" data-count="20" onclick="setWordCount(this)">20</span>
+                    <span class="chip" data-count="30" onclick="setWordCount(this)">30</span>
+                    <span class="chip" data-count="50" onclick="setWordCount(this)">50</span>
+                    <span class="chip" data-count="100" onclick="setWordCount(this)">100</span>
+                    <span class="chip" data-count="__all__" onclick="setWordCount(this)">Wszystkie</span>
+                </div>
+            </div>
+
+            <div class="setup-section">
+                <div class="section-label">Kierunek</div>
+                <div class="direction-toggle">
+                    <button class="dir-btn active" data-dir="pl_en" onclick="setDirection('pl_en')">
+                        <span class="flags">🇵🇱 → 🇬🇧</span>
+                        <span class="label">Polski → Angielski</span>
+                    </button>
+                    <button class="dir-btn" data-dir="en_pl" onclick="setDirection('en_pl')">
+                        <span class="flags">🇬🇧 → 🇵🇱</span>
+                        <span class="label">Angielski → Polski</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="setup-section">
+                <div class="section-label">Czas na odpowiedź</div>
+                <div class="chips" id="delayChips">
+                    <span class="chip" data-delay="3000" onclick="setDelay(this)">3 s</span>
+                    <span class="chip active" data-delay="5000" onclick="setDelay(this)">5 s</span>
+                    <span class="chip" data-delay="8000" onclick="setDelay(this)">8 s</span>
+                </div>
+            </div>
+
+            <button class="btn-start" onclick="startGame()">Rozpocznij →</button>
+
+            <div class="local-toggle">
+                <a onclick="toggleLocalSection()">📁 Użyj pliku lokalnego CSV</a>
+            </div>
+            <div id="localSection" class="hidden">
+                <div id="localReuseBox" class="hidden">
+                    <div id="localReuseText"></div>
+                    <span class="chip active" style="display:inline-block;cursor:pointer;" onclick="reuseLastLocalFile()">Użyj ostatniego pliku</span>
+                </div>
+                <div class="local-hint">Format: en,pl lub english,polish,type,level</div>
+                <input type="file" id="fileInput" accept=".csv" onchange="selectNewLocalFile()">
+            </div>
         </div>
-        <div class="setup-group">
-            <label>Zestaw:</label>
-            <select id="subcategorySelect" onchange="handleSubcategoryChange()" disabled>
-                <option value="">Najpierw wybierz kategorię</option>
-            </select>
+    </div>
+
+    <!-- ===== GAME ===== -->
+    <div id="game" class="hidden">
+        <div class="container">
+            <div class="game-header">
+                <button class="btn-back-game" onclick="backToSetup()">← Wróć</button>
+                <div class="progress-info">
+                    <div class="progress-count" id="progressCount"></div>
+                    <div class="progress-errors" id="progressErrors"></div>
+                </div>
+            </div>
+
+            <div class="word-card">
+                <div id="questionBox" class="word-text"></div>
+                <div id="questionMeta" class="word-meta"></div>
+                <div class="timer-bar" id="timerBar" role="progressbar" aria-label="Odliczanie" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"></div>
+            </div>
+
+            <div class="countdown-text" id="countdownText" aria-hidden="true"></div>
+            <div class="sr-only" id="countdownStatus" aria-live="polite"></div>
+
+            <div id="answerBox" class="answer-box hidden" tabindex="0"></div>
+
+            <div id="quickActions">
+                <button class="btn-know" onclick="revealAnswer(false)">Pokaż odpowiedź</button>
+            </div>
+            <div id="controls" class="hidden">
+                <div class="verdict-btns">
+                    <button class="btn-correct" onclick="submitResult(true)">✓ Wiedziałem</button>
+                    <button class="btn-wrong" onclick="submitResult(false)">✗ Powtórka</button>
+                </div>
+            </div>
         </div>
-        <div class="setup-group hidden" id="levelFilterGroup">
-            <label for="levelSelect">Poziom:</label>
-            <select id="levelSelect" onchange="handleLevelChange()" disabled>
-                <option value="__all__">Wszystkie poziomy</option>
-            </select>
-        </div>
-        <div class="setup-group hidden" id="wordCountGroup">
-            <label for="wordCountSelect">Ilość słówek:</label>
-            <select id="wordCountSelect" disabled>
-                <option value="10">10</option>
-                <option value="20" selected>20</option>
-                <option value="30">30</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="__all__">Wszystkie</option>
-            </select>
+    </div>
+
+    <!-- ===== RESULTS ===== -->
+    <div id="results" class="hidden">
+        <div class="container">
+            <div class="results-header">
+                <h2>Wyniki 📈</h2>
+                <div class="results-file" id="resultsFile"></div>
+            </div>
+            <div id="statsContent"></div>
+            <button class="btn-start" style="margin-top:20px;" onclick="backToSetup()">Nowa sesja</button>
         </div>
     </div>
-
-    <!-- Sekcja Lokalna -->
-    <div id="localSection" class="hidden">
-        <div id="localReuseBox" class="local-reuse-box hidden">
-            <div id="localReuseText" style="font-size: 0.9rem; color: #2d3436;"></div>
-            <button type="button" class="btn-secondary" onclick="reuseLastLocalFile()">Użyj ostatniego pliku</button>
-        </div>
-        <div class="setup-group">
-            <label>Wybierz plik CSV (format: en,pl lub english,polish,type,level):</label>
-            <input type="file" id="fileInput" accept=".csv" onchange="selectNewLocalFile()">
-        </div>
-    </div>
-
-    <div class="setup-group">
-        <label>Kierunek nauki:</label>
-        <select id="modeSelect">
-            <option value="pl_en">Polski → Angielski</option>
-            <option value="en_pl">Angielski → Polski</option>
-        </select>
-    </div>
-
-    <div class="setup-group">
-        <label for="delaySelect">Czas przed pokazaniem odpowiedzi:</label>
-        <select id="delaySelect">
-            <option value="3000">3 sekundy</option>
-            <option value="5000">5 sekund</option>
-            <option value="8000">8 sekund</option>
-        </select>
-    </div>
-
-    <button class="btn-main" id="startBtn" onclick="startGame()">Rozpocznij sesję</button>
-
-</div>
-
-<div class="container hidden" id="game">
-    <button type="button" class="btn-secondary" onclick="backToSetup()">← Powrót do menu</button>
-    <div id="progress" style="color: #b2bec3; font-weight: bold;"></div>
-    <div id="countdownText" class="countdown-text" aria-hidden="true"></div>
-    <div id="countdownStatus" class="sr-only" aria-live="polite"></div>
-    <div class="card">
-        <div id="questionBox"></div>
-        <div id="timerBar" class="timer-bar" role="progressbar" aria-label="Odliczanie do pokazania odpowiedzi" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"></div>
-    </div>
-    <div id="answerBox" class="hidden" tabindex="0" style="font-size: 1.4rem; font-weight: bold; background: #f1f2f6; padding: 15px; border-radius: 10px; margin-bottom: 20px;"></div>
-
-    <div id="quickActions">
-        <button type="button" class="btn-correct" onclick="revealAnswer(false)">✓ Wiem</button>
-    </div>
-    <div id="controls" class="hidden">
-        <button class="btn-correct" onclick="submitResult(true)">✓ Wiedziałem</button>
-        <button class="btn-wrong" onclick="submitResult(false)">✗ Do powtórki</button>
-    </div>
-</div>
-
-<div class="container hidden" id="results">
-    <h2>Wyniki nauki 📈</h2>
-    <div id="statsContent"></div>
-    <button class="btn-main" onclick="backToSetup()">Nowa sesja</button>
-</div>
 
 <script>
     const MANIFEST_PATH = 'data/manifest.json';
     const OXFORD_CATEGORY_NAME = 'Oxford3000';
+    const OXFORD_DEFAULT_SET = 'Oxford3000_pl';
     const HEADER_WITH_METADATA = 'english,polish,type,level';
     const LEVEL_ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
     const ALL_WORDS_VALUE = '__all__';
 
     let sessionQueue = [];
     let fails = {};
-    let mode = "";
+    let mode = 'pl_en';
     let totalInitialWords = 0;
     let completedCount = 0;
-    let answerDelayMs = 3000;
+    let answerDelayMs = 5000;
     let revealTimeoutId = null;
     let revealIntervalId = null;
     let currentSource = 'github';
@@ -165,25 +379,24 @@
     let reuseLastLocalSelection = false;
     let wordsManifest = null;
     let sessionItemsById = {};
-    let selectedOxfordLevel = ALL_WORDS_VALUE;
+    let selectedLevel = ALL_WORDS_VALUE;
+    let selectedWordCount = '20';
+    let localSectionVisible = false;
     const levelOptionsCache = new Map();
 
-    // ─── Wymowa (Web Speech API) — oba języki, każdy tryb i zestaw ──────────────
     const speechAvailable = 'speechSynthesis' in window;
-    let audioEnabled = speechAvailable;   // głośnik dostępny zawsze, gdy przeglądarka wspiera syntezę mowy
+    let audioEnabled = speechAvailable;
 
     function speak(text, lang) {
         if (!speechAvailable || !text) return;
         try {
-            window.speechSynthesis.cancel();                 // przerwij poprzednie czytanie
-            // "/" zwykle oddziela warianty (np. "jeden / jakiś") — czytaj je jako pauzę
-            const utterance = new SpeechSynthesisUtterance(String(text).replace(/\s*\/\s*/g, ', '));
-            utterance.lang = lang || 'en-US';
-            window.speechSynthesis.speak(utterance);
-        } catch (e) { /* brak syntezy mowy — ignoruj */ }
+            window.speechSynthesis.cancel();
+            const utt = new SpeechSynthesisUtterance(String(text).replace(/\s*\/\s*/g, ', '));
+            utt.lang = lang || 'en-US';
+            window.speechSynthesis.speak(utt);
+        } catch (e) {}
     }
 
-    // Dokleja przycisk 🔊 czytający `text` w języku `lang` do podanego boksu.
     function attachAudioButton(boxEl, text, lang) {
         if (!audioEnabled || !boxEl || !text) return;
         const btn = document.createElement('button');
@@ -191,381 +404,162 @@
         btn.className = 'audio-btn';
         btn.textContent = '🔊';
         btn.setAttribute('aria-label', 'Odsłuchaj: ' + text);
-        btn.style.cssText = 'margin-left:10px;border:none;background:#dfe6e9;color:#2d3436;border-radius:50%;width:42px;height:42px;font-size:1.1rem;cursor:pointer;vertical-align:middle;line-height:1;flex-shrink:0;';
         btn.addEventListener('click', (e) => { e.stopPropagation(); speak(text, lang); });
         boxEl.appendChild(btn);
     }
 
-    // 1. Inicjalizacja i obsługa źródeł
+    // ── Chip helpers ──────────────────────────────────────────────────────────
+    function setDirection(dir) {
+        mode = dir;
+        document.querySelectorAll('.dir-btn').forEach(b => b.classList.toggle('active', b.dataset.dir === dir));
+    }
+
+    function setDelay(chip) {
+        answerDelayMs = Number(chip.dataset.delay);
+        document.querySelectorAll('#delayChips .chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+    }
+
+    function setWordCount(chip) {
+        selectedWordCount = chip.dataset.count;
+        document.querySelectorAll('#wordCountChips .chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+    }
+
+    function setLevelChip(value) {
+        selectedLevel = value;
+        document.querySelectorAll('#levelChips .chip').forEach(c => c.classList.toggle('active', c.dataset.level === value));
+    }
+
+    // ── Init ──────────────────────────────────────────────────────────────────
     async function init() {
         try {
-            const response = await fetch(MANIFEST_PATH, { cache: 'no-store' });
-            if (!response.ok) throw new Error(`Manifest unavailable: ${response.status}`);
-
-            const manifest = await response.json();
-            if (!Array.isArray(manifest.categories) || manifest.categories.length === 0) {
-                throw new Error('Manifest does not contain categories.');
-            }
+            const res = await fetch(MANIFEST_PATH, { cache: 'no-store' });
+            if (!res.ok) throw new Error();
+            const manifest = await res.json();
+            if (!Array.isArray(manifest.categories) || !manifest.categories.length) throw new Error();
 
             wordsManifest = manifest;
-            const select = document.getElementById('categorySelect');
-            select.innerHTML = '<option value="">Wybierz kategorię...</option>';
-            wordsManifest.categories.forEach(category => select.add(new Option(category.name, category.name)));
-            select.disabled = false;
-            document.getElementById('loader').innerText = "";
-            document.getElementById('loader').classList.add('hidden');
+            const catSelect = document.getElementById('categorySelect');
+            catSelect.innerHTML = '';
+            manifest.categories.forEach(c => catSelect.add(new Option(c.name, c.name)));
+            catSelect.disabled = false;
+
+            document.getElementById('loader').textContent = '';
+
+            // Auto-select Oxford3000
+            const oxfordIndex = manifest.categories.findIndex(c => c.name === OXFORD_CATEGORY_NAME);
+            catSelect.selectedIndex = oxfordIndex >= 0 ? oxfordIndex : 0;
+            await loadSubcategories();
+
         } catch (e) {
-            handleManifestError();
+            document.getElementById('loader').textContent = 'Nie udało się wczytać zestawów. Użyj pliku lokalnego.';
+            document.getElementById('categorySelect').disabled = true;
+            document.getElementById('subcategorySelect').disabled = true;
         }
-    }
-
-    function handleManifestError() {
-        wordsManifest = null;
-        document.getElementById('loader').innerText = "Nie udało się wczytać listy słówek. Wybierz plik lokalny albo spróbuj później.";
-        document.getElementById('loader').classList.remove('hidden');
-        document.getElementById('categorySelect').innerHTML = '<option value="">Manifest niedostępny</option>';
-        const subSelect = document.getElementById('subcategorySelect');
-        subSelect.innerHTML = '<option value="">Manifest niedostępny</option>';
-        subSelect.disabled = true;
-        resetLevelFilter();
-        resetWordCountFilter();
-    }
-
-    function toggleSource() {
-        const source = document.getElementById('sourceSelect').value;
-        document.getElementById('githubSection').classList.toggle('hidden', source !== 'github');
-        document.getElementById('localSection').classList.toggle('hidden', source !== 'local');
-        if (source !== 'github') {
-            resetLevelFilter();
-            resetWordCountFilter();
-        } else if (document.getElementById('categorySelect').value === OXFORD_CATEGORY_NAME) {
-            handleSubcategoryChange();
-        }
-        if (source === 'local') updateLocalReuseBox();
     }
 
     async function loadSubcategories() {
         const cat = document.getElementById('categorySelect').value;
         const subSelect = document.getElementById('subcategorySelect');
         subSelect.disabled = true;
-        if (!wordsManifest) {
-            handleManifestError();
-            return;
-        }
+        if (!wordsManifest) return;
 
-        const category = wordsManifest.categories.find(item => item.name === cat);
+        const category = wordsManifest.categories.find(c => c.name === cat);
         const sets = Array.isArray(category?.sets) ? category.sets : [];
         subSelect.innerHTML = '';
-
-        if (sets.length === 0) {
-            subSelect.add(new Option('Brak zestawów w tej kategorii', ''));
-            resetLevelFilter();
-            resetWordCountFilter();
-            return;
+        if (!sets.length) {
+            subSelect.add(new Option('Brak zestawów', ''));
+            resetLevelFilter(); return;
         }
 
-        sets.forEach(set => {
-            const option = new Option(set.name, encodeURI(set.path));
-            option.dataset.filename = set.fileName;
-            subSelect.add(option);
+        sets.forEach(s => {
+            const opt = new Option(s.name, encodeURI(s.path));
+            opt.dataset.filename = s.fileName;
+            subSelect.add(opt);
         });
         subSelect.disabled = false;
+
+        // Auto-select default Oxford set
+        if (cat === OXFORD_CATEGORY_NAME) {
+            const defIndex = sets.findIndex(s => s.name === OXFORD_DEFAULT_SET);
+            if (defIndex >= 0) subSelect.selectedIndex = defIndex;
+        }
+
         await handleSubcategoryChange();
     }
 
     async function handleSubcategoryChange() {
-        const source = document.getElementById('sourceSelect').value;
-        const category = document.getElementById('categorySelect').value;
-        const selectedPath = document.getElementById('subcategorySelect').value;
-        if (source !== 'github' || category !== OXFORD_CATEGORY_NAME || !selectedPath) {
+        const cat = document.getElementById('categorySelect').value;
+        const path = document.getElementById('subcategorySelect').value;
+        if (cat !== OXFORD_CATEGORY_NAME || !path) {
             resetLevelFilter();
             resetWordCountFilter();
             return;
         }
-
         showWordCountFilter();
-        await populateLevelFilter(selectedPath);
+        await populateLevelFilter(path);
     }
 
     async function populateLevelFilter(csvPath) {
-        const levelGroup = document.getElementById('levelFilterGroup');
-        const levelSelect = document.getElementById('levelSelect');
+        const levelChips = document.getElementById('levelChips');
         let levels = levelOptionsCache.get(csvPath);
-
         if (!levels) {
-            const response = await fetch(csvPath);
-            if (!response.ok) {
-                resetLevelFilter();
-                return;
-            }
-            const csvText = await response.text();
-            levels = getAvailableLevels(parseCsvText(csvText));
-            levelOptionsCache.set(csvPath, levels);
+            try {
+                const res = await fetch(csvPath);
+                if (!res.ok) { resetLevelFilter(); return; }
+                levels = getAvailableLevels(parseCsvText(await res.text()));
+                levelOptionsCache.set(csvPath, levels);
+            } catch (e) { resetLevelFilter(); return; }
         }
 
-        levelSelect.innerHTML = `<option value="${ALL_WORDS_VALUE}">Wszystkie poziomy</option>`;
-        levels.forEach(level => levelSelect.add(new Option(level, level)));
-        selectedOxfordLevel = getValidSelectedOxfordLevel(levels);
-        levelSelect.value = selectedOxfordLevel;
-        levelSelect.disabled = false;
-        levelGroup.classList.remove('hidden');
+        levelChips.innerHTML = '';
+        const all = document.createElement('span');
+        all.className = 'chip' + (selectedLevel === ALL_WORDS_VALUE ? ' active' : '');
+        all.dataset.level = ALL_WORDS_VALUE;
+        all.textContent = 'Wszystkie';
+        all.onclick = () => setLevelChip(ALL_WORDS_VALUE);
+        levelChips.appendChild(all);
+
+        levels.forEach(lvl => {
+            const chip = document.createElement('span');
+            chip.className = 'chip' + (selectedLevel === lvl ? ' active' : '');
+            chip.dataset.level = lvl;
+            chip.textContent = lvl;
+            chip.onclick = () => setLevelChip(lvl);
+            levelChips.appendChild(chip);
+        });
+
+        document.getElementById('levelFilterGroup').classList.remove('hidden');
     }
 
     function resetLevelFilter() {
-        const levelGroup = document.getElementById('levelFilterGroup');
-        const levelSelect = document.getElementById('levelSelect');
-        levelSelect.innerHTML = `<option value="${ALL_WORDS_VALUE}">Wszystkie poziomy</option>`;
-        levelSelect.value = ALL_WORDS_VALUE;
-        levelSelect.disabled = true;
-        levelGroup.classList.add('hidden');
-    }
-
-    function handleLevelChange() {
-        selectedOxfordLevel = document.getElementById('levelSelect').value || ALL_WORDS_VALUE;
-    }
-
-    function getValidSelectedOxfordLevel(levels) {
-        if (selectedOxfordLevel === ALL_WORDS_VALUE || levels.includes(selectedOxfordLevel)) {
-            return selectedOxfordLevel;
-        }
-
-        return ALL_WORDS_VALUE;
+        selectedLevel = ALL_WORDS_VALUE;
+        document.getElementById('levelChips').innerHTML = '';
+        document.getElementById('levelFilterGroup').classList.add('hidden');
     }
 
     function showWordCountFilter() {
-        const wordCountGroup = document.getElementById('wordCountGroup');
-        const wordCountSelect = document.getElementById('wordCountSelect');
-        wordCountSelect.disabled = false;
-        wordCountGroup.classList.remove('hidden');
+        document.getElementById('wordCountGroup').classList.remove('hidden');
     }
 
     function resetWordCountFilter() {
-        const wordCountGroup = document.getElementById('wordCountGroup');
-        const wordCountSelect = document.getElementById('wordCountSelect');
-        wordCountSelect.value = '20';
-        wordCountSelect.disabled = true;
-        wordCountGroup.classList.add('hidden');
+        document.getElementById('wordCountGroup').classList.add('hidden');
     }
 
-    // 2. Start Gry
-    async function startGame() {
-        const source = document.getElementById('sourceSelect').value;
-        mode = document.getElementById('modeSelect').value;
-        answerDelayMs = Number(document.getElementById('delaySelect').value) || 3000;
-        currentSource = source;
-        let csvText = "";
-
-        if (source === 'local') {
-            const file = document.getElementById('fileInput').files[0];
-            if (file) {
-                csvText = await file.text();
-                lastLocalCsvText = csvText;
-                lastLocalFileName = file.name;
-                reuseLastLocalSelection = false;
-                currentSessionFileName = file.name;
-            } else if (reuseLastLocalSelection && lastLocalCsvText) {
-                csvText = lastLocalCsvText;
-                currentSessionFileName = lastLocalFileName;
-            } else {
-                return alert("Wybierz plik lub użyj ostatnio załadowanego.");
-            }
-        } else {
-            if (!wordsManifest) return alert("Manifest słówek jest niedostępny. Wybierz plik lokalny albo spróbuj później.");
-            const url = document.getElementById('subcategorySelect').value;
-            if (!url) return alert("Wybierz zestaw!");
-            const res = await fetch(url);
-            csvText = await res.text();
-            const selectedOption = document.getElementById('subcategorySelect').selectedOptions[0];
-            currentSessionFileName = selectedOption?.dataset.filename || selectedOption?.textContent || '';
-        }
-
-        sessionQueue = parseCsvText(csvText);
-
-        // Wymowa działa dla obu języków i każdego zestawu (gdy przeglądarka wspiera syntezę)
-        audioEnabled = speechAvailable;
-
-        let selectedLevel = ALL_WORDS_VALUE;
-        if (source === 'github' && document.getElementById('categorySelect').value === OXFORD_CATEGORY_NAME) {
-            selectedLevel = document.getElementById('levelSelect').value;
-            if (selectedLevel && selectedLevel !== ALL_WORDS_VALUE) {
-                sessionQueue = sessionQueue.filter(item => item.level === selectedLevel);
-            }
-            sessionQueue = applyOxfordWordLimit(sessionQueue);
-        }
-
-        if (sessionQueue.length === 0) {
-            const message = selectedLevel && selectedLevel !== ALL_WORDS_VALUE
-                ? `Brak słówek dla poziomu ${selectedLevel}.`
-                : 'Wybrany zestaw nie zawiera słówek.';
-            return alert(message);
-        }
-
-        fails = {};
-        sessionItemsById = {};
-        totalInitialWords = sessionQueue.length;
-        completedCount = 0;
-        sessionQueue.forEach(item => {
-            fails[item.id] = 0;
-            sessionItemsById[item.id] = item;
-        });
-        sessionQueue.sort(() => Math.random() - 0.5);
-
-        document.getElementById('setup').classList.add('hidden');
-        document.getElementById('game').classList.remove('hidden');
-        renderCard();
-    }
-
-    // 3. Logika Rozgrywki (z cechami wersji lokalnej)
-    function renderCard() {
-        if (sessionQueue.length === 0) return showResults();
-        const item = sessionQueue[0];
-        document.getElementById('progress').innerText = `Postęp: ${completedCount} / ${totalInitialWords} • Błędy: ${getErrorCount()}`;
-        setWordContent(document.getElementById('questionBox'), mode === 'pl_en' ? item.pl : item.en, mode === 'en_pl' ? item.type : '');
-        setWordContent(document.getElementById('answerBox'), mode === 'pl_en' ? item.en : item.pl, mode === 'pl_en' ? item.type : '');
-
-        // Głośnik 🔊 przy obu słowach — każde czytane w swoim języku, niezależnie od trybu
-        const qLang = mode === 'pl_en' ? 'pl-PL' : 'en-US';
-        const qText = mode === 'pl_en' ? item.pl : item.en;
-        const aLang = mode === 'pl_en' ? 'en-US' : 'pl-PL';
-        const aText = mode === 'pl_en' ? item.en : item.pl;
-        attachAudioButton(document.getElementById('questionBox'), qText, qLang);
-        attachAudioButton(document.getElementById('answerBox'), aText, aLang);
-
-        document.getElementById('answerBox').classList.add('hidden');
-        document.getElementById('controls').classList.add('hidden');
-        document.getElementById('quickActions').classList.remove('hidden');
-        startRevealCountdown();
-    }
-
-    function submitResult(isCorrect) {
-        clearTimeout(revealTimeoutId);
-        clearInterval(revealIntervalId);
-        const item = sessionQueue.shift();
-        if (isCorrect) {
-            completedCount++;
-        } else {
-            fails[item.id]++; // Zliczanie błędów
-            sessionQueue.push(item);
-        }
-        renderCard();
-    }
-
-    // 4. Wyniki i Historia
-    function showResults() {
-        clearTimeout(revealTimeoutId);
-        clearInterval(revealIntervalId);
-        document.getElementById('game').classList.add('hidden');
-        document.getElementById('results').classList.remove('hidden');
-        document.getElementById('countdownText').textContent = '';
-
-        // Tabela błędów (jak w oryginale)[cite: 1]
-        const sorted = Object.entries(fails).filter(f => f[1] > 0).sort((a,b) => b[1] - a[1]);
-        let html = `<h3>Podsumowanie</h3><p>Statystyka dla pliku: <b>${escapeHtml(currentSessionFileName || 'Nieznany plik')}</b></p><table class="stats-table"><tr><th>Słowo</th><th>Błędy</th></tr>`;
-        if (sorted.length === 0) html += `<tr><td colspan="2">Bez błędów! Brawo!</td></tr>`;
-        else sorted.forEach(([id, count]) => {
-            const item = sessionItemsById[id];
-            html += `<tr><td>${escapeHtml(formatWordSummary(item))}</td><td>${count}</td></tr>`;
-        });
-        document.getElementById('statsContent').innerHTML = html + `</table>`;
-    }
-
-    function startRevealCountdown() {
-        clearTimeout(revealTimeoutId);
-        clearInterval(revealIntervalId);
-
-        const timerBar = document.getElementById('timerBar');
-        const countdownText = document.getElementById('countdownText');
-        const countdownStatus = document.getElementById('countdownStatus');
-        const seconds = Math.round(answerDelayMs / 1000);
-        timerBar.style.transition = 'none';
-        timerBar.style.width = '100%';
-        timerBar.setAttribute('aria-valuenow', '100');
-        countdownText.textContent = `Odpowiedź za ${seconds} s`;
-        countdownStatus.textContent = `Odpowiedź pojawi się za ${seconds} ${formatSecondsLabel(seconds)}.`;
-
-        requestAnimationFrame(() => {
-            const startTime = Date.now();
-            timerBar.style.transition = `width ${answerDelayMs}ms linear`;
-            timerBar.style.width = '0%';
-
-            revealIntervalId = setInterval(() => {
-                const elapsed = Date.now() - startTime;
-                const remainingPercent = Math.max(0, 100 - Math.round((elapsed / answerDelayMs) * 100));
-                const remainingSeconds = Math.max(0, Math.ceil((answerDelayMs - elapsed) / 1000));
-                timerBar.setAttribute('aria-valuenow', String(remainingPercent));
-                countdownText.textContent = `Odpowiedź za ${remainingSeconds} s`;
-                countdownStatus.textContent = `Odpowiedź pojawi się za ${remainingSeconds} ${formatSecondsLabel(remainingSeconds)}.`;
-            }, 1000);
-        });
-
-        revealTimeoutId = setTimeout(() => revealAnswer(true), answerDelayMs);
-    }
-
-    function formatSecondsLabel(seconds) {
-        if (seconds === 1) return 'sekundę';
-        if (seconds >= 2 && seconds <= 4) return 'sekundy';
-        return 'sekund';
-    }
-
-    function getErrorCount() {
-        return Object.values(fails).reduce((sum, count) => sum + count, 0);
-    }
-
-    function getSelectedWordLimit() {
-        const selectedValue = document.getElementById('wordCountSelect').value;
-        if (selectedValue === ALL_WORDS_VALUE) return null;
-
-        const parsedValue = Number(selectedValue);
-        return Number.isFinite(parsedValue) && parsedValue > 0 ? parsedValue : 20;
-    }
-
-    function applyOxfordWordLimit(words) {
-        const wordLimit = getSelectedWordLimit();
-        if (!wordLimit || words.length <= wordLimit) return shuffleWords(words);
-        return shuffleWords(words).slice(0, wordLimit);
-    }
-
-    function shuffleWords(words) {
-        const shuffledWords = [...words];
-        for (let currentIndex = shuffledWords.length - 1; currentIndex > 0; currentIndex--) {
-            const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
-            [shuffledWords[currentIndex], shuffledWords[randomIndex]] = [shuffledWords[randomIndex], shuffledWords[currentIndex]];
-        }
-        return shuffledWords;
-    }
-
-    function revealAnswer(focusAfterReveal = false) {
-        clearTimeout(revealTimeoutId);
-        clearInterval(revealIntervalId);
-
-        const timerBar = document.getElementById('timerBar');
-        const countdownText = document.getElementById('countdownText');
-        const countdownStatus = document.getElementById('countdownStatus');
-        timerBar.style.transition = 'none';
-        timerBar.style.width = '0%';
-        timerBar.setAttribute('aria-valuenow', '0');
-        countdownText.textContent = 'Odpowiedź pokazana';
-        document.getElementById('answerBox').classList.remove('hidden');
-        document.getElementById('controls').classList.remove('hidden');
-        document.getElementById('quickActions').classList.add('hidden');
-        if (focusAfterReveal) {
-            document.getElementById('answerBox').focus();
-        }
-        countdownStatus.textContent = 'Poprawna odpowiedź została pokazana.';
+    function toggleLocalSection() {
+        localSectionVisible = !localSectionVisible;
+        document.getElementById('localSection').classList.toggle('hidden', !localSectionVisible);
+        currentSource = localSectionVisible ? 'local' : 'github';
+        document.getElementById('githubSection').classList.toggle('hidden', localSectionVisible);
+        if (localSectionVisible && (lastLocalCsvText || lastLocalFileName)) updateLocalReuseBox();
     }
 
     function updateLocalReuseBox() {
-        const reuseBox = document.getElementById('localReuseBox');
-        const reuseText = document.getElementById('localReuseText');
-        if (!lastLocalCsvText || !lastLocalFileName) {
-            reuseBox.classList.add('hidden');
-            return;
-        }
-
-        reuseText.innerText = reuseLastLocalSelection
-            ? `Wybrano ponowne użycie pliku ${lastLocalFileName}. Możesz też wskazać inny plik poniżej.`
-            : `Ostatni plik: ${lastLocalFileName}. Możesz użyć go ponownie albo wybrać inny plik poniżej.`;
-        reuseBox.classList.remove('hidden');
+        const box = document.getElementById('localReuseBox');
+        if (!lastLocalCsvText || !lastLocalFileName) { box.classList.add('hidden'); return; }
+        document.getElementById('localReuseText').textContent = `Ostatni plik: ${lastLocalFileName}`;
+        box.classList.remove('hidden');
     }
 
     function reuseLastLocalFile() {
@@ -580,87 +574,194 @@
         updateLocalReuseBox();
     }
 
-    function parseCsvText(csvText) {
-        const lines = csvText.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
-        const hasMetadataHeader = normalizeHeader(lines[0]) === HEADER_WITH_METADATA;
-        const dataLines = hasMetadataHeader ? lines.slice(1) : lines;
+    // ── Start ─────────────────────────────────────────────────────────────────
+    async function startGame() {
+        let csvText = '';
 
-        return dataLines
-            .filter(line => line.includes(','))
-            .map((line, index) => parseCsvRow(line, index))
-            .filter(item => item && item.en && item.pl);
-    }
-
-    function parseCsvRow(line, index) {
-        const columns = line.split(',').map(value => value.trim());
-        if (columns.length < 2) return null;
-
-        const [en, pl, type = '', level = ''] = columns;
-        return {
-            id: `${en}__${pl}__${type}__${level}__${index}`,
-            en,
-            pl,
-            type,
-            level
-        };
-    }
-
-    function normalizeHeader(line = '') {
-        return line.toLowerCase().replace(/\s+/g, '');
-    }
-
-    function getAvailableLevels(words) {
-        return [...new Set(words.map(item => item.level).filter(Boolean))]
-            .sort((a, b) => {
-                const left = LEVEL_ORDER.indexOf(a);
-                const right = LEVEL_ORDER.indexOf(b);
-                if (left !== -1 || right !== -1) {
-                    if (left === -1) return 1;
-                    if (right === -1) return -1;
-                    return left - right;
-                }
-                return a.localeCompare(b, 'pl');
-            });
-    }
-
-    function setWordContent(element, word, type = '') {
-        const safeWord = escapeHtml(word || '');
-        if (!type) {
-            element.textContent = word || '';
-            return;
+        if (currentSource === 'local') {
+            const file = document.getElementById('fileInput').files[0];
+            if (file) {
+                csvText = await file.text();
+                lastLocalCsvText = csvText;
+                lastLocalFileName = file.name;
+                reuseLastLocalSelection = false;
+                currentSessionFileName = file.name;
+            } else if (reuseLastLocalSelection && lastLocalCsvText) {
+                csvText = lastLocalCsvText;
+                currentSessionFileName = lastLocalFileName;
+            } else {
+                return alert('Wybierz plik lub użyj ostatnio załadowanego.');
+            }
+        } else {
+            if (!wordsManifest) return alert('Manifest zestawów niedostępny. Użyj pliku lokalnego.');
+            const url = document.getElementById('subcategorySelect').value;
+            if (!url) return alert('Wybierz zestaw!');
+            const res = await fetch(url);
+            csvText = await res.text();
+            const opt = document.getElementById('subcategorySelect').selectedOptions[0];
+            currentSessionFileName = opt?.dataset.filename || opt?.textContent || '';
         }
 
-        element.innerHTML = `
-            <div class="word-stack">
-                <div class="word-main">${safeWord}</div>
-                <div class="word-meta">(${escapeHtml(type)})</div>
-            </div>
-        `;
+        let words = parseCsvText(csvText);
+        audioEnabled = speechAvailable;
+
+        const isOxford = currentSource === 'github' &&
+            document.getElementById('categorySelect').value === OXFORD_CATEGORY_NAME;
+
+        if (isOxford) {
+            if (selectedLevel !== ALL_WORDS_VALUE) {
+                words = words.filter(w => w.level === selectedLevel);
+            }
+            words = applyWordLimit(words);
+        }
+
+        if (!words.length) {
+            const msg = selectedLevel !== ALL_WORDS_VALUE
+                ? `Brak słówek dla poziomu ${selectedLevel}.`
+                : 'Wybrany zestaw nie zawiera słówek.';
+            return alert(msg);
+        }
+
+        sessionQueue = words;
+        fails = {};
+        sessionItemsById = {};
+        totalInitialWords = words.length;
+        completedCount = 0;
+        words.forEach(w => { fails[w.id] = 0; sessionItemsById[w.id] = w; });
+        sessionQueue.sort(() => Math.random() - 0.5);
+
+        document.getElementById('setup').classList.add('hidden');
+        document.getElementById('game').classList.remove('hidden');
+        renderCard();
     }
 
-    function formatWordSummary(item) {
-        if (!item) return '';
-        return item.type ? `${item.en} (${item.type})` : item.en;
+    // ── Game loop ─────────────────────────────────────────────────────────────
+    function renderCard() {
+        if (!sessionQueue.length) return showResults();
+        const item = sessionQueue[0];
+
+        const errCount = getErrorCount();
+        document.getElementById('progressCount').textContent = `${completedCount} / ${totalInitialWords}`;
+        document.getElementById('progressErrors').textContent = errCount ? `Błędy: ${errCount}` : '';
+
+        const qText = mode === 'pl_en' ? item.pl : item.en;
+        const qLang = mode === 'pl_en' ? 'pl-PL' : 'en-US';
+        const aText = mode === 'pl_en' ? item.en : item.pl;
+        const aLang = mode === 'pl_en' ? 'en-US' : 'pl-PL';
+        const typeLabel = item.type ? `(${item.type})` : '';
+
+        const qBox = document.getElementById('questionBox');
+        qBox.textContent = qText;
+        attachAudioButton(qBox, qText, qLang);
+
+        document.getElementById('questionMeta').textContent =
+            mode === 'en_pl' && item.type ? typeLabel : '';
+
+        const aBox = document.getElementById('answerBox');
+        aBox.innerHTML = '';
+        const aSpan = document.createElement('span');
+        aSpan.textContent = aText + (mode === 'pl_en' && typeLabel ? ' ' + typeLabel : '');
+        aBox.appendChild(aSpan);
+        attachAudioButton(aBox, aText, aLang);
+
+        aBox.classList.add('hidden');
+        document.getElementById('controls').classList.add('hidden');
+        document.getElementById('quickActions').classList.remove('hidden');
+        startRevealCountdown();
     }
 
-    function escapeHtml(text) {
-        return String(text)
-            .replaceAll('&', '&amp;')
-            .replaceAll('<', '&lt;')
-            .replaceAll('>', '&gt;')
-            .replaceAll('"', '&quot;')
-            .replaceAll("'", '&#39;');
+    function submitResult(isCorrect) {
+        clearTimeout(revealTimeoutId); clearInterval(revealIntervalId);
+        const item = sessionQueue.shift();
+        if (isCorrect) { completedCount++; }
+        else { fails[item.id]++; sessionQueue.push(item); }
+        renderCard();
+    }
+
+    function revealAnswer(focusAfter = false) {
+        clearTimeout(revealTimeoutId); clearInterval(revealIntervalId);
+        const timerBar = document.getElementById('timerBar');
+        timerBar.style.transition = 'none';
+        timerBar.style.width = '0%';
+        document.getElementById('countdownText').textContent = '';
+        document.getElementById('answerBox').classList.remove('hidden');
+        document.getElementById('controls').classList.remove('hidden');
+        document.getElementById('quickActions').classList.add('hidden');
+        if (focusAfter) document.getElementById('answerBox').focus();
+        document.getElementById('countdownStatus').textContent = 'Poprawna odpowiedź pokazana.';
+    }
+
+    function startRevealCountdown() {
+        clearTimeout(revealTimeoutId); clearInterval(revealIntervalId);
+        const timerBar = document.getElementById('timerBar');
+        const cdText = document.getElementById('countdownText');
+        const cdStatus = document.getElementById('countdownStatus');
+        const secs = Math.round(answerDelayMs / 1000);
+        timerBar.style.transition = 'none';
+        timerBar.style.width = '100%';
+        timerBar.setAttribute('aria-valuenow', '100');
+        cdText.textContent = `Odpowiedź za ${secs} s`;
+        cdStatus.textContent = `Odpowiedź pojawi się za ${secs} ${secsLabel(secs)}.`;
+
+        requestAnimationFrame(() => {
+            const t0 = Date.now();
+            timerBar.style.transition = `width ${answerDelayMs}ms linear`;
+            timerBar.style.width = '0%';
+
+            revealIntervalId = setInterval(() => {
+                const elapsed = Date.now() - t0;
+                const rem = Math.max(0, Math.ceil((answerDelayMs - elapsed) / 1000));
+                timerBar.setAttribute('aria-valuenow', String(Math.max(0, 100 - Math.round((elapsed / answerDelayMs) * 100))));
+                cdText.textContent = rem ? `Odpowiedź za ${rem} s` : '';
+            }, 500);
+        });
+
+        revealTimeoutId = setTimeout(() => revealAnswer(true), answerDelayMs);
+    }
+
+    function secsLabel(s) {
+        if (s === 1) return 'sekundę';
+        if (s >= 2 && s <= 4) return 'sekundy';
+        return 'sekund';
+    }
+
+    function getErrorCount() {
+        return Object.values(fails).reduce((s, c) => s + c, 0);
+    }
+
+    function applyWordLimit(words) {
+        const shuffled = [...words].sort(() => Math.random() - 0.5);
+        if (selectedWordCount === ALL_WORDS_VALUE) return shuffled;
+        const n = Number(selectedWordCount);
+        return Number.isFinite(n) && n > 0 ? shuffled.slice(0, n) : shuffled;
+    }
+
+    // ── Results ───────────────────────────────────────────────────────────────
+    function showResults() {
+        clearTimeout(revealTimeoutId); clearInterval(revealIntervalId);
+        document.getElementById('game').classList.add('hidden');
+        document.getElementById('results').classList.remove('hidden');
+        document.getElementById('resultsFile').textContent =
+            currentSessionFileName ? `Zestaw: ${currentSessionFileName}` : '';
+
+        const sorted = Object.entries(fails).filter(([,v]) => v > 0).sort((a,b) => b[1]-a[1]);
+        let html = '<table class="stats-table"><thead><tr><th>Słowo</th><th>Błędy</th></tr></thead><tbody>';
+        if (!sorted.length) {
+            html = '<div class="no-errors">Bez błędów! Brawo! 🎉</div>';
+        } else {
+            sorted.forEach(([id, count]) => {
+                const item = sessionItemsById[id];
+                html += `<tr><td>${escapeHtml(item ? (item.type ? `${item.en} (${item.type})` : item.en) : id)}</td><td>${count}</td></tr>`;
+            });
+            html += '</tbody></table>';
+        }
+        document.getElementById('statsContent').innerHTML = html;
     }
 
     function backToSetup() {
-        clearTimeout(revealTimeoutId);
-        clearInterval(revealIntervalId);
-        sessionQueue = [];
-        fails = {};
-        sessionItemsById = {};
-        totalInitialWords = 0;
-        completedCount = 0;
-        currentSessionFileName = '';
+        clearTimeout(revealTimeoutId); clearInterval(revealIntervalId);
+        sessionQueue = []; fails = {}; sessionItemsById = {};
+        totalInitialWords = 0; completedCount = 0; currentSessionFileName = '';
 
         document.getElementById('results').classList.add('hidden');
         document.getElementById('game').classList.add('hidden');
@@ -670,12 +771,38 @@
         document.getElementById('countdownStatus').textContent = '';
         document.getElementById('answerBox').classList.add('hidden');
         document.getElementById('controls').classList.add('hidden');
-        document.getElementById('quickActions').classList.add('hidden');
-        document.getElementById('timerBar').style.transition = 'none';
-        document.getElementById('timerBar').style.width = '100%';
-        document.getElementById('timerBar').setAttribute('aria-valuenow', '100');
+        document.getElementById('quickActions').classList.remove('hidden');
+        const tb = document.getElementById('timerBar');
+        tb.style.transition = 'none'; tb.style.width = '100%';
+    }
 
-        toggleSource();
+    // ── CSV parsing ───────────────────────────────────────────────────────────
+    function parseCsvText(csvText) {
+        const lines = csvText.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+        const hasHeader = lines[0]?.toLowerCase().replace(/\s+/g,'') === HEADER_WITH_METADATA;
+        return (hasHeader ? lines.slice(1) : lines)
+            .filter(l => l.includes(','))
+            .map((l, i) => {
+                const [en, pl, type='', level=''] = l.split(',').map(v => v.trim());
+                if (!en || !pl) return null;
+                return { id: `${en}__${pl}__${type}__${level}__${i}`, en, pl, type, level };
+            })
+            .filter(Boolean);
+    }
+
+    function getAvailableLevels(words) {
+        return [...new Set(words.map(w => w.level).filter(Boolean))].sort((a,b) => {
+            const li = LEVEL_ORDER.indexOf(a), ri = LEVEL_ORDER.indexOf(b);
+            if (li !== -1 && ri !== -1) return li - ri;
+            if (li !== -1) return -1; if (ri !== -1) return 1;
+            return a.localeCompare(b, 'pl');
+        });
+    }
+
+    function escapeHtml(t) {
+        return String(t)
+            .replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')
+            .replaceAll('"','&quot;').replaceAll("'",'&#39;');
     }
 
     init();
