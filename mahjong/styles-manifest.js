@@ -1162,55 +1162,6 @@ window.MAHJONG_STYLE_MANIFEST = {
                 "matchKey": "medieval2::4::tarcze::t_y"
             }
         ]
-    },
-    {
-      id: 'medieval3',
-      name: 'Medieval III',
-      tiles: [
-        { matchKey: 'medieval3::pory_jesien',   src: 'pic/medieval3/1/pory/pory_jesien.svg',   count: 1 },
-        { matchKey: 'medieval3::pory_lato',      src: 'pic/medieval3/1/pory/pory_lato.svg',      count: 1 },
-        { matchKey: 'medieval3::pory_wiosna',    src: 'pic/medieval3/1/pory/pory_wiosna.svg',    count: 1 },
-        { matchKey: 'medieval3::pory_zima',      src: 'pic/medieval3/1/pory/pory_zima.svg',      count: 1 },
-        { matchKey: 'medieval3::skarb_czerwony', src: 'pic/medieval3/1/skarb/skarb_czerwony.svg', count: 1 },
-        { matchKey: 'medieval3::skart_bialy',    src: 'pic/medieval3/1/skarb/skart_bialy.svg',   count: 1 },
-        { matchKey: 'medieval3::skart_niebieski',src: 'pic/medieval3/1/skarb/skart_niebieski.svg',count: 1 },
-        { matchKey: 'medieval3::skart_zielony',  src: 'pic/medieval3/1/skarb/skart_zielony.svg', count: 1 },
-        { matchKey: 'medieval3::b_biala',        src: 'pic/medieval3/4/bramy/b_biała.svg',       count: 4 },
-        { matchKey: 'medieval3::b_czerwona',     src: 'pic/medieval3/4/bramy/b_czerwona.svg',    count: 4 },
-        { matchKey: 'medieval3::b_jasnazielen',  src: 'pic/medieval3/4/bramy/b_jasnazielen.svg', count: 4 },
-        { matchKey: 'medieval3::b_niebieska',    src: 'pic/medieval3/4/bramy/b_niebieska.svg',   count: 4 },
-        { matchKey: 'medieval3::b_pomaranczowa', src: 'pic/medieval3/4/bramy/b_pomaranczowa.svg',count: 4 },
-        { matchKey: 'medieval3::b_rozowa',       src: 'pic/medieval3/4/bramy/b_rozowa.svg',      count: 4 },
-        { matchKey: 'medieval3::b_szara',        src: 'pic/medieval3/4/bramy/b_szara.svg',       count: 4 },
-        { matchKey: 'medieval3::b_zielona',      src: 'pic/medieval3/4/bramy/b_zielona.svg',     count: 4 },
-        { matchKey: 'medieval3::b_zolta',        src: 'pic/medieval3/4/bramy/b_zolta.svg',       count: 4 },
-        { matchKey: 'medieval3::bron_halabardy', src: 'pic/medieval3/4/bron/bron_halabardy.svg', count: 4 },
-        { matchKey: 'medieval3::bron_kusza',     src: 'pic/medieval3/4/bron/bron_kusza.svg',     count: 4 },
-        { matchKey: 'medieval3::bron_luk',       src: 'pic/medieval3/4/bron/bron_luk.svg',       count: 4 },
-        { matchKey: 'medieval3::bron_miecze',    src: 'pic/medieval3/4/bron/bron_miecze.svg',    count: 4 },
-        { matchKey: 'medieval3::bron_palka',     src: 'pic/medieval3/4/bron/bron_palka.svg',     count: 4 },
-        { matchKey: 'medieval3::bron_pochodnie', src: 'pic/medieval3/4/bron/bron_pochodnie.svg', count: 4 },
-        { matchKey: 'medieval3::bron_rycerz',    src: 'pic/medieval3/4/bron/bron_rycerz.svg',    count: 4 },
-        { matchKey: 'medieval3::bron_szpady',    src: 'pic/medieval3/4/bron/bron_szpady.svg',    count: 4 },
-        { matchKey: 'medieval3::bron_x',         src: 'pic/medieval3/4/bron/bron_x.svg',         count: 4 },
-        { matchKey: 'medieval3::strony_e',       src: 'pic/medieval3/4/strony/strony_e.svg',     count: 4 },
-        { matchKey: 'medieval3::strony_n',       src: 'pic/medieval3/4/strony/strony_n.svg',     count: 4 },
-        { matchKey: 'medieval3::strony_s',       src: 'pic/medieval3/4/strony/strony_s.svg',     count: 4 },
-        { matchKey: 'medieval3::strony_w',       src: 'pic/medieval3/4/strony/strony_w.svg',     count: 4 },
-        { matchKey: 'medieval3::szachy_bishop',  src: 'pic/medieval3/4/szachy/szachy_bishop.svg',count: 4 },
-        { matchKey: 'medieval3::szachy_kon',     src: 'pic/medieval3/4/szachy/szachy_kon.svg',   count: 4 },
-        { matchKey: 'medieval3::szachy_wieza',   src: 'pic/medieval3/4/szachy/szachy_wieza.svg', count: 4 },
-        { matchKey: 'medieval3::t_3krzyze',      src: 'pic/medieval3/4/tarcze/t_3krzyze.svg',    count: 4 },
-        { matchKey: 'medieval3::t_brazowa',      src: 'pic/medieval3/4/tarcze/t_brazowa.svg',    count: 4 },
-        { matchKey: 'medieval3::t_gryf',         src: 'pic/medieval3/4/tarcze/t_gryf.svg',       count: 4 },
-        { matchKey: 'medieval3::t_krzyz',        src: 'pic/medieval3/4/tarcze/t_krzyz.svg',      count: 4 },
-        { matchKey: 'medieval3::t_malta',        src: 'pic/medieval3/4/tarcze/t_malta.svg',      count: 4 },
-        { matchKey: 'medieval3::t_sierzant',     src: 'pic/medieval3/4/tarcze/t_sierzant.svg',   count: 4 },
-        { matchKey: 'medieval3::t_szachy',       src: 'pic/medieval3/4/tarcze/t_szachy.svg',     count: 4 },
-        { matchKey: 'medieval3::t_x',            src: 'pic/medieval3/4/tarcze/t_x.svg',          count: 4 },
-        { matchKey: 'medieval3::t_y',            src: 'pic/medieval3/4/tarcze/t_y.svg',          count: 4 },
-      ]
     }
-
   ]
 };

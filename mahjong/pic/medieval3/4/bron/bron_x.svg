@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" shape-rendering="crispEdges">
-<rect width="100" height="120" fill="#b0b0b0"/>
-<rect x="48" y="10" width="5" height="100" fill="#5c3a00" transform="rotate(35,50,60)"/>
-<rect x="48" y="10" width="5" height="100" fill="#5c3a00" transform="rotate(-35,50,60)"/>
-<path d="M60,16 L74,10 L76,26 L62,30 Z" fill="#aaaaaa" transform="rotate(35,50,60)"/>
-<path d="M60,16 L74,10 L76,26 L62,30 Z" fill="#aaaaaa" transform="rotate(-35,50,60)"/>
-<path d="M36,16 L22,10 L20,26 L34,30 Z" fill="#888888" transform="rotate(35,50,60)"/>
-<path d="M36,16 L22,10 L20,26 L34,30 Z" fill="#888888" transform="rotate(-35,50,60)"/>
-</svg>
