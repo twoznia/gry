@@ -282,81 +282,344 @@
         });
         if (bird) {
             const flash = bird.isAiming && !bird.hasDropped && bird.aimCounter%10<5;
-            const birdColor = flash ? "red" : "white";
             const bd = bird.speed > 0 ? 1 : -1;
             const bx = bird.x, by = bird.y;
-            const wingFlap = Math.sin(bird.wingPhase) * 12;
-            ctx.fillStyle = birdColor;
-            // Wing (curves up and down with flapping motion)
+            const wingFlap = Math.sin(bird.wingPhase) * 16;
+            ctx.save();
+
+            // Shadow pod ptakiem
+            ctx.fillStyle = "rgba(0,0,0,0.18)";
             ctx.beginPath();
-            ctx.moveTo(bx, by - 1);
-            ctx.quadraticCurveTo(bx - 13*bd, by - wingFlap, bx - 24*bd, by + 2 - wingFlap * 0.5);
-            ctx.quadraticCurveTo(bx - 11*bd, by + 6, bx, by + 2);
+            ctx.ellipse(bx, by + 18, 22, 5, 0, 0, Math.PI*2);
             ctx.fill();
-            // Body
+
+            // Ogon
+            const tailColor = flash ? "#ff6666" : "#e0e0e0";
+            ctx.fillStyle = tailColor;
             ctx.beginPath();
-            ctx.ellipse(bx + 1*bd, by + 1, 9, 5, 0, 0, Math.PI*2);
+            ctx.moveTo(bx - 10*bd, by + 2);
+            ctx.lineTo(bx - 20*bd, by - 4);
+            ctx.lineTo(bx - 22*bd, by + 2);
+            ctx.lineTo(bx - 20*bd, by + 7);
+            ctx.closePath();
             ctx.fill();
-            // Head
+
+            // Skrzydło dolne (szare)
+            const wingBase = flash ? "#cc3333" : "#9e9e9e";
+            ctx.fillStyle = wingBase;
             ctx.beginPath();
-            ctx.arc(bx + 9*bd, by - 2, 5, 0, Math.PI*2);
+            ctx.moveTo(bx - 2*bd, by + 2);
+            ctx.quadraticCurveTo(bx - 15*bd, by + 8 - wingFlap*0.3, bx - 30*bd, by + 4 - wingFlap*0.6);
+            ctx.quadraticCurveTo(bx - 14*bd, by + 12, bx - 2*bd, by + 8);
+            ctx.closePath();
             ctx.fill();
-            // Beak
-            ctx.fillStyle = flash ? "red" : "#FFD54F";
+
+            // Skrzydło górne (białe/główne)
+            const wingColor = flash ? "#ff4444" : "#f5f5f5";
+            ctx.fillStyle = wingColor;
             ctx.beginPath();
-            ctx.moveTo(bx + 13*bd, by - 3);
-            ctx.lineTo(bx + 19*bd, by - 1);
-            ctx.lineTo(bx + 13*bd, by + 1);
+            ctx.moveTo(bx, by);
+            ctx.quadraticCurveTo(bx - 14*bd, by - wingFlap, bx - 30*bd, by + 2 - wingFlap * 0.7);
+            ctx.quadraticCurveTo(bx - 13*bd, by + 7, bx, by + 4);
+            ctx.closePath();
             ctx.fill();
+
+            // Lotki (końcówki skrzydła)
+            ctx.strokeStyle = flash ? "#cc0000" : "#555";
+            ctx.lineWidth = 1;
+            for (let f = 0; f < 4; f++) {
+                const fx = bx - (22 + f*2)*bd;
+                const fy = by + 1 - wingFlap * 0.65 + f*1.5;
+                ctx.beginPath();
+                ctx.moveTo(fx, fy);
+                ctx.lineTo(fx - 3*bd, fy + 5);
+                ctx.stroke();
+            }
+
+            // Korpus
+            const bodyColor = flash ? "#ff5555" : "#fafafa";
+            ctx.fillStyle = bodyColor;
+            ctx.beginPath();
+            ctx.ellipse(bx + 2*bd, by + 2, 13, 7, bd * 0.15, 0, Math.PI*2);
+            ctx.fill();
+
+            // Brzuch (jaśniejszy)
+            ctx.fillStyle = flash ? "#ffaaaa" : "#ffffff";
+            ctx.beginPath();
+            ctx.ellipse(bx + 1*bd, by + 4, 8, 4, 0, 0, Math.PI*2);
+            ctx.fill();
+
+            // Głowa
+            ctx.fillStyle = bodyColor;
+            ctx.beginPath();
+            ctx.arc(bx + 13*bd, by - 3, 7, 0, Math.PI*2);
+            ctx.fill();
+
+            // Oko
+            ctx.fillStyle = "#222";
+            ctx.beginPath();
+            ctx.arc(bx + 15*bd, by - 5, 2, 0, Math.PI*2);
+            ctx.fill();
+            ctx.fillStyle = "#fff";
+            ctx.beginPath();
+            ctx.arc(bx + 15.5*bd, by - 5.5, 0.8, 0, Math.PI*2);
+            ctx.fill();
+
+            // Dziób
+            const beakColor = flash ? "#ff0000" : "#FFC107";
+            ctx.fillStyle = beakColor;
+            ctx.beginPath();
+            ctx.moveTo(bx + 19*bd, by - 3);
+            ctx.lineTo(bx + 27*bd, by - 1);
+            ctx.lineTo(bx + 19*bd, by + 2);
+            ctx.closePath();
+            ctx.fill();
+            // Czerwona kropka na dziobie
+            if (!flash) {
+                ctx.fillStyle = "#e53935";
+                ctx.beginPath();
+                ctx.arc(bx + 24*bd, by, 1.5, 0, Math.PI*2);
+                ctx.fill();
+            }
+
+            ctx.restore();
         }
         if (birdDropping) { ctx.fillStyle = "#6D4C41"; ctx.beginPath(); ctx.arc(birdDropping.x, birdDropping.y, 8, 0, 7); ctx.fill(); }
         // Fishing line (behind everything)
-        const rodTipX = player.x+57, rodTipY = player.y-26;
-        ctx.strokeStyle = "rgba(255,255,255,0.7)"; ctx.lineWidth = 1;
+        const rodTipX = player.x+60, rodTipY = player.y-32;
+        ctx.strokeStyle = "rgba(255,255,255,0.6)"; ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(rodTipX, rodTipY); ctx.lineTo(player.hookX, player.hookY); ctx.stroke();
         // Hook
-        ctx.strokeStyle = "#ccc"; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.arc(player.hookX, player.hookY, 6, 0.6, 2.8); ctx.stroke();
-        // Boat hull
-        ctx.fillStyle = "#5D4037";
-        ctx.beginPath(); ctx.moveTo(player.x+2, player.y+2); ctx.lineTo(player.x+78, player.y+2); ctx.lineTo(player.x+68, player.y+24); ctx.lineTo(player.x+12, player.y+24); ctx.closePath(); ctx.fill();
-        // Boat interior
-        ctx.fillStyle = "#8D6E63";
-        ctx.beginPath(); ctx.moveTo(player.x+8, player.y+5); ctx.lineTo(player.x+72, player.y+5); ctx.lineTo(player.x+63, player.y+21); ctx.lineTo(player.x+17, player.y+21); ctx.closePath(); ctx.fill();
-        // Boat rim
-        ctx.fillStyle = "#3E2723"; ctx.fillRect(player.x, player.y, 80, 4);
-        // Boat plank
-        ctx.strokeStyle = "#4E342E"; ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(player.x+40, player.y+6); ctx.lineTo(player.x+40, player.y+21); ctx.stroke();
-        // Fisherman pants
-        ctx.fillStyle = "#37474F"; ctx.fillRect(player.x+34, player.y-5, 12, 7);
-        // Fisherman torso / shirt
+        ctx.strokeStyle = "#bbb"; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(player.hookX, player.hookY, 7, 0.5, 2.9); ctx.stroke();
+        // Haczyk - grot
+        ctx.beginPath(); ctx.moveTo(player.hookX + 6, player.hookY + 4); ctx.lineTo(player.hookX + 2, player.hookY + 7); ctx.stroke();
+
+        const px = player.x, py = player.y;
+        ctx.save();
+
+        // === ŁÓDŹ ===
+        // Cień łódki
+        ctx.fillStyle = "rgba(0,0,0,0.25)";
+        ctx.beginPath();
+        ctx.ellipse(px+40, py+28, 38, 5, 0, 0, Math.PI*2);
+        ctx.fill();
+
+        // Kadłub - gradient brąz
+        const hullGrad = ctx.createLinearGradient(px, py, px, py+26);
+        hullGrad.addColorStop(0, "#795548");
+        hullGrad.addColorStop(1, "#3E2723");
+        ctx.fillStyle = hullGrad;
+        ctx.beginPath();
+        ctx.moveTo(px+4, py+2);
+        ctx.lineTo(px+76, py+2);
+        ctx.lineTo(px+70, py+22);
+        ctx.quadraticCurveTo(px+40, py+28, px+10, py+22);
+        ctx.closePath();
+        ctx.fill();
+
+        // Wnętrze łódki
+        const interiorGrad = ctx.createLinearGradient(px, py+4, px, py+22);
+        interiorGrad.addColorStop(0, "#A1887F");
+        interiorGrad.addColorStop(1, "#6D4C41");
+        ctx.fillStyle = interiorGrad;
+        ctx.beginPath();
+        ctx.moveTo(px+10, py+5);
+        ctx.lineTo(px+70, py+5);
+        ctx.lineTo(px+64, py+20);
+        ctx.quadraticCurveTo(px+40, py+24, px+16, py+20);
+        ctx.closePath();
+        ctx.fill();
+
+        // Górna krawędź łódki
+        const rimGrad = ctx.createLinearGradient(px, py, px, py+4);
+        rimGrad.addColorStop(0, "#5D4037");
+        rimGrad.addColorStop(1, "#3E2723");
+        ctx.fillStyle = rimGrad;
+        ctx.fillRect(px+1, py, 78, 5);
+
+        // Deski łódki
+        ctx.strokeStyle = "rgba(0,0,0,0.3)"; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(px+28, py+5); ctx.lineTo(px+26, py+22); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(px+52, py+5); ctx.lineTo(px+54, py+22); ctx.stroke();
+
+        // Metalowe nity na krawędzi
+        ctx.fillStyle = "#aaa";
+        [15,30,50,65].forEach(nx => {
+            ctx.beginPath(); ctx.arc(px+nx, py+2, 2, 0, Math.PI*2); ctx.fill();
+        });
+
+        // === RYBAK ===
+        // Nogi / spodnie
+        const pantsGrad = ctx.createLinearGradient(px+30, py-8, px+30, py+2);
+        pantsGrad.addColorStop(0, "#455A64");
+        pantsGrad.addColorStop(1, "#263238");
+        ctx.fillStyle = pantsGrad;
+        ctx.beginPath();
+        ctx.moveTo(px+32, py-8);
+        ctx.lineTo(px+48, py-8);
+        ctx.lineTo(px+46, py+2);
+        ctx.lineTo(px+34, py+2);
+        ctx.closePath();
+        ctx.fill();
+        // Kreska między nogami
+        ctx.strokeStyle = "#1a252a"; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(px+40, py-8); ctx.lineTo(px+40, py+1); ctx.stroke();
+
+        // Kamizelka wędkarska (vest)
+        const vestGrad = ctx.createLinearGradient(px+28, py-22, px+52, py-6);
+        vestGrad.addColorStop(0, "#558B2F");
+        vestGrad.addColorStop(1, "#33691E");
+        ctx.fillStyle = vestGrad;
+        ctx.beginPath();
+        ctx.moveTo(px+28, py-22);
+        ctx.lineTo(px+52, py-22);
+        ctx.lineTo(px+50, py-7);
+        ctx.lineTo(px+30, py-7);
+        ctx.closePath();
+        ctx.fill();
+        // Kieszonki kamizelki
+        ctx.fillStyle = "#2E7D32";
+        ctx.fillRect(px+30, py-17, 7, 6);
+        ctx.fillRect(px+43, py-17, 7, 6);
+        ctx.strokeStyle = "#1B5E20"; ctx.lineWidth = 0.5;
+        ctx.strokeRect(px+30, py-17, 7, 6);
+        ctx.strokeRect(px+43, py-17, 7, 6);
+        // Guziczki kieszonek
+        ctx.fillStyle = "#bbb";
+        ctx.beginPath(); ctx.arc(px+33, py-12, 1, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(px+46, py-12, 1, 0, Math.PI*2); ctx.fill();
+
+        // Koszula pod kamizelką (kołnierzyk)
         ctx.fillStyle = "#1565C0";
-        ctx.beginPath(); ctx.moveTo(player.x+30, player.y-18); ctx.lineTo(player.x+50, player.y-18); ctx.lineTo(player.x+48, player.y-5); ctx.lineTo(player.x+32, player.y-5); ctx.closePath(); ctx.fill();
-        // Left arm
-        ctx.strokeStyle = "#1565C0"; ctx.lineWidth = 4; ctx.lineCap = "round";
-        ctx.beginPath(); ctx.moveTo(player.x+32, player.y-15); ctx.lineTo(player.x+25, player.y-8); ctx.stroke();
-        // Right arm (holding rod)
-        ctx.beginPath(); ctx.moveTo(player.x+48, player.y-15); ctx.lineTo(player.x+55, player.y-23); ctx.stroke();
-        // Hands
+        ctx.beginPath(); ctx.moveTo(px+37, py-22); ctx.lineTo(px+43, py-22); ctx.lineTo(px+41, py-18); ctx.lineTo(px+39, py-18); ctx.closePath(); ctx.fill();
+
+        // Lewe ramię
+        ctx.strokeStyle = "#558B2F"; ctx.lineWidth = 6; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(px+30, py-20); ctx.lineTo(px+20, py-11); ctx.stroke();
+        // Lewa ręka - skóra
         ctx.fillStyle = "#FFCCBC";
-        ctx.beginPath(); ctx.arc(player.x+24, player.y-8, 3, 0, 7); ctx.fill();
-        ctx.beginPath(); ctx.arc(player.x+56, player.y-24, 3, 0, 7); ctx.fill();
-        // Head
-        ctx.beginPath(); ctx.arc(player.x+40, player.y-25, 9, 0, 7); ctx.fill();
-        // Eyes
-        ctx.fillStyle = "#333";
-        ctx.beginPath(); ctx.arc(player.x+37, player.y-26, 1.5, 0, 7); ctx.fill();
-        ctx.beginPath(); ctx.arc(player.x+43, player.y-26, 1.5, 0, 7); ctx.fill();
-        // Hat brim
-        ctx.fillStyle = "#F9A825"; ctx.fillRect(player.x+27, player.y-33, 26, 4);
-        // Hat top
-        ctx.fillStyle = "#F57F17"; ctx.fillRect(player.x+30, player.y-45, 20, 14);
-        // Hat band
-        ctx.fillStyle = "#E65100"; ctx.fillRect(player.x+30, player.y-34, 20, 3);
+        ctx.beginPath(); ctx.arc(px+19, py-10, 4, 0, Math.PI*2); ctx.fill();
+        // Palce lewej ręki
+        ctx.strokeStyle = "#FFAB91"; ctx.lineWidth = 2; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(px+17, py-12); ctx.lineTo(px+15, py-15); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(px+19, py-13); ctx.lineTo(px+18, py-16); ctx.stroke();
+
+        // Prawe ramię (trzyma wędkę)
+        ctx.strokeStyle = "#558B2F"; ctx.lineWidth = 6; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(px+50, py-20); ctx.lineTo(px+58, py-30); ctx.stroke();
+        // Prawa ręka
+        ctx.fillStyle = "#FFCCBC";
+        ctx.beginPath(); ctx.arc(px+59, py-31, 4, 0, Math.PI*2); ctx.fill();
+
+        // === GŁOWA ===
+        // Szyja
+        ctx.fillStyle = "#FFCCBC";
+        ctx.fillRect(px+37, py-28, 6, 7);
+
+        // Twarz
+        const faceGrad = ctx.createRadialGradient(px+40, py-35, 2, px+40, py-35, 11);
+        faceGrad.addColorStop(0, "#FFCCBC");
+        faceGrad.addColorStop(1, "#FFAB91");
+        ctx.fillStyle = faceGrad;
+        ctx.beginPath(); ctx.arc(px+40, py-35, 11, 0, Math.PI*2); ctx.fill();
+
+        // Uszy
+        ctx.fillStyle = "#FFAB91";
+        ctx.beginPath(); ctx.ellipse(px+29, py-35, 3, 4, 0, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(px+51, py-35, 3, 4, 0, 0, Math.PI*2); ctx.fill();
+
+        // Oczy
+        ctx.fillStyle = "#fff";
+        ctx.beginPath(); ctx.ellipse(px+36, py-37, 3, 3.5, 0, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(px+44, py-37, 3, 3.5, 0, 0, Math.PI*2); ctx.fill();
+        ctx.fillStyle = "#5D4037";
+        ctx.beginPath(); ctx.arc(px+36, py-37, 2, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(px+44, py-37, 2, 0, Math.PI*2); ctx.fill();
+        ctx.fillStyle = "#111";
+        ctx.beginPath(); ctx.arc(px+36.5, py-37.5, 1, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(px+44.5, py-37.5, 1, 0, Math.PI*2); ctx.fill();
+        // Połysk w oczach
+        ctx.fillStyle = "#fff";
+        ctx.beginPath(); ctx.arc(px+37, py-38, 0.6, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(px+45, py-38, 0.6, 0, Math.PI*2); ctx.fill();
+
+        // Brwi
+        ctx.strokeStyle = "#5D4037"; ctx.lineWidth = 1.5; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(px+33, py-41); ctx.lineTo(px+39, py-40); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(px+41, py-40); ctx.lineTo(px+47, py-41); ctx.stroke();
+
+        // Nos
+        ctx.fillStyle = "#FF8A65";
+        ctx.beginPath(); ctx.ellipse(px+40, py-34, 2, 1.5, 0, 0, Math.PI*2); ctx.fill();
+
+        // Wąsy
+        ctx.strokeStyle = "#4E342E"; ctx.lineWidth = 1.5; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(px+34, py-31); ctx.quadraticCurveTo(px+38, py-30, px+40, py-31); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(px+46, py-31); ctx.quadraticCurveTo(px+42, py-30, px+40, py-31); ctx.stroke();
+
+        // Uśmiech
+        ctx.strokeStyle = "#BF360C"; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.arc(px+40, py-30, 5, 0.2, Math.PI-0.2); ctx.stroke();
+
+        // === KAPELUSZ ===
+        // Rondo
+        const brimGrad = ctx.createLinearGradient(px+24, py-47, px+56, py-43);
+        brimGrad.addColorStop(0, "#F9A825");
+        brimGrad.addColorStop(1, "#F57F17");
+        ctx.fillStyle = brimGrad;
+        ctx.beginPath();
+        ctx.ellipse(px+40, py-46, 18, 4, 0, 0, Math.PI*2);
+        ctx.fill();
+
+        // Główka kapelusza
+        const topGrad = ctx.createLinearGradient(px+30, py-62, px+50, py-46);
+        topGrad.addColorStop(0, "#F57F17");
+        topGrad.addColorStop(1, "#E65100");
+        ctx.fillStyle = topGrad;
+        ctx.beginPath();
+        ctx.moveTo(px+28, py-46);
+        ctx.lineTo(px+52, py-46);
+        ctx.lineTo(px+50, py-63);
+        ctx.lineTo(px+30, py-63);
+        ctx.closePath();
+        ctx.fill();
+
+        // Wstążka kapelusza
+        ctx.fillStyle = "#B71C1C";
+        ctx.fillRect(px+28, py-49, 24, 4);
+        // Klamra wstążki
+        ctx.strokeStyle = "#FFD700"; ctx.lineWidth = 1;
+        ctx.strokeRect(px+38, py-50, 5, 6);
+
+        // Zagięcie ronda z przodu
+        ctx.strokeStyle = "#E65100"; ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(px+40, py-46, 18, Math.PI*0.05, Math.PI*0.95);
+        ctx.stroke();
+
+        // === WĘDKA ===
+        // Trzonek wędki - gradient (ciemniejszy przy ręce, jaśniejszy przy końcu)
+        const rodGrad = ctx.createLinearGradient(px+45, py-8, rodTipX, rodTipY);
+        rodGrad.addColorStop(0, "#5D4037");
+        rodGrad.addColorStop(0.5, "#8D6E63");
+        rodGrad.addColorStop(1, "#A5D6A7");
+        ctx.strokeStyle = "transparent";
+        ctx.lineWidth = 4; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(px+45, py-8); ctx.lineTo(rodTipX, rodTipY);
+        ctx.strokeStyle = rodGrad; ctx.stroke();
+
+        // Przelotki wędki
+        const guides = [[px+50, py-14], [px+54, py-21], [px+57, py-27]];
+        guides.forEach(([gx, gy]) => {
+            ctx.strokeStyle = "#aaa"; ctx.lineWidth = 1.5;
+            ctx.beginPath(); ctx.arc(gx, gy, 2.5, 0, Math.PI*2); ctx.stroke();
+        });
+
+        ctx.restore();
+
         // Fishing rod
-        ctx.strokeStyle = "#6D4C41"; ctx.lineWidth = 3; ctx.lineCap = "round";
-        ctx.beginPath(); ctx.moveTo(player.x+43, player.y-4); ctx.lineTo(rodTipX, rodTipY); ctx.stroke();
+        // (rysowana wyżej przez stroke z gradientem)
     }
 
     function gameLoop() { update(); draw(); requestAnimationFrame(gameLoop); }
