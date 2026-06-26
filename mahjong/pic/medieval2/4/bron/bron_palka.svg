@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" shape-rendering="crispEdges">
+<rect width="100" height="120" fill="#b0b0b0"/>
+<rect x="46" y="60" width="8" height="52" fill="#5c3a00" stroke="#3a2000" stroke-width="1" rx="2"/>
+<rect x="44" y="70" width="12" height="3" fill="#888"/>
+<rect x="44" y="82" width="12" height="3" fill="#888"/>
+<rect x="44" y="94" width="12" height="3" fill="#888"/>
+<ellipse cx="50" cy="56" rx="4" ry="5" fill="#aaa" stroke="#666" stroke-width="1"/>
+<ellipse cx="50" cy="48" rx="3" ry="4" fill="#aaa" stroke="#666" stroke-width="1"/>
+<circle cx="50" cy="34" r="18" fill="#888" stroke="#555" stroke-width="2"/>
+<circle cx="50" cy="34" r="14" fill="#9a9a9a"/>
+<polygon points="50,12 47,20 53,20" fill="#ccc"/>
+<polygon points="50,56 47,48 53,48" fill="#ccc"/>
+<polygon points="28,34 36,31 36,37" fill="#ccc"/>
+<polygon points="72,34 64,31 64,37" fill="#ccc"/>
+<polygon points="32,16 38,22 32,28" fill="#ccc"/>
+<polygon points="68,16 62,22 68,28" fill="#ccc"/>
+<polygon points="32,52 38,46 32,40" fill="#ccc"/>
+<polygon points="68,52 62,46 68,40" fill="#ccc"/>
+</svg>
