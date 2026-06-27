@@ -1,4 +1,4 @@
-// ── Mowa (Web Speech API) — czytanie po najechaniu myszą ────────────────────
+// ── Mowa (Web Speech API) — czytanie po kliknięciu w głośnik ────────────────
 const speechAvailable = 'speechSynthesis' in window;
 let preferredVoice = null;
 function pickVoice() {
@@ -13,18 +13,6 @@ function pickVoice() {
 if (speechAvailable) {
     pickVoice();
     window.speechSynthesis.onvoiceschanged = pickVoice;
-}
-
-function speak(text) {
-    if (!speechAvailable || !text) return;
-    try {
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = 'pl-PL';
-        if (preferredVoice) u.voice = preferredVoice;
-        u.rate = 0.95;
-        window.speechSynthesis.speak(u);
-    } catch (e) { /* brak syntezy mowy — ignoruj */ }
 }
 
 // Czytanie z obietnicą — rozwiązywaną po zakończeniu wypowiedzi
@@ -337,7 +325,6 @@ function renderQuestion() {
     document.getElementById('q-subcategory-name').textContent = q.subcategory;
     const questionEl = document.getElementById('q-question');
     questionEl.textContent = q.question;
-    questionEl.onmouseenter = () => { if (!seqActive) speak(q.question); };   // czytaj pytanie po najechaniu
     document.getElementById('feedback').textContent = '';
     document.getElementById('feedback').className = 'feedback';
     document.getElementById('btn-next').style.display = 'none';
@@ -355,7 +342,6 @@ function renderQuestion() {
         btn.className = 'answer-btn';
         btn.textContent = ans.text;
         btn.addEventListener('click', () => handleAnswer(ans, correctAnswer));
-        btn.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !seqActive) speak(ans.text); });   // czytaj odpowiedź po najechaniu myszą (nie po kliknięciu/dotknięciu)
         grid.appendChild(btn);
     });
 
