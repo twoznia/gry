@@ -17,30 +17,43 @@
 <div id="console">
     <div id="screen-border">
         <div id="screen">
+            <div id="road-bg">
+                <div class="lane-line"></div>
+                <div class="lane-line"></div>
+                <div class="lane-line"></div>
+            </div>
+
             <div id="ui">
                 <div id="hi-score">HI: 0000</div>
                 <div id="score">0000</div>
                 <div id="lives">♥♥♥</div>
-            </div>
-            
-            <div id="overlay">
-                <h1 id="status-title" style="margin:0; font-size: 32px;">AUTOSLALOM</h1>
-                <p id="final-info" style="font-size: 14px; margin: 15px 0;">TRYB SPOKOJNY<br>Have Fun!!!</p>
-                <button class="menu-btn" id="action-btn" onclick="startGame()">START</button>
+                <div id="streak"></div>
             </div>
 
-            <div id="player" class="car-shape" style="bottom: 30px; display: none;">
+            <div id="overlay">
+                <h1 id="status-title" style="margin:0; font-size: 32px;">AUTOSLALOM</h1>
+                <p id="final-info" style="font-size: 14px; margin: 15px 0;"></p>
+                <div id="mode-buttons">
+                    <button class="menu-btn" onclick="startGame('spokojny')" id="btn-easy">SPOKOJNY</button>
+                    <button class="menu-btn menu-btn-hard" onclick="startGame('szybki')" id="btn-hard">SZYBKI</button>
+                </div>
+                <button class="menu-btn" id="action-btn" onclick="startGame(lastMode)" style="display:none;">ZAGRAJ PONOWNIE</button>
+            </div>
+
+            <div id="player" class="car-shape player-car" style="bottom: 30px; display: none;">
                 <div class="wheel w1"></div><div class="wheel w2"></div>
                 <div class="car-body"></div>
                 <div class="wheel w3"></div><div class="wheel w4"></div>
+                <div class="exhaust" id="exhaust-l"></div>
+                <div class="exhaust" id="exhaust-r"></div>
             </div>
         </div>
     </div>
 
     <div class="controls">
         <div class="controls-row">
-            <button class="btn" onclick="handleMove('L')">◀</button>
-            <button class="btn" onclick="handleMove('P')">▶</button>
+            <button class="btn" id="btn-left" onclick="handleMove('L')">◀</button>
+            <button class="btn" id="btn-right" onclick="handleMove('P')">▶</button>
         </div>
         <button class="btn-reset" onclick="resetHiScore()" id="btn-reset-hi">RESETUJ REKORD</button>
     </div>

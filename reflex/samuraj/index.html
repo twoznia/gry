@@ -99,6 +99,7 @@
 
     // bonus round
     let bigBall = null, bonusCombo = 0, lastBonusSlice = 0;
+    let bonusActiveAt = 0;          // kulkę premiową można ciąć dopiero po tym czasie (1 s opóźnienia)
 
     // blade / stroke
     let stroking = false;
@@ -204,6 +205,7 @@
             fruits = fruits.filter(f => !f.dead);
         } else if (phase === 'bonus' && bigBall) {
             const now = performance.now();
+            if (now < bonusActiveAt) return;               // kulka jeszcze nieaktywna (1 s gotowości)
             if (now - lastBonusSlice < 120) return;
             if (distToSeg(bigBall.x, bigBall.y, ax, ay, bx, by) <= bigBall.r) {
                 lastBonusSlice = now;
@@ -299,8 +301,10 @@
             fruits = fruits.filter(f => f.y - f.r < canvas.height + 40);
             for (const f of fruits) drawFruit(f);
         } else if (phase === 'bonus' && bigBall) {
+            const armed = performance.now() >= bonusActiveAt;   // czy kulkę można już ciąć
             if (bigBall.pop > 0) bigBall.pop = Math.max(0, bigBall.pop - 0.08*dt);
             const scl = 1 + bigBall.pop * 0.12;
+            ctx.globalAlpha = armed ? 1 : 0.45;                 // przygaś przed aktywacją
             const g = ctx.createRadialGradient(bigBall.x - bigBall.r*0.3, bigBall.y - bigBall.r*0.3, bigBall.r*0.2, bigBall.x, bigBall.y, bigBall.r*scl);
             g.addColorStop(0, '#fff7cc'); g.addColorStop(0.3, '#facc15'); g.addColorStop(1, '#f59e0b');
             ctx.fillStyle = g;
@@ -308,7 +312,8 @@
             ctx.strokeStyle = '#fde68a'; ctx.lineWidth = 4; ctx.stroke();
             ctx.fillStyle = '#7c2d12'; ctx.font = `bold ${Math.round(bigBall.r*0.5)}px Inter, sans-serif`;
             ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-            ctx.fillText('TNIJ!', bigBall.x, bigBall.y);
+            ctx.fillText(armed ? 'TNIJ!' : 'GOTUJ SIĘ', bigBall.x, bigBall.y);
+            ctx.globalAlpha = 1;
         }
 
         // particles
@@ -393,6 +398,7 @@
         phase = 'bonus';
         fruits = [];
         bonusCombo = 0; lastBonusSlice = 0;
+        bonusActiveAt = performance.now() + 1000;          // 1 s na przygotowanie zanim można ciąć
         bigBall = { x: canvas.width/2, y: canvas.height/2, r: Math.min(canvas.width, canvas.height)*0.2, pop: 0 };
         // brief banner then live
         showBanner('🎁 PREMIA! Tnij dużą kulkę ile się da!', BONUS_TIME);
@@ -451,7 +457,9 @@
         fruits = []; particles = []; floats = []; bigBall = null;
         titleEl.style.display = '';
         overlayTitle.textContent = 'Wybierz tryb gry!';
-        overlayStats.classList.add('hidden');
+        overlayStats.innerHTML =
+            `<p class="text-center text-base">🏆 Rekordy — Dziecko: <span class="text-yellow-400 font-bold">${bestFor('child')}</span> · Dorosły: <span class="text-yellow-400 font-bold">${bestFor('adult')}</span> pkt</p>`;
+        overlayStats.classList.remove('hidden');
         overlayDesc.textContent = 'Przecinaj spadające kulki palcem lub myszką! Kilka jednym ruchem = premia. Uważaj na bomby 💣 (-3s).';
         modeSelection.classList.remove('hidden');
         mainBtn.classList.add('hidden');

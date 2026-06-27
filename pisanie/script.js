@@ -6,6 +6,14 @@ function setLang(l) {
     location.reload();
 }
 
+/* ─────────────── Module (obrazki / słuchanie) ─────────────── */
+const mode = localStorage.getItem('pisanieMode') || 'images';   // 'images' | 'listen'
+
+function setMode(m) {
+    localStorage.setItem('pisanieMode', m);
+    location.reload();
+}
+
 (function() {
     const btnPl = document.getElementById('lang-pl');
     const btnEn = document.getElementById('lang-en');
@@ -24,10 +32,22 @@ function setLang(l) {
     document.getElementById('ov-title').textContent   = lang === 'en' ? 'Excellent!' : 'Świetnie!';
     document.getElementById('ov-text').textContent    = lang === 'en' ? 'Well done!' : 'Brawo!';
     document.getElementById('ov-btn').textContent     = lang === 'en' ? 'Next →' : 'Dalej →';
+
+    // przełącznik modułów
+    document.querySelector('#mode-images span').textContent = lang === 'en' ? 'Pictures' : 'Obrazki';
+    document.querySelector('#mode-listen span').textContent = lang === 'en' ? 'Listening' : 'Słuchanie';
+    document.getElementById('mode-' + mode).classList.add('active');
+    document.body.classList.add('mode-' + mode);
+
     // ukryj głośnik, gdy przeglądarka nie wspiera syntezy mowy
     if (!('speechSynthesis' in window)) {
         const sb = document.getElementById('speak-btn');
         if (sb) sb.style.display = 'none';
+        // w module słuchania głośnik jest niezbędny — pokaż ostrzeżenie w podpowiedzi
+        if (mode === 'listen') {
+            const wh = document.getElementById('word-hint');
+            wh.textContent = lang === 'en' ? '(speech not supported)' : '(brak syntezy mowy)';
+        }
     }
 })();
 
@@ -302,7 +322,17 @@ const LEVELS_EN = [
     ],
 ];
 
-const ACTIVE_LEVELS = lang === 'en' ? LEVELS_EN : LEVELS;
+/* Moduł "Słuchanie" — buduj poziomy ze słów bez obrazka (words-listen.js) */
+function buildListenLevels() {
+    const data = lang === 'en' ? LISTEN_WORDS_EN : LISTEN_WORDS_PL;
+    return [3, 4, 5, 6, 7, 8].map(len =>
+        (data[len] || []).map(w => ({ word: w, emoji: '', hint: w.toLowerCase() }))
+    );
+}
+
+const ACTIVE_LEVELS = mode === 'listen'
+    ? buildListenLevels()
+    : (lang === 'en' ? LEVELS_EN : LEVELS);
 
 const EXTRA_POOL    = 'AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻ'.split('');
 const EXTRA_POOL_EN = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -315,6 +345,7 @@ let pool = [];          // [{id, letter, used}]
 let boxes = [];         // [{poolId, letter}] or null per slot
 let lockedBoxes = new Set();   // indices verified correct
 let wrongBoxes  = new Set();   // indices verified wrong (red)
+let hintStage   = 0;           // 0 = brak, 1 = pula odfiltrowana, 2 = słowo pokazane
 
 /* ─────────────── Helpers ─────────────── */
 function shuffle(a) {
@@ -336,7 +367,11 @@ function makePool(word) {
     const basePool = lang === 'en' ? EXTRA_POOL_EN : EXTRA_POOL;
     const available = shuffle(basePool.filter(l => !inWord.has(l)));
     const extras   = available.slice(0, Math.min(2, available.length));
-    return shuffle([...letters, ...extras]).map((letter, id) => ({ id, letter, used: false }));
+    const items = shuffle([
+        ...letters.map(l => ({ letter: l, extra: false })),
+        ...extras.map(l => ({ letter: l, extra: true })),
+    ]);
+    return items.map((it, id) => ({ id, letter: it.letter, used: false, extra: it.extra, hidden: false }));
 }
 
 /* ─────────────── Render ─────────────── */
@@ -382,6 +417,7 @@ function renderPool() {
     const el = document.getElementById('letter-pool');
     el.innerHTML = '';
     pool.forEach(item => {
+        if (item.hidden) return;           // litera ukryta przez podpowiedź
         const btn = document.createElement('button');
         btn.className   = `pool-btn c${item.id % 10}`;
         btn.textContent = item.letter;
@@ -442,6 +478,17 @@ function checkAnswer() {
 
     document.getElementById('check-btn').classList.remove('show');
     renderAll();
+
+    // odczytaj wpisany wyraz; jeśli błędny — dodaj komunikat
+    const entered = boxes.map(b => (b ? b.letter : '')).join('');
+    if (allCorrect) {
+        speak(entered);
+    } else {
+        const spoken = entered.toLowerCase();
+        speak(lang === 'en'
+            ? `${spoken}, is incorrect. Try again.`
+            : `${spoken}, jest niepoprawny. Spróbuj ponownie.`);
+    }
 
     if (allCorrect) {
         const emojiEl = document.getElementById('emoji-area');
@@ -523,7 +570,8 @@ function loadWord() {
     const hintEl = document.getElementById('word-hint');
     hintEl.textContent = hint;
     hintEl.classList.add('hint-hidden');
-    document.getElementById('hint-btn').textContent = lang === 'en' ? '💡 Hint' : '💡 Podpowiedź';
+    hintStage = 0;
+    setHintLabel('hint');
 
     // Reset state
     pool        = makePool(word);
@@ -533,33 +581,99 @@ function loadWord() {
 
     renderAll();
     document.getElementById('check-btn').classList.remove('show');
+
+    // Moduł "Słuchanie" — przeczytaj słowo automatycznie
+    if (mode === 'listen' && speechAvailable) {
+        setTimeout(speakWord, 350);
+    }
 }
 
 /* ─────────────── Wymowa (Web Speech API) ─────────────── */
 const speechAvailable = 'speechSynthesis' in window;
 
-function speakWord() {
+// Wybór głosu kobiecego dopasowanego do języka
+let preferredVoice = null;
+function pickVoice() {
     if (!speechAvailable) return;
-    const entry = currentLevelWords[wordIdx];
-    if (!entry || !entry.word) return;
+    const voices = window.speechSynthesis.getVoices();
+    const prefix = lang === 'en' ? 'en' : 'pl';
+    const candidates = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith(prefix));
+    // nazwy typowych głosów kobiecych (PL + EN, różne przeglądarki/systemy)
+    const femaleHints = ['female', 'kobie', 'zosia', 'paulina', 'ewa', 'agnieszka', 'maja',
+        'zira', 'hazel', 'susan', 'samantha', 'victoria', 'karen', 'tessa', 'fiona',
+        'google uk english female', 'google polski'];
+    preferredVoice =
+        candidates.find(v => femaleHints.some(h => v.name.toLowerCase().includes(h))) ||
+        candidates[0] || null;
+}
+if (speechAvailable) {
+    pickVoice();
+    window.speechSynthesis.onvoiceschanged = pickVoice;   // głosy często ładują się asynchronicznie
+}
+
+// Czytanie dowolnego tekstu głosem kobiecym
+function speak(text) {
+    if (!speechAvailable || !text) return;
     try {
         window.speechSynthesis.cancel();                 // przerwij poprzednie czytanie
-        // czytaj w języku interfejsu — zestaw słów jest dobrany do języka
-        const utterance = new SpeechSynthesisUtterance(String(entry.word).replace(/\s*\/\s*/g, ', '));
+        const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = lang === 'en' ? 'en-US' : 'pl-PL';
+        if (preferredVoice) utterance.voice = preferredVoice;
+        utterance.rate  = 0.95;
+        utterance.pitch = 1.1;                           // delikatnie wyżej — bardziej kobieco
         window.speechSynthesis.speak(utterance);
     } catch (e) { /* brak syntezy mowy — ignoruj */ }
 }
 
-/* ─────────────── Hint ─────────────── */
+function speakWord() {
+    const entry = currentLevelWords[wordIdx];
+    if (!entry || !entry.word) return;
+    // czytaj w języku interfejsu — zestaw słów jest dobrany do języka
+    speak(String(entry.word).replace(/\s*\/\s*/g, ', '));
+}
+
+/* ─────────────── Hint (dwustopniowa) ─────────────── */
+const HINT_LABELS = {
+    pl: { hint: '💡 Podpowiedź', hide: '🙈 Ukryj', show: '👁 Pokaż' },
+    en: { hint: '💡 Hint',       hide: '🙈 Hide',  show: '👁 Show'  },
+};
+
+function setHintLabel(key) {
+    document.getElementById('hint-btn').textContent = HINT_LABELS[lang === 'en' ? 'en' : 'pl'][key];
+}
+
+// 1. klik — usuń z puli litery niepasujące do słowa
+function applyHintFilter() {
+    boxes.forEach((box, i) => {
+        if (!box) return;
+        const item = pool.find(p => p.id === box.poolId);
+        if (item && item.extra) {           // wyjmij błędną literę z kratki
+            item.used = false;
+            boxes[i] = null;
+            wrongBoxes.delete(i);
+        }
+    });
+    pool.forEach(p => { if (p.extra) p.hidden = true; });
+    renderAll();
+}
+
 function toggleHint() {
     const hintEl = document.getElementById('word-hint');
-    const btn    = document.getElementById('hint-btn');
-    const hidden = hintEl.classList.toggle('hint-hidden');
-    if (lang === 'en') {
-        btn.textContent = hidden ? '💡 Hint' : '🙈 Hide';
+
+    if (hintStage === 0) {
+        // 1. klik: usuń nieprawidłowe litery z puli
+        applyHintFilter();
+        hintStage = 1;
+        setHintLabel('hint');           // dalej można poprosić o pełną podpowiedź
+    } else if (hintStage === 1) {
+        // 2. klik: pokaż słowo małymi literami
+        hintEl.classList.remove('hint-hidden');
+        hintStage = 2;
+        setHintLabel('hide');
     } else {
-        btn.textContent = hidden ? '💡 Podpowiedź' : '🙈 Ukryj';
+        // kolejne kliknięcia: chowaj / pokazuj słowo
+        const hidden = hintEl.classList.toggle('hint-hidden');
+        setHintLabel(hidden ? 'show' : 'hide');
     }
 }
 
