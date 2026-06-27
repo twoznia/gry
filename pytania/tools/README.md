@@ -1,10 +1,8 @@
 # add_questions — instrukcja użycia
 
-Narzędzie CLI do dodawania pytań generowanych przez AI do plików JSON w `pytania/data/`.
-
-> ⚠️ **Uwaga dot. formatu danych:** Gra aktualnie wczytuje pytania z pliku CSV:
-> `pytania/dane/all_questions_sorted.csv`
-> Narzędzie `add_questions.mjs` operuje na plikach JSON w `pytania/data/` — te pliki należy po wygenerowaniu ręcznie scalić z plikiem CSV (lub docelowo przepisać loader gry na JSON).
+Narzędzie CLI do generowania pytań AI i dopisywania ich **bezpośrednio** do pliku
+gry: `pytania/dane/pytania.csv`. To jedyne źródło prawdy, z którego korzysta gra —
+nie ma już pośredniego kroku z plikami JSON ani ręcznego scalania.
 
 ---
 
@@ -13,21 +11,21 @@ Narzędzie CLI do dodawania pytań generowanych przez AI do plików JSON w `pyta
 | Wymaganie | Wersja |
 |-----------|--------|
 | Node.js | **18 LTS lub nowszy** (wbudowany `fetch`) |
-| Klucz API OpenAI | `OPENAI_API_KEY` w zmiennej środowiskowej |
+| Klucz API OpenAI | `OPENAI_API_KEY` w zmiennej środowiskowej (poza `--dry-run`) |
 
 ---
 
 ## Szybki start
 
 ```bash
-# 1. Ustaw klucz API OpenAI
 export OPENAI_API_KEY=sk-...
 
-# 2. Uruchom narzędzie
-node pytania/tools/add_questions.mjs --file muzyka.json
+# Dodaj 200 pytań rozłożonych na całą bazę
+node pytania/tools/add_questions.mjs --count 200
 ```
 
-Skrypt automatycznie znajdzie wszystkie unikalne `subcategory` w pliku i doda **1 nowe pytanie dla każdej subkategorii**.
+Skrypt rozkłada żądaną liczbę pytań na istniejące subkategorie, **zaczynając od
+tych najsłabiej reprezentowanych**, więc korpus rośnie równomiernie.
 
 ---
 
@@ -35,10 +33,11 @@ Skrypt automatycznie znajdzie wszystkie unikalne `subcategory` w pliku i doda **
 
 | Parametr | Opis | Domyślnie |
 |----------|------|-----------|
-| `--file <name>` | Nazwa pliku w `pytania/data/` (np. `muzyka.json`) | *wymagany* |
-| `--level <value>` | Poziom trudności (patrz tabela poniżej) | `trudne` |
-| `--topic <text>` | Dodatkowy kontekst/temat dla generatora | *(brak)* |
-| `--dry-run` | Wyświetl zmiany bez zapisywania pliku | *(brak)* |
+| `--count <N>` | Ile pytań dodać w tym przebiegu | `20` |
+| `--category <nazwa>` | Ogranicz do jednej kategorii (np. `"Sport"`) | *(wszystkie)* |
+| `--level <poziom>` | Wymuś poziom dla wszystkich nowych pytań | *(losowo wg istniejących)* |
+| `--batch <N>` | Ile pytań prosić w jednym zapytaniu API | `10` |
+| `--dry-run` | Pokaż plan / wynik bez zapisu | *(brak)* |
 | `--help` | Wyświetl pomoc | — |
 
 ### Dozwolone poziomy (`--level`)
@@ -58,74 +57,33 @@ Skrypt automatycznie znajdzie wszystkie unikalne `subcategory` w pliku i doda **
 
 ## Przykłady
 
-### Podstawowe wywołanie
-
 ```bash
-node pytania/tools/add_questions.mjs --file muzyka.json
-```
+# 200 pytań rozłożonych na wszystkie kategorie
+node pytania/tools/add_questions.mjs --count 200
 
-### Z poziomem i tematem
+# 50 pytań tylko z jednej kategorii
+node pytania/tools/add_questions.mjs --count 50 --category "Geografia i Turystyka"
 
-```bash
-node pytania/tools/add_questions.mjs \
-  --file muzyka.json \
-  --level trudne \
-  --topic "muzyka klasyczna, Chopin"
-```
+# Podgląd planu bez zapisu (działa też bez klucza API)
+node pytania/tools/add_questions.mjs --count 200 --dry-run
 
-### Podgląd bez zapisu (dry-run)
-
-```bash
-node pytania/tools/add_questions.mjs \
-  --file historia.json \
-  --level łatwe \
-  --dry-run
-```
-
-### Inny model OpenAI
-
-```bash
-OPENAI_MODEL=gpt-4o node pytania/tools/add_questions.mjs --file sport.json --level trudne
+# Wymuszony poziom i inny model
+OPENAI_MODEL=gpt-4o node pytania/tools/add_questions.mjs --count 100 --level trudne
 ```
 
 ---
 
-## Dostępne pliki kategorii
+## Jak to działa
 
-| Plik | Kategoria |
-|------|-----------|
-| `film_i_telewizja.json` | Film i Telewizja |
-| `geografia_i_turystyka.json` | Geografia i Turystyka |
-| `historia.json` | Historia |
-| `kulinaria_i_smaki.json` | Kulinaria i Smaki |
-| `literatura_i_jezyk.json` | Literatura i Język |
-| `motoryzacja_i_transport.json` | Motoryzacja i Transport |
-| `muzyka.json` | Muzyka |
-| `nauka_i_odkrycia.json` | Nauka i Odkrycia |
-| `przyroda_i_biologia.json` | Przyroda i Biologia |
-| `rozrywka_i_popkultura.json` | Rozrywka i Popkultura |
-| `spoleczenstwo_i_prawo.json` | Społeczeństwo i Prawo |
-| `sport.json` | Sport |
-| `sztuka_i_architektura.json` | Sztuka i Architektura |
-| `technologie_i_it.json` | Technologie i IT |
-| `tradycje_i_religie.json` | Tradycje i Religie |
-| `wiedza_ogolna_i_ciekawostki.json` | Wiedza Ogólna i Ciekawostki |
-
-> ⚠️ `manifest.json` jest plikiem systemowym i **nie można go edytować** tym narzędziem.
-
----
-
-## Działanie narzędzia
-
-1. Wczytuje wskazany plik JSON.
-2. Odnajduje wszystkie unikalne `subcategory` w tablicy `questions`.
-3. Dla każdej subkategorii wysyła zapytanie do OpenAI API, prosząc o 1 pytanie.
-4. Waliduje odpowiedź:
-   - pytanie ≤ 200 znaków,
-   - poprawna odpowiedź ≤ 50 znaków,
-   - dokładnie 4 odpowiedzi, 1 poprawna,
-   - brak duplikatu w tej samej subkategorii.
-5. Dopisuje nowe pytania do pliku (zachowując formatowanie: 2 spacje, newline na końcu).
+1. Wczytuje `pytania/dane/pytania.csv` i buduje indeks istniejących pytań.
+2. Planuje, ile pytań dodać do każdej subkategorii (najpierw najsłabsze tematy).
+3. Dla każdej subkategorii prosi model o partię pytań (`--batch`) jako tablicę JSON.
+4. Waliduje każde pytanie:
+   - pytanie ≤ 200 znaków, poprawna odpowiedź ≤ 50 znaków,
+   - dokładnie 1 poprawna + 3 błędne odpowiedzi, bez powtórzeń,
+   - żadne pole nie zawiera `;` ani znaku nowej linii (bezpieczeństwo CSV),
+   - brak duplikatu względem **całego** pliku CSV i pytań z bieżącego przebiegu.
+5. Dopisuje zaakceptowane pytania na końcu CSV.
 
 ---
 
@@ -133,9 +91,18 @@ OPENAI_MODEL=gpt-4o node pytania/tools/add_questions.mjs --file sport.json --lev
 
 | Kod | Znaczenie |
 |-----|-----------|
-| `0` | Sukces |
-| `1` | Błąd krytyczny lub wszystkie pytania nie wygenerowane |
-| `2` | Częściowy sukces — część pytań nie wygenerowana |
+| `0` | Sukces — dodano wszystkie żądane pytania |
+| `1` | Nie dodano żadnego pytania |
+| `2` | Częściowy sukces — dodano mniej niż `--count` |
+
+---
+
+## Codzienne 200 pytań (automatycznie)
+
+Workflow `.github/workflows/pytania-daily-questions.yml` uruchamia narzędzie raz
+dziennie (oraz na żądanie) i otwiera Pull Request z nowymi pytaniami do
+przejrzenia. Wymaga ustawienia sekretu repozytorium **`OPENAI_API_KEY`**
+(Settings → Secrets and variables → Actions).
 
 ---
 
