@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ANATOM — Anatomia człowieka 🧠</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="back-link" href="../">← Wróć</a>
+
+<!-- ─────────── EKRAN STARTOWY ─────────── -->
+<section id="screen-start" class="screen active">
+  <h1 class="title">🫀 ANATOM</h1>
+  <p class="subtitle">Naucz się anatomii człowieka — od przedszkola po studia.</p>
+
+  <div class="card">
+    <div class="group-label">Poziom trudności</div>
+    <div id="level-buttons" class="opt-grid"></div>
+
+    <div class="group-label">Tryb gry</div>
+    <div id="mode-buttons" class="opt-grid two">
+      <button class="opt-btn mode-btn selected" data-mode="locate">
+        <span class="opt-icon">👆</span>
+        <span class="opt-name">Wskaż</span>
+        <span class="opt-desc">Pokażę nazwę — kliknij właściwe miejsce na ciele.</span>
+      </button>
+      <button class="opt-btn mode-btn" data-mode="identify">
+        <span class="opt-icon">🏷️</span>
+        <span class="opt-name">Nazwij</span>
+        <span class="opt-desc">Podświetlę miejsce — wybierz poprawną nazwę.</span>
+      </button>
+    </div>
+
+    <button id="btn-play" class="big-btn">Graj ▶</button>
+  </div>
+</section>
+
+<!-- ─────────── EKRAN GRY ─────────── -->
+<section id="screen-play" class="screen">
+  <div id="hud">
+    <div><span class="hud-label">Pytanie</span> <span id="q-counter">1 / 10</span></div>
+    <div><span class="hud-label">Wynik</span> <span id="score" class="hud-score">0</span></div>
+    <div><span class="hud-label">Seria</span> <span id="streak">0</span></div>
+  </div>
+
+  <div id="prompt" class="prompt">…</div>
+
+  <div id="figure-wrap">
+    <svg id="figure" viewBox="0 0 200 384" aria-label="Sylwetka człowieka">
+      <!-- ciało (grube zaokrąglone kreski dają gładką sylwetkę) -->
+      <g fill="none" stroke="#e7b48f" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M100,96 L100,230" stroke-width="66"/>
+        <path d="M66,114 L134,114" stroke-width="34"/>
+        <path d="M82,230 L118,230" stroke-width="40"/>
+        <path d="M70,116 L48,162 L42,214" stroke-width="22"/>
+        <path d="M130,116 L152,162 L158,214" stroke-width="22"/>
+        <path d="M86,232 L84,300 L84,372" stroke-width="28"/>
+        <path d="M114,232 L116,300 L116,372" stroke-width="28"/>
+        <path d="M84,374 L72,380" stroke-width="14"/>
+        <path d="M116,374 L128,380" stroke-width="14"/>
+      </g>
+      <rect x="90" y="74" width="20" height="26" rx="8" fill="#e7b48f"/>
+      <ellipse cx="100" cy="44" rx="30" ry="36" fill="#e7b48f"/>
+      <g id="markers"></g>
+    </svg>
+    <div id="figure-feedback"></div>
+  </div>
+
+  <div id="options" class="options"></div>
+  <div id="feedback-bar" class="feedback-bar"></div>
+  <button id="btn-next" class="big-btn hidden">Dalej →</button>
+</section>
+
+<!-- ─────────── EKRAN WYNIKU ─────────── -->
+<section id="screen-result" class="screen">
+  <h1 class="title" id="result-emoji">🏆</h1>
+  <div id="result-score" class="result-score">0 / 10</div>
+  <div id="result-comment" class="subtitle"></div>
+  <div id="result-best" class="subtitle"></div>
+  <div class="card">
+    <button id="btn-again" class="big-btn">Zagraj ponownie</button>
+    <button id="btn-menu" class="big-btn ghost">Zmień poziom / tryb</button>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
