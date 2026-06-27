@@ -123,6 +123,8 @@ function buildPath(ctx, r, c, ox, oy) {
 // ═══════════════════════════════════════════════════════════════
 
 function initGame() {
+  clearWinTimers();
+  hideReplayBar();
   N       = parseInt(document.getElementById('size-select').value);
   boardPx = Math.min(window.innerWidth - 40, 440);
   pw      = boardPx / N;
@@ -208,12 +210,17 @@ function drawPieceOnCtx(ctx, r, c, scale) {
 //  Board
 // ═══════════════════════════════════════════════════════════════
 
-function drawBoard() {
-  boardCtx.clearRect(0, 0, boardPx, boardPx);
+// Pastelowy jasny żółty — tło planszy i tacki
+const BOARD_BG = '#fdf6c4';
 
-  // Board background
-  boardCtx.fillStyle = '#0f172a';
+function paintBoardBg() {
+  boardCtx.clearRect(0, 0, boardPx, boardPx);
+  boardCtx.fillStyle = BOARD_BG;
   boardCtx.fillRect(0, 0, boardPx, boardPx);
+}
+
+function drawBoard() {
+  paintBoardBg();
 
   for (let r = 0; r < N; r++) {
     for (let c = 0; c < N; c++) {
@@ -226,23 +233,23 @@ function drawBoard() {
         boardCtx.drawImage(imgEl, 0, 0, boardPx, boardPx);
         boardCtx.restore();
 
-        // Subtle white seam
+        // Subtle seam (ciemny — widoczny na jasnym tle)
         boardCtx.save();
         buildPath(boardCtx, r, c, 0, 0);
-        boardCtx.strokeStyle = 'rgba(255,255,255,0.55)';
+        boardCtx.strokeStyle = 'rgba(0,0,0,0.28)';
         boardCtx.lineWidth = 1;
         boardCtx.stroke();
       } else {
         // Empty slot – subtle inner fill
         buildPath(boardCtx, r, c, 0, 0);
-        boardCtx.fillStyle = 'rgba(255,255,255,0.05)';
+        boardCtx.fillStyle = 'rgba(0,0,0,0.05)';
         boardCtx.fill();
         boardCtx.restore();
 
         // Dashed outline
         boardCtx.save();
         buildPath(boardCtx, r, c, 0, 0);
-        boardCtx.strokeStyle = 'rgba(148,163,184,0.55)';
+        boardCtx.strokeStyle = 'rgba(120,113,40,0.55)';
         boardCtx.lineWidth = 1.5;
         boardCtx.setLineDash([5, 4]);
         boardCtx.stroke();
@@ -252,6 +259,30 @@ function drawBoard() {
       boardCtx.restore();
     }
   }
+}
+
+// Ułożona plansza z wyróżnionymi ramkami puzzli (złota poświata)
+function drawBoardHighlighted() {
+  paintBoardBg();
+  boardCtx.drawImage(imgEl, 0, 0, boardPx, boardPx);
+  for (let r = 0; r < N; r++) {
+    for (let c = 0; c < N; c++) {
+      boardCtx.save();
+      buildPath(boardCtx, r, c, 0, 0);
+      boardCtx.strokeStyle = 'rgba(250,204,21,0.95)';
+      boardCtx.lineWidth = 2.5;
+      boardCtx.shadowColor = 'rgba(250,204,21,0.9)';
+      boardCtx.shadowBlur = 8;
+      boardCtx.stroke();
+      boardCtx.restore();
+    }
+  }
+}
+
+// Czysty obrazek bez ramek puzzli
+function drawBoardClean() {
+  paintBoardBg();
+  boardCtx.drawImage(imgEl, 0, 0, boardPx, boardPx);
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -379,10 +410,36 @@ function updateProgress() {
   document.getElementById('progress').textContent = `Ułożono: ${done} / ${N * N}`;
 }
 
+let winTimers = [];
+function clearWinTimers() { winTimers.forEach(clearTimeout); winTimers = []; }
+
 function checkWin() {
   if (placed.every(row => row.every(Boolean))) {
-    setTimeout(() => document.getElementById('win-overlay').classList.add('show'), 350);
+    winTimers.push(setTimeout(runWinSequence, 350));
   }
+}
+
+function runWinSequence() {
+  clearWinTimers();
+  drawBoardHighlighted();                         // 1) wyróżnione puzzle (2 s)
+  winTimers.push(setTimeout(() => {
+    drawBoardClean();                             // 2) czysty obrazek bez ramek (2 s)
+    winTimers.push(setTimeout(() => {
+      showReplayBar();                            // 3) przycisk „Zagraj ponownie”
+    }, 2000));
+  }, 2000));
+}
+
+function showReplayBar() {
+  document.getElementById('tray-label').style.display = 'none';
+  document.getElementById('tray').style.display = 'none';
+  document.getElementById('replay-bar').classList.add('show');
+}
+
+function hideReplayBar() {
+  document.getElementById('tray-label').style.display = '';
+  document.getElementById('tray').style.display = '';
+  document.getElementById('replay-bar').classList.remove('show');
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -416,9 +473,6 @@ window.addEventListener('touchend', e => {
 document.getElementById('new-btn').addEventListener('click', initGame);
 document.getElementById('size-select').addEventListener('change', initGame);
 document.getElementById('img-select').addEventListener('change', initGame);
-document.getElementById('win-new-btn').addEventListener('click', () => {
-  document.getElementById('win-overlay').classList.remove('show');
-  initGame();
-});
+document.getElementById('replay-btn').addEventListener('click', initGame);
 
 window.addEventListener('DOMContentLoaded', initGame);
