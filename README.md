@@ -21,6 +21,7 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 - **[Kółko i Krzyżyk](./tictactoe/)** ⭕ – Klasyczna gra kółko i krzyżyk z AI na trzech poziomach trudności i różnych rozmiarach planszy.
 - **[Tower Defense](./obrona/)** 🏰 – Broń swojej bazy przed falami wrogów – stawiaj wieże i przetrwaj jak najdłużej!
 - **[Immuno](./imuno/)** 🦠 – Tower defense w roli układu odpornościowego: broń kolejnych narządów przed patogenami, ulepszaj komórki, graj na nieograniczonej liczbie poziomów.
+- **[Anatom](./anatomia/)** 🫀 – Nauka anatomii człowieka: wskazuj i nazywaj struktury ciała na sylwetce, 4 poziomy trudności (od przedszkolaka po studenta fizjoterapii) i dwa tryby gry.
 - **[Ptak](./ptak/)** 🐦 – Leć i omijaj przeszkody – klasyczna zabawa w stylu Flappy Bird!
 - **[Saper](./saper/)** 💣 – Odkryj wszystkie pola nie trafiając na minę – klasyczny Saper.
 - **[Skoczek](./jumper/)** 🦘 – Skacz po platformach i zbieraj punkty – neonowy platformer!
