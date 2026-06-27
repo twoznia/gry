@@ -58,15 +58,16 @@ Same format but only 3 wrong answers (`wrong1;wrong2`, no `wrong3`).
 
 ```bash
 # AI quiz question generator (requires OPENAI_API_KEY, Node.js 18+)
-node pytania/tools/add_questions.mjs --file muzyka.json
-node pytania/tools/add_questions.mjs --file historia.json --level trudne --topic "Chopin"
-node pytania/tools/add_questions.mjs --file sport.json --dry-run
+# Writes directly to pytania/dane/pytania.csv — no manual merge needed.
+node pytania/tools/add_questions.mjs --count 200
+node pytania/tools/add_questions.mjs --count 50 --category "Sport"
+node pytania/tools/add_questions.mjs --count 200 --dry-run
 
 # Regenerate słówka manifest
 node słówka/tools/generate_manifest.mjs
 ```
 
-`add_questions.mjs` writes to JSON files in `pytania/data/` (not directly to the CSV). After generation, questions must be merged manually into `pytania/dane/pytania.csv`.
+`add_questions.mjs` generates AI questions and appends them straight to `pytania/dane/pytania.csv` (the file the game loads). It spreads `--count` across the least-represented subcategories, deduplicates against the whole CSV, and validates length/format/CSV-safety. A daily GitHub Action (`.github/workflows/pytania-daily-questions.yml`) can run it automatically and open a PR — it needs the `OPENAI_API_KEY` repo secret.
 
 ## Adding a new game
 

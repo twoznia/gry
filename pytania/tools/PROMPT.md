@@ -37,25 +37,23 @@ Dozwolone wartości pola `level`:
 
 Każde pytanie musi zawierać **dokładnie 4 odpowiedzi**, z których **dokładnie 1** ma `is_correct: true`.
 
+Model zwraca **tablicę** pytań. Każdy element ma jedno poprawne pole `correct`
+i dokładnie 3 błędne odpowiedzi w `wrong`:
+
 ```json
-{
-  "subcategory": "...",
-  "question":    "...",
-  "level":       "łatwe|średnie|trudne|bardzo trudne",
-  "answers": [
-    { "text": "...", "is_correct": true  },
-    { "text": "...", "is_correct": false },
-    { "text": "...", "is_correct": false },
-    { "text": "...", "is_correct": false }
-  ]
-}
+[
+  { "question": "...", "correct": "...", "wrong": ["...", "...", "..."] }
+]
 ```
+
+Narzędzie zapisuje je do CSV w formacie:
+`category;subcategory;level;question;correct;wrong1;wrong2;wrong3`
 
 ---
 
 ## Unikanie duplikatów
 
-Nowe pytanie **nie może być dodane**, jeśli w tym samym pliku i tej samej `subcategory` istnieje już pytanie o identycznym (lub bardzo podobnym, case-insensitive) tekście `question`.
+Nowe pytanie **nie może być dodane**, jeśli w `pytania/dane/pytania.csv` istnieje już pytanie o identycznym (po normalizacji: trim, małe litery, scalone spacje) tekście — niezależnie od subkategorii. Sprawdzane są też pytania dodane w tym samym przebiegu.
 
 ---
 
@@ -70,30 +68,28 @@ Nowe pytanie **nie może być dodane**, jeśli w tym samym pliku i tej samej `su
 
 ## Prompt wysyłany do modelu
 
-Przykładowy prompt generowany przez skrypt dla `category = "Muzyka"`, `subcategory = "Fryderyk Chopin i Klasyka"`, `level = "trudne"`, `topic = "sonaty"`:
+Przykładowy prompt generowany przez skrypt dla `category = "Muzyka"`, `subcategory = "Fryderyk Chopin i Klasyka"`, `level = "trudne"`, `n = 10`:
 
 ```
 Jesteś generatorem pytań quizowych w języku polskim.
 
-Wygeneruj 1 pytanie quizowe dla kategorii "Muzyka", subkategorii "Fryderyk Chopin i Klasyka".
-Dodatkowy kontekst/temat: sonaty
+Wygeneruj 10 RÓŻNYCH pytań quizowych dla kategorii "Muzyka", subkategorii "Fryderyk Chopin i Klasyka".
 Poziom trudności: trudne
 
-Zasady:
-- Pytanie w języku polskim, maksymalnie 200 znaków
-- Poprawna odpowiedź maksymalnie 50 znaków
-- Dokładnie 4 odpowiedzi, dokładnie 1 poprawna (is_correct: true)
-- Pytanie musi być merytorycznie poprawne i weryfikowalne
-- Pytanie oryginalne, nawiązujące ściśle do podanej subkategorii
+NIE powtarzaj poniższych istniejących pytań (ani ich parafraz):
+- ...
 
-Odpowiedz WYŁĄCZNIE w formacie JSON (bez żadnego dodatkowego tekstu ani bloków markdown):
-{
-  "question": "...",
-  "answers": [
-    {"text": "...", "is_correct": true},
-    {"text": "...", "is_correct": false},
-    {"text": "...", "is_correct": false},
-    {"text": "...", "is_correct": false}
-  ]
-}
+Zasady:
+- Pytania i odpowiedzi w języku polskim
+- Każde pytanie maksymalnie 200 znaków
+- Poprawna odpowiedź maksymalnie 50 znaków
+- Dokładnie 1 poprawna odpowiedź i dokładnie 3 błędne
+- ŻADNE pole nie może zawierać znaku średnika ";" ani znaku nowej linii
+- Pytania merytorycznie poprawne, weryfikowalne, ściśle związane z subkategorią
+- Błędne odpowiedzi wiarygodne (nie absurdalne), różne od poprawnej
+
+Odpowiedz WYŁĄCZNIE tablicą JSON (bez markdown, bez komentarzy):
+[
+  { "question": "...", "correct": "...", "wrong": ["...", "...", "..."] }
+]
 ```
