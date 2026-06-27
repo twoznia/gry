@@ -263,9 +263,10 @@
                     Math.random() < truckChance ? spawnTruck(l) : spawnCar(l);
                     if (vScore > 50) spawnCar((l + 2) % 4);
                 } else {
-                    // 3 lanes blocked
+                    // 3 lanes blocked — luka ZAWSZE w zasięgu gracza (±1 pas),
+                    // dzięki czemu poziom jest zawsze przechodliwy, także na trybie szybkim
                     if (vScore > 80) {
-                        const open = Math.floor(Math.random() * 4);
+                        const open = Math.max(0, Math.min(3, playerLane + (Math.floor(Math.random() * 3) - 1)));
                         [0,1,2,3].filter(l => l !== open).forEach(l => spawnCar(l));
                     } else {
                         spawnCar(Math.floor(Math.random() * 4));
