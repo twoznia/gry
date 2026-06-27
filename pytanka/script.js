@@ -1,3 +1,32 @@
+// ── Mowa (Web Speech API) — czytanie po najechaniu myszą ────────────────────
+const speechAvailable = 'speechSynthesis' in window;
+let preferredVoice = null;
+function pickVoice() {
+    if (!speechAvailable) return;
+    const voices = window.speechSynthesis.getVoices();
+    const candidates = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('pl'));
+    const femaleHints = ['female', 'kobie', 'zosia', 'paulina', 'ewa', 'agnieszka', 'maja', 'google'];
+    preferredVoice =
+        candidates.find(v => femaleHints.some(h => v.name.toLowerCase().includes(h))) ||
+        candidates[0] || null;
+}
+if (speechAvailable) {
+    pickVoice();
+    window.speechSynthesis.onvoiceschanged = pickVoice;
+}
+
+function speak(text) {
+    if (!speechAvailable || !text) return;
+    try {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'pl-PL';
+        if (preferredVoice) u.voice = preferredVoice;
+        u.rate = 0.95;
+        window.speechSynthesis.speak(u);
+    } catch (e) { /* brak syntezy mowy — ignoruj */ }
+}
+
 // ── Data loading ───────────────────────────────────────────────────────────
 let allData = [];      // [{category, icon, questions:[{subcategory,question,answers}]}]
 let loadError = false;
@@ -216,7 +245,9 @@ function renderQuestion() {
     document.getElementById('score-display').textContent = state.score;
     document.getElementById('q-category-name').textContent = q._category;
     document.getElementById('q-subcategory-name').textContent = q.subcategory;
-    document.getElementById('q-question').textContent = q.question;
+    const questionEl = document.getElementById('q-question');
+    questionEl.textContent = q.question;
+    questionEl.onmouseenter = () => speak(q.question);   // czytaj pytanie po najechaniu
     document.getElementById('feedback').textContent = '';
     document.getElementById('feedback').className = 'feedback';
     document.getElementById('btn-next').style.display = 'none';
@@ -234,6 +265,7 @@ function renderQuestion() {
         btn.className = 'answer-btn';
         btn.textContent = ans.text;
         btn.addEventListener('click', () => handleAnswer(ans, correctAnswer));
+        btn.addEventListener('mouseenter', () => speak(ans.text));   // czytaj odpowiedź po najechaniu
         grid.appendChild(btn);
     });
 
