@@ -18,7 +18,7 @@
  *
  * Zmienne środowiskowe:
  *   ANTHROPIC_API_KEY   wymagany (chyba że --dry-run)
- *   ANTHROPIC_MODEL     opcjonalny, domyślnie: claude-opus-4-8
+ *   ANTHROPIC_MODEL     opcjonalny, domyślnie: claude-haiku-4-5
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
@@ -53,7 +53,7 @@ Opcje:
 
 Zmienne środowiskowe:
   ANTHROPIC_API_KEY  Klucz API Anthropic (wymagany, chyba że --dry-run)
-  ANTHROPIC_MODEL    Model Claude (domyślnie: claude-opus-4-8)
+  ANTHROPIC_MODEL    Model Claude (domyślnie: claude-haiku-4-5)
 
 Przykłady:
   node pytania/tools/add_questions.mjs --count 200
@@ -337,7 +337,7 @@ function appendToCsv(rawText, newQuestions) {
 async function main() {
   const opts = parseArgs();
   const apiKey = process.env.ANTHROPIC_API_KEY;
-  const model  = process.env.ANTHROPIC_MODEL || 'claude-opus-4-8';
+  const model  = process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5';
 
   if (!apiKey && !opts.dryRun) {
     console.error('Błąd: brak ANTHROPIC_API_KEY. Ustaw klucz lub użyj --dry-run.');
