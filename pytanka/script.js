@@ -74,6 +74,36 @@ async function readQuestionAndAnswers() {
     }
 }
 
+// Sekwencja: przeczytaj kategorię, a potem podkategorię bieżącego pytania
+async function readCategoryAndSubcategory() {
+    if (!speechAvailable) return;
+    window.speechSynthesis.cancel();
+    const token = ++speakSeqToken;
+    seqActive = true;
+    const speakBtn = document.getElementById('q-speak-btn');
+    speakBtn.classList.add('playing');
+    try {
+        const q = state.questions[state.currentQ];
+        if (q._category) await speakAsync(q._category);       // 1) kategoria
+        if (token !== speakSeqToken) return;
+        if (q.subcategory) await speakAsync(q.subcategory);   // 2) podkategoria
+    } finally {
+        if (token === speakSeqToken) { seqActive = false; speakBtn.classList.remove('playing'); }
+    }
+}
+
+// Klik w głośnik: 1. klik czyta pytanie i odpowiedzi, kolejny — kategorię i podkategorię
+let speakClickCount = 0;
+function handleSpeakClick() {
+    const readCategory = speakClickCount % 2 === 1;
+    speakClickCount++;
+    if (readCategory) {
+        readCategoryAndSubcategory();
+    } else {
+        readQuestionAndAnswers();
+    }
+}
+
 // Przerwij sekwencję (np. przy zmianie pytania lub udzieleniu odpowiedzi)
 function stopSpeechSequence() {
     speakSeqToken++;
@@ -297,6 +327,7 @@ function initProgressBar(idx) {
 // ── Render question ───────────────────────────────────────────────────────
 function renderQuestion() {
     stopSpeechSequence();                 // przerwij ewentualne czytanie z poprzedniego pytania
+    speakClickCount = 0;                  // nowy zestaw: pierwszy klik znów czyta pytanie i odpowiedzi
     const { currentQ, questions } = state;
     const q = questions[currentQ];
 
@@ -324,7 +355,7 @@ function renderQuestion() {
         btn.className = 'answer-btn';
         btn.textContent = ans.text;
         btn.addEventListener('click', () => handleAnswer(ans, correctAnswer));
-        btn.addEventListener('mouseenter', () => { if (!seqActive) speak(ans.text); });   // czytaj odpowiedź po najechaniu
+        btn.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !seqActive) speak(ans.text); });   // czytaj odpowiedź po najechaniu myszą (nie po kliknięciu/dotknięciu)
         grid.appendChild(btn);
     });
 
@@ -431,7 +462,7 @@ document.getElementById('btn-replay').addEventListener('click', () => {
 });
 
 // ── Głośnik na pytaniu ──────────────────────────────────────────────────────
-document.getElementById('q-speak-btn').addEventListener('click', readQuestionAndAnswers);
+document.getElementById('q-speak-btn').addEventListener('click', handleSpeakClick);
 
 // ── Start button ──────────────────────────────────────────────────────────
 document.getElementById('btn-start').addEventListener('click', () => {
