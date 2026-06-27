@@ -16,6 +16,11 @@
   <button id="lang-en" onclick="setLang('en')" title="English" aria-label="English" style="background:rgba(255,255,255,0.2);color:white;border:2px solid rgba(255,255,255,0.4);border-radius:20px;padding:4px 10px;font-size:1rem;cursor:pointer;line-height:0;"><img src="https://flagcdn.com/24x18/gb.png" width="24" height="18" alt="English" style="display:block;border-radius:3px;"></button>
 </div>
 
+<div id="mode-switcher">
+    <button id="mode-images" onclick="setMode('images')">🖼️ <span>Obrazki</span></button>
+    <button id="mode-listen" onclick="setMode('listen')">🔊 <span>Słuchanie</span></button>
+</div>
+
 <div id="progress">
     <div id="level-label">Poziom 1 • słowa 3-literowe</div>
     <div id="level-dots"></div>
@@ -42,6 +47,7 @@
     </div>
 </div>
 
+<script src="words-listen.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

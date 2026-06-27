@@ -37,6 +37,40 @@
         }
         #words-link:hover { color: white; }
 
+        /* ── Przełącznik modułów ── */
+        #mode-switcher {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 14px;
+            padding: 5px;
+            backdrop-filter: blur(4px);
+        }
+        #mode-switcher button {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: none;
+            background: transparent;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        #mode-switcher button.active {
+            background: white;
+            color: #6366f1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+
+        /* Tryb "Słuchanie" — ukryj obszar obrazka */
+        body.mode-listen #emoji-area { display: none; }
+
         #progress {
             color: white;
             text-align: center;
