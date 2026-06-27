@@ -57,7 +57,7 @@ Same format but only 3 wrong answers (`wrong1;wrong2`, no `wrong3`).
 ## Node.js tools
 
 ```bash
-# AI quiz question generator (requires OPENAI_API_KEY, Node.js 18+)
+# AI quiz question generator (requires ANTHROPIC_API_KEY, Node.js 18+)
 # Writes directly to pytania/dane/pytania.csv — no manual merge needed.
 node pytania/tools/add_questions.mjs --count 200
 node pytania/tools/add_questions.mjs --count 50 --category "Sport"
@@ -67,7 +67,7 @@ node pytania/tools/add_questions.mjs --count 200 --dry-run
 node słówka/tools/generate_manifest.mjs
 ```
 
-`add_questions.mjs` generates AI questions and appends them straight to `pytania/dane/pytania.csv` (the file the game loads). It spreads `--count` across the least-represented subcategories, deduplicates against the whole CSV, and validates length/format/CSV-safety. A daily GitHub Action (`.github/workflows/pytania-daily-questions.yml`) can run it automatically and open a PR — it needs the `OPENAI_API_KEY` repo secret.
+`add_questions.mjs` generates AI questions and appends them straight to `pytania/dane/pytania.csv` (the file the game loads). It spreads `--count` across the least-represented subcategories, deduplicates against the whole CSV, and validates length/format/CSV-safety. It calls the Anthropic Claude API (model via `ANTHROPIC_MODEL`, default `claude-opus-4-8`). A daily GitHub Action (`.github/workflows/pytania-daily-questions.yml`) can run it automatically and open a PR — it needs the `ANTHROPIC_API_KEY` repo secret.
 
 ## Adding a new game
 
