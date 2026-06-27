@@ -155,17 +155,17 @@ category;subcategory;level;question;correct;wrong1;wrong2
 
 ### Dodawanie pytań do quizu (`pytania/tools/add_questions.mjs`)
 
-Wymaga Node.js 18+ i klucza `OPENAI_API_KEY`.
+Wymaga Node.js 18+ i klucza `ANTHROPIC_API_KEY` (model Claude przez `ANTHROPIC_MODEL`, domyślnie `claude-opus-4-8`). Dopisuje pytania wprost do `pytania/dane/pytania.csv`.
 
 ```bash
-# Dodaj pytania do kategorii
-node pytania/tools/add_questions.mjs --file muzyka.json
+# Dodaj 200 pytań rozłożonych na całą bazę
+node pytania/tools/add_questions.mjs --count 200
 
-# Z poziomem trudności i tematem
-node pytania/tools/add_questions.mjs --file historia.json --level trudne --topic "Chopin"
+# Tylko jedna kategoria
+node pytania/tools/add_questions.mjs --count 50 --category "Sport"
 
-# Podgląd bez zapisu
-node pytania/tools/add_questions.mjs --file sport.json --dry-run
+# Podgląd planu bez zapisu (działa też bez klucza)
+node pytania/tools/add_questions.mjs --count 200 --dry-run
 ```
 
 ### Odświeżanie manifestu słówek (`słówka/tools/generate_manifest.mjs`)

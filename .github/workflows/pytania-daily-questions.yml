@@ -4,7 +4,7 @@ name: Pytania — codzienne pytania AI
 # do ręcznego przejrzenia i scalenia. Można też uruchomić ręcznie z wybraną
 # liczbą pytań przez "Run workflow".
 #
-# Wymaga sekretu repozytorium: OPENAI_API_KEY
+# Wymaga sekretu repozytorium: ANTHROPIC_API_KEY
 
 on:
   schedule:
@@ -34,10 +34,10 @@ jobs:
 
       - name: Generate questions
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          if [ -z "$OPENAI_API_KEY" ]; then
-            echo "::error::Brak sekretu OPENAI_API_KEY — ustaw go w Settings → Secrets → Actions."
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::Brak sekretu ANTHROPIC_API_KEY — ustaw go w Settings → Secrets → Actions."
             exit 1
           fi
           node pytania/tools/add_questions.mjs --count "${{ github.event.inputs.count || '200' }}"

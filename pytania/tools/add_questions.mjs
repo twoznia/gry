@@ -17,8 +17,8 @@
  *   node pytania/tools/add_questions.mjs --count 20 --level trudne --dry-run
  *
  * Zmienne środowiskowe:
- *   OPENAI_API_KEY   wymagany (chyba że --dry-run)
- *   OPENAI_MODEL     opcjonalny, domyślnie: gpt-4o-mini
+ *   ANTHROPIC_API_KEY   wymagany (chyba że --dry-run)
+ *   ANTHROPIC_MODEL     opcjonalny, domyślnie: claude-opus-4-8
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
@@ -52,8 +52,8 @@ Opcje:
   --help             Wyświetl tę pomoc
 
 Zmienne środowiskowe:
-  OPENAI_API_KEY     Klucz API OpenAI (wymagany, chyba że --dry-run)
-  OPENAI_MODEL       Model (domyślnie: gpt-4o-mini)
+  ANTHROPIC_API_KEY  Klucz API Anthropic (wymagany, chyba że --dry-run)
+  ANTHROPIC_MODEL    Model Claude (domyślnie: claude-opus-4-8)
 
 Przykłady:
   node pytania/tools/add_questions.mjs --count 200
@@ -214,25 +214,30 @@ Odpowiedz WYŁĄCZNIE tablicą JSON (bez markdown, bez komentarzy):
 ]`;
 }
 
-// ── OpenAI ────────────────────────────────────────────────────────────────────
+// ── Claude (Anthropic Messages API) ───────────────────────────────────────────
 
-async function callOpenAI(prompt, apiKey, model) {
-  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+async function callClaude(prompt, apiKey, model) {
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
+    headers: {
+      'content-type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+    },
+    // Brak temperature/top_p — odrzucane (400) przez modele Opus 4.8/4.7.
     body: JSON.stringify({
       model,
-      messages: [{ role: 'user', content: prompt }],
-      temperature: 0.85,
       max_tokens: 2000,
+      messages: [{ role: 'user', content: prompt }],
     }),
   });
   if (!res.ok) {
     const body = await res.text().catch(() => '');
-    throw new Error(`OpenAI API ${res.status}: ${body.slice(0, 200)}`);
+    throw new Error(`Anthropic API ${res.status}: ${body.slice(0, 200)}`);
   }
   const data = await res.json();
-  return data.choices?.[0]?.message?.content || '';
+  // content to tablica bloków; bierzemy pierwszy blok tekstowy.
+  return (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('') || '';
 }
 
 /** Wyłuskaj pierwszą zbalansowaną tablicę JSON z tekstu. */
@@ -287,7 +292,7 @@ async function generateForTarget(target, apiKey, model, dedup) {
     const ask = Math.min(remaining, batch);
     let raw;
     try {
-      raw = await callOpenAI(buildPrompt(category, subcategory, level, ask, avoid.slice(0, 40)), apiKey, model);
+      raw = await callClaude(buildPrompt(category, subcategory, level, ask, avoid.slice(0, 40)), apiKey, model);
     } catch (e) {
       if (attempts >= MAX_ATTEMPTS) throw new Error(e.message);
       continue;
@@ -331,11 +336,11 @@ function appendToCsv(rawText, newQuestions) {
 
 async function main() {
   const opts = parseArgs();
-  const apiKey = process.env.OPENAI_API_KEY;
-  const model  = process.env.OPENAI_MODEL || 'gpt-4o-mini';
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const model  = process.env.ANTHROPIC_MODEL || 'claude-opus-4-8';
 
   if (!apiKey && !opts.dryRun) {
-    console.error('Błąd: brak OPENAI_API_KEY. Ustaw klucz lub użyj --dry-run.');
+    console.error('Błąd: brak ANTHROPIC_API_KEY. Ustaw klucz lub użyj --dry-run.');
     process.exit(1);
   }
 
@@ -362,7 +367,7 @@ async function main() {
   console.log('');
 
   if (opts.dryRun && !apiKey) {
-    console.log('ℹ️  Brak OPENAI_API_KEY — pokazuję sam plan:\n');
+    console.log('ℹ️  Brak ANTHROPIC_API_KEY — pokazuję sam plan:\n');
     plan.forEach(t => console.log(`  +${t.n}  ${t.category} › ${t.subcategory} [${t.level}]`));
     console.log(`\nRazem zaplanowano: ${plan.reduce((s, t) => s + t.n, 0)} pytań`);
     return;

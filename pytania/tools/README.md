@@ -11,14 +11,14 @@ nie ma już pośredniego kroku z plikami JSON ani ręcznego scalania.
 | Wymaganie | Wersja |
 |-----------|--------|
 | Node.js | **18 LTS lub nowszy** (wbudowany `fetch`) |
-| Klucz API OpenAI | `OPENAI_API_KEY` w zmiennej środowiskowej (poza `--dry-run`) |
+| Klucz API Anthropic | `ANTHROPIC_API_KEY` w zmiennej środowiskowej (poza `--dry-run`) |
 
 ---
 
 ## Szybki start
 
 ```bash
-export OPENAI_API_KEY=sk-...
+export ANTHROPIC_API_KEY=sk-ant-...
 
 # Dodaj 200 pytań rozłożonych na całą bazę
 node pytania/tools/add_questions.mjs --count 200
@@ -50,8 +50,8 @@ tych najsłabiej reprezentowanych**, więc korpus rośnie równomiernie.
 
 | Zmienna | Opis | Domyślnie |
 |---------|------|-----------|
-| `OPENAI_API_KEY` | Klucz API OpenAI | *wymagana* |
-| `OPENAI_MODEL` | Model do użycia | `gpt-4o-mini` |
+| `ANTHROPIC_API_KEY` | Klucz API Anthropic | *wymagana* |
+| `ANTHROPIC_MODEL` | Model Claude do użycia | `claude-opus-4-8` |
 
 ---
 
@@ -67,8 +67,8 @@ node pytania/tools/add_questions.mjs --count 50 --category "Geografia i Turystyk
 # Podgląd planu bez zapisu (działa też bez klucza API)
 node pytania/tools/add_questions.mjs --count 200 --dry-run
 
-# Wymuszony poziom i inny model
-OPENAI_MODEL=gpt-4o node pytania/tools/add_questions.mjs --count 100 --level trudne
+# Wymuszony poziom i inny (tańszy) model Claude
+ANTHROPIC_MODEL=claude-haiku-4-5 node pytania/tools/add_questions.mjs --count 100 --level trudne
 ```
 
 ---
@@ -101,7 +101,7 @@ OPENAI_MODEL=gpt-4o node pytania/tools/add_questions.mjs --count 100 --level tru
 
 Workflow `.github/workflows/pytania-daily-questions.yml` uruchamia narzędzie raz
 dziennie (oraz na żądanie) i otwiera Pull Request z nowymi pytaniami do
-przejrzenia. Wymaga ustawienia sekretu repozytorium **`OPENAI_API_KEY`**
+przejrzenia. Wymaga ustawienia sekretu repozytorium **`ANTHROPIC_API_KEY`**
 (Settings → Secrets and variables → Actions).
 
 ---
