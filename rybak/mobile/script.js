@@ -133,7 +133,7 @@
             scoreEl.innerText = totalScore;
             targetEl.innerText = cumulativeTarget;
             lvlEl.innerText = "Poziom " + level;
-            levelMsg.innerText = "POZIOM " + level + "! +20s";
+            levelMsg.innerText = "POZIOM " + level + "!";
             levelMsg.style.display = "block";
             setTimeout(() => { levelMsg.style.display = "none"; }, 2000);
         }
@@ -151,7 +151,10 @@
                 speed: (1.2 + Math.random() * 2) * d,
                 color: `hsl(${Math.random() * 360}, 80%, 55%)`,
                 size: 16 + Math.random() * 12,
-                active: true
+                active: true,
+                phase: Math.random() * Math.PI * 2,
+                wiggleSpeed: 0.18 + Math.random() * 0.12,
+                bobAmp: 1.5 + Math.random() * 2
             });
             spawnTimer = 35 + Math.random() * 70;
         }
@@ -253,6 +256,7 @@
         for (let i = fishes.length - 1; i >= 0; i--) {
             const f = fishes[i];
             f.x += f.speed;
+            f.phase += f.wiggleSpeed;        // animacja pływania
             if (f.active) {
                 const dx = player.hookX - f.x;
                 const dy = player.hookY - f.y;
@@ -304,19 +308,34 @@
         // Fish
         fishes.forEach(f => {
             if (!f.active) return;
-            ctx.save();
-            ctx.translate(f.x, f.y);
             const d = f.speed > 0 ? 1 : -1;
+            const wag = Math.sin(f.phase);
+            const bob = Math.sin(f.phase * 0.6) * f.bobAmp;
+            ctx.save();
+            ctx.translate(f.x, f.y + bob);
+            ctx.scale(1, 1 + Math.cos(f.phase) * 0.06);
             ctx.fillStyle = f.color;
-            // Tail
+            // Tail — kołysze się
+            const tailWag = wag * f.size * 0.55;
             ctx.beginPath();
             ctx.moveTo(-f.size * d, 0);
-            ctx.lineTo(-f.size * 1.5 * d, -f.size * 0.5);
-            ctx.lineTo(-f.size * 1.5 * d, f.size * 0.5);
+            ctx.lineTo(-f.size * 1.6 * d, -f.size * 0.5 + tailWag);
+            ctx.lineTo(-f.size * 1.6 * d, f.size * 0.5 + tailWag);
+            ctx.closePath();
+            ctx.fill();
+            // Dorsal fin — faluje
+            ctx.beginPath();
+            ctx.moveTo(-f.size * 0.2 * d, -f.size * 0.45);
+            ctx.quadraticCurveTo(-f.size * 0.1 * d, -f.size * 0.75 - wag * 2, f.size * 0.25 * d, -f.size * 0.4);
+            ctx.closePath();
             ctx.fill();
             // Body
             ctx.beginPath();
             ctx.ellipse(0, 0, f.size, f.size / 2, 0, 0, Math.PI * 2);
+            ctx.fill();
+            // Pectoral fin — macha
+            ctx.beginPath();
+            ctx.ellipse(f.size * 0.15 * d, f.size * 0.28, f.size * 0.28, f.size * 0.14, wag * 0.5, 0, Math.PI * 2);
             ctx.fill();
             // Eye white
             ctx.fillStyle = "white";
