@@ -9,6 +9,7 @@ Stan na 2026-06-20.
 - mat-jaja - back-link: ujednolicony
 - memo - back-link: ujednolicony
 - obrona - back-link: ujednolicony
+- imuno - back-link: obecny
 - pisanie - back-link: ujednolicony
 - ptak - back-link: ujednolicony
 - puzzle - back-link: ujednolicony

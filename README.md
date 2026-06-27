@@ -20,6 +20,7 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 - **[Tetris](./tetris/)** 🟦 – Klasyczny Tetris z neonową grafiką, systemem hold i podglądem następnych klocków.
 - **[Kółko i Krzyżyk](./tictactoe/)** ⭕ – Klasyczna gra kółko i krzyżyk z AI na trzech poziomach trudności i różnych rozmiarach planszy.
 - **[Tower Defense](./obrona/)** 🏰 – Broń swojej bazy przed falami wrogów – stawiaj wieże i przetrwaj jak najdłużej!
+- **[Immuno](./imuno/)** 🦠 – Tower defense w roli układu odpornościowego: broń kolejnych narządów przed patogenami, ulepszaj komórki, graj na nieograniczonej liczbie poziomów.
 - **[Ptak](./ptak/)** 🐦 – Leć i omijaj przeszkody – klasyczna zabawa w stylu Flappy Bird!
 - **[Saper](./saper/)** 💣 – Odkryj wszystkie pola nie trafiając na minę – klasyczny Saper.
 - **[Skoczek](./jumper/)** 🦘 – Skacz po platformach i zbieraj punkty – neonowy platformer!
