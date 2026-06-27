@@ -51,7 +51,7 @@ tych najsłabiej reprezentowanych**, więc korpus rośnie równomiernie.
 | Zmienna | Opis | Domyślnie |
 |---------|------|-----------|
 | `ANTHROPIC_API_KEY` | Klucz API Anthropic | *wymagana* |
-| `ANTHROPIC_MODEL` | Model Claude do użycia | `claude-opus-4-8` |
+| `ANTHROPIC_MODEL` | Model Claude do użycia | `claude-haiku-4-5` |
 
 ---
 
@@ -67,8 +67,8 @@ node pytania/tools/add_questions.mjs --count 50 --category "Geografia i Turystyk
 # Podgląd planu bez zapisu (działa też bez klucza API)
 node pytania/tools/add_questions.mjs --count 200 --dry-run
 
-# Wymuszony poziom i inny (tańszy) model Claude
-ANTHROPIC_MODEL=claude-haiku-4-5 node pytania/tools/add_questions.mjs --count 100 --level trudne
+# Wymuszony poziom i mocniejszy model Claude (lepsza jakość, wyższy koszt)
+ANTHROPIC_MODEL=claude-sonnet-4-6 node pytania/tools/add_questions.mjs --count 100 --level trudne
 ```
 
 ---

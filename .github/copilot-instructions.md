@@ -155,7 +155,7 @@ category;subcategory;level;question;correct;wrong1;wrong2
 
 ### Dodawanie pytań do quizu (`pytania/tools/add_questions.mjs`)
 
-Wymaga Node.js 18+ i klucza `ANTHROPIC_API_KEY` (model Claude przez `ANTHROPIC_MODEL`, domyślnie `claude-opus-4-8`). Dopisuje pytania wprost do `pytania/dane/pytania.csv`.
+Wymaga Node.js 18+ i klucza `ANTHROPIC_API_KEY` (model Claude przez `ANTHROPIC_MODEL`, domyślnie `claude-haiku-4-5`). Dopisuje pytania wprost do `pytania/dane/pytania.csv`.
 
 ```bash
 # Dodaj 200 pytań rozłożonych na całą bazę
