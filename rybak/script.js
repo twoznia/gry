@@ -14,7 +14,7 @@
             hit: 'TRAFIONY! 💩',
             tryAgain: 'Spróbuj ponownie',
             confirmReset: 'Wyzerować rekord?',
-            levelUp: (lvl) => `POZIOM ${lvl}! +5s`
+            levelUp: (lvl) => `POZIOM ${lvl}!`
         },
         en: {
             fish: 'Fish:',
@@ -31,7 +31,7 @@
             hit: 'HIT! 💩',
             tryAgain: 'Try again',
             confirmReset: 'Reset high score?',
-            levelUp: (lvl) => `LEVEL ${lvl}! +5s`
+            levelUp: (lvl) => `LEVEL ${lvl}!`
         }
     };
     const lang = localStorage.getItem('lang') || 'pl';
@@ -170,7 +170,11 @@
                 speed: (1.5 + Math.random() * 2) * d,
                 color: `hsl(${Math.random() * 360}, 80%, 50%)`,
                 size: 18 + Math.random() * 10,
-                active: true
+                active: true,
+                // animacja pływania
+                phase: Math.random() * Math.PI * 2,
+                wiggleSpeed: 0.18 + Math.random() * 0.12,
+                bobAmp: 1.5 + Math.random() * 2
             });
             spawnTimer = 40 + Math.random() * 80;
         }
@@ -254,6 +258,7 @@
 
         fishes.forEach((f, i) => {
             f.x += f.speed;
+            f.phase += f.wiggleSpeed;        // animacja machania ogonem / pływania
             if (f.active) {
                 let dx = player.hookX - f.x, dy = player.hookY - f.y;
                 if (Math.sqrt(dx*dx + dy*dy) < 25) {
@@ -271,11 +276,40 @@
         ctx.clearRect(0, 0, 800, 600);
         fishes.forEach(f => {
             if (!f.active) return;
-            ctx.save(); ctx.translate(f.x, f.y);
             const d = f.speed > 0 ? 1 : -1;
+            const wag  = Math.sin(f.phase);            // machanie ogonem
+            const bob  = Math.sin(f.phase * 0.6) * f.bobAmp;   // delikatne bujanie w pionie
+            ctx.save();
+            ctx.translate(f.x, f.y + bob);
+            // lekkie falowanie ciała (squash) w rytm pływania
+            ctx.scale(1, 1 + Math.cos(f.phase) * 0.06);
+
             ctx.fillStyle = f.color;
-            ctx.beginPath(); ctx.moveTo(-f.size*d, 0); ctx.lineTo(-f.size*1.5*d, -f.size*0.5); ctx.lineTo(-f.size*1.5*d, f.size*0.5); ctx.fill();
+            // ogon — kołysze się góra/dół
+            const tailWag = wag * f.size * 0.55;
+            ctx.beginPath();
+            ctx.moveTo(-f.size*d, 0);
+            ctx.lineTo(-f.size*1.6*d, -f.size*0.5 + tailWag);
+            ctx.lineTo(-f.size*1.6*d,  f.size*0.5 + tailWag);
+            ctx.closePath();
+            ctx.fill();
+
+            // płetwa grzbietowa — faluje
+            ctx.beginPath();
+            ctx.moveTo(-f.size*0.2*d, -f.size*0.45);
+            ctx.quadraticCurveTo(-f.size*0.1*d, -f.size*0.75 - wag*2, f.size*0.25*d, -f.size*0.4);
+            ctx.closePath();
+            ctx.fill();
+
+            // ciało
             ctx.beginPath(); ctx.ellipse(0, 0, f.size, f.size/2, 0, 0, 7); ctx.fill();
+
+            // płetwa piersiowa — macha
+            ctx.beginPath();
+            ctx.ellipse(f.size*0.15*d, f.size*0.28, f.size*0.28, f.size*0.14, wag*0.5, 0, Math.PI*2);
+            ctx.fill();
+
+            // oko
             ctx.fillStyle = "white"; ctx.beginPath(); ctx.arc(f.size*0.5*d, -f.size*0.15, 4, 0, 7); ctx.fill();
             ctx.fillStyle = "black"; ctx.beginPath(); ctx.arc(f.size*0.5*d + d, -f.size*0.15, 1.5, 0, 7); ctx.fill();
             ctx.restore();
