@@ -363,14 +363,27 @@ function selectLevelWords(levelIdx) {
 
 function makePool(word) {
     const letters  = word.split('');
-    const inWord   = new Set(letters);
-    const basePool = lang === 'en' ? EXTRA_POOL_EN : EXTRA_POOL;
+
+    // pomieszaj litery słowa tak, by ich kolejność NIE tworzyła poprawnego słowa
+    // (dzięki temu po podpowiedzi, która usuwa zbędne litery, rozwiązanie nie jest odsłonięte)
+    let wordLetters = shuffle(letters);
+    let guard = 0;
+    while (letters.length > 1 && wordLetters.join('') === word && guard++ < 30) {
+        wordLetters = shuffle(letters);
+    }
+
+    const inWord    = new Set(letters);
+    const basePool  = lang === 'en' ? EXTRA_POOL_EN : EXTRA_POOL;
     const available = shuffle(basePool.filter(l => !inWord.has(l)));
-    const extras   = available.slice(0, Math.min(2, available.length));
-    const items = shuffle([
-        ...letters.map(l => ({ letter: l, extra: false })),
-        ...extras.map(l => ({ letter: l, extra: true })),
-    ]);
+    const extras    = available.slice(0, Math.min(2, available.length));
+
+    // wstaw dodatkowe litery w losowych miejscach, zachowując kolejność liter słowa
+    const items = wordLetters.map(l => ({ letter: l, extra: false }));
+    extras.forEach(l => {
+        const pos = Math.floor(Math.random() * (items.length + 1));
+        items.splice(pos, 0, { letter: l, extra: true });
+    });
+
     return items.map((it, id) => ({ id, letter: it.letter, used: false, extra: it.extra, hidden: false }));
 }
 
