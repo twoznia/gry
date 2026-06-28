@@ -49,20 +49,63 @@
 
   <div id="figure-wrap">
     <svg id="figure" viewBox="0 0 200 384" aria-label="Sylwetka człowieka">
-      <!-- ciało (grube zaokrąglone kreski dają gładką sylwetkę) -->
-      <g fill="none" stroke="#e7b48f" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M100,96 L100,230" stroke-width="66"/>
-        <path d="M66,114 L134,114" stroke-width="34"/>
-        <path d="M82,230 L118,230" stroke-width="40"/>
-        <path d="M70,116 L48,162 L42,214" stroke-width="22"/>
-        <path d="M130,116 L152,162 L158,214" stroke-width="22"/>
-        <path d="M86,232 L84,300 L84,372" stroke-width="28"/>
-        <path d="M114,232 L116,300 L116,372" stroke-width="28"/>
-        <path d="M84,374 L72,380" stroke-width="14"/>
-        <path d="M116,374 L128,380" stroke-width="14"/>
+      <defs>
+        <linearGradient id="skin" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#f4cca8"/>
+          <stop offset="0.5" stop-color="#ecba8d"/>
+          <stop offset="1" stop-color="#d89c70"/>
+        </linearGradient>
+      </defs>
+
+      <!-- CIAŁO (lewa strona rysowana, prawa = lustro przez oś x=100) -->
+      <g id="body" fill="url(#skin)" stroke="#c2895c" stroke-width="1.2" stroke-linejoin="round">
+        <!-- nogi -->
+        <path id="legL" d="M70,238 C68,266 69,290 73,310 C75,330 75,346 80,360 L86,360 C92,344 94,326 95,304 C96,280 96,258 96,250 C90,242 80,239 70,238 Z"/>
+        <use href="#legL" transform="matrix(-1,0,0,1,200,0)"/>
+        <!-- stopy -->
+        <path id="footL" d="M78,357 Q67,365 61,375 Q59,381 69,381 L89,381 Q92,371 88,358 Z"/>
+        <use href="#footL" transform="matrix(-1,0,0,1,200,0)"/>
+        <!-- ramiona -->
+        <path id="armL" d="M62,110 C50,116 46,134 47,152 C47,174 43,192 39,210 C36,218 36,228 41,234 C47,232 49,223 49,212 C51,192 54,174 56,154 C58,138 60,126 64,122 Z"/>
+        <use href="#armL" transform="matrix(-1,0,0,1,200,0)"/>
+        <!-- tułów -->
+        <path d="M100,92 C116,92 130,100 138,116 C142,128 141,134 140,142 C137,166 131,182 126,196 C124,214 128,228 132,238 C126,250 112,253 100,253 C88,253 74,250 68,238 C72,228 76,214 74,196 C69,182 63,166 60,142 C59,134 58,128 62,116 C70,100 84,92 100,92 Z"/>
+        <!-- szyja -->
+        <path d="M92,72 L108,72 L106,98 L94,98 Z"/>
+        <!-- głowa -->
+        <ellipse cx="100" cy="42" rx="25" ry="31"/>
       </g>
-      <rect x="90" y="74" width="20" height="26" rx="8" fill="#e7b48f"/>
-      <ellipse cx="100" cy="44" rx="30" ry="36" fill="#e7b48f"/>
+
+      <!-- DETALE -->
+      <g stroke="none">
+        <!-- włosy -->
+        <path d="M75,42 C72,13 90,6 100,6 C110,6 128,13 125,42 C120,29 112,24 100,24 C88,24 80,29 75,42 Z" fill="#6b4423"/>
+        <!-- uszy -->
+        <ellipse cx="76" cy="45" rx="4" ry="6" fill="#e3a878"/>
+        <ellipse cx="124" cy="45" rx="4" ry="6" fill="#e3a878"/>
+        <!-- subtelne mięśnie/cieniowanie -->
+        <g fill="none" stroke="#c98a5e" stroke-linecap="round">
+          <path d="M84,128 Q100,141 116,128" stroke-width="1.1" opacity="0.5"/>
+          <path d="M100,150 L100,212" stroke-width="1" opacity="0.32"/>
+          <path d="M85,176 Q100,182 115,176" stroke-width="0.9" opacity="0.3"/>
+          <path d="M85,193 Q100,199 115,193" stroke-width="0.9" opacity="0.3"/>
+          <path d="M84,300 Q84,320 84,340" stroke-width="1" opacity="0.28"/>
+          <path d="M116,300 Q116,320 116,340" stroke-width="1" opacity="0.28"/>
+        </g>
+        <!-- oczy -->
+        <ellipse cx="91" cy="41" rx="3" ry="3.6" fill="#fff"/>
+        <ellipse cx="109" cy="41" rx="3" ry="3.6" fill="#fff"/>
+        <circle cx="91" cy="41.6" r="1.7" fill="#4a3322"/>
+        <circle cx="109" cy="41.6" r="1.7" fill="#4a3322"/>
+        <!-- brwi -->
+        <path d="M86,35 Q91,33 96,35" stroke="#6b4423" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <path d="M104,35 Q109,33 114,35" stroke="#6b4423" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <!-- nos -->
+        <path d="M100,45 L97,53 Q100,55 103,53 Z" fill="#d2925f"/>
+        <!-- usta -->
+        <path d="M93,60 Q100,65 107,60" stroke="#b5654d" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </g>
+
       <g id="markers"></g>
     </svg>
     <div id="figure-feedback"></div>
