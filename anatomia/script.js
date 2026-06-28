@@ -92,6 +92,27 @@ const LEVELS = [
 const ROUND = 10;          // pytań na rundę
 const SVG_W = 200, SVG_H = 384;
 
+// Struktury parzyste (występują po obu stronach ciała) — akceptujemy klik
+// po dowolnej stronie. Pojedyncze/asymetryczne (serce, wątroba, żołądek...) NIE.
+const PAIRED = new Set([
+  'oko', 'ucho', 'ramię', 'dłoń', 'noga', 'kolano', 'stopa',
+  'płuca', 'nerki',
+  'obojczyk', 'łopatka', 'rzepka',
+  'kość udowa', 'kość piszczelowa', 'kość strzałkowa',
+  'kość ramienna', 'kość promieniowa', 'kość łokciowa',
+  'biceps', 'mięsień piersiowy', 'mięsień piersiowy większy',
+  'mięsień naramienny', 'mięsień dwugłowy ramienia', 'mięsień trójgłowy ramienia',
+  'mięsień czworogłowy uda', 'mięsień dwugłowy uda',
+  'mięsień pośladkowy wielki', 'mięsień brzuchaty łydki', 'ścięgno Achillesa',
+]);
+
+// Zwraca listę poprawnych punktów: dla struktur parzystych także lustrzany (oś x=100)
+function itemTargets(item) {
+  const t = [{ x: item.x, y: item.y }];
+  if (PAIRED.has(item.n) && Math.abs(item.x - 100) > 1) t.push({ x: 200 - item.x, y: item.y });
+  return t;
+}
+
 // ── Stan ────────────────────────────────────────────────────────────
 let levelIdx = 0;
 let mode = 'locate';       // 'locate' | 'identify'
@@ -188,13 +209,16 @@ function nextQuestion() {
   qCounter.textContent = `${qPos + 1} / ${ROUND}`;
 
   if (mode === 'locate') {
-    promptEl.innerHTML = `Wskaż: <b>${item.n}</b>` + (item.lat ? ` <span class="lat">(${item.lat})</span>` : '');
+    const paired = itemTargets(item).length > 1;
+    promptEl.innerHTML = `Wskaż: <b>${item.n}</b>`
+      + (item.lat ? ` <span class="lat">(${item.lat})</span>` : '')
+      + (paired ? ` <span class="lat">— dowolna strona</span>` : '');
     optionsEl.style.display = 'none';
   } else {
-    // identify — podświetl marker, pokaż opcje
+    // identify — podświetl marker (obie strony jeśli parzyste), pokaż opcje
     promptEl.innerHTML = 'Co to za struktura?';
     optionsEl.style.display = 'grid';
-    drawRing(item.x, item.y);
+    itemTargets(item).forEach(t => drawRing(t.x, t.y));
     buildOptions(item);
   }
 }
@@ -245,16 +269,17 @@ figure.addEventListener('click', e => {
   const x = (e.clientX - rect.left) * (SVG_W / rect.width);
   const y = (e.clientY - rect.top) * (SVG_H / rect.height);
   const item = queue[qPos];
-  const dist = Math.hypot(x - item.x, y - item.y);
-  const correct = dist <= LEVELS[levelIdx].tol;
+  const targets = itemTargets(item);
+  const tol = LEVELS[levelIdx].tol;
+  const correct = targets.some(t => Math.hypot(x - t.x, y - t.y) <= tol);
 
   // pokaż klik gracza
   const clk = document.createElementNS(SVGNS, 'circle');
   clk.setAttribute('cx', x); clk.setAttribute('cy', y); clk.setAttribute('r', 5);
   clk.setAttribute('class', 'click-dot');
   markersG.appendChild(clk);
-  // pokaż poprawne miejsce
-  drawMarker(item.x, item.y, correct ? 'correct' : 'wrong');
+  // pokaż poprawne miejsce(a) — obie strony dla struktur parzystych
+  targets.forEach(t => drawMarker(t.x, t.y, correct ? 'correct' : 'wrong'));
   finishAnswer(correct, item);
 });
 
