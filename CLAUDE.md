@@ -23,6 +23,17 @@ Collection of simple browser games by [@twoznia](https://github.com/twoznia). Pu
 
 Games are fully self-contained — they do not depend on each other. Shared code lives only in `shared/`.
 
+## Zasady pracy (oszczędność tokenów)
+
+Te reguły mają trzymać sesje krótkie i tanie:
+
+- **Nowa gałąź od `main` na każde zadanie** — nie kontynuuj na starych, przeterminowanych gałęziach (ryzyko destrukcyjnych PR-ów). Po scaleniu zaczynaj od świeżej gałęzi.
+- **Grupuj zmiany w jeden PR** — rób kilka powiązanych zmian naraz, dopiero potem PR + merge. Unikaj wielu małych cykli PR→merge→rebase.
+- **NIE wczytuj plików CSV** (`pytania/dane/pytania.csv`, `pytanka/dane/pytania.csv`, `słówka/data/**`) dopóki użytkownik nie poprosi o to wyraźnie — są duże. Do podglądu używaj `Grep`/`head`/`offset`, nie czytaj całości.
+- **Czytaj pliki fragmentami** (`offset`/`limit`, `Grep`), nie w całości — zwłaszcza duże skrypty i dane.
+- **Nie ładuj ciężkich skilli bez potrzeby** (np. dokumentacji API) — przy prostych zmianach edytuj kod wprost.
+- **Oszczędnie z GitHub MCP** — odpowiedzi są bardzo duże. Do inspekcji używaj lokalnego `git`/`git log`; MCP rezerwuj do tworzenia i merge'owania PR-ów. Status CI sprawdzaj raz, nie w pętli.
+
 ## Coding rules
 
 - `const`/`let` only, never `var`
@@ -57,17 +68,9 @@ Same format but only 3 wrong answers (`wrong1;wrong2`, no `wrong3`).
 ## Node.js tools
 
 ```bash
-# AI quiz question generator (requires ANTHROPIC_API_KEY, Node.js 18+)
-# Writes directly to pytania/dane/pytania.csv — no manual merge needed.
-node pytania/tools/add_questions.mjs --count 200
-node pytania/tools/add_questions.mjs --count 50 --category "Sport"
-node pytania/tools/add_questions.mjs --count 200 --dry-run
-
 # Regenerate słówka manifest
 node słówka/tools/generate_manifest.mjs
 ```
-
-`add_questions.mjs` generates AI questions and appends them straight to `pytania/dane/pytania.csv` (the file the game loads). It spreads `--count` across the least-represented subcategories, deduplicates against the whole CSV, and validates length/format/CSV-safety. It calls the Anthropic Claude API (model via `ANTHROPIC_MODEL`, default `claude-haiku-4-5`). A daily GitHub Action (`.github/workflows/pytania-daily-questions.yml`) can run it automatically and open a PR — it needs the `ANTHROPIC_API_KEY` repo secret.
 
 ## Adding a new game
 
