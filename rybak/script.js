@@ -137,18 +137,30 @@
         }
     }, 1000);
 
+    // ── Progresja poziomów ─────────────────────────────────────────────
+    // Ryby z każdym poziomem nieco przyspieszają (z górnym limitem),
+    // a tempo ich pojawiania się rośnie tak, by przy złapaniu wszystkich
+    // ryb poziom zawsze dało się ukończyć w wyznaczonym czasie.
+    const SPEED_STEP = 0.08;   // +8% prędkości ryb na każdy poziom
+    const SPEED_MAX = 2.0;     // maksymalny mnożnik prędkości
+    const SPAWN_BASE = 70;     // bazowy odstęp między rybami (klatki) na 1. poziomie
+    function levelSpeedMul() { return Math.min(SPEED_MAX, 1 + (level - 1) * SPEED_STEP); }
+    function avgSpawnInterval() { return Math.max(22, SPAWN_BASE / (1 + (level - 1) * 0.18)); }
+    // Czas dodawany przy awansie — z zapasem względem minimum potrzebnego,
+    // gdy gracz łapie każdą rybę (tempo pojawiania ogranicza tempo łapania).
+    function levelTimeBonus() { return Math.ceil(currentTarget * (avgSpawnInterval() / 60) * 1.8) + 4; }
+
     function checkLevelUp() {
         if (levelScore >= currentTarget) {
             level++;
-            levelScore = 0; 
-            
+            levelScore = 0;
+
             // Nowa mechanika progresji: cel rośnie o 5 więcej niż poprzednio
             currentTarget = nextIncrement;
             nextIncrement += 5; // Każdy kolejny poziom będzie o 5 trudniejszy od poprzedniego (10, 15, 20, 25...)
             cumulativeTarget += currentTarget;
-            
-            timeLeft += 15; // Większy bonus czasu za trudniejsze poziomy
-            timeLeft += 5; // Dodatkowe +5s za złapanie wszystkich ryb w poziomie
+
+            timeLeft += levelTimeBonus(); // zapas czasu skrojony pod cel i tempo pojawiania ryb
             timerElement.innerText = timeLeft;
             scoreElement.innerText = totalScore;
             targetElement.innerText = cumulativeTarget;
@@ -167,7 +179,7 @@
             fishes.push({
                 x: d === 1 ? -60 : 860,
                 y: waterLevel + 60 + Math.random() * (canvas.height - waterLevel - 100),
-                speed: (1.5 + Math.random() * 2) * d,
+                speed: (1.5 + Math.random() * 2) * d * levelSpeedMul(),
                 color: `hsl(${Math.random() * 360}, 80%, 50%)`,
                 size: 18 + Math.random() * 10,
                 active: true,
@@ -176,7 +188,7 @@
                 wiggleSpeed: 0.18 + Math.random() * 0.12,
                 bobAmp: 1.5 + Math.random() * 2
             });
-            spawnTimer = 40 + Math.random() * 80;
+            spawnTimer = avgSpawnInterval() * (0.6 + Math.random() * 0.8);
         }
     }
 

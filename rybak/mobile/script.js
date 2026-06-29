@@ -120,6 +120,19 @@
     window.addEventListener("touchend",   () => { isTouching = false; }, { passive: true });
     window.addEventListener("touchcancel",() => { isTouching = false; }, { passive: true });
 
+    // ── Progresja poziomów ─────────────────────────────────────────────
+    // Ryby z każdym poziomem nieco przyspieszają (z górnym limitem),
+    // a tempo ich pojawiania się rośnie tak, by przy złapaniu wszystkich
+    // ryb poziom zawsze dało się ukończyć w wyznaczonym czasie.
+    const SPEED_STEP = 0.08;   // +8% prędkości ryb na każdy poziom
+    const SPEED_MAX = 2.0;     // maksymalny mnożnik prędkości
+    const SPAWN_BASE = 70;     // bazowy odstęp między rybami (klatki) na 1. poziomie
+    function levelSpeedMul() { return Math.min(SPEED_MAX, 1 + (level - 1) * SPEED_STEP); }
+    function avgSpawnInterval() { return Math.max(22, SPAWN_BASE / (1 + (level - 1) * 0.18)); }
+    // Czas dodawany przy awansie — z zapasem względem minimum potrzebnego,
+    // gdy gracz łapie każdą rybę (tempo pojawiania ogranicza tempo łapania).
+    function levelTimeBonus() { return Math.ceil(currentTarget * (avgSpawnInterval() / 60) * 1.8) + 4; }
+
     // ── Level up ───────────────────────────────────────────────────────
     function checkLevelUp() {
         if (levelScore >= currentTarget) {
@@ -128,7 +141,7 @@
             currentTarget = nextIncrement;
             nextIncrement += 5;
             cumulativeTarget += currentTarget;
-            timeLeft += 20;
+            timeLeft += levelTimeBonus(); // zapas czasu skrojony pod cel i tempo pojawiania ryb
             timerEl.innerText = timeLeft;
             scoreEl.innerText = totalScore;
             targetEl.innerText = cumulativeTarget;
@@ -148,7 +161,7 @@
             fishes.push({
                 x: d === 1 ? -60 : canvas.width + 60,
                 y: waterLevel + 60 + Math.random() * (canvas.height - waterLevel - 110),
-                speed: (1.2 + Math.random() * 2) * d,
+                speed: (1.2 + Math.random() * 2) * d * levelSpeedMul(),
                 color: `hsl(${Math.random() * 360}, 80%, 55%)`,
                 size: 16 + Math.random() * 12,
                 active: true,
@@ -156,7 +169,7 @@
                 wiggleSpeed: 0.18 + Math.random() * 0.12,
                 bobAmp: 1.5 + Math.random() * 2
             });
-            spawnTimer = 35 + Math.random() * 70;
+            spawnTimer = avgSpawnInterval() * (0.6 + Math.random() * 0.8);
         }
     }
 
