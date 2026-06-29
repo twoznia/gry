@@ -40,6 +40,7 @@ Te reguły mają trzymać sesje krótkie i tanie:
 - Comments in Polish or English — match the existing file's style
 - New games must include: `<a class="back-link" href="../">← Wróć</a>` directly inside `<body>`
 - New games may use the shared design system: `<link rel="stylesheet" href="../shared/style.css">`
+- Nowe gry twórz od razu z osobnym `style.css` i `script.js` — bez inline `<style>`/`<script>` w `index.html`
 
 ## Design system (`shared/style.css`)
 
