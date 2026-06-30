@@ -20,9 +20,9 @@ const LEVELS = [
       { n: 'ucho', x: 72, y: 44 },
       { n: 'szyja', x: 100, y: 86 },
       { n: 'brzuch', x: 100, y: 198 },
-      { n: 'ramię', x: 52, y: 145 },
+      { n: 'ramię', x: 52, y: 145, h: 80 },
       { n: 'dłoń', x: 42, y: 212 },
-      { n: 'noga', x: 84, y: 290 },
+      { n: 'noga', x: 84, y: 290, h: 120 },
       { n: 'kolano', x: 84, y: 305 },
       { n: 'stopa', x: 80, y: 376 },
     ],
@@ -32,14 +32,14 @@ const LEVELS = [
     tol: 24,
     items: [
       { n: 'mózg', x: 100, y: 32 },
-      { n: 'serce', x: 91, y: 150 },
+      { n: 'serce', x: 109, y: 150 },
       { n: 'płuca', x: 82, y: 140 },
       { n: 'żołądek', x: 90, y: 178 },
       { n: 'wątroba', x: 114, y: 172 },
       { n: 'jelita', x: 100, y: 208 },
       { n: 'nerki', x: 82, y: 190 },
       { n: 'pęcherz', x: 100, y: 224 },
-      { n: 'kręgosłup', x: 100, y: 185 },
+      { n: 'kręgosłup', x: 100, y: 185, h: 100 },
       { n: 'przepona', x: 100, y: 162 },
     ],
   },
@@ -108,8 +108,8 @@ const PAIRED = new Set([
 
 // Zwraca listę poprawnych punktów: dla struktur parzystych także lustrzany (oś x=100)
 function itemTargets(item) {
-  const t = [{ x: item.x, y: item.y }];
-  if (PAIRED.has(item.n) && Math.abs(item.x - 100) > 1) t.push({ x: 200 - item.x, y: item.y });
+  const t = [{ x: item.x, y: item.y, h: item.h }];
+  if (PAIRED.has(item.n) && Math.abs(item.x - 100) > 1) t.push({ x: 200 - item.x, y: item.y, h: item.h });
   return t;
 }
 
@@ -271,7 +271,10 @@ figure.addEventListener('click', e => {
   const item = queue[qPos];
   const targets = itemTargets(item);
   const tol = LEVELS[levelIdx].tol;
-  const correct = targets.some(t => Math.hypot(x - t.x, y - t.y) <= tol);
+  const correct = targets.some(t => {
+    if (t.h) return Math.abs(x - t.x) <= tol && y >= t.y - t.h / 2 && y <= t.y + t.h / 2;
+    return Math.hypot(x - t.x, y - t.y) <= tol;
+  });
 
   // pokaż klik gracza
   const clk = document.createElementNS(SVGNS, 'circle');
