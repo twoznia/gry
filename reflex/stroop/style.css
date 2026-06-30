@@ -76,6 +76,40 @@ h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
 .level-btn.adult { border-color: #f97316; }
 .level-btn.adult:hover { border-color: #fb923c; }
 
+/* zapis wyniku */
+#save-row { display: none; gap: 0.5rem; }
+#player-name {
+    background: #0f172a; border: 1px solid #475569; border-radius: 8px; color: #fff;
+    padding: 0.45rem 0.7rem; font-size: 0.9rem; width: 150px;
+}
+#save-record {
+    background: #22c55e; color: #053; border: none; border-radius: 8px;
+    padding: 0.45rem 1rem; font-weight: bold; cursor: pointer;
+}
+#save-record:hover { background: #4ade80; }
+#save-record:disabled { background: #475569; color: #94a3b8; cursor: default; }
+
+.ghost-btn {
+    margin-top: 0.5rem; background: transparent; color: #cbd5e1; border: 1px solid #475569;
+    border-radius: 10px; padding: 0.5rem 1.1rem; font-size: 0.9rem; font-weight: bold; cursor: pointer;
+}
+.ghost-btn:hover { background: #1e293b; }
+
+/* tablica rekordów */
+.tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center; }
+.tabs .tab {
+    background: #1e293b; color: #cbd5e1; border: 1px solid #475569; border-radius: 8px;
+    padding: 0.35rem 0.8rem; font-size: 0.85rem; font-weight: bold; cursor: pointer; min-width: 38px;
+}
+.tabs .tab.active { background: #38bdf8; color: #082f49; border-color: #38bdf8; }
+#rec-list { width: 100%; max-width: 360px; display: flex; flex-direction: column; gap: 4px; margin: 0.5rem 0; }
+.rec-row { display: flex; align-items: center; gap: 0.5rem; background: #1e293b; border-radius: 8px; padding: 0.4rem 0.7rem; font-size: 0.9rem; }
+.rec-rank { color: #64748b; width: 1.4rem; }
+.rec-name { flex: 1; font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rec-pts { color: #38bdf8; font-weight: bold; }
+.rec-date { color: #64748b; font-size: 0.75rem; }
+.rec-empty { color: #64748b; padding: 1rem; }
+
 @media (max-width: 480px) {
     #word { font-size: 2.2rem; }
     #buttons { gap: 0.5rem; }
