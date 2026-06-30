@@ -1,57 +1,69 @@
 (() => {
-    // ── Kolory (klucz → hex, niezależne od języka) ─────────────────────
-    const COLORS = [
-        { key: 'red',    hex: '#ef4444' },
-        { key: 'blue',   hex: '#3b82f6' },
+    // ── Przyciski odpowiedzi: 6 stałych kolorów ────────────────────────
+    const BUTTON_COLORS = [
+        { key: 'white',  hex: '#ffffff' },
+        { key: 'yellow', hex: '#facc15' },
         { key: 'green',  hex: '#22c55e' },
-        { key: 'yellow', hex: '#eab308' },
-        { key: 'purple', hex: '#a855f7' },
+        { key: 'blue',   hex: '#3b82f6' },
+        { key: 'red',    hex: '#ef4444' },
         { key: 'orange', hex: '#f97316' },
     ];
+    // ── Dodatkowe kolory tylko jako dystraktory (nigdy odpowiedź) ───────
+    const EXTRA_COLORS = [
+        { key: 'purple', hex: '#a855f7' },
+        { key: 'black',  hex: '#0a0a0a' },
+        { key: 'pink',   hex: '#ec4899' },
+        { key: 'brown',  hex: '#92400e' },
+    ];
+    const ALL = [...BUTTON_COLORS, ...EXTRA_COLORS];
 
-    // ── Tłumaczenia ────────────────────────────────────────────────────
     const TRANSLATIONS = {
         pl: {
-            title: 'Stroop',
-            subtitle: 'Kliknij KOLOR czcionki, nie czytaj słowa!',
-            score: 'Wynik', best: 'Rekord',
+            title: 'Stroop', score: 'Wynik', best: 'Rekord',
+            modeInk: 'Kolor czcionki', modeWord: 'Kolor słowa',
+            subInk: 'Kliknij KOLOR czcionki, nie czytaj słowa!',
+            subWord: 'Kliknij kolor, który NAZYWA słowo!',
             gameOver: 'Koniec!', finalScore: (s) => `Wynik: ${s}`,
             newRecord: '🏆 NOWY REKORD!', playAgain: 'Zagraj ponownie',
-            names: { red: 'CZERWONY', blue: 'NIEBIESKI', green: 'ZIELONY', yellow: 'ŻÓŁTY', purple: 'FIOLETOWY', orange: 'POMARAŃCZOWY' },
+            names: { white: 'BIAŁY', yellow: 'ŻÓŁTY', green: 'ZIELONY', blue: 'NIEBIESKI', red: 'CZERWONY', orange: 'POMARAŃCZOWY', purple: 'FIOLETOWY', black: 'CZARNY', pink: 'RÓŻOWY', brown: 'BRĄZOWY' },
         },
         en: {
-            title: 'Stroop',
-            subtitle: 'Click the FONT COLOR, do not read the word!',
-            score: 'Score', best: 'Best',
+            title: 'Stroop', score: 'Score', best: 'Best',
+            modeInk: 'Font color', modeWord: 'Word color',
+            subInk: 'Click the FONT COLOR, do not read the word!',
+            subWord: 'Click the color the WORD names!',
             gameOver: 'Game over!', finalScore: (s) => `Score: ${s}`,
             newRecord: '🏆 NEW RECORD!', playAgain: 'Play again',
-            names: { red: 'RED', blue: 'BLUE', green: 'GREEN', yellow: 'YELLOW', purple: 'PURPLE', orange: 'ORANGE' },
+            names: { white: 'WHITE', yellow: 'YELLOW', green: 'GREEN', blue: 'BLUE', red: 'RED', orange: 'ORANGE', purple: 'PURPLE', black: 'BLACK', pink: 'PINK', brown: 'BROWN' },
         },
     };
 
     const lang = localStorage.getItem('lang') || 'pl';
     const t = TRANSLATIONS[lang];
-
     window.setLang = (l) => { localStorage.setItem('lang', l); location.reload(); };
 
     // ── Elementy ───────────────────────────────────────────────────────
-    const wordEl   = document.getElementById('word');
-    const scoreEl  = document.getElementById('score');
-    const bestEl   = document.getElementById('best');
-    const barEl    = document.getElementById('timebar-fill');
-    const btnsEl   = document.getElementById('buttons');
-    const overlay  = document.getElementById('overlay');
-    const finalEl  = document.getElementById('final');
-    const recordEl = document.getElementById('new-record');
+    const wordEl    = document.getElementById('word');
+    const scoreEl   = document.getElementById('score');
+    const bestEl    = document.getElementById('best');
+    const barEl     = document.getElementById('timebar-fill');
+    const btnsEl    = document.getElementById('buttons');
+    const subtitle  = document.getElementById('h-subtitle');
+    const overlay   = document.getElementById('overlay');
+    const finalEl   = document.getElementById('final');
+    const recordEl  = document.getElementById('new-record');
+    const btnModeInk  = document.getElementById('mode-ink');
+    const btnModeWord = document.getElementById('mode-word');
 
-    // ── Etykiety statyczne ─────────────────────────────────────────────
+    // ── Etykiety ───────────────────────────────────────────────────────
     document.getElementById('h-title').textContent = t.title;
-    document.getElementById('h-subtitle').textContent = t.subtitle;
     document.getElementById('lbl-score').textContent = t.score;
     document.getElementById('lbl-best').textContent = t.best;
     document.getElementById('over-title').textContent = t.gameOver;
     document.getElementById('rec-text').textContent = t.newRecord;
     document.getElementById('btn-play').textContent = t.playAgain;
+    btnModeInk.textContent = t.modeInk;
+    btnModeWord.textContent = t.modeWord;
     document.getElementById('btn-pl').style.borderColor = lang === 'pl' ? '#FFD700' : '#888';
     document.getElementById('btn-en').style.borderColor = lang === 'en' ? '#FFD700' : '#888';
 
@@ -60,20 +72,19 @@
     let best = parseInt(localStorage.getItem(BEST_KEY)) || 0;
     bestEl.textContent = best;
 
+    let mode = 'ink';     // 'ink' = klikasz kolor czcionki, 'word' = kolor nazwany słowem
     let score = 0;
-    let inkColor = null;      // poprawna odpowiedź (klucz koloru czcionki)
-    let roundTime = 0;        // ms na rundę
-    let remaining = 0;
-    let timer = null;
-    let palette = [];         // 4 kolory dostępne w tej rozgrywce
+    let answerKey = null;
+    let prevAnswer = null;
+    let roundTime = 0, remaining = 0, timer = null;
 
     function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
     function shuffle(a) { return a.slice().sort(() => Math.random() - 0.5); }
+    const byKey = (k) => ALL.find(c => c.key === k);
 
     function buildButtons() {
-        palette = shuffle(COLORS).slice(0, 4);
         btnsEl.innerHTML = '';
-        for (const c of palette) {
+        for (const c of shuffle(BUTTON_COLORS)) {
             const b = document.createElement('button');
             b.className = 'color-btn';
             b.style.background = c.hex;
@@ -84,13 +95,26 @@
     }
 
     function nextRound() {
-        const wordColor = pick(palette);   // znaczenie słowa
-        const ink = pick(palette);         // kolor czcionki = poprawna odpowiedź
-        inkColor = ink.key;
-        wordEl.textContent = t.names[wordColor.key];
+        let word, ink;
+        if (mode === 'ink') {
+            // odpowiedź = kolor czcionki (musi być wśród przycisków)
+            let ans = pick(BUTTON_COLORS);
+            if (ans.key === prevAnswer) ans = pick(BUTTON_COLORS);
+            ink = ans;
+            word = pick(ALL.filter(c => c.key !== ink.key));   // słowo ≠ czcionka
+        } else {
+            // odpowiedź = kolor nazwany słowem (musi być wśród przycisków)
+            let ans = pick(BUTTON_COLORS);
+            if (ans.key === prevAnswer) ans = pick(BUTTON_COLORS);
+            word = ans;
+            ink = pick(ALL.filter(c => c.key !== word.key));   // czcionka ≠ słowo
+        }
+        answerKey = (mode === 'ink' ? ink : word).key;
+        prevAnswer = answerKey;
+
+        wordEl.textContent = t.names[word.key];
         wordEl.style.color = ink.hex;
 
-        // czas maleje z wynikiem: od 2500 ms do min 800 ms
         roundTime = Math.max(800, 2500 - score * 70);
         remaining = roundTime;
         clearInterval(timer);
@@ -110,7 +134,7 @@
     }
 
     function choose(key, btn) {
-        if (key === inkColor) {
+        if (key === answerKey) {
             score++;
             scoreEl.textContent = score;
             nextRound();
@@ -130,14 +154,25 @@
         overlay.classList.add('show');
     }
 
+    function setMode(m) {
+        mode = m;
+        btnModeInk.classList.toggle('active', m === 'ink');
+        btnModeWord.classList.toggle('active', m === 'word');
+        subtitle.textContent = m === 'ink' ? t.subInk : t.subWord;
+        start();
+    }
+
     function start() {
-        score = 0;
+        score = 0; prevAnswer = null;
         scoreEl.textContent = 0;
         overlay.classList.remove('show');
         buildButtons();
         nextRound();
     }
 
+    btnModeInk.addEventListener('click', () => setMode('ink'));
+    btnModeWord.addEventListener('click', () => setMode('word'));
     document.getElementById('btn-play').addEventListener('click', start);
-    start();
+
+    setMode('ink');
 })();
