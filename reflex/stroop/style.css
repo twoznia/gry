@@ -28,13 +28,6 @@ h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
 #timebar { width: 280px; height: 10px; background: #1e293b; border-radius: 6px; overflow: hidden; margin-bottom: 1.5rem; }
 #timebar > div { height: 100%; width: 100%; background: #22c55e; transition: width 0.1s linear; }
 
-#mode-switch { display: flex; gap: 0; margin-bottom: 1.25rem; border: 1px solid #475569; border-radius: 10px; overflow: hidden; }
-#mode-switch button {
-    background: #1e293b; color: #cbd5e1; border: none; padding: 0.5rem 1rem;
-    font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: background 0.12s, color 0.12s;
-}
-#mode-switch button.active { background: #38bdf8; color: #082f49; }
-
 #word {
     font-size: 3.5rem; font-weight: 900; letter-spacing: 2px; text-align: center;
     min-height: 4.5rem; margin-bottom: 1.75rem;
@@ -50,19 +43,38 @@ h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
 .color-btn:active { transform: scale(0.94); }
 .color-btn.flash-bad { border-color: #ef4444; }
 
-#overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 50;
-    display: none; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;
+/* ── Ekran startowy / koniec gry ──────────────────────────────────── */
+.overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 50;
+    display: none; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.6rem; padding: 1.5rem; overflow-y: auto;
 }
-#overlay.show { display: flex; }
-#overlay h2 { font-size: 2rem; margin: 0; }
-#overlay .final { font-size: 1.1rem; color: #94a3b8; }
+.overlay.show { display: flex; }
+#over-title { font-size: 2rem; margin: 0; }
+.final { font-size: 1.1rem; color: #94a3b8; }
 #new-record { color: #fbbf24; font-weight: bold; display: none; }
-#btn-play {
-    margin-top: 0.5rem; background: #22c55e; color: #053; border: none; border-radius: 12px;
-    padding: 0.7rem 1.6rem; font-size: 1rem; font-weight: bold; cursor: pointer;
+
+#mode-switch { display: flex; border: 1px solid #475569; border-radius: 10px; overflow: hidden; margin: 0.5rem 0; }
+#mode-switch button {
+    background: #1e293b; color: #cbd5e1; border: none; padding: 0.5rem 1rem;
+    font-size: 0.85rem; font-weight: bold; cursor: pointer; transition: background 0.12s, color 0.12s;
 }
-#btn-play:hover { background: #4ade80; }
+#mode-switch button.active { background: #38bdf8; color: #082f49; }
+
+.pick-label { color: #94a3b8; font-size: 0.85rem; margin-top: 0.25rem; }
+.level-row { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; max-width: 380px; }
+.level-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    background: #1e293b; color: #fff; border: 2px solid #475569; border-radius: 12px;
+    padding: 0.55rem 0.9rem; font-weight: bold; cursor: pointer; min-width: 90px;
+    transition: transform 0.08s, border-color 0.12s;
+}
+.level-btn small { font-weight: normal; color: #94a3b8; font-size: 0.75rem; }
+.level-btn:active { transform: scale(0.95); }
+.level-btn.child { border-color: #22c55e; }
+.level-btn.child:hover { border-color: #4ade80; }
+.level-btn.adult { border-color: #f97316; }
+.level-btn.adult:hover { border-color: #fb923c; }
 
 @media (max-width: 480px) {
     #word { font-size: 2.2rem; }
