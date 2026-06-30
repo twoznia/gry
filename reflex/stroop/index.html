@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szybka Reakcja - Stroop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="back-link" href="../">← Wróć</a>
+
+<div id="lang-switcher">
+    <button id="btn-pl" onclick="setLang('pl')"><img src="https://flagcdn.com/24x18/pl.png" width="24" height="18" alt="Polski"></button>
+    <button id="btn-en" onclick="setLang('en')"><img src="https://flagcdn.com/24x18/gb.png" width="24" height="18" alt="English"></button>
+</div>
+
+<h1 id="h-title">Stroop</h1>
+<p class="subtitle" id="h-subtitle"></p>
+
+<div class="hud">
+    <span class="score"><span id="lbl-score"></span>: <span id="score">0</span></span>
+    <span class="best"><span id="lbl-best"></span>: <span id="best">0</span></span>
+</div>
+
+<div id="timebar"><div id="timebar-fill"></div></div>
+
+<div id="word">A</div>
+
+<div id="buttons"></div>
+
+<div id="overlay">
+    <h2 id="over-title"></h2>
+    <div class="final" id="final"></div>
+    <div id="new-record"><span id="rec-text"></span></div>
+    <button id="btn-play"></button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
