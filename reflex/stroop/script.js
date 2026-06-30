@@ -17,18 +17,19 @@
     ];
     const ALL = [...BUTTON_COLORS, ...EXTRA_COLORS];
 
-    // ── Poziomy: czas początkowy (ms) na kliknięcie. Wyższy = krótszy ──
+    // ── Poziomy: 3 dziecko + 4 dorosły, czas początkowy coraz krótszy ──
     const LEVELS = [
-        { id: 'k1', group: 'child', base: 4000 },
-        { id: 'k2', group: 'child', base: 3200 },
-        { id: 'k3', group: 'child', base: 2600 },
-        { id: 'd1', group: 'adult', base: 2100 },
-        { id: 'd2', group: 'adult', base: 1700 },
-        { id: 'd3', group: 'adult', base: 1300 },
-        { id: 'd4', group: 'adult', base: 1000 },
+        { mode: 'child', num: 1, base: 4000 },
+        { mode: 'child', num: 2, base: 3200 },
+        { mode: 'child', num: 3, base: 2600 },
+        { mode: 'adult', num: 1, base: 2100 },
+        { mode: 'adult', num: 2, base: 1700 },
+        { mode: 'adult', num: 3, base: 1300 },
+        { mode: 'adult', num: 4, base: 1000 },
     ];
-    // Po HOLD ms czas zaczyna maleć liniowo do FLOOR w ciągu RAMP ms.
+    // Po HOLD ms czas startowy maleje liniowo do FLOOR w ciągu RAMP ms.
     const HOLD = 15000, RAMP = 25000, FLOOR = 300;
+    const MAX_RECORDS = 5;
 
     const TRANSLATIONS = {
         pl: {
@@ -38,8 +39,10 @@
             subWord: 'Kliknij kolor, który NAZYWA słowo!',
             child: 'Dziecko', adult: 'Dorosły', pickLevel: 'Wybierz poziom:',
             gameOver: 'Koniec!', finalScore: (s) => `Wynik: ${s}`,
-            newRecord: '🏆 NOWY REKORD!',
+            newRecord: '🏆 NOWY REKORD!', save: 'Zapisz wynik', namePh: 'Twoje imię',
+            records: '🏅 Rekordy', recordsTitle: 'Rekordy', noRecords: 'Brak wyników', back: '← Wróć', play: 'Graj',
             names: { white: 'BIAŁY', yellow: 'ŻÓŁTY', green: 'ZIELONY', blue: 'NIEBIESKI', red: 'CZERWONY', orange: 'POMARAŃCZOWY', purple: 'FIOLETOWY', black: 'CZARNY', pink: 'RÓŻOWY', brown: 'BRĄZOWY' },
+            locale: 'pl-PL',
         },
         en: {
             title: 'Stroop', score: 'Score', best: 'Best',
@@ -48,8 +51,10 @@
             subWord: 'Click the color the WORD names!',
             child: 'Child', adult: 'Adult', pickLevel: 'Pick a level:',
             gameOver: 'Game over!', finalScore: (s) => `Score: ${s}`,
-            newRecord: '🏆 NEW RECORD!',
+            newRecord: '🏆 NEW RECORD!', save: 'Save score', namePh: 'Your name',
+            records: '🏅 Records', recordsTitle: 'Records', noRecords: 'No scores yet', back: '← Back', play: 'Play',
             names: { white: 'WHITE', yellow: 'YELLOW', green: 'GREEN', blue: 'BLUE', red: 'RED', orange: 'ORANGE', purple: 'PURPLE', black: 'BLACK', pink: 'PINK', brown: 'BROWN' },
+            locale: 'en-GB',
         },
     };
 
@@ -57,55 +62,68 @@
     const t = TRANSLATIONS[lang];
     window.setLang = (l) => { localStorage.setItem('lang', l); location.reload(); };
 
-    // ── Elementy ───────────────────────────────────────────────────────
-    const wordEl    = document.getElementById('word');
-    const scoreEl   = document.getElementById('score');
-    const bestEl    = document.getElementById('best');
-    const barEl     = document.getElementById('timebar-fill');
-    const btnsEl    = document.getElementById('buttons');
-    const subtitle  = document.getElementById('h-subtitle');
-    const menu      = document.getElementById('menu');
-    const finalEl   = document.getElementById('final');
-    const recordEl  = document.getElementById('new-record');
-    const overTitle = document.getElementById('over-title');
-    const btnModeInk  = document.getElementById('mode-ink');
-    const btnModeWord = document.getElementById('mode-word');
+    // ── Rekordy (jak inne gry reflex: obiekt JSON + imię gracza) ───────
+    const RECORDS_KEY = 'reflexStroopRecords';
+    const NAME_KEY    = 'reflexStroopLastName';
+    function loadRecords() { try { return JSON.parse(localStorage.getItem(RECORDS_KEY)) || {}; } catch (e) { return {}; } }
+    function saveRecords(r) { localStorage.setItem(RECORDS_KEY, JSON.stringify(r)); }
+    let records = loadRecords();
 
-    // ── Etykiety statyczne ─────────────────────────────────────────────
-    document.getElementById('h-title').textContent = t.title;
-    document.getElementById('lbl-score').textContent = t.score;
-    document.getElementById('lbl-best').textContent = t.best;
-    document.getElementById('lbl-pick').textContent = t.pickLevel;
+    function levelList(mode, num) {
+        return (records[mode] && records[mode][num]) || [];
+    }
+    function bestScore(mode, num) {
+        const l = levelList(mode, num);
+        return l.length ? l[0].score : 0;
+    }
+    function addRecord(mode, num, name, score) {
+        if (!records[mode]) records[mode] = {};
+        if (!records[mode][num]) records[mode][num] = [];
+        records[mode][num].push({ name: name.trim() || '???', score, date: new Date().toLocaleDateString(t.locale) });
+        records[mode][num].sort((a, b) => b.score - a.score);
+        records[mode][num] = records[mode][num].slice(0, MAX_RECORDS);
+        saveRecords(records);
+    }
+
+    // ── Elementy ───────────────────────────────────────────────────────
+    const el = (id) => document.getElementById(id);
+    const wordEl = el('word'), scoreEl = el('score'), bestEl = el('best');
+    const barEl = el('timebar-fill'), btnsEl = el('buttons'), subtitle = el('h-subtitle');
+    const menu = el('menu'), finalEl = el('final'), recordEl = el('new-record'), overTitle = el('over-title');
+    const saveRow = el('save-row'), nameInput = el('player-name'), saveBtn = el('save-record');
+    const btnModeInk = el('mode-ink'), btnModeWord = el('mode-word');
+    const recView = el('records'), recModeTabs = el('rec-mode-tabs'), recLevelTabs = el('rec-level-tabs'), recList = el('rec-list');
+
+    // ── Etykiety ───────────────────────────────────────────────────────
+    el('h-title').textContent = t.title;
+    el('lbl-score').textContent = t.score;
+    el('lbl-best').textContent = t.best;
+    el('lbl-pick').textContent = t.pickLevel;
     overTitle.textContent = t.gameOver;
-    document.getElementById('rec-text').textContent = t.newRecord;
+    el('rec-text').textContent = t.newRecord;
     btnModeInk.textContent = t.modeInk;
     btnModeWord.textContent = t.modeWord;
-    document.getElementById('btn-pl').style.borderColor = lang === 'pl' ? '#FFD700' : '#888';
-    document.getElementById('btn-en').style.borderColor = lang === 'en' ? '#FFD700' : '#888';
+    saveBtn.textContent = t.save;
+    nameInput.placeholder = t.namePh;
+    el('show-records').textContent = t.records;
+    el('records-title').textContent = t.recordsTitle;
+    el('rec-close').textContent = t.back;
+    el('btn-pl').style.borderColor = lang === 'pl' ? '#FFD700' : '#888';
+    el('btn-en').style.borderColor = lang === 'en' ? '#FFD700' : '#888';
 
     // ── Przyciski poziomów ─────────────────────────────────────────────
-    const rowChild = document.getElementById('levels-child');
-    const rowAdult = document.getElementById('levels-adult');
     LEVELS.forEach(lvl => {
-        const n = lvl.group === 'child'
-            ? LEVELS.filter(l => l.group === 'child').indexOf(lvl) + 1
-            : LEVELS.filter(l => l.group === 'adult').indexOf(lvl) + 1;
         const b = document.createElement('button');
-        b.className = 'level-btn ' + lvl.group;
-        b.innerHTML = `<span>${t[lvl.group]} ${n}</span><small>${(lvl.base / 1000).toFixed(1)}s</small>`;
-        b.addEventListener('click', () => start(lvl.base));
-        (lvl.group === 'child' ? rowChild : rowAdult).appendChild(b);
+        b.className = 'level-btn ' + lvl.mode;
+        b.innerHTML = `<span>${t[lvl.mode]} ${lvl.num}</span><small>${(lvl.base / 1000).toFixed(1)}s</small>`;
+        b.addEventListener('click', () => start(lvl));
+        el('levels-' + lvl.mode).appendChild(b);
     });
 
     // ── Stan ───────────────────────────────────────────────────────────
-    const BEST_KEY = 'reflex_stroop_best';
-    let best = parseInt(localStorage.getItem(BEST_KEY)) || 0;
-    bestEl.textContent = best;
-
     let mode = 'ink';
-    let baseTime = 2100;
-    let startTime = 0;
-    let score = 0, answerKey = null, prevAnswer = null;
+    let level = LEVELS[3];   // domyślnie dorosły 1
+    let startTime = 0, score = 0, answerKey = null, prevAnswer = null;
     let roundTime = 0, remaining = 0, timer = null;
 
     const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
@@ -122,12 +140,11 @@
         }
     }
 
-    // Czas rundy: stały przez HOLD ms, potem liniowo maleje do FLOOR.
     function currentTime() {
         const elapsed = Date.now() - startTime;
-        if (elapsed <= HOLD) return baseTime;
+        if (elapsed <= HOLD) return level.base;
         const k = Math.min(1, (elapsed - HOLD) / RAMP);
-        return Math.round(baseTime - (baseTime - FLOOR) * k);
+        return Math.round(level.base - (level.base - FLOOR) * k);
     }
 
     function nextRound() {
@@ -135,20 +152,16 @@
         if (mode === 'ink') {
             let ans = pick(BUTTON_COLORS);
             if (ans.key === prevAnswer) ans = pick(BUTTON_COLORS);
-            ink = ans;
-            word = pick(ALL.filter(c => c.key !== ink.key));
+            ink = ans; word = pick(ALL.filter(c => c.key !== ink.key));
         } else {
             let ans = pick(BUTTON_COLORS);
             if (ans.key === prevAnswer) ans = pick(BUTTON_COLORS);
-            word = ans;
-            ink = pick(ALL.filter(c => c.key !== word.key));
+            word = ans; ink = pick(ALL.filter(c => c.key !== word.key));
         }
         answerKey = (mode === 'ink' ? ink : word).key;
         prevAnswer = answerKey;
-
         wordEl.textContent = t.names[word.key];
         wordEl.style.color = ink.hex;
-
         roundTime = currentTime();
         remaining = roundTime;
         clearInterval(timer);
@@ -161,7 +174,6 @@
         updateBar();
         if (remaining <= 0) { clearInterval(timer); gameOver(); }
     }
-
     function updateBar() {
         barEl.style.width = Math.max(0, (remaining / roundTime) * 100) + '%';
         barEl.style.background = remaining < roundTime * 0.3 ? '#ef4444' : '#22c55e';
@@ -169,26 +181,38 @@
 
     function choose(key, btn) {
         if (key === answerKey) {
-            score++;
-            scoreEl.textContent = score;
-            nextRound();
+            score++; scoreEl.textContent = score; nextRound();
         } else {
-            btn.classList.add('flash-bad');
-            clearInterval(timer);
-            gameOver();
+            btn.classList.add('flash-bad'); clearInterval(timer); gameOver();
         }
     }
 
+    let savedThisRound = false;
     function gameOver() {
         clearInterval(timer);
-        const isRecord = score > best;
-        if (isRecord) { best = score; localStorage.setItem(BEST_KEY, best); bestEl.textContent = best; }
+        const isRecord = score > 0 && score > bestScore(level.mode, level.num);
         overTitle.style.display = 'block';
         finalEl.style.display = 'block';
         finalEl.textContent = t.finalScore(score);
         recordEl.style.display = isRecord ? 'block' : 'none';
+        // wiersz zapisu wyniku (jak w innych grach reflex)
+        savedThisRound = false;
+        saveRow.style.display = score > 0 ? 'flex' : 'none';
+        nameInput.value = localStorage.getItem(NAME_KEY) || '';
+        saveBtn.disabled = false;
         menu.classList.add('show');
     }
+
+    saveBtn.addEventListener('click', () => {
+        if (savedThisRound) return;
+        const name = nameInput.value.trim();
+        localStorage.setItem(NAME_KEY, name);
+        addRecord(level.mode, level.num, name, score);
+        savedThisRound = true;
+        saveBtn.disabled = true;
+        bestEl.textContent = bestScore(level.mode, level.num);
+        openRecords(level.mode, level.num);
+    });
 
     function setMode(m) {
         mode = m;
@@ -197,23 +221,68 @@
         subtitle.textContent = m === 'ink' ? t.subInk : t.subWord;
     }
 
-    function start(base) {
-        baseTime = base;
+    function start(lvl) {
+        level = lvl;
         score = 0; prevAnswer = null;
         scoreEl.textContent = 0;
+        bestEl.textContent = bestScore(lvl.mode, lvl.num);
         startTime = Date.now();
         menu.classList.remove('show');
         buildButtons();
         nextRound();
     }
 
+    // ── Tablica rekordów ───────────────────────────────────────────────
+    let viewMode = 'adult', viewNum = 1;
+    function openRecords(m, n) {
+        viewMode = m || viewMode; viewNum = n || viewNum;
+        menu.classList.remove('show');
+        recView.classList.add('show');
+        renderRecords();
+    }
+    function renderRecords() {
+        // zakładki trybu
+        recModeTabs.innerHTML = '';
+        for (const m of ['child', 'adult']) {
+            const b = document.createElement('button');
+            b.className = 'tab' + (m === viewMode ? ' active' : '');
+            b.textContent = t[m];
+            b.addEventListener('click', () => { viewMode = m; viewNum = 1; renderRecords(); });
+            recModeTabs.appendChild(b);
+        }
+        // zakładki poziomów
+        recLevelTabs.innerHTML = '';
+        const nums = LEVELS.filter(l => l.mode === viewMode).map(l => l.num);
+        for (const n of nums) {
+            const b = document.createElement('button');
+            b.className = 'tab' + (n === viewNum ? ' active' : '');
+            b.textContent = n;
+            b.addEventListener('click', () => { viewNum = n; renderRecords(); });
+            recLevelTabs.appendChild(b);
+        }
+        // lista
+        const list = levelList(viewMode, viewNum);
+        if (!list.length) { recList.innerHTML = `<div class="rec-empty">${t.noRecords}</div>`; return; }
+        recList.innerHTML = list.map((r, i) =>
+            `<div class="rec-row"><span class="rec-rank">${i + 1}.</span><span class="rec-name">${escapeHtml(r.name)}</span><span class="rec-pts">${r.score}</span><span class="rec-date">${r.date}</span></div>`
+        ).join('');
+    }
+    function escapeHtml(s) { return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+
+    // ── Wiązania ───────────────────────────────────────────────────────
     btnModeInk.addEventListener('click', () => setMode('ink'));
     btnModeWord.addEventListener('click', () => setMode('word'));
+    el('show-records').addEventListener('click', () => openRecords());
+    el('rec-close').addEventListener('click', () => { recView.classList.remove('show'); showMenu(false); });
 
-    // Ekran startowy: bez wyniku, tylko wybór trybu i poziomu.
+    function showMenu(afterGame) {
+        overTitle.style.display = afterGame ? 'block' : 'none';
+        finalEl.style.display = afterGame ? 'block' : 'none';
+        if (!afterGame) { recordEl.style.display = 'none'; saveRow.style.display = 'none'; }
+        menu.classList.add('show');
+    }
+
+    // ── Start ──────────────────────────────────────────────────────────
     setMode('ink');
-    overTitle.style.display = 'none';
-    finalEl.style.display = 'none';
-    recordEl.style.display = 'none';
-    menu.classList.add('show');
+    showMenu(false);
 })();

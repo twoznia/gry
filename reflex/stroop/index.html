@@ -35,6 +35,11 @@
     <div class="final" id="final"></div>
     <div id="new-record"><span id="rec-text"></span></div>
 
+    <div id="save-row">
+        <input id="player-name" type="text" maxlength="16" autocomplete="off">
+        <button id="save-record" type="button"></button>
+    </div>
+
     <div id="mode-switch">
         <button id="mode-ink" type="button"></button>
         <button id="mode-word" type="button"></button>
@@ -43,6 +48,17 @@
     <div class="pick-label" id="lbl-pick"></div>
     <div class="level-row" id="levels-child"></div>
     <div class="level-row" id="levels-adult"></div>
+
+    <button id="show-records" type="button" class="ghost-btn"></button>
+</div>
+
+<!-- Tablica rekordów -->
+<div id="records" class="overlay">
+    <h2 id="records-title"></h2>
+    <div id="rec-mode-tabs" class="tabs"></div>
+    <div id="rec-level-tabs" class="tabs"></div>
+    <div id="rec-list"></div>
+    <button id="rec-close" type="button" class="ghost-btn"></button>
 </div>
 
 <script src="script.js"></script>
