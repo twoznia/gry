@@ -33,6 +33,7 @@ Te reguły mają trzymać sesje krótkie i tanie:
 - **Czytaj pliki fragmentami** (`offset`/`limit`, `Grep`), nie w całości — zwłaszcza duże skrypty i dane.
 - **Nie ładuj ciężkich skilli bez potrzeby** (np. dokumentacji API) — przy prostych zmianach edytuj kod wprost.
 - **Oszczędnie z GitHub MCP** — odpowiedzi są bardzo duże. Do inspekcji używaj lokalnego `git`/`git log`; MCP rezerwuj do tworzenia i merge'owania PR-ów. Status CI sprawdzaj raz, nie w pętli.
+- **Odpowiadaj krótko** — zwięzłe odpowiedzi i podsumowania, bez długich opisów. Sam efekt + ew. jedno zdanie kontekstu.
 - **Domyślnie NIE uruchamiaj testów ani weryfikacji** — zwłaszcza drogich (przeglądarka, screenshoty, wizualizacje, skille `verify`/`run`). Do walidacji wystarczy tania kontrola składni (`node --check`). Testy uruchamiaj **tylko** gdy w prompcie pojawi się słowo `test`.
 
 ## Coding rules
