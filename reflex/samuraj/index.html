@@ -47,6 +47,36 @@
                 <button id="main-btn" class="hidden bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-blue-400/30 w-full mt-4">
                     Zagraj ponownie
                 </button>
+
+                <div id="save-section" class="hidden mt-4 pt-4 border-t border-gray-600 w-full">
+                    <p class="text-gray-300 text-sm mb-2">Zapisz wynik do tabeli rekordów:</p>
+                    <div class="flex gap-2 mb-1">
+                        <input id="player-name-input" type="text" placeholder="Twoje imię" maxlength="20"
+                               class="flex-1 bg-gray-700 text-white px-3 py-2 rounded-lg border border-gray-500 focus:outline-none focus:border-blue-400 text-sm">
+                        <button id="save-record-btn" class="bg-green-600 hover:bg-green-500 px-4 py-2 rounded-lg font-bold text-sm transition-colors">Zapisz</button>
+                    </div>
+                    <p id="save-info" class="text-green-400 text-xs hidden mb-1">✓ Wynik zapisany!</p>
+                    <button id="show-records-end-btn" class="text-blue-400 text-xs underline hover:text-blue-300 mt-1">Pokaż tabelę rekordów →</button>
+                </div>
+
+                <button id="show-records-start-btn" class="hidden text-blue-400 text-sm mt-3 underline hover:text-blue-300">Tabela rekordów</button>
+            </div>
+
+            <div id="records-view" class="hidden w-full max-w-xl text-center">
+                <h2 class="text-2xl font-bold mb-3 text-white">Tabela rekordów</h2>
+                <div class="flex gap-2 justify-center mb-2 flex-wrap">
+                    <button class="records-mode-tab px-3 py-1 rounded-lg text-sm font-bold transition-colors bg-blue-600 text-white" data-mode="adult">Dorosły</button>
+                    <button class="records-mode-tab px-3 py-1 rounded-lg text-sm font-bold transition-colors bg-gray-700 text-gray-300" data-mode="child">Dziecko</button>
+                </div>
+                <div class="flex items-center gap-2 justify-center mb-2 flex-wrap">
+                    <span class="text-gray-400 text-xs">Osoba:</span>
+                    <select id="records-player-select" class="bg-gray-700 text-white text-xs px-2 py-1 rounded-lg border border-gray-600 focus:outline-none focus:border-blue-400">
+                        <option value="">Wszyscy</option>
+                    </select>
+                </div>
+                <div id="records-level-tabs" class="flex gap-2 justify-center mb-3 flex-wrap"></div>
+                <div id="records-table-wrapper" class="text-left bg-gray-800 rounded-lg p-3 overflow-y-auto" style="max-height: 50vh"></div>
+                <button id="close-records-btn" class="mt-4 bg-blue-600 hover:bg-blue-500 px-6 py-2 rounded-xl font-bold text-sm transition-colors">Zamknij</button>
             </div>
         </div>
     </div>
@@ -68,6 +98,18 @@
     const btnChild = document.getElementById('btn-child');
     const btnAdult = document.getElementById('btn-adult');
     const titleEl = document.getElementById('game-title');
+    const overlayContent = document.getElementById('overlay-content');
+    const saveSection = document.getElementById('save-section');
+    const playerNameInput = document.getElementById('player-name-input');
+    const saveRecordBtn = document.getElementById('save-record-btn');
+    const saveInfo = document.getElementById('save-info');
+    const showRecordsEndBtn = document.getElementById('show-records-end-btn');
+    const showRecordsStartBtn = document.getElementById('show-records-start-btn');
+    const recordsView = document.getElementById('records-view');
+    const recordsLevelTabs = document.getElementById('records-level-tabs');
+    const recordsTableWrapper = document.getElementById('records-table-wrapper');
+    const closeRecordsBtn = document.getElementById('close-records-btn');
+    const recordsPlayerSelect = document.getElementById('records-player-select');
 
     const FRUIT_COLORS = ['#ef4444','#f97316','#eab308','#22c55e','#14b8a6','#a855f7','#ec4899'];
     const LEVEL_TIME = 15;            // seconds per level
@@ -112,13 +154,148 @@
     let flashUntil = 0;             // red flash (bomb) timestamp
 
     // ─── Records ───────────────────────────────────────────────────────────────────
-    const BEST_KEY = 'reflexSamurajBest';
-    function loadBest() { try { return JSON.parse(localStorage.getItem(BEST_KEY)) || {}; } catch { return {}; } }
-    function bestFor(mode) { return loadBest()[mode] || 0; }
-    function saveBest(mode, val) {
-        const b = loadBest();
-        if (val > (b[mode] || 0)) { b[mode] = val; localStorage.setItem(BEST_KEY, JSON.stringify(b)); }
+    // ─── Rekordy (leaderboard jak w grze unik) ──────────────────────────────────────
+    const RECORDS_KEY = 'reflexSamurajRecords';
+    const NAME_KEY    = 'reflexSamurajLastName';
+    const MAX_PER_PLAYER = 10;
+    let results = {}, scoreAtLevelStart = 0, recordsSaved = false;
+
+    function normalizeName(n) { return n.trim().toLowerCase(); }
+    function loadRecords() { try { return JSON.parse(localStorage.getItem(RECORDS_KEY)) || {}; } catch { return {}; } }
+    function saveRecordsToStorage(r) { localStorage.setItem(RECORDS_KEY, JSON.stringify(r)); }
+
+    function addRecord(mode, levelKey, name, scoreVal) {
+        const records = loadRecords();
+        if (!records[mode]) records[mode] = {};
+        if (!records[mode][levelKey]) records[mode][levelKey] = [];
+        records[mode][levelKey].push({ name: name.trim(), score: scoreVal, date: new Date().toLocaleDateString('pl-PL') });
+        records[mode][levelKey].sort((a, b) => b.score - a.score);
+        const seen = {};
+        records[mode][levelKey] = records[mode][levelKey].filter(r => {
+            const key = normalizeName(r.name);
+            seen[key] = (seen[key] || 0) + 1;
+            return seen[key] <= MAX_PER_PLAYER;
+        });
+        saveRecordsToStorage(records);
     }
+
+    function savePlayerRecord(name) {
+        if (!name.trim()) return;
+        localStorage.setItem(NAME_KEY, name.trim());
+        let total = 0;
+        for (let lvl = 1; lvl <= maxLevels; lvl++) {
+            if (results[lvl] !== undefined) { addRecord(gameMode, `level${lvl}`, name, results[lvl]); total += results[lvl]; }
+        }
+        addRecord(gameMode, 'total', name, total);
+    }
+
+    function bestTotal(mode) {
+        const r = loadRecords();
+        const l = (r[mode] && r[mode]['total']) || [];
+        return l.length ? l[0].score : 0;
+    }
+
+    // ─── Widok tabeli rekordów ──────────────────────────────────────────────────────
+    let recordsViewMode = 'adult', recordsViewLevel = 'total', recordsViewPlayer = '', recordsReturnFn = null;
+
+    function renderRecordsTable(mode, levelKey, filterPlayer) {
+        const records = loadRecords();
+        let data = (records[mode] && records[mode][levelKey]) || [];
+        if (filterPlayer) { const norm = normalizeName(filterPlayer); data = data.filter(r => normalizeName(r.name) === norm); }
+        if (!data.length) return '<p class="text-gray-400 text-sm py-4 text-center">Brak rekordów</p>';
+        const medals = ['🥇', '🥈', '🥉'];
+        let html = '<table class="w-full text-sm border-collapse"><thead><tr class="text-gray-400 text-xs uppercase">';
+        html += '<th class="py-1 px-2 text-left">#</th><th class="py-1 px-2 text-left">Imię</th>';
+        html += '<th class="py-1 px-2 text-right">Punkty</th><th class="py-1 px-2 text-right">Data</th></tr></thead><tbody>';
+        data.forEach((r, i) => {
+            const cls = i === 0 ? 'text-yellow-300' : i === 1 ? 'text-gray-300' : i === 2 ? 'text-orange-400' : 'text-white';
+            html += `<tr class="${cls} border-t border-gray-700/50">`;
+            html += `<td class="py-1 px-2">${medals[i] || (i+1)+'.'}</td>`;
+            html += `<td class="py-1 px-2">${r.name}</td>`;
+            html += `<td class="py-1 px-2 text-right font-mono text-green-400">${r.score}</td>`;
+            html += `<td class="py-1 px-2 text-right text-gray-400 text-xs">${r.date}</td></tr>`;
+        });
+        html += '</tbody></table>';
+        return html;
+    }
+
+    function getAllPlayersForMode(mode) {
+        const records = loadRecords();
+        const modeData = records[mode] || {};
+        const nameMap = new Map();
+        for (const levelData of Object.values(modeData)) {
+            for (const r of levelData) { const key = normalizeName(r.name); if (!nameMap.has(key)) nameMap.set(key, r.name); }
+        }
+        return [...nameMap.values()].sort((a, b) => a.localeCompare(b, 'pl'));
+    }
+
+    function buildPlayerFilter(mode) {
+        const players = getAllPlayersForMode(mode);
+        recordsPlayerSelect.innerHTML = '<option value="">Wszyscy</option>' +
+            players.map(p => `<option value="${p}" ${normalizeName(p) === normalizeName(recordsViewPlayer) ? 'selected' : ''}>${p}</option>`).join('');
+    }
+
+    function buildRecordsLevelTabs(mode) {
+        const n = LEVEL_CONFIG[mode].length;
+        const levels = [];
+        for (let i = 1; i <= n; i++) levels.push([`level${i}`, `Poziom ${i}`]);
+        levels.push(['total', 'Łącznie']);
+        recordsLevelTabs.innerHTML = levels.map(([key, label]) =>
+            `<button class="records-level-tab px-3 py-1 rounded-lg text-xs font-bold transition-colors ${recordsViewLevel === key ? 'bg-green-600 text-white' : 'bg-gray-700 text-gray-300'}" data-level="${key}">${label}</button>`
+        ).join('');
+        recordsLevelTabs.querySelectorAll('.records-level-tab').forEach(btn => {
+            btn.addEventListener('click', () => {
+                recordsViewLevel = btn.dataset.level;
+                buildRecordsLevelTabs(recordsViewMode);
+                recordsTableWrapper.innerHTML = renderRecordsTable(recordsViewMode, recordsViewLevel, recordsViewPlayer);
+            });
+        });
+    }
+
+    function showRecordsView(returnFn, preferMode, preferPlayer) {
+        recordsReturnFn = returnFn;
+        recordsViewMode = preferMode || gameMode || 'adult';
+        recordsViewLevel = 'total';
+        recordsViewPlayer = preferPlayer || '';
+        overlayContent.classList.add('hidden');
+        recordsView.classList.remove('hidden');
+        document.querySelectorAll('.records-mode-tab').forEach(btn => {
+            btn.classList.toggle('bg-blue-600', btn.dataset.mode === recordsViewMode);
+            btn.classList.toggle('text-white', btn.dataset.mode === recordsViewMode);
+            btn.classList.toggle('bg-gray-700', btn.dataset.mode !== recordsViewMode);
+            btn.classList.toggle('text-gray-300', btn.dataset.mode !== recordsViewMode);
+        });
+        buildPlayerFilter(recordsViewMode);
+        buildRecordsLevelTabs(recordsViewMode);
+        recordsTableWrapper.innerHTML = renderRecordsTable(recordsViewMode, recordsViewLevel, recordsViewPlayer);
+    }
+
+    document.querySelectorAll('.records-mode-tab').forEach(btn => {
+        btn.addEventListener('click', () => { recordsViewMode = btn.dataset.mode; recordsViewPlayer = ''; showRecordsView(recordsReturnFn, recordsViewMode); });
+    });
+    recordsPlayerSelect.addEventListener('change', () => {
+        recordsViewPlayer = recordsPlayerSelect.value;
+        buildRecordsLevelTabs(recordsViewMode);
+        recordsTableWrapper.innerHTML = renderRecordsTable(recordsViewMode, recordsViewLevel, recordsViewPlayer);
+    });
+    closeRecordsBtn.addEventListener('click', () => {
+        recordsView.classList.add('hidden');
+        overlayContent.classList.remove('hidden');
+        if (recordsReturnFn) recordsReturnFn();
+    });
+    saveRecordBtn.addEventListener('click', () => {
+        if (recordsSaved) return;
+        const name = playerNameInput.value.trim();
+        if (!name) { playerNameInput.focus(); return; }
+        savePlayerRecord(name);
+        recordsSaved = true;
+        saveRecordBtn.disabled = true;
+        saveRecordBtn.classList.replace('bg-green-600', 'bg-gray-600');
+        saveInfo.classList.remove('hidden');
+        showRecordsView(() => {}, gameMode, name);
+    });
+    showRecordsEndBtn.addEventListener('click', () => showRecordsView(() => {}));
+    showRecordsStartBtn.addEventListener('click', () => showRecordsView(() => {}));
 
     // ─── Canvas ──────────────────────────────────────────────────────────────────────
     function resize() {
@@ -371,6 +548,7 @@
 
     function startCampaign() {
         score = 0; currentLevel = 1;
+        results = {};
         scoreDisplayEl.textContent = '0';
         overlay.classList.add('hidden');
         titleEl.style.display = 'none';
@@ -382,6 +560,7 @@
     function startLevel(level) {
         clearTimers();
         currentLevel = level;
+        scoreAtLevelStart = score;
         levelDisplayEl.textContent = level;
         fruits = []; particles = []; floats = [];
         phase = 'playing';
@@ -422,6 +601,7 @@
             if (left <= 0) {
                 clearInterval(countdownInterval); countdownInterval = null;
                 bigBall = null;
+                results[currentLevel] = score - scoreAtLevelStart;   // punkty za ten poziom (z premią)
                 if (currentLevel < maxLevels) {
                     getReady(currentLevel + 1);
                 } else {
@@ -449,17 +629,29 @@
         clearTimers();
         phase = 'end';
         fruits = []; bigBall = null;
-        saveBest(gameMode, score);
+        overlayContent.classList.remove('hidden');
+        recordsView.classList.add('hidden');
         titleEl.style.display = '';
         overlayTitle.textContent = 'Koniec! 🏆';
         modeSelection.classList.add('hidden');
         mainBtn.classList.remove('hidden');
         mainBtn.textContent = 'Zagraj ponownie';
         overlayDesc.textContent = '';
-        overlayStats.innerHTML =
-            `<p>Twój wynik: <span class="text-green-400 font-bold">${score}</span> pkt</p>` +
-            `<p>Najlepszy (${gameMode === 'child' ? 'Dziecko' : 'Dorosły'}): <span class="text-yellow-400 font-bold">${bestFor(gameMode)}</span> pkt</p>`;
+        let rows = '', total = 0;
+        for (let lvl = 1; lvl <= maxLevels; lvl++) {
+            if (results[lvl] !== undefined) { rows += `<p>Poziom ${lvl}: <span class="text-green-400 font-bold">${results[lvl]}</span> pkt</p>`; total += results[lvl]; }
+        }
+        overlayStats.innerHTML = rows +
+            `<p class="mt-1 border-t border-gray-600 pt-1">Łącznie: <span class="text-green-400 font-bold">${total}</span> pkt · Rekord: <span class="text-yellow-400 font-bold">${bestTotal(gameMode)}</span></p>`;
         overlayStats.classList.remove('hidden');
+        // sekcja zapisu wyniku (jak w unik)
+        recordsSaved = false;
+        saveSection.classList.remove('hidden');
+        showRecordsStartBtn.classList.add('hidden');
+        saveInfo.classList.add('hidden');
+        playerNameInput.value = localStorage.getItem(NAME_KEY) || '';
+        saveRecordBtn.disabled = false;
+        saveRecordBtn.classList.replace('bg-gray-600', 'bg-green-600');
         overlay.classList.remove('hidden');
     }
 
@@ -468,13 +660,17 @@
         phase = 'menu';
         fruits = []; particles = []; floats = []; bigBall = null;
         titleEl.style.display = '';
+        overlayContent.classList.remove('hidden');
+        recordsView.classList.add('hidden');
         overlayTitle.textContent = 'Wybierz tryb gry!';
         overlayStats.innerHTML =
-            `<p class="text-center text-base">🏆 Rekordy — Dziecko: <span class="text-yellow-400 font-bold">${bestFor('child')}</span> · Dorosły: <span class="text-yellow-400 font-bold">${bestFor('adult')}</span> pkt</p>`;
+            `<p class="text-center text-base">🏆 Rekordy — Dziecko: <span class="text-yellow-400 font-bold">${bestTotal('child')}</span> · Dorosły: <span class="text-yellow-400 font-bold">${bestTotal('adult')}</span> pkt</p>`;
         overlayStats.classList.remove('hidden');
         overlayDesc.textContent = 'Przecinaj spadające kulki palcem lub myszką! Kilka jednym ruchem = premia. Uważaj na bomby 💣 (-3s).';
         modeSelection.classList.remove('hidden');
         mainBtn.classList.add('hidden');
+        saveSection.classList.add('hidden');
+        showRecordsStartBtn.classList.remove('hidden');
         overlay.classList.remove('hidden');
     }
 
