@@ -118,11 +118,12 @@
     // speed: enemy base speed multiplier
     // playerRadius: player hitbox radius multiplier (vs UNIT)
     const LEVEL_CONFIG = {
+        // Wersja dziecięca zaczyna od dawnego poziomu 2 i rośnie trudniej.
         child: {
-            1: { duration: 10, startBalls: 3,  spawnInterval: null, speed: 1.0, playerScale: 1.4 },
-            2: { duration: 10, startBalls: 5,  spawnInterval: 6000, speed: 1.4, playerScale: 1.1 },
-            3: { duration: 10, startBalls: 7,  spawnInterval: 4000, speed: 1.9, playerScale: 0.9 },
-            bonus: { duration: null, startBalls: 7,  spawnInterval: 1000, speed: 1.9, playerScale: 0.9 },
+            1: { duration: 10, startBalls: 5,  spawnInterval: 6000, speed: 1.4, playerScale: 1.1 },
+            2: { duration: 10, startBalls: 7,  spawnInterval: 4000, speed: 1.9, playerScale: 0.9 },
+            3: { duration: 10, startBalls: 9,  spawnInterval: 3000, speed: 2.3, playerScale: 0.8 },
+            bonus: { duration: null, startBalls: 9,  spawnInterval: 1000, speed: 2.3, playerScale: 0.8 },
         },
         // Wersja dorosła zaczyna od razu ostro (dawny poziom 3) i rośnie stromo.
         adult: {
@@ -556,10 +557,10 @@
     function updateInstructions(level) {
         const descs = {
             child: {
-                1: 'Ruszaj myszką/palcem żeby unikać kulek! 3 kulki, 20 sekund.',
-                2: 'Szybciej i więcej kulek. Nowa kulka co 6 sekund!',
-                3: 'Bardzo szybko! Twoje kółko jest teraz mniejsze.',
-                bonus: 'Gra na śmierć — nowa kulka co sekundę! Ile przeżyjesz? 🌟',
+                1: 'Ruszaj myszką/palcem, uciekaj przed pszczołami! 5 pszczół, nowa co 6s.',
+                2: 'Szybciej i więcej — 7 pszczół, mniejsze kółko.',
+                3: 'Najtrudniej — 9 pszczół, bardzo szybko!',
+                bonus: 'Gra na śmierć — nowa pszczoła co sekundę! Ile przeżyjesz? 🌟',
             },
             adult: {
                 1: 'Od razu ostro — 8 kulek, nowa co 3.5s. Przetrwaj 15 sekund!',
