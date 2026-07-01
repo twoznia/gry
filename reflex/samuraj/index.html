@@ -40,7 +40,7 @@
                     </button>
                     <button id="btn-adult" class="flex-1 bg-blue-600 hover:bg-blue-500 p-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-blue-400/30 flex flex-col items-center justify-center gap-2">
                         <img src="../pic/adult.jpg" alt="Dorosły" class="w-28 h-28 rounded-full object-cover border-2 border-blue-300"> Dorosły
-                        <span class="text-sm font-normal text-blue-100">4 poziomy · szybciej</span>
+                        <span class="text-sm font-normal text-blue-100">4 poziomy · fale kulek, trudno</span>
                     </button>
                 </div>
 
@@ -74,17 +74,19 @@
     const BONUS_TIME = 3;             // seconds for the bonus round
 
     // speed is px/frame at a 600px reference height; scaled to real canvas height
+    // burst = how many balls appear in a single spawn (spread across columns and
+    // staggered in time), so a straight swipe can't clear them all.
     const LEVEL_CONFIG = {
         child: [
-            { spawnMs: 850, speed: 2.0, bombChance: 0.08 },
-            { spawnMs: 700, speed: 2.6, bombChance: 0.10 },
-            { spawnMs: 580, speed: 3.2, bombChance: 0.12 },
+            { spawnMs: 850, speed: 2.0, bombChance: 0.08, burst: 1 },
+            { spawnMs: 700, speed: 2.6, bombChance: 0.10, burst: 1 },
+            { spawnMs: 580, speed: 3.2, bombChance: 0.12, burst: 1 },
         ],
         adult: [
-            { spawnMs: 750, speed: 2.6, bombChance: 0.10 },
-            { spawnMs: 620, speed: 3.3, bombChance: 0.13 },
-            { spawnMs: 500, speed: 4.0, bombChance: 0.16 },
-            { spawnMs: 410, speed: 4.8, bombChance: 0.20 },
+            { spawnMs: 620, speed: 3.8, bombChance: 0.10, burst: 2 },
+            { spawnMs: 540, speed: 4.5, bombChance: 0.13, burst: 2 },
+            { spawnMs: 470, speed: 5.2, bombChance: 0.16, burst: 3 },
+            { spawnMs: 400, speed: 6.0, bombChance: 0.20, burst: 3 },
         ],
     };
 
@@ -149,18 +151,28 @@
     }
 
     // ─── Spawning ──────────────────────────────────────────────────────────────────
-    function spawnFruit() {
-        const cfg = LEVEL_CONFIG[gameMode][currentLevel - 1];
+    function spawnOne(cfg, x) {
         const r = fruitRadius();
-        const x = r + Math.random() * (canvas.width - r*2);
         const isBomb = Math.random() < cfg.bombChance;
         const vy = cfg.speed * heightScale() * (0.85 + Math.random()*0.3);
         fruits.push({
-            id: nextId++, x, y: -r, r, vy,
-            vx: (Math.random()-0.5) * 0.6,
+            // stagger the vertical start so balls in one burst arrive at different
+            // times — you can't wipe the whole wave with a single straight swipe.
+            id: nextId++, x, y: -r - Math.random()*r*3, r, vy,
+            vx: (Math.random()-0.5) * 0.9,
             color: FRUIT_COLORS[Math.floor(Math.random()*FRUIT_COLORS.length)],
             bomb: isBomb,
         });
+    }
+
+    function spawnFruit() {
+        const cfg = LEVEL_CONFIG[gameMode][currentLevel - 1];
+        const burst = cfg.burst || 1;
+        const r = fruitRadius();
+        const seg = (canvas.width - r*2) / burst;   // spread the burst across columns
+        for (let i = 0; i < burst; i++) {
+            spawnOne(cfg, r + seg * (i + Math.random()));
+        }
     }
 
     function addFloat(x, y, text, color) {
