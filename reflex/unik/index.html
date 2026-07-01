@@ -111,10 +111,6 @@
     const closeRecordsBtn = document.getElementById('close-records-btn');
     const recordsPlayerSelect = document.getElementById('records-player-select');
 
-    const BALL_COLORS = [
-        '#ef4444','#f97316','#eab308','#a855f7','#ec4899','#14b8a6','#6366f1',
-    ];
-
     // ─── Level config ──────────────────────────────────────────────────────────────
     // duration: seconds (null = until death)
     // startBalls: initial enemy count
@@ -361,11 +357,69 @@
         dx = Math.cos(angle) * speed;
         dy = Math.sin(angle) * speed;
 
-        const colorIdx = Math.floor(Math.random() * BALL_COLORS.length);
-        enemies.push({ x, y, dx, dy, r, colorIdx, id: nextEnemyId++ });
+        enemies.push({ x, y, dx, dy, r, id: nextEnemyId++ });
     }
 
     // ─── Drawing ───────────────────────────────────────────────────────────────────
+    // Wróg to jaskrawa pszczoła, obrócona w kierunku lotu. Promień e.r pozostaje
+    // hitboxem (kolizja to nadal okrąg), rysunek mieści się w tym promieniu.
+    function drawBee(e, ts) {
+        const r = e.r;
+        const angle = Math.atan2(e.dy, e.dx);
+        const flap = Math.abs(Math.sin(ts / 45 + e.id));   // trzepot skrzydeł
+        ctx.save();
+        ctx.translate(e.x, e.y);
+        ctx.rotate(angle);
+
+        // jaskrawa poświata, żeby pszczoły były dobrze widoczne
+        ctx.shadowColor = '#facc15';
+        ctx.shadowBlur = 14;
+
+        // skrzydła (półprzezroczyste, trzepoczą)
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = 'rgba(226,232,255,0.55)';
+        for (const s of [-1, 1]) {
+            ctx.beginPath();
+            ctx.ellipse(-r*0.1, s*r*0.6, r*0.7, r*(0.28 + flap*0.22), s*0.5, 0, Math.PI*2);
+            ctx.fill();
+        }
+
+        // odwłok — jaskrawożółty z czarnymi paskami
+        ctx.shadowColor = '#facc15';
+        ctx.shadowBlur = 14;
+        ctx.fillStyle = '#fde047';
+        ctx.beginPath();
+        ctx.ellipse(0, 0, r*1.05, r*0.72, 0, 0, Math.PI*2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        // czarne paski
+        ctx.fillStyle = '#111827';
+        for (const bx of [-0.35, 0.15, 0.6]) {
+            const half = Math.sqrt(Math.max(0, 1 - bx*bx)) * r*0.72;
+            ctx.fillRect(bx*r*1.05 - r*0.12, -half, r*0.24, half*2);
+        }
+
+        // głowa z przodu
+        ctx.fillStyle = '#111827';
+        ctx.beginPath();
+        ctx.arc(r*1.05, 0, r*0.42, 0, Math.PI*2);
+        ctx.fill();
+
+        // czułki
+        ctx.strokeStyle = '#111827';
+        ctx.lineWidth = Math.max(1.5, r*0.09);
+        ctx.lineCap = 'round';
+        for (const s of [-1, 1]) {
+            ctx.beginPath();
+            ctx.moveTo(r*1.2, s*r*0.2);
+            ctx.lineTo(r*1.7, s*r*0.5);
+            ctx.stroke();
+        }
+
+        ctx.restore();
+    }
+
     function draw(ts) {
         if (!isRunning) return;
         const dt = Math.min((ts - lastTime) / 16.67, 3); // normalize to 60fps steps
@@ -395,20 +449,8 @@
             }
         }
 
-        // draw enemies
-        for (const e of enemies) {
-            const color = BALL_COLORS[e.colorIdx];
-            ctx.shadowColor = color;
-            ctx.shadowBlur = 10;
-            ctx.fillStyle = color;
-            ctx.beginPath();
-            ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.shadowBlur = 0;
-            ctx.strokeStyle = 'rgba(255,255,255,0.25)';
-            ctx.lineWidth = 1.5;
-            ctx.stroke();
-        }
+        // draw enemies (bees)
+        for (const e of enemies) drawBee(e, ts);
 
         // draw player
         ctx.shadowColor = '#38bdf8';
@@ -555,8 +597,7 @@
         mainBtn.innerHTML = '▶ Start Bonusu';
         mainBtnAction = () => startGame('bonus');
         overlay.classList.remove('hidden');
-        mainBtn.disabled = true;
-        setTimeout(() => { mainBtn.disabled = false; }, 1500);
+        mainBtn.disabled = false;
     }
 
     function showNextLevelScreen(level) {
@@ -569,8 +610,7 @@
         mainBtn.innerHTML = `Start: Poziom ${level + 1}`;
         mainBtnAction = () => startGame(level + 1);
         overlay.classList.remove('hidden');
-        mainBtn.disabled = true;
-        setTimeout(() => { mainBtn.disabled = false; }, 1500);
+        mainBtn.disabled = false;
     }
 
     function showEndScreen() {
