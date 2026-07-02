@@ -125,6 +125,9 @@
         let timeLvl1 = 0, timeLvl2 = 0, timeLvl3 = 0, timeLvl4 = 0;
         let mainBtnAction = null;
         let recordsSaved = false;
+        let floats = [];          // pływające napisy kar ("+5s")
+        let flashUntil = 0;       // czerwony błysk canvasa po karze
+        let countdownTimer = null;
         
         let GREEN_COUNT = 15, RED_COUNT = 5, TOTAL_TARGETS = 20;
         function getRadius() {
@@ -407,11 +410,35 @@
                 return;
             }
             const wrongOrderIdx = hitIdxs.find(i => targets[i].isGood && currentLevel >= 2);
-            if (wrongOrderIdx !== undefined) { startTime -= 2000; errorsOrder++; return; }
+            if (wrongOrderIdx !== undefined) { startTime -= 2000; errorsOrder++; addPenaltyFeedback(x, y, '+2s'); return; }
             // Only red circles hit
             startTime -= 5000; errorsRed++;
+            addPenaltyFeedback(x, y, '+5s');
             targets.splice(hitIdxs[0], 1); updateRemaining();
         });
+
+        // Widoczny feedback kary: czerwony błysk + pływający napis (jak floaty w samuraju)
+        function addPenaltyFeedback(x, y, text) {
+            flashUntil = Date.now() + 220;
+            floats.push({ x, y, text, life: 1 });
+        }
+
+        function drawFloats() {
+            for (const f of floats) {
+                f.y -= 1.2; f.life -= 0.022;
+                ctx.globalAlpha = Math.max(0, f.life);
+                ctx.fillStyle = '#ef4444';
+                ctx.font = 'bold 28px Inter';
+                ctx.textAlign = 'center';
+                ctx.fillText(f.text, f.x, f.y);
+            }
+            ctx.globalAlpha = 1;
+            floats = floats.filter(f => f.life > 0);
+            if (Date.now() < flashUntil) {
+                ctx.fillStyle = 'rgba(239,68,68,0.25)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+        }
 
         function drawTarget(t) {
             ctx.fillStyle = t.color; ctx.beginPath(); ctx.arc(t.x, t.y, t.radius, 0, Math.PI*2); ctx.fill();
@@ -439,12 +466,36 @@
                 const nt = targets.find(t => t.isGood && t.number === nextNum);
                 if (nt) drawTarget(nt);
             }
+            drawFloats();
             timeEl.textContent = Math.max(0, (Date.now() - startTime) / 1000).toFixed(1);
             requestAnimationFrame(draw);
         }
 
+        // Odliczanie 3-2-1 na canvasie zamiast blokowania przycisku
+        function startWithCountdown(level) {
+            if (countdownTimer) return;
+            overlay.classList.add('hidden');
+            document.getElementById('game-title').style.display = 'none';
+            resize();
+            let n = 3;
+            const drawCount = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#facc15';
+                ctx.font = 'bold 90px Inter';
+                ctx.textAlign = 'center';
+                ctx.fillText(n, canvas.width / 2, canvas.height / 2 + 30);
+            };
+            drawCount();
+            countdownTimer = setInterval(() => {
+                n--;
+                if (n <= 0) { clearInterval(countdownTimer); countdownTimer = null; startGame(level); }
+                else drawCount();
+            }, 450);
+        }
+
         function startGame(level) {
             currentLevel = level; levelDisplayEl.textContent = level;
+            floats = []; flashUntil = 0;
             errorsRedAtLevelStart = errorsRed; errorsOrderAtLevelStart = errorsOrder;
             isRunning = true; startTime = Date.now();
             overlay.classList.add('hidden');
@@ -473,9 +524,22 @@
 
         function hideModeSelectionAndShowMainBtn() { modeSelection.classList.add('hidden'); mainBtn.classList.remove('hidden'); }
 
+        function bestTotal(mode) {
+            const l = (loadRecords()[mode] || {}).total || [];
+            return l.length ? l[0].time : null;
+        }
+
         function showStartScreen() {
             document.getElementById('game-title').style.display = '';
-            overlayTitle.innerHTML = "Wybierz tryb gry!"; overlayStats.classList.add('hidden');
+            overlayTitle.innerHTML = "Wybierz tryb gry!";
+            // rekordy na ekranie startowym (jak w samuraju)
+            const bc = bestTotal('child'), ba = bestTotal('adult');
+            if (bc !== null || ba !== null) {
+                overlayStats.innerHTML = `<p class="text-center text-base">🏆 Rekordy — Dziecko: <span class="text-yellow-400 font-bold">${bc !== null ? bc.toFixed(2) + 's' : '—'}</span> · Dorosły: <span class="text-yellow-400 font-bold">${ba !== null ? ba.toFixed(2) + 's' : '—'}</span></p>`;
+                overlayStats.classList.remove('hidden');
+            } else {
+                overlayStats.classList.add('hidden');
+            }
             hideSaveSectionAndRecordsBtn();
             updateInstructions(1); modeSelection.classList.remove('hidden'); mainBtn.classList.add('hidden');
             showRecordsStartBtn.classList.remove('hidden');
@@ -483,9 +547,9 @@
         }
 
         function startCampaign() { errorsRed = 0; errorsOrder = 0; timeLvl1=timeLvl2=timeLvl3=timeLvl4=0; startGame(1); }
-        function showLevel2Screen() { hideModeSelectionAndShowMainBtn(); hideSaveSectionAndRecordsBtn(); overlayTitle.innerHTML = "Poziom 1 Ukończony!"; updateInstructions(2); mainBtn.innerHTML = "Start: Poziom 2"; mainBtnAction = () => startGame(2); overlay.classList.remove('hidden'); mainBtn.disabled = true; setTimeout(() => { mainBtn.disabled = false; }, 1500); }
-        function showLevel3Screen() { hideModeSelectionAndShowMainBtn(); hideSaveSectionAndRecordsBtn(); overlayTitle.innerHTML = "Poziom 2 Ukończony!"; updateInstructions(3); mainBtn.innerHTML = "Start: Poziom 3"; mainBtnAction = () => startGame(3); overlay.classList.remove('hidden'); mainBtn.disabled = true; setTimeout(() => { mainBtn.disabled = false; }, 1500); }
-        function showLevel4Screen() { hideModeSelectionAndShowMainBtn(); hideSaveSectionAndRecordsBtn(); overlayTitle.innerHTML = "Poziom 3 Ukończony!"; updateInstructions(4); mainBtn.innerHTML = "Start: Finał"; mainBtnAction = () => startGame(4); overlay.classList.remove('hidden'); mainBtn.disabled = true; setTimeout(() => { mainBtn.disabled = false; }, 1500); }
+        function showLevel2Screen() { hideModeSelectionAndShowMainBtn(); hideSaveSectionAndRecordsBtn(); overlayTitle.innerHTML = "Poziom 1 Ukończony!"; updateInstructions(2); mainBtn.innerHTML = "Start: Poziom 2"; mainBtnAction = () => startWithCountdown(2); overlay.classList.remove('hidden'); }
+        function showLevel3Screen() { hideModeSelectionAndShowMainBtn(); hideSaveSectionAndRecordsBtn(); overlayTitle.innerHTML = "Poziom 2 Ukończony!"; updateInstructions(3); mainBtn.innerHTML = "Start: Poziom 3"; mainBtnAction = () => startWithCountdown(3); overlay.classList.remove('hidden'); }
+        function showLevel4Screen() { hideModeSelectionAndShowMainBtn(); hideSaveSectionAndRecordsBtn(); overlayTitle.innerHTML = "Poziom 3 Ukończony!"; updateInstructions(4); mainBtn.innerHTML = "Start: Finał"; mainBtnAction = () => startWithCountdown(4); overlay.classList.remove('hidden'); }
 
         function showEndScreen() {
             hideModeSelectionAndShowMainBtn();
