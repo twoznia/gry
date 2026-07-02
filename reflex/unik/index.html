@@ -546,7 +546,7 @@
             countdownInterval = setInterval(() => {
                 survived++;
                 scoreDisplayEl.textContent = survived;
-                timeEl.textContent = survived + 's';
+                timeEl.textContent = survived;   // "s" jest już w HTML za spanem
             }, 1000);
         }
 
