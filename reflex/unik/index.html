@@ -244,9 +244,9 @@
     }
 
     function buildRecordsLevelTabs(mode) {
-        const levels = gameMode === 'child'
+        const levels = mode === 'child'
             ? [['level1','Poziom 1'],['level2','Poziom 2'],['level3','Poziom 3'],['levelBonus','🌟 Bonus'],['total','Łącznie']]
-            : [['level1','Poziom 1'],['level2','Poziom 2'],['level3','Poziom 3'],['level4','Poziom 4'],['levelBonus','🌟 Bonus'],['total','Łącznie']];
+            : [['level1','Poziom 1'],['level2','Poziom 2'],['level3','Poziom 3'],['level4','Poziom 4'],['total','Łącznie']];
         recordsLevelTabs.innerHTML = levels.map(([key, label]) =>
             `<button class="records-level-tab px-3 py-1 rounded-lg text-xs font-bold transition-colors ${recordsViewLevel === key ? 'bg-green-600 text-white' : 'bg-gray-700 text-gray-300'}" data-level="${key}">${label}</button>`
         ).join('');
@@ -319,8 +319,11 @@
     function resize() {
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
-        player.x = canvas.width / 2;
-        player.y = canvas.height / 2;
+        // nie teleportuj gracza w trakcie gry (resize okna = nagła śmierć)
+        if (!isRunning) {
+            player.x = canvas.width / 2;
+            player.y = canvas.height / 2;
+        }
     }
     window.addEventListener('resize', resize);
     resize();
