@@ -47,6 +47,11 @@
                         </button>
                     </div>
 
+                    <label id="hint-toggle" class="flex items-center justify-center gap-2 mt-3 cursor-pointer select-none text-sm text-gray-300">
+                        <input type="checkbox" id="hint-checkbox" class="w-4 h-4 accent-yellow-400">
+                        <span>Podpowiedź „Szukaj" <span class="text-yellow-400">(+15s)</span></span>
+                    </label>
+
                     <button id="main-btn" class="hidden bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-blue-400/30 w-full mt-4">
                         Rozpocznij
                     </button>
@@ -105,6 +110,7 @@
         const btnAdult = document.getElementById('btn-adult');
         const targetBox = document.getElementById('target-box');
         const targetNumberEl = document.getElementById('target-number');
+        const hintCheckbox = document.getElementById('hint-checkbox');
         const overlayContent = document.getElementById('overlay-content');
         const saveSection = document.getElementById('save-section');
         const playerNameInput = document.getElementById('player-name-input');
@@ -379,7 +385,8 @@
                 if (isTargetGood) expectedGreenNumbers.push(numbers[i]);
                 targets.push({ x, y, radius: RADIUS, dx, dy, isGood: isTargetGood, color: isTargetGood ? '#22c55e' : '#ef4444', number: numbers[i] });
             }
-            if (currentLevel === 2 || currentLevel === 3) expectedGreenNumbers.sort((a, b) => a - b);
+            if (currentLevel === 1 && hintCheckbox.checked) expectedGreenNumbers.sort((a, b) => a - b);
+            else if (currentLevel === 2 || currentLevel === 3) expectedGreenNumbers.sort((a, b) => a - b);
             else if (currentLevel === 4) expectedGreenNumbers.sort((a, b) => b - a);
             updateRemaining();
         }
@@ -387,7 +394,7 @@
         function updateRemaining() {
             const greenCount = targets.filter(t => t.isGood).length;
             remainingEl.textContent = greenCount;
-            if (currentLevel >= 2) targetNumberEl.textContent = expectedGreenNumbers.length > 0 ? expectedGreenNumbers[0] : "Koniec!";
+            if (currentLevel >= 2 || hintCheckbox.checked) targetNumberEl.textContent = expectedGreenNumbers.length > 0 ? expectedGreenNumbers[0] : "Koniec!";
             if (greenCount === 0 && isRunning) { finalTime = (Date.now() - startTime) / 1000; gameOver(); }
         }
 
@@ -406,7 +413,7 @@
             // Prioritise: correct green > wrong-order green > red
             const correctIdx = hitIdxs.find(i => targets[i].isGood && (currentLevel < 2 || targets[i].number === expectedGreenNumbers[0]));
             if (correctIdx !== undefined) {
-                if (currentLevel >= 2) expectedGreenNumbers.shift();
+                if (currentLevel >= 2 || hintCheckbox.checked) expectedGreenNumbers.shift();
                 targets.splice(correctIdx, 1); updateRemaining();
                 return;
             }
@@ -498,12 +505,14 @@
             currentLevel = level; levelDisplayEl.textContent = level;
             floats = []; flashUntil = 0;
             errorsRedAtLevelStart = errorsRed; errorsOrderAtLevelStart = errorsOrder;
+            const hintOn = hintCheckbox.checked;
             isRunning = true; startTime = Date.now();
+            if (hintOn && level === 1) startTime -= 15000;
             overlay.classList.add('hidden');
             document.getElementById('game-title').style.display = 'none';
             resize();
             restartLevelBtn.classList.remove('hidden');
-            targetBox.classList.toggle('hidden', level < 2);
+            targetBox.classList.toggle('hidden', level < 2 && !hintOn);
             spawnTargets(); draw();
         }
 
