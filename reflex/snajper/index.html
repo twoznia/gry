@@ -175,7 +175,7 @@
 
     // ─── Records ──────────────────────────────────────────────────────────────────
     const RECORDS_KEY = 'reflexSnajperRecords';
-    const NAME_KEY    = 'reflexSnajperLastName';
+    const NAME_KEY    = 'reflexLastName';
     const MAX_PER_PLAYER = 10;
 
     function normalizeName(n) { return n.trim().toLowerCase(); }
@@ -318,6 +318,7 @@
         saveInfo.classList.remove('hidden');
         showRecordsView(() => {}, gameMode, name);
     });
+    playerNameInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') saveRecordBtn.click(); });
     showRecordsEndBtn.addEventListener('click', () => showRecordsView(() => {}));
     showRecordsStartBtn.addEventListener('click', () => showRecordsView(() => {}));
     mainBtn.addEventListener('click', () => { if (mainBtnAction) mainBtnAction(); });

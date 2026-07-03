@@ -170,7 +170,7 @@
 
     // ─── Records management ──────────────────────────────────────────────────────
     const RECORDS_KEY = 'reflexKolory2Records';
-    const NAME_KEY    = 'reflexKolory2LastName';
+    const NAME_KEY    = 'reflexLastName';
     const MAX_PER_PLAYER = 10;
 
     function normalizeName(n) { return n.trim().toLowerCase(); }
@@ -312,6 +312,7 @@
         saveInfo.classList.remove('hidden');
         showRecordsView(() => {}, gameMode, name);
     });
+    playerNameInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') saveRecordBtn.click(); });
     showRecordsEndBtn.addEventListener('click', () => showRecordsView(() => {}));
     showRecordsStartBtn.addEventListener('click', () => showRecordsView(() => {}));
 
