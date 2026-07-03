@@ -336,12 +336,15 @@
     function placeBalls(count) {
         balls = [];
         const margin = RADIUS + 10;
+        const hintZoneX = canvas.width - 70;
+        const hintZoneY = canvas.height - 70;
         for (let i = 0; i < count; i++) {
             let x, y, attempts = 0, valid = false;
             while (!valid && attempts < 300) {
                 x = margin + Math.random() * (canvas.width - margin * 2);
                 y = margin + Math.random() * (canvas.height - margin * 2);
                 valid = balls.every(b => Math.hypot(x - b.x, y - b.y) > RADIUS * 2.6);
+                if (valid && x > hintZoneX && y > hintZoneY) valid = false;
                 attempts++;
             }
             const colorIdx = i % COLORS.length;
@@ -540,6 +543,8 @@
         hintBtn.disabled = true;
         hintBtn.classList.add('opacity-50');
         showNumbers = hintUsed >= 2;
+        const penalty = hintUsed === 1 ? 5000 : 10000;
+        levelStartTime -= penalty;
         pauseTimer();
 
         phase = 'preview';
