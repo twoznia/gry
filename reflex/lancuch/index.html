@@ -134,7 +134,7 @@
     function getRadius() {
         const isMobile = window.matchMedia('(pointer: coarse)').matches;
         const shortSide = Math.min(window.innerWidth, window.innerHeight);
-        if (isMobile) return Math.round(Math.min(48, Math.max(32, shortSide * 0.06)));
+        if (isMobile) return Math.round(Math.min(32, Math.max(22, shortSide * 0.04)));
         return Math.round(Math.min(30, Math.max(22, shortSide * 0.033)));
     }
 

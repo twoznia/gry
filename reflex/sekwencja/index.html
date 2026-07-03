@@ -33,6 +33,8 @@
             <div id="phase-text" class="bg-black/80 text-white font-bold text-xl px-6 py-3 rounded-full border border-white/20"></div>
         </div>
 
+        <button id="hint-btn" class="hidden absolute bottom-3 right-3 z-20 bg-yellow-500/80 hover:bg-yellow-400 text-black font-bold text-lg w-12 h-12 rounded-full border-2 border-yellow-300/50 shadow-lg transition-all" title="Podpowiedź">💡</button>
+
         <div id="overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-black/85 rounded-lg p-4 z-10 overflow-y-auto">
             <div id="overlay-content" class="w-full max-w-md text-center">
                 <h2 id="overlay-title" class="text-3xl font-bold mb-4 text-center text-white">Wybierz tryb gry!</h2>
@@ -118,6 +120,7 @@
     const recordsPlayerSelect = document.getElementById('records-player-select');
     const phaseBanner = document.getElementById('phase-banner');
     const phaseText = document.getElementById('phase-text');
+    const hintBtn = document.getElementById('hint-btn');
 
     const COLORS = [
         '#ef4444','#3b82f6','#22c55e','#eab308','#a855f7',
@@ -139,7 +142,7 @@
     function getRadius() {
         const isMobile = window.matchMedia('(pointer: coarse)').matches;
         const shortSide = Math.min(window.innerWidth, window.innerHeight);
-        if (isMobile) return Math.round(Math.min(52, Math.max(38, shortSide * 0.07)));
+        if (isMobile) return Math.round(Math.min(36, Math.max(24, shortSide * 0.045)));
         return Math.round(Math.min(36, Math.max(28, shortSide * 0.04)));
     }
 
@@ -157,6 +160,8 @@
     let nextBallId = 0;
     let animFrameId = null;
     let previewTimeout = null;
+    let hintUsed = 0;        // how many times hint was used this round
+    let showNumbers = false; // whether to draw sequence numbers on balls
 
     // per-level results
     let results = {};
@@ -401,11 +406,18 @@
             ctx.fillText('✓', b.x, b.y);
         }
 
-        // order number label — only visible during preview on lit ball
+        // order number label — during preview on lit ball, or hint numbers
         if (isLit) {
             const pos = sequence.indexOf(b.id) + 1;
             ctx.fillStyle = '#000';
             ctx.font = `bold ${Math.round(RADIUS * 0.9)}px Inter`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(pos, b.x, b.y);
+        } else if (showNumbers && phase === 'click' && !isClicked) {
+            const pos = sequence.indexOf(b.id) + 1;
+            ctx.fillStyle = 'rgba(255,255,255,0.85)';
+            ctx.font = `bold ${Math.round(RADIUS * 0.85)}px Inter`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText(pos, b.x, b.y);
@@ -474,8 +486,7 @@
         clickProgress = 0;
         litId = -1;
         hideBanner();
-        showBanner('Klikaj w kolejności!', 'text-purple-300');
-        setTimeout(hideBanner, 1200);
+        hintBtn.classList.remove('hidden');
     }
 
     // ─── Click handling ────────────────────────────────────────────────────────────
@@ -517,6 +528,41 @@
         }
     });
 
+    // ─── Hint ──────────────────────────────────────────────────────────────────────
+    hintBtn.addEventListener('click', () => {
+        if (!isRunning || phase !== 'click') return;
+        hintUsed++;
+        hintBtn.disabled = true;
+        hintBtn.classList.add('opacity-50');
+        showNumbers = hintUsed >= 2;
+
+        // replay preview animation, then return to click phase
+        phase = 'preview';
+        const cfg = LEVEL_CONFIG[currentLevel];
+        const flashGap = gameMode === 'child' ? cfg.flashDuration * 1.4 : cfg.flashDuration;
+        let i = 0;
+
+        function flashNext() {
+            if (i >= sequence.length) {
+                litId = -1;
+                setTimeout(() => {
+                    phase = 'click';
+                    hintBtn.disabled = false;
+                    hintBtn.classList.remove('opacity-50');
+                }, 400);
+                return;
+            }
+            litId = sequence[i];
+            i++;
+            previewTimeout = setTimeout(() => {
+                litId = -1;
+                previewTimeout = setTimeout(flashNext, 150);
+            }, flashGap);
+        }
+
+        flashNext();
+    });
+
     // ─── Round management ──────────────────────────────────────────────────────────
     function nextRound() {
         const cfg = LEVEL_CONFIG[currentLevel];
@@ -534,6 +580,9 @@
         litId = -1;
         clickedIds = new Set();
         wrongId = -1;
+        hintUsed = 0;
+        showNumbers = false;
+        hintBtn.classList.add('hidden');
         const cfg = LEVEL_CONFIG[currentLevel];
         placeBalls(cfg.ballCount);
         setTimeout(() => runPreview(cfg), 300);
@@ -566,6 +615,7 @@
         isRunning = false;
         clearAll();
         hideBanner();
+        hintBtn.classList.add('hidden');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         results[currentLevel] = { score, errors };
         if (currentLevel < 4) {

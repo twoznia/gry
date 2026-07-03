@@ -153,7 +153,13 @@
         4: { colors: 7,  moving: true,  timed: true  },
     };
 
-    const RADIUS = 28;
+    function getRadius() {
+        const isMobile = window.matchMedia('(pointer: coarse)').matches;
+        const shortSide = Math.min(window.innerWidth, window.innerHeight);
+        if (isMobile) return Math.round(Math.min(36, Math.max(24, shortSide * 0.045)));
+        return 28;
+    }
+    let RADIUS = getRadius();
     const PENALTY_WRONG   = 3000; // ms added for wrong color click
     const PENALTY_TIMEOUT = 5000; // ms added per missed item (level 4)
     const ITEM_TIME_SEC   = 1;    // seconds per item in level 4
@@ -337,7 +343,7 @@
     btnAdult.addEventListener('click', () => { setMode('adult'); startCampaign(); });
 
     // ─── Canvas resize ────────────────────────────────────────────────────────────
-    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; RADIUS = getRadius(); }
     window.addEventListener('resize', () => { resize(); if (!isRunning) drawStaticBalls(); });
     resize();
 
