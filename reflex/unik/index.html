@@ -137,7 +137,8 @@
 
     function getUnit() {
         const shortSide = Math.min(canvas.width, canvas.height);
-        return Math.round(Math.max(14, shortSide * 0.035));
+        const scale = shortSide < 400 ? 0.026 : 0.035;
+        return Math.round(Math.max(10, shortSide * scale));
     }
 
     // ─── State ─────────────────────────────────────────────────────────────────────
