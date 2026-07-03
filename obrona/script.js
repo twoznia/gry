@@ -106,10 +106,10 @@
 
         // ═══ WROGOWIE ═══
         const ENEMY_TYPES = {
-            normal: { hp: 100, speed: 1.5, reward: 12, color: '#f87171', radius: 12 },
-            fast:   { hp: 50,  speed: 3.0, reward: 15, color: '#fbbf24', radius: 8  },
-            tank:   { hp: 500, speed: 0.7, reward: 50, color: '#94a3b8', radius: 16 },
-            boss:   { hp: 2500,speed: 0.5, reward: 300,color: '#dc2626', radius: 24 },
+            normal: { hp: 100, speed: 1.5, reward: 15, color: '#f87171', radius: 12 },
+            fast:   { hp: 50,  speed: 3.0, reward: 18, color: '#fbbf24', radius: 8  },
+            tank:   { hp: 500, speed: 0.7, reward: 60, color: '#94a3b8', radius: 16 },
+            boss:   { hp: 1500,speed: 0.5, reward: 400,color: '#dc2626', radius: 24 },
         };
 
         // ═══ ZDOLNOŚCI ═══
@@ -119,7 +119,7 @@
         };
 
         // ═══ STAN GRY ═══
-        let money = 150, lives = 20, wave = 0, score = 0;
+        let money = 200, lives = 25, wave = 0, score = 0;
         let gameState = 'IDLE';
         let selectedTowerType = 'basic';
         let selectedMapTower = null;
@@ -136,7 +136,7 @@
             constructor(type, waveNum) {
                 this.type = type;
                 const base = ENEMY_TYPES[type];
-                this.maxHp = base.hp * Math.pow(1.25, waveNum - 1);
+                this.maxHp = base.hp * Math.pow(1.10, waveNum - 1);
                 this.hp = this.maxHp;
                 this.baseSpeed = base.speed;
                 this.speed = base.speed;
@@ -668,9 +668,9 @@
             document.getElementById('start-wave-btn').innerText = "Walka trwa...";
 
             enemiesToSpawn = [];
-            const normalCount = 5 + wave * 2;
-            const fastCount = wave > 2 ? Math.floor(wave * 1.5) : 0;
-            const tankCount = wave > 4 ? Math.floor(wave * 0.7) : 0;
+            const normalCount = 4 + wave * 2;
+            const fastCount = wave > 2 ? wave : 0;
+            const tankCount = wave > 4 ? Math.floor(wave / 3) : 0;
 
             for (let i = 0; i < normalCount; i++) enemiesToSpawn.push('normal');
             for (let i = 0; i < fastCount; i++) enemiesToSpawn.push('fast');
@@ -689,9 +689,9 @@
                 document.getElementById('start-wave-btn').disabled = false;
                 document.getElementById('start-wave-btn').innerText = "Rozpocznij Falę";
 
-                money += 30 + wave * 5;
+                money += 40 + wave * 8;
                 score += 50 * wave;
-                lives += Math.ceil(wave / 2);
+                lives += Math.min(3, Math.ceil(wave / 3));
 
                 saveHighscore();
                 updateUI();
