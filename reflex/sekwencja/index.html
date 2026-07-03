@@ -20,10 +20,9 @@
     <h1 id="game-title" class="text-3xl font-bold mb-4 text-purple-400">Sekwencja</h1>
 
     <div class="flex flex-wrap justify-between items-center w-full gap-2 md:gap-6 bg-gray-800 p-3 rounded-xl mb-3 shadow-lg border border-gray-700 text-sm md:text-base">
-        <div>Etap: <span id="current-level-display" class="font-bold text-blue-400">1</span>/<span id="max-level-display">4</span></div>
-        <div>Runda: <span id="round-display" class="font-bold text-purple-400">1</span></div>
-        <div>Wynik: <span id="score-display" class="font-bold text-green-400">0</span></div>
-        <div>Błędy: <span id="errors-display" class="font-bold text-red-400">0</span></div>
+        <div>Etap: <span id="current-level-display" class="font-bold text-blue-400">1</span>/<span id="max-level-display">2</span></div>
+        <div>Runda: <span id="round-display" class="font-bold text-purple-400">1</span>/<span id="max-round-display">5</span></div>
+        <div>Czas: <span id="timer-display" class="font-bold text-yellow-400">0.0</span>s</div>
     </div>
 
     <div id="game-container" class="relative">
@@ -44,11 +43,11 @@
                 <div id="mode-selection" class="flex flex-col sm:flex-row gap-4 w-full justify-center mt-4">
                     <button id="btn-child" class="flex-1 bg-green-600 hover:bg-green-500 p-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-green-400/30 flex flex-col items-center justify-center gap-2">
                         <img src="../pic/kid.jpg" alt="Dziecko" class="w-32 h-32 rounded-full object-cover border-2 border-green-300"> Dziecko
-                        <span class="text-sm font-normal text-green-100">4 poziomy · wolniej</span>
+                        <span class="text-sm font-normal text-green-100">2 poziomy · wolniej</span>
                     </button>
                     <button id="btn-adult" class="flex-1 bg-blue-600 hover:bg-blue-500 p-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-blue-400/30 flex flex-col items-center justify-center gap-2">
                         <img src="../pic/adult.jpg" alt="Dorosły" class="w-32 h-32 rounded-full object-cover border-2 border-blue-300"> Dorosły
-                        <span class="text-sm font-normal text-blue-100">4 poziomy · szybciej</span>
+                        <span class="text-sm font-normal text-blue-100">2 poziomy · szybciej</span>
                     </button>
                 </div>
 
@@ -95,9 +94,9 @@
     const ctx = canvas.getContext('2d');
     const levelDisplayEl = document.getElementById('current-level-display');
     const maxLevelDisplayEl = document.getElementById('max-level-display');
-    const scoreDisplayEl = document.getElementById('score-display');
-    const errorsDisplayEl = document.getElementById('errors-display');
     const roundDisplayEl = document.getElementById('round-display');
+    const maxRoundDisplayEl = document.getElementById('max-round-display');
+    const timerDisplayEl = document.getElementById('timer-display');
     const overlay = document.getElementById('overlay');
     const overlayTitle = document.getElementById('overlay-title');
     const overlayStats = document.getElementById('overlay-stats');
@@ -127,16 +126,19 @@
         '#f97316','#ec4899','#14b8a6','#6366f1','#84cc16',
     ];
 
-    // ─── Level config ──────────────────────────────────────────────────────────────
-    // ballCount: number of balls on screen
-    // flashDuration: ms each ball lights up during preview
-    // roundsPerLevel: how many sequences to complete for full score
-    // moving: balls drift slowly during click phase (lvl 4)
+    const BALL_COUNT = 6;
+    const ROUNDS_PER_LEVEL = 5;
+    const MAX_LEVELS = 2;
+
     const LEVEL_CONFIG = {
-        1: { ballCount: 3, flashDuration: 700, roundsPerLevel: 5,  moving: false },
-        2: { ballCount: 5, flashDuration: 500, roundsPerLevel: 5,  moving: false },
-        3: { ballCount: 7, flashDuration: 350, roundsPerLevel: 5,  moving: false },
-        4: { ballCount: 9, flashDuration: 250, roundsPerLevel: 5,  moving: true  },
+        child: {
+            1: { flashDuration: 700, moving: false },
+            2: { flashDuration: 500, moving: true  },
+        },
+        adult: {
+            1: { flashDuration: 400, moving: false },
+            2: { flashDuration: 280, moving: true  },
+        },
     };
 
     function getRadius() {
@@ -149,22 +151,25 @@
     let RADIUS = getRadius();
 
     // ─── State ─────────────────────────────────────────────────────────────────────
-    let balls = [];        // { x, y, dx, dy, colorIdx, id }
-    let sequence = [];     // order of ball ids shown during preview
-    let clickProgress = 0; // how many balls correctly clicked so far
-    let score = 0, errors = 0;
+    let balls = [];
+    let sequence = [];
+    let clickProgress = 0;
     let round = 1;
-    let isRunning = false, phase = 'idle'; // idle | preview | click
+    let isRunning = false, phase = 'idle';
     let currentLevel = 1, gameMode = 'adult';
     let mainBtnAction = null, recordsSaved = false;
     let nextBallId = 0;
     let animFrameId = null;
     let previewTimeout = null;
-    let hintUsed = 0;        // how many times hint was used this round
-    let showNumbers = false; // whether to draw sequence numbers on balls
-
-    // per-level results
+    let hintUsed = 0;
+    let showNumbers = false;
     let results = {};
+
+    // timer
+    let levelStartTime = 0;
+    let elapsedTime = 0;
+    let timerInterval = null;
+    let timerPaused = false;
 
     // ─── Records ──────────────────────────────────────────────────────────────────
     const RECORDS_KEY = 'reflexSekwencjaRecords';
@@ -175,12 +180,17 @@
     function loadRecords() { try { return JSON.parse(localStorage.getItem(RECORDS_KEY)) || {}; } catch { return {}; } }
     function saveRecordsToStorage(r) { localStorage.setItem(RECORDS_KEY, JSON.stringify(r)); }
 
-    function addRecord(mode, levelKey, name, scoreVal, errorsVal) {
+    function formatTime(ms) {
+        const s = ms / 1000;
+        return s < 60 ? s.toFixed(1) : `${Math.floor(s / 60)}:${(s % 60).toFixed(1).padStart(4, '0')}`;
+    }
+
+    function addRecord(mode, levelKey, name, timeMs) {
         const records = loadRecords();
         if (!records[mode]) records[mode] = {};
         if (!records[mode][levelKey]) records[mode][levelKey] = [];
-        records[mode][levelKey].push({ name: name.trim(), score: scoreVal, errors: errorsVal, date: new Date().toLocaleDateString('pl-PL') });
-        records[mode][levelKey].sort((a, b) => b.score - a.score || a.errors - b.errors);
+        records[mode][levelKey].push({ name: name.trim(), time: timeMs, date: new Date().toLocaleDateString('pl-PL') });
+        records[mode][levelKey].sort((a, b) => a.time - b.time);
         const seen = {};
         records[mode][levelKey] = records[mode][levelKey].filter(r => {
             const key = normalizeName(r.name);
@@ -193,12 +203,14 @@
     function savePlayerRecord(name) {
         if (!name.trim()) return;
         localStorage.setItem(NAME_KEY, name.trim());
-        for (let lvl = 1; lvl <= 4; lvl++) {
-            if (results[lvl]) addRecord(gameMode, `level${lvl}`, name, results[lvl].score, results[lvl].errors);
+        let totalTime = 0;
+        for (let lvl = 1; lvl <= MAX_LEVELS; lvl++) {
+            if (results[lvl]) {
+                addRecord(gameMode, `level${lvl}`, name, results[lvl].time);
+                totalTime += results[lvl].time;
+            }
         }
-        const totalScore = Object.values(results).reduce((s, r) => s + r.score, 0);
-        const totalErrors = Object.values(results).reduce((s, r) => s + r.errors, 0);
-        addRecord(gameMode, 'total', name, totalScore, totalErrors);
+        addRecord(gameMode, 'total', name, totalTime);
     }
 
     // ─── Records view ─────────────────────────────────────────────────────────────
@@ -215,15 +227,14 @@
         const medals = ['🥇', '🥈', '🥉'];
         let html = '<table class="w-full text-sm border-collapse"><thead><tr class="text-gray-400 text-xs uppercase">';
         html += '<th class="py-1 px-2 text-left">#</th><th class="py-1 px-2 text-left">Imię</th>';
-        html += '<th class="py-1 px-2 text-right">Wynik</th><th class="py-1 px-2 text-right">Błędy</th>';
+        html += '<th class="py-1 px-2 text-right">Czas</th>';
         html += '<th class="py-1 px-2 text-right">Data</th></tr></thead><tbody>';
         data.forEach((r, i) => {
             const cls = i === 0 ? 'text-yellow-300' : i === 1 ? 'text-gray-300' : i === 2 ? 'text-orange-400' : 'text-white';
             html += `<tr class="${cls} border-t border-gray-700/50">`;
             html += `<td class="py-1 px-2">${medals[i] || (i+1)+'.'}</td>`;
             html += `<td class="py-1 px-2">${r.name}</td>`;
-            html += `<td class="py-1 px-2 text-right font-mono text-green-400">${r.score}</td>`;
-            html += `<td class="py-1 px-2 text-right font-mono text-red-400">${r.errors}</td>`;
+            html += `<td class="py-1 px-2 text-right font-mono text-yellow-400">${formatTime(r.time)}s</td>`;
             html += `<td class="py-1 px-2 text-right text-gray-400 text-xs">${r.date}</td></tr>`;
         });
         html += '</tbody></table>';
@@ -250,7 +261,7 @@
     }
 
     function buildRecordsLevelTabs(mode) {
-        const levels = [['level1','Poziom 1'],['level2','Poziom 2'],['level3','Poziom 3'],['level4','Poziom 4'],['total','Łącznie']];
+        const levels = [['level1','Poziom 1'],['level2','Poziom 2'],['total','Łącznie']];
         recordsLevelTabs.innerHTML = levels.map(([key, label]) =>
             `<button class="records-level-tab px-3 py-1 rounded-lg text-xs font-bold transition-colors ${recordsViewLevel === key ? 'bg-green-600 text-white' : 'bg-gray-700 text-gray-300'}" data-level="${key}">${label}</button>`
         ).join('');
@@ -341,17 +352,14 @@
     }
 
     // ─── Drawing ───────────────────────────────────────────────────────────────────
-    // lit: id of ball currently highlighted during preview (-1 = none)
-    // clickedIds: set of correctly clicked ball ids
     let litId = -1;
     let clickedIds = new Set();
-    let wrongId = -1; // briefly flash red on wrong click
+    let wrongId = -1;
 
     function drawBall(b) {
         const isLit = b.id === litId;
         const isClicked = clickedIds.has(b.id);
         const isWrong = b.id === wrongId;
-
         const color = COLORS[b.colorIdx];
 
         ctx.shadowColor = isLit ? '#ffffff' : color;
@@ -359,9 +367,7 @@
 
         if (isWrong) {
             ctx.fillStyle = '#ef4444';
-        } else if (isClicked) {
-            ctx.fillStyle = '#ffffff';
-        } else if (isLit) {
+        } else if (isClicked || isLit) {
             ctx.fillStyle = '#ffffff';
         } else {
             ctx.fillStyle = color;
@@ -372,7 +378,6 @@
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        // dim overlay when in preview (non-lit balls) or already clicked
         if (phase === 'preview' && !isLit) {
             ctx.globalAlpha = 0.3;
             ctx.fillStyle = '#000';
@@ -382,23 +387,12 @@
             ctx.globalAlpha = 1;
         }
 
-        // border
         ctx.strokeStyle = isLit ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.3)';
         ctx.lineWidth = isLit ? 3 : 1.5;
         ctx.beginPath();
         ctx.arc(b.x, b.y, isLit ? RADIUS * 1.25 : RADIUS, 0, Math.PI * 2);
         ctx.stroke();
 
-        // sequence number during click phase
-        if (phase === 'click' && !isClicked) {
-            // show number of this ball in sequence (1-based position)
-            const pos = sequence.indexOf(b.id) + 1;
-            if (pos > 0) {
-                ctx.fillStyle = 'rgba(255,255,255,0.0)'; // invisible — player must remember
-            }
-        }
-
-        // check mark on clicked balls
         if (isClicked) {
             ctx.fillStyle = '#22c55e';
             ctx.font = `bold ${RADIUS}px Inter`;
@@ -407,7 +401,6 @@
             ctx.fillText('✓', b.x, b.y);
         }
 
-        // order number label — during preview on lit ball, or hint numbers
         if (isLit) {
             const pos = sequence.indexOf(b.id) + 1;
             ctx.fillStyle = '#000';
@@ -437,10 +430,30 @@
     function draw() {
         if (!isRunning) return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const cfg = LEVEL_CONFIG[currentLevel];
+        const cfg = LEVEL_CONFIG[gameMode][currentLevel];
         if (phase === 'click' && cfg.moving) moveBalls();
         balls.forEach(drawBall);
         animFrameId = requestAnimationFrame(draw);
+    }
+
+    // ─── Timer ─────────────────────────────────────────────────────────────────────
+    function startTimer() {
+        levelStartTime = Date.now();
+        timerPaused = false;
+        timerInterval = setInterval(() => {
+            if (!timerPaused) {
+                elapsedTime = Date.now() - levelStartTime;
+                timerDisplayEl.textContent = formatTime(elapsedTime);
+            }
+        }, 100);
+    }
+
+    function pauseTimer() { timerPaused = true; }
+
+    function stopTimer() {
+        if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+        elapsedTime = Date.now() - levelStartTime;
+        timerDisplayEl.textContent = formatTime(elapsedTime);
     }
 
     // ─── Phase banner ──────────────────────────────────────────────────────────────
@@ -457,7 +470,6 @@
         clickedIds = new Set();
         wrongId = -1;
 
-        // build random sequence
         sequence = [...balls.map(b => b.id)].sort(() => Math.random() - 0.5);
 
         const flashGap = gameMode === 'child' ? cfg.flashDuration * 1.4 : cfg.flashDuration;
@@ -487,6 +499,7 @@
         litId = -1;
         hideBanner();
         hintBtn.classList.remove('hidden');
+        if (round === 1) startTimer();
     }
 
     // ─── Click handling ────────────────────────────────────────────────────────────
@@ -500,26 +513,18 @@
         for (let i = balls.length - 1; i >= 0; i--) {
             const b = balls[i];
             if (Math.hypot(x - b.x, y - b.y) <= RADIUS) {
-                if (clickedIds.has(b.id)) return; // already clicked
+                if (clickedIds.has(b.id)) return;
 
                 const expected = sequence[clickProgress];
                 if (b.id === expected) {
-                    // correct
                     clickedIds.add(b.id);
                     clickProgress++;
-                    score++;
-                    scoreDisplayEl.textContent = score;
                     if (clickProgress === sequence.length) {
-                        // round complete
                         setTimeout(nextRound, 500);
                     }
                 } else {
-                    // wrong
-                    errors++;
-                    errorsDisplayEl.textContent = errors;
                     wrongId = b.id;
                     setTimeout(() => { wrongId = -1; }, 400);
-                    // reset progress — must start over from ball 1
                     clickedIds = new Set();
                     clickProgress = 0;
                 }
@@ -535,10 +540,10 @@
         hintBtn.disabled = true;
         hintBtn.classList.add('opacity-50');
         showNumbers = hintUsed >= 2;
+        pauseTimer();
 
-        // replay preview animation, then return to click phase
         phase = 'preview';
-        const cfg = LEVEL_CONFIG[currentLevel];
+        const cfg = LEVEL_CONFIG[gameMode][currentLevel];
         const flashGap = gameMode === 'child' ? cfg.flashDuration * 1.4 : cfg.flashDuration;
         let i = 0;
 
@@ -547,6 +552,7 @@
                 litId = -1;
                 setTimeout(() => {
                     phase = 'click';
+                    timerPaused = false;
                     hintBtn.disabled = false;
                     hintBtn.classList.remove('opacity-50');
                 }, 400);
@@ -565,8 +571,7 @@
 
     // ─── Round management ──────────────────────────────────────────────────────────
     function nextRound() {
-        const cfg = LEVEL_CONFIG[currentLevel];
-        if (round >= cfg.roundsPerLevel) {
+        if (round >= ROUNDS_PER_LEVEL) {
             endLevel();
             return;
         }
@@ -583,8 +588,8 @@
         hintUsed = 0;
         showNumbers = false;
         hintBtn.classList.add('hidden');
-        const cfg = LEVEL_CONFIG[currentLevel];
-        placeBalls(cfg.ballCount);
+        placeBalls(BALL_COUNT);
+        const cfg = LEVEL_CONFIG[gameMode][currentLevel];
         setTimeout(() => runPreview(cfg), 300);
     }
 
@@ -592,6 +597,7 @@
     function clearAll() {
         if (animFrameId) { cancelAnimationFrame(animFrameId); animFrameId = null; }
         if (previewTimeout) { clearTimeout(previewTimeout); previewTimeout = null; }
+        if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
     }
 
     function startGame(level) {
@@ -599,10 +605,10 @@
         currentLevel = level;
         levelDisplayEl.textContent = level;
         RADIUS = getRadius();
-        score = 0; errors = 0; round = 1;
-        scoreDisplayEl.textContent = '0';
-        errorsDisplayEl.textContent = '0';
+        round = 1;
         roundDisplayEl.textContent = '1';
+        elapsedTime = 0;
+        timerDisplayEl.textContent = '0.0';
         overlay.classList.add('hidden');
         document.getElementById('game-title').style.display = 'none';
         resize();
@@ -612,13 +618,14 @@
     }
 
     function endLevel() {
+        stopTimer();
         isRunning = false;
         clearAll();
         hideBanner();
         hintBtn.classList.add('hidden');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        results[currentLevel] = { score, errors };
-        if (currentLevel < 4) {
+        results[currentLevel] = { time: elapsedTime };
+        if (currentLevel < MAX_LEVELS) {
             showNextLevelScreen(currentLevel);
         } else {
             showEndScreen();
@@ -629,14 +636,17 @@
 
     // ─── Overlay screens ───────────────────────────────────────────────────────────
     function updateInstructions(level) {
-        const cfg = LEVEL_CONFIG[level];
-        const desc = {
-            1: `${cfg.ballCount} kulki, ${cfg.roundsPerLevel} rund. Zapamiętaj kolejność i klikaj!`,
-            2: `${cfg.ballCount} kulek, błysk krótszy. Koncentracja!`,
-            3: `${cfg.ballCount} kulek, bardzo szybki błysk. Poważne wyzwanie!`,
-            4: `${cfg.ballCount} kulek i kulki się poruszają. Ekstremalne!`,
+        const descs = {
+            child: {
+                1: `${BALL_COUNT} kulek, ${ROUNDS_PER_LEVEL} rund. Zapamiętaj kolejność!`,
+                2: `${BALL_COUNT} kulek, kulki się poruszają!`,
+            },
+            adult: {
+                1: `${BALL_COUNT} kulek, ${ROUNDS_PER_LEVEL} rund. Szybki błysk!`,
+                2: `${BALL_COUNT} kulek, kulki się poruszają! Ekstremalnie!`,
+            },
         };
-        overlayDesc.textContent = desc[level] || '';
+        overlayDesc.textContent = (descs[gameMode] && descs[gameMode][level]) || '';
     }
 
     function hideModeAndShowMain() { modeSelection.classList.add('hidden'); mainBtn.classList.remove('hidden'); }
@@ -658,9 +668,7 @@
         hideModeAndShowMain();
         hideSaveSection();
         overlayTitle.innerHTML = `Poziom ${level} Ukończony! 🎉`;
-        overlayStats.innerHTML =
-            `<p>Wynik: <span class="text-green-400 font-bold">${results[level].score}</span></p>` +
-            `<p>Błędy: <span class="text-red-400 font-bold">${results[level].errors}</span></p>`;
+        overlayStats.innerHTML = `<p>Czas: <span class="text-yellow-400 font-bold">${formatTime(results[level].time)}s</span></p>`;
         overlayStats.classList.remove('hidden');
         updateInstructions(level + 1);
         mainBtn.innerHTML = `Start: Poziom ${level + 1}`;
@@ -673,15 +681,14 @@
     function showEndScreen() {
         hideModeAndShowMain();
         overlayTitle.innerHTML = 'Wyzwanie Ukończone! 🏆';
-        const totalScore = Object.values(results).reduce((s, r) => s + r.score, 0);
-        const totalErrors = Object.values(results).reduce((s, r) => s + r.errors, 0);
+        const totalTime = Object.values(results).reduce((s, r) => s + r.time, 0);
         let statsHtml = '';
-        for (let lvl = 1; lvl <= 4; lvl++) {
+        for (let lvl = 1; lvl <= MAX_LEVELS; lvl++) {
             if (results[lvl]) {
-                statsHtml += `<p>Poziom ${lvl}: <span class="text-green-400">${results[lvl].score}</span> pkt / <span class="text-red-400">${results[lvl].errors}</span> błędów</p>`;
+                statsHtml += `<p>Poziom ${lvl}: <span class="text-yellow-400">${formatTime(results[lvl].time)}s</span></p>`;
             }
         }
-        statsHtml += `<p class="mt-2 border-t border-gray-600 pt-2">Łącznie: <span class="text-green-400 font-bold">${totalScore}</span> pkt / <span class="text-red-400 font-bold">${totalErrors}</span> błędów</p>`;
+        statsHtml += `<p class="mt-2 border-t border-gray-600 pt-2">Łącznie: <span class="text-yellow-400 font-bold">${formatTime(totalTime)}s</span></p>`;
         overlayStats.innerHTML = statsHtml;
         overlayStats.classList.remove('hidden');
         overlayDesc.textContent = '';
