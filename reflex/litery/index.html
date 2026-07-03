@@ -52,6 +52,11 @@
                         </button>
                     </div>
 
+                    <label id="hint-toggle" class="flex items-center justify-center gap-2 mt-3 cursor-pointer select-none text-sm text-gray-300">
+                        <input type="checkbox" id="hint-checkbox" class="w-4 h-4 accent-yellow-400">
+                        <span>Podpowiedź „Szukaj" <span class="text-yellow-400">(+15s)</span></span>
+                    </label>
+
                     <button id="main-btn" class="hidden bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-xl text-xl font-bold transition-all shadow-lg border border-blue-400/30 w-full mt-4">
                         Rozpocznij
                     </button>
@@ -110,6 +115,7 @@
         const btnAdult = document.getElementById('btn-adult');
         const targetBox = document.getElementById('target-box');
         const targetNumberEl = document.getElementById('target-number');
+        const hintCheckbox = document.getElementById('hint-checkbox');
         const overlayContent = document.getElementById('overlay-content');
         const saveSection = document.getElementById('save-section');
         const playerNameInput = document.getElementById('player-name-input');
@@ -394,13 +400,10 @@
             targets = []; expectedGreenLetters = [];
             RADIUS = getRadiusForCount(TOTAL_TARGETS);
 
-            // Green letters: a shuffled subset of the alphabet (adult = the whole alphabet).
-            const greenLetters = ALL_LETTERS.slice();
-            shuffleArray(greenLetters);
-            greenLetters.length = Math.min(GREEN_COUNT, greenLetters.length);
-            // Red letters: random letters from the alphabet (may repeat green ones — just decoys).
-            const redLetters = [];
-            for (let i = 0; i < RED_COUNT; i++) redLetters.push(ALL_LETTERS[Math.floor(Math.random() * ALL_LETTERS.length)]);
+            const pool = ALL_LETTERS.slice();
+            shuffleArray(pool);
+            const greenLetters = pool.slice(0, Math.min(GREEN_COUNT, pool.length));
+            const redLetters = pool.slice(GREEN_COUNT, GREEN_COUNT + RED_COUNT);
 
             const speedMult = (gameMode === 'child' && currentLevel === 3) ? 0.5 : 1.0;
 
@@ -420,7 +423,8 @@
                 if (isTargetGood) expectedGreenLetters.push(letter);
                 targets.push({ x, y, radius: RADIUS, dx, dy, isGood: isTargetGood, color: isTargetGood ? '#22c55e' : '#ef4444', letter });
             }
-            if (currentLevel === 2 || currentLevel === 3) expectedGreenLetters.sort((a, b) => ALL_LETTERS.indexOf(a) - ALL_LETTERS.indexOf(b));
+            if (currentLevel === 1 && hintCheckbox.checked) expectedGreenLetters.sort((a, b) => ALL_LETTERS.indexOf(a) - ALL_LETTERS.indexOf(b));
+            else if (currentLevel === 2 || currentLevel === 3) expectedGreenLetters.sort((a, b) => ALL_LETTERS.indexOf(a) - ALL_LETTERS.indexOf(b));
             else if (currentLevel === 4) expectedGreenLetters.sort((a, b) => ALL_LETTERS.indexOf(b) - ALL_LETTERS.indexOf(a));
             updateRemaining();
         }
@@ -428,7 +432,7 @@
         function updateRemaining() {
             const greenCount = targets.filter(t => t.isGood).length;
             remainingEl.textContent = greenCount;
-            if (currentLevel >= 2) targetNumberEl.textContent = expectedGreenLetters.length > 0 ? expectedGreenLetters[0] : "Koniec!";
+            if (currentLevel >= 2 || hintCheckbox.checked) targetNumberEl.textContent = expectedGreenLetters.length > 0 ? expectedGreenLetters[0] : "Koniec!";
             if (greenCount === 0 && isRunning) { finalTime = (Date.now() - startTime) / 1000; gameOver(); }
         }
 
@@ -447,7 +451,7 @@
             // Prioritise: correct green > wrong-order green > red
             const correctIdx = hitIdxs.find(i => targets[i].isGood && (currentLevel < 2 || targets[i].letter === expectedGreenLetters[0]));
             if (correctIdx !== undefined) {
-                if (currentLevel >= 2) expectedGreenLetters.shift();
+                if (currentLevel >= 2 || hintCheckbox.checked) expectedGreenLetters.shift();
                 targets.splice(correctIdx, 1); updateRemaining();
                 return;
             }
@@ -491,12 +495,14 @@
         function startGame(level) {
             currentLevel = level; levelDisplayEl.textContent = level;
             errorsRedAtLevelStart = errorsRed; errorsOrderAtLevelStart = errorsOrder;
+            const hintOn = hintCheckbox.checked;
             isRunning = true; startTime = Date.now();
+            if (hintOn && level === 1) startTime -= 15000;
             overlay.classList.add('hidden');
             document.getElementById('game-title').style.display = 'none';
             resize();
             restartLevelBtn.classList.remove('hidden');
-            targetBox.classList.toggle('hidden', level < 2);
+            targetBox.classList.toggle('hidden', level < 2 && !hintOn);
             spawnTargets(); draw();
         }
 

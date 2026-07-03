@@ -27,7 +27,6 @@
     <div class="flex flex-wrap justify-between items-center w-full gap-2 md:gap-6 bg-gray-800 p-3 rounded-xl mb-3 shadow-lg border border-gray-700 text-sm md:text-base">
         <div>Etap: <span id="current-level-display" class="font-bold text-blue-400">1</span>/<span id="max-level-display">4</span></div>
         <div>Trafione: <span id="score-display" class="font-bold text-green-400">0</span></div>
-        <div>Spudłowane: <span id="missed-display" class="font-bold text-red-400">0</span></div>
         <div>Czas: <span id="timer" class="font-bold text-yellow-400">30</span>s</div>
     </div>
 
@@ -164,7 +163,7 @@
     let disappearCheckerInterval = null;
 
     // per-level results
-    let results = {};  // { level: { score, missed } }
+    let results = {};
 
     // ─── Records ─────────────────────────────────────────────────────────────────
     const RECORDS_KEY = 'reflexKulkiRecords';
@@ -175,12 +174,12 @@
     function loadRecords() { try { return JSON.parse(localStorage.getItem(RECORDS_KEY)) || {}; } catch { return {}; } }
     function saveRecordsToStorage(r) { localStorage.setItem(RECORDS_KEY, JSON.stringify(r)); }
 
-    function addRecord(mode, levelKey, name, scoreVal, missedVal) {
+    function addRecord(mode, levelKey, name, scoreVal) {
         const records = loadRecords();
         if (!records[mode]) records[mode] = {};
         if (!records[mode][levelKey]) records[mode][levelKey] = [];
-        records[mode][levelKey].push({ name: name.trim(), score: scoreVal, missed: missedVal, date: new Date().toLocaleDateString('pl-PL') });
-        records[mode][levelKey].sort((a, b) => b.score - a.score || a.missed - b.missed);
+        records[mode][levelKey].push({ name: name.trim(), score: scoreVal, date: new Date().toLocaleDateString('pl-PL') });
+        records[mode][levelKey].sort((a, b) => b.score - a.score);
         const seen = {};
         records[mode][levelKey] = records[mode][levelKey].filter(r => {
             const key = normalizeName(r.name);
@@ -195,12 +194,11 @@
         localStorage.setItem(NAME_KEY, name.trim());
         for (let lvl = 1; lvl <= 4; lvl++) {
             if (results[lvl]) {
-                addRecord(gameMode, `level${lvl}`, name, results[lvl].score, results[lvl].missed);
+                addRecord(gameMode, `level${lvl}`, name, results[lvl].score);
             }
         }
         const totalScore = Object.values(results).reduce((s, r) => s + r.score, 0);
-        const totalMissed = Object.values(results).reduce((s, r) => s + r.missed, 0);
-        addRecord(gameMode, 'total', name, totalScore, totalMissed);
+        addRecord(gameMode, 'total', name, totalScore);
     }
 
     // ─── Records view ─────────────────────────────────────────────────────────────
@@ -217,7 +215,7 @@
         const medals = ['🥇', '🥈', '🥉'];
         let html = '<table class="w-full text-sm border-collapse"><thead><tr class="text-gray-400 text-xs uppercase">';
         html += '<th class="py-1 px-2 text-left">#</th><th class="py-1 px-2 text-left">Imię</th>';
-        html += '<th class="py-1 px-2 text-right">Trafione</th><th class="py-1 px-2 text-right">Spudłowane</th>';
+        html += '<th class="py-1 px-2 text-right">Trafione</th>';
         html += '<th class="py-1 px-2 text-right">Data</th></tr></thead><tbody>';
         data.forEach((r, i) => {
             const cls = i === 0 ? 'text-yellow-300' : i === 1 ? 'text-gray-300' : i === 2 ? 'text-orange-400' : 'text-white';
@@ -225,7 +223,6 @@
             html += `<td class="py-1 px-2">${medals[i] || (i+1)+'.'}</td>`;
             html += `<td class="py-1 px-2">${r.name}</td>`;
             html += `<td class="py-1 px-2 text-right font-mono text-green-400">${r.score}</td>`;
-            html += `<td class="py-1 px-2 text-right font-mono text-red-400">${r.missed}</td>`;
             html += `<td class="py-1 px-2 text-right text-gray-400 text-xs">${r.date}</td></tr>`;
         });
         html += '</tbody></table>';
@@ -334,7 +331,7 @@
         while (!valid && attempts < 200) {
             x = margin + Math.random() * (canvas.width - margin * 2);
             y = margin + Math.random() * (canvas.height - margin * 2);
-            valid = balls.every(b => Math.hypot(x - b.x, y - b.y) > RADIUS * 2.4);
+            valid = balls.every(b => Math.hypot(x - b.x, y - b.y) > RADIUS * 3.2);
             attempts++;
         }
         return { x, y };
@@ -419,8 +416,6 @@
             const expired = balls.filter(b => now - b.spawnedAt >= cfg.disappearTime);
             expired.forEach(b => {
                 removeBall(b.id);
-                missed++;
-                missedDisplayEl.textContent = missed;
                 // Do NOT spawn replacement — ball count drops naturally
             });
         }, 100);
@@ -460,7 +455,7 @@
             if (timeLeft <= 0) {
                 clearAllTimers();
                 isRunning = false;
-                results[level] = { score, missed };
+                results[level] = { score };
                 gameOver(level);
             }
         }, 1000);
@@ -523,8 +518,7 @@
         hideSaveSection();
         overlayTitle.innerHTML = `Poziom ${level} Ukończony! 🎉`;
         overlayStats.innerHTML =
-            `<p>Trafione: <span class="text-green-400 font-bold">${results[level].score}</span></p>` +
-            `<p>Spudłowane: <span class="text-red-400 font-bold">${results[level].missed}</span></p>`;
+            `<p>Trafione: <span class="text-green-400 font-bold">${results[level].score}</span></p>`;
         overlayStats.classList.remove('hidden');
         updateInstructions(level + 1);
         mainBtn.innerHTML = `Start: Poziom ${level + 1}`;
@@ -538,14 +532,13 @@
         hideModeAndShowMain();
         overlayTitle.innerHTML = 'Wyzwanie Ukończone! 🏆';
         const totalScore = Object.values(results).reduce((s, r) => s + r.score, 0);
-        const totalMissed = Object.values(results).reduce((s, r) => s + r.missed, 0);
         let statsHtml = '';
         for (let lvl = 1; lvl <= 4; lvl++) {
             if (results[lvl]) {
-                statsHtml += `<p>Poziom ${lvl}: <span class="text-green-400">${results[lvl].score}</span> traf. / <span class="text-red-400">${results[lvl].missed}</span> spudł.</p>`;
+                statsHtml += `<p>Poziom ${lvl}: <span class="text-green-400">${results[lvl].score}</span> traf.</p>`;
             }
         }
-        statsHtml += `<p class="mt-2 border-t border-gray-600 pt-2">Łącznie: <span class="text-green-400 font-bold">${totalScore}</span> traf. / <span class="text-red-400 font-bold">${totalMissed}</span> spudł.</p>`;
+        statsHtml += `<p class="mt-2 border-t border-gray-600 pt-2">Łącznie: <span class="text-green-400 font-bold">${totalScore}</span> traf.</p>`;
         overlayStats.innerHTML = statsHtml;
         overlayStats.classList.remove('hidden');
         overlayDesc.textContent = '';

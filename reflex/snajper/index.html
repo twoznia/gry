@@ -11,6 +11,8 @@
         .back-link { position: fixed; top: 10px; left: 10px; z-index: 100; background: #334155; color: #fff; border: 1px solid #475569; border-radius: 8px; padding: 8px 14px; text-decoration: none; font-size: 13px; }
         .back-link:hover { background: #475569; }
         #main-btn:disabled { opacity: 0.5; pointer-events: none; }
+        @keyframes pulse-target { 0%,100%{ transform: scale(1); } 50%{ transform: scale(1.5); } }
+        .target-flash { animation: pulse-target 0.4s ease-out; }
     </style>
 </head>
 <body>
@@ -26,6 +28,7 @@
             <span id="target-name" class="font-bold"></span>
         </div>
         <div>Wynik: <span id="score-display" class="font-bold text-green-400">0</span></div>
+        <div id="combo-box" class="hidden">Combo: <span id="combo-display" class="font-bold text-yellow-400">×1</span></div>
         <div>Błędy: <span id="errors-display" class="font-bold text-red-400">0</span></div>
         <div>Czas: <span id="timer" class="font-bold text-yellow-400">30</span>s</div>
     </div>
@@ -95,6 +98,8 @@
     const maxLevelDisplayEl = document.getElementById('max-level-display');
     const scoreDisplayEl = document.getElementById('score-display');
     const errorsDisplayEl = document.getElementById('errors-display');
+    const comboBox = document.getElementById('combo-box');
+    const comboDisplayEl = document.getElementById('combo-display');
     const timerEl = document.getElementById('timer');
     const targetDot = document.getElementById('target-dot');
     const targetName = document.getElementById('target-name');
@@ -129,23 +134,18 @@
     ];
 
     // ─── Level config ──────────────────────────────────────────────────────────────
-    // colorCount: how many different colors on board
-    // ballCount: max balls on screen simultaneously
-    // disappearTime: ms before unclicked ball vanishes
-    // targetChangeInterval: ms between target color changes (null = never)
-    // penaltyPerError: score subtracted on wrong click
-    // moving: balls drift (lvl 4 adult)
+    // speed: ball movement speed multiplier (0 = static)
     const LEVEL_CONFIG = {
         child: {
-            1: { colorCount: 2, ballCount: 3, disappearTime: 4000, targetChangeInterval: null, penaltyPerError: 1, moving: false },
-            2: { colorCount: 3, ballCount: 4, disappearTime: 3000, targetChangeInterval: 8000, penaltyPerError: 1, moving: false },
-            3: { colorCount: 4, ballCount: 5, disappearTime: 2000, targetChangeInterval: 6000, penaltyPerError: 2, moving: false },
+            1: { colorCount: 2, ballCount: 4,  disappearTime: 4000, targetChangeInterval: null, penaltyPerError: 1, speed: 0   },
+            2: { colorCount: 3, ballCount: 5,  disappearTime: 3000, targetChangeInterval: 8000, penaltyPerError: 1, speed: 0.4 },
+            3: { colorCount: 4, ballCount: 6,  disappearTime: 2500, targetChangeInterval: 6000, penaltyPerError: 2, speed: 0.7 },
         },
         adult: {
-            1: { colorCount: 3, ballCount: 4, disappearTime: 3000, targetChangeInterval: 8000, penaltyPerError: 1, moving: false },
-            2: { colorCount: 4, ballCount: 5, disappearTime: 2500, targetChangeInterval: 5000, penaltyPerError: 2, moving: false },
-            3: { colorCount: 5, ballCount: 6, disappearTime: 1500, targetChangeInterval: 4000, penaltyPerError: 3, moving: false },
-            4: { colorCount: 6, ballCount: 8, disappearTime: 1000, targetChangeInterval: 3000, penaltyPerError: 3, moving: true  },
+            1: { colorCount: 3, ballCount: 5,  disappearTime: 3000, targetChangeInterval: 8000, penaltyPerError: 1, speed: 0.5 },
+            2: { colorCount: 4, ballCount: 6,  disappearTime: 2500, targetChangeInterval: 5000, penaltyPerError: 2, speed: 0.8 },
+            3: { colorCount: 5, ballCount: 7,  disappearTime: 1800, targetChangeInterval: 4000, penaltyPerError: 3, speed: 1.2 },
+            4: { colorCount: 6, ballCount: 9,  disappearTime: 1200, targetChangeInterval: 3000, penaltyPerError: 3, speed: 1.6 },
         },
     };
 
@@ -159,10 +159,10 @@
     let RADIUS = getRadius();
 
     // ─── State ─────────────────────────────────────────────────────────────────────
-    let balls = [];         // { x, y, dx, dy, colorIdx, spawnedAt, id }
-    let activeColors = [];  // subset of ALL_COLORS indices used this level
-    let targetColorIdx = 0; // index into activeColors
-    let score = 0, errors = 0;
+    let balls = [];
+    let activeColors = [];
+    let targetColorIdx = 0;
+    let score = 0, errors = 0, combo = 0, maxCombo = 0;
     let isRunning = false;
     let currentLevel = 1, gameMode = 'adult';
     let timeLeft = 30, maxLevels = 4;
@@ -170,7 +170,8 @@
     let nextBallId = 0;
     let animFrameId = null;
     let countdownInterval = null, spawnInterval = null, targetChangeInterval = null, disappearInterval = null;
-    let wrongFlashIds = new Set(); // ball ids flashing red on wrong click
+    let wrongFlashIds = new Set();
+    let popEffects = [];   // { x, y, color, startTime }
     let results = {};
 
     // ─── Records ──────────────────────────────────────────────────────────────────
@@ -337,6 +338,25 @@
     window.addEventListener('resize', resize);
     resize();
 
+    // ─── Combo ─────────────────────────────────────────────────────────────────────
+    function getComboMultiplier() {
+        if (combo < 3) return 1;
+        if (combo < 6) return 2;
+        if (combo < 10) return 3;
+        return 4;
+    }
+
+    function updateComboDisplay() {
+        const mult = getComboMultiplier();
+        if (mult > 1) {
+            comboBox.classList.remove('hidden');
+            comboDisplayEl.textContent = `×${mult}`;
+            comboDisplayEl.className = 'font-bold ' + (mult >= 4 ? 'text-red-400' : mult >= 3 ? 'text-orange-400' : 'text-yellow-400');
+        } else {
+            comboBox.classList.add('hidden');
+        }
+    }
+
     // ─── Target color ──────────────────────────────────────────────────────────────
     function setTarget(colorListIdx) {
         targetColorIdx = colorListIdx;
@@ -347,10 +367,13 @@
     }
 
     function pickNewTarget(cfg) {
-        // pick a different color from current
         let next;
         do { next = Math.floor(Math.random() * cfg.colorCount); } while (next === targetColorIdx && cfg.colorCount > 1);
         setTarget(next);
+        // flash the HUD target dot
+        targetDot.classList.remove('target-flash');
+        void targetDot.offsetWidth;
+        targetDot.classList.add('target-flash');
     }
 
     // ─── Ball helpers ──────────────────────────────────────────────────────────────
@@ -364,7 +387,8 @@
             attempts++;
         }
         const colorListIdx = Math.floor(Math.random() * cfg.colorCount);
-        const speed = 0.8 + Math.random() * 0.8;
+        const baseSpeed = cfg.speed || 0;
+        const speed = baseSpeed > 0 ? baseSpeed * (0.7 + Math.random() * 0.6) : 0;
         const angle = Math.random() * Math.PI * 2;
         balls.push({
             x, y,
@@ -382,7 +406,6 @@
         const isWrong = wrongFlashIds.has(b.id);
         const age = Date.now() - b.spawnedAt;
 
-        // fade out last 30% of life
         let alpha = 1;
         const ratio = age / cfg.disappearTime;
         if (ratio > 0.7) alpha = Math.max(0.15, 1 - (ratio - 0.7) / 0.3);
@@ -401,12 +424,45 @@
         ctx.globalAlpha = 1;
     }
 
+    function drawPopEffects() {
+        const now = Date.now();
+        popEffects = popEffects.filter(p => now - p.startTime < 350);
+        for (const p of popEffects) {
+            const t = (now - p.startTime) / 350;
+            const r = RADIUS + RADIUS * 1.5 * t;
+            ctx.globalAlpha = 1 - t;
+            ctx.strokeStyle = p.color;
+            ctx.lineWidth = 3 * (1 - t);
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+        }
+    }
+
+    function drawComboFloat() {
+        const now = Date.now();
+        popEffects.forEach(p => {
+            if (!p.points) return;
+            const t = (now - p.startTime) / 350;
+            const y = p.y - RADIUS * 2 - 20 * t;
+            ctx.globalAlpha = 1 - t;
+            ctx.fillStyle = '#fff';
+            ctx.font = `bold ${Math.round(RADIUS * 0.8)}px Inter`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(`+${p.points}`, p.x, y);
+            ctx.globalAlpha = 1;
+        });
+    }
+
     function draw() {
         if (!isRunning) return;
         const cfg = LEVEL_CONFIG[gameMode][currentLevel];
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        if (cfg.moving) {
+        // move balls
+        if (cfg.speed > 0) {
             for (const b of balls) {
                 b.x += b.dx;
                 b.y += b.dy;
@@ -416,6 +472,8 @@
         }
 
         balls.forEach(b => drawBall(b, cfg));
+        drawPopEffects();
+        drawComboFloat();
         animFrameId = requestAnimationFrame(draw);
     }
 
@@ -432,18 +490,23 @@
             const b = balls[i];
             if (Math.hypot(x - b.x, y - b.y) <= RADIUS) {
                 if (b.colorListIdx === targetColorIdx) {
-                    // hit!
+                    const color = ALL_COLORS[activeColors[b.colorListIdx]].hex;
+                    popEffects.push({ x: b.x, y: b.y, color, startTime: Date.now(), points: getComboMultiplier() });
                     balls.splice(i, 1);
-                    score++;
+                    combo++;
+                    if (combo > maxCombo) maxCombo = combo;
+                    const points = getComboMultiplier();
+                    score += points;
                     scoreDisplayEl.textContent = score;
+                    updateComboDisplay();
                     spawnBall(cfg);
                 } else {
-                    // wrong color
                     errors++;
                     errorsDisplayEl.textContent = errors;
                     score = Math.max(0, score - cfg.penaltyPerError);
                     scoreDisplayEl.textContent = score;
-                    // flash red
+                    combo = 0;
+                    updateComboDisplay();
                     wrongFlashIds.add(b.id);
                     setTimeout(() => wrongFlashIds.delete(b.id), 350);
                 }
@@ -459,7 +522,6 @@
             const before = balls.length;
             balls = balls.filter(b => now - b.spawnedAt < cfg.disappearTime);
             const removed = before - balls.length;
-            // refill to keep ballCount
             for (let i = 0; i < removed; i++) spawnBall(cfg);
         }, 100);
     }
@@ -478,13 +540,15 @@
         currentLevel = level;
         levelDisplayEl.textContent = level;
         RADIUS = getRadius();
-        score = 0; errors = 0;
+        score = 0; errors = 0; combo = 0; maxCombo = 0;
         scoreDisplayEl.textContent = '0';
         errorsDisplayEl.textContent = '0';
+        updateComboDisplay();
         timeLeft = 30;
         timerEl.textContent = timeLeft;
         balls = [];
         wrongFlashIds = new Set();
+        popEffects = [];
         overlay.classList.add('hidden');
         document.getElementById('game-title').style.display = 'none';
         resize();
@@ -492,32 +556,26 @@
 
         const cfg = LEVEL_CONFIG[gameMode][level];
 
-        // pick colors for this level
         const shuffled = [...ALL_COLORS.keys()].sort(() => Math.random() - 0.5);
         activeColors = shuffled.slice(0, cfg.colorCount);
 
-        // initial target
         setTarget(Math.floor(Math.random() * cfg.colorCount));
 
-        // spawn initial balls
         for (let i = 0; i < cfg.ballCount; i++) spawnBall(cfg);
 
-        // disappear + refill
         startDisappearChecker(cfg);
 
-        // target color changes
         if (cfg.targetChangeInterval) {
             targetChangeInterval = setInterval(() => { if (isRunning) pickNewTarget(cfg); }, cfg.targetChangeInterval);
         }
 
-        // countdown
         countdownInterval = setInterval(() => {
             timeLeft--;
             timerEl.textContent = timeLeft;
             if (timeLeft <= 0) {
                 clearAll();
                 isRunning = false;
-                results[level] = { score, errors };
+                results[level] = { score, errors, maxCombo };
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 if (level < maxLevels) showNextLevelScreen(level);
                 else showEndScreen();
@@ -533,15 +591,15 @@
     function updateInstructions(level) {
         const descs = {
             child: {
-                1: 'Klikaj tylko kulki w wybranym kolorze! 2 kolory, 3 kulki.',
-                2: 'Kolor celu zmienia się co 8s! Uważaj na zmiany.',
-                3: '4 kolory, kolor zmienia się co 6s. Błąd kosztuje 2 pkt!',
+                1: '2 kolory, 4 kulki. Klikaj tylko cel!',
+                2: '3 kolory, kulki się ruszają. Cel zmienia się co 8s!',
+                3: '4 kolory, szybciej! Zmiana co 6s. Błąd = -2 pkt.',
             },
             adult: {
-                1: '3 kolory, kolor zmienia się co 8s. Rozgrzewka!',
-                2: '4 kolory, zmiana co 5s. Koncentracja!',
-                3: '5 kolorów, zmiana co 4s. Błąd = -3 pkt!',
-                4: '6 kolorów, zmiana co 3s. Kulki się poruszają. Ekstremalne!',
+                1: '3 kolory, kulki się ruszają. Cel zmienia się co 8s.',
+                2: '4 kolory, szybciej! Zmiana co 5s. Błąd = -2 pkt.',
+                3: '5 kolorów, zmiana co 4s. Błąd = -3 pkt! Buduj combo!',
+                4: '6 kolorów, zmiana co 3s. Szybkie kulki. Ekstremalne!',
             },
         };
         overlayDesc.textContent = (descs[gameMode] && descs[gameMode][level]) || '';
@@ -561,6 +619,7 @@
         showRecordsStartBtn.classList.remove('hidden');
         targetDot.style.backgroundColor = 'transparent';
         targetName.textContent = '';
+        comboBox.classList.add('hidden');
         overlay.classList.remove('hidden');
     }
 
@@ -568,9 +627,10 @@
         hideModeAndShowMain();
         hideSaveSection();
         overlayTitle.innerHTML = `Poziom ${level} Ukończony! 🎉`;
-        overlayStats.innerHTML =
-            `<p>Wynik: <span class="text-green-400 font-bold">${results[level].score}</span></p>` +
-            `<p>Błędy: <span class="text-red-400 font-bold">${results[level].errors}</span></p>`;
+        let statsHtml = `<p>Wynik: <span class="text-green-400 font-bold">${results[level].score}</span></p>`;
+        statsHtml += `<p>Błędy: <span class="text-red-400 font-bold">${results[level].errors}</span></p>`;
+        if (results[level].maxCombo >= 3) statsHtml += `<p>Max combo: <span class="text-yellow-400 font-bold">×${results[level].maxCombo >= 10 ? 4 : results[level].maxCombo >= 6 ? 3 : 2}</span> (seria ${results[level].maxCombo})</p>`;
+        overlayStats.innerHTML = statsHtml;
         overlayStats.classList.remove('hidden');
         updateInstructions(level + 1);
         mainBtn.innerHTML = `Start: Poziom ${level + 1}`;
@@ -585,6 +645,7 @@
         overlayTitle.innerHTML = 'Wyzwanie Ukończone! 🏆';
         const totalScore = Object.values(results).reduce((s, r) => s + r.score, 0);
         const totalErrors = Object.values(results).reduce((s, r) => s + r.errors, 0);
+        const bestCombo = Math.max(...Object.values(results).map(r => r.maxCombo || 0));
         let statsHtml = '';
         for (let lvl = 1; lvl <= maxLevels; lvl++) {
             if (results[lvl]) {
@@ -592,6 +653,7 @@
             }
         }
         statsHtml += `<p class="mt-2 border-t border-gray-600 pt-2">Łącznie: <span class="text-green-400 font-bold">${totalScore}</span> pkt / <span class="text-red-400 font-bold">${totalErrors}</span> błędów</p>`;
+        if (bestCombo >= 3) statsHtml += `<p>Najdłuższa seria: <span class="text-yellow-400 font-bold">${bestCombo}</span> trafień z rzędu</p>`;
         overlayStats.innerHTML = statsHtml;
         overlayStats.classList.remove('hidden');
         overlayDesc.textContent = '';
