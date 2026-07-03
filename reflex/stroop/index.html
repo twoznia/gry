@@ -157,7 +157,7 @@
             { num: 1, base: 2100 },
             { num: 2, base: 1700 },
             { num: 3, base: 1300 },
-            { num: 4, base: 200 },
+            { num: 4, base: 900 },
         ],
     };
     const HOLD = 6000, RAMP = 25000, FLOOR = 200;
@@ -318,7 +318,7 @@
 
     // ── Records ───────────────────────────────────────────────────────────
     const RECORDS_KEY = 'reflexStroopRecords';
-    const NAME_KEY    = 'reflexStroopLastName';
+    const NAME_KEY    = 'reflexLastName';
     const MAX_PER_PLAYER = 10;
 
     function normalizeName(n) { return n.trim().toLowerCase(); }
@@ -461,6 +461,7 @@
         saveInfo.classList.remove('hidden');
         showRecordsView(() => {}, gameMode, name);
     });
+    playerNameInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') saveRecordBtn.click(); });
     showRecordsEndBtn.addEventListener('click', () => showRecordsView(() => {}));
     showRecordsStartBtn.addEventListener('click', () => showRecordsView(() => {}));
     mainBtn.addEventListener('click', () => { if (mainBtnAction) mainBtnAction(); });

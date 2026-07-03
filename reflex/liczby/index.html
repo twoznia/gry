@@ -305,6 +305,7 @@
             saveInfo.classList.remove('hidden');
             showRecordsView(() => {}, gameMode, name);
         });
+        playerNameInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') saveRecordBtn.click(); });
 
         showRecordsEndBtn.addEventListener('click', () => showRecordsView(() => {
             // Return to end screen state (just unhide content, it's already set)
