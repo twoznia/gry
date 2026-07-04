@@ -111,6 +111,18 @@ body.light {
 .note.off { visibility: hidden; }
 
 .play.given { color: var(--accent); background: var(--given-bg); cursor: default; }
+
+.board-loading {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    color: var(--muted);
+    font-weight: 600;
+}
+
 .hint-flash { animation: hint-flash 0.9s ease; }
 @keyframes hint-flash {
     0%, 100% { background: var(--card); }
