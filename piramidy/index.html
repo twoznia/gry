@@ -30,6 +30,7 @@
     <div class="control-row">
         <button class="btn btn-secondary" id="noteBtn" type="button">✏️ Notatki</button>
         <button class="btn btn-secondary" id="hintBtn" type="button">💡 Podpowiedź <span id="hintCount">(3)</span></button>
+        <button class="btn btn-secondary" id="undoBtn" type="button" disabled>↩️ Cofnij</button>
     </div>
     <button class="btn btn-primary" id="newGameBtn">Nowa gra</button>
 </div>
@@ -72,6 +73,7 @@
     <p>Liczba przy krawędzi mówi, ile piramid widać z tej strony — wyższe piramidy zasłaniają niższe, które stoją za nimi (dalej od patrzącego).</p>
     <p>Kliknij pole, a potem liczbę na klawiaturze poniżej planszy. Powtórzone liczby w wierszu/kolumnie podświetlają się na czerwono.</p>
     <p>Tryb notatek (przycisk „Notatki” lub klawisz N) pozwala zapisać kilka kandydujących liczb w polu. Podpowiedź uzupełnia jedno pole poprawną liczbą (dostępne 3 razy na grę). W rankingu rekordów liczy się najpierw liczba użytych podpowiedzi, a dopiero potem czas.</p>
+    <p>Przycisk „Cofnij” (lub Ctrl+Z) wycofuje ostatnie ruchy. Gra zapisuje się automatycznie — po zamknięciu strony wrócisz dokładnie do tego samego miejsca (razem z czasem).</p>
 </details>
 
 <script src="script.js"></script>
