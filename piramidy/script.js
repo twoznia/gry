@@ -13,6 +13,19 @@
     const winBanner = document.getElementById('winBanner');
     const winText = document.getElementById('winText');
     const winPlayAgain = document.getElementById('winPlayAgain');
+    const noteBtn = document.getElementById('noteBtn');
+    const hintBtn = document.getElementById('hintBtn');
+    const hintCountEl = document.getElementById('hintCount');
+    const MAX_HINTS = 3;
+    const nameRow = document.getElementById('nameRow');
+    const playerNameEl = document.getElementById('playerName');
+    const saveBtn = document.getElementById('saveBtn');
+    const saveInfoEl = document.getElementById('saveInfo');
+    const recordsBtn = document.getElementById('recordsBtn');
+    const recPanel = document.getElementById('recPanel');
+    const recTabsEl = document.getElementById('recTabs');
+    const recTableEl = document.getElementById('recTable');
+    const recCloseBtn = document.getElementById('recCloseBtn');
 
     // ── Ile piramid widać, patrząc na tablicę wysokości od pierwszego elementu ──
     function countVisible(arr) {
@@ -120,8 +133,8 @@
                 left: full.left.map((v, i) => (hideSet.has(2 * n + i) ? null : v)),
                 right: full.right.map((v, i) => (hideSet.has(3 * n + i) ? null : v)),
             };
-            if (countSolutions(n, clues, 2) === 1) return clues;
-            fallback = clues;
+            if (countSolutions(n, clues, 2) === 1) return { clues, solution: grid };
+            fallback = { clues, solution: grid };
         }
         return fallback; // rzadki przypadek: brak unikalnego układu w limicie prób
     }
@@ -130,7 +143,13 @@
     let n = 5;
     let difficulty = 'easy';
     let clues = null;
+    let solution = null;      // solution[r][c] = poprawna wartość 1..n
     let values = [];          // values[r][c] = 0 (puste) lub 1..n
+    let notes = [];           // notes[r][c] = Set kandydujących liczb
+    let given = [];           // given[r][c] = true, jeśli pole uzupełnione podpowiedzią (zablokowane)
+    let noteMode = false;
+    let hintsUsed = 0;
+    let recordSaved = false;
     let selected = null;      // {r, c} lub null
     let timerInterval = null;
     let elapsedSec = 0;
@@ -147,23 +166,25 @@
         localStorage.setItem(PREF_KEY, JSON.stringify({ n, difficulty }));
     }
 
+    function recordKey() { return `${n}-${difficulty}`; }
+    function recordLabel(key) {
+        const [size, diff] = key.split('-');
+        return `${size}×${size} ${diff === 'hard' ? 'Trudny' : 'Łatwy'}`;
+    }
     function loadRecords() {
         try { return JSON.parse(localStorage.getItem(RECORDS_KEY)) || {}; } catch (e) { return {}; }
     }
-    function recordKey() { return `${n}-${difficulty}`; }
     function bestTime() {
-        const r = loadRecords()[recordKey()];
-        return typeof r === 'number' ? r : null;
+        const rows = loadRecords()[recordKey()];
+        return Array.isArray(rows) && rows.length ? rows[0].time : null;
     }
-    function saveRecordIfBest(sec) {
+    function saveRecord(name, key, sec) {
         const records = loadRecords();
-        const key = recordKey();
-        if (records[key] == null || sec < records[key]) {
-            records[key] = sec;
-            localStorage.setItem(RECORDS_KEY, JSON.stringify(records));
-            return true;
-        }
-        return false;
+        const rows = Array.isArray(records[key]) ? records[key] : [];
+        rows.push({ name, time: sec, date: new Date().toLocaleDateString('pl-PL') });
+        rows.sort((a, b) => a.time - b.time);
+        records[key] = rows.slice(0, 10);
+        localStorage.setItem(RECORDS_KEY, JSON.stringify(records));
     }
     function formatTime(sec) {
         const m = Math.floor(sec / 60), s = sec % 60;
@@ -173,6 +194,46 @@
         const b = bestTime();
         recordDisplayEl.textContent = b == null ? '—' : formatTime(b);
     }
+
+    // ── Panel rekordów (top 10 dla każdego rozmiaru/trudności) ───────────────
+    function recordCombos() {
+        const combos = [];
+        SIZES.forEach(size => ['easy', 'hard'].forEach(diff => combos.push(`${size}-${diff}`)));
+        return combos;
+    }
+    let recActiveKey = recordKey();
+    function renderRecTable(key) {
+        const rows = loadRecords()[key];
+        if (!Array.isArray(rows) || !rows.length) return '<p class="rec-empty">Brak rekordów dla tego trybu.</p>';
+        const medals = ['🥇', '🥈', '🥉'];
+        let h = '<table class="rec-table"><thead><tr><th>#</th><th>Imię</th><th>Czas</th><th>Data</th></tr></thead><tbody>';
+        rows.forEach((r, i) => {
+            h += `<tr><td>${medals[i] || `${i + 1}.`}</td><td>${r.name}</td><td>${formatTime(r.time)}</td><td>${r.date}</td></tr>`;
+        });
+        return h + '</tbody></table>';
+    }
+    function buildRecTabs() {
+        recTabsEl.innerHTML = '';
+        recordCombos().forEach(key => {
+            const b = document.createElement('button');
+            b.className = 'rec-tab' + (key === recActiveKey ? ' active' : '');
+            b.textContent = recordLabel(key);
+            b.addEventListener('click', () => {
+                recActiveKey = key;
+                buildRecTabs();
+                recTableEl.innerHTML = renderRecTable(recActiveKey);
+            });
+            recTabsEl.appendChild(b);
+        });
+        recTableEl.innerHTML = renderRecTable(recActiveKey);
+    }
+    function openRecords() {
+        recActiveKey = recordKey();
+        buildRecTabs();
+        recPanel.classList.add('show');
+    }
+    recordsBtn.addEventListener('click', openRecords);
+    recCloseBtn.addEventListener('click', () => recPanel.classList.remove('show'));
 
     function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
     function startTimer() {
@@ -276,6 +337,22 @@
         return boardEl.querySelector(`.play[data-r="${r}"][data-c="${c}"]`);
     }
 
+    // ── Notatki: mini-siatka kandydujących liczb wewnątrz pustego pola ───────
+    function buildNotesHtml(noteSet) {
+        const cols = Math.ceil(Math.sqrt(n));
+        let h = `<div class="notes-grid" style="grid-template-columns: repeat(${cols}, 1fr);">`;
+        for (let v = 1; v <= n; v++) h += `<div class="note${noteSet.has(v) ? '' : ' off'}">${v}</div>`;
+        return h + '</div>';
+    }
+
+    function updateCellDisplay(r, c) {
+        const el = playCellEl(r, c);
+        el.classList.toggle('given', given[r][c]);
+        if (values[r][c] !== 0) el.textContent = values[r][c];
+        else if (notes[r][c].size > 0) el.innerHTML = buildNotesHtml(notes[r][c]);
+        else el.textContent = '';
+    }
+
     function selectCell(r, c) {
         if (solved) return;
         selected = { r, c };
@@ -286,9 +363,20 @@
     function inputValue(v) {
         if (!selected || solved) return;
         const { r, c } = selected;
+        if (given[r][c]) return;   // pole uzupełnione podpowiedzią jest zablokowane
+
+        if (noteMode && v !== 0) {
+            if (notes[r][c].has(v)) notes[r][c].delete(v); else notes[r][c].add(v);
+            updateCellDisplay(r, c);
+            return;
+        }
+
         values[r][c] = values[r][c] === v ? 0 : v;   // ponowne kliknięcie tej samej liczby czyści pole
-        const el = playCellEl(r, c);
-        el.textContent = values[r][c] === 0 ? '' : values[r][c];
+        if (values[r][c] !== 0) {
+            notes[r][c].clear();
+            for (let i = 0; i < n; i++) { notes[r][i].delete(values[r][c]); notes[i][c].delete(values[r][c]); }
+        }
+        updateCellDisplay(r, c);
         updateConflicts();
         updateClueFeedback();
         checkWin();
@@ -349,16 +437,60 @@
 
         solved = true;
         stopTimer();
-        const isRecord = saveRecordIfBest(elapsedSec);
-        updateRecordDisplay();
-        winText.textContent = isRecord
-            ? `🏆 Nowy rekord! Czas: ${formatTime(elapsedSec)}`
-            : `Rozwiązane! Czas: ${formatTime(elapsedSec)}`;
+        winText.textContent = `Rozwiązane! Czas: ${formatTime(elapsedSec)}`;
+        const canSave = hintsUsed === 0;
+        recordSaved = !canSave;
+        nameRow.style.display = canSave ? 'flex' : 'none';
+        saveBtn.disabled = false;
+        playerNameEl.value = '';
+        saveInfoEl.style.display = canSave ? 'none' : 'block';
+        saveInfoEl.textContent = canSave ? '' : '⚠️ Gry z podpowiedziami nie są zapisywane.';
         winBanner.hidden = false;
     }
 
+    // ── Podpowiedź: uzupełnia losowe błędne/puste pole poprawną wartością ────
+    function updateHintBtn() {
+        const remaining = MAX_HINTS - hintsUsed;
+        hintCountEl.textContent = `(${remaining})`;
+        hintBtn.disabled = remaining <= 0;
+    }
+    function hint() {
+        if (solved || hintsUsed >= MAX_HINTS) return;
+        const empties = [];
+        for (let r = 0; r < n; r++) {
+            for (let c = 0; c < n; c++) {
+                if (!given[r][c] && values[r][c] !== solution[r][c]) empties.push({ r, c });
+            }
+        }
+        if (!empties.length) return;
+        const { r, c } = empties[Math.floor(Math.random() * empties.length)];
+        values[r][c] = solution[r][c];
+        given[r][c] = true;
+        notes[r][c].clear();
+        for (let i = 0; i < n; i++) { notes[r][i].delete(values[r][c]); notes[i][c].delete(values[r][c]); }
+        hintsUsed++;
+        updateHintBtn();
+        updateCellDisplay(r, c);
+        selectCell(r, c);
+        const el = playCellEl(r, c);
+        el.classList.add('hint-flash');
+        setTimeout(() => el.classList.remove('hint-flash'), 900);
+        updateConflicts();
+        updateClueFeedback();
+        checkWin();
+    }
+    hintBtn.addEventListener('click', hint);
+
+    // ── Notatki: przełącznik trybu ────────────────────────────────────────
+    function toggleNoteMode() {
+        noteMode = !noteMode;
+        noteBtn.classList.toggle('active', noteMode);
+    }
+    noteBtn.addEventListener('click', toggleNoteMode);
+
     // ── Klawiatura: cyfry ustawiają wartość, strzałki przesuwają zaznaczenie ──
     document.addEventListener('keydown', (e) => {
+        if (e.key === 'n' || e.key === 'N') { toggleNoteMode(); return; }
         if (!selected) return;
         if (e.key >= '1' && e.key <= '9') {
             const v = Number(e.key);
@@ -366,7 +498,7 @@
             return;
         }
         if (e.key === 'Backspace' || e.key === 'Delete' || e.key === '0') {
-            if (values[selected.r][selected.c] !== 0) inputValue(values[selected.r][selected.c]);
+            inputValue(0);
             e.preventDefault();
             return;
         }
@@ -384,18 +516,50 @@
         winBanner.hidden = true;
         solved = false;
         selected = null;
+        noteMode = false;
+        noteBtn.classList.remove('active');
+        hintsUsed = 0;
+        recordSaved = false;
         syncSizeButtons();
         syncDiffButtons();
-        clues = generatePuzzle(n, difficulty);
+        const generated = generatePuzzle(n, difficulty);
+        clues = generated.clues;
+        solution = generated.solution;
         values = Array.from({ length: n }, () => new Array(n).fill(0));
+        notes = Array.from({ length: n }, () => Array.from({ length: n }, () => new Set()));
+        given = Array.from({ length: n }, () => new Array(n).fill(false));
         render();
+        updateHintBtn();
         updateRecordDisplay();
         startTimer();
     }
 
     newGameBtn.addEventListener('click', newGame);
     winPlayAgain.addEventListener('click', newGame);
+    saveBtn.addEventListener('click', () => {
+        if (recordSaved) return;
+        const name = playerNameEl.value.trim();
+        if (!name) { playerNameEl.focus(); return; }
+        saveRecord(name, recordKey(), elapsedSec);
+        recordSaved = true;
+        saveBtn.disabled = true;
+        updateRecordDisplay();
+        saveInfoEl.style.display = 'block';
+        saveInfoEl.textContent = '✓ Wynik zapisany!';
+    });
 
     loadPrefs();
     newGame();
+
+    // ── Jasny/ciemny motyw ────────────────────────────────────────────────
+    (() => {
+        const themeBtn = document.getElementById('themeBtn');
+        const saved = localStorage.getItem('piramidyTheme');
+        if (saved === 'light') { document.body.classList.add('light'); themeBtn.textContent = '🌙 Ciemny'; }
+        themeBtn.addEventListener('click', () => {
+            const light = document.body.classList.toggle('light');
+            themeBtn.textContent = light ? '🌙 Ciemny' : '☀️ Jasny';
+            localStorage.setItem('piramidyTheme', light ? 'light' : 'dark');
+        });
+    })();
 })();
