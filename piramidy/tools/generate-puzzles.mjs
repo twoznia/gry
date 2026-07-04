@@ -146,10 +146,11 @@ function countSolutions(n, clues, cap, nodeBudget = Infinity) {
 // większych n) — usuwanie wskazówek nigdy nie może wtedy się udać (usunięcie informacji
 // nie może zmniejszyć liczby rozwiązań), więc `hidden` zostanie równe 0. To wystarczający
 // sygnał, by odrzucić tę planszę i wylosować nową — bez dodatkowego, osobnego sprawdzenia.
-// Górny limit węzłów przeszukiwania na jedno sprawdzenie unikalności — ok. 1-2s dla 7×7
-// nawet w najgorszym przypadku (dowodzenie unikalności). Bez tego pojedyncze sprawdzenie
+// Górny limit węzłów przeszukiwania na jedno sprawdzenie unikalności — ok. 1s dla 7×7
+// w najgorszym przypadku (dowodzenie unikalności). Bez tego pojedyncze sprawdzenie
 // potrafi się ciągnąć wiele minut (patrz komentarz przy countSolutions).
-const NODE_BUDGET = 3_000_000;
+const NODE_BUDGET = 12_000_000;
+const MAX_GRID_ATTEMPTS = 12;
 
 function generatePuzzle(n, difficulty) {
     const hiddenFraction = difficulty === 'hard' ? 0.5 : 0.28;
@@ -166,12 +167,16 @@ function generatePuzzle(n, difficulty) {
             right: full.right.slice(),
         };
 
-        const slots = shuffle([
-            ...Array.from({ length: n }, (_, i) => ['top', i]),
-            ...Array.from({ length: n }, (_, i) => ['bottom', i]),
-            ...Array.from({ length: n }, (_, i) => ['left', i]),
-            ...Array.from({ length: n }, (_, i) => ['right', i]),
-        ]);
+        // Kolejność ma znaczenie: "left"/"top" korzystają z przycinania na bieżąco
+        // w countSolutions, więc ich ukrycie utrudnia WSZYSTKIE kolejne sprawdzenia dla
+        // tej planszy. Próbujemy więc najpierw ukryć "right"/"bottom" (nic nie tracimy),
+        // a "left"/"top" zostawiamy na koniec — to znacznie podnosiło skuteczność w testach.
+        const slots = [
+            ...shuffle(Array.from({ length: n }, (_, i) => ['right', i])),
+            ...shuffle(Array.from({ length: n }, (_, i) => ['bottom', i])),
+            ...shuffle(Array.from({ length: n }, (_, i) => ['left', i])),
+            ...shuffle(Array.from({ length: n }, (_, i) => ['top', i])),
+        ];
 
         let hidden = 0;
         for (const [key, idx] of slots) {
@@ -187,7 +192,7 @@ function generatePuzzle(n, difficulty) {
             }
         }
 
-        if (hidden === 0 && gridAttempt < 8) continue; // pełny komplet wskazówek nie był unikalny — spróbuj innej planszy
+        if (hidden === 0 && gridAttempt < MAX_GRID_ATTEMPTS - 1) continue; // pełny komplet wskazówek nie był unikalny (lub zbyt trudny do zweryfikowania) — spróbuj innej planszy
         return { clues, solution: grid, hiddenCount: hidden, targetHide, gridAttempts: gridAttempt + 1 };
     }
 }
@@ -241,11 +246,13 @@ for (const n of SIZES) {
         const codes = [];
         let shortOfTarget = 0;
         let retriedGrids = 0;
+        let trivialCount = 0;
         const start = Date.now();
 
         for (let i = 0; i < PER_BUCKET; i++) {
             const { clues, solution, hiddenCount, targetHide, gridAttempts } = generatePuzzle(n, difficulty);
             if (hiddenCount < targetHide) shortOfTarget++;
+            if (hiddenCount === 0) trivialCount++;
             if (gridAttempts > 1) retriedGrids++;
             const code = encodePuzzle(n, difficulty, clues, solution);
             assertRoundTrip(n, difficulty, clues, solution, code);
@@ -258,6 +265,10 @@ for (const n of SIZES) {
         if (shortOfTarget > 0) notes.push(`${shortOfTarget}× mniej ukrytych wskazówek niż docelowo`);
         if (retriedGrids > 0) notes.push(`${retriedGrids}× trzeba było odrzucić planszę (brak unikalności)`);
         console.log(`${key}: ${codes.length} łamigłówek w ${elapsedSec}s${notes.length ? '  (' + notes.join(', ') + ')' : ''}`);
+        // Trywialna łamigłówka (0 ukrytych wskazówek = od razu rozwiązana plansza) — rzadkie,
+        // ale możliwe dla 7×7 przy pechowej serii plansz. Uruchom skrypt ponownie dla tego
+        // rozmiaru/trudności, jeśli chcesz to naprawić (za każdym razem losowana jest inna plansza).
+        if (trivialCount > 0) console.log(`  ⚠ ${trivialCount}× TRYWIALNA łamigłówka (0 ukrytych wskazówek) — rozważ ponowne uruchomienie`);
     }
 }
 
