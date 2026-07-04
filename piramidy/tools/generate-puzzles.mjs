@@ -7,7 +7,7 @@
 // Każda łamigłówka jest zapisana jako zwarty kod tekstowy (podobnie jak kod udostępniania w Sudoku),
 // który da się szybko zdekodować w przeglądarce bez ponownego liczenia unikalności rozwiązania.
 
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -237,8 +237,13 @@ function assertRoundTrip(n, difficulty, clues, solution, code) {
 }
 
 // ── Generowanie banku ──────────────────────────────────────────────────────
-
-const bank = {};
+// Startujemy od istniejącego pliku (jeśli jest) i nadpisujemy tylko kubełki
+// ukończone w tym przebiegu — przerwanie (np. na wolnym 7×7) nigdy nie kasuje
+// wcześniej zapisanych wyników dla innych kombinacji rozmiar/trudność.
+let bank = {};
+if (existsSync(outputPath)) {
+    try { bank = JSON.parse(readFileSync(outputPath, 'utf-8')); } catch (e) { bank = {}; }
+}
 
 for (const n of SIZES) {
     for (const difficulty of DIFFICULTIES) {
