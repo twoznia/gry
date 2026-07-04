@@ -2,7 +2,6 @@
     const SIZES = [4, 5, 6, 7];
     const RECORDS_KEY = 'piramidyRecords';
     const PREF_KEY = 'piramidyPrefs';
-    const PUZZLES_PATH = 'data/puzzles.json';
 
     const boardEl = document.getElementById('board');
     const numpadEl = document.getElementById('numpad');
@@ -75,110 +74,191 @@
         return { top, bottom, left, right };
     }
 
-    // ── Backtracking: liczy rozwiązania spełniające podane (częściowo ukryte) wskazówki ──
-    // Zatrzymuje się po znalezieniu `cap` rozwiązań — używane tylko do sprawdzenia unikalności przy generowaniu.
-    function countSolutions(n, clues, cap) {
-        const grid = Array.from({ length: n }, () => new Array(n).fill(0));
-        const rowUsed = new Array(n).fill(0);
-        const colUsed = new Array(n).fill(0);
-        let solutions = 0;
-
-        function checkRow(r) {
-            const row = grid[r];
-            if (clues.left[r] != null && countVisible(row) !== clues.left[r]) return false;
-            if (clues.right[r] != null && countVisible(row.slice().reverse()) !== clues.right[r]) return false;
-            return true;
-        }
-        function checkCols() {
-            for (let c = 0; c < n; c++) {
-                const col = grid.map(row => row[c]);
-                if (clues.top[c] != null && countVisible(col) !== clues.top[c]) return false;
-                if (clues.bottom[c] != null && countVisible(col.slice().reverse()) !== clues.bottom[c]) return false;
+    // ── Solver: backtracking po permutacjach wierszy ──────────────────────────
+    // Zamiast wypełniać komórka po komórce, układa plansze wiersz po wierszu z listy
+    // permutacji 1..n przefiltrowanych wskazówkami left/right i polami givens danego
+    // wiersza. Kolumny przycinane na bieżąco (kolizje wartości + widoczność od góry).
+    // To o rzędy wielkości szybsze niż backtracking komórkowy — dla 7×7 pojedyncze
+    // sprawdzenie unikalności schodzi z minut do ułamków sekundy.
+    const permCache = new Map();
+    function allPerms(n) {
+        if (permCache.has(n)) return permCache.get(n);
+        const out = [];
+        const arr = Array.from({ length: n }, (_, i) => i + 1);
+        (function permute(k) {
+            if (k === n) {
+                const p = arr.slice();
+                out.push({ vals: p, visL: countVisible(p), visR: countVisible(p.slice().reverse()) });
+                return;
             }
-            return true;
-        }
-        function backtrack(r, c) {
-            if (solutions >= cap) return;
-            if (r === n) { if (checkCols()) solutions++; return; }
-            if (c === n) { if (checkRow(r)) backtrack(r + 1, 0); return; }
-            for (let v = 1; v <= n; v++) {
-                const bit = 1 << (v - 1);
-                if ((rowUsed[r] & bit) || (colUsed[c] & bit)) continue;
-                grid[r][c] = v;
-                rowUsed[r] |= bit; colUsed[c] |= bit;
-                backtrack(r, c + 1);
-                rowUsed[r] &= ~bit; colUsed[c] &= ~bit;
-                grid[r][c] = 0;
-                if (solutions >= cap) return;
+            for (let i = k; i < n; i++) {
+                [arr[k], arr[i]] = [arr[i], arr[k]];
+                permute(k + 1);
+                [arr[k], arr[i]] = [arr[i], arr[k]];
             }
-        }
-        backtrack(0, 0);
-        return solutions;
+        })(0);
+        permCache.set(n, out);
+        return out;
     }
 
-    // ── Generuje łamigłówkę: losowa plansza + wskazówki, część ukryta wg trudności ──
-    // Powtarza próby, aż znajdzie układ z jednym rozwiązaniem (lub wyczerpie limit prób).
+    // Liczy rozwiązania (do `cap`); zbiera znalezione plansze (do dezambiguacji).
+    // nodeBudget twardo ogranicza przeszukiwanie: po przekroczeniu wynik jest
+    // "nierozstrzygnięty" (budgetExceeded) i wywołujący traktuje go zachowawczo —
+    // dzięki temu czas generowania jest ograniczony, a wynik nigdy nie jest
+    // fałszywie uznany za jednoznaczny.
+    function solve(n, clues, givens, cap, nodeBudget) {
+        const perms = allPerms(n);
+        const rowPerms = [];
+        for (let r = 0; r < n; r++) {
+            const g = givens ? givens[r] : null;
+            const list = perms.filter(p => {
+                if (clues.left[r] != null && p.visL !== clues.left[r]) return false;
+                if (clues.right[r] != null && p.visR !== clues.right[r]) return false;
+                if (g) for (let c = 0; c < n; c++) if (g[c] !== 0 && p.vals[c] !== g[c]) return false;
+                return true;
+            });
+            if (list.length === 0) return { count: 0, found: [], budgetExceeded: false };
+            rowPerms.push(list);
+        }
+
+        const colUsed = new Array(n).fill(0);
+        const visStack = [new Array(n).fill(0)];
+        const maxStack = [new Array(n).fill(0)];
+        const chosen = new Array(n).fill(null);
+        let solutions = 0;
+        let nodes = 0;
+        let budgetExceeded = false;
+        const found = [];
+
+        function checkBottom() {
+            for (let c = 0; c < n; c++) {
+                if (clues.bottom[c] == null) continue;
+                let maxSoFar = 0, count = 0;
+                for (let r = n - 1; r >= 0; r--) {
+                    const v = chosen[r].vals[c];
+                    if (v > maxSoFar) { count++; maxSoFar = v; }
+                }
+                if (count !== clues.bottom[c]) return false;
+            }
+            return true;
+        }
+
+        function backtrack(r) {
+            if (solutions >= cap || budgetExceeded) return;
+            if (++nodes > nodeBudget) { budgetExceeded = true; return; }
+            if (r === n) {
+                for (let c = 0; c < n; c++) {
+                    if (clues.top[c] != null && visStack[n][c] !== clues.top[c]) return;
+                }
+                if (!checkBottom()) return;
+                solutions++;
+                if (found.length < 2) found.push(chosen.map(p => p.vals.slice()));
+                return;
+            }
+            const prevMax = maxStack[r], prevVis = visStack[r];
+            outer: for (const p of rowPerms[r]) {
+                for (let c = 0; c < n; c++) {
+                    if (colUsed[c] & (1 << (p.vals[c] - 1))) continue outer;
+                }
+                const newMax = new Array(n), newVis = new Array(n);
+                for (let c = 0; c < n; c++) {
+                    const v = p.vals[c];
+                    if (v > prevMax[c]) { newMax[c] = v; newVis[c] = prevVis[c] + 1; }
+                    else { newMax[c] = prevMax[c]; newVis[c] = prevVis[c]; }
+                    const t = clues.top[c];
+                    if (t != null) {
+                        if (newVis[c] > t) continue outer;                     // widoczność już przekroczona
+                        if (newVis[c] + (n - r - 1) < t) continue outer;       // nieosiągalna (max +1 na wiersz)
+                        if (newMax[c] === n && newVis[c] !== t) continue outer; // stoi n — widoczność ostateczna
+                    }
+                }
+                for (let c = 0; c < n; c++) colUsed[c] |= 1 << (p.vals[c] - 1);
+                maxStack[r + 1] = newMax; visStack[r + 1] = newVis;
+                chosen[r] = p;
+                backtrack(r + 1);
+                for (let c = 0; c < n; c++) colUsed[c] &= ~(1 << (p.vals[c] - 1));
+                if (solutions >= cap || budgetExceeded) return;
+            }
+        }
+        backtrack(0);
+        return { count: solutions, found, budgetExceeded };
+    }
+
+    // ── Generowanie łamigłówki ────────────────────────────────────────────────
+    // Dla większych plansz (zwłaszcza 7×7) samo obramowanie prawie nigdy nie wyznacza
+    // rozwiązania jednoznacznie — jak w drukowanych łamigłówkach, plansza dostaje wtedy
+    // kilka wstępnie wypełnionych pól (givens):
+    //   0. seed: kilka losowych givens od razu (tnie przestrzeń przeszukiwania),
+    //   1. dezambiguacja: dopóki istnieje alternatywne rozwiązanie, przypnij givenem
+    //      pole, w którym różni się od naszej planszy,
+    //   2. minimalizacja: usuń każdy given, bez którego układ pozostaje jednoznaczny,
+    //   3. kucie dziur: ukrywaj wskazówki (do celu wg trudności), o ile jednoznaczność
+    //      pozostaje zachowana.
+    const NODE_BUDGET = 25000;
+    const SEED_GIVENS = { 4: 0, 5: 0, 6: 2, 7: 10 };
+
     function generatePuzzle(n, difficulty) {
         const hiddenFraction = difficulty === 'hard' ? 0.5 : 0.28;
-        const totalSlots = 4 * n;
-        const hideCount = Math.round(totalSlots * hiddenFraction);
-        let fallback = null;
+        const targetHide = Math.round(4 * n * hiddenFraction);
 
-        for (let attempt = 0; attempt < 60; attempt++) {
-            const grid = randomLatinSquare(n);
-            const full = computeClues(grid);
-            const hideSet = new Set(shuffle([...Array(totalSlots).keys()]).slice(0, hideCount));
-            const clues = {
-                top: full.top.map((v, i) => (hideSet.has(i) ? null : v)),
-                bottom: full.bottom.map((v, i) => (hideSet.has(n + i) ? null : v)),
-                left: full.left.map((v, i) => (hideSet.has(2 * n + i) ? null : v)),
-                right: full.right.map((v, i) => (hideSet.has(3 * n + i) ? null : v)),
-            };
-            if (countSolutions(n, clues, 2) === 1) return { clues, solution: grid };
-            fallback = { clues, solution: grid };
-        }
-        return fallback; // rzadki przypadek: brak unikalnego układu w limicie prób
-    }
+        const grid = randomLatinSquare(n);
+        const full = computeClues(grid);
+        const clues = { top: full.top.slice(), bottom: full.bottom.slice(), left: full.left.slice(), right: full.right.slice() };
+        const givens = Array.from({ length: n }, () => new Array(n).fill(0));
 
-    // ── Bank łamigłówek wygenerowanych offline (piramidy/tools/generate-puzzles.mjs) ──
-    // Format kodu: <n><diff e/h><wskazówki top+bottom+left+right, 4n cyfr, 0=ukryta><rozwiązanie n×n cyfr>
-    let puzzleBank = {};
-    async function loadPuzzleBank() {
-        try {
-            const res = await fetch(PUZZLES_PATH, { cache: 'no-store' });
-            if (!res.ok) throw new Error('bank niedostępny');
-            puzzleBank = await res.json();
-        } catch (e) {
-            puzzleBank = {}; // brak banku (np. offline) — newGame() użyje generowania na żywo
+        const cells = shuffle(Array.from({ length: n * n }, (_, i) => [Math.floor(i / n), i % n]));
+        for (let i = 0; i < (SEED_GIVENS[n] || 0); i++) {
+            const [r, c] = cells[i];
+            givens[r][c] = grid[r][c];
         }
-    }
-    function decodePuzzleCode(code) {
-        const size = Number(code[0]);
-        const clueDigits = code.slice(2, 2 + 4 * size);
-        const solutionDigits = code.slice(2 + 4 * size, 2 + 4 * size + size * size);
-        if (clueDigits.length !== 4 * size || solutionDigits.length !== size * size) return null;
-        const nums = str => str.split('').map(Number);
-        const clueVals = nums(clueDigits).map(v => (v === 0 ? null : v));
-        const decodedClues = {
-            top: clueVals.slice(0, size),
-            bottom: clueVals.slice(size, 2 * size),
-            left: clueVals.slice(2 * size, 3 * size),
-            right: clueVals.slice(3 * size, 4 * size),
-        };
-        const solutionFlat = nums(solutionDigits);
-        const decodedSolution = [];
-        for (let r = 0; r < size; r++) decodedSolution.push(solutionFlat.slice(r * size, r * size + size));
-        return { clues: decodedClues, solution: decodedSolution };
-    }
-    // Wybiera losową łamigłówkę z wygenerowanego banku; gdy jej brak (nie wygenerowano
-    // jeszcze dla tej kombinacji rozmiar/trudność albo bank się nie wczytał), generuje na żywo.
-    function pickPuzzle(n, difficulty) {
-        const codes = puzzleBank[`${n}-${difficulty}`];
-        if (Array.isArray(codes) && codes.length) {
-            const decoded = decodePuzzleCode(codes[Math.floor(Math.random() * codes.length)]);
-            if (decoded) return decoded;
+
+        let guard = 0;
+        let spare = cells.filter(([r, c]) => givens[r][c] === 0);
+        while (guard++ < n * n) {
+            const res = solve(n, clues, givens, 2, NODE_BUDGET);
+            if (!res.budgetExceeded && res.count === 1) break;
+            const alt = res.found.find(sol => sol.some((row, r) => row.some((v, c) => v !== grid[r][c])));
+            let r, c;
+            if (alt) {
+                const diffs = [];
+                for (let rr = 0; rr < n; rr++) for (let cc = 0; cc < n; cc++) {
+                    if (alt[rr][cc] !== grid[rr][cc] && givens[rr][cc] === 0) diffs.push([rr, cc]);
+                }
+                [r, c] = diffs[Math.floor(Math.random() * diffs.length)];
+            } else {
+                if (!spare.length) break;
+                [r, c] = spare.pop();
+            }
+            givens[r][c] = grid[r][c];
+            spare = spare.filter(([rr, cc]) => rr !== r || cc !== c);
         }
-        return generatePuzzle(n, difficulty);
+
+        const givenCells = [];
+        for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (givens[r][c] !== 0) givenCells.push([r, c]);
+        for (const [r, c] of shuffle(givenCells)) {
+            const backup = givens[r][c];
+            givens[r][c] = 0;
+            const res = solve(n, clues, givens, 2, NODE_BUDGET);
+            if (res.budgetExceeded || res.count !== 1) givens[r][c] = backup;
+        }
+
+        const slots = shuffle([
+            ...Array.from({ length: n }, (_, i) => ['top', i]),
+            ...Array.from({ length: n }, (_, i) => ['bottom', i]),
+            ...Array.from({ length: n }, (_, i) => ['left', i]),
+            ...Array.from({ length: n }, (_, i) => ['right', i]),
+        ]);
+        let hidden = 0;
+        for (const [key, idx] of slots) {
+            if (hidden >= targetHide) break;
+            const backup = clues[key][idx];
+            clues[key][idx] = null;
+            const res = solve(n, clues, givens, 2, NODE_BUDGET);
+            if (!res.budgetExceeded && res.count === 1) hidden++;
+            else clues[key][idx] = backup;
+        }
+
+        return { clues, givens, solution: grid };
     }
 
     // ── Stan gry ──────────────────────────────────────────────────────────────
@@ -554,6 +634,7 @@
         }
     });
 
+    let genToken = 0; // szybkie klikanie rozmiaru/trudności: liczy się tylko ostatnie żądanie
     function newGame() {
         winBanner.hidden = true;
         solved = false;
@@ -564,16 +645,31 @@
         recordSaved = false;
         syncSizeButtons();
         syncDiffButtons();
-        const generated = pickPuzzle(n, difficulty);
-        clues = generated.clues;
-        solution = generated.solution;
-        values = Array.from({ length: n }, () => new Array(n).fill(0));
-        notes = Array.from({ length: n }, () => Array.from({ length: n }, () => new Set()));
-        given = Array.from({ length: n }, () => new Array(n).fill(false));
-        render();
-        updateHintBtn();
-        updateRecordDisplay();
-        startTimer();
+        stopTimer();
+
+        // Generowanie 7×7 może potrwać ok. sekundy — pokaż komunikat i oddaj
+        // wątek przeglądarce, żeby zdążyła go namalować przed liczeniem.
+        boardEl.style.setProperty('--n', n);
+        boardEl.innerHTML = '<div class="board-loading">⏳ Generowanie…</div>';
+        numpadEl.innerHTML = '';
+        const token = ++genToken;
+        setTimeout(() => {
+            if (token !== genToken) return; // w międzyczasie zażądano innej gry
+            const generated = generatePuzzle(n, difficulty);
+            clues = generated.clues;
+            solution = generated.solution;
+            values = generated.givens.map(row => row.slice());
+            given = generated.givens.map(row => row.map(v => v !== 0));
+            notes = Array.from({ length: n }, () => Array.from({ length: n }, () => new Set()));
+            render();
+            for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+                if (given[r][c]) updateCellDisplay(r, c);
+            }
+            updateClueFeedback();
+            updateHintBtn();
+            updateRecordDisplay();
+            startTimer();
+        }, 30);
     }
 
     newGameBtn.addEventListener('click', newGame);
@@ -591,7 +687,7 @@
     });
 
     loadPrefs();
-    loadPuzzleBank().finally(newGame);
+    newGame();
 
     // ── Jasny/ciemny motyw ────────────────────────────────────────────────
     (() => {
