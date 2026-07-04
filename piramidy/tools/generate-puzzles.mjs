@@ -149,7 +149,7 @@ function countSolutions(n, clues, cap, nodeBudget = Infinity) {
 // Górny limit węzłów przeszukiwania na jedno sprawdzenie unikalności — ok. 1-2s dla 7×7
 // nawet w najgorszym przypadku (dowodzenie unikalności). Bez tego pojedyncze sprawdzenie
 // potrafi się ciągnąć wiele minut (patrz komentarz przy countSolutions).
-const NODE_BUDGET = 20_000_000;
+const NODE_BUDGET = 3_000_000;
 
 function generatePuzzle(n, difficulty) {
     const hiddenFraction = difficulty === 'hard' ? 0.5 : 0.28;
@@ -187,7 +187,7 @@ function generatePuzzle(n, difficulty) {
             }
         }
 
-        if (hidden === 0 && gridAttempt < 20) continue; // pełny komplet wskazówek nie był unikalny — spróbuj innej planszy
+        if (hidden === 0 && gridAttempt < 8) continue; // pełny komplet wskazówek nie był unikalny — spróbuj innej planszy
         return { clues, solution: grid, hiddenCount: hidden, targetHide, gridAttempts: gridAttempt + 1 };
     }
 }
