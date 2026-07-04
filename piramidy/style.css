@@ -1,0 +1,109 @@
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 420px;
+    align-items: stretch;
+}
+.control-row { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.control-label { color: var(--muted); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; }
+.pill-group { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.pill {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.pill:hover { border-color: var(--accent); }
+.pill.active { background: var(--accent); color: #000; border-color: var(--accent); }
+
+.hud { max-width: 420px; }
+
+#boardWrap { width: 100%; max-width: 420px; display: flex; justify-content: center; }
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(calc(var(--n) + 2), 1fr);
+    grid-template-rows: repeat(calc(var(--n) + 2), 1fr);
+    width: 100%;
+    aspect-ratio: 1;
+    gap: 2px;
+    background: var(--border);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+}
+
+.corner { background: var(--bg); }
+
+.clue {
+    background: var(--card);
+    color: var(--muted);
+    font-weight: 700;
+    font-size: var(--clue-font, 1rem);
+}
+.clue.clue-ok { color: var(--green); }
+.clue.clue-bad { color: var(--red); }
+
+.play {
+    background: var(--card);
+    color: var(--text);
+    border: none;
+    font-size: var(--cell-font, 1.3rem);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.12s;
+    font-family: inherit;
+}
+.play:hover { background: #263449; }
+.play.selected { background: rgba(56, 189, 248, 0.28); box-shadow: inset 0 0 0 2px var(--accent); }
+.play.conflict { color: var(--red); background: rgba(239, 68, 68, 0.18); }
+
+#numpad {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 420px;
+}
+.num-btn {
+    flex: 1;
+    min-width: 2.4rem;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.6rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.num-btn:hover { border-color: var(--accent); color: var(--accent); }
+.num-btn.clear-btn { color: var(--red); }
+
+.win-banner {
+    max-width: 420px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+}
+#winText { font-size: 1.15rem; font-weight: 700; }
+
+.rules { max-width: 420px; font-size: 0.88rem; color: var(--muted); }
+.rules summary { cursor: pointer; color: var(--text); font-weight: 600; margin-bottom: 0.5rem; }
+.rules p { margin-top: 0.5rem; }
