@@ -2,6 +2,7 @@
     const SIZES = [4, 5, 6, 7];
     const RECORDS_KEY = 'piramidyRecords';
     const PREF_KEY = 'piramidyPrefs';
+    const PUZZLES_PATH = 'data/puzzles.json';
 
     const boardEl = document.getElementById('board');
     const numpadEl = document.getElementById('numpad');
@@ -137,6 +138,47 @@
             fallback = { clues, solution: grid };
         }
         return fallback; // rzadki przypadek: brak unikalnego układu w limicie prób
+    }
+
+    // ── Bank łamigłówek wygenerowanych offline (piramidy/tools/generate-puzzles.mjs) ──
+    // Format kodu: <n><diff e/h><wskazówki top+bottom+left+right, 4n cyfr, 0=ukryta><rozwiązanie n×n cyfr>
+    let puzzleBank = {};
+    async function loadPuzzleBank() {
+        try {
+            const res = await fetch(PUZZLES_PATH, { cache: 'no-store' });
+            if (!res.ok) throw new Error('bank niedostępny');
+            puzzleBank = await res.json();
+        } catch (e) {
+            puzzleBank = {}; // brak banku (np. offline) — newGame() użyje generowania na żywo
+        }
+    }
+    function decodePuzzleCode(code) {
+        const size = Number(code[0]);
+        const clueDigits = code.slice(2, 2 + 4 * size);
+        const solutionDigits = code.slice(2 + 4 * size, 2 + 4 * size + size * size);
+        if (clueDigits.length !== 4 * size || solutionDigits.length !== size * size) return null;
+        const nums = str => str.split('').map(Number);
+        const clueVals = nums(clueDigits).map(v => (v === 0 ? null : v));
+        const decodedClues = {
+            top: clueVals.slice(0, size),
+            bottom: clueVals.slice(size, 2 * size),
+            left: clueVals.slice(2 * size, 3 * size),
+            right: clueVals.slice(3 * size, 4 * size),
+        };
+        const solutionFlat = nums(solutionDigits);
+        const decodedSolution = [];
+        for (let r = 0; r < size; r++) decodedSolution.push(solutionFlat.slice(r * size, r * size + size));
+        return { clues: decodedClues, solution: decodedSolution };
+    }
+    // Wybiera losową łamigłówkę z wygenerowanego banku; gdy jej brak (nie wygenerowano
+    // jeszcze dla tej kombinacji rozmiar/trudność albo bank się nie wczytał), generuje na żywo.
+    function pickPuzzle(n, difficulty) {
+        const codes = puzzleBank[`${n}-${difficulty}`];
+        if (Array.isArray(codes) && codes.length) {
+            const decoded = decodePuzzleCode(codes[Math.floor(Math.random() * codes.length)]);
+            if (decoded) return decoded;
+        }
+        return generatePuzzle(n, difficulty);
     }
 
     // ── Stan gry ──────────────────────────────────────────────────────────────
@@ -522,7 +564,7 @@
         recordSaved = false;
         syncSizeButtons();
         syncDiffButtons();
-        const generated = generatePuzzle(n, difficulty);
+        const generated = pickPuzzle(n, difficulty);
         clues = generated.clues;
         solution = generated.solution;
         values = Array.from({ length: n }, () => new Array(n).fill(0));
@@ -549,7 +591,7 @@
     });
 
     loadPrefs();
-    newGame();
+    loadPuzzleBank().finally(newGame);
 
     // ── Jasny/ciemny motyw ────────────────────────────────────────────────
     (() => {
