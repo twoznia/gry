@@ -269,8 +269,11 @@ for (const n of SIZES) {
         // ale możliwe dla 7×7 przy pechowej serii plansz. Uruchom skrypt ponownie dla tego
         // rozmiaru/trudności, jeśli chcesz to naprawić (za każdym razem losowana jest inna plansza).
         if (trivialCount > 0) console.log(`  ⚠ ${trivialCount}× TRYWIALNA łamigłówka (0 ukrytych wskazówek) — rozważ ponowne uruchomienie`);
+
+        // Zapis po każdej kombinacji, nie dopiero na końcu — 7×7 potrafi się długo generować,
+        // więc przerwanie skryptu w trakcie nie traci już ukończonych kombinacji.
+        writeFileSync(outputPath, JSON.stringify(bank, null, 2) + '\n', 'utf-8');
     }
 }
 
-writeFileSync(outputPath, JSON.stringify(bank, null, 2) + '\n', 'utf-8');
 console.log(`\nZapisano: ${outputPath}`);
