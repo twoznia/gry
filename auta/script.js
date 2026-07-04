@@ -245,33 +245,54 @@
             } else {
                 const phase = Math.floor(score / 15) % 4;
                 const truckChance = Math.min(0.15, score / 600); // trucks get more common
+                const plan = []; // { lane, isTruck }
 
                 if (phase === 0) {
                     // sequential lanes
                     const l = patternStep % 4;
-                    Math.random() < truckChance ? spawnTruck(l) : spawnCar(l);
+                    plan.push({ lane: l, isTruck: Math.random() < truckChance });
                     patternStep++;
                 } else if (phase === 1) {
                     // pairs
                     const pairs = [[0,3],[1,2],[0,1],[2,3]];
                     const [a,b] = pairs[patternStep % 4];
-                    spawnCar(a); spawnCar(b);
+                    plan.push({ lane: a }, { lane: b });
                     patternStep++;
                 } else if (phase === 2) {
                     // random, sometimes truck
                     const l = Math.floor(Math.random() * 4);
-                    Math.random() < truckChance ? spawnTruck(l) : spawnCar(l);
-                    if (vScore > 50) spawnCar((l + 2) % 4);
+                    plan.push({ lane: l, isTruck: Math.random() < truckChance });
+                    if (vScore > 50) plan.push({ lane: (l + 2) % 4 });
                 } else {
                     // 3 lanes blocked — luka ZAWSZE w zasięgu gracza (±1 pas),
                     // dzięki czemu poziom jest zawsze przechodliwy, także na trybie szybkim
                     if (vScore > 80) {
                         const open = Math.max(0, Math.min(3, playerLane + (Math.floor(Math.random() * 3) - 1)));
-                        [0,1,2,3].filter(l => l !== open).forEach(l => spawnCar(l));
+                        [0,1,2,3].filter(l => l !== open).forEach(l => plan.push({ lane: l }));
                     } else {
-                        spawnCar(Math.floor(Math.random() * 4));
+                        plan.push({ lane: Math.floor(Math.random() * 4) });
                     }
                 }
+
+                // Zabezpieczenie ogólne: uwzględnij też przeszkody już będące w drodze
+                // (blisko górnej krawędzi) — nowy spawn nigdy nie może zablokować
+                // wszystkich 4 pasów naraz, inaczej plansza staje się nie do przejścia.
+                const WAVE_TOP = 110;
+                const incoming = new Set(
+                    obstacles.filter(o => !o.isHeart && o.y < WAVE_TOP).map(o => o.lane)
+                );
+                plan.forEach(p => incoming.add(p.lane));
+                while (incoming.size >= 4 && plan.length) {
+                    const idx = plan.findIndex(p =>
+                        !obstacles.some(o => !o.isHeart && o.y < WAVE_TOP && o.lane === p.lane)
+                    );
+                    const removeAt = idx === -1 ? 0 : idx;
+                    const removedLane = plan[removeAt].lane;
+                    plan.splice(removeAt, 1);
+                    if (!plan.some(p => p.lane === removedLane)) incoming.delete(removedLane);
+                }
+
+                plan.forEach(p => (p.isTruck ? spawnTruck(p.lane) : spawnCar(p.lane)));
             }
         }
 
