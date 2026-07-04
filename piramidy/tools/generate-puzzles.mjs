@@ -74,13 +74,22 @@ function computeClues(grid) {
 // eksploduje — nawet przy PEŁNYM komplecie wskazówek potrafi trwać dziesiątki sekund.
 // Wskazówki "right"/"bottom" nadal sprawdzane są dopiero po ukończeniu wiersza/planszy
 // (wymagają znajomości całego wiersza/kolumny), ale to już wystarcza do rozsądnej szybkości.
-function countSolutions(n, clues, cap) {
+//
+// Dowodzenie UNIKALNOŚCI (solutions === 1) bywa dla 7×7 wyjątkowo kosztowne — trzeba
+// przeszukać niemal całą przestrzeń, żeby wykluczyć drugie rozwiązanie. `nodeBudget`
+// ogranicza to w czasie: po przekroczeniu limitu zwracamy -1 (nierozstrzygnięte), a
+// wywołujący traktuje to zachowawczo — "nie ryzykuj, zostaw wskazówkę odkrytą" — więc
+// wynik zawsze pozostaje poprawny (nigdy fałszywie "unikalny"), tylko czasem mniej
+// wskazówek uda się ukryć niż w idealnym przypadku.
+function countSolutions(n, clues, cap, nodeBudget = Infinity) {
     const grid = Array.from({ length: n }, () => new Array(n).fill(0));
     const rowUsed = new Array(n).fill(0);
     const colUsed = new Array(n).fill(0);
     const colMax = new Array(n).fill(0);
     const colVis = new Array(n).fill(0);
     let solutions = 0;
+    let nodes = 0;
+    let budgetExceeded = false;
 
     function checkRow(r) {
         const row = grid[r];
@@ -97,7 +106,8 @@ function countSolutions(n, clues, cap) {
         return true;
     }
     function backtrack(r, c, rowMax, rowVis) {
-        if (solutions >= cap) return;
+        if (solutions >= cap || budgetExceeded) return;
+        if (++nodes > nodeBudget) { budgetExceeded = true; return; }
         if (r === n) { if (checkCols()) solutions++; return; }
         if (c === n) { if (checkRow(r)) backtrack(r + 1, 0, 0, 0); return; }
         for (let v = 1; v <= n; v++) {
@@ -120,11 +130,11 @@ function countSolutions(n, clues, cap) {
             colMax[c] = prevColMax; colVis[c] = prevColVis;
             rowUsed[r] &= ~bit; colUsed[c] &= ~bit;
             grid[r][c] = 0;
-            if (solutions >= cap) return;
+            if (solutions >= cap || budgetExceeded) return;
         }
     }
     backtrack(0, 0, 0, 0);
-    return solutions;
+    return budgetExceeded ? -1 : solutions;
 }
 
 // Startujemy od PEŁNEGO kompletu wskazówek i po kolei, w losowej kolejności, próbujemy
@@ -136,6 +146,11 @@ function countSolutions(n, clues, cap) {
 // większych n) — usuwanie wskazówek nigdy nie może wtedy się udać (usunięcie informacji
 // nie może zmniejszyć liczby rozwiązań), więc `hidden` zostanie równe 0. To wystarczający
 // sygnał, by odrzucić tę planszę i wylosować nową — bez dodatkowego, osobnego sprawdzenia.
+// Górny limit węzłów przeszukiwania na jedno sprawdzenie unikalności — ok. 1-2s dla 7×7
+// nawet w najgorszym przypadku (dowodzenie unikalności). Bez tego pojedyncze sprawdzenie
+// potrafi się ciągnąć wiele minut (patrz komentarz przy countSolutions).
+const NODE_BUDGET = 20_000_000;
+
 function generatePuzzle(n, difficulty) {
     const hiddenFraction = difficulty === 'hard' ? 0.5 : 0.28;
     const totalSlots = 4 * n;
@@ -163,10 +178,12 @@ function generatePuzzle(n, difficulty) {
             if (hidden >= targetHide) break;
             const backup = clues[key][idx];
             clues[key][idx] = null;
-            if (countSolutions(n, clues, 2) === 1) {
+            // -1 (nierozstrzygnięte w limicie węzłów) traktujemy tak samo jak "niejednoznaczne" —
+            // zachowawczo zostawiamy wskazówkę odkrytą zamiast ryzykować błędną łamigłówkę.
+            if (countSolutions(n, clues, 2, NODE_BUDGET) === 1) {
                 hidden++;
             } else {
-                clues[key][idx] = backup; // usunięcie zepsułoby unikalność — przywróć
+                clues[key][idx] = backup;
             }
         }
 
