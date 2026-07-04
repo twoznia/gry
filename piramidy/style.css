@@ -130,7 +130,7 @@ body.light {
 }
 
 #noteBtn.active { background: var(--accent); color: #000; border-color: var(--accent); }
-#hintBtn:disabled { opacity: 0.4; cursor: not-allowed; }
+#hintBtn:disabled, #undoBtn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .play {
     background: var(--card);

@@ -2,6 +2,7 @@
     const SIZES = [4, 5, 6, 7];
     const RECORDS_KEY = 'piramidyRecords';
     const PREF_KEY = 'piramidyPrefs';
+    const SAVE_KEY = 'piramidySave';
 
     const boardEl = document.getElementById('board');
     const numpadEl = document.getElementById('numpad');
@@ -16,6 +17,7 @@
     const noteBtn = document.getElementById('noteBtn');
     const hintBtn = document.getElementById('hintBtn');
     const hintCountEl = document.getElementById('hintCount');
+    const undoBtn = document.getElementById('undoBtn');
     const MAX_HINTS = 3;
     const nameRow = document.getElementById('nameRow');
     const playerNameEl = document.getElementById('playerName');
@@ -276,6 +278,7 @@
     let timerInterval = null;
     let elapsedSec = 0;
     let solved = false;
+    let history = [];         // stos ruchów do cofania: { r, c, oldVal, oldNotes }
 
     function loadPrefs() {
         try {
@@ -287,6 +290,54 @@
     function savePrefs() {
         localStorage.setItem(PREF_KEY, JSON.stringify({ n, difficulty }));
     }
+
+    // ── Autozapis: gra wznawia się z tego samego miejsca po powrocie ─────────
+    function saveState() {
+        if (solved || !clues) return;
+        const state = {
+            n, difficulty, clues, solution, hintsUsed, elapsedSec,
+            values,
+            given,
+            notes: notes.map(row => row.map(set => [...set])),
+            history: history.map(h => ({ r: h.r, c: h.c, oldVal: h.oldVal, oldNotes: [...h.oldNotes] })),
+        };
+        try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch (e) { /* brak miejsca — trudno */ }
+    }
+    function clearSave() {
+        localStorage.removeItem(SAVE_KEY);
+    }
+    function restoreState() {
+        let s;
+        try { s = JSON.parse(localStorage.getItem(SAVE_KEY)); } catch (e) { return false; }
+        if (!s || !SIZES.includes(s.n) || !s.clues || !s.solution || !s.values) return false;
+        n = s.n;
+        difficulty = s.difficulty === 'hard' ? 'hard' : 'easy';
+        clues = s.clues;
+        solution = s.solution;
+        values = s.values;
+        given = s.given;
+        notes = s.notes.map(row => row.map(arr => new Set(arr)));
+        history = (s.history || []).map(h => ({ r: h.r, c: h.c, oldVal: h.oldVal, oldNotes: new Set(h.oldNotes) }));
+        hintsUsed = s.hintsUsed || 0;
+        solved = false;
+        selected = null;
+        noteMode = false;
+        recordSaved = false;
+        syncSizeButtons();
+        syncDiffButtons();
+        render();
+        for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) updateCellDisplay(r, c);
+        updateConflicts();
+        updateClueFeedback();
+        updateHintBtn();
+        updateUndoBtn();
+        updateRecordDisplay();
+        startTimer(s.elapsedSec || 0);
+        return true;
+    }
+    // dozapisz aktualny czas, gdy karta znika (zamknięcie/przełączenie)
+    document.addEventListener('visibilitychange', () => { if (document.hidden) saveState(); });
+    window.addEventListener('pagehide', saveState);
 
     function recordKey() { return `${n}-${difficulty}`; }
     function recordLabel(key) {
@@ -360,10 +411,10 @@
     recCloseBtn.addEventListener('click', () => recPanel.classList.remove('show'));
 
     function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
-    function startTimer() {
+    function startTimer(fromSec = 0) {
         stopTimer();
-        elapsedSec = 0;
-        timerEl.textContent = formatTime(0);
+        elapsedSec = fromSec;
+        timerEl.textContent = formatTime(elapsedSec);
         timerInterval = setInterval(() => {
             elapsedSec++;
             timerEl.textContent = formatTime(elapsedSec);
@@ -484,17 +535,26 @@
         playCellEl(r, c).classList.add('selected');
     }
 
+    function pushHistory(r, c) {
+        history.push({ r, c, oldVal: values[r][c], oldNotes: new Set(notes[r][c]) });
+        if (history.length > 300) history.shift();
+        updateUndoBtn();
+    }
+
     function inputValue(v) {
         if (!selected || solved) return;
         const { r, c } = selected;
         if (given[r][c]) return;   // pole uzupełnione podpowiedzią jest zablokowane
 
         if (noteMode && v !== 0) {
+            pushHistory(r, c);
             if (notes[r][c].has(v)) notes[r][c].delete(v); else notes[r][c].add(v);
             updateCellDisplay(r, c);
+            saveState();
             return;
         }
 
+        pushHistory(r, c);
         values[r][c] = values[r][c] === v ? 0 : v;   // ponowne kliknięcie tej samej liczby czyści pole
         if (values[r][c] !== 0) {
             notes[r][c].clear();
@@ -504,7 +564,25 @@
         updateConflicts();
         updateClueFeedback();
         checkWin();
+        saveState();
     }
+
+    // ── Cofanie: przywraca wartość i notatki pola sprzed ostatniego ruchu ────
+    // (uproszczenie: nie odtwarza notatek wyczyszczonych w innych polach tego ruchu)
+    function updateUndoBtn() { undoBtn.disabled = history.length === 0; }
+    function undo() {
+        if (solved || !history.length) return;
+        const { r, c, oldVal, oldNotes } = history.pop();
+        values[r][c] = oldVal;
+        notes[r][c] = new Set(oldNotes);
+        selectCell(r, c);
+        updateCellDisplay(r, c);
+        updateConflicts();
+        updateClueFeedback();
+        updateUndoBtn();
+        saveState();
+    }
+    undoBtn.addEventListener('click', undo);
 
     // ── Podświetlenie powtórzonych liczb w wierszu/kolumnie ──────────────────
     function groupByValue(getValue, length) {
@@ -561,6 +639,7 @@
 
         solved = true;
         stopTimer();
+        clearSave();
         winText.textContent = `Rozwiązane! Czas: ${formatTime(elapsedSec)}`;
         recordSaved = false;
         nameRow.style.display = 'flex';
@@ -603,6 +682,7 @@
         updateConflicts();
         updateClueFeedback();
         checkWin();
+        saveState();
     }
     hintBtn.addEventListener('click', hint);
 
@@ -615,6 +695,7 @@
 
     // ── Klawiatura: cyfry ustawiają wartość, strzałki przesuwają zaznaczenie ──
     document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'z') { undo(); e.preventDefault(); return; }
         if (e.key === 'n' || e.key === 'N') { toggleNoteMode(); return; }
         if (!selected) return;
         if (e.key >= '1' && e.key <= '9') {
@@ -646,6 +727,9 @@
         noteBtn.classList.remove('active');
         hintsUsed = 0;
         recordSaved = false;
+        history = [];
+        updateUndoBtn();
+        clearSave();
         syncSizeButtons();
         syncDiffButtons();
         stopTimer();
@@ -672,6 +756,7 @@
             updateHintBtn();
             updateRecordDisplay();
             startTimer();
+            saveState(); // odświeżenie strony w trakcie gry wznowi tę samą planszę
         }, 30);
     }
 
@@ -690,7 +775,7 @@
     });
 
     loadPrefs();
-    newGame();
+    if (!restoreState()) newGame(); // wznów zapisaną grę, jeśli jest
 
     // ── Jasny/ciemny motyw ────────────────────────────────────────────────
     (() => {
