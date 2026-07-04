@@ -30,3 +30,4 @@ Stan na 2026-07-04.
 - piramidy - back-link: obecny
 - binairo - back-link: obecny
 - calcudoku - back-link: obecny
+- nonogram - back-link: obecny
