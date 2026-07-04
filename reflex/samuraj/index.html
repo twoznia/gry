@@ -119,16 +119,17 @@
     // burst = how many balls appear in a single spawn (spread across columns and
     // staggered in time), so a straight swipe can't clear them all.
     const LEVEL_CONFIG = {
+        // arcChance: szansa, że kulka wyleci łukiem z dołu (jak w Fruit Ninja)
         child: [
-            { spawnMs: 850, speed: 2.0, bombChance: 0.08, burst: 1 },
-            { spawnMs: 700, speed: 2.6, bombChance: 0.10, burst: 1 },
-            { spawnMs: 580, speed: 3.2, bombChance: 0.12, burst: 1 },
+            { spawnMs: 850, speed: 2.0, bombChance: 0.08, burst: 1, arcChance: 0 },
+            { spawnMs: 700, speed: 2.6, bombChance: 0.10, burst: 1, arcChance: 0 },
+            { spawnMs: 580, speed: 3.2, bombChance: 0.12, burst: 1, arcChance: 0.25 },
         ],
         adult: [
-            { spawnMs: 620, speed: 3.8, bombChance: 0.10, burst: 2 },
-            { spawnMs: 540, speed: 4.5, bombChance: 0.13, burst: 2 },
-            { spawnMs: 470, speed: 5.2, bombChance: 0.16, burst: 3 },
-            { spawnMs: 400, speed: 6.0, bombChance: 0.20, burst: 3 },
+            { spawnMs: 620, speed: 3.8, bombChance: 0.10, burst: 2, arcChance: 0 },
+            { spawnMs: 540, speed: 4.5, bombChance: 0.13, burst: 2, arcChance: 0.25 },
+            { spawnMs: 470, speed: 5.2, bombChance: 0.16, burst: 3, arcChance: 0.35 },
+            { spawnMs: 400, speed: 6.0, bombChance: 0.20, burst: 3, arcChance: 0.45 },
         ],
     };
 
@@ -332,15 +333,34 @@
     function spawnOne(cfg, x) {
         const r = fruitRadius();
         const isBomb = Math.random() < cfg.bombChance;
-        const vy = cfg.speed * heightScale() * (0.85 + Math.random()*0.3);
-        fruits.push({
-            // stagger the vertical start so balls in one burst arrive at different
-            // times — you can't wipe the whole wave with a single straight swipe.
-            id: nextId++, x, y: -r - Math.random()*r*3, r, vy,
-            vx: (Math.random()-0.5) * 0.9,
+        const common = {
+            id: nextId++, x, r,
             color: FRUIT_COLORS[Math.floor(Math.random()*FRUIT_COLORS.length)],
             bomb: isBomb,
-        });
+        };
+        if (Math.random() < (cfg.arcChance || 0)) {
+            // wyrzut łukiem z dołu (jak w Fruit Ninja): start pod dolną krawędzią,
+            // prędkość w górę + grawitacja; szczyt łuku na ~55–85% wysokości canvasa
+            const g = 0.10 * heightScale();
+            const peak = canvas.height * (0.55 + Math.random()*0.3);
+            fruits.push({
+                ...common,
+                y: canvas.height + r,
+                vy: -Math.sqrt(2 * g * peak),
+                vx: (canvas.width/2 - x) / canvas.width * 3 + (Math.random()-0.5) * 1.2,
+                g,
+            });
+        } else {
+            fruits.push({
+                // stagger the vertical start so balls in one burst arrive at different
+                // times — you can't wipe the whole wave with a single straight swipe.
+                ...common,
+                y: -r - Math.random()*r*3,
+                vy: cfg.speed * heightScale() * (0.85 + Math.random()*0.3),
+                vx: (Math.random()-0.5) * 0.9,
+                g: 0,
+            });
+        }
     }
 
     function spawnFruit() {
@@ -487,7 +507,16 @@
         }
 
         if (phase === 'playing') {
-            for (const f of fruits) { f.y += f.vy * dt; f.x += f.vx * dt; }
+            for (const f of fruits) { f.vy += (f.g || 0) * dt; f.y += f.vy * dt; f.x += f.vx * dt; }
+            // kara za przepuszczoną zwykłą kulkę: -2 pkt + przerwanie serii (bomby wolno przepuszczać)
+            for (const f of fruits) {
+                if (f.y - f.r >= canvas.height + 40 && !f.bomb && f.vy > 0) {
+                    score = Math.max(0, score - 2);
+                    scoreDisplayEl.textContent = score;
+                    strokeFruitCount = 0;
+                    addFloat(Math.min(Math.max(f.x, 30), canvas.width - 30), canvas.height - 20, 'MISS -2', '#f87171');
+                }
+            }
             fruits = fruits.filter(f => f.y - f.r < canvas.height + 40);
             for (const f of fruits) drawFruit(f);
         } else if (phase === 'bonus' && bigBall) {
@@ -593,7 +622,7 @@
         bonusActiveAt = performance.now() + 1000;          // 1 s na przygotowanie zanim można ciąć
         bigBall = { x: canvas.width/2, y: canvas.height/2, r: Math.min(canvas.width, canvas.height)*0.2, pop: 0 };
         // brief banner then live
-        showBanner('🎁 PREMIA! Tnij dużą kulkę ile się da!', BONUS_TIME);
+        showBanner('🎁 PREMIA! Tnij dużą kulkę ile się da!');
         let left = BONUS_TIME;
         timerEl.textContent = left;
         countdownInterval = setInterval(() => {
@@ -613,16 +642,14 @@
     }
 
     // transient banner drawn over the canvas via a floating text
-    function showBanner(text, secs) {
+    function showBanner(text) {
         floats.push({ x: canvas.width/2, y: 38, text, color: '#fbbf24', life: 1.6, big: true });
     }
 
     function getReady(level) {
         clearTimers();
         phase = 'ready';
-        let n = 2;
         addFloat(canvas.width/2, canvas.height/2, 'Poziom ' + level, '#93c5fd');
-        timerEl.textContent = n;
         phaseTimeout = setTimeout(() => startLevel(level), 1100);
     }
 
