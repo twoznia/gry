@@ -72,6 +72,7 @@
             position: relative;
             width: var(--board-width);
             height: var(--board-height);
+            flex-shrink: 0;
             transform-origin: center top;
             transition: transform 0.3s ease;
         }
