@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Piramidy | @twoznia</title>
+    <title>Binairo | @twoznia</title>
     <link rel="stylesheet" href="../shared/style.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,8 +12,8 @@
 <a class="back-link" href="../">← Wróć</a>
 <button id="themeBtn" type="button">☀️ Jasny</button>
 
-<div class="game-title">🔺 Piramidy</div>
-<p class="game-subtitle">Ustaw wysokości 1–n tak, by liczba widocznych piramid zgadzała się z podpowiedziami na brzegach.</p>
+<div class="game-title">☀️🌙 Binairo</div>
+<p class="game-subtitle">Wypełnij planszę słońcami i księżycami — po równo w każdym wierszu i kolumnie, nigdy trzy takie same obok siebie.</p>
 
 <div class="card controls">
     <div class="control-row">
@@ -28,7 +28,6 @@
         </div>
     </div>
     <div class="control-row">
-        <button class="btn btn-secondary" id="noteBtn" type="button">✏️ Notatki</button>
         <button class="btn btn-secondary" id="hintBtn" type="button">💡 Podpowiedź <span id="hintCount">(3)</span></button>
     </div>
     <button class="btn btn-primary" id="newGameBtn">Nowa gra</button>
@@ -43,8 +42,6 @@
 <div id="boardWrap">
     <div id="board"></div>
 </div>
-
-<div id="numpad"></div>
 
 <div id="winBanner" class="card win-banner" hidden>
     <div id="winText"></div>
@@ -67,11 +64,10 @@
 
 <details class="card rules">
     <summary>Zasady gry</summary>
-    <p>Ustaw piramidy o wysokościach od 1 do n (n = rozmiar planszy). W każdym wierszu i kolumnie muszą znaleźć się wszystkie wysokości, każda dokładnie raz.</p>
-    <p>Na większych planszach część pól może być wypełniona od startu (podświetlone) — bez nich łamigłówka miałaby więcej niż jedno rozwiązanie.</p>
-    <p>Liczba przy krawędzi mówi, ile piramid widać z tej strony — wyższe piramidy zasłaniają niższe, które stoją za nimi (dalej od patrzącego).</p>
-    <p>Kliknij pole, a potem liczbę na klawiaturze poniżej planszy. Powtórzone liczby w wierszu/kolumnie podświetlają się na czerwono.</p>
-    <p>Tryb notatek (przycisk „Notatki” lub klawisz N) pozwala zapisać kilka kandydujących liczb w polu. Podpowiedź uzupełnia jedno pole poprawną liczbą (dostępne 3 razy na grę). W rankingu rekordów liczy się najpierw liczba użytych podpowiedzi, a dopiero potem czas.</p>
+    <p>Wypełnij każde pole słońcem ☀️ albo księżycem 🌙. Kliknięcie pola przełącza: puste → ☀️ → 🌙 → puste.</p>
+    <p>W każdym wierszu i każdej kolumnie musi być tyle samo słońc co księżyców. Trzy takie same symbole nie mogą stać obok siebie (w poziomie ani w pionie). Żadne dwa wiersze nie mogą być identyczne — i żadne dwie kolumny też.</p>
+    <p>Pola wypełnione od startu (podświetlone) są zablokowane. Naruszenia reguł podświetlają się na czerwono.</p>
+    <p>Klawiatura: strzałki wybierają pole, 1 = ☀️, 2 = 🌙, 0/Backspace czyści. Podpowiedź uzupełnia jedno pole (3 na grę). W rankingu rekordów liczy się najpierw liczba użytych podpowiedzi, a dopiero potem czas.</p>
 </details>
 
 <script src="script.js"></script>

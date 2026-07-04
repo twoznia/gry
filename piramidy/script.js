@@ -296,15 +296,17 @@
     function loadRecords() {
         try { return JSON.parse(localStorage.getItem(RECORDS_KEY)) || {}; } catch (e) { return {}; }
     }
+    function recHints(row) { return row.hints || 0; } // starsze wpisy bez pola hints = gry bez podpowiedzi
     function bestTime() {
         const rows = loadRecords()[recordKey()];
         return Array.isArray(rows) && rows.length ? rows[0].time : null;
     }
-    function saveRecord(name, key, sec) {
+    // Ranking: najpierw mniejsza liczba podpowiedzi, przy równej — krótszy czas.
+    function saveRecord(name, key, sec, hints) {
         const records = loadRecords();
         const rows = Array.isArray(records[key]) ? records[key] : [];
-        rows.push({ name, time: sec, date: new Date().toLocaleDateString('pl-PL') });
-        rows.sort((a, b) => a.time - b.time);
+        rows.push({ name, time: sec, hints, date: new Date().toLocaleDateString('pl-PL') });
+        rows.sort((a, b) => recHints(a) - recHints(b) || a.time - b.time);
         records[key] = rows.slice(0, 10);
         localStorage.setItem(RECORDS_KEY, JSON.stringify(records));
     }
@@ -328,9 +330,9 @@
         const rows = loadRecords()[key];
         if (!Array.isArray(rows) || !rows.length) return '<p class="rec-empty">Brak rekordów dla tego trybu.</p>';
         const medals = ['🥇', '🥈', '🥉'];
-        let h = '<table class="rec-table"><thead><tr><th>#</th><th>Imię</th><th>Czas</th><th>Data</th></tr></thead><tbody>';
+        let h = '<table class="rec-table"><thead><tr><th>#</th><th>Imię</th><th>Czas</th><th>💡</th><th>Data</th></tr></thead><tbody>';
         rows.forEach((r, i) => {
-            h += `<tr><td>${medals[i] || `${i + 1}.`}</td><td>${r.name}</td><td>${formatTime(r.time)}</td><td>${r.date}</td></tr>`;
+            h += `<tr><td>${medals[i] || `${i + 1}.`}</td><td>${r.name}</td><td>${formatTime(r.time)}</td><td>${recHints(r)}</td><td>${r.date}</td></tr>`;
         });
         return h + '</tbody></table>';
     }
@@ -560,13 +562,14 @@
         solved = true;
         stopTimer();
         winText.textContent = `Rozwiązane! Czas: ${formatTime(elapsedSec)}`;
-        const canSave = hintsUsed === 0;
-        recordSaved = !canSave;
-        nameRow.style.display = canSave ? 'flex' : 'none';
+        recordSaved = false;
+        nameRow.style.display = 'flex';
         saveBtn.disabled = false;
         playerNameEl.value = '';
-        saveInfoEl.style.display = canSave ? 'none' : 'block';
-        saveInfoEl.textContent = canSave ? '' : '⚠️ Gry z podpowiedziami nie są zapisywane.';
+        saveInfoEl.style.display = hintsUsed > 0 ? 'block' : 'none';
+        saveInfoEl.textContent = hintsUsed > 0
+            ? `💡 Użyto podpowiedzi: ${hintsUsed} — w rankingu wygrywają wyniki z mniejszą liczbą podpowiedzi.`
+            : '';
         winBanner.hidden = false;
     }
 
@@ -678,7 +681,7 @@
         if (recordSaved) return;
         const name = playerNameEl.value.trim();
         if (!name) { playerNameEl.focus(); return; }
-        saveRecord(name, recordKey(), elapsedSec);
+        saveRecord(name, recordKey(), elapsedSec, hintsUsed);
         recordSaved = true;
         saveBtn.disabled = true;
         updateRecordDisplay();

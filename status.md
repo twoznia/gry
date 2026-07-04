@@ -28,3 +28,4 @@ Stan na 2026-07-04.
 - sudoku - back-link: dodany
 - koloruj - back-link: obecny
 - piramidy - back-link: obecny
+- binairo - back-link: obecny
