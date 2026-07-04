@@ -1,6 +1,6 @@
 # Status Gier
 
-Stan na 2026-06-20.
+Stan na 2026-07-04.
 
 - auta - back-link: ujednolicony
 - jumper - back-link: ujednolicony
@@ -27,3 +27,4 @@ Stan na 2026-06-20.
 - mahjong - back-link: dodany
 - sudoku - back-link: dodany
 - koloruj - back-link: obecny
+- piramidy - back-link: obecny
