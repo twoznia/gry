@@ -40,6 +40,11 @@
     <button class="btn btn-secondary" id="recordsBtn" type="button">🏆 Rekordy</button>
 </div>
 
+<div id="toolbar">
+    <button class="pill active" data-tool="1" type="button">⬛ Maluj</button>
+    <button class="pill" data-tool="2" type="button">✕ Krzyżyk</button>
+</div>
+
 <div id="boardWrap">
     <div id="board"></div>
 </div>
@@ -67,7 +72,8 @@
     <summary>Zasady gry</summary>
     <p>Liczby przy wierszu/kolumnie opisują długości kolejnych ciągów zamalowanych pól — między ciągami jest co najmniej jedno pole przerwy. „0” oznacza pusty wiersz/kolumnę.</p>
     <p>Plansza „Losowa” to abstrakcyjny wzór, „Obrazek” — ukryty rysunek, którego nazwę poznasz po rozwiązaniu. Każda plansza (w obu trybach) rozwiązuje się w całości samą logiką, bez zgadywania.</p>
-    <p>Dotknięcie/kliknięcie pola przełącza cyklicznie: puste → ⬛ zamalowane → ✕ krzyżyk (na pewno nic tu nie ma) → puste. Na komputerze prawy przycisk myszy stawia krzyżyk od razu. Liczby wiersza/kolumny wygaszają się, gdy linia się zgadza, a robią się czerwone, gdy zamalowano za dużo.</p>
+    <p>Na komputerze: lewy przycisk myszy maluje, prawy stawia krzyżyk (na pewno nic tu nie ma), środkowy (kliknięcie rolką) czyści. Na ekranie dotykowym wybierz narzędzie ⬛/✕ tuż nad planszą i dotykaj pól. Rozpoczęcie na polu już oznaczonym czyści.</p>
+    <p>Przeciągnij (palcem lub myszą) wzdłuż wiersza albo kolumny, by oznaczyć całą linię naraz — bez klikania pole po polu. Liczby wiersza/kolumny wygaszają się, gdy linia się zgadza, a robią się czerwone, gdy zamalowano za dużo.</p>
     <p>Klawiatura: strzałki wybierają pole, 1 = maluj, 2 = krzyżyk, 0/Backspace czyści. „Cofnij” (Ctrl+Z) wycofuje ruchy.</p>
     <p>Podpowiedź poprawia jedno pole (3 na grę) — w rankingu liczy się najpierw liczba podpowiedzi, potem czas. Gra zapisuje się automatycznie i wznawia po powrocie.</p>
 </details>
