@@ -6,6 +6,7 @@
     const MAX_HINTS = 3;
 
     const boardEl = document.getElementById('board');
+    const toolbarEl = document.getElementById('toolbar');
     const sizeButtonsEl = document.getElementById('sizeButtons');
     const modeButtonsEl = document.getElementById('modeButtons');
     const newGameBtn = document.getElementById('newGameBtn');
@@ -169,6 +170,7 @@
     let n = 5;
     let mode = 'random';      // 'random' | 'picture'
     let motifName = null;     // nazwa obrazka (tryb obrazkowy)
+    let tool = 1;             // narzędzie dotykowe: 1 = maluj, 2 = krzyżyk
     let solution = null;      // solution[r][c] = 0/1
     let rowRuns = null, colRuns = null;
     let values = [];          // 0 = nieznane, 1 = zamalowane, 2 = krzyżyk
@@ -186,10 +188,11 @@
             const p = JSON.parse(localStorage.getItem(PREF_KEY)) || {};
             if (SIZES.includes(p.n)) n = p.n;
             if (p.mode === 'random' || p.mode === 'picture') mode = p.mode;
+            if (p.tool === 1 || p.tool === 2) { tool = p.tool; syncToolButtons(); }
         } catch (e) { /* domyślne wartości */ }
     }
     function savePrefs() {
-        localStorage.setItem(PREF_KEY, JSON.stringify({ n, mode }));
+        localStorage.setItem(PREF_KEY, JSON.stringify({ n, mode, tool }));
     }
 
     // ── Autozapis: gra wznawia się z tego samego miejsca po powrocie ─────────
@@ -323,6 +326,12 @@
     function syncModeButtons() {
         modeButtonsEl.querySelectorAll('.pill').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
     }
+    toolbarEl.querySelectorAll('.pill').forEach(b => {
+        b.addEventListener('click', () => { tool = Number(b.dataset.tool); syncToolButtons(); savePrefs(); });
+    });
+    function syncToolButtons() {
+        toolbarEl.querySelectorAll('.pill').forEach(b => b.classList.toggle('active', Number(b.dataset.tool) === tool));
+    }
 
     // ── Renderowanie: siatka (n+1)×(n+1) — wskazówki na brzegach + pola ──────
     function render() {
@@ -359,8 +368,7 @@
                 btn.dataset.c = c;
                 if (c > 0 && c % 5 === 0) btn.classList.add('gb-l');
                 if (r > 0 && r % 5 === 0) btn.classList.add('gb-t');
-                btn.addEventListener('click', () => cellClick(r, c));
-                btn.addEventListener('contextmenu', (e) => { e.preventDefault(); toggleCell(r, c, 2); });
+                // wejście obsługuje delegowany pointerdown na planszy (przeciąganie)
                 boardEl.appendChild(btn);
                 updateCellDisplay(r, c, btn);
             }
@@ -400,14 +408,70 @@
         checkWin();
         saveState();
     }
-    // klik/tap cyklicznie: puste → zamalowane → krzyżyk (na pewno nic) → puste
-    function cellClick(r, c) {
-        applyCell(r, c, (values[r][c] + 1) % 3);
-    }
-    // przełącznik konkretnego stanu (klawiatura 1/2, prawy przycisk myszy)
+    // przełącznik konkretnego stanu (klawiatura 1/2)
     function toggleCell(r, c, t) {
         applyCell(r, c, values[r][c] === t ? 0 : t);
     }
+
+    // ── Malowanie przeciąganiem ───────────────────────────────────────────────
+    // Mysz: lewy = maluj, prawy = krzyżyk, środkowy = czyść. Dotyk: narzędzie
+    // z paska nad planszą. Start na polu już oznaczonym = czyszczenie. Ruch po
+    // drugim polu blokuje oś (wiersz albo kolumnę) — jedno pociągnięcie oznacza
+    // całą linię. Jedna akcja obowiązuje przez całe pociągnięcie.
+    let stroke = null; // { action, r0, c0, axis: null|'h'|'v' }
+
+    function strokeApply(r, c) {
+        if (solved || given[r][c] || values[r][c] === stroke.action) return;
+        selectCell(r, c);
+        pushHistory(r, c);
+        values[r][c] = stroke.action;
+        updateCellDisplay(r, c);
+        updateLineClues(r, c);
+        checkWin();
+    }
+    function cellFromPoint(x, y) {
+        const el = document.elementFromPoint(x, y);
+        const cell = el && el.closest ? el.closest('.cell') : null;
+        return cell && boardEl.contains(cell) ? cell : null;
+    }
+    boardEl.addEventListener('contextmenu', (e) => e.preventDefault());
+    boardEl.addEventListener('pointerdown', (e) => {
+        const cell = e.target.closest ? e.target.closest('.cell') : null;
+        if (!cell || solved) return;
+        e.preventDefault();
+        const r = Number(cell.dataset.r), c = Number(cell.dataset.c);
+        let base;
+        if (e.pointerType === 'mouse') {
+            if (e.button === 0) base = 1;
+            else if (e.button === 2) base = 2;
+            else if (e.button === 1) base = 0;
+            else return;
+        } else {
+            base = tool;
+        }
+        const action = base !== 0 && values[r][c] === base ? 0 : base;
+        stroke = { action, r0: r, c0: c, axis: null };
+        boardEl.setPointerCapture(e.pointerId);
+        strokeApply(r, c);
+    });
+    boardEl.addEventListener('pointermove', (e) => {
+        if (!stroke) return;
+        const cell = cellFromPoint(e.clientX, e.clientY);
+        if (!cell) return;
+        let r = Number(cell.dataset.r), c = Number(cell.dataset.c);
+        if (r === stroke.r0 && c === stroke.c0) return;
+        if (!stroke.axis) stroke.axis = r === stroke.r0 ? 'h' : 'v';
+        // trzymaj się linii startowej — przeciąganie oznacza jeden wiersz/kolumnę
+        if (stroke.axis === 'h') r = stroke.r0; else c = stroke.c0;
+        strokeApply(r, c);
+    });
+    function endStroke() {
+        if (!stroke) return;
+        stroke = null;
+        saveState();
+    }
+    boardEl.addEventListener('pointerup', endStroke);
+    boardEl.addEventListener('pointercancel', endStroke);
 
     // ── Cofanie ───────────────────────────────────────────────────────────────
     function updateUndoBtn() { undoBtn.disabled = history.length === 0; }
