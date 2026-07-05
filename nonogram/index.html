@@ -28,13 +28,6 @@
         </div>
     </div>
     <div class="control-row">
-        <span class="control-label">Narzędzie</span>
-        <div class="pill-group" id="toolButtons">
-            <button class="pill active" data-tool="1">⬛ Maluj</button>
-            <button class="pill" data-tool="2">✖ Krzyżyk</button>
-        </div>
-    </div>
-    <div class="control-row">
         <button class="btn btn-secondary" id="hintBtn" type="button">💡 Podpowiedź <span id="hintCount">(3)</span></button>
         <button class="btn btn-secondary" id="undoBtn" type="button" disabled>↩️ Cofnij</button>
     </div>
@@ -74,7 +67,7 @@
     <summary>Zasady gry</summary>
     <p>Liczby przy wierszu/kolumnie opisują długości kolejnych ciągów zamalowanych pól — między ciągami jest co najmniej jedno pole przerwy. „0” oznacza pusty wiersz/kolumnę.</p>
     <p>Plansza „Losowa” to abstrakcyjny wzór, „Obrazek” — ukryty rysunek, którego nazwę poznasz po rozwiązaniu. Każda plansza (w obu trybach) rozwiązuje się w całości samą logiką, bez zgadywania.</p>
-    <p>Narzędzie „Maluj” zamalowuje pola, „Krzyżyk” oznacza pola na pewno puste (pomocniczo). Prawy przycisk myszy zawsze stawia krzyżyk. Ponowne kliknięcie czyści pole. Liczby wiersza/kolumny wygaszają się, gdy linia się zgadza, a robią się czerwone, gdy zamalowano za dużo.</p>
+    <p>Dotknięcie/kliknięcie pola przełącza cyklicznie: puste → ⬛ zamalowane → ✕ krzyżyk (na pewno nic tu nie ma) → puste. Na komputerze prawy przycisk myszy stawia krzyżyk od razu. Liczby wiersza/kolumny wygaszają się, gdy linia się zgadza, a robią się czerwone, gdy zamalowano za dużo.</p>
     <p>Klawiatura: strzałki wybierają pole, 1 = maluj, 2 = krzyżyk, 0/Backspace czyści. „Cofnij” (Ctrl+Z) wycofuje ruchy.</p>
     <p>Podpowiedź poprawia jedno pole (3 na grę) — w rankingu liczy się najpierw liczba podpowiedzi, potem czas. Gra zapisuje się automatycznie i wznawia po powrocie.</p>
 </details>
