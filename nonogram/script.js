@@ -7,6 +7,7 @@
 
     const boardEl = document.getElementById('board');
     const sizeButtonsEl = document.getElementById('sizeButtons');
+    const modeButtonsEl = document.getElementById('modeButtons');
     const toolButtonsEl = document.getElementById('toolButtons');
     const newGameBtn = document.getElementById('newGameBtn');
     const timerEl = document.getElementById('timer');
@@ -108,19 +109,67 @@
         return cells.every(row => row.every(v => v !== 0));
     }
 
-    // ── Generator: losowa plansza ~50% wypełnienia, aż przejdzie line-solver ──
-    function generatePuzzle(n) {
+    // ── Bank obrazków: każdy motyw ZWERYFIKOWANY line-solverem przed dodaniem
+    // (rozwiązuje się w całości logiką liniową — jednoznaczny, bez zgadywania).
+    // Format: wiersze ze znaków '#' (zamalowane) i '.' (puste).
+    const MOTIFS = {
+        5: [
+            { name: 'Serce', rows: ['.#.#.', '#####', '#####', '.###.', '..#..'] },
+            { name: 'Plus', rows: ['..#..', '..#..', '#####', '..#..', '..#..'] },
+            { name: 'Choinka', rows: ['..#..', '.###.', '#####', '..#..', '..#..'] },
+            { name: 'Kielich', rows: ['#####', '.###.', '..#..', '..#..', '.###.'] },
+            { name: 'Strzałka', rows: ['..#..', '.###.', '#####', '.###.', '.###.'] },
+            { name: 'Domek', rows: ['..#..', '.###.', '#####', '.#.#.', '.###.'] },
+            { name: 'Litera T', rows: ['#####', '..#..', '..#..', '..#..', '..#..'] },
+        ],
+        10: [
+            { name: 'Serce', rows: ['..##..##..', '.####.####', '##########', '##########', '##########', '.########.', '..######..', '...####...', '....##....', '..........'] },
+            { name: 'Domek', rows: ['....##....', '...####...', '..######..', '.########.', '##########', '.##....##.', '.##.##.##.', '.##.##.##.', '.##....##.', '.########.'] },
+            { name: 'Kotek', rows: ['.#......#.', '.##....##.', '.########.', '.########.', '#.##..##.#', '#########.', '.########.', '.#.####.#.', '.########.', '..##..##..'] },
+            { name: 'Łódka', rows: ['.....#....', '....##....', '...###....', '..####....', '.#####....', '######....', '....#.....', '##########', '.########.', '..######..'] },
+            { name: 'Choinka', rows: ['....##....', '...####...', '..######..', '.########.', '...####...', '..######..', '.########.', '##########', '....##....', '....##....'] },
+            { name: 'Grzybek', rows: ['...####...', '..######..', '.########.', '##########', '##########', '...####...', '...####...', '...####...', '...####...', '..######..'] },
+            { name: 'Kubek', rows: ['..........', '.#######..', '.########.', '.#######.#', '.#######.#', '.########.', '.#######..', '.#######..', '..#####...', '..........'] },
+        ],
+        15: [
+            { name: 'Motyl', rows: ['.##.........##.', '####.......####', '#####..#..#####', '######.#.######', '######.#.######', '.#####.#.#####.', '..####.#.####..', '...###.#.###...', '..####.#.####..', '.#####.#.#####.', '######.#.######', '######.#.######', '#####.....#####', '.###.......###.', '.##.........##.'] },
+            { name: 'Kot', rows: ['..#.........#..', '..##.......##..', '..###.....###..', '..###########..', '..###########..', '.#############.', '.##.#######.##.', '.#############.', '.###.#####.###.', '..###########..', '...#########...', '....#######....', '...##.###.##...', '..##...#...##..', '..###########..'] },
+            { name: 'Żaglówka', rows: ['.......#.......', '.......##......', '.......###.....', '.......####....', '.......#####...', '.......######..', '.......#####...', '.......####....', '.......###.....', '.......##......', '###############', '.#############.', '..###########..', '...#########...', '...............'] },
+            { name: 'Gwiazda', rows: ['.......#.......', '......###......', '......###......', '.....#####.....', '###############', '.#############.', '..###########..', '...#########...', '....#######....', '....#######....', '...####.####...', '...###...###...', '..###.....###..', '..##.......##..', '..#.........#..'] },
+            { name: 'Rakieta', rows: ['.......#.......', '......###......', '......###......', '.....#####.....', '.....#####.....', '.....##.##.....', '.....##.##.....', '.....#####.....', '.....#####.....', '....#######....', '...#########...', '..####.#.####..', '..###..#..###..', '..##...#...##..', '.......#.......'] },
+        ],
+    };
+
+    // ── Generator ─────────────────────────────────────────────────────────────
+    // Tryb losowy: plansza ~50% wypełnienia, aż przejdzie line-solver.
+    // Tryb obrazkowy: losowy motyw z banku (inny niż poprzedni).
+    let lastMotifName = null;
+    function generatePuzzle(n, mode) {
+        if (mode === 'picture') {
+            const pool = MOTIFS[n].filter(m => m.name !== lastMotifName);
+            const motif = pool[Math.floor(Math.random() * pool.length)];
+            lastMotifName = motif.name;
+            const grid = motif.rows.map(row => [...row].map(ch => (ch === '#' ? 1 : 0)));
+            return {
+                solution: grid,
+                rowRuns: grid.map(row => runsOf(row)),
+                colRuns: Array.from({ length: n }, (_, c) => runsOf(grid.map(row => row[c]))),
+                motifName: motif.name,
+            };
+        }
         for (;;) {
             const grid = Array.from({ length: n }, () =>
                 Array.from({ length: n }, () => (Math.random() < 0.5 ? 1 : 0)));
             const rowRuns = grid.map(row => runsOf(row));
             const colRuns = Array.from({ length: n }, (_, c) => runsOf(grid.map(row => row[c])));
-            if (lineSolvable(n, rowRuns, colRuns)) return { solution: grid, rowRuns, colRuns };
+            if (lineSolvable(n, rowRuns, colRuns)) return { solution: grid, rowRuns, colRuns, motifName: null };
         }
     }
 
     // ── Stan gry ──────────────────────────────────────────────────────────────
     let n = 5;
+    let mode = 'random';      // 'random' | 'picture'
+    let motifName = null;     // nazwa obrazka (tryb obrazkowy)
     let solution = null;      // solution[r][c] = 0/1
     let rowRuns = null, colRuns = null;
     let values = [];          // 0 = nieznane, 1 = zamalowane, 2 = krzyżyk
@@ -138,16 +187,17 @@
         try {
             const p = JSON.parse(localStorage.getItem(PREF_KEY)) || {};
             if (SIZES.includes(p.n)) n = p.n;
+            if (p.mode === 'random' || p.mode === 'picture') mode = p.mode;
         } catch (e) { /* domyślne wartości */ }
     }
     function savePrefs() {
-        localStorage.setItem(PREF_KEY, JSON.stringify({ n }));
+        localStorage.setItem(PREF_KEY, JSON.stringify({ n, mode }));
     }
 
     // ── Autozapis: gra wznawia się z tego samego miejsca po powrocie ─────────
     function saveState() {
         if (solved || !solution) return;
-        const state = { n, solution, rowRuns, colRuns, values, given, hintsUsed, elapsedSec, history };
+        const state = { n, mode, motifName, solution, rowRuns, colRuns, values, given, hintsUsed, elapsedSec, history };
         try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch (e) { /* brak miejsca — trudno */ }
     }
     function clearSave() {
@@ -158,6 +208,9 @@
         try { s = JSON.parse(localStorage.getItem(SAVE_KEY)); } catch (e) { return false; }
         if (!s || !SIZES.includes(s.n) || !s.solution || !s.values) return false;
         n = s.n;
+        mode = s.mode === 'picture' ? 'picture' : 'random';
+        motifName = s.motifName || null;
+        lastMotifName = motifName;
         solution = s.solution;
         rowRuns = s.rowRuns;
         colRuns = s.colRuns;
@@ -169,6 +222,7 @@
         selected = null;
         recordSaved = false;
         syncSizeButtons();
+        syncModeButtons();
         render();
         updateAllClues();
         updateHintBtn();
@@ -264,6 +318,12 @@
     });
     function syncSizeButtons() {
         [...sizeButtonsEl.children].forEach(b => b.classList.toggle('active', Number(b.dataset.size) === n));
+    }
+    modeButtonsEl.querySelectorAll('.pill').forEach(b => {
+        b.addEventListener('click', () => { mode = b.dataset.mode; savePrefs(); newGame(); });
+    });
+    function syncModeButtons() {
+        modeButtonsEl.querySelectorAll('.pill').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
     }
     toolButtonsEl.querySelectorAll('.pill').forEach(b => {
         b.addEventListener('click', () => {
@@ -392,7 +452,9 @@
             if (values[r][c] === 2) { values[r][c] = 0; updateCellDisplay(r, c); }
         }
         boardEl.querySelectorAll('.cell.selected').forEach(el => el.classList.remove('selected'));
-        winText.textContent = `Rozwiązane! Czas: ${formatTime(elapsedSec)}`;
+        winText.textContent = motifName
+            ? `Rozwiązane! To: ${motifName} 🖼️ Czas: ${formatTime(elapsedSec)}`
+            : `Rozwiązane! Czas: ${formatTime(elapsedSec)}`;
         recordSaved = false;
         nameRow.style.display = 'flex';
         saveBtn.disabled = false;
@@ -466,10 +528,12 @@
         updateUndoBtn();
         clearSave();
         syncSizeButtons();
-        const generated = generatePuzzle(n);
+        syncModeButtons();
+        const generated = generatePuzzle(n, mode);
         solution = generated.solution;
         rowRuns = generated.rowRuns;
         colRuns = generated.colRuns;
+        motifName = generated.motifName;
         values = Array.from({ length: n }, () => new Array(n).fill(0));
         given = Array.from({ length: n }, () => new Array(n).fill(false));
         render();
