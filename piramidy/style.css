@@ -1,6 +1,6 @@
 :root {
-    --clue-bg: #16233a;
-    --clue-text: #7dd3fc;
+    --clue-bg: #0c4a6e; /* wyraźnie niebieskie tło — musi się odcinać od pól gry (#1e293b) */
+    --clue-text: #bae6fd;
     --given-bg: rgba(56, 189, 248, 0.16);
 }
 body.light {
