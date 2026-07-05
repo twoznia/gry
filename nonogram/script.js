@@ -8,7 +8,6 @@
     const boardEl = document.getElementById('board');
     const sizeButtonsEl = document.getElementById('sizeButtons');
     const modeButtonsEl = document.getElementById('modeButtons');
-    const toolButtonsEl = document.getElementById('toolButtons');
     const newGameBtn = document.getElementById('newGameBtn');
     const timerEl = document.getElementById('timer');
     const recordDisplayEl = document.getElementById('recordDisplay');
@@ -174,7 +173,6 @@
     let rowRuns = null, colRuns = null;
     let values = [];          // 0 = nieznane, 1 = zamalowane, 2 = krzyżyk
     let given = [];           // pola poprawione podpowiedzią (zablokowane)
-    let tool = 1;             // 1 = maluj, 2 = krzyżyk
     let hintsUsed = 0;
     let recordSaved = false;
     let selected = null;
@@ -325,12 +323,6 @@
     function syncModeButtons() {
         modeButtonsEl.querySelectorAll('.pill').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
     }
-    toolButtonsEl.querySelectorAll('.pill').forEach(b => {
-        b.addEventListener('click', () => {
-            tool = Number(b.dataset.tool);
-            toolButtonsEl.querySelectorAll('.pill').forEach(x => x.classList.toggle('active', x === b));
-        });
-    });
 
     // ── Renderowanie: siatka (n+1)×(n+1) — wskazówki na brzegach + pola ──────
     function render() {
@@ -367,8 +359,8 @@
                 btn.dataset.c = c;
                 if (c > 0 && c % 5 === 0) btn.classList.add('gb-l');
                 if (r > 0 && r % 5 === 0) btn.classList.add('gb-t');
-                btn.addEventListener('click', () => cellClick(r, c, tool));
-                btn.addEventListener('contextmenu', (e) => { e.preventDefault(); cellClick(r, c, 2); });
+                btn.addEventListener('click', () => cellClick(r, c));
+                btn.addEventListener('contextmenu', (e) => { e.preventDefault(); toggleCell(r, c, 2); });
                 boardEl.appendChild(btn);
                 updateCellDisplay(r, c, btn);
             }
@@ -397,16 +389,24 @@
         updateUndoBtn();
     }
 
-    function cellClick(r, c, t) {
+    function applyCell(r, c, newVal) {
         if (solved) return;
         selectCell(r, c);
         if (given[r][c]) return;
         pushHistory(r, c);
-        values[r][c] = values[r][c] === t ? 0 : t; // ponowne użycie narzędzia czyści pole
+        values[r][c] = newVal;
         updateCellDisplay(r, c);
         updateLineClues(r, c);
         checkWin();
         saveState();
+    }
+    // klik/tap cyklicznie: puste → zamalowane → krzyżyk (na pewno nic) → puste
+    function cellClick(r, c) {
+        applyCell(r, c, (values[r][c] + 1) % 3);
+    }
+    // przełącznik konkretnego stanu (klawiatura 1/2, prawy przycisk myszy)
+    function toggleCell(r, c, t) {
+        applyCell(r, c, values[r][c] === t ? 0 : t);
     }
 
     // ── Cofanie ───────────────────────────────────────────────────────────────
@@ -501,12 +501,12 @@
         if (!selected) return;
         const { r, c } = selected;
         if (e.key === '1' || e.key === '2') {
-            cellClick(r, c, Number(e.key));
+            toggleCell(r, c, Number(e.key));
             e.preventDefault();
             return;
         }
         if (e.key === 'Backspace' || e.key === 'Delete' || e.key === '0') {
-            if (values[r][c] !== 0) cellClick(r, c, values[r][c]);
+            if (values[r][c] !== 0) applyCell(r, c, 0);
             e.preventDefault();
             return;
         }
