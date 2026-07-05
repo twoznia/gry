@@ -528,6 +528,7 @@
             ? `💡 Użyto podpowiedzi: ${hintsUsed} — w rankingu wygrywają wyniki z mniejszą liczbą podpowiedzi.`
             : '';
         winBanner.hidden = false;
+        winBanner.scrollIntoView({ behavior: 'smooth', block: 'center' }); // na telefonie baner bywa poza ekranem
     }
 
     // ── Podpowiedź: poprawia losowe błędne pole zgodnie z rozwiązaniem ───────
@@ -561,6 +562,7 @@
 
     // ── Klawiatura ────────────────────────────────────────────────────────────
     document.addEventListener('keydown', (e) => {
+        if (e.target === playerNameEl) return; // pisanie imienia nie steruje grą
         if ((e.ctrlKey || e.metaKey) && e.key === 'z') { undo(); e.preventDefault(); return; }
         if (!selected) return;
         const { r, c } = selected;
@@ -621,6 +623,7 @@
         saveInfoEl.style.display = 'block';
         saveInfoEl.textContent = '✓ Wynik zapisany!';
     });
+    playerNameEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') saveBtn.click(); });
 
     loadPrefs();
     if (!restoreState()) newGame(); // wznów zapisaną grę, jeśli jest

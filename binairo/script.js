@@ -423,6 +423,7 @@
             ? `💡 Użyto podpowiedzi: ${hintsUsed} — w rankingu wygrywają wyniki z mniejszą liczbą podpowiedzi.`
             : '';
         winBanner.hidden = false;
+        winBanner.scrollIntoView({ behavior: 'smooth', block: 'center' }); // na telefonie baner bywa poza ekranem
     }
 
     // ── Podpowiedź: uzupełnia losowe błędne/puste pole poprawną wartością ────
@@ -457,6 +458,7 @@
 
     // ── Klawiatura: 1 = ☀️, 2 = 🌙, 0/Backspace czyści, strzałki wybierają ──
     document.addEventListener('keydown', (e) => {
+        if (e.target === playerNameEl) return; // pisanie imienia nie steruje grą
         if (!selected) return;
         const { r, c } = selected;
         if (e.key === '1' || e.key === '2') {
@@ -508,6 +510,7 @@
         saveInfoEl.style.display = 'block';
         saveInfoEl.textContent = '✓ Wynik zapisany!';
     });
+    playerNameEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') saveBtn.click(); });
 
     loadPrefs();
     newGame();
