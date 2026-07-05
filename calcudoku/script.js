@@ -2,6 +2,26 @@
     const SIZES = [4, 5, 6, 7];
     const RECORDS_KEY = 'calcudokuRecords';
     const PREF_KEY = 'calcudokuPrefs';
+
+    // ── Język: wspólny przełącznik PL/EN (klucz 'lang', jak w Pisaniu) ────────
+    const lang = localStorage.getItem('lang') || 'pl';
+    const TR = lang === 'en' ? {
+        solved: 'Solved! Time:',
+        hintsInfo: h => `💡 Hints used: ${h} — results with fewer hints rank higher.`,
+        saved: '✓ Score saved!',
+        noRecords: 'No records for this mode yet.',
+        thName: 'Name', thTime: 'Time', thDate: 'Date',
+        easy: 'Easy', hard: 'Hard',
+        themeDark: '🌙 Dark', themeLight: '☀️ Light',
+    } : {
+        solved: 'Rozwiązane! Czas:',
+        hintsInfo: h => `💡 Użyto podpowiedzi: ${h} — w rankingu wygrywają wyniki z mniejszą liczbą podpowiedzi.`,
+        saved: '✓ Wynik zapisany!',
+        noRecords: 'Brak rekordów dla tego trybu.',
+        thName: 'Imię', thTime: 'Czas', thDate: 'Data',
+        easy: 'Łatwy', hard: 'Trudny',
+        themeDark: '🌙 Ciemny', themeLight: '☀️ Jasny',
+    };
     const SAVE_KEY = 'calcudokuSave';
     const MAX_HINTS = 3;
 
@@ -293,7 +313,7 @@
     function recordKey() { return `${n}-${difficulty}`; }
     function recordLabel(key) {
         const [size, diff] = key.split('-');
-        return `${size}×${size} ${diff === 'hard' ? 'Trudny' : 'Łatwy'}`;
+        return `${size}×${size} ${diff === 'hard' ? TR.hard : TR.easy}`;
     }
     function loadRecords() {
         try { return JSON.parse(localStorage.getItem(RECORDS_KEY)) || {}; } catch (e) { return {}; }
@@ -328,9 +348,9 @@
     let recActiveKey = recordKey();
     function renderRecTable(key) {
         const rows = loadRecords()[key];
-        if (!Array.isArray(rows) || !rows.length) return '<p class="rec-empty">Brak rekordów dla tego trybu.</p>';
+        if (!Array.isArray(rows) || !rows.length) return `<p class="rec-empty">${TR.noRecords}</p>`;
         const medals = ['🥇', '🥈', '🥉'];
-        let h = '<table class="rec-table"><thead><tr><th>#</th><th>Imię</th><th>Czas</th><th>💡</th><th>Data</th></tr></thead><tbody>';
+        let h = `<table class="rec-table"><thead><tr><th>#</th><th>${TR.thName}</th><th>${TR.thTime}</th><th>💡</th><th>${TR.thDate}</th></tr></thead><tbody>`;
         rows.forEach((r, i) => {
             h += `<tr><td>${medals[i] || `${i + 1}.`}</td><td>${r.name}</td><td>${formatTime(r.time)}</td><td>${recHints(r)}</td><td>${r.date}</td></tr>`;
         });
@@ -570,14 +590,14 @@
         solved = true;
         stopTimer();
         clearSave();
-        winText.textContent = `Rozwiązane! Czas: ${formatTime(elapsedSec)}`;
+        winText.textContent = `${TR.solved} ${formatTime(elapsedSec)}`;
         recordSaved = false;
         nameRow.style.display = 'flex';
         saveBtn.disabled = false;
         playerNameEl.value = '';
         saveInfoEl.style.display = hintsUsed > 0 ? 'block' : 'none';
         saveInfoEl.textContent = hintsUsed > 0
-            ? `💡 Użyto podpowiedzi: ${hintsUsed} — w rankingu wygrywają wyniki z mniejszą liczbą podpowiedzi.`
+            ? TR.hintsInfo(hintsUsed)
             : '';
         winBanner.hidden = false;
         winBanner.scrollIntoView({ behavior: 'smooth', block: 'center' }); // na telefonie baner bywa poza ekranem
@@ -688,9 +708,45 @@
         saveBtn.disabled = true;
         updateRecordDisplay();
         saveInfoEl.style.display = 'block';
-        saveInfoEl.textContent = '✓ Wynik zapisany!';
+        saveInfoEl.textContent = TR.saved;
     });
     playerNameEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') saveBtn.click(); });
+
+    // ── Przełącznik języka + tłumaczenie statycznych tekstów strony ─────────
+    (() => {
+        const pl = document.getElementById('langPl');
+        const en = document.getElementById('langEn');
+        (lang === 'en' ? en : pl).classList.add('active');
+        pl.addEventListener('click', () => { localStorage.setItem('lang', 'pl'); location.reload(); });
+        en.addEventListener('click', () => { localStorage.setItem('lang', 'en'); location.reload(); });
+    })();
+    if (lang === 'en') {
+        document.documentElement.lang = 'en';
+        document.querySelector('.game-subtitle').textContent = 'Fill the grid with numbers 1–n, no repeats in rows or columns, so every cage produces its result.';
+        const labels = document.querySelectorAll('.control-label');
+        labels[0].textContent = 'Size';
+        labels[1].textContent = 'Difficulty';
+        diffButtonsEl.querySelector('[data-diff="easy"]').textContent = 'Easy';
+        diffButtonsEl.querySelector('[data-diff="hard"]').textContent = 'Hard';
+        noteBtn.textContent = '✏️ Notes';
+        hintBtn.firstChild.textContent = '💡 Hint ';
+        undoBtn.textContent = '↩️ Undo';
+        newGameBtn.textContent = 'New game';
+        timerEl.parentNode.firstChild.textContent = 'Time: ';
+        recordDisplayEl.parentNode.firstChild.textContent = 'Best: ';
+        recordsBtn.textContent = '🏆 Records';
+        playerNameEl.placeholder = 'Your name…';
+        saveBtn.textContent = 'Save';
+        winPlayAgain.textContent = 'Play again';
+        recPanel.querySelector('h3').textContent = '🏆 Records';
+        recCloseBtn.textContent = 'Close';
+        document.querySelector('.rules').innerHTML = `
+            <summary>How to play</summary>
+            <p>Fill the grid with numbers 1 to n (n = board size) — each number exactly once in every row and column.</p>
+            <p>The board is divided into cages (thick borders). Numbers in a cage must produce the result in its corner: e.g. "12×" means a product of 12, "3−" a difference of 3, "2÷" a quotient of 2. A cage with a plain number is a single cell of that value. Subtraction and division appear only in 2-cell cages — the order of numbers does not matter.</p>
+            <p>Tap a cell, then a number on the keypad below the board. Repeated numbers and wrong cages turn red.</p>
+            <p>Notes mode (the "Notes" button or the N key) stores candidate numbers. A hint fills one cell (3 per game) — records rank by hints used first, then by time. "Undo" (Ctrl+Z) reverts moves. The game saves automatically and resumes when you return.</p>`;
+    }
 
     loadPrefs();
     if (!restoreState()) newGame(); // wznów zapisaną grę, jeśli jest
@@ -699,10 +755,10 @@
     (() => {
         const themeBtn = document.getElementById('themeBtn');
         const saved = localStorage.getItem('calcudokuTheme');
-        if (saved === 'light') { document.body.classList.add('light'); themeBtn.textContent = '🌙 Ciemny'; }
+        if (saved === 'light') { document.body.classList.add('light'); themeBtn.textContent = TR.themeDark; } else { themeBtn.textContent = TR.themeLight; }
         themeBtn.addEventListener('click', () => {
             const light = document.body.classList.toggle('light');
-            themeBtn.textContent = light ? '🌙 Ciemny' : '☀️ Jasny';
+            themeBtn.textContent = light ? TR.themeDark : TR.themeLight;
             localStorage.setItem('calcudokuTheme', light ? 'light' : 'dark');
         });
     })();
