@@ -16,7 +16,7 @@ Collection of simple browser games by [@twoznia](https://github.com/twoznia). Pu
 │   ├── index.html      # Required
 │   ├── style.css       # Optional
 │   └── script.js       # Optional
-├── pytania/            # Adult quiz — data in pytania/dane/pytania.csv
+├── pytania/            # Adult quiz — source data in pytania/dane/kategorie/*.csv, built into pytania/dane/pytania.csv
 ├── pytanka/            # Kids quiz — data in pytanka/dane/pytania.csv
 └── słówka/             # Vocabulary trainer — data in słówka/data/, manifest in słówka/data/manifest.json
 ```
@@ -29,7 +29,7 @@ Te reguły mają trzymać sesje krótkie i tanie:
 
 - **Nowa gałąź od `main` na każde zadanie** — nie kontynuuj na starych, przeterminowanych gałęziach (ryzyko destrukcyjnych PR-ów). Po scaleniu zaczynaj od świeżej gałęzi.
 - **Grupuj zmiany w jeden PR** — rób kilka powiązanych zmian naraz, dopiero potem PR + merge. Unikaj wielu małych cykli PR→merge→rebase.
-- **NIE wczytuj plików CSV** (`pytania/dane/pytania.csv`, `pytanka/dane/pytania.csv`, `słówka/data/**`) dopóki użytkownik nie poprosi o to wyraźnie — są duże. Do podglądu używaj `Grep`/`head`/`offset`, nie czytaj całości.
+- **NIE wczytuj plików CSV** (`pytania/dane/pytania.csv`, `pytania/dane/kategorie/*.csv`, `pytanka/dane/pytania.csv`, `słówka/data/**`) dopóki użytkownik nie poprosi o to wyraźnie — są duże. Do podglądu używaj `Grep`/`head`/`offset`, nie czytaj całości.
 - **Czytaj pliki fragmentami** (`offset`/`limit`, `Grep`), nie w całości — zwłaszcza duże skrypty i dane.
 - **Nie ładuj ciężkich skilli bez potrzeby** (np. dokumentacji API) — przy prostych zmianach edytuj kod wprost.
 - **Oszczędnie z GitHub MCP** — odpowiedzi są bardzo duże. Do inspekcji używaj lokalnego `git`/`git log`; MCP rezerwuj do tworzenia i merge'owania PR-ów. Status CI sprawdzaj raz, nie w pętli.
@@ -52,12 +52,14 @@ Ready-made classes: `.screen`/`.screen.active`, `.card`, `.btn.btn-primary`, `.b
 
 ## Data-driven games
 
-### Pytania (`pytania/dane/pytania.csv`)
-Format (no header, semicolon separator, UTF-8):
+### Pytania (`pytania/dane/kategorie/<Kategoria>.csv`, built into `pytania/dane/pytania.csv`)
+Source of truth is one CSV per category in `pytania/dane/kategorie/` (no header). Format (semicolon separator, UTF-8):
 ```
 category;subcategory;level;question;correct;wrong1;wrong2;wrong3
 ```
 Levels: `łatwe` · `średnie` · `trudne` · `bardzo trudne`
+
+After editing category files, rebuild the runtime file with `node pytania/tools/merge_kategorie.mjs`. Never edit `pytania/dane/pytania.csv` directly — it's generated.
 
 ### Pytanka (`pytanka/dane/pytania.csv`)
 Same format but only 3 wrong answers (`wrong1;wrong2`, no `wrong3`).
@@ -73,6 +75,9 @@ Same format but only 3 wrong answers (`wrong1;wrong2`, no `wrong3`).
 ```bash
 # Regenerate słówka manifest
 node słówka/tools/generate_manifest.mjs
+
+# Rebuild pytania/dane/pytania.csv from pytania/dane/kategorie/*.csv
+node pytania/tools/merge_kategorie.mjs
 ```
 
 ## Adding a new game

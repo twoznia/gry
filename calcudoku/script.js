@@ -1,8 +1,7 @@
 (() => {
     const SIZES = [4, 5, 6, 7];
-    const RECORDS_KEY = 'piramidyRecords';
-    const PREF_KEY = 'piramidyPrefs';
-    const SAVE_KEY = 'piramidySave';
+    const RECORDS_KEY = 'calcudokuRecords';
+    const PREF_KEY = 'calcudokuPrefs';
 
     // ── Język: wspólny przełącznik PL/EN (klucz 'lang', jak w Pisaniu) ────────
     const lang = localStorage.getItem('lang') || 'pl';
@@ -13,7 +12,6 @@
         noRecords: 'No records for this mode yet.',
         thName: 'Name', thTime: 'Time', thDate: 'Date',
         easy: 'Easy', hard: 'Hard',
-        generating: '⏳ Generating…',
         themeDark: '🌙 Dark', themeLight: '☀️ Light',
     } : {
         solved: 'Rozwiązane! Czas:',
@@ -22,9 +20,10 @@
         noRecords: 'Brak rekordów dla tego trybu.',
         thName: 'Imię', thTime: 'Czas', thDate: 'Data',
         easy: 'Łatwy', hard: 'Trudny',
-        generating: '⏳ Generowanie…',
         themeDark: '🌙 Ciemny', themeLight: '☀️ Jasny',
     };
+    const SAVE_KEY = 'calcudokuSave';
+    const MAX_HINTS = 3;
 
     const boardEl = document.getElementById('board');
     const numpadEl = document.getElementById('numpad');
@@ -40,20 +39,15 @@
     const hintBtn = document.getElementById('hintBtn');
     const hintCountEl = document.getElementById('hintCount');
     const undoBtn = document.getElementById('undoBtn');
-    const MAX_HINTS = 3;
     const nameRow = document.getElementById('nameRow');
     const playerNameEl = document.getElementById('playerName');
     const saveBtn = document.getElementById('saveBtn');
     const saveInfoEl = document.getElementById('saveInfo');
+    const recordsBtn = document.getElementById('recordsBtn');
+    const recPanel = document.getElementById('recPanel');
     const recTabsEl = document.getElementById('recTabs');
     const recTableEl = document.getElementById('recTable');
-
-    // ── Ile piramid widać, patrząc na tablicę wysokości od pierwszego elementu ──
-    function countVisible(arr) {
-        let maxSoFar = 0, count = 0;
-        for (const v of arr) { if (v > maxSoFar) { count++; maxSoFar = v; } }
-        return count;
-    }
+    const recCloseBtn = document.getElementById('recCloseBtn');
 
     function shuffle(arr) {
         const a = arr.slice();
@@ -64,7 +58,7 @@
         return a;
     }
 
-    // ── Losowy kwadrat łaciński n×n (wartości 1..n, bez powtórzeń w wierszu/kolumnie) ──
+    // ── Losowy kwadrat łaciński n×n (jak w Piramidach) ────────────────────────
     function randomLatinSquare(n) {
         let grid = [];
         for (let r = 0; r < n; r++) {
@@ -74,226 +68,183 @@
         }
         const rowOrder = shuffle([...Array(n).keys()]);
         const colOrder = shuffle([...Array(n).keys()]);
-        const symbolMap = shuffle([...Array(n).keys()]).map(v => v + 1); // stara wartość i -> symbolMap[i-1]
+        const symbolMap = shuffle([...Array(n).keys()]).map(v => v + 1);
         grid = rowOrder.map(r => colOrder.map(c => symbolMap[grid[r][c] - 1]));
         return grid;
     }
 
-    function computeClues(grid) {
-        const n = grid.length;
-        const left = [], right = [], top = [], bottom = [];
-        for (let r = 0; r < n; r++) {
-            const row = grid[r];
-            left.push(countVisible(row));
-            right.push(countVisible(row.slice().reverse()));
-        }
-        for (let c = 0; c < n; c++) {
-            const col = grid.map(row => row[c]);
-            top.push(countVisible(col));
-            bottom.push(countVisible(col.slice().reverse()));
-        }
-        return { top, bottom, left, right };
-    }
+    // ── Podział planszy na klatki (losowy rozrost regionów) + działania ──────
+    function makeCages(n, difficulty, grid) {
+        const cageId = Array.from({ length: n }, () => new Array(n).fill(-1));
+        const cages = []; // { cells: [[r,c],...], op, target }
+        const maxSize = difficulty === 'hard' ? 4 : 3;
+        const singleChance = difficulty === 'hard' ? 0.05 : 0.15;
 
-    // ── Solver: backtracking po permutacjach wierszy ──────────────────────────
-    // Zamiast wypełniać komórka po komórce, układa plansze wiersz po wierszu z listy
-    // permutacji 1..n przefiltrowanych wskazówkami left/right i polami givens danego
-    // wiersza. Kolumny przycinane na bieżąco (kolizje wartości + widoczność od góry).
-    // To o rzędy wielkości szybsze niż backtracking komórkowy — dla 7×7 pojedyncze
-    // sprawdzenie unikalności schodzi z minut do ułamków sekundy.
-    const permCache = new Map();
-    function allPerms(n) {
-        if (permCache.has(n)) return permCache.get(n);
-        const out = [];
-        const arr = Array.from({ length: n }, (_, i) => i + 1);
-        (function permute(k) {
-            if (k === n) {
-                const p = arr.slice();
-                out.push({ vals: p, visL: countVisible(p), visR: countVisible(p.slice().reverse()) });
-                return;
-            }
-            for (let i = k; i < n; i++) {
-                [arr[k], arr[i]] = [arr[i], arr[k]];
-                permute(k + 1);
-                [arr[k], arr[i]] = [arr[i], arr[k]];
-            }
-        })(0);
-        permCache.set(n, out);
-        return out;
-    }
-
-    // Liczy rozwiązania (do `cap`); zbiera znalezione plansze (do dezambiguacji).
-    // nodeBudget twardo ogranicza przeszukiwanie: po przekroczeniu wynik jest
-    // "nierozstrzygnięty" (budgetExceeded) i wywołujący traktuje go zachowawczo —
-    // dzięki temu czas generowania jest ograniczony, a wynik nigdy nie jest
-    // fałszywie uznany za jednoznaczny.
-    function solve(n, clues, givens, cap, nodeBudget) {
-        const perms = allPerms(n);
-        const rowPerms = [];
-        for (let r = 0; r < n; r++) {
-            const g = givens ? givens[r] : null;
-            const list = perms.filter(p => {
-                if (clues.left[r] != null && p.visL !== clues.left[r]) return false;
-                if (clues.right[r] != null && p.visR !== clues.right[r]) return false;
-                if (g) for (let c = 0; c < n; c++) if (g[c] !== 0 && p.vals[c] !== g[c]) return false;
-                return true;
-            });
-            if (list.length === 0) return { count: 0, found: [], budgetExceeded: false };
-            rowPerms.push(list);
-        }
-
-        const colUsed = new Array(n).fill(0);
-        const visStack = [new Array(n).fill(0)];
-        const maxStack = [new Array(n).fill(0)];
-        const chosen = new Array(n).fill(null);
-        let solutions = 0;
-        let nodes = 0;
-        let budgetExceeded = false;
-        const found = [];
-
-        function checkBottom() {
-            for (let c = 0; c < n; c++) {
-                if (clues.bottom[c] == null) continue;
-                let maxSoFar = 0, count = 0;
-                for (let r = n - 1; r >= 0; r--) {
-                    const v = chosen[r].vals[c];
-                    if (v > maxSoFar) { count++; maxSoFar = v; }
-                }
-                if (count !== clues.bottom[c]) return false;
-            }
-            return true;
-        }
-
-        function backtrack(r) {
-            if (solutions >= cap || budgetExceeded) return;
-            if (++nodes > nodeBudget) { budgetExceeded = true; return; }
-            if (r === n) {
-                for (let c = 0; c < n; c++) {
-                    if (clues.top[c] != null && visStack[n][c] !== clues.top[c]) return;
-                }
-                if (!checkBottom()) return;
-                solutions++;
-                if (found.length < 2) found.push(chosen.map(p => p.vals.slice()));
-                return;
-            }
-            const prevMax = maxStack[r], prevVis = visStack[r];
-            outer: for (const p of rowPerms[r]) {
-                for (let c = 0; c < n; c++) {
-                    if (colUsed[c] & (1 << (p.vals[c] - 1))) continue outer;
-                }
-                const newMax = new Array(n), newVis = new Array(n);
-                for (let c = 0; c < n; c++) {
-                    const v = p.vals[c];
-                    if (v > prevMax[c]) { newMax[c] = v; newVis[c] = prevVis[c] + 1; }
-                    else { newMax[c] = prevMax[c]; newVis[c] = prevVis[c]; }
-                    const t = clues.top[c];
-                    if (t != null) {
-                        if (newVis[c] > t) continue outer;                     // widoczność już przekroczona
-                        if (newVis[c] + (n - r - 1) < t) continue outer;       // nieosiągalna (max +1 na wiersz)
-                        if (newMax[c] === n && newVis[c] !== t) continue outer; // stoi n — widoczność ostateczna
+        for (const [r0, c0] of shuffle(Array.from({ length: n * n }, (_, i) => [Math.floor(i / n), i % n]))) {
+            if (cageId[r0][c0] !== -1) continue;
+            const id = cages.length;
+            const cells = [[r0, c0]];
+            cageId[r0][c0] = id;
+            const targetSize = Math.random() < singleChance ? 1 : 2 + Math.floor(Math.random() * (maxSize - 1));
+            while (cells.length < targetSize) {
+                const frontier = [];
+                for (const [r, c] of cells) {
+                    for (const [dr, dc] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) {
+                        const rr = r + dr, cc = c + dc;
+                        if (rr >= 0 && rr < n && cc >= 0 && cc < n && cageId[rr][cc] === -1) frontier.push([rr, cc]);
                     }
                 }
-                for (let c = 0; c < n; c++) colUsed[c] |= 1 << (p.vals[c] - 1);
-                maxStack[r + 1] = newMax; visStack[r + 1] = newVis;
-                chosen[r] = p;
-                backtrack(r + 1);
-                for (let c = 0; c < n; c++) colUsed[c] &= ~(1 << (p.vals[c] - 1));
+                if (!frontier.length) break;
+                const [r, c] = frontier[Math.floor(Math.random() * frontier.length)];
+                cageId[r][c] = id;
+                cells.push([r, c]);
+            }
+            cages.push({ cells });
+        }
+
+        // Działanie i cel na podstawie wartości z rozwiązania. Łatwy: tylko + i −;
+        // trudny: także × i ÷ (÷ preferowane, gdy wartości są podzielne).
+        for (const cage of cages) {
+            const vals = cage.cells.map(([r, c]) => grid[r][c]);
+            if (vals.length === 1) { cage.op = '='; cage.target = vals[0]; continue; }
+            const sum = vals.reduce((a, b) => a + b, 0);
+            const prod = vals.reduce((a, b) => a * b, 1);
+            const hi = Math.max(...vals), lo = Math.min(...vals);
+            const ops = [];
+            if (difficulty === 'hard') {
+                if (vals.length === 2) {
+                    ops.push('+', '-', '×');
+                    if (hi % lo === 0) ops.push('÷', '÷');
+                } else {
+                    ops.push('+', '×');
+                }
+            } else {
+                if (vals.length === 2) ops.push('+', '-', '-');
+                else ops.push('+');
+            }
+            cage.op = ops[Math.floor(Math.random() * ops.length)];
+            cage.target = cage.op === '+' ? sum
+                : cage.op === '-' ? hi - lo
+                : cage.op === '×' ? prod
+                : hi / lo;
+        }
+        return { cageId, cages };
+    }
+
+    // ── Solver: liczy rozwiązania (do cap) z przycinaniem klatek ─────────────
+    // nodeBudget twardo ogranicza przeszukiwanie — wynik -1 = nierozstrzygnięte,
+    // traktowane zachowawczo (nowa plansza), więc łamigłówka nigdy nie jest
+    // fałszywie uznana za jednoznaczną.
+    function countSolutions(n, cages, cageId, cap, nodeBudget) {
+        const grid = Array.from({ length: n }, () => new Array(n).fill(0));
+        const rowUsed = new Array(n).fill(0);
+        const colUsed = new Array(n).fill(0);
+        const cageState = cages.map(cage => ({ left: cage.cells.length, vals: [] }));
+        let solutions = 0, nodes = 0, budgetExceeded = false;
+        const found = [];
+
+        function cageOk(cg, st, closing) {
+            const { op, target } = cg;
+            const vals = st.vals;
+            if (op === '=') return vals[0] === target;
+            if (op === '+') {
+                const sum = vals.reduce((a, b) => a + b, 0);
+                if (closing) return sum === target;
+                return sum + st.left <= target && sum + st.left * n >= target;
+            }
+            if (op === '×') {
+                const prod = vals.reduce((a, b) => a * b, 1);
+                if (closing) return prod === target;
+                return target % prod === 0;
+            }
+            // − i ÷ tylko 2-komórkowe: sprawdzane przy domknięciu
+            if (!closing) return true;
+            const [a, b] = vals;
+            const hi = Math.max(a, b), lo = Math.min(a, b);
+            return op === '-' ? hi - lo === target : hi === lo * target;
+        }
+
+        function backtrack(idx) {
+            if (solutions >= cap || budgetExceeded) return;
+            if (++nodes > nodeBudget) { budgetExceeded = true; return; }
+            if (idx === n * n) {
+                solutions++;
+                if (found.length < 2) found.push(grid.map(row => row.slice()));
+                return;
+            }
+            const r = Math.floor(idx / n), c = idx % n;
+            const cid = cageId[r][c];
+            const cg = cages[cid], st = cageState[cid];
+            for (let v = 1; v <= n; v++) {
+                const bit = 1 << (v - 1);
+                if ((rowUsed[r] & bit) || (colUsed[c] & bit)) continue;
+                st.vals.push(v); st.left--;
+                if (cageOk(cg, st, st.left === 0)) {
+                    grid[r][c] = v;
+                    rowUsed[r] |= bit; colUsed[c] |= bit;
+                    backtrack(idx + 1);
+                    rowUsed[r] &= ~bit; colUsed[c] &= ~bit;
+                    grid[r][c] = 0;
+                }
+                st.vals.pop(); st.left++;
                 if (solutions >= cap || budgetExceeded) return;
             }
         }
         backtrack(0);
-        return { count: solutions, found, budgetExceeded };
+        return { count: budgetExceeded ? -1 : solutions, found };
     }
 
-    // ── Generowanie łamigłówki ────────────────────────────────────────────────
-    // Dla większych plansz (zwłaszcza 7×7) samo obramowanie prawie nigdy nie wyznacza
-    // rozwiązania jednoznacznie — jak w drukowanych łamigłówkach, plansza dostaje wtedy
-    // kilka wstępnie wypełnionych pól (givens):
-    //   0. seed: kilka losowych givens od razu (tnie przestrzeń przeszukiwania),
-    //   1. dezambiguacja: dopóki istnieje alternatywne rozwiązanie, przypnij givenem
-    //      pole, w którym różni się od naszej planszy,
-    //   2. minimalizacja: usuń każdy given, bez którego układ pozostaje jednoznaczny,
-    //   3. kucie dziur: ukrywaj wskazówki (do celu wg trudności), o ile jednoznaczność
-    //      pozostaje zachowana.
-    const NODE_BUDGET = 25000;
-    const SEED_GIVENS = { 4: 0, 5: 0, 6: 2, 7: 10 };
-
+    // ── Generator: plansza + klatki; jeśli układ niejednoznaczny, wydziela
+    //    1-polową klatkę w miejscu, gdzie alternatywne rozwiązanie się różni ──
+    const NODE_BUDGET = 200000;
     function generatePuzzle(n, difficulty) {
-        const hiddenFraction = difficulty === 'hard' ? 0.5 : 0.28;
-        const targetHide = Math.round(4 * n * hiddenFraction);
-
-        const grid = randomLatinSquare(n);
-        const full = computeClues(grid);
-        const clues = { top: full.top.slice(), bottom: full.bottom.slice(), left: full.left.slice(), right: full.right.slice() };
-        const givens = Array.from({ length: n }, () => new Array(n).fill(0));
-
-        const cells = shuffle(Array.from({ length: n * n }, (_, i) => [Math.floor(i / n), i % n]));
-        for (let i = 0; i < (SEED_GIVENS[n] || 0); i++) {
-            const [r, c] = cells[i];
-            givens[r][c] = grid[r][c];
-        }
-
-        let guard = 0;
-        let spare = cells.filter(([r, c]) => givens[r][c] === 0);
-        while (guard++ < n * n) {
-            const res = solve(n, clues, givens, 2, NODE_BUDGET);
-            if (!res.budgetExceeded && res.count === 1) break;
-            const alt = res.found.find(sol => sol.some((row, r) => row.some((v, c) => v !== grid[r][c])));
-            let r, c;
-            if (alt) {
+        for (;;) {
+            const grid = randomLatinSquare(n);
+            const { cageId, cages } = makeCages(n, difficulty, grid);
+            let splits = 0;
+            while (splits < n * n) {
+                const res = countSolutions(n, cages, cageId, 2, NODE_BUDGET);
+                if (res.count === 1) return { solution: grid, cageId, cages };
+                if (res.count === -1) break; // budżet przekroczony — nowa plansza
+                const alt = res.found.find(sol => sol.some((row, r) => row.some((v, c) => v !== grid[r][c])));
+                if (!alt) break;
                 const diffs = [];
-                for (let rr = 0; rr < n; rr++) for (let cc = 0; cc < n; cc++) {
-                    if (alt[rr][cc] !== grid[rr][cc] && givens[rr][cc] === 0) diffs.push([rr, cc]);
+                for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+                    if (alt[r][c] !== grid[r][c] && cages[cageId[r][c]].cells.length > 1) diffs.push([r, c]);
                 }
-                [r, c] = diffs[Math.floor(Math.random() * diffs.length)];
-            } else {
-                if (!spare.length) break;
-                [r, c] = spare.pop();
+                if (!diffs.length) break;
+                const [r, c] = diffs[Math.floor(Math.random() * diffs.length)];
+                const old = cages[cageId[r][c]];
+                old.cells = old.cells.filter(([rr, cc]) => rr !== r || cc !== c);
+                const vals = old.cells.map(([rr, cc]) => grid[rr][cc]);
+                if (vals.length === 1) { old.op = '='; old.target = vals[0]; }
+                else if (old.op === '+') old.target = vals.reduce((a, b) => a + b, 0);
+                else if (old.op === '×') old.target = vals.reduce((a, b) => a * b, 1);
+                else {
+                    const hi = Math.max(...vals), lo = Math.min(...vals);
+                    if (old.op === '÷' && hi % lo !== 0) old.op = '-';
+                    old.target = old.op === '-' ? hi - lo : hi / lo;
+                }
+                cageId[r][c] = cages.length;
+                cages.push({ cells: [[r, c]], op: '=', target: grid[r][c] });
+                splits++;
             }
-            givens[r][c] = grid[r][c];
-            spare = spare.filter(([rr, cc]) => rr !== r || cc !== c);
         }
-
-        const givenCells = [];
-        for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (givens[r][c] !== 0) givenCells.push([r, c]);
-        for (const [r, c] of shuffle(givenCells)) {
-            const backup = givens[r][c];
-            givens[r][c] = 0;
-            const res = solve(n, clues, givens, 2, NODE_BUDGET);
-            if (res.budgetExceeded || res.count !== 1) givens[r][c] = backup;
-        }
-
-        const slots = shuffle([
-            ...Array.from({ length: n }, (_, i) => ['top', i]),
-            ...Array.from({ length: n }, (_, i) => ['bottom', i]),
-            ...Array.from({ length: n }, (_, i) => ['left', i]),
-            ...Array.from({ length: n }, (_, i) => ['right', i]),
-        ]);
-        let hidden = 0;
-        for (const [key, idx] of slots) {
-            if (hidden >= targetHide) break;
-            const backup = clues[key][idx];
-            clues[key][idx] = null;
-            const res = solve(n, clues, givens, 2, NODE_BUDGET);
-            if (!res.budgetExceeded && res.count === 1) hidden++;
-            else clues[key][idx] = backup;
-        }
-
-        return { clues, givens, solution: grid };
     }
 
     // ── Stan gry ──────────────────────────────────────────────────────────────
-    let n = 5;
+    let n = 4;
     let difficulty = 'easy';
-    let clues = null;
-    let solution = null;      // solution[r][c] = poprawna wartość 1..n
-    let values = [];          // values[r][c] = 0 (puste) lub 1..n
-    let notes = [];           // notes[r][c] = Set kandydujących liczb
-    let given = [];           // given[r][c] = true, jeśli pole uzupełnione podpowiedzią (zablokowane)
+    let cages = null;         // [{ cells, op, target }]
+    let cageId = null;        // cageId[r][c] = indeks klatki
+    let solution = null;
+    let values = [];
+    let notes = [];
+    let given = [];           // pola uzupełnione podpowiedzią (zablokowane)
     let noteMode = false;
     let hintsUsed = 0;
     let recordSaved = false;
-    let selected = null;      // {r, c} lub null
+    let selected = null;
     let timerInterval = null;
     let elapsedSec = 0;
     let solved = false;
@@ -312,9 +263,9 @@
 
     // ── Autozapis: gra wznawia się z tego samego miejsca po powrocie ─────────
     function saveState() {
-        if (solved || !clues) return;
+        if (solved || !cages) return;
         const state = {
-            n, difficulty, clues, solution, hintsUsed, elapsedSec,
+            n, difficulty, cages, cageId, solution, hintsUsed, elapsedSec,
             values,
             given,
             notes: notes.map(row => row.map(set => [...set])),
@@ -328,10 +279,11 @@
     function restoreState() {
         let s;
         try { s = JSON.parse(localStorage.getItem(SAVE_KEY)); } catch (e) { return false; }
-        if (!s || !SIZES.includes(s.n) || !s.clues || !s.solution || !s.values) return false;
+        if (!s || !SIZES.includes(s.n) || !s.cages || !s.cageId || !s.solution || !s.values) return false;
         n = s.n;
         difficulty = s.difficulty === 'hard' ? 'hard' : 'easy';
-        clues = s.clues;
+        cages = s.cages;
+        cageId = s.cageId;
         solution = s.solution;
         values = s.values;
         given = s.given;
@@ -347,19 +299,17 @@
         render();
         for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) updateCellDisplay(r, c);
         updateConflicts();
-        updateClueFeedback();
+        updateCageFeedback();
         updateHintBtn();
         updateUndoBtn();
-        updateNumpadCounts();
         updateRecordDisplay();
-        refreshRecords();
         startTimer(s.elapsedSec || 0);
         return true;
     }
-    // dozapisz aktualny czas, gdy karta znika (zamknięcie/przełączenie)
     document.addEventListener('visibilitychange', () => { if (document.hidden) saveState(); });
     window.addEventListener('pagehide', saveState);
 
+    // ── Rekordy: ranking najpierw wg liczby podpowiedzi, potem czasu ─────────
     function recordKey() { return `${n}-${difficulty}`; }
     function recordLabel(key) {
         const [size, diff] = key.split('-');
@@ -368,12 +318,11 @@
     function loadRecords() {
         try { return JSON.parse(localStorage.getItem(RECORDS_KEY)) || {}; } catch (e) { return {}; }
     }
-    function recHints(row) { return row.hints || 0; } // starsze wpisy bez pola hints = gry bez podpowiedzi
+    function recHints(row) { return row.hints || 0; }
     function bestTime() {
         const rows = loadRecords()[recordKey()];
         return Array.isArray(rows) && rows.length ? rows[0].time : null;
     }
-    // Ranking: najpierw mniejsza liczba podpowiedzi, przy równej — krótszy czas.
     function saveRecord(name, key, sec, hints) {
         const records = loadRecords();
         const rows = Array.isArray(records[key]) ? records[key] : [];
@@ -391,7 +340,6 @@
         recordDisplayEl.textContent = b == null ? '—' : formatTime(b);
     }
 
-    // ── Panel rekordów (top 10 dla każdego rozmiaru/trudności) ───────────────
     function recordCombos() {
         const combos = [];
         SIZES.forEach(size => ['easy', 'hard'].forEach(diff => combos.push(`${size}-${diff}`)));
@@ -423,10 +371,13 @@
         });
         recTableEl.innerHTML = renderRecTable(recActiveKey);
     }
-    function refreshRecords() {
+    function openRecords() {
         recActiveKey = recordKey();
         buildRecTabs();
+        recPanel.classList.add('show');
     }
+    recordsBtn.addEventListener('click', openRecords);
+    recCloseBtn.addEventListener('click', () => recPanel.classList.remove('show'));
 
     function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
     function startTimer(fromSec = 0) {
@@ -439,7 +390,7 @@
         }, 1000);
     }
 
-    // ── Budowa przycisków rozmiaru planszy ───────────────────────────────────
+    // ── Przyciski rozmiaru i trudności ────────────────────────────────────────
     SIZES.forEach(size => {
         const b = document.createElement('button');
         b.className = 'pill';
@@ -458,55 +409,39 @@
         diffButtonsEl.querySelectorAll('.pill').forEach(b => b.classList.toggle('active', b.dataset.diff === difficulty));
     }
 
-    // ── Renderowanie planszy (n+2)×(n+2): brzeg wskazówek + środek do gry ─────
+    // ── Renderowanie: siatka + grube granice klatek + etykiety wyników ───────
+    function cageLabelText(cage) {
+        return cage.op === '=' ? String(cage.target) : `${cage.target}${cage.op}`;
+    }
     function render() {
         boardEl.style.setProperty('--n', n);
-        boardEl.style.setProperty('--cell-font', `${Math.max(14, 30 - n * 2)}px`);
-        boardEl.style.setProperty('--clue-font', `${Math.max(12, 22 - n * 1.5)}px`);
+        boardEl.style.setProperty('--cell-font', `${Math.max(15, 32 - n * 2)}px`);
+        boardEl.style.setProperty('--label-font', `${Math.max(8, 15 - n)}px`);
         boardEl.innerHTML = '';
 
-        for (let R = 0; R < n + 2; R++) {
-            for (let C = 0; C < n + 2; C++) {
-                const isCornerRow = R === 0 || R === n + 1;
-                const isCornerCol = C === 0 || C === n + 1;
-                if (isCornerRow && isCornerCol) {
-                    const div = document.createElement('div');
-                    div.className = 'cell corner';
-                    boardEl.appendChild(div);
-                    continue;
-                }
-                if (isCornerRow) {
-                    const c = C - 1;
-                    const div = document.createElement('div');
-                    div.className = 'cell clue';
-                    const val = R === 0 ? clues.top[c] : clues.bottom[c];
-                    div.textContent = val == null ? '' : val;
-                    div.dataset.role = R === 0 ? 'top' : 'bottom';
-                    div.dataset.index = c;
-                    boardEl.appendChild(div);
-                    continue;
-                }
-                if (isCornerCol) {
-                    const r = R - 1;
-                    const div = document.createElement('div');
-                    div.className = 'cell clue';
-                    const val = C === 0 ? clues.left[r] : clues.right[r];
-                    div.textContent = val == null ? '' : val;
-                    div.dataset.role = C === 0 ? 'left' : 'right';
-                    div.dataset.index = r;
-                    boardEl.appendChild(div);
-                    continue;
-                }
-                const r = R - 1, c = C - 1;
+        // komórka-kotwica klatki (pierwsza w kolejności czytania) dostaje etykietę
+        const anchor = cages.map(cage => cage.cells.reduce((best, cell) =>
+            (cell[0] * n + cell[1] < best[0] * n + best[1] ? cell : best)));
+
+        for (let r = 0; r < n; r++) {
+            for (let c = 0; c < n; c++) {
                 const btn = document.createElement('button');
-                btn.className = 'cell play';
+                btn.className = 'cell';
                 btn.type = 'button';
                 btn.dataset.r = r;
                 btn.dataset.c = c;
+                if (r > 0 && cageId[r - 1][c] !== cageId[r][c]) btn.classList.add('cb-t');
+                if (c > 0 && cageId[r][c - 1] !== cageId[r][c]) btn.classList.add('cb-l');
                 btn.addEventListener('click', () => selectCell(r, c));
                 boardEl.appendChild(btn);
             }
         }
+        anchor.forEach(([r, c], id) => {
+            const span = document.createElement('span');
+            span.className = 'cage-label';
+            span.textContent = cageLabelText(cages[id]);
+            cellEl(r, c).appendChild(span);
+        });
         renderNumpad();
     }
 
@@ -516,7 +451,6 @@
             const b = document.createElement('button');
             b.className = 'num-btn';
             b.textContent = v;
-            b.dataset.v = v;
             b.addEventListener('click', () => inputValue(v));
             numpadEl.appendChild(b);
         }
@@ -527,22 +461,11 @@
         numpadEl.appendChild(clearBtn);
     }
 
-    function updateNumpadCounts() {
-        const counts = {};
-        for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
-            const v = values[r][c];
-            if (v) counts[v] = (counts[v] || 0) + 1;
-        }
-        numpadEl.querySelectorAll('.num-btn[data-v]').forEach(b => {
-            b.classList.toggle('done', (counts[+b.dataset.v] || 0) >= n);
-        });
+    function cellEl(r, c) {
+        return boardEl.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
     }
 
-    function playCellEl(r, c) {
-        return boardEl.querySelector(`.play[data-r="${r}"][data-c="${c}"]`);
-    }
-
-    // ── Notatki: mini-siatka kandydujących liczb wewnątrz pustego pola ───────
+    // ── Notatki: mini-siatka kandydujących liczb (etykieta klatki zostaje) ───
     function buildNotesHtml(noteSet) {
         const cols = Math.ceil(Math.sqrt(n));
         let h = `<div class="notes-grid" style="grid-template-columns: repeat(${cols}, 1fr);">`;
@@ -551,18 +474,19 @@
     }
 
     function updateCellDisplay(r, c) {
-        const el = playCellEl(r, c);
+        const el = cellEl(r, c);
         el.classList.toggle('given', given[r][c]);
-        if (values[r][c] !== 0) el.textContent = values[r][c];
-        else if (notes[r][c].size > 0) el.innerHTML = buildNotesHtml(notes[r][c]);
-        else el.textContent = '';
+        const label = el.querySelector('.cage-label');
+        el.textContent = values[r][c] !== 0 ? values[r][c] : '';
+        if (values[r][c] === 0 && notes[r][c].size > 0) el.innerHTML = buildNotesHtml(notes[r][c]);
+        if (label) el.prepend(label);
     }
 
     function selectCell(r, c) {
         if (solved) return;
         selected = { r, c };
-        boardEl.querySelectorAll('.play.selected').forEach(el => el.classList.remove('selected'));
-        playCellEl(r, c).classList.add('selected');
+        boardEl.querySelectorAll('.cell.selected').forEach(el => el.classList.remove('selected'));
+        cellEl(r, c).classList.add('selected');
     }
 
     function pushHistory(r, c) {
@@ -574,39 +498,30 @@
     function inputValue(v) {
         if (!selected || solved) return;
         const { r, c } = selected;
-        if (given[r][c]) return;   // pole uzupełnione podpowiedzią jest zablokowane
+        if (given[r][c]) return;
 
         if (noteMode && v !== 0) {
             pushHistory(r, c);
-            if (values[r][c] !== 0) {
-                values[r][c] = 0;
-                notes[r][c].clear();
-            }
             if (notes[r][c].has(v)) notes[r][c].delete(v); else notes[r][c].add(v);
             updateCellDisplay(r, c);
-            updateConflicts();
-            updateClueFeedback();
-            updateNumpadCounts();
             saveState();
             return;
         }
 
         pushHistory(r, c);
-        values[r][c] = values[r][c] === v ? 0 : v;
+        values[r][c] = values[r][c] === v ? 0 : v;   // ponowne kliknięcie tej samej liczby czyści pole
         if (values[r][c] !== 0) {
             notes[r][c].clear();
             for (let i = 0; i < n; i++) { notes[r][i].delete(values[r][c]); notes[i][c].delete(values[r][c]); }
         }
-        for (let i = 0; i < n; i++) { updateCellDisplay(r, i); updateCellDisplay(i, c); }
+        updateCellDisplay(r, c);
         updateConflicts();
-        updateClueFeedback();
-        updateNumpadCounts();
+        updateCageFeedback();
         checkWin();
         saveState();
     }
 
-    // ── Cofanie: przywraca wartość i notatki pola sprzed ostatniego ruchu ────
-    // (uproszczenie: nie odtwarza notatek wyczyszczonych w innych polach tego ruchu)
+    // ── Cofanie ───────────────────────────────────────────────────────────────
     function updateUndoBtn() { undoBtn.disabled = history.length === 0; }
     function undo() {
         if (solved || !history.length) return;
@@ -616,7 +531,7 @@
         selectCell(r, c);
         updateCellDisplay(r, c);
         updateConflicts();
-        updateClueFeedback();
+        updateCageFeedback();
         updateUndoBtn();
         saveState();
     }
@@ -634,46 +549,43 @@
         return groups;
     }
     function updateConflicts() {
-        boardEl.querySelectorAll('.play.conflict').forEach(el => el.classList.remove('conflict'));
+        boardEl.querySelectorAll('.cell.conflict').forEach(el => el.classList.remove('conflict'));
         for (let r = 0; r < n; r++) {
             for (const cols of groupByValue(c => values[r][c], n).values()) {
-                if (cols.length > 1) cols.forEach(c => playCellEl(r, c).classList.add('conflict'));
+                if (cols.length > 1) cols.forEach(c => cellEl(r, c).classList.add('conflict'));
             }
         }
         for (let c = 0; c < n; c++) {
             for (const rows of groupByValue(r => values[r][c], n).values()) {
-                if (rows.length > 1) rows.forEach(r => playCellEl(r, c).classList.add('conflict'));
+                if (rows.length > 1) rows.forEach(r => cellEl(r, c).classList.add('conflict'));
             }
         }
     }
 
-    // ── Oznaczenie wskazówek jako spełnione/niespełnione (gdy wiersz/kolumna kompletne) ──
-    function clueCellEl(role, index) {
-        return boardEl.querySelector(`.clue[data-role="${role}"][data-index="${index}"]`);
+    // ── Klatka wypełniona w całości i błędna → podświetlenie ─────────────────
+    function cageSatisfied(cage) {
+        const vals = cage.cells.map(([r, c]) => values[r][c]);
+        if (vals.includes(0)) return null; // niekompletna
+        const { op, target } = cage;
+        if (op === '=') return vals[0] === target;
+        if (op === '+') return vals.reduce((a, b) => a + b, 0) === target;
+        if (op === '×') return vals.reduce((a, b) => a * b, 1) === target;
+        const hi = Math.max(...vals), lo = Math.min(...vals);
+        return op === '-' ? hi - lo === target : hi === lo * target;
     }
-    function updateClueFeedback() {
-        boardEl.querySelectorAll('.clue').forEach(el => el.classList.remove('clue-ok', 'clue-bad'));
-        for (let r = 0; r < n; r++) {
-            const row = values[r];
-            if (row.includes(0)) continue;
-            if (clues.left[r] != null) mark(clueCellEl('left', r), countVisible(row) === clues.left[r]);
-            if (clues.right[r] != null) mark(clueCellEl('right', r), countVisible(row.slice().reverse()) === clues.right[r]);
-        }
-        for (let c = 0; c < n; c++) {
-            const col = values.map(row => row[c]);
-            if (col.includes(0)) continue;
-            if (clues.top[c] != null) mark(clueCellEl('top', c), countVisible(col) === clues.top[c]);
-            if (clues.bottom[c] != null) mark(clueCellEl('bottom', c), countVisible(col.slice().reverse()) === clues.bottom[c]);
+    function updateCageFeedback() {
+        boardEl.querySelectorAll('.cell.cage-bad').forEach(el => el.classList.remove('cage-bad'));
+        for (const cage of cages) {
+            if (cageSatisfied(cage) === false) {
+                cage.cells.forEach(([r, c]) => cellEl(r, c).classList.add('cage-bad'));
+            }
         }
     }
-    function mark(el, ok) { el.classList.add(ok ? 'clue-ok' : 'clue-bad'); }
 
     function checkWin() {
         if (values.some(row => row.includes(0))) return;
-        const validLatin = boardEl.querySelectorAll('.play.conflict').length === 0;
-        const cluesOk = [...boardEl.querySelectorAll('.clue')].filter(el => el.textContent !== '')
-            .every(el => el.classList.contains('clue-ok'));
-        if (!validLatin || !cluesOk) return;
+        if (boardEl.querySelectorAll('.cell.conflict').length > 0) return;
+        if (cages.some(cage => cageSatisfied(cage) === false)) return;
 
         solved = true;
         stopTimer();
@@ -691,7 +603,7 @@
         winBanner.scrollIntoView({ behavior: 'smooth', block: 'center' }); // na telefonie baner bywa poza ekranem
     }
 
-    // ── Podpowiedź: uzupełnia losowe błędne/puste pole poprawną wartością ────
+    // ── Podpowiedź ────────────────────────────────────────────────────────────
     function updateHintBtn() {
         const remaining = MAX_HINTS - hintsUsed;
         hintCountEl.textContent = `(${remaining})`;
@@ -713,14 +625,13 @@
         for (let i = 0; i < n; i++) { notes[r][i].delete(values[r][c]); notes[i][c].delete(values[r][c]); }
         hintsUsed++;
         updateHintBtn();
-        for (let i = 0; i < n; i++) { updateCellDisplay(r, i); updateCellDisplay(i, c); }
+        updateCellDisplay(r, c);
         selectCell(r, c);
-        const el = playCellEl(r, c);
+        const el = cellEl(r, c);
         el.classList.add('hint-flash');
         setTimeout(() => el.classList.remove('hint-flash'), 900);
         updateConflicts();
-        updateClueFeedback();
-        updateNumpadCounts();
+        updateCageFeedback();
         checkWin();
         saveState();
     }
@@ -733,7 +644,7 @@
     }
     noteBtn.addEventListener('click', toggleNoteMode);
 
-    // ── Klawiatura: cyfry ustawiają wartość, strzałki przesuwają zaznaczenie ──
+    // ── Klawiatura ────────────────────────────────────────────────────────────
     document.addEventListener('keydown', (e) => {
         if (e.target === playerNameEl) return; // pisanie imienia nie steruje grą
         if ((e.ctrlKey || e.metaKey) && e.key === 'z') { undo(); e.preventDefault(); return; }
@@ -749,21 +660,6 @@
             e.preventDefault();
             return;
         }
-        if (e.key === 'Escape') {
-            const { r, c } = selected;
-            if (!given[r][c]) {
-                pushHistory(r, c);
-                values[r][c] = 0;
-                notes[r][c].clear();
-                updateCellDisplay(r, c);
-                updateConflicts();
-                updateClueFeedback();
-                updateNumpadCounts();
-                saveState();
-            }
-            e.preventDefault();
-            return;
-        }
         const moves = { ArrowUp: [-1, 0], ArrowDown: [1, 0], ArrowLeft: [0, -1], ArrowRight: [0, 1] };
         if (moves[e.key]) {
             const [dr, dc] = moves[e.key];
@@ -774,7 +670,6 @@
         }
     });
 
-    let genToken = 0; // szybkie klikanie rozmiaru/trudności: liczy się tylko ostatnie żądanie
     function newGame() {
         winBanner.hidden = true;
         solved = false;
@@ -788,34 +683,18 @@
         clearSave();
         syncSizeButtons();
         syncDiffButtons();
-        stopTimer();
-
-        // Generowanie 7×7 może potrwać ok. sekundy — pokaż komunikat i oddaj
-        // wątek przeglądarce, żeby zdążyła go namalować przed liczeniem.
-        boardEl.style.setProperty('--n', n);
-        boardEl.innerHTML = `<div class="board-loading">${TR.generating}</div>`;
-        numpadEl.innerHTML = '';
-        const token = ++genToken;
-        setTimeout(() => {
-            if (token !== genToken) return; // w międzyczasie zażądano innej gry
-            const generated = generatePuzzle(n, difficulty);
-            clues = generated.clues;
-            solution = generated.solution;
-            values = generated.givens.map(row => row.slice());
-            given = generated.givens.map(row => row.map(v => v !== 0));
-            notes = Array.from({ length: n }, () => Array.from({ length: n }, () => new Set()));
-            render();
-            for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
-                if (given[r][c]) updateCellDisplay(r, c);
-            }
-            updateClueFeedback();
-            updateHintBtn();
-            updateNumpadCounts();
-            updateRecordDisplay();
-            refreshRecords();
-            startTimer();
-            saveState();
-        }, 30);
+        const generated = generatePuzzle(n, difficulty);
+        solution = generated.solution;
+        cages = generated.cages;
+        cageId = generated.cageId;
+        values = Array.from({ length: n }, () => new Array(n).fill(0));
+        notes = Array.from({ length: n }, () => Array.from({ length: n }, () => new Set()));
+        given = Array.from({ length: n }, () => new Array(n).fill(false));
+        render();
+        updateHintBtn();
+        updateRecordDisplay();
+        startTimer();
+        saveState(); // odświeżenie strony w trakcie gry wznowi tę samą planszę
     }
 
     newGameBtn.addEventListener('click', newGame);
@@ -828,7 +707,6 @@
         recordSaved = true;
         saveBtn.disabled = true;
         updateRecordDisplay();
-        refreshRecords();
         saveInfoEl.style.display = 'block';
         saveInfoEl.textContent = TR.saved;
     });
@@ -844,9 +722,7 @@
     })();
     if (lang === 'en') {
         document.documentElement.lang = 'en';
-        document.title = 'Pyramids | @twoznia';
-        document.querySelector('.game-title').textContent = '🔺 Pyramids';
-        document.querySelector('.game-subtitle').textContent = 'Set heights 1–n so the number of visible pyramids matches the clues on the edges.';
+        document.querySelector('.game-subtitle').textContent = 'Fill the grid with numbers 1–n, no repeats in rows or columns, so every cage produces its result.';
         const labels = document.querySelectorAll('.control-label');
         labels[0].textContent = 'Size';
         labels[1].textContent = 'Difficulty';
@@ -858,18 +734,18 @@
         newGameBtn.textContent = 'New game';
         timerEl.parentNode.firstChild.textContent = 'Time: ';
         recordDisplayEl.parentNode.firstChild.textContent = 'Best: ';
+        recordsBtn.textContent = '🏆 Records';
         playerNameEl.placeholder = 'Your name…';
         saveBtn.textContent = 'Save';
         winPlayAgain.textContent = 'Play again';
-        document.querySelector('.rec-section h3').textContent = '🏆 Records';
+        recPanel.querySelector('h3').textContent = '🏆 Records';
+        recCloseBtn.textContent = 'Close';
         document.querySelector('.rules').innerHTML = `
             <summary>How to play</summary>
-            <p>Place pyramids of heights 1 to n (n = board size). Every row and column must contain each height exactly once.</p>
-            <p>An edge number tells how many pyramids are visible from that side — taller pyramids hide the shorter ones standing behind them.</p>
-            <p>On larger boards some cells may be pre-filled (highlighted) — without them the puzzle would have more than one solution.</p>
-            <p>Tap a cell, then a number on the keypad below the board. Repeated numbers in a row/column turn red.</p>
-            <p>Notes mode (the "Notes" button or the N key) stores candidate numbers in a cell. A hint fills one cell with the correct number (3 per game). Records rank by hints used first, then by time.</p>
-            <p>"Undo" (or Ctrl+Z) reverts your moves. The game saves automatically — when you come back, you resume exactly where you left off (clock included).</p>`;
+            <p>Fill the grid with numbers 1 to n (n = board size) — each number exactly once in every row and column.</p>
+            <p>The board is divided into cages (thick borders). Numbers in a cage must produce the result in its corner: e.g. "12×" means a product of 12, "3−" a difference of 3, "2÷" a quotient of 2. A cage with a plain number is a single cell of that value. Subtraction and division appear only in 2-cell cages — the order of numbers does not matter.</p>
+            <p>Tap a cell, then a number on the keypad below the board. Repeated numbers and wrong cages turn red.</p>
+            <p>Notes mode (the "Notes" button or the N key) stores candidate numbers. A hint fills one cell (3 per game) — records rank by hints used first, then by time. "Undo" (Ctrl+Z) reverts moves. The game saves automatically and resumes when you return.</p>`;
     }
 
     loadPrefs();
@@ -878,12 +754,12 @@
     // ── Jasny/ciemny motyw ────────────────────────────────────────────────
     (() => {
         const themeBtn = document.getElementById('themeBtn');
-        const saved = localStorage.getItem('piramidyTheme');
+        const saved = localStorage.getItem('calcudokuTheme');
         if (saved === 'light') { document.body.classList.add('light'); themeBtn.textContent = TR.themeDark; } else { themeBtn.textContent = TR.themeLight; }
         themeBtn.addEventListener('click', () => {
             const light = document.body.classList.toggle('light');
             themeBtn.textContent = light ? TR.themeDark : TR.themeLight;
-            localStorage.setItem('piramidyTheme', light ? 'light' : 'dark');
+            localStorage.setItem('calcudokuTheme', light ? 'light' : 'dark');
         });
     })();
 })();

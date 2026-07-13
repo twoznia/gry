@@ -29,6 +29,10 @@ Zbiór prostych gier przeglądarkowych stworzonych przez Tomka ([@twoznia](https
 - **[Mahjong](./mahjong/)** 🀄 – Mahjong Solitaire w średniowiecznym stylu z rankingiem i podpowiedziami.
 - **[Sudoku](./sudoku/)** 🔢 – Klasyczne sudoku – wypełnij siatkę cyframi bez powtórzeń w wierszach, kolumnach i kwadratach.
 - **[Koloruję Zwierzątka](./koloruj/)** 🎨 – Pokoloruj zwierzątko — kotka, pieska lub papugę. Po pomalowaniu ożywa i wraca na miejsce!
+- **[Piramidy](./piramidy/)** 🔺 – Ustaw wysokości piramid tak, by liczba widocznych zgadzała się z podpowiedziami na brzegach planszy.
+- **[Binairo](./binairo/)** ☀️🌙 – Wypełnij planszę słońcami i księżycami — po równo w każdym wierszu i kolumnie, nigdy trzy takie same obok siebie.
+- **[Calcudoku](./calcudoku/)** 🧮 – Wypełnij siatkę liczbami 1–n bez powtórzeń w wierszach i kolumnach tak, by każda klatka dawała swój wynik.
+- **[Nonogram](./nonogram/)** 🖼️ – Zamaluj pola tak, by ciągi zamalowanych pól w każdym wierszu i kolumnie zgadzały się z liczbami na brzegach.
 
 ---
 

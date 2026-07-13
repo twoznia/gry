@@ -11,6 +11,15 @@
         .back-link { position: fixed; top: 10px; left: 10px; z-index: 100; background: #334155; color: #fff; border: 1px solid #475569; border-radius: 8px; padding: 8px 14px; text-decoration: none; font-size: 13px; }
         .back-link:hover { background: #475569; }
         #main-btn:disabled { opacity: 0.5; pointer-events: none; }
+            /* Mobile: plansza wykorzystuje cały ekran */
+        @media (max-width: 768px), (max-height: 500px) {
+            body { justify-content: flex-start; }
+            body > div.text-center { max-width: 100%; padding-left: 0; padding-right: 0; }
+            #game-title { display: none; }
+            #hud { height: 40px; padding: 0 10px 0 82px; gap: 8px; margin-bottom: 0; border-radius: 0; font-size: 12px; flex-wrap: nowrap; align-items: center; overflow-x: auto; white-space: nowrap; }
+            #gameCanvas { height: calc(100dvh - 40px) !important; border-radius: 0; }
+            .back-link { top: 5px; left: 6px; padding: 6px 10px; font-size: 12px; }
+        }
     </style>
 </head>
 <body>
@@ -19,7 +28,7 @@
     <div class="text-center w-full max-w-6xl px-4">
         <h1 id="game-title" class="text-3xl font-bold mb-4 text-blue-400">Time Trial: Szybkość i Umysł</h1>
         
-        <div class="flex flex-wrap justify-between w-full gap-2 md:gap-6 bg-gray-800 p-3 rounded-xl mb-3 shadow-lg border border-gray-700 text-sm md:text-base">
+        <div id="hud" class="flex flex-wrap justify-between w-full gap-2 md:gap-6 bg-gray-800 p-3 rounded-xl mb-3 shadow-lg border border-gray-700 text-sm md:text-base">
             <div>Etap: <span id="current-level-display" class="font-bold text-blue-400">1</span>/<span id="max-level-display">4</span></div>
             <div>Pozostało: <span id="remaining" class="font-bold text-green-400">0</span></div>
             <div id="target-box" class="hidden">Szukaj nr: <span id="target-number" class="font-bold text-purple-400">-</span></div>
