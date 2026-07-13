@@ -45,11 +45,8 @@
     const playerNameEl = document.getElementById('playerName');
     const saveBtn = document.getElementById('saveBtn');
     const saveInfoEl = document.getElementById('saveInfo');
-    const recordsBtn = document.getElementById('recordsBtn');
-    const recPanel = document.getElementById('recPanel');
     const recTabsEl = document.getElementById('recTabs');
     const recTableEl = document.getElementById('recTable');
-    const recCloseBtn = document.getElementById('recCloseBtn');
 
     // ── Ile piramid widać, patrząc na tablicę wysokości od pierwszego elementu ──
     function countVisible(arr) {
@@ -353,7 +350,9 @@
         updateClueFeedback();
         updateHintBtn();
         updateUndoBtn();
+        updateNumpadCounts();
         updateRecordDisplay();
+        refreshRecords();
         startTimer(s.elapsedSec || 0);
         return true;
     }
@@ -424,13 +423,10 @@
         });
         recTableEl.innerHTML = renderRecTable(recActiveKey);
     }
-    function openRecords() {
+    function refreshRecords() {
         recActiveKey = recordKey();
         buildRecTabs();
-        recPanel.classList.add('show');
     }
-    recordsBtn.addEventListener('click', openRecords);
-    recCloseBtn.addEventListener('click', () => recPanel.classList.remove('show'));
 
     function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
     function startTimer(fromSec = 0) {
@@ -520,6 +516,7 @@
             const b = document.createElement('button');
             b.className = 'num-btn';
             b.textContent = v;
+            b.dataset.v = v;
             b.addEventListener('click', () => inputValue(v));
             numpadEl.appendChild(b);
         }
@@ -528,6 +525,17 @@
         clearBtn.textContent = '×';
         clearBtn.addEventListener('click', () => inputValue(0));
         numpadEl.appendChild(clearBtn);
+    }
+
+    function updateNumpadCounts() {
+        const counts = {};
+        for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+            const v = values[r][c];
+            if (v) counts[v] = (counts[v] || 0) + 1;
+        }
+        numpadEl.querySelectorAll('.num-btn[data-v]').forEach(b => {
+            b.classList.toggle('done', (counts[+b.dataset.v] || 0) >= n);
+        });
     }
 
     function playCellEl(r, c) {
@@ -570,21 +578,29 @@
 
         if (noteMode && v !== 0) {
             pushHistory(r, c);
+            if (values[r][c] !== 0) {
+                values[r][c] = 0;
+                notes[r][c].clear();
+            }
             if (notes[r][c].has(v)) notes[r][c].delete(v); else notes[r][c].add(v);
             updateCellDisplay(r, c);
+            updateConflicts();
+            updateClueFeedback();
+            updateNumpadCounts();
             saveState();
             return;
         }
 
         pushHistory(r, c);
-        values[r][c] = values[r][c] === v ? 0 : v;   // ponowne kliknięcie tej samej liczby czyści pole
+        values[r][c] = values[r][c] === v ? 0 : v;
         if (values[r][c] !== 0) {
             notes[r][c].clear();
             for (let i = 0; i < n; i++) { notes[r][i].delete(values[r][c]); notes[i][c].delete(values[r][c]); }
         }
-        updateCellDisplay(r, c);
+        for (let i = 0; i < n; i++) { updateCellDisplay(r, i); updateCellDisplay(i, c); }
         updateConflicts();
         updateClueFeedback();
+        updateNumpadCounts();
         checkWin();
         saveState();
     }
@@ -697,13 +713,14 @@
         for (let i = 0; i < n; i++) { notes[r][i].delete(values[r][c]); notes[i][c].delete(values[r][c]); }
         hintsUsed++;
         updateHintBtn();
-        updateCellDisplay(r, c);
+        for (let i = 0; i < n; i++) { updateCellDisplay(r, i); updateCellDisplay(i, c); }
         selectCell(r, c);
         const el = playCellEl(r, c);
         el.classList.add('hint-flash');
         setTimeout(() => el.classList.remove('hint-flash'), 900);
         updateConflicts();
         updateClueFeedback();
+        updateNumpadCounts();
         checkWin();
         saveState();
     }
@@ -729,6 +746,21 @@
         }
         if (e.key === 'Backspace' || e.key === 'Delete' || e.key === '0') {
             inputValue(0);
+            e.preventDefault();
+            return;
+        }
+        if (e.key === 'Escape') {
+            const { r, c } = selected;
+            if (!given[r][c]) {
+                pushHistory(r, c);
+                values[r][c] = 0;
+                notes[r][c].clear();
+                updateCellDisplay(r, c);
+                updateConflicts();
+                updateClueFeedback();
+                updateNumpadCounts();
+                saveState();
+            }
             e.preventDefault();
             return;
         }
@@ -778,9 +810,11 @@
             }
             updateClueFeedback();
             updateHintBtn();
+            updateNumpadCounts();
             updateRecordDisplay();
+            refreshRecords();
             startTimer();
-            saveState(); // odświeżenie strony w trakcie gry wznowi tę samą planszę
+            saveState();
         }, 30);
     }
 
@@ -794,6 +828,7 @@
         recordSaved = true;
         saveBtn.disabled = true;
         updateRecordDisplay();
+        refreshRecords();
         saveInfoEl.style.display = 'block';
         saveInfoEl.textContent = TR.saved;
     });
@@ -823,12 +858,10 @@
         newGameBtn.textContent = 'New game';
         timerEl.parentNode.firstChild.textContent = 'Time: ';
         recordDisplayEl.parentNode.firstChild.textContent = 'Best: ';
-        recordsBtn.textContent = '🏆 Records';
         playerNameEl.placeholder = 'Your name…';
         saveBtn.textContent = 'Save';
         winPlayAgain.textContent = 'Play again';
-        recPanel.querySelector('h3').textContent = '🏆 Records';
-        recCloseBtn.textContent = 'Close';
+        document.querySelector('.rec-section h3').textContent = '🏆 Records';
         document.querySelector('.rules').innerHTML = `
             <summary>How to play</summary>
             <p>Place pyramids of heights 1 to n (n = board size). Every row and column must contain each height exactly once.</p>
