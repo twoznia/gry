@@ -14,6 +14,7 @@
         thName: 'Name', thTime: 'Time', thDate: 'Date',
         easy: 'Easy', hard: 'Hard',
         generating: '⏳ Generating…',
+        fillNotes: '📝 Fill notes',
         themeDark: '🌙 Dark', themeLight: '☀️ Light',
     } : {
         solved: 'Rozwiązane! Czas:',
@@ -22,6 +23,7 @@
         noRecords: 'Brak rekordów dla tego trybu.',
         thName: 'Imię', thTime: 'Czas', thDate: 'Data',
         easy: 'Łatwy', hard: 'Trudny',
+        fillNotes: '📝 Wypełnij notatki',
         generating: '⏳ Generowanie…',
         themeDark: '🌙 Ciemny', themeLight: '☀️ Jasny',
     };
@@ -39,6 +41,7 @@
     const noteBtn = document.getElementById('noteBtn');
     const hintBtn = document.getElementById('hintBtn');
     const hintCountEl = document.getElementById('hintCount');
+    const fillNotesBtn = document.getElementById('fillNotesBtn');
     const undoBtn = document.getElementById('undoBtn');
     const MAX_HINTS = 3;
     const nameRow = document.getElementById('nameRow');
@@ -733,6 +736,37 @@
     }
     noteBtn.addEventListener('click', toggleNoteMode);
 
+    // ── Wypełnij wszystkie puste pola notatkami (kandydujące liczby) ─────
+    function fillAllNotes() {
+        if (solved) return;
+        const rowUsed = Array.from({ length: n }, () => new Set());
+        const colUsed = Array.from({ length: n }, () => new Set());
+        for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+            if (values[r][c]) { rowUsed[r].add(values[r][c]); colUsed[c].add(values[r][c]); }
+        }
+        let changed = false;
+        for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+            if (values[r][c] || given[r][c]) continue;
+            const candidates = new Set();
+            for (let v = 1; v <= n; v++) {
+                if (!rowUsed[r].has(v) && !colUsed[c].has(v)) candidates.add(v);
+            }
+            if (candidates.size === 0) continue;
+            const oldNotes = notes[r][c];
+            if (candidates.size === oldNotes.size && [...candidates].every(v => oldNotes.has(v))) continue;
+            if (!changed) changed = true;
+            pushHistory(r, c);
+            notes[r][c] = candidates;
+            updateCellDisplay(r, c);
+        }
+        if (changed) {
+            updateConflicts();
+            updateClueFeedback();
+            saveState();
+        }
+    }
+    fillNotesBtn.addEventListener('click', fillAllNotes);
+
     // ── Klawiatura: cyfry ustawiają wartość, strzałki przesuwają zaznaczenie ──
     document.addEventListener('keydown', (e) => {
         if (e.target === playerNameEl) return; // pisanie imienia nie steruje grą
@@ -853,6 +887,7 @@
         diffButtonsEl.querySelector('[data-diff="easy"]').textContent = 'Easy';
         diffButtonsEl.querySelector('[data-diff="hard"]').textContent = 'Hard';
         noteBtn.textContent = '✏️ Notes';
+        fillNotesBtn.textContent = TR.fillNotes;
         hintBtn.firstChild.textContent = '💡 Hint ';
         undoBtn.textContent = '↩️ Undo';
         newGameBtn.textContent = 'New game';
