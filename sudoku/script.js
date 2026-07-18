@@ -116,6 +116,87 @@ function loadFromCode(code){
   return true;
 }
 
+/* ---------- Udostępnianie: pełny bieżący stan ----------
+   Kod v2 zapisuje CAŁY bieżący stan gry: pola wstawione systemowo
+   i z podpowiedzi (given), wpisy gracza oraz notatki.
+   Format: '2' + poziom(1) + hintsUsed(1, base36) + wartości(81) + given(81) + notatki(81×2, base36) */
+function encodeState(){
+  if(!puzzle||!given)return null;
+  const lv=LEVEL_CODES[levelSel.value]||'e';
+  let vals='',gflags='',notesStr='';
+  for(let r=0;r<9;r++)for(let c=0;c<9;c++){
+    vals+=puzzle[r][c];
+    gflags+=given[r][c]?'1':'0';
+    let mask=0;
+    for(const n of notes[r][c])mask|=(1<<(n-1));
+    notesStr+=mask.toString(36).padStart(2,'0');
+  }
+  const h=Math.min(hintsUsed,35).toString(36);
+  return '2'+lv+h+vals+gflags+notesStr;
+}
+
+function validateStateCode(code){
+  if(!code||code[0]!=='2'||code.length!==3+81+81+162)return null;
+  const level=CODE_LEVELS[code[1]]; if(!level)return null;
+  const h=parseInt(code[2],36); if(isNaN(h))return null;
+  const vals=code.slice(3,84), gflags=code.slice(84,165), notesPart=code.slice(165);
+  if(!/^[0-9]{81}$/.test(vals)||!/^[01]{81}$/.test(gflags))return null;
+  const puzzleG=[],givenG=[],notesG=[];
+  for(let r=0;r<9;r++){
+    puzzleG.push([]);givenG.push([]);notesG.push([]);
+    for(let c=0;c<9;c++){
+      const i=r*9+c;
+      const v=+vals[i], g=gflags[i]==='1';
+      if(g&&v===0)return null; // pole systemowe/z podpowiedzi musi mieć wartość
+      puzzleG[r].push(v);
+      givenG[r].push(g);
+      const mask=parseInt(notesPart.slice(i*2,i*2+2),36);
+      if(isNaN(mask)||mask<0||mask>511)return null;
+      const set=new Set();
+      for(let n=1;n<=9;n++)if(mask&(1<<(n-1)))set.add(n);
+      notesG[r].push(set);
+    }
+  }
+  // pola "given" (systemowe + z podpowiedzi) nie mogą być sprzeczne
+  for(let r=0;r<9;r++)for(let c=0;c<9;c++){
+    if(!givenG[r][c])continue;
+    const v=puzzleG[r][c];
+    for(let i=0;i<9;i++){
+      if(i!==c&&givenG[r][i]&&puzzleG[r][i]===v)return null;
+      if(i!==r&&givenG[i][c]&&puzzleG[i][c]===v)return null;
+    }
+    const br=r-r%3,bc=c-c%3;
+    for(let i=0;i<3;i++)for(let j=0;j<3;j++)
+      if((br+i!==r||bc+j!==c)&&givenG[br+i][bc+j]&&puzzleG[br+i][bc+j]===v)return null;
+  }
+  return {level,puzzle:puzzleG,given:givenG,notes:notesG,hintsUsed:Math.min(h,MAX_HINTS)};
+}
+
+function loadFromState(code){
+  const parsed=validateStateCode(code);
+  if(!parsed)return false;
+  const{level,puzzle:pz,given:gv,notes:nt,hintsUsed:hu}=parsed;
+  // rozwiązanie wyznacz WYŁĄCZNIE z pól given (systemowe + podpowiedzi są zawsze poprawne)
+  const sol=gv.map((row,r)=>row.map((g,c)=>g?pz[r][c]:0));
+  if(!fillGrid(sol))return false;
+  levelSel.value=level;
+  solution=sol;
+  origPuzzle=gv.map((row,r)=>row.map((g,c)=>g?pz[r][c]:0));
+  puzzle=pz.map(r=>r.slice());
+  given=gv.map(r=>r.slice());
+  notes=nt;
+  history=[];noteMode=false;finishTime=0;hintsUsed=hu;
+  noteBtnEl.classList.remove('note-active');
+  document.body.classList.remove('note-mode');
+  selected=null;mistakes=0;solved=false;
+  updateHintBtn();
+  instantCheck=INSTANT_CHECK.has(level);
+  document.getElementById('overlay').classList.remove('show');
+  document.getElementById('printLevel').textContent='Poziom: '+levelSel.options[levelSel.selectedIndex].text;
+  render();updateStats();resetTimer();
+  return true;
+}
+
 let toastTimer=null;
 function showToast(msg,ms=2200){
   const el=document.getElementById('toast');
@@ -264,14 +345,21 @@ function place(n){
   }
 
   if(n!==0 && n===puzzle[r][c])return;
-  history.push({r,c,oldVal:puzzle[r][c],oldNotes:new Set(notes[r][c])});
+  const entry={r,c,oldVal:puzzle[r][c],oldNotes:new Set(notes[r][c]),cleared:[]};
   puzzle[r][c]=n;
   if(n!==0){
     notes[r][c].clear();
-    for(let i=0;i<9;i++){notes[r][i].delete(n);notes[i][c].delete(n);}
-    const br=r-r%3,bc=c-c%3;
-    for(let i=0;i<3;i++)for(let j=0;j<3;j++)notes[br+i][bc+j].delete(n);
+    // usuń wpisaną cyfrę z notatek w rzędzie/kolumnie/kwadracie i zapamiętaj do cofnięcia
+    const br=r-r%3,bc=c-c%3, seen=new Set(), peers=[];
+    for(let i=0;i<9;i++){peers.push([r,i]);peers.push([i,c]);}
+    for(let i=0;i<3;i++)for(let j=0;j<3;j++)peers.push([br+i,bc+j]);
+    for(const [pr,pc] of peers){
+      if(pr===r&&pc===c)continue;
+      const key=pr*9+pc; if(seen.has(key))continue; seen.add(key);
+      if(notes[pr][pc].has(n)){notes[pr][pc].delete(n);entry.cleared.push({r:pr,c:pc,n});}
+    }
   }
+  history.push(entry);
   const d=cellAt(r,c);
   d.classList.remove('pop'); void d.offsetWidth; d.classList.add('pop');
   paint(); updateStats(); checkWin();
@@ -279,9 +367,10 @@ function place(n){
 
 function undo(){
   if(!history.length||solved)return;
-  const {r,c,oldVal,oldNotes}=history.pop();
+  const {r,c,oldVal,oldNotes,cleared}=history.pop();
   puzzle[r][c]=oldVal;
   notes[r][c]=new Set(oldNotes);
+  if(cleared)for(const {r:pr,c:pc,n} of cleared)notes[pr][pc].add(n);
   selected={r,c};
   paint(); updateStats();
 }
@@ -484,7 +573,7 @@ function openRecords(){
 }
 
 document.getElementById('shareBtn').addEventListener('click',()=>{
-  const code=encodePuzzle();
+  const code=encodeState();
   if(!code){showToast('Brak aktywnej gry');return;}
   const url=location.origin+location.pathname+'?p='+code;
   navigator.clipboard.writeText(url).then(()=>showToast('✓ Link skopiowany!')).catch(()=>{
@@ -506,7 +595,8 @@ const _urlCode=new URLSearchParams(location.search).get('p');
 if(_urlCode){
   loadingEl.classList.add('show');
   setTimeout(()=>{
-    const ok=loadFromCode(_urlCode);
+    // kod v2 (pełny stan) zaczyna się od '2'; starsze linki – oryginalna plansza
+    const ok=_urlCode[0]==='2'?loadFromState(_urlCode):loadFromCode(_urlCode);
     loadingEl.classList.remove('show');
     if(!ok){
       const em=document.getElementById('errorMask');
